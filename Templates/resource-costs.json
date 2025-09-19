@@ -1,0 +1,30 @@
+{
+  "contacts": {
+    "baseCost": {
+      "description": "Total points distributed between Reach and Influence",
+      "example": "4 points could be Reach 3/Influence 1 or Reach 2/Influence 2"
+    }
+  },
+  "retainers": {
+    "baseCost": {
+      "description": "Total points distributed between Competence and Loyalty",
+      "example": "5 points could be Competence 3/Loyalty 2"
+    }
+  },
+  "properties": {
+    "tenure": {
+      "own": {"multiplier": 3},
+      "lease": {"multiplier": 2},
+      "rent": {"multiplier": 1},
+      "sublet": {"multiplier": 0.5},
+      "perpetuity": {"cost": "Cannot be purchased, background only"}
+    },
+    "zoning": {
+      "residential": {"baseCost": 2},
+      "commercial": {"baseCost": 3},
+      "industrial": {"baseCost": 4},
+      "agricultural": {"baseCost": 5},
+      "special": {"baseCost": "Variable, GM discretion"}
+    }
+  }
+}

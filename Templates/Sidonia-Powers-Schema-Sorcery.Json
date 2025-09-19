@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Sorcerer Lineage",
+  "description": "A schema for the Sorcerer lineage, detailing Primary and Secondary Spheres and their associated Moves.",
+  "type": "object",
+  "required": [
+    "lineage",
+    "spheres"
+  ],
+  "properties": {
+    "lineage": {
+      "description": "The character lineage, which must be 'sorcerer'.",
+      "type": "string",
+      "const": "sorcerer"
+    },
+    "spheres": {
+      "description": "An object containing the primary and secondary spheres of magic.",
+      "type": "object",
+      "required": [
+        "primary",
+        "secondary"
+      ],
+      "properties": {
+        "primary": {
+          "$ref": "#/$defs/sphereContainer"
+        },
+        "secondary": {
+          "$ref": "#/$defs/sphereContainer"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sphereContainer": {
+      "description": "A container for a set of spheres.",
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z]+$": {
+          "$ref": "#/$defs/sphere"
+        }
+      },
+      "additionalProperties": false
+    },
+    "sphere": {
+      "description": "Defines a single sphere of magic.",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "type",
+        "moves"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary"
+          ]
+        },
+        "moves": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/move"
+          }
+        }
+      }
+    },
+    "move": {
+      "description": "Defines a single magical move or augment.",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "type",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "move",
+            "augment"
+          ]
+        },
+        "ritual": {
+          "type": "boolean"
+        },
+        "description": {
+          "$ref": "#/$defs/moveDescription"
+        }
+      }
+    },
+    "moveDescription": {
+      "description": "Contains the descriptive text and outcomes for a move.",
+      "type": "object",
+      "required": [
+        "short"
+      ],
+      "properties": {
+        "short": {
+          "type": "string"
+        },
+        "outcomes": {
+          "type": "object",
+          "properties": {
+            "10+": {
+              "type": "string"
+            },
+            "7-9": {
+              "type": "string"
+            },
+            "6-": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "10+",
+            "7-9",
+            "6-"
+          ]
+        }
+      }
+    }
+  }
+}
+

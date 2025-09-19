@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Automata Lineage",
+  "description": "A detailed schema for the Automata lineage, including chassis, branches, models, and their specific abilities.",
+  "type": "object",
+  "required": ["lineage", "chassis"],
+  "properties": {
+    "lineage": {
+      "description": "The character lineage, which must be 'automata'.",
+      "type": "string",
+      "const": "automata"
+    },
+    "chassis": {
+      "description": "An object containing the available chassis types.",
+      "type": "object",
+      "properties": {
+        "overseer": { "$ref": "#/$defs/chassis" },
+        "soldier": { "$ref": "#/$defs/chassis" },
+        "worker": { "$ref": "#/$defs/chassis" }
+      },
+      "required": ["overseer", "soldier", "worker"]
+    }
+  },
+  "$defs": {
+    "chassis": {
+      "type": "object",
+      "required": ["id", "name", "branches"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "branches": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-zA-Z]+$": { "$ref": "#/$defs/branch" }
+          }
+        }
+      }
+    },
+    "branch": {
+      "type": "object",
+      "required": ["id", "name", "focus", "general_capabilities", "models"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "focus": { "type": "string" },
+        "general_capabilities": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/capability" }
+        },
+        "models": {
+          "type": "object",
+          "properties": {
+            "basic": { "$ref": "#/$defs/model" },
+            "advanced": { "$ref": "#/$defs/model" },
+            "imperial": { "$ref": "#/$defs/model" }
+          },
+          "required": ["basic", "advanced", "imperial"]
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "required": ["tier", "name", "available"],
+      "properties": {
+        "tier": { "type": "string", "enum": ["basic", "advanced", "imperial"] },
+        "name": { "type": "string" },
+        "available": { "type": "boolean" },
+        "augments": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/augment" }
+        },
+        "moves": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/move" }
+        },
+        "packages": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-zA-Z]+$": { "$ref": "#/$defs/package" }
+          }
+        }
+      }
+    },
+    "capability": {
+      "oneOf": [
+        { "$ref": "#/$defs/augment" },
+        { "$ref": "#/$defs/move" }
+      ]
+    },
+    "augment": {
+      "type": "object",
+      "required": ["name", "description"],
+      "properties": {
+        "type": { "type": "string", "const": "augment" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "cost": { "type": "integer" }
+      }
+    },
+    "move": {
+      "type": "object",
+      "required": ["name", "description"],
+      "properties": {
+        "type": { "type": "string", "const": "move" },
+        "name": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "package": {
+      "type": "object",
+      "required": ["name", "augments", "moves"],
+      "properties": {
+        "name": { "type": "string" },
+        "augments": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/augment" }
+        },
+        "moves": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/move" }
+        }
+      }
+    }
+  }
+}
+
