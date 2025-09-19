@@ -1,4 +1,5 @@
 export type PriorityRank = 'A' | 'B' | 'C' | 'D' | 'E';
+export type LineageKey = 'neosapien' | 'sorcery' | 'esper' | 'chimera' | 'automata';
 
 export interface ResourcePointsEntry {
   points: number;
@@ -111,5 +112,8 @@ export interface CharacterBuilderData {
   resourceCosts: ResourceCostsData;
   legal: LegalData;
   powerSchemas: Record<string, unknown>;
+  powerSets: Partial<Record<LineageKey, RawLineagePowerData>>;
   designDocs: DesignDocument[];
 }
+
+export type RawLineagePowerData = Record<string, unknown>;

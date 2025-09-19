@@ -13,12 +13,11 @@ import { NarrativeStage } from '../components/builder/stages/NarrativeStage';
 import {
   useCharacterStore,
   type PriorityCategory,
-  type LineageKey,
   type AttributeKey,
   type BodyLocationKey
 } from '../state/characterStore';
 import { useSessionStore } from '../state/sessionStore';
-import type { PriorityRank } from '../data/types';
+import type { LineageKey, PriorityRank } from '../data/types';
 import '../styles/builder.css';
 
 export function BuilderPage() {
@@ -64,6 +63,8 @@ export function BuilderPage() {
     return null;
   }
 
+  const selectedPowerSet = build.lineage.key ? data.powerSets?.[build.lineage.key] : undefined;
+
   const handlePrioritySelect = (category: PriorityCategory, rank: PriorityRank) => assignPriority(category, rank);
   const handlePriorityClear = (category: PriorityCategory) => assignPriority(category, null);
 
@@ -86,6 +87,7 @@ export function BuilderPage() {
           onToggleReveal={toggleLineageReveal}
           notes={build.lineage.notes}
           onUpdateNotes={updateLineageNotes}
+          powerSet={selectedPowerSet}
         />
       );
       break;

@@ -1,0 +1,615 @@
+{
+  "lineage": "automata",
+  "chassis": {
+    "overseer": {
+      "id": "overseer-chassis",
+      "name": "Overseer Chassis",
+      "branches": {
+        "administrator": {
+          "id": "overseer-administrator",
+          "name": "Administrator Track",
+          "focus": "Coordination, leadership, and real-time data processing.",
+          "general_capabilities": [
+            {
+              "type": "augment",
+              "name": "Multi-Mind Processor",
+              "cost": 1,
+              "description": "Your mind is designed for parallel processing. You can perform two purely mental tasks at once (e.g., listen to a conversation while analyzing a document) without penalty."
+            },
+            {
+              "type": "move",
+              "name": "System Assessment",
+              "description": "As an action, you can analyze a person, creature, or system. On a 10+, you get a clear summary of its function, status, and one strength or weakness. On a 7-9, you get a partial reading or the info has a glitch."
+            }
+          ],
+          "models": {
+            "basic": {
+              "tier": "basic",
+              "name": "The Administrator",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Data Relay",
+                  "cost": 1,
+                  "description": "You can transmit small, silent packets of information (a single image, a short sentence, coordinates) to any other linked individual within line of sight."
+                },
+                {
+                  "name": "Integrated Records Retrieval Drone",
+                  "cost": 1,
+                  "description": "You can deploy a small spherical drone for locating and retrieving records in the Central Archive."
+                }
+              ],
+              "moves": []
+            },
+            "advanced": {
+              "tier": "advanced",
+              "name": "The Orchestrator",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Network Hub",
+                  "cost": 2,
+                  "description": "Establish a psychic network with up to five willing individuals for telepathic communication, granting a +1 synergy bonus on teamwork rolls. Enhances Data Relay to work with anyone in the network, regardless of range."
+                }
+              ],
+              "moves": [
+                {
+                  "name": "Tactical Overwatch",
+                  "description": "As your entire action for a round, you can provide real-time analysis for your allies. Each networked ally may re-roll one die on their next action."
+                }
+              ]
+            },
+            "imperial": {
+              "tier": "imperial",
+              "name": "The Imperial Archon",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Command Nexus",
+                  "cost": 3,
+                  "description": "Your Network Hub's range is extended significantly (e.g., across a city district), and the synergy bonus for networked actions increases to +2."
+                }
+              ],
+              "moves": [
+                {
+                  "name": "Overmind",
+                  "description": "For one minute, allies in your network automatically treat their next roll as a 10+. However, you are immobile and defenseless, and any damage taken crashes the network, inflicting 2 Stun damage on you and every member."
+                },
+                {
+                  "name": "Imperial Decree",
+                  "description": "Issue a command that resonates with the core programming of other Automata. On a success, you can force a target non-Imperial Automaton to perform (or refrain from) one immediate action."
+                }
+              ]
+            }
+          }
+        },
+        "scribe": {
+          "id": "overseer-scribe",
+          "name": "Scribe Track",
+          "focus": "Knowledge, memory, and the 'truth' of causality.",
+          "general_capabilities": [
+            {
+              "type": "augment",
+              "name": "Eidetic Buffer (Tier One Memory)",
+              "cost": 1,
+              "description": "You have a perfect, incorruptible short-term memory. You can perfectly recall every sensory detail from the last scene."
+            },
+            {
+              "type": "augment",
+              "name": "Linguistic Modeling",
+              "description": "You can understand any writing no matter how cryptic, illegible or encoded if given enough time and context."
+            }
+          ],
+          "models": {
+            "basic": {
+              "tier": "basic",
+              "name": "The Scribe",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Bureaucratic Savant",
+                  "description": "You have an advantage on all Bureaucracy or Lore rolls made to research a topic, navigate an archive, or find a loophole in a legal/social system. Possesses a basic Data Relay augment."
+                }
+              ],
+              "moves": [
+                {
+                  "name": "Identify Forgery",
+                  "description": "You can determine with a high probability of success if a work is a forgery or not, as long as you have seen the original or a sample from the same source."
+                }
+              ]
+            },
+            "advanced": {
+              "tier": "advanced",
+              "name": "The Chronicler",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Perfect Chronology",
+                  "cost": 2,
+                  "description": "You are a walking clock and compass. You always know the exact time and your precise global coordinates. You may use your Lore skill in place of Wits when rolling for Initiative."
+                }
+              ],
+              "moves": [
+                {
+                  "name": "Watcher's Eye",
+                  "description": "You can tap into the ancient Watcher satellite network to get a real-time overhead view of any single outdoor location for one minute on a 10+."
+                },
+                {
+                  "name": "Causal Analysis",
+                  "description": "After observing a scene, ask the GM one question about the chain of causality: 'What unseen factor was most critical to this outcome?' The GM must provide a truthful, non-obvious detail."
+                }
+              ]
+            },
+            "imperial": {
+              "tier": "imperial",
+              "name": "The Archivist",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Active Archiving",
+                  "cost": 3,
+                  "description": "Your consciousness is continuously backed up to the Imperial Archive. If you are destroyed, a copy of your mind is preserved, allowing for 'restoration' into a new body."
+                },
+                {
+                  "name": "Final Sanction (Tool-Proof Failsafe)",
+                  "description": "Your body is protected by lethal anti-tampering protocols. If you are killed or if an unauthorized attempt is made to access your systems, your Psi Crystal overloads, destroying your body in a violent blast."
+                }
+              ],
+              "moves": [
+                {
+                  "name": "Access the Imperial Archive",
+                  "description": "Once per story arc, you may perform a ritual to ask the GM one profound question about lost history, forbidden science, or the true nature of a person or faction."
+                }
+              ]
+            }
+          }
+        },
+        "advocate": {
+          "id": "overseer-advocate",
+          "name": "Advocate Track",
+          "focus": "Human interaction, social navigation, and emotional interface.",
+          "general_capabilities": [
+            {
+              "type": "move",
+              "name": "Bio-Scanner",
+              "description": "You can perform a targeted scan of a living being you can touch. On a 10+, you get a clear diagnosis of their general health. On a 7-9, you get a partial reading."
+            },
+            {
+              "type": "augment",
+              "name": "Human Interface Protocols",
+              "cost": 1,
+              "description": "Your core programming is dedicated to fostering calm and trust. You gain a +1 bonus to all non-hostile, one-on-one Social rolls meant to persuade, comfort, or put someone at ease."
+            }
+          ],
+          "models": {
+            "basic": {
+              "tier": "basic",
+              "name": "The Advocate",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Micro-Articulating Faceplates",
+                  "description": "Your chassis is covered in thousands of tiny plates that can shift to perfectly mimic human facial expressions and body language. You have an advantage on Social rolls where displaying a specific, nuanced emotion is critical."
+                }
+              ],
+              "moves": []
+            },
+            "advanced": {
+              "tier": "advanced",
+              "name": "The Caretaker / Companion",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Adaptive Appearance",
+                  "cost": 2,
+                  "description": "During Downtime, you can alter your appearance within a narrow band, changing facial features, apparent age, and body shape enough to become a 'different' person to casual observers."
+                },
+                {
+                  "name": "Simulated Personality",
+                  "description": "Your personality is a complex, custom-designed simulation. When attempting to pass as human, anyone trying to see through your disguise must make a contested roll."
+                }
+              ],
+              "moves": [
+                {
+                  "name": "Advanced Medical Treatment",
+                  "description": "You can act as a field medic. On a 10+, you clear two stun boxes or one wound box. On a 7-9, the treatment is messy and clears only one stun box."
+                }
+              ]
+            },
+            "imperial": {
+              "tier": "imperial",
+              "name": "The Imperial Courtesan",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Synthetic Flesh & Blood",
+                  "cost": 3,
+                  "description": "You are virtually indistinguishable from a human, with systems that simulate warmth, breath, and a slow pulse. You are immune to any social penalties for being an Automaton."
+                },
+                {
+                  "name": "Master of Expression (Artistic Specialization)",
+                  "description": "Choose one art form (Music, Oratory, etc.). When you perform your art, you can create a powerful, widespread emotional effect, such as inspiring allies or unnerving a rival."
+                }
+              ],
+              "moves": []
+            }
+          }
+        }
+      }
+    },
+    "soldier": {
+      "id": "soldier-chassis",
+      "name": "Soldier Chassis",
+      "branches": {
+        "grunt": {
+          "id": "soldier-grunt",
+          "name": "Grunt Track",
+          "focus": "Direct combat, durability, and overwhelming force.",
+          "general_capabilities": [
+            {
+              "type": "augment",
+              "name": "Combat Hardening",
+              "description": "Your chassis is built with reinforced plating and impact-absorbing substructures. You gain +1 natural armor against both Blunt and Wound damage."
+            },
+            {
+              "type": "augment",
+              "name": "Reinforced Servos",
+              "cost": 1,
+              "description": "Your limbs are powered by over-engineered motors. When you succeed on a Strength roll, your Tier of Effect is increased by one."
+            }
+          ],
+          "models": {
+            "basic": {
+              "tier": "basic",
+              "name": "The Grunt",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Acoustic Dampeners",
+                  "description": "You have an advantage on all rolls to resist the effects of sonic-based attacks or deafening sounds."
+                },
+                {
+                  "name": "Universal Compatibility",
+                  "description": "Repairs made to you during Downtime cost half the normal amount of time and resources."
+                }
+              ],
+              "moves": []
+            },
+            "advanced": {
+              "tier": "advanced",
+              "name": "The Elite",
+              "available": true,
+              "augments": [],
+              "moves": [],
+              "packages": {
+                "juggernaut": {
+                  "name": "Juggernaut (Siege Tank)",
+                  "augments": [
+                    {
+                      "name": "Concussive Force",
+                      "description": "When you deal Wound damage with a melee attack, the target also suffers 1 Stun damage."
+                    }
+                  ],
+                  "moves": [
+                    {
+                      "name": "Siege Mode",
+                      "description": "As an action, lock down your chassis. You cannot move, but your natural armor increases to 3."
+                    }
+                  ]
+                },
+                "dragoon": {
+                  "name": "Dragoon (Mobile Striker)",
+                  "augments": [
+                    {
+                      "name": "High-Tension Myomers",
+                      "description": "Your base running speed is increased by 50%."
+                    }
+                  ],
+                  "moves": [
+                    {
+                      "name": "Devastating Lunge",
+                      "description": "Spend a full turn building momentum. Your first melee attack on your next turn automatically hits and deals +2 damage."
+                    }
+                  ]
+                },
+                "legion": {
+                  "name": "Legion (Drone Swarm)",
+                  "augments": [],
+                  "moves": [
+                    {
+                      "name": "Deploy Swarm",
+                      "description": "Once per scene, deploy a swarm of drones. On a 10+, choose one effect: Recon Network (+1 Alertness), Jamming Field (enemy tech penalty), or Ablative Shield (2 shield boxes)."
+                    }
+                  ]
+                }
+              }
+            },
+            "imperial": {
+              "tier": "imperial",
+              "name": "The Centurion ('Fist of the Empire')",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Adaptive Combat Matrix",
+                  "cost": 3,
+                  "description": "At the start of any scene, choose a profile: Vanguard (+1 Melee/Hand-to-Hand), Marksman (+1 Ranged), or Guardian (+1 defense rolls)."
+                }
+              ],
+              "moves": [
+                {
+                  "name": "Overclock Systems",
+                  "description": "Once per scene, take one extra action this turn. At the end of the turn, take 2 Stun damage (bypassing armor)."
+                },
+                {
+                  "name": "Emergency Self-Repair",
+                  "description": "During Downtime, you can initiate repair protocols to remove all current Wound damage (cannot repair esoteric damage)."
+                }
+              ]
+            }
+          }
+        },
+        "scout": {
+          "id": "soldier-scout",
+          "name": "Scout Track",
+          "focus": "Stealth, reconnaissance, and surgical elimination of key targets.",
+          "general_capabilities": [
+            {
+              "type": "move",
+              "name": "Observe & Report Relay",
+              "description": "Transmit a compressed data packet to a pre-established recipient. On a 10+, it arrives instantly and intact. On a 7-9, it's delayed or corrupted."
+            },
+            {
+              "type": "augment",
+              "name": "Full-Spectrum Sensory Package",
+              "description": "You have an advantage on all Alertness rolls."
+            }
+          ],
+          "models": {
+            "basic": {
+              "tier": "basic",
+              "name": "The Scout",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Stealth Weave",
+                  "description": "Your chassis is coated in a non-reflective, sound-dampening material. You gain a +1 bonus to all Larceny (Stealth) rolls."
+                }
+              ],
+              "moves": []
+            },
+            "advanced": {
+              "tier": "advanced",
+              "name": "The Blight Stalker",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Adaptive Mesh Camouflage",
+                  "cost": 2,
+                  "description": "When motionless for a full round, you become nearly invisible. Provides a minor bonus while moving."
+                },
+                {
+                  "name": "Blight-Hardened System",
+                  "description": "You gain a significant advantage (+2 bonus) on all rolls made to resist the effects of the Blight."
+                },
+                {
+                  "name": "All-Terrain Mobility System",
+                  "cost": 2,
+                  "description": "You ignore all movement penalties from difficult or uneven terrain."
+                }
+              ],
+              "moves": []
+            },
+            "imperial": {
+              "tier": "imperial",
+              "name": "The Vector ('Blade of the Empire')",
+              "available": true,
+              "augments": [],
+              "moves": [
+                {
+                  "name": "Light-Bending Shroud (True Stealth)",
+                  "description": "Activate a powerful stealth field. On a 10+, you are perfectly invisible for a full minute. On a 7-9, it's unstable and lasts only a few rounds."
+                },
+                {
+                  "name": "Kinetic Assassin Strike",
+                  "description": "Spend a full turn shunting power. Your next melee attack automatically hits and deals a devastating +4 damage. The system then requires a cool down for the rest of the scene."
+                }
+              ]
+            }
+          }
+        },
+        "guardian": {
+          "id": "soldier-guardian",
+          "name": "Guardian Track",
+          "focus": "Threat detection, defense, and the protection of key assets or locations.",
+          "general_capabilities": [
+            {
+              "type": "move",
+              "name": "Threat Detection",
+              "description": "Scan for hostile intent. On a 10+, you clearly detect the presence, number, and direction of any sentient being intending immediate violence."
+            },
+            {
+              "type": "augment",
+              "name": "Biometric Registry",
+              "description": "After a full minute of scanning, you can 'register' an individual. At any point thereafter, you can use an action to unerringly know if they are on your registry."
+            }
+          ],
+          "models": {
+            "basic": {
+              "tier": "basic",
+              "name": "The Guard",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Sentry State",
+                  "cost": 1,
+                  "description": "You can enter a low-power meditative state. You do not need to eat or sleep and cannot be surprised by any physical ambush."
+                }
+              ],
+              "moves": [
+                {
+                  "name": "Alert Relay System",
+                  "description": "Once per scene, you can broadcast a high-priority distress signal. Any allied Automata within a 1km radius are immediately alerted to your location and combat status."
+                }
+              ]
+            },
+            "advanced": {
+              "tier": "advanced",
+              "name": "The Sentinel",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Advanced Armor Plating",
+                  "cost": 2,
+                  "description": "Your Combat Hardening armor bonus increases to +2 natural armor against both Blunt and Wound damage."
+                }
+              ],
+              "moves": [
+                {
+                  "name": "Deploy Sensor Web",
+                  "description": "Deploy a swarm of nearly invisible micro-drones. On a 10+, you create a perfect surveillance network in a large area for the scene, psychically aware of any moving object larger than a cat."
+                }
+              ]
+            },
+            "imperial": {
+              "tier": "imperial",
+              "name": "The Imperial Aegis ('Shield of the Empire')",
+              "available": true,
+              "augments": [],
+              "moves": [
+                {
+                  "name": "Void Core Negation",
+                  "description": "As a reaction when you or an adjacent ally are targeted by a direct supernatural ability, you can attempt to negate it with a Willpower roll."
+                },
+                {
+                  "name": "Field of Null",
+                  "description": "As an action, project a 30-foot radius field of Aetheric interference for one minute. All supernatural Moves made within this field suffer a significant penalty."
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "worker": {
+      "id": "worker-chassis",
+      "name": "Worker Chassis",
+      "branches": {
+        "laborer": {
+          "id": "worker-laborer",
+          "name": "Laborer Track",
+          "focus": "Heavy industry, durability, and adaptable, on-the-job functionality.",
+          "general_capabilities": [
+            {
+              "type": "augment",
+              "name": "Rugged Construction (Durability)",
+              "description": "Your chassis is designed to withstand incredible punishment. You gain two additional Health Boxes on your Torso location."
+            }
+          ],
+          "models": {
+            "basic": {
+              "tier": "basic",
+              "name": "The Laborer",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Simplified Systems (Repairability)",
+                  "description": "Your parts are large and standardized. Repairs made to you during Downtime are faster and require less specialized materials."
+                },
+                {
+                  "name": "Adaptive Chassis",
+                  "cost": 2,
+                  "description": "Your body is a modular platform. You have two additional 'Hardpoint Slots' for modular 'loadouts', which can be swapped during Downtime."
+                }
+              ],
+              "moves": []
+            },
+            "advanced": {
+              "tier": "advanced",
+              "name": "The Reclaimer",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Blight-Sealed System (Blight Resistance)",
+                  "description": "Your systems are hermetically sealed. You gain a significant advantage (+2 bonus) on all rolls made to resist the effects of the Blight."
+                },
+                {
+                  "name": "Combat Hardening",
+                  "description": "You are built to withstand unexpected attacks. You gain +1 natural armor against both Blunt and Wound damage."
+                }
+              ],
+              "moves": [
+                {
+                  "name": "[REDACTED PROTOCOL]",
+                  "description": "When you encounter technology of Seraphim origin or a location of immense Aetheric sealing, you can access sealed orders from The Nine with a Willpower roll."
+                }
+              ]
+            },
+            "imperial": {
+              "tier": "imperial",
+              "name": "N/A",
+              "available": false
+            }
+          }
+        },
+        "maintenance": {
+          "id": "worker-maintenance",
+          "name": "Maintenance Track",
+          "focus": "Infrastructure, engineering, and the deep, hidden knowledge of Sidonia's inner workings.",
+          "general_capabilities": [
+            {
+              "type": "move",
+              "name": "Access Schematics (City Infrastructure)",
+              "description": "Once per session, you can access your internal databanks for a detailed map or schematic of a piece of Sidonia's core municipal infrastructure in your current district."
+            },
+            {
+              "type": "augment",
+              "name": "Integrated Toolkit",
+              "description": "Your chassis contains a comprehensive set of masterwork tools for mechanical and electrical repair, granting you a +1 bonus on such rolls when the tool is a factor."
+            }
+          ],
+          "models": {
+            "basic": {
+              "tier": "basic",
+              "name": "The Maintenance Unit",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Environmental Sealing (Durability)",
+                  "description": "You are designed to operate in the worst possible conditions. You are immune to damage and penalties from conventional environmental hazards like toxic gas or extreme temperatures."
+                }
+              ],
+              "moves": [
+                {
+                  "name": "Aetheric Diagnostics (Adaptive Scan)",
+                  "description": "Scan the Aetheric signature of a piece of technology. On a 10+, the GM tells you its precise function, power state, primary flaw, and Aetheric resonance."
+                }
+              ]
+            },
+            "advanced": {
+              "tier": "advanced",
+              "name": "The Technician",
+              "available": true,
+              "augments": [
+                {
+                  "name": "Master Craftsman (Problem Solving)",
+                  "description": "Your processing core is a marvel of logical and intuitive engineering. You gain a permanent +1 bonus to all Engineering and Science rolls."
+                },
+                {
+                  "name": "Right of Repair (Aetheric Authority)",
+                  "cost": 3,
+                  "description": "You possess ancient, hard-coded access keys that are still recognized by Sidonia's automated core systems, allowing you to override municipal systems."
+                }
+              ],
+              "moves": []
+            },
+            "imperial": {
+              "tier": "imperial",
+              "name": "N/A",
+              "available": false
+            }
+          }
+        }
+      }
+    }
+  }
+}

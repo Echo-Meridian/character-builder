@@ -1,0 +1,882 @@
+import json
+
+powers_data = {
+  "lineage": "chimera",
+  "powers": [
+    {
+      "type": "augment",
+      "id": "primal-form",
+      "name": "Primal Form",
+      "category": "Core Augments",
+      "tiers": {
+        "tier1": {
+          "id": "primal-form-core",
+          "name": "Primal Form",
+          "tier": 1,
+          "mutationPoints": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Choose one Physique specialization: Strength, Agility, Perception or Stamina. When you succeed on a roll (7+) using that specialization, your Tier of Effect is increased by one.",
+            "player": "Your body is fundamentally reshaped by your animalistic nature, granting you a level of physical prowess beyond normal human limits."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "unstable-genome",
+      "name": "Unstable Genome",
+      "category": "Core Augments",
+      "tiers": {
+        "tier1": {
+          "id": "unstable-genome-core",
+          "name": "Unstable Genome",
+          "tier": 1,
+          "mutationPoints": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Your mutations can evolve. During Downtime, you can spend XP to gain new mutations. Significant trauma can also trigger unpredictable changes at the GM's discretion.",
+            "player": "Your genetic code is not a fixed script but a living document, prone to edits and revisions. This is the source of your greatest strengths and most profound fears."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "blight-resistance",
+      "name": "Blight Resistance",
+      "category": "Core Augments",
+      "tiers": {
+        "tier1": {
+          "id": "blight-resistance-core",
+          "name": "Blight Resistance",
+          "tier": 1,
+          "mutationPoints": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You gain a +2 bonus on all rolls made to resist the effects of Blight exposure, corrupted zones, and the direct attacks of Blight-mutated creatures.",
+            "player": "Your biology is inherently hostile to the Blight's corrupting influence. While others succumb to its toxic whisper, your body actively fights it off."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "armored-hide",
+      "name": "Armored Hide",
+      "category": "Primal Manifestations",
+      "tiers": {
+        "tier1": {
+          "id": "armored-hide-tier1",
+          "name": "Patchwork Plating",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You gain 1 point of natural armor against Blunt damage.",
+            "player": "Your skin is a chaotic mosaic of hardened calluses, thick hide, or isolated bony plates. It's ugly and uneven, but offers a desperate level of protection.",
+            "flaw": "The plating is poorly integrated. When you take Wound damage, the shock causes painful microfractures. You suffer 1 additional Stun damage."
+          }
+        },
+        "tier2": {
+          "id": "armored-hide-tier2",
+          "name": "Segmented Carapace",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You gain 1 point of natural armor against both Blunt and Wound damage.",
+            "player": "Your skin is covered in a logical, articulated pattern of chitinous plates or thick, scaled hide. It moves with you, providing excellent, reliable protection without sacrificing much flexibility."
+          }
+        },
+        "tier3": {
+          "id": "armored-hide-tier3",
+          "name": "Living Bulwark",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You gain 2 points of natural armor against both Blunt and Wound damage.",
+            "player": "Your body is a fortress of bioceramic bone or hyper-dense, interlocking scales. Your entire physiology is geared toward absorbing and deflecting harm with terrifying efficiency."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "natural-weapons",
+      "name": "Natural Weapons",
+      "category": "Primal Manifestations",
+      "tiers": {
+        "tier1": {
+          "id": "natural-weapons-tier1",
+          "name": "Jagged Claws / Bone Spurs",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Your unarmed strikes count as melee weapons, dealing Wound damage.",
+            "player": "Your knuckles are studded with sharp, overgrown bone or your fingers end in brittle, jagged claws. They are crude, permanently exposed, and terrifying weapons.",
+            "flaw": "Your natural weapons are brittle. When you roll a critical failure on an attack roll using them, a claw or spur breaks off painfully. The weapon is unusable until you have Downtime to regrow it, and you take 1 point of Wound damage yourself."
+          }
+        },
+        "tier2": {
+          "id": "natural-weapons-tier2",
+          "name": "Retractable Talons / Fangs",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "Your unarmed strikes count as melee weapons, dealing Wound damage. You can extend or retract them as a free action.",
+            "player": "You possess well-formed, durable claws, fangs, or spurs made of a tough keratin. They can be extended or retracted at will, allowing for an element of surprise."
+          }
+        },
+        "tier3": {
+          "id": "natural-weapons-tier3",
+          "name": "Adamant Fangs / Mono-molecular Claws",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "Your unarmed strikes count as melee weapons that deal Wound damage. Due to their terrifying sharpness and perfect integration, you gain a +1 bonus to all attack rolls made with them.",
+            "player": "Your natural weapons are masterpieces of biological engineering, impossibly sharp and durable. They might be laced with metal harvested from your diet or hardened by a unique crystalline structure."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "enhanced-sense",
+      "name": "Enhanced Sense",
+      "category": "Primal Manifestations",
+      "tiers": {
+        "tier1": {
+          "id": "enhanced-sense-tier1",
+          "name": "Primal Instincts",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Choose one sense: sight or hearing. You gain a new sensory mode. With enhanced sight, you gain thermal vision. With enhanced hearing, you can hear ultrasonic frequencies.",
+            "player": "One of your senses is honed to an animalistic degree. Your eyes are unnervingly sharp, or your hearing is disturbingly acute, constantly picking up background details.",
+            "flaw": "Your sense is unfiltered and overwhelming. You suffer a penalty to all rolls that require concentration in sensorily 'loud' environments as you are bombarded with useless data."
+          }
+        },
+        "tier2": {
+          "id": "enhanced-sense-tier2",
+          "name": "Predator's Focus",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "Choose one sense: sight or hearing. You are immune to penalties from environmental conditions related to that sense. You can see perfectly in dim light or glare, or you can filter out background noise to hear a specific conversation in a loud room.",
+            "player": "Your mind has adapted to your enhanced sense, allowing you to filter and focus with incredible precision."
+          }
+        },
+        "tier3": {
+          "id": "enhanced-sense-tier3",
+          "name": "Aetheric Perception",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "Choose one sense: sight, hearing, or smell. This Augment increases your Tier of Effect on all rolls using the Perception specialization related to that sense.",
+            "player": "Your senses have transcended the physical, attuning to the Aether itself. You don't just see body heat; you see the glow of a life force. You don't just hear sound; you hear the resonance of a soul."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "grasping-surfaces",
+      "name": "Grasping Surfaces",
+      "category": "Primal Manifestations",
+      "tiers": {
+        "tier1": {
+          "id": "grasping-surfaces-tier1",
+          "name": "Rough Adhesion",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You can climb sheer but textured surfaces (brick walls, rough rock) at half your normal movement speed without needing a roll.",
+            "player": "You have developed a crude but effective method for clinging to surfaces, like rough pads on your hands and feet or sharp keratinous hooks.",
+            "flaw": "Your climbing method is clumsy and destructive. You cannot climb smooth surfaces like glass or polished metal at all, and you always leave behind evidence."
+          }
+        },
+        "tier2": {
+          "id": "grasping-surfaces-tier2",
+          "name": "Effortless Ascent",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You can climb any surface, including smooth glass, at your normal movement speed. You no longer need to make rolls to maintain your grip.",
+            "player": "Your climbing ability is now second nature, like a spider's silent grace or a gecko's adhesive pads."
+          }
+        },
+        "tier3": {
+          "id": "grasping-surfaces-tier3",
+          "name": "Gravity Defied",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You can move along any surface—walls, ceilings—at full speed and can even hang motionless indefinitely. You may even take a 'sprinting' action while climbing.",
+            "player": "You are no longer just climbing; you are ignoring gravity's claim on you, perhaps by manipulating micro-gravitational fields or bonding at a molecular level."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "shifting-visage",
+      "name": "Shifting Visage",
+      "category": "Primal Manifestations",
+      "tiers": {
+        "tier1": {
+          "id": "shifting-visage-tier1",
+          "name": "Static Blend",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "When you are perfectly still and in an environment that matches your natural camouflage, observers suffer a significant penalty to Alertness rolls to spot you.",
+            "player": "Your skin or fur has a natural coloration that helps you blend into a specific type of environment.",
+            "flaw": "Your camouflage is specialized and slow. It only works in one type of environment, and moving at more than a slow crawl immediately breaks the illusion."
+          }
+        },
+        "tier2": {
+          "id": "shifting-visage-tier2",
+          "name": "Active Camouflage",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You can become effectively invisible as long as you move slowly. This grants you an advantage on all Larceny (Stealth) rolls.",
+            "player": "You can consciously and rapidly change your appearance, using chromatophores or light-bending fur to mimic your surroundings."
+          }
+        },
+        "tier3": {
+          "id": "shifting-visage-tier3",
+          "name": "Perceptual Disruption",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You are utterly imperceptible—unseen, unheard, unremembered—as long as you do not directly interact with anything. This effect lasts for up to a minute at a time.",
+            "player": "Your camouflage is now a psycho-Aetheric phenomenon. You don't just hide from sight; you edit yourself out of your target's perception."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "venomous-expulsion",
+      "name": "Venomous Expulsion",
+      "category": "Primal Manifestations",
+      "tiers": {
+        "tier1": {
+          "id": "venomous-expulsion-tier1",
+          "name": "Irritant Spit",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You can make a ranged attack against a single target within 10 feet. On a hit, the target is afflicted with a minor penalty on their next action.",
+            "player": "You can forcefully project a stream of irritating biological fluid from your mouth, like a foul musk or sticky saliva.",
+            "flaw": "Your body has a limited supply. You can only use this ability a few times before needing a full scene to rest and regenerate the fluid."
+          }
+        },
+        "tier2": {
+          "id": "venomous-expulsion-tier2",
+          "name": "Specialized Secretion",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "Make a ranged attack. On a hit (10+), a chosen effect (paralytic, adhesive, or corrosive) works perfectly. On a 7-9, the effect is weaker.",
+            "player": "You have developed a potent and specialized biological weapon. Define its nature with your GM (paralytic venom, web-like adhesive, or corrosive acid)."
+          }
+        },
+        "tier3": {
+          "id": "venomous-expulsion-tier3",
+          "name": "Virulent Stream",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "Your specialized spit attack is now incredibly potent. Poison can render a target unconscious, adhesive can immobilize them, and acid deals Wound damage or destroys locks.",
+            "player": "Your body is a living chemical factory, capable of producing a truly devastating projectile."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "prehensile-tail",
+      "name": "Prehensile Tail",
+      "category": "Primal Manifestations",
+      "tiers": {
+        "tier1": {
+          "id": "prehensile-tail-tier1",
+          "name": "Rudimentary Tail",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Your tail provides a +1 bonus to all Athletics rolls made to keep your balance or recover from a fall. It can perform very simple interactions.",
+            "player": "You have a tail, but its musculature is simple. It mainly acts as a balancing aid.",
+            "flaw": "Your tail has a mind of its own when you are stressed or not paying attention, betraying your emotional state at inconvenient times."
+          }
+        },
+        "tier2": {
+          "id": "prehensile-tail-tier2",
+          "name": "Fully Prehensile Tail",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You can use your tail as a 'third hand' to hold objects or manipulate simple tools. When it would be beneficial, you gain an advantage on complex physical action rolls.",
+            "player": "Your tail is now a strong, flexible, and fully controllable appendage."
+          }
+        },
+        "tier3": {
+          "id": "prehensile-tail-tier3",
+          "name": "Weaponized Appendage",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "Your tail now counts as an integrated melee weapon (piercing, slashing, or blunt/grappling). You can attack with it as a normal combat action.",
+            "player": "Your tail has evolved into a formidable natural weapon, tipped with a stinger, covered in spurs, or possessing crushing strength."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "aerial-mobility",
+      "name": "Aerial Mobility",
+      "category": "Primal Manifestations",
+      "tiers": {
+        "tier1": {
+          "id": "aerial-mobility-tier1",
+          "name": "Controlled Falling",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You can never suffer damage from falling from any height, as long as you have space to slow yourself. You can guide your fall within a 30-foot radius.",
+            "player": "You have developed a way to fight gravity's pull, like membranes between your limbs or an unnaturally light bone structure.",
+            "flaw": "You have very little horizontal control. Strong winds can easily blow you off course, and you cannot gain altitude."
+          }
+        },
+        "tier2": {
+          "id": "aerial-mobility-tier2",
+          "name": "True Glide",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You can glide. For every 10 feet you descend, you can travel 30 feet forward. You can ride thermal updrafts to maintain or slightly gain altitude.",
+            "player": "Your method of aerial movement is now efficient and controlled, with larger membranes or feathered forelimbs."
+          }
+        },
+        "tier3": {
+          "id": "aerial-mobility-tier3",
+          "name": "Powered Flight",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You can fly freely for the duration of a scene. Your flight speed is equivalent to your normal running speed.",
+            "player": "You possess the miracle of true, self-powered flight through powerful wings or even localized gravity manipulation."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "metabolic-furnace",
+      "name": "Metabolic Furnace",
+      "category": "Primal Manifestations",
+      "tiers": {
+        "tier1": {
+          "id": "metabolic-furnace-tier1",
+          "name": "Gnawing Hunger",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Once per scene, as an action, you can clear all of your current Stun damage by forcing your body into metabolic overdrive.",
+            "player": "Your body is a high-performance engine that is always burning hot, healing minor scrapes with visible speed.",
+            "flaw": "You must consume at least twice the amount of food and water as a normal person each day. If you miss a meal, you suffer a penalty to all Intellect-based rolls."
+          }
+        },
+        "tier2": {
+          "id": "metabolic-furnace-tier2",
+          "name": "Aggressive Purge",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "When you are first exposed to a mundane poison or disease, you may make a roll to resist its effects with an advantage. If you succeed, you are immune to that specific threat going forward.",
+            "player": "Your internal chemistry is a fortress, aggressively neutralizing foreign agents from rotgut to neurotoxins."
+          }
+        },
+        "tier3": {
+          "id": "metabolic-furnace-tier3",
+          "name": "Regenerative Flux",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "During any Downtime where you are resting, you automatically clear one additional box of Wound or Stun damage (player's choice), in addition to any normal healing.",
+            "player": "Your body's ability to repair itself is miraculous and terrifying. Deep cuts clot and seal in moments."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "living-lantern",
+      "name": "Living Lantern",
+      "category": "Primal Manifestations",
+      "tiers": {
+        "tier1": {
+          "id": "living-lantern-tier1",
+          "name": "Unstable Glow",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You can produce enough light to read by.",
+            "player": "Parts of your body produce a soft, eerie light, from glowing patches of skin to shining eyes.",
+            "flaw": "You have no conscious control over this light. In darkness, you are always glowing, and the light may change color with your emotions."
+          }
+        },
+        "tier2": {
+          "id": "living-lantern-tier2",
+          "name": "Controlled Illumination",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You can control the intensity of your light, from a soft ambient glow to a focused beam equivalent to a powerful flashlight. You can turn it on or off at will.",
+            "player": "You have mastered your inner light and can consciously will the bioluminescent cells in your body to activate, dim, or deactivate."
+          }
+        },
+        "tier3": {
+          "id": "living-lantern-tier3",
+          "name": "Dazzling Flash",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "Once per scene, you can unleash a blinding flash. Anyone looking at you in your immediate vicinity must make a Physique roll or be Stunned for their next turn.",
+            "player": "You can overload your bioluminescent organs for a single, stunning burst of light."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "internalized-cavity",
+      "name": "Internalized Cavity",
+      "category": "Primal Manifestations",
+      "tiers": {
+        "tier1": {
+          "id": "internalized-cavity-tier1",
+          "name": "Meat-Pocket",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You have a hidden compartment in your flesh, capable of holding an object about the size of a deck of cards.",
+            "player": "You have a crude, hidden cavity within your body, serving as a desperate place to stash small items.",
+            "flaw": "The cavity is unsanitary. Carrying items for more than a few hours may lead to a raging infection, inflicting a penalty on all physical actions until cleaned."
+          }
+        },
+        "tier2": {
+          "id": "internalized-cavity-tier2",
+          "name": "Inert Stasis Pouch",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You have a high-security internal compartment, about the size of a fist. Any non-living item stored within it is completely shielded from all forms of magical and most technological detection.",
+            "player": "Your internal storage has evolved into a dedicated, specialized organ lined with non-reactive tissue that prevents decay."
+          }
+        },
+        "tier3": {
+          "id": "internalized-cavity-tier3",
+          "name": "Symbiotic Vault",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You can carry one item (up to the size of a pistol) within your body. The item is utterly undetectable by any means short of invasive surgery. Retrieval takes about a minute.",
+            "player": "Your internal cavity is a semi-sentient symbiote. It envelops an item, placing it in perfect stasis and subsuming its physical and Aetheric pattern into your own."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "earth-swimmer",
+      "name": "Earth-Swimmer",
+      "category": "Primal Manifestations",
+      "tiers": {
+        "tier1": {
+          "id": "earth-swimmer-tier1",
+          "name": "Soft Soil Digger",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You can burrow through loose materials (soil, sand, mud) at a slow pace. The tunnel is crude and unstable.",
+            "player": "You are a natural excavator, equipped with features like shovel-like claws or a hardened snout for moving soft earth.",
+            "flaw": "Your digging is noisy and obvious, and tunnels are prone to collapsing. You cannot burrow through anything harder than packed earth."
+          }
+        },
+        "tier2": {
+          "id": "earth-swimmer-tier2",
+          "name": "Efficient Tunneler",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You can burrow through packed earth, clay, and soft rock. Tunnels are structurally sound.",
+            "player": "Your burrowing is remarkably efficient, with claws that chew through rock or a body shaped like a biological drill."
+          }
+        },
+        "tier3": {
+          "id": "earth-swimmer-tier3",
+          "name": "Tremor-Step",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You can burrow through solid stone and concrete. You also gain 'tremor sense,' detecting any moving thing in contact with the same surface within 50 feet.",
+            "player": "You no longer just dig; you are a part of the earth, swimming through stone or pulverizing it with seismic vibrations."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "piston-legs",
+      "name": "Piston-Legs",
+      "category": "Primal Manifestations",
+      "tiers": {
+        "tier1": {
+          "id": "piston-legs-tier1",
+          "name": "Powerful Haunches",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You can jump up to twice the normal height and distance.",
+            "player": "Your leg structure is visibly altered for powerful leaps, with oversized, muscular haunches like a frog or grasshopper.",
+            "flaw": "Your powerful leaps are difficult to control. Landing from a maximum-distance jump requires an Athletics roll to avoid stumbling."
+          }
+        },
+        "tier2": {
+          "id": "piston-legs-tier2",
+          "name": "Controlled Leap",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You can jump up to three times the normal height and distance. You always land perfectly on your feet, absorbing the shock silently.",
+            "player": "Your entire body now works in concert with your powerful legs, granting you exceptional grace and control, like a cat's inner ear for balance."
+          }
+        },
+        "tier3": {
+          "id": "piston-legs-tier3",
+          "name": "Explosive Propulsion",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You can leap to the top of a three-story building vertically or across a wide street horizontally. You can also make a 'pounce' attack, adding bonus damage to your initial melee attack upon landing.",
+            "player": "Your legs store and release kinetic energy with explosive force. The sound of your jump is a sharp crack like a whip."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "unnatural-celerity",
+      "name": "Unnatural Celerity",
+      "category": "Primal Manifestations",
+      "tiers": {
+        "tier1": {
+          "id": "unnatural-celerity-tier1",
+          "name": "Bounding Gait",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Your base running speed is increased by 50%.",
+            "player": "You are built for bursts of speed, with a long, loping stride and a flexible spine like a cheetah's.",
+            "flaw": "You are built for straight-line speed, not agility. You suffer a penalty on rolls to swerve or make tight turns while at top speed."
+          }
+        },
+        "tier2": {
+          "id": "unnatural-celerity-tier2",
+          "name": "Endurance Engine",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You can run at your top speed for an entire scene without needing to make rolls to resist exhaustion.",
+            "player": "Your cardiovascular and respiratory systems are marvels of biological engineering. You simply do not get tired from running."
+          }
+        },
+        "tier3": {
+          "id": "unnatural-celerity-tier3",
+          "name": "Blur of Motion",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "Once per scene, you can push your body into a state of supernatural celerity. On your turn, you may take one additional action, which can only be used to Move.",
+            "player": "Your speed is no longer purely physical; it is a flicker of motion that seems to defy the normal flow of time."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "pack-instinct",
+      "name": "Pack Instinct",
+      "category": "Utility & Social Augments",
+      "tiers": {
+        "tier1": {
+          "id": "pack-instinct-tier1",
+          "name": "Pack Instinct",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "When you and at least one ally are engaged in melee with the same target, you are considered to be flanking and gain a +1 bonus to all Melee or Hand-to-Hand attack rolls against that target.",
+            "player": "A deep, primal instinct for pack coordination is hardwired into your brain. You intuitively understand flanking maneuvers and non-verbal cues."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "death-sleep",
+      "name": "Death-Sleep",
+      "category": "Utility & Social Augments",
+      "tiers": {
+        "tier1": {
+          "id": "death-sleep-tier1",
+          "name": "Hibernation",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "During a long Downtime (at least one week), you may enter hibernation. You emerge with all Wound and Stun damage healed and one long-term disease or poison purged.",
+            "player": "To survive grave injuries or scarce resources, your body can enter a deep, coma-like state of suspended animation.",
+            "flaw": "While in this state, you are completely helpless and unaware, and cannot be woken by any means short of a powerful external stimulus (like being moved or injured)."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "aetheric-absorption",
+      "name": "Aetheric Absorption",
+      "category": "Aetheric Mutations",
+      "tiers": {
+        "tier1": {
+          "id": "aetheric-absorption-tier1",
+          "name": "Endurance Draw",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Once per scene, you can activate this ability to ignore one level of exhaustion or fatigue for the remainder of the scene.",
+            "player": "Your body has developed primitive ether-filtering organs. You can draw upon ambient Aether to supplement your cellular energy.",
+            "flaw": "The unrefined process causes your veins to glow faintly with Aetheric energy, clearly marking you as inhuman."
+          }
+        },
+        "tier2": {
+          "id": "aetheric-absorption-tier2",
+          "name": "Regenerative Filtering",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You gain accelerated healing. Once per scene, you can surge this ability to immediately heal 1 point of Wound damage.",
+            "player": "Your ether cortex has developed more sophisticated filtration, allowing you to convert Aetheric energy directly into cellular repair."
+          }
+        },
+        "tier3": {
+          "id": "aetheric-absorption-tier3",
+          "name": "Aetheric Surge",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "When you succeed on a Strength-based roll, you can surge your power to increase your Tier of Effect by two levels. Once per scene, you can perform a feat of strength that would normally be impossible.",
+            "player": "Your body has achieved perfect symbiosis with Aetheric energy. You can flood your muscles with pure power for brief moments of superhuman strength."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "aetheric-markings",
+      "name": "Aetheric Markings",
+      "category": "Aetheric Mutations",
+      "tiers": {
+        "tier1": {
+          "id": "aetheric-markings-tier1",
+          "name": "Hostile Intent",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You can sense hostile intent directed at you within 30 feet. You cannot be surprised by attacks from beings with conscious intent.",
+            "player": "Faint, tattoo-like markings trace your skin, pulsing with barely perceptible light. They resonate with aggressive Aetheric signatures.",
+            "flaw": "The markings pulse visibly when detecting hostility, potentially revealing your awareness to observant enemies."
+          }
+        },
+        "tier2": {
+          "id": "aetheric-markings-tier2",
+          "name": "Omnisphere",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You gain 360-degree blindsight within 20 feet. This functions even in complete darkness or when blinded.",
+            "player": "Your markings have spread into complex geometric patterns that create a complete sensory web around you."
+          }
+        },
+        "tier3": {
+          "id": "aetheric-markings-tier3",
+          "name": "Spirit Sight",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You can sense all Aetheric activity within 60 feet, including spirits, wraiths, active Esper abilities, and the emotional 'charge' of locations.",
+            "player": "Your markings have evolved into intricate mandala patterns that shimmer between dimensions, allowing you to perceive the Aetheric layer beneath the physical world."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "aetheric-authority",
+      "name": "Aetheric Authority",
+      "category": "Aetheric Mutations",
+      "tiers": {
+        "tier1": {
+          "id": "aetheric-authority-tier1",
+          "name": "Beastial Visage",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You gain a significant bonus to Intimidation rolls. Weak-willed individuals must make a Willpower check or instinctively back away.",
+            "player": "When you tap into your ether cortex, your features shift subtly, becoming primal and commanding, triggering fear responses in observers.",
+            "flaw": "You cannot fully control this. In moments of strong emotion, your visage shifts unbidden, potentially ruining social situations."
+          }
+        },
+        "tier2": {
+          "id": "aetheric-authority-tier2",
+          "name": "Domain",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You can suppress Aetheric instability in a 10-foot radius around you. This reduces Blight exposure for allies and calms aggressive spirits.",
+            "player": "Your ether cortex can project a calming field that pacifies chaotic Aetheric energy, making you an eye of tranquility in the storm."
+          }
+        },
+        "tier3": {
+          "id": "aetheric-authority-tier3",
+          "name": "Linker Node",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You can establish mental links with a number of willing Espers and Automata equal to your Intellect score within 30 feet, allowing for silent coordination and shared thoughts.",
+            "player": "Your ether cortex has evolved into a biological networking hub that can interface with both Esper organs and Automata processing cores."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "spore-production",
+      "name": "Spore Production",
+      "category": "Aetheric Mutations",
+      "tiers": {
+        "tier1": {
+          "id": "spore-production-tier1",
+          "name": "Choking Cloud",
+          "tier": 1,
+          "mutationPoints": 2,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Once per scene, release a spore cloud in a 10-foot radius. Those caught must make a Stamina check or be incapacitated by coughing and tearing for one round.",
+            "player": "Specialized glands can release a cloud of irritant spores, similar to military-grade pepper spray but biological.",
+            "flaw": "You’re not immune to your own spores. A strong wind or poor positioning can affect you as badly as your enemies."
+          }
+        },
+        "tier2": {
+          "id": "spore-production-tier2",
+          "name": "Bleeding Spores",
+          "tier": 2,
+          "mutationPoints": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "Your spore clouds now cause bleeding. Those who fail their Stamina check take 1 Wound damage that continues to bleed (1 additional damage per scene) until treated.",
+            "player": "Your spores contain powerful anticoagulant compounds that seep through skin and mucous membranes."
+          }
+        },
+        "tier3": {
+          "id": "spore-production-tier3",
+          "name": "Sensory Spores",
+          "tier": 3,
+          "mutationPoints": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You can direct spore clouds up to 100 feet away, sending them through vents or under doors. You can see, hear, and smell through the cloud as if you were present.",
+            "player": "You’ve achieved conscious control over your spores, creating clouds that act as extensions of your nervous system."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "genetic-sovereignty",
+      "name": "Genetic Sovereignty",
+      "category": "Mastery Augment",
+      "tiers": {
+        "tier1": {
+          "id": "genetic-sovereignty-mastery",
+          "name": "Genetic Sovereignty",
+          "tier": 1,
+          "mutationPoints": 5,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "Spend XP during Downtime to choose your next mutation's direction or to suppress the Flaw of one of your Tier 1 Augments. Requires a major story milestone.",
+            "player": "Through sheer force of will and a lifetime of struggle, you have seized control of your own unstable blueprint. You are no longer a victim of your biology; you are its master."
+          }
+        }
+      }
+    }
+  ]
+}
+
+print(json.dumps(powers_data, indent=2))
+
+

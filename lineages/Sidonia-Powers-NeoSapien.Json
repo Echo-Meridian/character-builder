@@ -1,0 +1,977 @@
+import json
+
+powers_data = {
+  "lineage": "neosapien",
+  "powers": [
+    {
+      "type": "augment",
+      "id": "muscle-weave",
+      "name": "Muscle Weave",
+      "category": "Physical Mods",
+      "grades": {
+        "street": {
+          "id": "muscle-weave-street",
+          "name": "Frankenstein Grafts",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Increases your Tier of Effect on all rolls using the Strength specialization.",
+            "player": "Mismatched muscle, often of non-human origin, is crudely grafted onto the user's frame by a back-alley surgeon with more ambition than skill. The tissue is held in place with thick sutures and surgical staples, creating a lumpy, asymmetrical physique.",
+            "flaw": "The grafts are unstable. When you roll a critical failure on a Strength-based check, the muscles suffer violent spasms, and you cannot use that limb for the rest of the scene."
+          }
+        },
+        "corporate": {
+          "id": "muscle-weave-corporate",
+          "name": "Cultured Muscle Latticework",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "Increases your Tier of Effect on all rolls using the Strength specialization.",
+            "player": "Marketed as a \"strength and sculpting solution\" for the wealthy elite. Vat-grown muscle tissue, enhanced for density and tone, is woven into the client's existing musculature by a high-priced Esper Median. It provides impressive strength without the unsightly bulk of street-grade mods."
+          }
+        },
+        "military": {
+          "id": "muscle-weave-military",
+          "name": "Myomer Actuator Bundles",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "Increases your Tier of Effect on all rolls using the Strength specialization.",
+            "player": "A hallmark of the Forged Program. The recipient's primary muscle groups are surgically removed and replaced with bundles of synthetic myomer, a bio-active polymer that contracts with the force of an industrial press. The procedure is rumored to involve a Healing Sphere Sorcerer to ensure the flesh accepts the alien tissue without rejection."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "bone-lacing",
+      "name": "Bone Lacing",
+      "category": "Physical Mods",
+      "grades": {
+        "street": {
+          "id": "bone-lacing-street",
+          "name": "Junkyard Ossification",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You gain 1 point of natural armor against Blunt damage.",
+            "player": "A desperate measure for desperate people. A cocktail of industrial chemicals and powdered psi-crystal is injected into the body, causing chaotic, uncontrolled bone growth. The result is a skeleton riddled with bony spurs and knobby, swollen joints that are often visible under the skin.",
+            "flaw": "The process is unstable and creates brittle points. When you take Wound damage that exceeds your armor, the shock causes microfractures. You suffer 1 additional Stun damage."
+          }
+        },
+        "corporate": {
+          "id": "bone-lacing-corporate",
+          "name": "Reinforced Skeletal Lattice",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You gain 1 point of natural armor against Blunt damage.",
+            "player": "A less invasive procedure favored by cautious executives. An Esper Median guides the growth of a carbon-fiber lattice around the major bones, creating an internal scaffold. It's an elegant solution, completely invisible from the outside."
+          }
+        },
+        "military": {
+          "id": "bone-lacing-military",
+          "name": "Osteo-Ceramic Infusion",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You gain 2 points of natural armor against Blunt damage.",
+            "player": "A painful and invasive Red Sentinel procedure where a liquid bioceramic compound is injected directly into the bones. The compound is then magically hardened by a sorcerer, fusing with the calcium to grant a skeleton the density of granite."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "reflex-boost",
+      "name": "Reflex Boost",
+      "category": "Physical Mods",
+      "grades": {
+        "street": {
+          "id": "reflex-boost-street",
+          "name": "Twitch-Wire System",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You gain a +1 bonus to all Agility-based defense rolls.",
+            "player": "Unshielded cabling, scavenged from automata, is crudely sutured along the spinal column. The connections are sealed with black, tar-like epoxy. It puts the user's nerves on a hair-trigger, causing a perpetual, low-level case of the jitters.",
+            "flaw": "The system is prone to overstimulation. When you roll a critical failure on an Agility-based roll, the system floods you with chaotic signals. You are considered Stunned for the next round as your body is wracked with uncontrollable twitches and spasms."
+          }
+        },
+        "corporate": {
+          "id": "reflex-boost-corporate",
+          "name": "Neural-Kinetic Bridge",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You gain a +1 bonus to all Agility-based defense rolls.",
+            "player": "An elegant spinal implant that streamlines the body's wiring. An Esper Median coaxes the user's own nervous system to grow new, more efficient pathways around a conductive silver filament. It's the preferred mod for high-end bodyguards and professional duelists."
+          }
+        },
+        "military": {
+          "id": "reflex-boost-military",
+          "name": "Predictive Reflex Controller",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "When rolling for Initiative, you may roll 3d6 and drop the lowest die ('Advantage').",
+            "player": "This system replaces a portion of the spinal cord with a shielded bio-processor. It reads the user's brain signals and, cross-referencing them with Aetheric micro-precognition, fires the muscles before the user is consciously aware of the need to move."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "cardio-mod",
+      "name": "Cardio Mod",
+      "category": "Physical Mods",
+      "grades": {
+        "street": {
+          "id": "cardio-mod-street",
+          "name": "Gutter-Pump",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You gain a +2 bonus to your total Health Boxes.",
+            "player": "A crude, ticking device, scavenged from decommissioned automata or cobbled together by a back-alley \"Flesh-crafter.\" It's bolted to the ribcage, its thick, discolored tubes sutured directly into the aorta. It chugs along with a noticeable, wheezing rhythm, especially under strain.",
+            "flaw": "The Gutter-Pump is prone to springing leaks. Whenever you take Wound damage, the pump's crude seals are stressed. You must make a Physique roll. On a failure, a seal ruptures, and you begin suffering from internal bleeding, taking 1 additional point of damage at the end of each of your turns until you can receive medical attention."
+          }
+        },
+        "corporate": {
+          "id": "cardio-mod-corporate",
+          "name": "The \"Ever-Steady\" Heart-Graft",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You gain a +2 bonus to your total Health Boxes, representing your enhanced ability to endure physical stress.",
+            "player": "Marketed to Sidonia's elite, this is a popular longevity treatment and status symbol. A cultured valve, strengthened with micro-inscribed silver runes, is grafted onto the heart. It's less about raw power and more about effortless fortitude, ensuring one never looks embarrassingly winded after a brisk walk or a flight of stairs."
+          }
+        },
+        "military": {
+          "id": "cardio-mod-military",
+          "name": "State-Issue Endurance Engine",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "When you make a roll to resist exhaustion or to perform a long-term act of physical exertion (like a forced march or a lengthy chase), your Tier of Effect is increased by one.",
+            "player": "This is not merely a replacement; it is a masterwork of bio-mechanical art, a product of the Red Sentinels' Forged Program. A secondary, sorcerously-attuned pump is seamlessly integrated alongside the recipient's heart, its rhythmically pulsing bioluminescent tubes visible under the skin. It regulates stamina with inhuman efficiency."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "metabolic-accelerator",
+      "name": "Metabolic Accelerator",
+      "category": "Physical Mods",
+      "grades": {
+        "street": {
+          "id": "metabolic-accelerator-street",
+          "name": "Back-Alley \"Scab-Vat\"",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Once per scene, as an action, you can clear all of your current Stun damage.",
+            "player": "A horrifying but effective piece of street tech. A grapefruit-sized pouch of semi-sentient, genetically engineered slurry is implanted in the user's abdomen, with crude catheters leading to the main arteries. When the user takes a serious hit, the vat floods their system with a thick, coagulating goop that aggressively clots blood and kick-starts cell division. The process is agonizing and visibly grotesque as the skin crawls and contorts.",
+            "flaw": "The slurry is mutagenically unstable. Each time you activate the Scab-Vat, you must make a roll. On a failure, the vat introduces a flaw into your genetic code. You gain 1 Permanent Corruption as your body becomes just a little less yours."
+          }
+        },
+        "corporate": {
+          "id": "metabolic-accelerator-corporate",
+          "name": "The \"Second Wind\" System",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "When you would be taken out of a fight by taking your last point of Wound damage, you can choose to activate the Second Wind. You ignore the damage from the blow and can act for one more round. After that round, you immediately collapse and are considered critically injured.",
+            "player": "A popular augment among Sidonia's high-society duelists and thrill-seekers. This elegant implant consists of several small, silver-filigreed nodes attached to the major glands. When triggered by extreme stress, they release a carefully crafted cocktail of coagulants, stimulants, and pain-dampeners. It's designed not for long-term survival, but for that crucial moment when you need to ignore a grievous injury and stay in the action."
+          }
+        },
+        "military": {
+          "id": "metabolic-accelerator-military",
+          "name": "Auto-Regulating Vascular Network",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "During any Downtime where you are resting, you automatically clear one additional box of Wound or Stun damage (player's choice). This is in addition to any normal healing.",
+            "player": "A masterpiece of the Forged Program. This is a secondary, semi-sentient circulatory system woven from cloned blood vessels and inscribed with sorcerous glyphs of regeneration. When tissue damage is detected, the network automatically redirects nutrient-rich blood and Aetheric energy to the site, sealing wounds with terrifying speed. The process is silent and efficient."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "sensory-boost",
+      "name": "Sensory Boost",
+      "category": "Physical Mods",
+      "grades": {
+        "street": {
+          "id": "sensory-boost-street",
+          "name": "Scrapper's Optics / Tin-Ear Implant",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Choose one sense: sight or hearing. You gain a new sensory mode. With Scrapper's Optics, you gain thermal vision. With a Tin-Ear Implant, you can hear ultrasonic frequencies.",
+            "player": "A scavenged and repurposed sensory unit, usually ripped from a defunct automaton or security drone, and crudely wired into the user's skull. The optical version is a mismatched, ugly piece of glass and brass that whirs audibly when it focuses. The auditory version is a cochlear implant with a prominent, ugly external receiver bolted behind the ear.",
+            "flaw": "The cheap hardware is poorly shielded from the city's Aetheric static. When the Dissonance Pool is used by the GM, they can choose to spend one extra point to have your implant overload. You are blinded or deafened by a blast of white noise and useless data for the next round."
+          }
+        },
+        "corporate": {
+          "id": "sensory-boost-corporate",
+          "name": "The \"Artisan's\" Eye / The \"Listener's\" Cochlea",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "Choose one sense: sight or hearing. You are immune to penalties from environmental conditions related to that sense. With the Artisan's Eye, you can see perfectly through smoke, glare, or dim light. With the Listener's Cochlea, you can filter out background noise to hear a whisper in a loud factory.",
+            "player": "A bespoke, custom-grown organ replacement, considered a mark of sophisticated taste among the elite. The new eye is a work of art, often with an unnaturally beautiful iris, while the auditory implant is completely invisible. Both are designed for clarity and precision, filtering out the unpleasant 'noise' of the city."
+          }
+        },
+        "military": {
+          "id": "sensory-boost-military",
+          "name": "Panoptic Mycelium Network",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "Choose one sense: sight or hearing. This Augment increases your Tier of Effect on all rolls using the Perception specialization related to that sense. For example, with enhanced sight, you could read lips from across a crowded ballroom; with enhanced hearing, you could isolate a single conversation from that same room.",
+            "player": "This isn't a crude replacement but a delicate, symbiotic integration. A network of bio-luminescent, Aether-sensitive mycelium is woven into the user's optical or auditory nerves by an Esper Median. It interfaces directly with the brain, overlaying a constant stream of additional data onto their natural senses."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "second-skin",
+      "name": "Second Skin",
+      "category": "Physical Mods",
+      "grades": {
+        "street": {
+          "id": "second-skin-street",
+          "name": "Patchwork Dermis",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You gain 1 point of natural armor against Wound damage.",
+            "player": "A crude and visually shocking procedure performed by back-alley surgeons. Unidentified slabs of vat-grown tissue and cured animal hides are grafted directly onto the user's torso. The procedure is crude, leaving a permanent, unmistakable mark of its installation.",
+            "flaw": "The graft is poorly integrated and obvious to any observer. As you suggested, it leaves a tell-tale sign: a network of thick, ugly Frankenstein-like stitching, a quilt-like texture of mismatched skin tones, or perhaps a constantly weeping, discolored seam. This visible modification makes it impossible to blend in and may cause social penalties in polite society."
+          }
+        },
+        "corporate": {
+          "id": "second-skin-corporate",
+          "name": "Subdermal Biosilk Weave",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You gain 1 point of natural armor against Wound damage.",
+            "player": "An elegant and popular choice for the security-conscious executive. A fine mesh of genetically engineered spider silk, its strands inscribed with microscopic runes of reinforcement, is woven just beneath the skin by a master Flesh-crafter. It's completely invisible and adds no bulk, allowing one to wear tailored suits without spoiling the line."
+          }
+        },
+        "military": {
+          "id": "second-skin-military",
+          "name": "Chitinous Dermal Plating",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You gain 2 points of natural armor against Wound damage (slashing, piercing).",
+            "player": "This is the pinnacle of personal defense from the Forged Program. Instead of grafting something on, a sorcerous-genetic sequence causes the recipient's own epidermis to thicken and harden into segmented, iridescent plates, similar to insectile chitin but with the tensile strength of reinforced steel. The plating is subtle, lying just beneath the surface, and is only truly visible when it flexes under impact."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "pain-editor",
+      "name": "Pain Editor",
+      "category": "Physical Mods",
+      "grades": {
+        "street": {
+          "id": "pain-editor-street",
+          "name": "The \"Jolt-Block\"",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Once per scene, when you take damage, you can activate the Jolt-Block. You ignore the damage from that single blow entirely.",
+            "player": "A crude and brutal piece of back-alley biotech. A powerful capacitor is wired directly to the user's adrenal gland. When it detects the bio-signs of extreme pain, it discharges a massive jolt of electricity and hormones, overwhelming the nervous system. Users describe the sensation as 'being hit by lightning to forget a gunshot.'",
+            "flaw": "The pain is only delayed, not gone. At the end of the scene, all the ignored pain signals come flooding back at once. You immediately take double the amount of damage you initially ignored, which can potentially take you out of commission long after the fight is over."
+          }
+        },
+        "corporate": {
+          "id": "pain-editor-corporate",
+          "name": "Nociception Regulator",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "Once per scene, you can activate the regulator. For the next minute, you may ignore all penalties from a single Wounded location. You can act as if that part of your body isn't injured, though the damage remains.",
+            "player": "Favored by elite athletes and those who engage in high-stakes \"social\" negotiations. This is an elegant mod consisting of several small nodes implanted at key nerve clusters. It allows the user to consciously dial down pain signals for a short time, maintaining a look of calm composure when they would otherwise be grimacing or showing weakness."
+          }
+        },
+        "military": {
+          "id": "pain-editor-military",
+          "name": "Synaptic Dampening Field",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You are a relentless machine. You no longer suffer any penalties from having your Health or Stun tracks marked. You still take the damage and will fall unconscious or die when the tracks are filled, but you are at 100% efficiency until that exact moment.",
+            "player": "An advanced Red Sentinel implant that wraps the spinal cord and brain stem in a protective bio-field. Fueled by a minute, magically-attuned psi-crystal, it doesn't block pain but simply... edits the signal, preventing the brain from registering it as a negative stimulus. To the user, a grievous wound feels like a distant, dull pressure."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "toxin-filters-immune-boosters",
+      "name": "Toxin Filters / Immune Boosters",
+      "category": "Physical Mods",
+      "grades": {
+        "street": {
+          "id": "toxin-filters-street",
+          "name": "Sump-Sponge",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You have a brute-force filter. The first time in a scene you would be affected by a poison or drug, the Sump-Sponge absorbs it completely, and you suffer no ill effects.",
+            "player": "A grotesque but life-saving piece of street medicine. A large, porous, fungus-like organism is implanted into the user's digestive tract. It indiscriminately absorbs any foreign agent it encounters, from cheap rotgut liquor to deadly neurotoxins, swelling visibly against the user's abdomen as it works.",
+            "flaw": "The sponge has a limited capacity and a foul 'purge' cycle. At the end of any scene where the Sump-Sponge has absorbed a toxin, it violently empties its contents back into your system. You become violently ill for the next hour, suffering a significant penalty to all actions."
+          }
+        },
+        "corporate": {
+          "id": "toxin-filters-corporate",
+          "name": "The \"Purity\" Filter",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You have a curated defense system. When you are first exposed to a poison or disease, you may make a roll to resist its effects with an advantage. If you succeed, your system has 'cataloged' the agent and you are immune to that specific threat for the rest of the story.",
+            "player": "Marketed to Sidonia's paranoid elite as an essential safeguard against social rivals. This is a series of small, silver-flecked nodules grafted onto the lymph nodes. They work by identifying and neutralizing a wide array of common, high-society poisons and contaminants. It provides peace of mind when sipping champagne with your worst enemy."
+          }
+        },
+        "military": {
+          "id": "toxin-filters-military",
+          "name": "Adaptive Bioreactor Unit",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "Your internal chemistry is a fortress. You are completely immune to all mundane poisons, diseases, and chemical agents. Magical or Aether-borne toxins may still affect you, but you always have an advantage when rolling to resist them.",
+            "player": "A marvel of the Forged Program. This is a secondary, semi-sentient organ, resembling a complex bundle of deep purple tissue, that is integrated near the liver. It is seeded with Flesh-crafted cells that can rapidly analyze and then generate bespoke antibodies for nearly any biological or chemical agent. The process is incredibly efficient and near-instantaneous."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "adrenal-activator",
+      "name": "Adrenal Activator",
+      "category": "Physical Mods",
+      "grades": {
+        "street": {
+          "id": "adrenal-activator-street",
+          "name": "Illicit \"Rage\" Gland",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Once per day, you can choose to enter a berserker rage for one minute. While enraged, all your physical attacks deal +1 damage.",
+            "player": "A volatile, unregulated adrenal booster, often of questionable origin, is crudely grafted to the user's endocrine system. It works by simply overwhelming the body's natural limits with a flood of raw, unfiltered stimulants, inducing a terrifying berserker state.",
+            "flaw": "This is pure rage. While enraged, you are a missile of aggression. You must attack the most obvious threat. If there are no more enemies, your rage seeks a new target—be it a neutral party, an ally, or a valuable object—until the duration ends or you are incapacitated."
+          }
+        },
+        "corporate": {
+          "id": "adrenal-activator-corporate",
+          "name": "The \"Focus-Flow\" Gland",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "Once per day, you may choose to take an extra action on your turn. This can be a physical or mental action.",
+            "player": "A popular augment for high-stakes negotiations, underground pit-fighting, and corporate espionage. A small, cultured gland is attached to the user's own adrenal system. When triggered, it provides a 'clean burn'—a rush of focus and energy without the jitters or tells of cheaper stimulants. It lets you think faster and hit harder, all while maintaining a calm exterior."
+          }
+        },
+        "military": {
+          "id": "adrenal-activator-military",
+          "name": "Combat-Op Stim-Suite",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "Once per scene, as a free action, you can activate the suite. For the next minute, you may re-roll any single failed roll.",
+            "player": "A sophisticated Red Sentinel implant that connects directly to the endocrine system. Governed by a micro-processor that monitors the user's vitals and tactical situation, it releases a precisely metered cocktail of stimulants, endorphins, and combat drugs. It's designed not for rage, but for heightened focus and peak human performance under fire."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "neural-accelerator",
+      "name": "Neural Accelerator",
+      "category": "Mental Mods",
+      "grades": {
+        "street": {
+          "id": "neural-accelerator-street",
+          "name": "The \"Spur\"",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You gain a +1 bonus to all rolls using the Wits specialization.",
+            "player": "A dangerous and unstable piece of street tech. A sharpened metallic spike, wrapped in copper wire and rumored to be coated in a paste made from powdered psi-crystals, is hammered directly into the spine. It works by constantly feeding the nervous system a low-grade electrical current, putting the user's mind and body in a perpetual state of high alert. Users are twitchy, talk too fast, and their eyes are always wide.",
+            "flaw": "Your mind has no 'off' switch. You are unable to relax or concentrate on long-term tasks. You suffer a significant penalty on any roll that requires patience or extended focus (like research, surveillance, or intricate repair work)."
+          }
+        },
+        "corporate": {
+          "id": "neural-accelerator-corporate",
+          "name": "The \"Lucidity\" Injector",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "Once per session, you can choose to automatically succeed on a single roll where the Wits specialization is the primary factor. This must be a non-combat, purely mental challenge.",
+            "player": "Marketed to lawyers, stock traders, and high-stakes gamblers, this implant is a small, crystalline reservoir of nootropic chemicals grafted to the base of the skull. On command, it delivers a micro-dose directly into the spinal fluid, providing a surge of intense mental clarity and sharpening the senses for a short time."
+          }
+        },
+        "military": {
+          "id": "neural-accelerator-military",
+          "name": "Axon Weave Stimulator",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "When you are in a high-pressure situation that requires rapid thinking (like a firefight, a high-speed chase, or a fast-paced social negotiation), you gain a +1 bonus to all rolls using the Wits specialization.",
+            "player": "A core component of the Red Sentinel field commander suite. An Esper Median coaxes the user's own neural pathways to grow through a fine, golden mesh that acts as a synaptic superconductor. The system is silent, invisible, and allows for near-instantaneous processing of battlefield data, turning tactical assessment into pure reflex."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "eidetic-memory",
+      "name": "Eidetic Memory",
+      "category": "Mental Mods",
+      "grades": {
+        "street": {
+          "id": "eidetic-memory-street",
+          "name": "Jury-Rigged Mem-Coil",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Once per day, you can choose to perfectly recall a single, specific image or sound from your past.",
+            "player": "A messy and often painful implant. A series of magnetic coils are bolted directly onto the skull and wired into the temporal lobe. It works by 'burning' memories onto the user's brain tissue with powerful magnetic pulses. The process is imprecise and often leaves the user with splitting headaches and nosebleeds.",
+            "flaw": "The memories are stored chaotically and are prone to bleeding into each other. When you access the Mem-Coil, the memory you retrieve is often fragmented or tainted by another, unrelated memory. The GM will give you the information you want, but also a confusing or misleading piece of sensory data from a different memory that is now mentally 'stapled' to it."
+          }
+        },
+        "corporate": {
+          "id": "eidetic-memory-corporate",
+          "name": "The Mnemonic Ledger",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You never forget a face or a conversation. When you meet someone new, the GM will secretly tell you one important fact or motivation related to that person that you have 'passively indexed' from their mannerisms and speech. Furthermore, you can perfectly recall any conversation you have personally been a part of.",
+            "player": "A discreet and highly-sought-after augment for fixers, socialites, and corporate spies. A silver filament is threaded along the neural pathways responsible for facial and auditory recognition. It creates a 'mental ledger' of important social data, allowing the user to flawlessly recall names, faces, and the exact words of conversations they've had."
+          }
+        },
+        "military": {
+          "id": "eidetic-memory-military",
+          "name": "The Indexing Engine",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "Once per session, you can ask the GM a direct question about a specific, minute detail from a scene you have already personally witnessed (e.g., 'What was the license plate number of the car that sped away?' or 'What was the exact wording of the third clause in the contract I skimmed?'). You will receive a perfectly accurate answer.",
+            "player": "A standard-issue augment for Red Sentinel intelligence officers. This is a crystalline data-storage unit that is carefully integrated with the hippocampus by an Esper Median. It doesn't just store memories; it cross-references and indexes them. By focusing, the user can access a perfect, incorruptible sensory recording of any moment from their past as if watching a film."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "creative-core",
+      "name": "Creative Core",
+      "category": "Mental Mods",
+      "grades": {
+        "street": {
+          "id": "creative-core-street",
+          "name": "The Chaos Collector",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Once per day, you can ask the GM a single, direct question about a secret or a hidden truth related to your current situation. You will receive a truthful, one-word answer.",
+            "player": "A dangerous back-alley mod for fringe artists and desperate prognosticators. A jagged, antennae-like spike is driven into the skull, designed to directly tap into the raw, unfiltered static of the Aether. It floods the user's brain with a constant stream of disconnected images, sounds, and emotions, drawn from the city's collective psyche.",
+            "flaw": "The signal is full of noise. Every time you use the Chaos Collector, the psychic backlash overwhelms you. You gain 1 Temporary Corruption and suffer from disturbing sensory hallucinations (seeing faces in the static, hearing whispers) for the rest of the scene."
+          }
+        },
+        "corporate": {
+          "id": "creative-core-corporate",
+          "name": "The \"Muse\" Implant",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "When you are stuck on a creative problem or an investigation has hit a dead end, you can activate the Muse. The GM will give you a single, cryptic but useful clue or piece of inspiration, delivered as a sudden flash of insight.",
+            "player": "An expensive and highly prized augment among Sidonia's artists, architects, and visionaries. The Muse is a small, bio-organic node that attunes the user's subconscious to the 'Aetheric hum' of the city—the collective flow of ideas and emotions. It doesn't give them ideas, but it helps them enter a state of 'flow,' lowering the barriers between their perception and their creative output."
+          }
+        },
+        "military": {
+          "id": "creative-core-military",
+          "name": "The \"Da Vinci\" Pattern Engine",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "Once per session, you can study a complex system or situation (a fortified enemy position, a convoluted crime scene, a rival's business plan). The GM will tell you a single, exploitable flaw or a hidden connection that is not immediately obvious.",
+            "player": "Used by Red Sentinel combat analysts and strategists, this is not a creativity mod in the artistic sense. It's a pattern-recognition engine. A web of crystalline filaments is grown around the parietal lobe, hardwired to cross-reference every piece of sensory data the user perceives. It's designed to find the flaw in a fortress wall, the tell in an enemy's fighting style, or the unorthodox path to victory."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "computational-core",
+      "name": "Computational Core",
+      "category": "Mental Mods",
+      "grades": {
+        "street": {
+          "id": "computational-core-street",
+          "name": "The \"Dreg-Mind\"",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "Once per day, you can re-roll a failed roll that uses the Reasoning specialization.",
+            "player": "A cheap and dirty cognitive booster. This implant pumps a slurry of 'dregs'—psi-crystal dust swept from workshop floors, containing a chaotic mix of different sources—directly into the user's brain fluid. The dissonant resonance grants flashes of logical insight but also causes cognitive static and painful mental 'glitches.'",
+            "flaw": "The chaotic mix of crystal sources frays your mental state. Every time you use this ability, the dissonant feedback inflicts 1 Stun damage (bypassing armor) as your brain struggles with the painful static."
+          }
+        },
+        "corporate": {
+          "id": "computational-core-corporate",
+          "name": "The Abacus-Core Processor",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You can instantly perform complex mathematical calculations and recall any numerical data you have been exposed to in the last 24 hours with perfect accuracy. Furthermore, you have an advantage on all rolls made to see through lies or find flaws in a logical argument.",
+            "player": "A high-end corporate solution for data analysts and investigators. This augment uses commercially grade, ethically sourced psi-crystal dust to create a stable processing medium. It doesn't offer the perfect resonance of military-grade tech, but it provides a reliable, error-free boost to logical thought, making it a favorite among those who need to see through deception and balance complex accounts."
+          }
+        },
+        "military": {
+          "id": "computational-core-military",
+          "name": "The Resonant Logic Engine",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "When you analyze a problem, a crime scene, or a set of data, you can ask the GM, 'What is the most logical conclusion based on the evidence I have?' The GM must give you a direct and truthful answer, free of red herrings.",
+            "player": "The pinnacle of Red Sentinel cognitive enhancement. This 'core' is a dense, perfectly spherical processor grown around a flawless, single-source psi-crystal. The crystal is ground to a microscopic dust and suspended in a conductive gel, creating a perfectly resonant lattice that processes information with the cold, irrefutable logic of a machine."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "multi-tasking-module",
+      "name": "Multi-Tasking Module",
+      "category": "Mental Mods",
+      "grades": {
+        "street": {
+          "id": "multi-tasking-module-street",
+          "name": "The \"Cross-Wired\" Brainpan",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You are constantly processing multiple streams of sensory information. You gain a +1 bonus to all Perception rolls made to notice hidden details or ambushes.",
+            "player": "A chaotic and dangerous procedure. A back-alley surgeon uses a slurry of dissonant psi-crystal dust to create crude, overlapping neural pathways. It forces the two hemispheres of the brain to work independently, often with unpredictable and conflicting results.",
+            "flaw": "Your two brain hemispheres are often in conflict. When you roll a critical failure on any Intellect-based roll (Wits, Reasoning, etc.), your two minds disagree violently. You are overwhelmed by cognitive dissonance and are unable to take any action on your next turn as you struggle to reconcile the internal conflict."
+          }
+        },
+        "corporate": {
+          "id": "multi-tasking-module-corporate",
+          "name": "The Executive's Partition",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "When you attempt to perform two separate, non-physical actions at once (like listening to two conversations, or picking a lock while reading a document), you do not suffer any penalties that would normally be associated with such a divided task.",
+            "player": "An essential tool for high-powered fixers and corporate heads. The Partition is a bio-processor that allows the user to cleanly divide their conscious attention. It allows one to, for example, hold a pleasant face-to-face conversation while mentally composing a scathing email, or listen to a business proposal while discreetly monitoring security feeds on a retinal display."
+          }
+        },
+        "military": {
+          "id": "multi-tasking-module-military",
+          "name": "The \"Legion\" Command Core",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "At the start of a scene, you can assign your 'ghost' consciousness one continuous mental task (e.g., 'Scan all network traffic for a specific keyword,' 'Continuously observe our target for any signs of deception,' 'Keep a running list of all clues in this area'). You can then act and focus normally, and the GM will inform you if your background task yields any results.",
+            "player": "Designed for Red Sentinel squad leaders. This complex augment creates a secondary, subordinate consciousness within the user's mind. Forged from a resonant psi-crystal lattice, this 'ghost' consciousness can be assigned a single, continuous mental task, which it will perform in the background with machine-like efficiency, leaving the user's primary mind free to focus on the immediate situation."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "mental-fortress",
+      "name": "Mental Fortress",
+      "category": "Mental Mods",
+      "grades": {
+        "street": {
+          "id": "mental-fortress-street",
+          "name": "The Lead-Lined Skull",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You have a crude but effective mental shield. You gain a +2 bonus to all rolls made to resist mental or emotional influence.",
+            "player": "A brutalist approach to mental defense. A back-alley surgeon literally plates the inside of the user's skull with a thin layer of lead sheeting mixed with a slurry of dissonant psi-crystal dust. It works by creating a crude 'Faraday cage' for the mind, disrupting and grounding most incoming psychic signals through brute force. The procedure often leaves the user with chronic headaches and a faint, metallic taste in their mouth.",
+            "flaw": "The shield is indiscriminate. It not only blocks incoming signals but also dampens the user's own emotional range. You suffer a significant penalty on all rolls related to empathy, intuition, or forming positive social connections. You find it hard to trust people and difficult to express your own feelings."
+          }
+        },
+        "corporate": {
+          "id": "mental-fortress-corporate",
+          "name": "The \"Stillness\" Chamber",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You have perfect mental composure. You gain an advantage on all rolls made to resist mental or emotional influence from any source. Furthermore, your surface thoughts cannot be read against your will.",
+            "player": "A highly-sought-after implant for executives, diplomats, and high-stakes gamblers. A small, crystalline node is carefully implanted in the brain's emotional center. It doesn't build walls, but rather creates an internal 'stillness,' a pocket of serene neutrality. When an outside mental influence is detected, it is drawn into the 'stillness' and harmlessly dissipated. It allows the user to maintain a perfect poker face, their thoughts and emotions their own, even under intense psychic scrutiny."
+          }
+        },
+        "military": {
+          "id": "mental-fortress-military",
+          "name": "The Aegis Labyrinth",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "Your mind is a fortress. You are completely immune to any and all forms of magical or psychic intrusion, including attempts to read your mind, influence your emotions, or control your actions.",
+            "player": "The most guarded secret of the Forged Program's psychological conditioning. This is not a simple implant but a total restructuring of the mind's architecture. An Esper Median guides the growth of new neural pathways, folding them into a recursive, labyrinthine pattern around a core of resonant psi-crystal dust. The result is a mind that is functionally unreadable and immune to outside influence; any invading psychic presence becomes hopelessly lost in the looping, identical corridors of thought."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "pheromone-emitters",
+      "name": "Pheromone Emitters",
+      "category": "Social Mods",
+      "grades": {
+        "street": {
+          "id": "pheromone-emitters-street",
+          "name": "The \"Musk-Gland\"",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You project an aura of raw, animal magnetism. You gain a +1 bonus to all rolls made to intimidate, seduce, or otherwise socially dominate a target through sheer force of presence.",
+            "player": "A crude and volatile implant, usually jury-rigged by a back-alley chemist. A pouch of potent, synthesized animal musk is implanted in the user's chest, releasing its contents through pores in the skin. The scent is powerful, almost cloying, and designed to trigger a base, primal response in those who smell it.",
+            "flaw": "The musk is unfiltered and overwhelming. While effective on your intended target, it also draws unwanted attention from everyone else in the vicinity. Furthermore, the powerful scent makes any attempt at stealth or subtlety completely impossible."
+          }
+        },
+        "corporate": {
+          "id": "pheromone-emitters-corporate",
+          "name": "The \"Rapport\" Emitter",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You can effortlessly build a connection. When you are interacting one-on-one with a target, you may activate the emitters. For the rest of the scene, that target is more inclined to trust you, confide in you, and view you favorably. They have a significant penalty on any roll to resist your persuasion or deception.",
+            "player": "A subtle and sophisticated tool for the social elite. Micro-glands, infused with a psi-crystal powder attuned to empathy, are implanted in the skin of the wrists and neck. They release a cocktail of pheromones that subtly lowers social inhibitions and fosters a sense of trust and intimacy. It's the secret weapon of many a diplomat, executive, and femme fatale."
+          }
+        },
+        "military": {
+          "id": "pheromone-emitters-military",
+          "name": "The \"Alpha's\" Signal Gland",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You are the anchor in the storm. Once per scene, you can activate the gland to quell rising panic or dissent. Any allies who can see and hear you automatically succeed on any roll to resist fear or maintain morale. Hostile crowds are more easily dispersed, and your direct orders are followed without question by subordinates.",
+            "player": "A closely guarded Red Sentinel command-level augment. A gland is cultured and grafted near the carotid artery, its chemical output precisely calibrated by a resonant psi-crystal matrix. It releases pheromones that trigger deep-seated pack instincts, projecting an aura of absolute authority, calm, and unshakable leadership."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "social-algorithm-processor",
+      "name": "Social Algorithm Processor",
+      "category": "Social Mods",
+      "grades": {
+        "street": {
+          "id": "social-algorithm-processor-street",
+          "name": "The \"Vibe-Catcher\"",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You get a gut feeling that's hard to ignore. When you first meet someone, the GM will give you a single, one-word descriptor for the strongest 'vibe' they are projecting into the Aether (e.g., 'Guilt,' 'Fear,' 'Ambition,' 'Deceit').",
+            "player": "A cheap, jury-rigged device that claims to read auras. A shard of low-quality, fractured psi-crystal is wired to a small node that presses against the user's temple. It picks up the raw, unfiltered psycho-reactive static that people constantly bleed into the Aether. It offers flashes of genuine insight, but the signal is often buried in a sea of confusing noise.",
+            "flaw": "The Vibe-Catcher is always on and has no filter. In a crowd, you are bombarded with a cacophony of emotional static. In any situation with more than a few people, you suffer a penalty to all rolls related to perception or concentration, as your attention is constantly being pulled by the overwhelming Aetheric noise."
+          }
+        },
+        "corporate": {
+          "id": "social-algorithm-processor-corporate",
+          "name": "The Empathic Resonance Scanner",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You know when you are being lied to. Whenever a character you are directly observing makes a deliberately deceptive statement, the GM will inform you that you detect Aetheric dissonance. You don't know the truth, but you know with certainty that what you were just told was a lie.",
+            "player": "A favorite tool among interrogators and high-stakes negotiators. This implant attunes a small, high-quality psi-crystal to the Aetheric 'hum' of a person's emotional state. It can't predict the future, but it can unerringly detect the dissonance between a person's words and their true feelings. Lies create a specific, jarring Aetheric frequency that the scanner flags instantly."
+          }
+        },
+        "military": {
+          "id": "social-algorithm-processor-military",
+          "name": "The \"Kismet\" Engine",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You can read a person's intent before they act on it. Once per scene, when interacting with a target, you may ask the GM, 'What is this person's most likely course of action in this scene?' The GM must give you a truthful and direct answer based on the target's current goals and personality (e.g., 'He is going to betray you the moment he gets what he wants,' or 'She is looking for the first opportunity to flee.').",
+            "player": "A pinnacle of Red Sentinel intelligence hardware. The Kismet Engine doesn't just analyze data; it models fate. Using a perfectly resonant psi-crystal lattice, it scans a target's Aetheric signature—the unique vibration of their soul—and runs predictive models to determine their most likely course of action. It's a tool for seeing not just what a person is, but what they are about to become."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "venom-glands-toxin-sacs",
+      "name": "Venom Glands / Toxin Sacs",
+      "category": "Miscellaneous Mods",
+      "grades": {
+        "street": {
+          "id": "venom-glands-street",
+          "name": "Gutter-Wyrm Gland",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You have a desperate, venomous strike. Once per day, you can make an unarmed attack that delivers your venom. If the attack hits, the target takes normal damage and is afflicted with a debilitating poison, suffering a significant penalty to all physical actions for the next hour.",
+            "player": "A swollen, pulsating sac of crude venom, often harvested from Blight-mutated creatures, implanted into a chosen limb (arm or leg) by a back-alley surgeon. The venom is delivered through a makeshift, retractable stinger that emerges from the knuckles or heel—a grotesque and obvious weapon. The sac itself is visibly and uncomfortably nested beneath the skin.",
+            "flaw": "The gland is unstable and poorly protected. You must declare which limb the Gutter-Wyrm Gland is in. If you ever take a critical hit or significant Wound damage directly to that limb, the sac ruptures. You immediately suffer the full effects of your own venom."
+          }
+        },
+        "corporate": {
+          "id": "venom-glands-corporate",
+          "name": "The Diplomat's \"Final Word\"",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You have a non-lethal takedown option at your fingertips. Once per day, you can make a touch attack against a target. If you succeed, they must make a Physique roll. On a failure, they become disoriented and compliant for the next minute, unable to take violent action and highly susceptible to suggestion.",
+            "player": "A subtle and paranoid defense mechanism favored by corporate security heads and intelligence agents. A small sac containing a potent but non-lethal sedative is implanted in the palm. It is delivered through a retractable, nearly invisible needle that emerges from a fingertip. It's designed not to kill, but to neutralize a threat during a handshake or a seemingly innocent touch, allowing for a clean escape."
+          }
+        },
+        "military": {
+          "id": "venom-glands-military",
+          "name": "The \"Kiss of Hemlock\" System",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You have a hidden, deadly weapon. Once per day, you can deliver a powerful poison through a kiss, a bite, or by spitting it into a drink. A target exposed to the poison must make an immediate, difficult Physique roll. On a failure, they are paralyzed and fall unconscious for one hour.",
+            "player": "A masterpiece of Red Sentinel infiltration technology. A pair of small, discreet glands are grown and implanted beneath the tongue, their contents synthesized from a sorcerously-inert, non-corrosive chemical base. The system is activated by a specific, complex sequence of tongue-and-jaw movements, releasing a potent, fast-acting neurotoxin through microscopic ducts in the teeth. It is designed for the silent, untraceable elimination of high-value targets."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "bone-spur-systems",
+      "name": "Bone Spur Systems",
+      "category": "Miscellaneous Mods",
+      "grades": {
+        "street": {
+          "id": "bone-spur-systems-street",
+          "name": "The \"Marrow-Shank\" Graft",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You have crude but deadly weapons fused to your body. Your unarmed strikes now count as melee weapons, dealing Wound damage.",
+            "player": "A brutal and agonizing procedure. A back-alley surgeon crudely grafts sharpened shards of animal bone and scavenged metal directly to the user's knuckles and elbows. These 'shanks' are permanently exposed, crude, and often weep a thin, bloody fluid. They are less a weapon system and more a permanent, angry mutation.",
+            "flaw": "The grafts are poorly set and prone to breaking. When you roll a critical failure on an attack roll using your Marrow-Shanks, one of the shards breaks off in your opponent or a surface. The weapon is unusable, and you take 1 point of Wound damage as the broken stump grinds against your own flesh."
+          }
+        },
+        "corporate": {
+          "id": "bone-spur-systems-corporate",
+          "name": "\"Ivory\" Keratin Sheaths",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You have retractable, effective melee weapons. Your unarmed strikes now count as melee weapons, dealing Wound damage. You can choose to extend or retract them as a free action.",
+            "player": "A popular choice for personal bodyguards and pit fighters who want a surprising edge. This procedure grafts several cultured, tooth-like spurs beneath the skin of the knuckles. They are made from a tough, ivory-colored keratin that can be extended or retracted at will. While not as refined as military-grade systems, they are reliable and can be easily concealed for surprise attacks."
+          }
+        },
+        "military": {
+          "id": "bone-spur-systems-military",
+          "name": "The \"Razor-Limb\" System",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You have integrated, masterfully crafted blades. Your unarmed strikes now count as melee weapons, dealing Wound damage. Because of their perfect balance and integration, you gain a +1 bonus to all attack rolls made with your bone spurs.",
+            "player": "A subtle and terrifyingly effective Red Sentinel weapon. Using a complex sorcerous and genetic sequence, the user's own bone structure is taught to grow and sheathe a series of high-density, mono-molecular edged blades. When not in use, they are completely retracted and invisible. On command, they slide out from the knuckles or forearms with a soft, sinister shing."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "arc-discharger-system",
+      "name": "Arc-Discharger System",
+      "category": "Miscellaneous Mods",
+      "grades": {
+        "street": {
+          "id": "arc-discharger-system-street",
+          "name": "The \"Jumper Cable\" Knuckles",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You can deliver a nasty shock. Your unarmed attacks made with this hand deal an additional 1 Stun damage (bypassing armor).",
+            "player": "A terrifyingly crude and unstable weapon. A series of exposed, scavenged capacitors are wired to a metal plate that has been bolted directly onto the user's knuckles. The system is poorly insulated, often with frayed wires wrapped in cheap tape, and is powered by a bulky, external battery pack worn on the belt.",
+            "flaw": "The system is dangerously unreliable. When you roll a critical failure on an attack roll using the Jumper Cable Knuckles, the shoddy wiring causes a massive internal discharge. The system shorts out, becoming useless for the rest of the scene, and you immediately suffer the 1 Stun damage yourself."
+          }
+        },
+        "corporate": {
+          "id": "arc-discharger-system-corporate",
+          "name": "The \"Gentleman's Shock-Palm\"",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You have a hidden, less-than-lethal deterrent. You can choose to charge the capacitors, which takes a full turn. Once charged, your next successful unarmed attack made with that hand deals an additional 2 Stun damage (bypassing armor). The charge holds until it is used.",
+            "player": "A discreet security measure favored by corporate fixers. A series of small capacitors are woven into the palm and fingers, powered by the user's own bio-electricity. It's designed to deliver a painful but non-lethal shock through a handshake, perfect for discouraging an overly aggressive business partner or subduing a threat without drawing a weapon."
+          }
+        },
+        "military": {
+          "id": "arc-discharger-system-military",
+          "name": "The \"Static-Field\" Projector",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You have a versatile, non-lethal weapon and EMP. Once per scene, you can choose one of two effects: EMP Burst or Targeted Shock.",
+            "player": "Used by Red Sentinel riot control and infiltration units. This augment replaces the user's forearm with a sophisticated, articulated armature containing a resonant psi-crystal capacitor. It can project a targeted electromagnetic pulse to disable electronics or deliver a precise, debilitating shock to a living target. The system is silent and emits only a faint blue glow when active."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "courier-system",
+      "name": "Courier System",
+      "category": "Miscellaneous Mods",
+      "grades": {
+        "street": {
+          "id": "courier-system-street",
+          "name": "The \"Meat-Pocket\"",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You have a hidden compartment in your flesh, capable of holding an object about the size of a deck of cards.",
+            "player": "A crude, simple, and disgusting solution for low-level smuggling. A surgeon carves a cavity into a large muscle (usually the thigh) and lines it with a flap of vat-grown tissue. It's essentially a hidden pocket made of flesh. It's effective for hiding small items, but it's prone to infection and is not truly secure.",
+            "flaw": "The Meat-Pocket is unsanitary and poorly sealed. Any time you use it to carry an item for more than a few hours, you must make a Physique roll. On a failure, the pocket develops a raging infection, inflicting a penalty on all physical actions until you can get it properly cleaned and treated by a medic."
+          }
+        },
+        "corporate": {
+          "id": "courier-system-corporate",
+          "name": "The \"Vault-Liner\"",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You have a high-security internal compartment, about the size of a fist. Any item stored within it is completely shielded from all forms of magical and technological detection.",
+            "player": "A common and effective choice for high-end smugglers. A small, lead-lined, and sorcerously-shielded compartment is surgically created within the user's torso. It is completely invisible to mundane scans and can mask the Aetheric signature of its contents. It's designed to carry a single, high-value item—a delicate data-crystal, a rare chemical, or a client's 'indiscretions'—without detection."
+          }
+        },
+        "military": {
+          "id": "courier-system-military",
+          "name": "The \"Silent Archive\"",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You are the perfect data courier. You can carry a massive amount of encrypted information within your own mind, completely firewalled from your consciousness. You are not aware of the data's contents, and it cannot be detected or extracted by any means short of the authorized ritual.",
+            "player": "The ultimate in espionage technology. A section of the user's brain is surgically hollowed out and replaced with a shielded, resonant psi-crystal lattice. Data—encoded as runic arrays—can be 'uploaded' directly into this crystal via a ritualistic process involving an Esper Median. The information is completely isolated from the user's own consciousness, making it impossible to extract through torture, psychic probes, or even from the user's own memory. The data can only be 'downloaded' by another authorized Median."
+          }
+        }
+      }
+    },
+    {
+      "type": "augment",
+      "id": "concealed-weapon-mount",
+      "name": "Concealed Weapon Mount",
+      "category": "Miscellaneous Mods",
+      "grades": {
+        "street": {
+          "id": "concealed-weapon-mount-street",
+          "name": "The \"Clunker\" Rig",
+          "tier": 1,
+          "slots": 1,
+          "permanentCorruption": 1,
+          "description": {
+            "short": "You can conceal one small weapon in your arm. You can attempt to have the weapon slide into your hand as a free action.",
+            "player": "A crude, bulky, and noisy spring-loaded contraption, usually bolted to the inside of the forearm with heavy leather straps or even directly to the bone. It's prone to jamming and is obvious to anyone giving the user more than a passing glance. It's the desperate choice for a street tough who values surprise over subtlety.",
+            "flaw": "The mechanism is poorly made and unreliable. Whenever you attempt to deploy the weapon, you must make a roll. On a failure, the Clunker jams catastrophically. The weapon is stuck, and you cannot use that arm for any other purpose until you spend a full turn prying it free."
+          }
+        },
+        "corporate": {
+          "id": "concealed-weapon-mount-corporate",
+          "name": "The \"Executive\" Slide",
+          "tier": 2,
+          "slots": 2,
+          "permanentCorruption": 2,
+          "description": {
+            "short": "You can conceal one small weapon within your forearm. As a free action, you can have the weapon slide directly into your waiting hand. The mechanism is reliable and will not jam under normal circumstances.",
+            "player": "A high-quality, spring-loaded mechanism built into the forearm, favored by elite bodyguards and corporate spies who can afford the best black-market tech. It's masterfully crafted to be low-profile, silent, and reliable. While a thorough physical search would find it, it's designed to be overlooked in a standard pat-down."
+          }
+        },
+        "military": {
+          "id": "concealed-weapon-mount-military",
+          "name": "The \"Nowhere\" Sheath",
+          "tier": 3,
+          "slots": 3,
+          "permanentCorruption": 3,
+          "description": {
+            "short": "You can conceal one small weapon (a pistol, a long knife) with perfect security. The weapon cannot be detected by any means while sheathed. You can produce the weapon in your hand as a free action, seemingly from thin air.",
+            "player": "The most sophisticated illegal tech available, reserved for top-tier Red Sentinel assassins. This system doesn't just hide a weapon; it erases it. A cavity in the forearm is lined with a resonant psi-crystal mesh that creates a small pocket of dimensional space. A small, specific firearm or blade placed inside is not just hidden but temporarily removed from reality, making it utterly undetectable by any physical or magical means. On a nerve-impulse command, the portal reopens, and the weapon is placed perfectly in the user's hand."
+          }
+        }
+      }
+    }
+  ]
+}
+
+print(json.dumps(powers_data, indent=2))
+
+

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { PriorityRank } from '../data/types';
+import type { PriorityRank, LineageKey } from '../data/types';
 import { analytics } from '../utils/analytics';
 
 export type PriorityCategory = 'lineage' | 'resources' | 'background' | 'skills' | 'attributes';
@@ -17,7 +17,6 @@ export type CharacterStage =
 
 export const STAGES: CharacterStage[] = ['priorities', 'lineage', 'resources', 'background', 'skills', 'attributes', 'narrative'];
 
-export type LineageKey = 'neosapien' | 'sorcery' | 'esper' | 'chimera' | 'automata';
 export const LINEAGES: LineageKey[] = ['neosapien', 'sorcery', 'esper', 'chimera', 'automata'];
 
 export type AttributeKey = 'grit' | 'guile' | 'gravitas';

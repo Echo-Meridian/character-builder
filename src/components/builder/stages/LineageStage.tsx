@@ -1,8 +1,9 @@
 import { useMemo } from 'react';
-import type { PriorityRank } from '../../../data/types';
+import type { PriorityRank, LineageKey, RawLineagePowerData } from '../../../data/types';
 import { LINEAGE_DEFINITIONS, getLineageDefinition } from '../../../data/lineages';
-import type { LineageKey, PriorityCategory } from '../../../state/characterStore';
+import type { PriorityCategory } from '../../../state/characterStore';
 import './lineage-stage.css';
+import { LineagePowersPanel } from '../LineagePowersPanel';
 
 interface LineageStageProps {
   priorities: Record<PriorityCategory, PriorityRank | null>;
@@ -13,6 +14,7 @@ interface LineageStageProps {
   onToggleReveal: () => void;
   notes: string;
   onUpdateNotes: (text: string) => void;
+  powerSet?: RawLineagePowerData;
 }
 
 export function LineageStage({
@@ -23,10 +25,12 @@ export function LineageStage({
   revealMechanics,
   onToggleReveal,
   notes,
-  onUpdateNotes
+  onUpdateNotes,
+  powerSet
 }: LineageStageProps) {
   const lineagePriority = priorities.lineage;
   const activeDefinition = useMemo(() => getLineageDefinition(selected), [selected]);
+  const gmViewActive = canReveal && revealMechanics;
 
   return (
     <div className="stage stage--lineage">
@@ -96,6 +100,8 @@ export function LineageStage({
           );
         })}
       </section>
+
+      <LineagePowersPanel lineage={selected} powerData={powerSet} gmEnabled={gmViewActive} />
 
       <section className="lineage-notes">
         <label className="field">

@@ -1,0 +1,738 @@
+{
+  "lineage": "esper_mentalist",
+  "esper_archetypes": {
+    "sentinel": {
+      "id": "sentinel",
+      "name": "The Sentinel",
+      "philosophy": "A living fortress whose Aether-organ is attuned to combat. They perceive the battlefield as a flow of data to be processed and acted upon.",
+      "baseline_moves": [
+        {
+          "id": "battle-cognition",
+          "name": "Battle Cognition",
+          "type": "augment",
+          "description": "You have an advantage on all Initiative rolls and are immune to mundane fear. You have an advantage on rolls to resist supernatural fear."
+        },
+        {
+          "id": "aetheric-defense",
+          "name": "Aetheric Defense",
+          "type": "augment",
+          "description": "You have a pool of 3 regenerating Shield Boxes that absorb damage before your Health/Stun tracks."
+        },
+        {
+          "id": "aetheric-overclock",
+          "name": "Aetheric Overclock",
+          "type": "move",
+          "description": "Push your body past its limits. On a 10+, gain +1 to all Esper power rolls for a minute. On a 7-9, you succeed but gain 1 Temporary Corruption. On a 6-, your powers fail for the next turn."
+        }
+      ],
+      "focuses": {
+        "dragoon": {
+          "id": "dragoon",
+          "name": "The Dragoon",
+          "path": "Sentinel -> Dragoon",
+          "philosophy": "Masters of mobility, treating the battlefield as a 3D space for sudden strikes and impossible repositioning.",
+          "moves": [
+            {
+              "id": "flash-step",
+              "name": "Flash Step",
+              "description": "Instantly move to any location you can see within a short distance without provoking attacks. A 7-9 causes 1 Stun damage or adds 1 DP."
+            },
+            {
+              "id": "pierce-the-sky",
+              "name": "Pierce the Sky",
+              "description": "Perform a weaponized leap. On a 10+, your first melee attack upon landing automatically hits and deals +1 damage."
+            },
+            {
+              "id": "aetheric-parkour",
+              "name": "Aetheric Parkour",
+              "type": "augment",
+              "description": "You can run up walls, slide down surfaces, and ignore movement penalties from difficult terrain."
+            }
+          ],
+          "focuses": {
+            "lancer": {
+              "id": "lancer",
+              "name": "The Lancer",
+              "path": "Dragoon -> Lancer",
+              "philosophy": "Hones the Dragoon's mobility into a single purpose: the perfect, unstoppable charge with a large two-handed melee weapon.",
+              "moves": [
+                {
+                  "id": "flash-strike",
+                  "name": "Flash Strike",
+                  "description": "Once per combat, teleport to an enemy and make a melee attack as a single action. This attack is impossible to dodge or parry."
+                },
+                {
+                  "id": "pierce-the-sky-2",
+                  "name": "Pierce the Sky II (Cratering Impact)",
+                  "description": "When you hit with Pierce the Sky, the impact creates a concussive blast, knocking down all adjacent characters and dealing 1 Stun damage."
+                }
+              ],
+              "augments": [
+                {
+                  "id": "open-field-advantage",
+                  "name": "Open Field Advantage",
+                  "description": "If no enemies are within 5 feet at the start of your turn, your first melee attack gains a +1 bonus."
+                }
+              ]
+            },
+            "rider": {
+              "id": "rider",
+              "name": "The Rider",
+              "path": "Dragoon -> Rider",
+              "philosophy": "Extends their mobility by forming a deep, supernatural bond with a mount, becoming a single synergistic entity.",
+              "moves": [
+                {
+                  "id": "bond-mount",
+                  "name": "Bond Mount",
+                  "description": "Forge a permanent Aetheric bond with a single vehicle or creature, granting it rudimentary intelligence and loyalty."
+                },
+                {
+                  "id": "summon-mount",
+                  "name": "Summon Mount",
+                  "description": "Once per day, summon your Bonded Mount to your location as quickly as it can travel."
+                }
+              ],
+              "augments": [
+                {
+                  "id": "mounted-mastery",
+                  "name": "Mounted Mastery",
+                  "description": "You are a perfect rider. You can operate your Bonded Mount with expert proficiency, even if you've never used it before, and gain an advantage on all related rolls."
+                }
+              ],
+              "mutations": {
+                "pale-rider": {
+                  "id": "pale-rider",
+                  "name": "The Pale Rider",
+                  "path": "Rider -> Pale Rider",
+                  "philosophy": "The bond with the mount has been corrupted by death. The mount is no longer just a vehicle; it is a harbinger of the end.",
+                  "moves": [
+                    {
+                      "id": "transform-ride",
+                      "name": "Transform Ride",
+                      "description": "Your mount takes on a terrifying, spectral appearance, granting a massive bonus to Intimidation."
+                    },
+                    {
+                      "id": "regenerate-ride",
+                      "name": "Regenerate Ride",
+                      "description": "Channel your own life force to instantly repair your mount by taking Stun damage yourself."
+                    }
+                  ],
+                  "augments": [
+                    {
+                      "id": "empower-ride",
+                      "name": "Empower Ride",
+                      "description": "When mounted, both you and your mount gain a bonus to damage rolls."
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "juggernaut": {
+          "id": "juggernaut",
+          "name": "The Juggernaut",
+          "path": "Sentinel -> Juggernaut",
+          "philosophy": "An unstoppable, unbreakable wall of flesh and Aether. They are the anchor point of a battle, defined by momentum.",
+          "moves": [
+            {
+              "id": "tireless",
+              "name": "Tireless",
+              "type": "augment",
+              "description": "You do not suffer the normal penalties from exhaustion, but you must spend twice the time resting in Downtime to recover."
+            },
+            {
+              "id": "overpower",
+              "name": "Overpower",
+              "description": "Your next melee attack this turn automatically hits and deals +3 damage on a 10+. On a 7-9, it hits but leaves you open to attack."
+            }
+          ],
+          "augments": [
+            {
+              "id": "thick-skin",
+              "name": "Thick Skin",
+              "description": "You gain a permanent +1 natural armor against both Wound and Blunt damage, which stacks with Aetheric Defense."
+            }
+          ],
+          "focuses": {
+            "shield-warden": {
+              "id": "shield-warden",
+              "name": "The Shield Warden",
+              "path": "Juggernaut -> Shield Warden",
+              "philosophy": "The ultimate bodyguard, a living shield for a chosen ward.",
+              "moves": [
+                {
+                  "id": "extend-defense",
+                  "name": "Extend Defense",
+                  "description": "When an adjacent designated 'ward' is attacked, you can have the attack target you instead."
+                },
+                {
+                  "id": "full-defense",
+                  "name": "Full Defense",
+                  "description": "As your entire action, double the effectiveness of your Aetheric Defense and natural armor until your next turn."
+                }
+              ],
+              "augments": [
+                {
+                  "id": "shield-bash",
+                  "name": "Shield Bash",
+                  "description": "When wielding a physical shield, you can make a melee attack with it that deals significant Stun damage and can knock an opponent off balance."
+                }
+              ]
+            },
+            "brute": {
+              "id": "brute",
+              "name": "The Brute",
+              "path": "Juggernaut -> Brute",
+              "philosophy": "Perfecting their own body into an instrument of overwhelming physical force.",
+              "augments": [
+                {
+                  "id": "brawler-mastery",
+                  "name": "Brawler Mastery",
+                  "description": "Your unarmed strikes are as deadly as any weapon, dealing significant Stun or Wound damage (player's choice)."
+                },
+                {
+                  "id": "steel-skin",
+                  "name": "Steel Skin",
+                  "description": "You gain a permanent +1 natural armor against Blunt damage."
+                }
+              ],
+              "moves": [
+                {
+                  "id": "strength-boost",
+                  "name": "Strength Boost",
+                  "description": "For one minute, your Tier of Effect for all Strength-based actions is increased by one."
+                }
+              ],
+              "mutations": {
+                "pain-maker": {
+                  "id": "pain-maker",
+                  "name": "The Pain Maker",
+                  "philosophy": "A sadist who metabolizes the agony they inflict, turning it into power.",
+                  "augments": [
+                    {
+                      "id": "twisted-regeneration",
+                      "name": "Twisted Regeneration",
+                      "description": "Whenever you inflict a critical hit on an opponent, you immediately heal 2 of your own Stun boxes."
+                    },
+                    {
+                      "id": "pain-is-power",
+                      "name": "Pain is Power",
+                      "description": "For every Wounded box you have marked, you gain a +1 bonus to your next damage roll."
+                    }
+                  ],
+                  "moves": [
+                    {
+                      "id": "inflict-pain",
+                      "name": "Inflict Pain",
+                      "description": "When you deal damage, you can choose to forgo some of it to inflict a debilitating penalty on your opponent's next action."
+                    }
+                  ]
+                }
+              }
+            },
+            "knight": {
+              "id": "knight",
+              "name": "The Knight",
+              "path": "Juggernaut -> Knight",
+              "philosophy": "A perfect union of person and plate, using Aether to summon, modify, and master a signature suit of armor.",
+              "moves": [
+                {
+                  "id": "summon-armor",
+                  "name": "Summon Armor",
+                  "description": "You can summon your one specific, bonded suit of armor onto your body instantly from any location."
+                },
+                {
+                  "id": "modify-armor",
+                  "name": "Modify Armor",
+                  "description": "During Downtime, you can temporarily modify your armor, granting it a new, minor property for the next mission."
+                }
+              ],
+              "augments": [
+                {
+                  "id": "armor-mastery",
+                  "name": "Armor Mastery",
+                  "description": "You are so attuned to your armor that you suffer none of the usual penalties for its weight or bulk."
+                }
+              ],
+              "focuses": {
+                "paladin": {
+                  "id": "paladin-ascended",
+                  "name": "The Paladin (Ascended Path)",
+                  "philosophy": "A holy vessel, a champion of a divine cause, who has invited a spirit of protection to co-inhabit their armor.",
+                  "moves": [
+                    {
+                      "id": "regeneration",
+                      "name": "Regeneration",
+                      "description": "Channel the spirit's energy to rapidly repair your armor or your own body."
+                    },
+                    {
+                      "id": "energize-armor",
+                      "name": "Energize Armor",
+                      "description": "For one scene, flood your armor with Aether, doubling its protective value and adding bonus energy damage to your unarmed strikes."
+                    }
+                  ],
+                  "augments": [
+                    {
+                      "id": "spirit-champion",
+                      "name": "Spirit Champion",
+                      "description": "Your co-inhabiting spirit grants you a permanent boon related to its nature (e.g., sense guilt, resist corruption)."
+                    }
+                  ]
+                }
+              },
+              "mutations": {
+                "knightmare": {
+                  "id": "knightmare",
+                  "name": "The Knightmare",
+                  "philosophy": "A walking horror story, a slaughter machine that feeds on the terror it creates.",
+                  "moves": [
+                    {
+                      "id": "shadow-cloak",
+                      "name": "Shadow Cloak",
+                      "description": "You emanate an aura of palpable dread, granting advantage on Intimidation rolls and potentially shaking enemies who engage you."
+                    },
+                    {
+                      "id": "life-leech",
+                      "name": "Life Leech",
+                      "description": "Whenever an enemy is terrified by your actions, you heal 1 Stun damage."
+                    },
+                    {
+                      "id": "aetheric-cleave",
+                      "name": "Aetheric Cleave",
+                      "description": "You can channel necrotic Aether through your weapon, extending its reach by 10 feet for a single, draining attack."
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "battle-saint": {
+          "id": "battle-saint",
+          "name": "The Battle Saint",
+          "path": "Sentinel -> Battle Saint",
+          "philosophy": "The best defense is a relentless offense. Focused on ending the fight, not just enduring it.",
+          "moves": [
+            {
+              "id": "all-in",
+              "name": "All In",
+              "description": "Gain a +2 bonus on a single attack, but your Aetheric Defense is depleted and cannot regenerate until your next turn."
+            },
+            {
+              "id": "assess-opponent",
+              "name": "Assess Opponent",
+              "description": "As an action, the GM will tell you an opponent's general fighting style and proficiency level."
+            }
+          ],
+          "augments": [
+            {
+              "id": "weapons-expert",
+              "name": "Weapons Expert",
+              "description": "You are considered Trained (0) with every weapon. The XP cost to reach Expert rank with a specific weapon is halved."
+            }
+          ],
+          "focuses": {
+            "gun-saint": {
+              "id": "gun-saint",
+              "name": "The Gun Saint",
+              "philosophy": "The bullet is an extension of my will. A master of ballistic artistry who can defy physics and logic.",
+              "moves": [
+                {
+                  "id": "bend-it",
+                  "name": "Bend It",
+                  "description": "Your shot curves around partial cover to hit its mark."
+                },
+                {
+                  "id": "bounce-it",
+                  "name": "Bounce It",
+                  "description": "Make a ranged attack at a penalty to ricochet a shot off a surface and hit a target behind total cover."
+                },
+                {
+                  "id": "block-it",
+                  "name": "Block It",
+                  "description": "Once per scene, as a reaction, you may make an opposed attack roll to shoot an incoming bullet out of the air."
+                }
+              ],
+              "focuses": {
+                "overwatch": {
+                  "id": "overwatch",
+                  "name": "The Overwatch",
+                  "philosophy": "The patient hunter. One shot, one kill.",
+                  "moves": [
+                    {
+                      "id": "eagle-eye",
+                      "name": "Eagle Eye",
+                      "description": "You gain telescopic vision, suffering no penalties for range on Perception or attack rolls."
+                    },
+                    {
+                      "id": "overcharge-shot",
+                      "name": "Overcharge Shot",
+                      "description": "Take 2 Stun damage or 1 Temporary Corruption to have a single ranged attack deal +2 damage."
+                    }
+                  ],
+                  "augments": [
+                    {
+                      "id": "zen-gunnery",
+                      "name": "Zen Gunnery",
+                      "description": "In a hidden, stationary position, you can enter a meditative trance, remaining perfectly alert for hours or days without needing to eat, drink, or sleep."
+                    }
+                  ]
+                }
+              },
+              "mutations": {
+                "gunpowder-prophet": {
+                  "id": "gunpowder-prophet",
+                  "name": "The Gunpowder Prophet",
+                  "philosophy": "A zealot driven by unshakeable conviction. The gun is their pulpit, the bullet their sermon.",
+                  "moves": [
+                    {
+                      "id": "pistol-pulpit",
+                      "name": "Pistol Pulpit",
+                      "description": "While holding your firearm, you gain an advantage on all Intimidation and Performance rolls."
+                    },
+                    {
+                      "id": "the-final-word",
+                      "name": "The Final Word",
+                      "description": "When you attack a defeated or fleeing enemy, the attack automatically hits and is a Critical Hit."
+                    }
+                  ],
+                  "augments": [
+                    {
+                      "id": "gunsmith",
+                      "name": "Gunsmith",
+                      "description": "You can build masterwork firearms and craft specialized 'Sermon Shells' with minor magical effects."
+                    }
+                  ]
+                },
+                "gun-devil": {
+                  "id": "gun-devil",
+                  "name": "The Gun Devil",
+                  "philosophy": "A grim reaper who draws power from the sins of the guilty they seek to punish.",
+                  "moves": [
+                    {
+                      "id": "hellfire-shot",
+                      "name": "Hellfire Shot",
+                      "description": "When targeting an enemy you know to be guilty of a significant crime, your bullet deals bonus damage equal to the target's Corruption level."
+                    },
+                    {
+                      "id": "penitents-pistol",
+                      "name": "Penitent's Pistol",
+                      "description": "When you have a helpless target at your mercy, you can press your gun to them and compel them to confess their most grievous sin."
+                    }
+                  ],
+                  "augments": [
+                    {
+                      "id": "sin-eater",
+                      "name": "Sin Eater",
+                      "description": "When you defeat a 'wicked' enemy, you absorb their negative energy, healing 2 Stun boxes and gaining +1 on your next roll."
+                    }
+                  ]
+                }
+              }
+            },
+            "sword-saint": {
+              "id": "sword-saint",
+              "name": "The Sword Saint",
+              "philosophy": "Masters of lethal minimalism, ending the fight with a single, perfect strike.",
+              "moves": [
+                {
+                  "id": "first-strike",
+                  "name": "First Strike",
+                  "description": "At the start of combat, you can interrupt the initiative order to immediately take your turn. Your first attack gains a +1 bonus."
+                },
+                {
+                  "id": "aetheric-strike",
+                  "name": "Aetheric Strike",
+                  "description": "Once per scene, your next melee attack ignores any defensive bonuses the target has from cover or defensive stances."
+                },
+                {
+                  "id": "final-strike",
+                  "name": "Final Strike",
+                  "description": "When you attack a disadvantaged enemy (stunned, prone), the attack is automatically a Critical Hit if it hits."
+                }
+              ]
+            },
+            "blade-dancer": {
+              "id": "blade-dancer",
+              "name": "The Blade Dancer",
+              "philosophy": "A whirlwind of constant, fluid motion, turning defense into a seamless, deadly dance.",
+              "moves": [
+                {
+                  "id": "graceful-defense",
+                  "name": "Graceful Defense",
+                  "description": "If you moved on your turn, you gain +1 to your defense until your next turn."
+                },
+                {
+                  "id": "blade-dance",
+                  "name": "Blade Dance",
+                  "description": "Each time you hit the same opponent with a melee attack in a row, you gain a cumulative +1 bonus to your next attack roll against them. The bonus resets if you miss or attack another target."
+                }
+              ],
+              "augments": [
+                {
+                  "id": "dual-wielding",
+                  "name": "Dual Wielding",
+                  "description": "When you Attack, you can make a secondary, off-hand attack at a penalty."
+                }
+              ]
+            },
+            "claymore": {
+              "id": "claymore",
+              "name": "The Claymore (Great Blade Saint)",
+              "philosophy": "Embraces the raw, overwhelming power of a massive blade, becoming a living siege engine.",
+              "moves": [
+                {
+                  "id": "great-blade-kinesis",
+                  "name": "Great Blade Kinesis",
+                  "description": "You can wield a massive 'Great Blade' without penalty. It deals an additional +1 damage on all hits."
+                },
+                {
+                  "id": "blade-barrier",
+                  "name": "Blade Barrier",
+                  "description": "As a reaction, use your massive weapon to block an attack, granting +2 defense against that single attack. You cannot use this if you have already attacked this turn."
+                }
+              ],
+              "augments": [
+                {
+                  "id": "momentum",
+                  "name": "Momentum",
+                  "description": "Each time you make a melee attack, gain a 'Momentum' token (max 3). You can spend all tokens on a single attack roll for a +1 bonus per token."
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "mentalist_framework": {
+    "description": "Mentalists are Espers whose Aetheric Cortex grants psychic abilities. Their powers are shaped by two foundational choices at character creation.",
+    "foundational_choices": {
+      "polarity": [
+        {
+          "id": "receiver-configuration",
+          "name": "Receiver Configuration",
+          "cost": 1,
+          "description": "Your mind is a sensitive antenna. Re-roll one die when Perceiving/Sensing. Suffer Disadvantage when Influencing/Projecting."
+        },
+        {
+          "id": "influencer-configuration",
+          "name": "Influencer Configuration",
+          "cost": 1,
+          "description": "Your mind is a powerful transmitter. Re-roll one die when Influencing/Projecting. Suffer Disadvantage when Perceiving/Sensing."
+        }
+      ],
+      "scope": [
+        {
+          "id": "focal-point",
+          "name": "Focal Point",
+          "cost": 0,
+          "description": "Your power is a concentrated scalpel, affecting only one target at a time."
+        },
+        {
+          "id": "aural-field",
+          "name": "Aural Field",
+          "cost": 2,
+          "description": "Your power radiates outward, affecting everyone (friend and foe) in a small area around you. You cannot selectively target."
+        }
+      ]
+    },
+    "paths": {
+      "empath": {
+        "id": "empath",
+        "name": "The Empath",
+        "natural_lean": "Receiver",
+        "description": "Attuned to emotion, they are living resonators for the feelings that drive individuals and mobs.",
+        "moves": [
+          {
+            "id": "read-emotion",
+            "name": "Read Emotion",
+            "description": "Focus on a target. On a 10+, you get a clear reading of their primary emotion. On a 7-9, the reading is muddled or causes 1 Stun damage to you."
+          },
+          {
+            "id": "project-emotion",
+            "name": "Project Emotion",
+            "description": "Project a strong emotion onto a target. On a 10+, they are strongly affected and act accordingly for a few moments. On a 7-9, the emotion bleeds onto someone else nearby or costs 1 Temporary Corruption."
+          },
+          {
+            "id": "emotional-tether",
+            "name": "Emotional Tether",
+            "description": "Create a temporary link to a target to sustain an emotional state or read them from a distance. On a 10+, the tether is stable for the scene."
+          }
+        ],
+        "trauma_mutations": [
+          {
+            "id": "leech-mutation",
+            "name": "The Leech",
+            "description": "A trauma-induced mutation allowing an Empath to 'feed' on the amplified emotions of a crowd, at the cost of their own emotional core decaying."
+          },
+          {
+            "id": "echo-mutation",
+            "name": "The Echo",
+            "description": "A trauma-induced mutation where the Empath's own emotional state is suppressed, forcing them to mirror the emotions of those around them to feel anything at all."
+          }
+        ]
+      },
+      "mesmer": {
+        "id": "mesmer",
+        "name": "The Mesmer",
+        "natural_lean": "Influencer",
+        "description": "Masters of logic, reason, and perception. They create cognitive exploits and dismantle mental defenses.",
+        "moves": [
+          {
+            "id": "predict-action",
+            "name": "Predict Action",
+            "description": "Focus on a target's mind. On a 10+, the GM tells you what they plan to do on their next turn. On a 7-9, you only get a partial read."
+          },
+          {
+            "id": "implant-suggestion",
+            "name": "Implant Suggestion",
+            "description": "Plant a 'logic bomb' in a target's mind, making a course of action seem like the most logical choice. On a 10+, the suggestion takes root. On a 7-9, it works but they are suspicious afterward or it costs you 1 Temporary Corruption."
+          },
+          {
+            "id": "sensory-glitch",
+            "name": "Sensory Glitch",
+            "description": "Cause a single, minor sensory hiccup. On a 10+, a guard doesn't see you, a camera fuzzes. On a 7-9, the glitch is noticeable."
+          }
+        ],
+        "trauma_mutations": [
+          {
+            "id": "mirage-projection",
+            "name": "Mirage Projection",
+            "cost": 3,
+            "description": "You can create powerful, multi-sensory illusions, but your own perception of reality is now unstable and can be affected by your own traumatic illusions under stress."
+          },
+          {
+            "id": "iq-eater",
+            "name": "IQ Eater",
+            "cost": 2,
+            "description": "You gain the 'Mind Leech' move. Once per day, you can link with a target for an hour. For the rest of the day, you gain +1 to all Intellect-based rolls, while they suffer a -2 penalty. Each use causes cumulative, permanent damage to the target's mind."
+          }
+        ]
+      },
+      "siren": {
+        "id": "siren",
+        "name": "The Siren",
+        "natural_lean": "Influencer",
+        "description": "Conductors of the body's symphony, manipulating the autonomic nervous system through touch or voice.",
+        "moves": [
+          {
+            "id": "read-reflex",
+            "name": "Read Reflex",
+            "description": "Read a target's nervous system. On a 10+, you know exactly what physical action they are about to take. On a 7-9, you only get a jolt of information."
+          },
+          {
+            "id": "overwhelm-senses",
+            "name": "Overwhelm Senses",
+            "description": "Project your will to manipulate a target's pain, induce pleasure, or lull them. On a 10+, the effect is potent and imposes a penalty on their next action."
+          },
+          {
+            "id": "suppress-reflexes",
+            "name": "Suppress Reflexes",
+            "description": "Project a calming wave to dampen a target's fight-or-flight response or steady their nerves."
+          }
+        ],
+        "trauma_mutations": [
+          {
+            "id": "harmonizer",
+            "name": "Harmonizer",
+            "cost": 3,
+            "description": "You gain the 'Neural Hijack' move, allowing you to take full control of a target's body through touch. However, you are now more vulnerable to powers that affect your own body."
+          },
+          {
+            "id": "blood-singer",
+            "name": "Blood Singer",
+            "cost": 3,
+            "description": "You gain the terrifying 'Song of Rage' move, a psychic scream that sends all characters in an area (friend and foe) into a berserker rage."
+          }
+        ]
+      },
+      "dreamer": {
+        "id": "dreamer",
+        "name": "The Dreamer",
+        "natural_lean": "Receiver",
+        "description": "Navigators of the subconscious and the collective unconscious. Their presence amplifies the Aether for all nearby supernatural beings.",
+        "moves": [
+          {
+            "id": "perceive-psyche",
+            "name": "Perceive Psyche",
+            "description": "Perceive the symbolic icons of a target's subconscious. On a 10+, the GM tells you what one or two clear symbols represent. On a 7-9, the symbols are cryptic."
+          },
+          {
+            "id": "dream-walk",
+            "name": "Dream Walk",
+            "description": "Project your consciousness into a sleeping target's dreams. On a 10+, you have full awareness and control. On a 7-9, you are a participant, not a guide."
+          },
+          {
+            "id": "aetheric-gateway",
+            "name": "Aetheric Gateway",
+            "description": "Open your mind as an anchor for a spirit. On a 10+, you summon a neutral or curious spirit. On a 6-, you attract a malicious or hungry spirit."
+          }
+        ],
+        "augments": [
+          {
+            "id": "aetheric-amplifier",
+            "name": "Aetheric Amplifier",
+            "cost": 2,
+            "description": "As a conscious action, you can become an 'Amplifier'. While active, any other supernatural being in your vicinity may re-roll one die on their next power check."
+          }
+        ],
+        "trauma_mutations": [
+          {
+            "id": "nightmares-idol",
+            "name": "The Nightmare's Idol",
+            "cost": 3,
+            "description": "You become a caricature of how others see you. When you act according to their perception, your Social rolls gain a significant bonus, but you suffer a penalty to resist acting that way."
+          },
+          {
+            "id": "untethered-wraith",
+            "name": "Untethered Wraith",
+            "cost": 3,
+            "description": "Your connection to your body is severed. You can use astral projection at will, but your physical form is incredibly fragile (all Health damage is doubled)."
+          }
+        ]
+      },
+      "metamind": {
+        "id": "metamind",
+        "name": "The Meta-Mind",
+        "natural_lean": "N/A (Inward-focused)",
+        "description": "An anomaly that manipulates their own cognitive architecture, achieving superhuman intellect at the risk of madness.",
+        "moves": [
+          {
+            "id": "overclock",
+            "name": "Overclock",
+            "description": "Push your mind past its limits. On a 10+, gain one extra, purely mental action this turn. On a 7-9, you succeed but take 2 Stun damage to your Intellect."
+          },
+          {
+            "id": "eidetic-mimicry",
+            "name": "Eidetic Mimicry",
+            "description": "Create a perfect mental model of a physical action. On a 10+, for the rest of the scene, you can perform that specific action as if you had an Expert (+1) skill rank."
+          }
+        ],
+        "augments": [
+          {
+            "id": "persona-polarity",
+            "name": "Persona Polarity",
+            "cost": 3,
+            "description": "Fracture your consciousness into two distinct, switchable personas, distributing your Intellect Specializations between them. Allows you to switch once per scene."
+          }
+        ],
+        "trauma_mutations": [
+          {
+            "id": "hyde-mind",
+            "name": "The Hyde Mind",
+            "cost": 3,
+            "description": "Requires Persona Polarity. You can no longer switch personas at will. At the start of each day, a roll determines which persona is in control."
+          },
+          {
+            "id": "savant-syndrome",
+            "name": "Savant Syndrome",
+            "cost": 2,
+            "description": "Permanently gain an additional +1 bonus to one of your Master or Expert skills. However, you now suffer Disadvantage on all rolls related to one entire Attribute that do not involve your Savant skill."
+          }
+        ]
+      }
+    }
+  }
+}

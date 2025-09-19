@@ -1,0 +1,626 @@
+import json
+
+sorcery_data = {
+  "lineage": "sorcerer",
+  "spheres": {
+    "primary": {
+      "creation": {
+        "id": "creation-sphere",
+        "name": "Creation",
+        "type": "primary",
+        "moves": [
+          {
+            "id": "create-solid",
+            "name": "Create Solid",
+            "type": "move",
+            "description": {
+              "short": "Conjure simple, non-living solid matter like stone, wood, or metal.",
+              "outcomes": {
+                "10+": "You create a solid, well-formed object up to the size of a backpack. It is durable and lasts for about a day.",
+                "7-9": "The creation is flawed. Choose one: it's misshapen and fragile, it will only last for an hour, OR you gain 1 Temporary Corruption.",
+                "6-": "The Aether surges. You fail to create the object, and you gain 1 Temporary Corruption as the raw essence harms you."
+              }
+            }
+          },
+          {
+            "id": "create-liquid",
+            "name": "Create Liquid",
+            "type": "move",
+            "description": {
+              "short": "Conjure basic liquids like water, oil, or acid.",
+              "outcomes": {
+                "10+": "You create about a gallon of the desired liquid in a container or on a surface. It is pure and stable.",
+                "7-9": "The liquid is impure or unstable. It's a smaller quantity, it's tinged with a strange color/smell, OR you gain 1 Temporary Corruption.",
+                "6-": "The liquid manifests explosively, splashing harmlessly but creating a mess and achieving nothing useful."
+              }
+            }
+          },
+          {
+            "id": "create-gas",
+            "name": "Create Gas",
+            "type": "move",
+            "description": {
+              "short": "Conjure clouds of smoke, breathable air, or noxious fumes.",
+              "outcomes": {
+                "10+": "You create a thick cloud of the desired gas about 10 feet in diameter. It lasts for several minutes before dissipating.",
+                "7-9": "The cloud is thin and dissipates quickly, OR the effort of containing it adds 1 DP to the Dissonance Pool.",
+                "6-": "You conjure the wrong gas entirely, creating a strange smell or a harmless but startling visual effect."
+              }
+            }
+          },
+          {
+            "id": "create-energy",
+            "name": "Create Energy",
+            "type": "move",
+            "description": {
+              "short": "Conjure raw, simple energy, like a spark of flame, a flash of light, or a floating orb of heat.",
+              "outcomes": {
+                "10+": "You create a controlled manifestation of energy that lasts for the scene or until you dismiss it.",
+                "7-9": "The energy is unstable. It flickers erratically, it's weaker than intended, OR you gain 1 Temporary Corruption.",
+                "6-": "The energy discharges harmlessly in a shower of sparks, failing to achieve the desired effect."
+              }
+            }
+          }
+        ]
+      },
+      "manipulation": {
+        "id": "manipulation-sphere",
+        "name": "Manipulation",
+        "type": "primary",
+        "moves": [
+          {
+            "id": "telekinesis",
+            "name": "Telekinesis",
+            "type": "move",
+            "description": {
+              "short": "Extend your will to move a physical object you can see.",
+              "outcomes": {
+                "10+": "You move an object (up to 50 lbs) with precision and control.",
+                "7-9": "Your control is clumsy. You move the object but make a loud noise, drop it halfway, or knock other things over.",
+                "6-": "You lose your grip. The object flies in a random direction, or you inadvertently affect the wrong object entirely."
+              }
+            }
+          },
+          {
+            "id": "control-element",
+            "name": "Control Element",
+            "type": "move",
+            "description": {
+              "short": "Exert your will over an existing, uncontrolled elemental source.",
+              "outcomes": {
+                "10+": "You command the element to perform one clear action (e.g., the fire erupts, water forms a shield, wind slams a door).",
+                "7-9": "Your control is incomplete. The effect is weaker than intended, lasts only a moment, OR you gain 1 Temporary Corruption.",
+                "6-": "The element rebels. The fire leaps towards you, the water splashes back, the wind blows dust in your eyes."
+              }
+            }
+          },
+          {
+            "id": "animate-object",
+            "name": "Animate Object",
+            "type": "move",
+            "description": {
+              "short": "Temporarily imbue a simple object with movement and a single, simple command.",
+              "outcomes": {
+                "10+": "The object animates and follows your command faithfully for the scene or until its task is complete.",
+                "7-9": "The animation is literal and witless, or the Aetheric binding is sloppy, adding 1 DP to the Dissonance Pool.",
+                "6-": "The animating spirit is mischievous or inept, causing a complication."
+              }
+            }
+          }
+        ]
+      },
+      "transmutation": {
+        "id": "transmutation-sphere",
+        "name": "Transmutation",
+        "type": "primary",
+        "moves": [
+          {
+            "id": "reinforcement",
+            "name": "Reinforcement",
+            "type": "move",
+            "description": {
+              "short": "Alter the structural integrity of a non-living object you can touch.",
+              "outcomes": {
+                "10+": "You significantly strengthen or weaken the object for about an hour.",
+                "7-9": "The effect works, but only lasts for a few minutes OR creates a visible, unnatural shimmer.",
+                "6-": "The transmutation fails catastrophically, shattering the object or making it incredibly durable."
+              }
+            }
+          },
+          {
+            "id": "state-change",
+            "name": "State Change",
+            "type": "move",
+            "description": {
+              "short": "Alter the physical state of a simple, non-living material (solid, liquid, gas).",
+              "outcomes": {
+                "10+": "You change a significant amount of material for about an hour.",
+                "7-9": "The change is minor in scope OR costs you 1 Temporary Corruption.",
+                "6-": "The change is uncontrolled, transforming the material into an unexpected state or expanding violently."
+              }
+            }
+          },
+          {
+            "id": "alter-property",
+            "name": "Alter Property",
+            "type": "move",
+            "description": {
+              "short": "Temporarily change a single property of an object you touch.",
+              "outcomes": {
+                "10+": "The object's property is changed as you desire (e.g., rope becomes steel) for about an hour.",
+                "7-9": "The change is unstable, lasting only a few minutes OR has a visible side effect.",
+                "6-": "The transmutation fails, giving the object a bizarre and useless property."
+              }
+            }
+          },
+          {
+            "id": "reshape-form",
+            "name": "Reshape Form",
+            "type": "move",
+            "description": {
+              "short": "Change the physical shape of a non-living object without changing its core material.",
+              "outcomes": {
+                "10+": "You reshape the object with precision, like a master sculptor.",
+                "7-9": "The reshaping is crude and rushed, functional but imperfect, OR costs 1 Temporary Corruption.",
+                "6-": "The object resists the change, twisting into a useless, warped version of your intent."
+              }
+            }
+          }
+        ]
+      },
+      "divination": {
+        "id": "divination-sphere",
+        "name": "Divination",
+        "type": "primary",
+        "moves": [
+          {
+            "id": "scry-the-past",
+            "name": "Scry the Past",
+            "type": "move",
+            "description": {
+              "short": "Focus on a location or object to glimpse a significant event from its history.",
+              "outcomes": {
+                "10+": "You receive a clear, useful vision of an important event from the last 24 hours.",
+                "7-9": "The vision is fragmented, symbolic, or inflicts 1 Stun damage to your Intellect.",
+                "6-": "You connect to a meaningless or misleading psychic echo."
+              }
+            }
+          },
+          {
+            "id": "scry-the-present",
+            "name": "Scry the Present",
+            "type": "move",
+            "description": {
+              "short": "Attempt to perceive events happening at a distance right now.",
+              "outcomes": {
+                "10+": "You see and hear what is happening at a known location as if you were there, for about one minute.",
+                "7-9": "The sensory connection is poor (blurry images, muffled sounds) OR your scrying is detected.",
+                "6-": "Your psychic senses land on the wrong location entirely."
+              }
+            }
+          },
+          {
+            "id": "scry-the-future",
+            "name": "Scry the Future",
+            "type": "move",
+            "description": {
+              "short": "Meditate on a course of action to glimpse its most likely outcome.",
+              "outcomes": {
+                "10+": "The GM describes the single most probable result if you take that action.",
+                "7-9": "The vision is unhelpful (confusingly symbolic, only shows what not to do) OR is so grim it costs 1 Temporary Corruption.",
+                "6-": "You see a vision of a future that will not come to pass, based on flawed variables."
+              }
+            }
+          }
+        ]
+      },
+      "connection": {
+        "id": "connection-sphere",
+        "name": "Connection",
+        "type": "primary",
+        "moves": [
+          {
+            "id": "perceive-bond",
+            "name": "Perceive Bond",
+            "type": "move",
+            "description": {
+              "short": "Focus on a target to sense its sympathetic resonance.",
+              "outcomes": {
+                "10+": "You clearly perceive one significant connection the target has (person, place, or object).",
+                "7-9": "The information is incomplete, symbolic, or you draw unwanted attention from the other end of the connection.",
+                "6-": "You learn nothing useful and suffer 1 Stun damage from psychic feedback."
+              }
+            }
+          },
+          {
+            "id": "exploit-bond",
+            "name": "Exploit Bond",
+            "type": "move",
+            "description": {
+              "short": "Use an existing connection (hair, blood, item) to affect a target from a distance.",
+              "outcomes": {
+                "10+": "Your magic flows perfectly, delivering a touch-range spell, 1 Stun damage, or a strong emotional state.",
+                "7-9": "The link is unstable; the effect works but adds 1 DP to the Dissonance Pool OR you gain 1 Temporary Corruption.",
+                "6-": "The bond snaps or backfires, targeting you instead with a lesser effect."
+              }
+            }
+          },
+          {
+            "id": "forge-bond",
+            "name": "Forge Bond",
+            "type": "move",
+            "ritual": True,
+            "description": {
+              "short": "Perform a ritual to create a new, temporary sympathetic link between two targets.",
+              "outcomes": {
+                "10+": "You successfully create a powerful two-way link for one day (shared emotions, senses, etc.).",
+                "7-9": "The bond is flawed: it only lasts for an hour, is one-way only, OR costs you 1 Temporary Corruption.",
+                "6-": "The ritual fails, creating a dissonant connection to something entirely unexpected and dangerous."
+              }
+            }
+          }
+        ]
+      }
+    },
+    "secondary": {
+      "healing": {
+        "id": "healing-sphere",
+        "name": "Healing",
+        "type": "secondary",
+        "moves": [
+          {
+            "id": "triage",
+            "name": "Triage",
+            "type": "move",
+            "description": {
+              "short": "Immediate battlefield healing for stabilizing injuries.",
+              "outcomes": {
+                "10+": "Clear two ticked boxes from one location's Stun Track OR one box from its Health Boxes.",
+                "7-9": "Messy or taxing: clear only one Stun box, the healing leaves a scar, OR you gain 1 Temporary Corruption.",
+                "6-": "The Aether is rejected. The healing fails, inflicting 1 Stun damage on your target."
+              }
+            }
+          },
+          {
+            "id": "purge-sickness",
+            "name": "Purge Sickness",
+            "type": "move",
+            "description": {
+              "short": "A slower, more deliberate Move to combat diseases, poisons, and infections.",
+              "outcomes": {
+                "10+": "You successfully identify and purge the ailment.",
+                "7-9": "You only suppress the symptoms for a time, OR the cure is successful but costs you 1 Temporary Corruption.",
+                "6-": "You misdiagnose or the treatment fails, making the condition worse."
+              }
+            }
+          },
+          {
+            "id": "flesh-crafting",
+            "name": "Flesh Crafting",
+            "type": "move",
+            "ritual": True,
+            "description": {
+              "short": "Advanced biological alteration to fix long-term problems or install augmentations.",
+              "outcomes": {
+                "10+": "The procedure is a complete success. The chronic condition is fixed or the limb is regrown.",
+                "7-9": "Success with a complication: a cosmetic flaw, a side effect, OR the process taints you with 1 Permanent Corruption.",
+                "6-": "The procedure goes horribly wrong, creating an unintended and monstrous mutation."
+              }
+            }
+          }
+        ]
+      },
+      "necromancy": {
+        "id": "necromancy-sphere",
+        "name": "Necromancy",
+        "type": "secondary",
+        "moves": [
+          {
+            "id": "animate-corpse",
+            "name": "Animate Corpse",
+            "type": "move",
+            "description": {
+              "short": "Infuse a dead body with Aether to create an undead servant.",
+              "outcomes": {
+                "10+": "You animate a corpse as a loyal, functional undead servant that will follow your commands until destroyed.",
+                "7-9": "The animation is flawed: the servant is slow, it follows commands too literally, OR the act costs you 1 Temporary Corruption.",
+                "6-": "The spirit inhabiting the corpse is hostile or uncontrolled and will act on its own violent impulses."
+              }
+            }
+          },
+          {
+            "id": "siphon-life",
+            "name": "Siphon Life",
+            "type": "move",
+            "description": {
+              "short": "Create a conduit to drain the vitality from another living being.",
+              "outcomes": {
+                "10+": "You successfully drain a target's life force, inflicting 2 Stun damage and healing 2 of your own Stun boxes.",
+                "7-9": "The process is foul. You succeed, but the act taints you, and you gain 1 Temporary Corruption.",
+                "6-": "The conduit backfires. You fail to drain the target, and the attempt inflicts 1 Stun damage on yourself."
+              }
+            }
+          },
+          {
+            "id": "speak-with-the-dead",
+            "name": "Speak with the Dead",
+            "type": "move",
+            "description": {
+              "short": "Reach across the veil to question a spirit.",
+              "outcomes": {
+                "10+": "You make a clear connection. The spirit is willing (or compelled) to answer 3 questions truthfully.",
+                "7-9": "The connection is weak. The spirit will only answer one question, its answers are cryptic, OR the contact draws unwanted attention.",
+                "6-": "You connect with a lying or insane spirit that gives you dangerous misinformation."
+              }
+            }
+          }
+        ]
+      },
+      "protection": {
+        "id": "protection-sphere",
+        "name": "Protection",
+        "type": "secondary",
+        "moves": [
+          {
+            "id": "aegis-shield",
+            "name": "Aegis Shield",
+            "type": "move",
+            "description": {
+              "short": "Conjure a mobile, personal shield of shimmering Aether to deflect harm.",
+              "outcomes": {
+                "10+": "Your shield is potent. It has 3 'Shield Boxes' that are ticked off before your Health/Stun boxes. It lasts for the scene.",
+                "7-9": "Your shield is weaker. It only has 1 Shield Box, OR the effort adds 1 DP to the Dissonance Pool.",
+                "6-": "The Aether fails to cohere. The shield shatters as it forms."
+              }
+            }
+          },
+          {
+            "id": "sanctuary-barrier",
+            "name": "Sanctuary Barrier",
+            "type": "move",
+            "description": {
+              "short": "Inscribe a runic array to create a large, stationary barrier of force.",
+              "outcomes": {
+                "10+": "You create a powerful, unmoving barrier that can withstand significant punishment for the scene.",
+                "7-9": "The barrier is flawed. It has a weak spot, it only lasts for a few minutes, OR the effort costs you 1 Temporary Corruption.",
+                "6-": "The runic array is unstable. The barrier collapses moments after you create it."
+              }
+            }
+          },
+          {
+            "id": "inscribe-ward",
+            "name": "Inscribe Ward",
+            "type": "move",
+            "description": {
+              "short": "Create a magical 'trap' or passive defense on a location or object. The more specific the target, the more powerful the effect.",
+              "outcomes": {
+                "10+": "The Ward is inscribed perfectly. Broad Target (any living being) = minor effect. Specific Target (e.g., Red Sentinels) = potent effect. Unique Target (one person) = devastating effect.",
+                "7-9": "The Ward is flawed. Its trigger is unreliable, its effect is weaker, OR the inscription costs you 1 Temporary Corruption.",
+                "6-": "The Ward is unstable. It might not trigger, or it might trigger on the wrong person (like you)."
+              }
+            }
+          }
+        ]
+      },
+      "spirit": {
+        "id": "spirit-sphere",
+        "name": "Spirit",
+        "type": "secondary",
+        "moves": [
+          {
+            "id": "commune-with-spirit",
+            "name": "Commune with Spirit",
+            "type": "move",
+            "description": {
+              "short": "Open your mind to communicate with a nearby, unseen spirit.",
+              "outcomes": {
+                "10+": "You make a clear, two-way connection and can have a short, coherent conversation.",
+                "7-9": "The connection has static. You get a single, cryptic image or draw the attention of an unwanted entity.",
+                "6-": "You connect to a hostile, lying, or insane spirit that feeds you dangerous misinformation or attacks you."
+              }
+            }
+          },
+          {
+            "id": "bind-banish-spirit",
+            "name": "Bind/Banish Spirit",
+            "type": "move",
+            "description": {
+              "short": "Exert your will upon a spirit to force it into a vessel or drive it from a location.",
+              "outcomes": {
+                "10+": "You succeed completely. The spirit is securely bound or is banished for at least a day.",
+                "7-9": "You succeed, but at a cost. The effort costs you 1 Temporary Corruption OR the banishment is temporary (one hour).",
+                "6-": "Your will is insufficient. The spirit resists and its backlash inflicts 1 Stun damage to your Presence."
+              }
+            }
+          },
+          {
+            "id": "forge-spirit-pact",
+            "name": "Forge Spirit Pact",
+            "type": "move",
+            "ritual": True,
+            "description": {
+              "short": "Engage in a formal negotiation with a spirit, offering something of value for a service.",
+              "outcomes": {
+                "10+": "The spirit agrees to the pact and will perform one significant service for you.",
+                "7-9": "The spirit agrees, but it drives a hard bargain, demanding a higher price or offering a lesser service.",
+                "6-": "You offend the spirit. It refuses your offer and may become hostile."
+              }
+            }
+          }
+        ]
+      },
+      "time": {
+        "id": "time-sphere",
+        "name": "Time",
+        "type": "secondary",
+        "moves": [
+          {
+            "id": "accelerate-decelerate",
+            "name": "Accelerate/Decelerate",
+            "type": "move",
+            "description": {
+              "short": "Create a small bubble of altered time around an object or willing person.",
+              "outcomes": {
+                "10+": "The effect is stable and localized, completing a task in half the time or slowing an object to a crawl.",
+                "7-9": "The time bubble is unstable, causing a visible distortion and adding 1 DP to the Dissonance Pool.",
+                "6-": "The bubble collapses violently, causing 1 Stun damage to everyone nearby."
+              }
+            }
+          },
+          {
+            "id": "step-outside",
+            "name": "Step Outside",
+            "type": "move",
+            "description": {
+              "short": "Shift your consciousness outside of the normal flow of time for a single, frozen moment.",
+              "outcomes": {
+                "10+": "You get a clean 'pause' to observe and think, then act on your observation.",
+                "7-9": "The moment is jarring, costing you 1 Stun damage to your Intellect.",
+                "6-": "You are disoriented and lose your turn as you struggle to re-orient yourself."
+              }
+            }
+          }
+        ]
+      },
+      "dimensional": {
+        "id": "dimensional-sphere",
+        "name": "Dimensional",
+        "type": "secondary",
+        "moves": [
+          {
+            "id": "displacement",
+            "name": "Displacement",
+            "type": "augment",
+            "description": {
+              "short": "Ranged attacks against you suffer a penalty, as you are never quite where you appear to be. This costs 2 Permanent Corruption."
+            }
+          },
+          {
+            "id": "recall",
+            "name": "Recall",
+            "type": "move",
+            "ritual": True,
+            "description": {
+              "short": "Instantly teleport to a single, specific location prepared with a complex ritual.",
+              "outcomes": {
+                "10+": "You arrive instantly and safely at your prepared sanctuary.",
+                "7-9": "The journey is rough. You arrive disoriented and suffer 2 Stun damage, OR the portal is unstable, adding 1 DP.",
+                "6-": "The coordinates are corrupted. You teleport to a similar, but dangerous, location."
+              }
+            }
+          },
+          {
+            "id": "bend-space",
+            "name": "Bend Space",
+            "type": "move",
+            "description": {
+              "short": "As a reaction to being attacked, you attempt to fold the space in front of you.",
+              "outcomes": {
+                "10+": "You successfully warp reality. The attack stops short or is redirected.",
+                "7-9": "You partially bend the space and still take half damage.",
+                "6-": "You fail. The attack hits you as normal."
+              }
+            }
+          }
+        ]
+      },
+      "void": {
+        "id": "void-sphere",
+        "name": "Void",
+        "type": "secondary",
+        "moves": [
+          {
+            "id": "negate",
+            "name": "Negate",
+            "type": "move",
+            "description": {
+              "short": "Unleash a wave of anti-Aether to cancel out an incoming magical effect.",
+              "outcomes": {
+                "10+": "You utterly negate the effect. The spell fizzles, the psychic power fails.",
+                "7-9": "You succeed, but channeling pure nothingness costs you 1 Temporary Corruption.",
+                "6-": "You fail to control the Void. The enemy's power affects you, and you gain 1 Temporary Corruption."
+              }
+            }
+          },
+          {
+            "id": "obfuscate",
+            "name": "Obfuscate",
+            "type": "move",
+            "description": {
+              "short": "Wrap yourself in a shroud of Void that erases you from perception.",
+              "outcomes": {
+                "10+": "You become utterly imperceptible—unseen, unheard, unremembered—for one full minute.",
+                "7-9": "The shroud is imperfect, leaving a disturbing feeling of 'wrongness' OR it costs you 1 Temporary Corruption.",
+                "6-": "You become a terrifying, walking silhouette of pure blackness that draws immediate attention."
+              }
+            }
+          },
+          {
+            "id": "obliterate",
+            "name": "Obliterate",
+            "type": "move",
+            "description": {
+              "short": "Touch a single, non-living object and unmake it, erasing it from existence.",
+              "outcomes": {
+                "10+": "The object is gone. Not broken, not vaporized. It simply ceases to be.",
+                "7-9": "The object is gone, but the Void also consumes a small, random item you are carrying OR you gain 1 Temporary Corruption.",
+                "6-": "The Void lashes out. The object is unaffected, but the backlash inflicts 2 Stun damage directly to you."
+              }
+            }
+          }
+        ]
+      },
+      "mind": {
+        "id": "mind-sphere",
+        "name": "Mind",
+        "type": "secondary",
+        "moves": [
+          {
+            "id": "weave-illusion",
+            "name": "Weave Illusion",
+            "type": "move",
+            "description": {
+              "short": "Manipulate the perceptions of a target, causing them to see, hear, or feel something that isn't there.",
+              "outcomes": {
+                "10+": "The illusion is flawless and convincing, affecting all relevant senses for the scene.",
+                "7-9": "The illusion is imperfect. It has a subtle flaw, only affects one sense, OR costs you 1 Temporary Corruption.",
+                "6-": "Your attempt backfires, distorting your own senses for the next few minutes."
+              }
+            }
+          },
+          {
+            "id": "cast-mind-out",
+            "name": "Cast Mind Out",
+            "type": "move",
+            "ritual": True,
+            "description": {
+              "short": "Project your consciousness into the Aether to travel through the sea of thought and dreams.",
+              "outcomes": {
+                "10+": "You enter the Aether smoothly and have clear control over your astral form.",
+                "7-9": "The journey is rough, inflicting 1 Stun damage to your Intellect OR you draw the attention of a native Aetheric spirit.",
+                "6-": "You get lost and are shunted to a random, dangerous corner of the Dreaming, or are violently ejected back to your body."
+              }
+            }
+          },
+          {
+            "id": "cast-mind-in",
+            "name": "Cast Mind In",
+            "type": "move",
+            "description": {
+              "short": "Enter a deep trance to perfectly recall and re-experience a past event you personally witnessed.",
+              "outcomes": {
+                "10+": "Your recall is perfect. You can 'pause' and 'zoom', asking the GM two specific questions about details you could have perceived.",
+                "7-9": "The memory is tinged with emotional bias. You get to ask one question, but the memory is warped by your feelings at the time.",
+                "6-": "You become lost in the memory, trapped in the trance for an hour or more and emerging disoriented."
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+
+print(json.dumps(sorcery_data, indent=2))
+
+

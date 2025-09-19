@@ -1,5 +1,4 @@
-import type { LineageKey } from '../state/characterStore';
-import type { PriorityRank } from './types';
+import type { LineageKey, PriorityRank } from './types';
 
 export interface LineageDefinition {
   key: LineageKey;
