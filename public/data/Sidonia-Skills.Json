@@ -62,7 +62,7 @@
           {"id": "infiltration", "name": "Infiltration", "description": "Getting in"},
           {"id": "sleight-of-hand", "name": "Sleight of Hand", "description": "Lifting it"},
           {"id": "security", "name": "Security", "description": "Bypassing their toys"},
-           {"id": "shadowing", "name": "Shadowing", "description": "Keeping them in sight without being in theirs"},
+          {"id": "shadowing", "name": "Shadowing", "description": "Keeping them in sight without being in theirs"},
           {"id": "safecracking", "name": "Safecracking", "description": "Opening the prize"}
         ]
       },
@@ -73,8 +73,8 @@
         "specializations": [
           {"id": "investigation", "name": "Investigation", "description": "Piecing together clues"},
           {"id": "perception", "name": "Perception", "description": "Spotting the details"},
-          {"id": "interrogation", "name": "Interrogation", "description": "Reading the liar"}
-           {"id": "appraisal", "name": "Appraisal", "description": "knowing wether or not it was worth it."},
+          {"id": "interrogation", "name": "Interrogation", "description": "Reading the liar"},
+          {"id": "appraisal", "name": "Appraisal", "description": "knowing wether or not it was worth it."}
         ]
       },
       {
@@ -98,8 +98,8 @@
           {"id": "persuasion", "name": "Persuasion", "description": "Winning them over"},
           {"id": "deception", "name": "Deception", "description": "Playing them for fools"},
           {"id": "intimidation", "name": "Intimidation", "description": "Breaking them down"},
-          {"id": "performance", "name": "Performance", "description": "Being someone else"}
-           {"id": "streetwise", "name": "Streetwise", "description": "The best kind of wise"},
+          {"id": "performance", "name": "Performance", "description": "Being someone else"},
+          {"id": "streetwise", "name": "Streetwise", "description": "The best kind of wise"}
         ]
       }
     ],
