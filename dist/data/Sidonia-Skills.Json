@@ -73,8 +73,8 @@
         "specializations": [
           {"id": "investigation", "name": "Investigation", "description": "Piecing together clues"},
           {"id": "perception", "name": "Perception", "description": "Spotting the details"},
-          {"id": "interrogation", "name": "Interrogation", "description": "Reading the liar"}
-           {"id": "appraisal", "name": "Appraisal", "description": "knowing wether or not it was worth it."},
+          {"id": "interrogation", "name": "Interrogation", "description": "Reading the liar"},
+          {"id": "appraisal", "name": "Appraisal", "description": "knowing wether or not it was worth it."}
         ]
       },
       {
@@ -101,7 +101,7 @@
           {"id": "performance", "name": "Performance", "description": "Being someone else"}
            {"id": "streetwise", "name": "Streetwise", "description": "The best kind of wise"},
         ]
-      },
+      }
     ],
     "intellectual": [
       {
