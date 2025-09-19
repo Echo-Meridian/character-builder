@@ -1,0 +1,163 @@
+.stage__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.stage__header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.stage__header p {
+  margin: 0.5rem 0 0;
+  max-width: 720px;
+  color: rgba(220, 220, 235, 0.7);
+}
+
+.stage__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reveal-toggle {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reveal-toggle.active {
+  border-color: rgba(255, 180, 80, 0.7);
+  box-shadow: 0 0 22px rgba(255, 180, 80, 0.25);
+}
+
+.reveal-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.lineage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.lineage-card {
+  padding: 1.25rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(18, 18, 24, 0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-height: 100%;
+  position: relative;
+}
+
+.lineage-card h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+}
+
+.lineage-card__tagline {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: rgba(235, 225, 180, 0.7);
+}
+
+.lineage-card__priority {
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.lineage-card__priority span {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(235, 225, 200, 0.7);
+}
+
+.lineage-card details {
+  color: rgba(220, 220, 235, 0.6);
+}
+
+.lineage-card summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(240, 200, 120, 0.85);
+}
+
+.lineage-card__choose {
+  margin-top: auto;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: inherit;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.lineage-card.is-active .lineage-card__choose {
+  background: rgba(240, 200, 120, 0.2);
+  border-color: rgba(240, 200, 120, 0.7);
+}
+
+.lineage-notes {
+  margin-top: 2rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.field span {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(235, 215, 150, 0.8);
+}
+
+.field textarea,
+.field input {
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(12, 12, 18, 0.9);
+  color: inherit;
+  min-height: 120px;
+  resize: vertical;
+}
+
+.lineage-highlight {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(220, 220, 235, 0.8);
+}
+
+@media (max-width: 768px) {
+  .stage__header {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,175 @@
+.gm-portal {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.gm-portal header h1 {
+  margin: 0;
+}
+
+.gm-portal header p {
+  max-width: 640px;
+  color: rgba(220, 220, 235, 0.75);
+}
+
+.gm-form {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  background: rgba(20, 20, 28, 0.7);
+  padding: 1.5rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.gm-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gm-form span {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(235, 215, 170, 0.8);
+}
+
+.gm-form input {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(12, 12, 18, 0.9);
+  color: inherit;
+  padding: 0.75rem 1rem;
+  min-width: 260px;
+}
+
+.gm-form button {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(12, 12, 18, 0.9);
+  color: inherit;
+  padding: 0.75rem 1.4rem;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gm-error {
+  color: #ff8080;
+  margin: 0;
+  width: 100%;
+}
+
+.gm-content {
+  display: grid;
+  gap: 2rem;
+}
+
+.gm-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(20, 20, 28, 0.7);
+}
+
+.gm-status button {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(12, 12, 18, 0.9);
+  color: inherit;
+  padding: 0.65rem 1.2rem;
+  cursor: pointer;
+}
+
+.schema-grid,
+.doc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.schema-grid article,
+.doc-grid article {
+  padding: 1rem 1.2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(18, 18, 24, 0.7);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.schema-grid header,
+.doc-grid header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.schema-grid button,
+.doc-grid button,
+.analytics-log button {
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(12, 12, 18, 0.9);
+  color: inherit;
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.schema-grid pre,
+.doc-grid pre {
+  max-height: 200px;
+  overflow: auto;
+  padding: 0.75rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(235, 235, 240, 0.85);
+  font-size: 0.75rem;
+}
+
+.analytics-log {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.analytics-log ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+  max-height: 220px;
+  overflow: auto;
+}
+
+.analytics-log li {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.6rem 0.7rem;
+  border-radius: 12px;
+  align-items: center;
+}
+
+.analytics-log code {
+  font-size: 0.7rem;
+  opacity: 0.75;
+}
+
+@media (max-width: 720px) {
+  .gm-status {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}

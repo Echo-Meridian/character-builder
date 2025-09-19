@@ -1,0 +1,53 @@
+.builder-screen {
+  display: grid;
+  gap: 2rem;
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.builder-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background: var(--lineage-glow, radial-gradient(circle at 10% 10%, rgba(240, 200, 120, 0.1), transparent 65%));
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.stage {
+  background: rgba(12, 12, 18, 0.65);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1.75rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(14px);
+}
+
+.stage__footer {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: rgba(220, 220, 235, 0.75);
+}
+
+.stage__footer p {
+  margin: 0;
+}
+
+.field input,
+.field textarea {
+  font: inherit;
+}
+
+.field input,
+.field textarea,
+.relationship-input input {
+  color-scheme: dark;
+}
+
+@media (max-width: 768px) {
+  .stage {
+    padding: 1.25rem;
+  }
+}

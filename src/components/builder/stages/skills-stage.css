@@ -1,0 +1,145 @@
+.skills-limit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  min-width: 220px;
+}
+
+.skills-limit span {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(235, 215, 160, 0.8);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.skills-discipline {
+  padding: 1rem 1.2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(18, 18, 24, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.skills-discipline header h3 {
+  margin: 0;
+}
+
+.skills-discipline header p {
+  margin: 0.35rem 0 0;
+  color: rgba(220, 220, 235, 0.6);
+}
+
+.skills-discipline ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.skills-discipline li {
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.skills-discipline li.focused {
+  border-color: rgba(240, 200, 120, 0.85);
+  box-shadow: 0 10px 20px rgba(240, 200, 120, 0.2);
+}
+
+.skills-item__header {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.skills-item__header button {
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(12, 12, 18, 0.9);
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.skills-item__header button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.skills-item__header h4 {
+  margin: 0;
+}
+
+.skills-item__header p {
+  margin: 0.25rem 0 0;
+  color: rgba(220, 220, 235, 0.7);
+}
+
+.skills-specializations {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.skills-specializations li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.skills-specializations strong {
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.focus-pills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0.75rem 0 0;
+}
+
+.focus-pills li {
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(240, 200, 120, 0.18);
+  border: 1px solid rgba(240, 200, 120, 0.4);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.skills-footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}

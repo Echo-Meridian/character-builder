@@ -1,0 +1,141 @@
+.stage--resources .resource-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 220px;
+}
+
+.resource-summary__label {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(240, 220, 160, 0.85);
+}
+
+.resource-summary__value {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.resource-allocations {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.resource-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+}
+
+.resource-field span {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(235, 215, 160, 0.75);
+}
+
+.resource-field input {
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(12, 12, 20, 0.9);
+  color: inherit;
+  font-size: 1rem;
+}
+
+.resource-ledger {
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color: rgba(220, 220, 235, 0.8);
+}
+
+.resource-ledger__warning {
+  margin-left: 0.75rem;
+  color: #ff8787;
+}
+
+.resource-data {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.resource-data article {
+  padding: 1rem 1.2rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(18, 18, 24, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.resource-data h3 {
+  margin: 0;
+}
+
+.example {
+  font-size: 0.85rem;
+  color: rgba(220, 220, 235, 0.6);
+}
+
+.scale ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.scale__value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin-right: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.properties-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.properties-grid ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.properties-grid li {
+  padding: 0.5rem 0.7rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.properties-grid strong {
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.properties-grid .special {
+  color: rgba(255, 160, 120, 0.8);
+}

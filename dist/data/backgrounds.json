@@ -1,0 +1,17 @@
+{
+  "backgrounds": {
+    "formula": {
+      "specialization": "Choose 1 from 3 listed options",
+      "synergy": "GM determines relevant resources get enhanced value",
+      "synergyExamples": "3 suggestions per background for inspiration",
+      "wardAccess": "Determined by resources, not background tier",
+      "narrativeScope": {
+        "A": "City-wide influence and recognition",
+        "B": "District-level power and connections",
+        "C": "Ward-level respect and knowledge",
+        "D": "Neighborhood recognition",
+        "E": "Street-level survival"
+      }
+    }
+  }
+}

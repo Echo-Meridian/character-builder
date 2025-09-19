@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Chimera Powers",
+  "description": "A schema for defining powers for the Chimera lineage in the Sidonia game.",
+  "type": "object",
+  "required": [
+    "lineage",
+    "powers"
+  ],
+  "properties": {
+    "lineage": {
+      "description": "The character lineage, which should be 'chimera'.",
+      "type": "string",
+      "const": "chimera"
+    },
+    "powers": {
+      "description": "An array of all available powers (mutations) for the lineage.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "id",
+          "name",
+          "category",
+          "tiers"
+        ],
+        "properties": {
+          "type": {
+            "description": "The type of ability, e.g., 'augment'.",
+            "type": "string"
+          },
+          "id": {
+            "description": "A unique, URL-friendly identifier for the power.",
+            "type": "string"
+          },
+          "name": {
+            "description": "The display name of the power.",
+            "type": "string"
+          },
+          "category": {
+            "description": "The category the power belongs to (e.g., Primal Manifestations, Core Augments).",
+            "type": "string"
+          },
+          "tiers": {
+            "description": "An object containing the different tiers of the power.",
+            "type": "object",
+            "required": [
+              "tier1"
+            ],
+            "properties": {
+              "tier1": {
+                "$ref": "#/definitions/powerTier"
+              },
+              "tier2": {
+                "$ref": "#/definitions/powerTier"
+              },
+              "tier3": {
+                "$ref": "#/definitions/powerTier"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "powerTier": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "tier",
+        "mutationPoints",
+        "permanentCorruption",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "description": "A unique, URL-friendly identifier for the specific tier.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The display name of the power's tier.",
+          "type": "string"
+        },
+        "tier": {
+          "description": "The tier of the power (1, 2, or 3).",
+          "type": "integer",
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        },
+        "mutationPoints": {
+          "description": "The cost of the mutation in points.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "permanentCorruption": {
+          "description": "The amount of permanent corruption incurred, corresponding to its tier.",
+          "type": "integer",
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        },
+        "description": {
+          "description": "An object containing descriptive text for the power tier.",
+          "type": "object",
+          "required": [
+            "short",
+            "player"
+          ],
+          "properties": {
+            "short": {
+              "description": "A brief summary of the power's mechanical effect.",
+              "type": "string"
+            },
+            "player": {
+              "description": "Flavor text and description from the player's perspective.",
+              "type": "string"
+            },
+            "flaw": {
+              "description": "The mechanical drawback or flaw of the power, most common in tier 1.",
+              "type": "string"
+            },
+            "gm": {
+              "description": "Hidden information or context for the Game Master.",
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,63 @@
+{
+  "resourcePoints": {
+    "A": {"points": 24, "maxQuality": 5, "maxCombined": 8, "specializations": 3},
+    "B": {"points": 16, "maxQuality": 4, "maxCombined": 6, "specializations": 2},
+    "C": {"points": 10, "maxQuality": 3, "maxCombined": 5, "specializations": 1},
+    "D": {"points": 6, "maxQuality": 3, "maxCombined": 4, "specializations": 1},
+    "E": {"points": 4, "maxQuality": 2, "maxCombined": 3, "specializations": 0}
+  },
+  "properties": {
+    "tenure": {
+      "own": {"costMultiplier": 3, "description": "Hold the deed"},
+      "lease": {"costMultiplier": 2, "description": "Long-term contract"},
+      "rent": {"costMultiplier": 1, "description": "Short-term agreement"},
+      "sublet": {"costMultiplier": 0.5, "description": "Within another's property"},
+      "perpetuity": {"special": true, "description": "Old Blood hereditary grant"}
+    },
+    "zoning": {
+      "residential": {"baseCost": 2},
+      "commercial": {"baseCost": 3},
+      "industrial": {"baseCost": 4},
+      "agricultural": {"baseCost": 5},
+      "special": {"baseCost": "variable"}
+    }
+  },
+  "contacts": {
+    "specializations": [
+      "goods", "services", "intel", "connections", "mediation", "expertise"
+    ],
+    "reachScale": {
+      "1": "Street-Level",
+      "2": "Ward-Level",
+      "3": "Outer-District-Level",
+      "4": "Central-District-Level",
+      "5": "City-Wide-Level"
+    },
+    "influenceScale": {
+      "1": "Grudging",
+      "2": "Transactional",
+      "3": "Cooperative",
+      "4": "Leveraged",
+      "5": "Bound"
+    }
+  },
+  "retainers": {
+    "specializations": [
+      "bureaucracy", "contract-law", "security", "liaison", "management", "intelligence"
+    ],
+    "competenceScale": {
+      "1": "Amateur",
+      "2": "Professional",
+      "3": "Expert",
+      "4": "Master",
+      "5": "Legend"
+    },
+    "loyaltyScale": {
+      "1": "Antagonistic",
+      "2": "Indifferent",
+      "3": "Respectful",
+      "4": "Kindred",
+      "5": "Devoted"
+    }
+  }
+}
