@@ -16,7 +16,12 @@ async function fetchJson<T>(path: string): Promise<T> {
   if (!response.ok) {
     throw new Error(`Failed to fetch ${path}: ${response.status} ${response.statusText}`);
   }
-  return (await response.json()) as T;
+  const text = await response.text();
+  try {
+    return JSON.parse(text) as T;
+  } catch (error) {
+    throw new Error(`Failed to parse JSON from ${path}: ${(error as Error).message}`);
+  }
 }
 
 async function fetchMarkdown(path: string): Promise<string> {
@@ -84,13 +89,22 @@ async function loadPowerSchemas(): Promise<Record<string, unknown>> {
 }
 
 async function loadPowerSets(): Promise<Partial<Record<LineageKey, RawLineagePowerData>>> {
-  const entries = await Promise.all(
-    Object.entries(POWER_SET_FILES).map(async ([key, path]) => {
-      const lineage = key as LineageKey;
-      const data = await fetchJson<RawLineagePowerData>(path);
-      return [lineage, normalizePowerSet(lineage, data)] as const;
-    })
-  );
+  const requests = Object.entries(POWER_SET_FILES).map(async ([key, path]) => {
+    const lineage = key as LineageKey;
+    const data = await fetchJson<RawLineagePowerData>(path);
+    return [lineage, normalizePowerSet(lineage, data)] as const;
+  });
+
+  const settled = await Promise.allSettled(requests);
+  const entries: Array<readonly [LineageKey, RawLineagePowerData]> = [];
+  settled.forEach((result) => {
+    if (result.status === 'fulfilled') {
+      entries.push(result.value);
+    } else {
+      // eslint-disable-next-line no-console
+      console.warn('[sidonia] Failed to load lineage power data:', result.reason);
+    }
+  });
   return Object.fromEntries(entries);
 }
 
