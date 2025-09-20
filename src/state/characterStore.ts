@@ -21,6 +21,14 @@ export const LINEAGES: LineageKey[] = ['neosapien', 'sorcery', 'esper', 'chimera
 
 export type AttributeKey = 'physique' | 'intellect' | 'presence';
 
+export interface SkillSpecializationSelection {
+  id: string;
+  label: string;
+  type: 'predefined' | 'custom' | 'background';
+  skillId?: string | null;
+  gmApproved: boolean;
+}
+
 export type BodyLocationKey = 'head' | 'torso' | 'leftArm' | 'rightArm' | 'leftLeg' | 'rightLeg';
 export const BODY_LOCATIONS: Record<BodyLocationKey, string> = {
   head: 'Head',
@@ -61,7 +69,9 @@ export interface CharacterBuild {
     contacts: string;
   };
   skills: {
-    focus: string[];
+    ratings: Record<string, number>;
+    specializations: SkillSpecializationSelection[];
+    backgroundSpecialization: string | null;
     notes: string;
   };
   attributes: {
@@ -108,7 +118,12 @@ export interface CharacterStore {
   setResourceAllocation: (key: 'contacts' | 'retainers' | 'properties' | 'liquid', value: number) => void;
   updateResourceNotes: (notes: string) => void;
   updateBackground: (changes: Partial<CharacterBuild['background']>) => void;
-  setSkillFocus: (focus: string[]) => void;
+  setSkillRating: (skillId: string, value: number) => void;
+  toggleSkillSpecialization: (selection: SkillSpecializationSelection) => void;
+  removeSkillSpecialization: (id: string) => void;
+  addCustomSkillSpecialization: (label: string) => void;
+  markSkillSpecializationApproved: (id: string, gmApproved: boolean) => void;
+  setBackgroundSkillSpecialization: (option: string | null) => void;
   updateSkillNotes: (notes: string) => void;
   setAttributeScore: (attribute: AttributeKey, value: number) => void;
   updateAttributeNotes: (notes: string) => void;
@@ -198,7 +213,9 @@ const makeBuild = (label?: string): CharacterBuild => {
       contacts: ''
     },
     skills: {
-      focus: [],
+      ratings: {},
+      specializations: [],
+      backgroundSpecialization: null,
       notes: ''
     },
     attributes: {
@@ -431,12 +448,79 @@ export const useCharacterStore = create<CharacterStore>()(
           background: { ...build.background, ...changes }
         }));
       },
-      setSkillFocus: (focus) => {
+      setSkillRating: (skillId, value) => {
         withActive(set, (build) => ({
           ...build,
-          skills: { ...build.skills, focus }
+          skills: {
+            ...build.skills,
+            ratings: {
+              ...build.skills.ratings,
+              [skillId]: Math.max(0, value)
+            }
+          }
         }));
-        analytics.track('skills.focus_updated', { count: focus.length });
+        analytics.track('skills.rating_set', { skillId, value });
+      },
+      toggleSkillSpecialization: (selection) => {
+        withActive(set, (build) => {
+          const exists = build.skills.specializations.some((entry) => entry.id === selection.id);
+          const specializations = exists
+            ? build.skills.specializations.filter((entry) => entry.id !== selection.id)
+            : [...build.skills.specializations, selection];
+          return {
+            ...build,
+            skills: {
+              ...build.skills,
+              specializations
+            }
+          };
+        });
+        analytics.track('skills.specialization_toggled', { id: selection.id, type: selection.type });
+      },
+      removeSkillSpecialization: (id) => {
+        withActive(set, (build) => ({
+          ...build,
+          skills: {
+            ...build.skills,
+            specializations: build.skills.specializations.filter((entry) => entry.id !== id)
+          }
+        }));
+      },
+      addCustomSkillSpecialization: (label) => {
+        const trimmed = label.trim();
+        if (!trimmed) return;
+        const selection: SkillSpecializationSelection = {
+          id: `custom-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+          label: trimmed,
+          type: 'custom',
+          gmApproved: false
+        };
+        withActive(set, (build) => ({
+          ...build,
+          skills: {
+            ...build.skills,
+            specializations: [...build.skills.specializations, selection]
+          }
+        }));
+        analytics.track('skills.custom_added', {});
+      },
+      markSkillSpecializationApproved: (id, gmApproved) => {
+        withActive(set, (build) => ({
+          ...build,
+          skills: {
+            ...build.skills,
+            specializations: build.skills.specializations.map((entry) =>
+              entry.id === id ? { ...entry, gmApproved } : entry
+            )
+          }
+        }));
+      },
+      setBackgroundSkillSpecialization: (option) => {
+        withActive(set, (build) => ({
+          ...build,
+          skills: { ...build.skills, backgroundSpecialization: option }
+        }));
+        analytics.track('skills.background_specialization', { option });
       },
       updateSkillNotes: (notes) => {
         withActive(set, (build) => ({
@@ -627,9 +711,24 @@ export const useCharacterStore = create<CharacterStore>()(
           const mapLegacyAttributeKey = (scores: Record<string, number> | undefined): Record<AttributeKey, number> => {
             const legacy = scores ?? {};
             return {
-              physique: typeof legacy.grit === 'number' ? legacy.grit : 0,
-              intellect: typeof legacy.guile === 'number' ? legacy.guile : 0,
-              presence: typeof legacy.gravitas === 'number' ? legacy.gravitas : 0
+              physique:
+                typeof legacy.physique === 'number'
+                  ? legacy.physique
+                  : typeof legacy.grit === 'number'
+                  ? legacy.grit
+                  : 0,
+              intellect:
+                typeof legacy.intellect === 'number'
+                  ? legacy.intellect
+                  : typeof legacy.guile === 'number'
+                  ? legacy.guile
+                  : 0,
+              presence:
+                typeof legacy.presence === 'number'
+                  ? legacy.presence
+                  : typeof legacy.gravitas === 'number'
+                  ? legacy.gravitas
+                  : 0
             };
           };
 
@@ -644,10 +743,26 @@ export const useCharacterStore = create<CharacterStore>()(
             };
           };
 
+          const upgradeSkills = (skills: unknown) => {
+            const legacy = skills as { focus?: unknown; notes?: unknown } | undefined;
+            const legacyFocus = Array.isArray(legacy?.focus) ? (legacy?.focus as string[]) : [];
+            const ratings = legacyFocus.reduce<Record<string, number>>((acc, id) => {
+              acc[id] = 1;
+              return acc;
+            }, {});
+            return {
+              ratings,
+              specializations: [],
+              backgroundSpecialization: null,
+              notes: typeof legacy?.notes === 'string' ? legacy.notes : ''
+            } satisfies CharacterBuild['skills'];
+          };
+
           const upgradedBuilds = Object.fromEntries(
             Object.entries((state as CharacterStore).builds ?? {}).map(([id, build]) => {
               const upgraded: CharacterBuild = {
                 ...build,
+                skills: upgradeSkills(build.skills),
                 attributes: {
                   scores: mapLegacyAttributeKey(build.attributes?.scores as Record<string, number> | undefined),
                   notes: build.attributes?.notes ?? '',

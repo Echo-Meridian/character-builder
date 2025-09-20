@@ -34,7 +34,11 @@ export function BuilderPage() {
   const setResourceAllocation = useCharacterStore((state) => state.setResourceAllocation);
   const updateResourceNotes = useCharacterStore((state) => state.updateResourceNotes);
   const updateBackground = useCharacterStore((state) => state.updateBackground);
-  const setSkillFocus = useCharacterStore((state) => state.setSkillFocus);
+  const setSkillRating = useCharacterStore((state) => state.setSkillRating);
+  const toggleSkillSpecialization = useCharacterStore((state) => state.toggleSkillSpecialization);
+  const removeSkillSpecialization = useCharacterStore((state) => state.removeSkillSpecialization);
+  const addCustomSkillSpecialization = useCharacterStore((state) => state.addCustomSkillSpecialization);
+  const setBackgroundSkillSpecialization = useCharacterStore((state) => state.setBackgroundSkillSpecialization);
   const updateSkillNotes = useCharacterStore((state) => state.updateSkillNotes);
   const setAttributeScore = useCharacterStore((state) => state.setAttributeScore);
   const updateAttributeNotes = useCharacterStore((state) => state.updateAttributeNotes);
@@ -65,6 +69,8 @@ export function BuilderPage() {
   }
 
   const selectedPowerSet = build.lineage.key ? data.powerSets?.[build.lineage.key] : undefined;
+  const backgroundTemplate = build.background.title ? data.backgrounds[build.background.title] : undefined;
+  const backgroundSkillOptions = backgroundTemplate?.skillSpecializationOptions ?? [];
 
   const handlePrioritySelect = (category: PriorityCategory, rank: PriorityRank) => assignPriority(category, rank);
   const handlePriorityClear = (category: PriorityCategory) => assignPriority(category, null);
@@ -120,8 +126,15 @@ export function BuilderPage() {
         <SkillsStage
           priority={build.priorities.skills}
           data={data.skills}
-          focus={build.skills.focus}
-          onUpdateFocus={setSkillFocus}
+          ratings={build.skills.ratings}
+          onChangeRating={setSkillRating}
+          specializations={build.skills.specializations}
+          onToggleSpecialization={toggleSkillSpecialization}
+          onRemoveSpecialization={removeSkillSpecialization}
+          onAddCustomSpecialization={addCustomSkillSpecialization}
+          backgroundSpecialization={build.skills.backgroundSpecialization}
+          backgroundOptions={backgroundSkillOptions}
+          onSetBackgroundSpecialization={setBackgroundSkillSpecialization}
           notes={build.skills.notes}
           onUpdateNotes={updateSkillNotes}
         />

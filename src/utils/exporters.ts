@@ -1,8 +1,6 @@
 import type { CharacterBuild } from '../state/characterStore';
 import type { BackgroundEntry, CharacterBuilderData } from '../data/types';
 
-const CUSTOM_SPECIALIZATION_PREFIX = 'custom::';
-
 interface ExportPayload {
   version: string;
   generatedAt: string;
@@ -93,8 +91,23 @@ function renderTextSheet(build: CharacterBuild): string {
   lines.push(`Details: ${build.background.tierNotes}`);
   lines.push(`Contacts: ${build.background.contacts}`);
   lines.push('');
-  lines.push('Skill Focus:');
-  build.skills.focus.forEach((entry) => lines.push(`  - ${formatSkillFocusLabel(entry)}`));
+  lines.push('Skills:');
+  Object.entries(build.skills.ratings).forEach(([skillId, rating]) => {
+    if (rating > 0) {
+      lines.push(`  ${formatSkillId(skillId)}: ${rating}`);
+    }
+  });
+  const nonBackgroundSpecs = build.skills.specializations.filter((entry) => entry.type !== 'background');
+  if (nonBackgroundSpecs.length > 0) {
+    lines.push('Specializations:');
+    nonBackgroundSpecs.forEach((entry) => {
+      const status = entry.type === 'custom' && !entry.gmApproved ? ' (Pending GM Approval)' : '';
+      lines.push(`  - ${entry.label}${status}`);
+    });
+  }
+  if (build.skills.backgroundSpecialization) {
+    lines.push(`Background Specialization: ${build.skills.backgroundSpecialization}`);
+  }
   lines.push(`Skill Notes: ${build.skills.notes}`);
   lines.push('');
   lines.push('Attributes:');
@@ -144,12 +157,9 @@ function slugify(value: string) {
   return cleaned || 'sidonia-character';
 }
 
-function formatSkillFocusLabel(value: string) {
-  if (value.startsWith(CUSTOM_SPECIALIZATION_PREFIX)) {
-    return `Custom · ${value.slice(CUSTOM_SPECIALIZATION_PREFIX.length)}`;
-  }
+function formatSkillId(value: string) {
   const [discipline, skill] = value.split(':');
-  return `${toTitleCase(discipline)} · ${toTitleCase(skill?.replace(/-/g, ' ') ?? '')}`;
+  return `${toTitleCase(discipline)} · ${toTitleCase((skill ?? '').replace(/-/g, ' '))}`;
 }
 
 function toTitleCase(value: string) {
