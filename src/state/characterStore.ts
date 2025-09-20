@@ -29,6 +29,37 @@ export interface SkillSpecializationSelection {
   gmApproved: boolean;
 }
 
+interface BaseResourceEntry {
+  id: string;
+  name: string;
+  description: string;
+  gmApproved: boolean;
+}
+
+export interface ContactResourceEntry extends BaseResourceEntry {
+  specialization: string | null;
+  reach: number;
+  influence: number;
+}
+
+export interface RetainerResourceEntry extends BaseResourceEntry {
+  specialization: string | null;
+  loyalty: number;
+  competence: number;
+}
+
+export interface PropertyResourceEntry extends BaseResourceEntry {
+  tenure: string;
+  zoning: string;
+  ward: string;
+  specialization: string | null;
+}
+
+export interface GoodsResourceEntry extends BaseResourceEntry {
+  specialization: string | null;
+  quality: number;
+}
+
 export type BodyLocationKey = 'head' | 'torso' | 'leftArm' | 'rightArm' | 'leftLeg' | 'rightLeg';
 export const BODY_LOCATIONS: Record<BodyLocationKey, string> = {
   head: 'Head',
@@ -60,7 +91,11 @@ export interface CharacterBuild {
     revealMechanics: boolean;
   };
   resources: {
-    allocations: Record<'contacts' | 'retainers' | 'properties' | 'liquid', number>;
+    contacts: ContactResourceEntry[];
+    retainers: RetainerResourceEntry[];
+    properties: PropertyResourceEntry[];
+    goods: GoodsResourceEntry[];
+    liquid: number;
     notes: string;
   };
   background: {
@@ -116,7 +151,19 @@ export interface CharacterStore {
   selectLineage: (key: LineageKey | null) => void;
   toggleLineageReveal: () => void;
   updateLineageNotes: (notes: string) => void;
-  setResourceAllocation: (key: 'contacts' | 'retainers' | 'properties' | 'liquid', value: number) => void;
+  addContactResource: (payload?: Partial<Omit<ContactResourceEntry, 'id'>>) => void;
+  updateContactResource: (id: string, changes: Partial<ContactResourceEntry>) => void;
+  removeContactResource: (id: string) => void;
+  addRetainerResource: (payload?: Partial<Omit<RetainerResourceEntry, 'id'>>) => void;
+  updateRetainerResource: (id: string, changes: Partial<RetainerResourceEntry>) => void;
+  removeRetainerResource: (id: string) => void;
+  addPropertyResource: (payload?: Partial<Omit<PropertyResourceEntry, 'id'>>) => void;
+  updatePropertyResource: (id: string, changes: Partial<PropertyResourceEntry>) => void;
+  removePropertyResource: (id: string) => void;
+  addGoodsResource: (payload?: Partial<Omit<GoodsResourceEntry, 'id'>>) => void;
+  updateGoodsResource: (id: string, changes: Partial<GoodsResourceEntry>) => void;
+  removeGoodsResource: (id: string) => void;
+  setResourceLiquid: (value: number) => void;
   updateResourceNotes: (notes: string) => void;
   updateBackground: (changes: Partial<CharacterBuild['background']>) => void;
   setSkillRating: (skillId: string, value: number) => void;
@@ -183,6 +230,11 @@ const createEmptyProfile = (): CharacterProfile => ({
 
 const nowIso = () => new Date().toISOString();
 
+const createId = (prefix: string) =>
+  typeof crypto !== 'undefined' && crypto.randomUUID
+    ? crypto.randomUUID()
+    : `${prefix}-${Math.random().toString(36).slice(2, 9)}`;
+
 const makeBuild = (label?: string): CharacterBuild => {
   const id = typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `sidonia-${Math.random().toString(36).slice(2, 9)}`;
   const timestamp = nowIso();
@@ -200,12 +252,11 @@ const makeBuild = (label?: string): CharacterBuild => {
       revealMechanics: false
     },
     resources: {
-      allocations: {
-        contacts: 0,
-        retainers: 0,
-        properties: 0,
-        liquid: 0
-      },
+      contacts: [],
+      retainers: [],
+      properties: [],
+      goods: [],
+      liquid: 0,
       notes: ''
     },
     background: {
@@ -451,18 +502,200 @@ export const useCharacterStore = create<CharacterStore>()(
           lineage: { ...build.lineage, notes }
         }));
       },
-      setResourceAllocation: (key, value) => {
+      addContactResource: (payload: Partial<Omit<ContactResourceEntry, 'id'>> = {}) => {
+        const entry: ContactResourceEntry = {
+          id: createId('contact'),
+          name: payload.name ?? '',
+          description: payload.description ?? '',
+          gmApproved: payload.gmApproved ?? false,
+          specialization: payload.specialization ?? null,
+          reach: Math.min(Math.max(payload.reach ?? 0, 0), 10),
+          influence: Math.min(Math.max(payload.influence ?? 0, 0), 10)
+        };
         withActive(set, (build) => ({
           ...build,
           resources: {
             ...build.resources,
-            allocations: {
-              ...build.resources.allocations,
-              [key]: Math.max(0, value)
-            }
+            contacts: [...build.resources.contacts, entry]
           }
         }));
-        analytics.track('resources.allocated', { key, value });
+        analytics.track('resources.contact_added', {});
+      },
+      updateContactResource: (id, changes) => {
+        withActive(set, (build) => ({
+          ...build,
+          resources: {
+            ...build.resources,
+            contacts: build.resources.contacts.map((entry) =>
+              entry.id === id
+                ? {
+                    ...entry,
+                    ...changes,
+                    reach: changes.reach !== undefined ? Math.min(Math.max(changes.reach, 0), 10) : entry.reach,
+                    influence:
+                      changes.influence !== undefined ? Math.min(Math.max(changes.influence, 0), 10) : entry.influence
+                  }
+                : entry
+            )
+          }
+        }));
+      },
+      removeContactResource: (id) => {
+        withActive(set, (build) => ({
+          ...build,
+          resources: {
+            ...build.resources,
+            contacts: build.resources.contacts.filter((entry) => entry.id !== id)
+          }
+        }));
+      },
+      addRetainerResource: (payload: Partial<Omit<RetainerResourceEntry, 'id'>> = {}) => {
+        const entry: RetainerResourceEntry = {
+          id: createId('retainer'),
+          name: payload.name ?? '',
+          description: payload.description ?? '',
+          gmApproved: payload.gmApproved ?? false,
+          specialization: payload.specialization ?? null,
+          loyalty: Math.min(Math.max(payload.loyalty ?? 0, 0), 10),
+          competence: Math.min(Math.max(payload.competence ?? 0, 0), 10)
+        };
+        withActive(set, (build) => ({
+          ...build,
+          resources: {
+            ...build.resources,
+            retainers: [...build.resources.retainers, entry]
+          }
+        }));
+        analytics.track('resources.retainer_added', {});
+      },
+      updateRetainerResource: (id, changes) => {
+        withActive(set, (build) => ({
+          ...build,
+          resources: {
+            ...build.resources,
+            retainers: build.resources.retainers.map((entry) =>
+              entry.id === id
+                ? {
+                    ...entry,
+                    ...changes,
+                    loyalty: changes.loyalty !== undefined ? Math.min(Math.max(changes.loyalty, 0), 10) : entry.loyalty,
+                    competence:
+                      changes.competence !== undefined
+                        ? Math.min(Math.max(changes.competence, 0), 10)
+                        : entry.competence
+                  }
+                : entry
+            )
+          }
+        }));
+      },
+      removeRetainerResource: (id) => {
+        withActive(set, (build) => ({
+          ...build,
+          resources: {
+            ...build.resources,
+            retainers: build.resources.retainers.filter((entry) => entry.id !== id)
+          }
+        }));
+      },
+      addPropertyResource: (payload: Partial<Omit<PropertyResourceEntry, 'id'>> = {}) => {
+        const entry: PropertyResourceEntry = {
+          id: createId('property'),
+          name: payload.name ?? '',
+          description: payload.description ?? '',
+          gmApproved: payload.gmApproved ?? false,
+          tenure: payload.tenure ?? '',
+          zoning: payload.zoning ?? '',
+          ward: payload.ward ?? '',
+          specialization: payload.specialization ?? null
+        };
+        withActive(set, (build) => ({
+          ...build,
+          resources: {
+            ...build.resources,
+            properties: [...build.resources.properties, entry]
+          }
+        }));
+        analytics.track('resources.property_added', {});
+      },
+      updatePropertyResource: (id, changes) => {
+        withActive(set, (build) => ({
+          ...build,
+          resources: {
+            ...build.resources,
+            properties: build.resources.properties.map((entry) =>
+              entry.id === id
+                ? {
+                    ...entry,
+                    ...changes
+                  }
+                : entry
+            )
+          }
+        }));
+      },
+      removePropertyResource: (id) => {
+        withActive(set, (build) => ({
+          ...build,
+          resources: {
+            ...build.resources,
+            properties: build.resources.properties.filter((entry) => entry.id !== id)
+          }
+        }));
+      },
+      addGoodsResource: (payload: Partial<Omit<GoodsResourceEntry, 'id'>> = {}) => {
+        const entry: GoodsResourceEntry = {
+          id: createId('goods'),
+          name: payload.name ?? '',
+          description: payload.description ?? '',
+          gmApproved: payload.gmApproved ?? false,
+          specialization: payload.specialization ?? null,
+          quality: Math.min(Math.max(payload.quality ?? 0, 0), 10)
+        };
+        withActive(set, (build) => ({
+          ...build,
+          resources: {
+            ...build.resources,
+            goods: [...build.resources.goods, entry]
+          }
+        }));
+        analytics.track('resources.goods_added', {});
+      },
+      updateGoodsResource: (id, changes) => {
+        withActive(set, (build) => ({
+          ...build,
+          resources: {
+            ...build.resources,
+            goods: build.resources.goods.map((entry) =>
+              entry.id === id
+                ? {
+                    ...entry,
+                    ...changes,
+                    quality: changes.quality !== undefined ? Math.min(Math.max(changes.quality, 0), 10) : entry.quality
+                  }
+                : entry
+            )
+          }
+        }));
+      },
+      removeGoodsResource: (id) => {
+        withActive(set, (build) => ({
+          ...build,
+          resources: {
+            ...build.resources,
+            goods: build.resources.goods.filter((entry) => entry.id !== id)
+          }
+        }));
+      },
+      setResourceLiquid: (value) => {
+        withActive(set, (build) => ({
+          ...build,
+          resources: {
+            ...build.resources,
+            liquid: Math.max(0, value)
+          }
+        }));
+        analytics.track('resources.liquid_set', { value });
       },
       updateResourceNotes: (notes) => {
         withActive(set, (build) => ({
@@ -738,7 +971,7 @@ export const useCharacterStore = create<CharacterStore>()(
     }),
     {
       name: 'sidonia-character-builder',
-      version: 3,
+      version: 4,
       migrate: (state, version) => {
         if (!state || typeof state !== 'object') {
           return state;
@@ -806,6 +1039,91 @@ export const useCharacterStore = create<CharacterStore>()(
           } satisfies CharacterBuild['skills'];
         };
 
+        const upgradeResources = (resources: unknown): CharacterBuild['resources'] => {
+          const legacy = (resources ?? {}) as Partial<CharacterBuild['resources']> & {
+            allocations?: Record<string, number>;
+          };
+
+          const ensureContact = (entry: Partial<ContactResourceEntry> & { notes?: string }, index: number): ContactResourceEntry => ({
+            id: entry.id ?? createId(`contact-${index}`),
+            name: entry.name ?? '',
+            description: entry.description ?? entry.notes ?? '',
+            gmApproved: entry.gmApproved ?? false,
+            specialization: entry.specialization ?? null,
+            reach: typeof entry.reach === 'number' ? entry.reach : 0,
+            influence: typeof entry.influence === 'number' ? entry.influence : 0
+          });
+
+          const ensureRetainer = (
+            entry: Partial<RetainerResourceEntry> & { notes?: string },
+            index: number
+          ): RetainerResourceEntry => ({
+            id: entry.id ?? createId(`retainer-${index}`),
+            name: entry.name ?? '',
+            description: entry.description ?? entry.notes ?? '',
+            gmApproved: entry.gmApproved ?? false,
+            specialization: entry.specialization ?? null,
+            loyalty: typeof entry.loyalty === 'number' ? entry.loyalty : 0,
+            competence: typeof entry.competence === 'number' ? entry.competence : 0
+          });
+
+          const ensureProperty = (
+            entry: Partial<PropertyResourceEntry> & { notes?: string },
+            index: number
+          ): PropertyResourceEntry => ({
+            id: entry.id ?? createId(`property-${index}`),
+            name: entry.name ?? '',
+            description: entry.description ?? entry.notes ?? '',
+            gmApproved: entry.gmApproved ?? false,
+            tenure: entry.tenure ?? '',
+            zoning: entry.zoning ?? '',
+            ward: entry.ward ?? '',
+            specialization: entry.specialization ?? null
+          });
+
+          const ensureGoods = (
+            entry: Partial<GoodsResourceEntry> & { notes?: string },
+            index: number
+          ): GoodsResourceEntry => ({
+            id: entry.id ?? createId(`goods-${index}`),
+            name: entry.name ?? '',
+            description: entry.description ?? entry.notes ?? '',
+            gmApproved: entry.gmApproved ?? false,
+            specialization: entry.specialization ?? null,
+            quality: typeof entry.quality === 'number' ? entry.quality : 0
+          });
+
+          const contacts = Array.isArray(legacy.contacts)
+            ? legacy.contacts.map((entry, index) => ensureContact(entry, index))
+            : [];
+          const retainers = Array.isArray(legacy.retainers)
+            ? legacy.retainers.map((entry, index) => ensureRetainer(entry, index))
+            : [];
+          const properties = Array.isArray(legacy.properties)
+            ? legacy.properties.map((entry, index) => ensureProperty(entry, index))
+            : [];
+          const goods = Array.isArray((legacy as any).goods)
+            ? ((legacy as any).goods as Array<Partial<GoodsResourceEntry>>).map((entry, index) =>
+                ensureGoods(entry, index)
+              )
+            : [];
+
+          const liquid = typeof legacy.liquid === 'number'
+            ? legacy.liquid
+            : typeof legacy.allocations?.liquid === 'number'
+            ? legacy.allocations.liquid
+            : 0;
+
+          return {
+            contacts,
+            retainers,
+            properties,
+            goods,
+            liquid,
+            notes: typeof legacy.notes === 'string' ? legacy.notes : ''
+          } satisfies CharacterBuild['resources'];
+        };
+
         const upgradedBuilds = Object.fromEntries(
           Object.entries(((state as CharacterStore).builds ?? {}) as Record<string, unknown>).map(([id, rawBuild]) => {
             const build = rawBuild as Partial<CharacterBuild> & { attributes?: any; skills?: any };
@@ -818,9 +1136,11 @@ export const useCharacterStore = create<CharacterStore>()(
             };
 
             const upgradedSkills = upgradeSkills(build.skills);
+            const upgradedResources = upgradeResources(build.resources);
 
             const upgradedBuild: CharacterBuild = {
               ...(build as CharacterBuild),
+              resources: upgradedResources,
               skills: upgradedSkills,
               attributes: upgradedAttributes
             };

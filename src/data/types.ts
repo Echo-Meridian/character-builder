@@ -13,6 +13,7 @@ export interface ResourceSystem {
   properties: {
     tenure: Record<string, { costMultiplier?: number; description?: string; special?: boolean }>;
     zoning: Record<string, { baseCost: number | string }>;
+    specializations: string[];
   };
   contacts: {
     specializations: string[];
@@ -23,6 +24,9 @@ export interface ResourceSystem {
     specializations: string[];
     competenceScale: Record<string, string>;
     loyaltyScale: Record<string, string>;
+  };
+  goods: {
+    specializations: string[];
   };
 }
 

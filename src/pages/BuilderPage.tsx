@@ -31,9 +31,21 @@ export function BuilderPage() {
   const selectLineage = useCharacterStore((state) => state.selectLineage);
   const toggleLineageReveal = useCharacterStore((state) => state.toggleLineageReveal);
   const updateLineageNotes = useCharacterStore((state) => state.updateLineageNotes);
-  const setResourceAllocation = useCharacterStore((state) => state.setResourceAllocation);
   const updateResourceNotes = useCharacterStore((state) => state.updateResourceNotes);
   const updateBackground = useCharacterStore((state) => state.updateBackground);
+  const addContactResource = useCharacterStore((state) => state.addContactResource);
+  const updateContactResource = useCharacterStore((state) => state.updateContactResource);
+  const removeContactResource = useCharacterStore((state) => state.removeContactResource);
+  const addRetainerResource = useCharacterStore((state) => state.addRetainerResource);
+  const updateRetainerResource = useCharacterStore((state) => state.updateRetainerResource);
+  const removeRetainerResource = useCharacterStore((state) => state.removeRetainerResource);
+  const addPropertyResource = useCharacterStore((state) => state.addPropertyResource);
+  const updatePropertyResource = useCharacterStore((state) => state.updatePropertyResource);
+  const removePropertyResource = useCharacterStore((state) => state.removePropertyResource);
+  const addGoodsResource = useCharacterStore((state) => state.addGoodsResource);
+  const updateGoodsResource = useCharacterStore((state) => state.updateGoodsResource);
+  const removeGoodsResource = useCharacterStore((state) => state.removeGoodsResource);
+  const setResourceLiquid = useCharacterStore((state) => state.setResourceLiquid);
   const setSkillRating = useCharacterStore((state) => state.setSkillRating);
   const toggleSkillSpecialization = useCharacterStore((state) => state.toggleSkillSpecialization);
   const removeSkillSpecialization = useCharacterStore((state) => state.removeSkillSpecialization);
@@ -107,8 +119,24 @@ export function BuilderPage() {
           priority={build.priorities.resources}
           system={data.resources}
           costs={data.resourceCosts}
-          allocations={build.resources.allocations}
-          onAllocationChange={setResourceAllocation}
+          contacts={build.resources.contacts}
+          retainers={build.resources.retainers}
+          properties={build.resources.properties}
+          goods={build.resources.goods}
+          liquid={build.resources.liquid}
+          onAddContact={addContactResource}
+          onUpdateContact={updateContactResource}
+          onRemoveContact={removeContactResource}
+          onAddRetainer={addRetainerResource}
+          onUpdateRetainer={updateRetainerResource}
+          onRemoveRetainer={removeRetainerResource}
+          onAddProperty={addPropertyResource}
+          onUpdateProperty={updatePropertyResource}
+          onRemoveProperty={removePropertyResource}
+          onAddGoods={addGoodsResource}
+          onUpdateGoods={updateGoodsResource}
+          onRemoveGoods={removeGoodsResource}
+          onUpdateLiquid={setResourceLiquid}
           notes={build.resources.notes}
           onUpdateNotes={updateResourceNotes}
         />

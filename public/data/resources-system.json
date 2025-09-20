@@ -20,7 +20,15 @@
       "industrial": {"baseCost": 4},
       "agricultural": {"baseCost": 5},
       "special": {"baseCost": "variable"}
-    }
+    },
+    "specializations": [
+      "Safe House",
+      "Front Business",
+      "Sanctuary",
+      "Workshop",
+      "Archive",
+      "Stronghold"
+    ]
   },
   "contacts": {
     "specializations": [
@@ -59,5 +67,15 @@
       "4": "Kindred",
       "5": "Devoted"
     }
+  },
+  "goods": {
+    "specializations": [
+      "Weapons Cache",
+      "Medical Supplies",
+      "Fine Goods",
+      "Contraband",
+      "Aethertech",
+      "Evidence Locker"
+    ]
   }
 }

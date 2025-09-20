@@ -81,10 +81,63 @@ function renderTextSheet(build: CharacterBuild): string {
   lines.push(`Lineage: ${build.lineage.key ?? 'Unchosen'}`);
   lines.push(`Lineage Notes: ${build.lineage.notes}`);
   lines.push('');
-  lines.push('Resource Allocations:');
-  Object.entries(build.resources.allocations).forEach(([key, value]) => {
-    lines.push(`  ${key}: ${value}`);
-  });
+  lines.push('Resources:');
+  if (build.resources.contacts.length > 0) {
+    lines.push('  Contacts:');
+    build.resources.contacts.forEach((contact) => {
+      const gmTag = contact.gmApproved ? '' : ' [GM Approval Required]';
+      const specialization = contact.specialization ? ` (${contact.specialization})` : '';
+      const name = contact.name || 'Unnamed Contact';
+      lines.push(`    - ${name}${specialization}${gmTag}`);
+      lines.push(`      Reach ${contact.reach} / Influence ${contact.influence}`);
+      if (contact.description) {
+        lines.push(`      ${contact.description}`);
+      }
+    });
+  }
+  if (build.resources.retainers.length > 0) {
+    lines.push('  Retainers:');
+    build.resources.retainers.forEach((retainer) => {
+      const gmTag = retainer.gmApproved ? '' : ' [GM Approval Required]';
+      const specialization = retainer.specialization ? ` (${retainer.specialization})` : '';
+      const name = retainer.name || 'Unnamed Retainer';
+      lines.push(`    - ${name}${specialization}${gmTag}`);
+      lines.push(`      Competence ${retainer.competence} / Loyalty ${retainer.loyalty}`);
+      if (retainer.description) {
+        lines.push(`      ${retainer.description}`);
+      }
+    });
+  }
+  if (build.resources.properties.length > 0) {
+    lines.push('  Properties:');
+    build.resources.properties.forEach((property) => {
+      const gmTag = property.gmApproved ? '' : ' [GM Approval Required]';
+      const specialization = property.specialization ? ` (${property.specialization})` : '';
+      const name = property.name || 'Unnamed Property';
+      lines.push(`    - ${name}${specialization}${gmTag}`);
+      lines.push(`      Tenure: ${property.tenure || '—'} · Zoning: ${property.zoning || '—'}`);
+      if (property.ward) {
+        lines.push(`      Ward: ${property.ward}`);
+      }
+      if (property.description) {
+        lines.push(`      ${property.description}`);
+      }
+    });
+  }
+  if (build.resources.goods.length > 0) {
+    lines.push('  Goods & Stockpiles:');
+    build.resources.goods.forEach((goods) => {
+      const gmTag = goods.gmApproved ? '' : ' [GM Approval Required]';
+      const specialization = goods.specialization ? ` (${goods.specialization})` : '';
+      const name = goods.name || 'Unnamed Cache';
+      lines.push(`    - ${name}${specialization}${gmTag}`);
+      lines.push(`      Quality ${goods.quality}`);
+      if (goods.description) {
+        lines.push(`      ${goods.description}`);
+      }
+    });
+  }
+  lines.push(`  Liquid Assets: ${build.resources.liquid}`);
   lines.push(`Resource Notes: ${build.resources.notes}`);
   lines.push('');
   lines.push(`Background: ${build.background.title}`);
