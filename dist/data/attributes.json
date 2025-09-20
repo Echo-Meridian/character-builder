@@ -1,0 +1,123 @@
+{
+  "attributes": {
+    "pointBuy": [
+      {
+        "priority": "A",
+        "attributePoints": 9,
+        "specializations": 2
+      },
+      {
+        "priority": "B",
+        "attributePoints": 8,
+        "specializations": 2
+      },
+      {
+        "priority": "C",
+        "attributePoints": 7,
+        "specializations": 1
+      },
+      {
+        "priority": "D",
+        "attributePoints": 6,
+        "specializations": 1
+      },
+      {
+        "priority": "E",
+        "attributePoints": 5,
+        "specializations": 0
+      }
+    ],
+    "ratings": [
+      {
+        "score": 0,
+        "label": "Significant Flaw"
+      },
+      {
+        "score": 1,
+        "label": "Below Average"
+      },
+      {
+        "score": 2,
+        "label": "Average"
+      },
+      {
+        "score": 3,
+        "label": "Exceptional"
+      },
+      {
+        "score": 4,
+        "label": "Extraordinary"
+      },
+      {
+        "score": 5,
+        "label": "Peerless"
+      }
+    ],
+    "definitions": {
+      "Physique": {
+        "description": "The Meat. This is your body's raw capability. How tough, fast, and perceptive you are.",
+        "specializations": [
+          {
+            "name": "Strength",
+            "description": "Raw physical power."
+          },
+          {
+            "name": "Agility",
+            "description": "Finesse, balance, and reflexes."
+          },
+          {
+            "name": "Stamina",
+            "description": "Health, endurance, and resilience."
+          },
+          {
+            "name": "Perception",
+            "description": "The raw acuity of your senses—eyesight, hearing, smell, etc."
+          }
+        ]
+      },
+      "Intellect": {
+        "description": "The Smarts. This is your mind's horsepower. Logic, intuition, and thinking on your feet.",
+        "specializations": [
+          {
+            "name": "Reasoning",
+            "description": "Logic, deduction, and connecting evidence."
+          },
+          {
+            "name": "Intuition",
+            "description": "Gut feelings, instinct, and subconscious insight."
+          },
+          {
+            "name": "Wits",
+            "description": "Thinking on your feet and quick, clever improvisation."
+          },
+          {
+            "name": "Willpower",
+            "description": "Mental fortitude, determination, and focus."
+          }
+        ]
+      },
+      "Presence": {
+        "description": "The Juice. This is your force of personality. Your charm, your menace, your ability to command a room.",
+        "specializations": [
+          {
+            "name": "Charisma",
+            "description": "Natural charm and likability."
+          },
+          {
+            "name": "Manipulation",
+            "description": "Deception and leverage."
+          },
+          {
+            "name": "Empathy",
+            "description": "Reading people's emotions and motives."
+          },
+          {
+            "name": "Composure",
+            "description": "Maintaining a poker face and resisting social pressure."
+          }
+        ]
+      }
+    }
+  }
+}
+

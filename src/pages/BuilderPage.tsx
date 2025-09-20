@@ -134,6 +134,7 @@ export function BuilderPage() {
           onUpdateScore={(attribute: AttributeKey, value: number) => setAttributeScore(attribute, value)}
           notes={build.attributes.notes}
           onUpdateNotes={updateAttributeNotes}
+          data={data.attributes}
         />
       );
       break;

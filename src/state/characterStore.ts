@@ -19,21 +19,7 @@ export const STAGES: CharacterStage[] = ['priorities', 'lineage', 'resources', '
 
 export const LINEAGES: LineageKey[] = ['neosapien', 'sorcery', 'esper', 'chimera', 'automata'];
 
-export type AttributeKey = 'grit' | 'guile' | 'gravitas';
-export const ATTRIBUTES: Record<AttributeKey, { label: string; description: string }> = {
-  grit: {
-    label: 'Grit',
-    description: 'Physical resilience, intimidation, and the weight of presence.'
-  },
-  guile: {
-    label: 'Guile',
-    description: 'Cunning, perception, and the ability to read and mislead.'
-  },
-  gravitas: {
-    label: 'Gravitas',
-    description: 'Spiritual pressure, empathy, and tether to the aetheric currents.'
-  }
-};
+export type AttributeKey = 'physique' | 'intellect' | 'presence';
 
 export type BodyLocationKey = 'head' | 'torso' | 'leftArm' | 'rightArm' | 'leftLeg' | 'rightLeg';
 export const BODY_LOCATIONS: Record<BodyLocationKey, string> = {
@@ -150,9 +136,9 @@ const emptyPriorities = (): Record<PriorityCategory, PriorityRank | null> => ({
 });
 
 const defaultAttributes = (): Record<AttributeKey, number> => ({
-  grit: 0,
-  guile: 0,
-  gravitas: 0
+  physique: 0,
+  intellect: 0,
+  presence: 0
 });
 
 const defaultHealth = (): CharacterBuild['health'] => ({
@@ -604,7 +590,41 @@ export const useCharacterStore = create<CharacterStore>()(
     }),
     {
       name: 'sidonia-character-builder',
-      version: 1
+      version: 2,
+      migrate: (state, version) => {
+        if (!state) {
+          return state;
+        }
+        if (version < 2) {
+          const mapLegacyAttributeKey = (scores: Record<string, number> | undefined): Record<AttributeKey, number> => {
+            const legacy = scores ?? {};
+            return {
+              physique: typeof legacy.grit === 'number' ? legacy.grit : 0,
+              intellect: typeof legacy.guile === 'number' ? legacy.guile : 0,
+              presence: typeof legacy.gravitas === 'number' ? legacy.gravitas : 0
+            };
+          };
+
+          const upgradedBuilds = Object.fromEntries(
+            Object.entries((state as CharacterStore).builds ?? {}).map(([id, build]) => {
+              const upgraded: CharacterBuild = {
+                ...build,
+                attributes: {
+                  scores: mapLegacyAttributeKey(build.attributes?.scores as Record<string, number> | undefined),
+                  notes: build.attributes?.notes ?? ''
+                }
+              };
+              return [id, upgraded];
+            })
+          );
+
+          return {
+            ...(state as CharacterStore),
+            builds: upgradedBuilds
+          } satisfies CharacterStore;
+        }
+        return state as CharacterStore;
+      }
     }
   )
 );

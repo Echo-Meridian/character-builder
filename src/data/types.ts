@@ -45,18 +45,46 @@ export interface ResourceCostsData {
   };
 }
 
-export interface BackgroundFormula {
-  specialization: string;
-  synergy: string;
-  synergyExamples: string;
-  wardAccess: string;
-  narrativeScope: Record<PriorityRank, string>;
+export interface BackgroundProfession {
+  priority: PriorityRank;
+  title: string;
+  description: string;
 }
 
-export interface BackgroundsData {
-  backgrounds: {
-    formula: BackgroundFormula;
-  };
+export interface BackgroundEntry {
+  description: string;
+  skillSpecializationOptions?: string[];
+  resourceSynergyExamples?: string[];
+  professions?: BackgroundProfession[];
+}
+
+export type BackgroundsData = Record<string, BackgroundEntry>;
+
+export interface AttributePointBuyEntry {
+  priority: PriorityRank;
+  attributePoints: number;
+  specializations: number;
+}
+
+export interface AttributeRatingEntry {
+  score: number;
+  label: string;
+}
+
+export interface AttributeSpecializationEntry {
+  name: string;
+  description: string;
+}
+
+export interface AttributeDefinitionEntry {
+  description: string;
+  specializations: AttributeSpecializationEntry[];
+}
+
+export interface AttributesData {
+  pointBuy: AttributePointBuyEntry[];
+  ratings: AttributeRatingEntry[];
+  definitions: Record<string, AttributeDefinitionEntry>;
 }
 
 export interface SkillSpecialization {
@@ -113,6 +141,7 @@ export interface CharacterBuilderData {
   legal: LegalData;
   powerSchemas: Record<string, unknown>;
   powerSets: Partial<Record<LineageKey, RawLineagePowerData>>;
+  attributes: AttributesData;
   designDocs: DesignDocument[];
 }
 

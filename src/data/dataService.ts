@@ -5,6 +5,7 @@ import {
   DesignDocumentMeta,
   LegalData,
   LineageKey,
+  AttributesData,
   RawLineagePowerData,
   ResourceCostsData,
   ResourceSystem,
@@ -55,7 +56,7 @@ const DESIGN_DOC_FILES: DesignDocumentMeta[] = [
 ];
 
 export async function loadCharacterBuilderData(): Promise<CharacterBuilderData> {
-  const [backgrounds, skills, resources, resourceCosts, legal, powerSchemasEntries, powerSets, designDocs] = await Promise.all([
+  const [backgrounds, skills, resources, resourceCosts, legal, powerSchemasEntries, powerSets, attributes, designDocs] = await Promise.all([
     fetchJson<BackgroundsData>('/data/backgrounds.json'),
     fetchJson<SkillsData>('/data/Sidonia-Skills.Json'),
     fetchJson<ResourceSystem>('/data/resources-system.json'),
@@ -63,6 +64,7 @@ export async function loadCharacterBuilderData(): Promise<CharacterBuilderData> 
     fetchJson<LegalData>('/data/legal.json'),
     loadPowerSchemas(),
     loadPowerSets(),
+    fetchJson<AttributesData>('/data/attributes.json'),
     loadDesignDocs()
   ]);
 
@@ -74,6 +76,7 @@ export async function loadCharacterBuilderData(): Promise<CharacterBuilderData> 
     legal,
     powerSchemas: powerSchemasEntries,
     powerSets,
+    attributes,
     designDocs
   };
 }

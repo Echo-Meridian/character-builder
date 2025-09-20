@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react';
 import type { SkillsData } from '../../../data/types';
 import type { PriorityRank } from '../../../data/types';
 import './skills-stage.css';
@@ -19,8 +20,16 @@ const PRIORITY_TO_FOCUS_LIMIT: Record<PriorityRank, number> = {
   E: 2
 };
 
+const CUSTOM_SPECIALIZATION_PREFIX = 'custom::';
+
 export function SkillsStage({ priority, data, focus, onUpdateFocus, notes, onUpdateNotes }: SkillsStageProps) {
   const limit = priority ? PRIORITY_TO_FOCUS_LIMIT[priority] : 0;
+  const [customLabel, setCustomLabel] = useState('');
+
+  const availableSlots = useMemo(() => {
+    if (!limit) return Infinity;
+    return Math.max(limit - focus.length, 0);
+  }, [limit, focus.length]);
 
   const toggleFocus = (skillId: string) => {
     const exists = focus.includes(skillId);
@@ -30,6 +39,23 @@ export function SkillsStage({ priority, data, focus, onUpdateFocus, notes, onUpd
     }
     if (limit && focus.length >= limit) return;
     onUpdateFocus([...focus, skillId]);
+  };
+
+  const addCustomSpecialization = () => {
+    const trimmed = customLabel.trim();
+    if (!trimmed) return;
+    const id = `${CUSTOM_SPECIALIZATION_PREFIX}${trimmed}`;
+    if (focus.includes(id)) {
+      setCustomLabel('');
+      return;
+    }
+    if (limit && focus.length >= limit) return;
+    onUpdateFocus([...focus, id]);
+    setCustomLabel('');
+  };
+
+  const removeFocus = (id: string) => {
+    onUpdateFocus(focus.filter((entry) => entry !== id));
   };
 
   return (
@@ -97,10 +123,37 @@ export function SkillsStage({ priority, data, focus, onUpdateFocus, notes, onUpd
           ) : (
             <ul className="focus-pills">
               {focus.map((entry) => (
-                <li key={entry}>{formatSkillId(entry)}</li>
+                <li key={entry} className={entry.startsWith(CUSTOM_SPECIALIZATION_PREFIX) ? 'focus-pills__custom' : ''}>
+                  <span>{formatSkillId(entry)}</span>
+                  {entry.startsWith(CUSTOM_SPECIALIZATION_PREFIX) && <span className="gm-tag">Pending GM Approval</span>}
+                  <button type="button" onClick={() => removeFocus(entry)} aria-label="Remove focus">
+                    ×
+                  </button>
+                </li>
               ))}
             </ul>
           )}
+          <div className="skills-custom">
+            <label>
+              <span>Custom Specialization</span>
+              <div className="skills-custom__controls">
+                <input
+                  value={customLabel}
+                  onChange={(event) => setCustomLabel(event.target.value)}
+                  placeholder="Ex: Underworld Etiquette"
+                  disabled={availableSlots === 0}
+                />
+                <button
+                  type="button"
+                  onClick={addCustomSpecialization}
+                  disabled={availableSlots === 0 || !customLabel.trim()}
+                >
+                  Add
+                </button>
+              </div>
+            </label>
+            <p className="skills-custom__hint">Custom options are provisional until your GM approves them.</p>
+          </div>
         </div>
         <label className="field">
           <span>Skill Notes</span>
@@ -123,6 +176,9 @@ function toTitleCase(value: string) {
 }
 
 function formatSkillId(value: string) {
+  if (value.startsWith(CUSTOM_SPECIALIZATION_PREFIX)) {
+    return `Custom · ${value.slice(CUSTOM_SPECIALIZATION_PREFIX.length)}`;
+  }
   const [discipline, skill] = value.split(':');
   return `${toTitleCase(discipline)} · ${toTitleCase(skill.replace(/-/g, ' '))}`;
 }
