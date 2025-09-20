@@ -109,9 +109,15 @@ export const BODY_LOCATIONS: Record<BodyLocationKey, string> = {
 
 export interface CharacterProfile {
   name: string;
+  alias: string;
   pronouns: string;
   concept: string;
   summary: string;
+  physicalDescription: string;
+  code: string;
+  lineNotCrossed: string;
+  temptation: string;
+  portraitUrl: string;
 }
 
 export interface CharacterBuild {
@@ -273,9 +279,15 @@ const getEsperDepthLimit = (priority: PriorityRank | null): number => (priority 
 
 const createEmptyProfile = (): CharacterProfile => ({
   name: '',
+  alias: '',
   pronouns: '',
   concept: '',
-  summary: ''
+  summary: '',
+  physicalDescription: '',
+  code: '',
+  lineNotCrossed: '',
+  temptation: '',
+  portraitUrl: ''
 });
 
 const nowIso = () => new Date().toISOString();
@@ -1150,6 +1162,24 @@ export const useCharacterStore = create<CharacterStore>()(
           };
         };
 
+        const upgradeProfile = (profile: unknown): CharacterProfile => {
+          const legacy = (profile ?? {}) as Partial<CharacterProfile> & Record<string, unknown>;
+          return {
+            name: typeof legacy.name === 'string' ? legacy.name : '',
+            alias: typeof legacy.alias === 'string' ? legacy.alias : '',
+            pronouns: typeof legacy.pronouns === 'string' ? legacy.pronouns : '',
+            concept: typeof legacy.concept === 'string' ? legacy.concept : '',
+            summary: typeof legacy.summary === 'string' ? legacy.summary : '',
+            physicalDescription:
+              typeof legacy.physicalDescription === 'string' ? legacy.physicalDescription : '',
+            code: typeof legacy.code === 'string' ? legacy.code : '',
+            lineNotCrossed:
+              typeof legacy.lineNotCrossed === 'string' ? legacy.lineNotCrossed : '',
+            temptation: typeof legacy.temptation === 'string' ? legacy.temptation : '',
+            portraitUrl: typeof legacy.portraitUrl === 'string' ? legacy.portraitUrl : ''
+          } satisfies CharacterProfile;
+        };
+
         const upgradeSkills = (skills: unknown): CharacterBuild['skills'] => {
           const legacy = (skills ?? {}) as Partial<CharacterBuild['skills']> & {
             focus?: unknown;
@@ -1297,6 +1327,7 @@ export const useCharacterStore = create<CharacterStore>()(
 
             const upgradedBuild: CharacterBuild = {
               ...(build as CharacterBuild),
+              profile: upgradeProfile(build.profile),
               lineage: upgradedLineage,
               resources: upgradedResources,
               skills: upgradedSkills,

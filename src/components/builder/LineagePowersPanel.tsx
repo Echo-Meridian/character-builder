@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import type { LineageKey, PriorityRank, RawLineagePowerData } from '../../data/types';
 import type { LineagePowerSelection } from '../../state/characterStore';
 import './lineage-powers.css';
@@ -319,6 +320,10 @@ export function LineagePowersPanel({
   }
 
   const selectionsForLineage = selections.filter((entry) => entry.lineage === lineage);
+  const selectionMap = useMemo(
+    () => new Map<string, LineagePowerSelection>(selectionsForLineage.map((entry) => [entry.id, entry])),
+    [selectionsForLineage]
+  );
   const selectedIds = new Set(selectionsForLineage.map((entry) => entry.id));
 
   if (lineage === 'neosapien' && isNeoSapienData(powerData)) {
@@ -655,11 +660,18 @@ export function LineagePowersPanel({
     const esperNote = lineagePriority ? ESPER_NOTES[lineagePriority] : undefined;
     const depthLimit = lineagePriority ? ESPER_DEPTH_LIMIT[lineagePriority] : 0;
 
-    const baseSelections = selectionsForLineage.filter((entry) => entry.kind === 'esper-archetype');
-    const currentEsperRoot = baseSelections[0]?.meta?.root ?? null;
-    const currentEsperCategory = baseSelections[0]?.meta?.category ?? null;
+    const baseSelection = selectionsForLineage.find(
+      (entry) => entry.kind === 'esper-archetype' && entry.meta?.category === 'esper-base'
+    );
+    const mentalistSelection = selectionsForLineage.find(
+      (entry) => entry.kind === 'esper-archetype' && entry.meta?.category === 'esper-mentalist'
+    );
+    const baseRoot = baseSelection?.meta?.root ?? null;
+    const mentalistRoot = mentalistSelection?.meta?.root ?? null;
 
-    const archetypeCount = baseSelections.length;
+    const archetypeCount = selectionsForLineage.filter(
+      (entry) => entry.kind === 'esper-archetype' && entry.meta?.category === 'esper-base'
+    ).length;
     const focusCount = selectionsForLineage.filter((entry) => entry.kind === 'esper-focus').length;
     const frameworkChoiceCount = selectionsForLineage.filter((entry) => entry.kind === 'esper-framework-choice').length;
     const frameworkPathCount = selectionsForLineage.filter((entry) => entry.kind === 'esper-framework-path').length;
@@ -667,32 +679,70 @@ export function LineagePowersPanel({
     const handleArchetypeToggle = (selection: LineagePowerSelection) => {
       const isSelected = selectedIds.has(selection.id);
       const category = selection.meta?.category;
-      if (category === 'esper-base' && !baseAllowed) {
-        return;
-      }
-      if (category === 'esper-mentalist' && !mentalistAllowed) {
-        return;
-      }
-      onClearSelections();
-      if (!isSelected) {
+      if (category === 'esper-base' && !baseAllowed) return;
+      if (category === 'esper-mentalist' && !mentalistAllowed) return;
+
+      if (isSelected) {
         onToggleSelection(selection);
+        return;
       }
+
+      selectionsForLineage
+        .filter((entry) => entry.kind === 'esper-archetype' && entry.meta?.category === category)
+        .forEach((entry) => onToggleSelection(entry));
+
+      onToggleSelection(selection);
     };
 
     const handleFocusToggle = (selection: LineagePowerSelection) => {
       const root = selection.meta?.root;
-      const depth = selection.meta?.depth ?? 0;
-      if (!root || !currentEsperRoot || root !== currentEsperRoot) {
+      if (!root || (root !== baseRoot && root !== mentalistRoot)) {
         return;
       }
+
+      const depth = selection.meta?.depth ?? 0;
       if (depth > depthLimit) {
         return;
       }
+
+      const parentId = selection.meta?.parent;
+      if (depth > 0 && (!parentId || !selectionMap.has(parentId))) {
+        return;
+      }
+
+      const alreadySelected = selectedIds.has(selection.id);
+      if (alreadySelected) {
+        onToggleSelection(selection);
+        return;
+      }
+
+      const selectionPath = selection.meta?.path ?? [selection.id];
+
+      const conflicts = selectionsForLineage.filter((entry) => {
+        if (entry.id === selection.id) return false;
+        if (entry.meta?.root !== root) return false;
+        const entryPath = entry.meta?.path ?? [entry.id];
+        const entryDepth = entry.meta?.depth ?? 0;
+
+        if (entryDepth < depth) {
+          return false;
+        }
+
+        if (entryDepth === depth) {
+          if (entryPath.length <= depth || selectionPath.length <= depth) return false;
+          return entryPath[depth] !== selectionPath[depth];
+        }
+
+        const sharesPrefix = selectionPath.every((value, index) => entryPath[index] === value);
+        return !sharesPrefix;
+      });
+
+      conflicts.forEach((entry) => onToggleSelection(entry));
       onToggleSelection(selection);
     };
 
-    const isRootSelected = (root: string) => currentEsperRoot === root;
-    const isDepthAllowed = (depth: number) => depth <= depthLimit;
+    const isRootSelected = (root: string) => root === baseRoot || root === mentalistRoot;
+    const isDepthAllowed = (root: string, depth: number) => depth <= depthLimit;
 
     const renderEsperFocusNode = (
       focus: UnknownRecord,
@@ -715,7 +765,7 @@ export function LineagePowersPanel({
         }
       };
       const isSelected = selectedIds.has(selection.id);
-      const disabled = !isRootSelected(rootId) || !isDepthAllowed(depth);
+      const disabled = !isRootSelected(rootId) || !isDepthAllowed(rootId, depth);
       const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
       const cardClass = `focus-card${isSelected ? ' focus-card--selected' : ''}`;
       const moveEntries = Array.isArray(focus.moves) ? (focus.moves as unknown[]) : [];
@@ -1093,26 +1143,26 @@ export function LineagePowersPanel({
             {frameworkDetails.foundationalChoices && frameworkDetails.foundationalChoices.length > 0 && (
               <section className="lineage-power-subsection">
                 <h5>Foundational Choices</h5>
-              <ul className="power-list">
-                {frameworkDetails.foundationalChoices.map((choice, index) => {
-                  const mentalistRoot = currentEsperCategory === 'esper-mentalist' && currentEsperRoot ? currentEsperRoot : 'mentalist';
-                  const choiceLabel = typeof choice === 'string' ? choice : String(choice);
-                  const choiceId = `${mentalistRoot}-choice-${index}`;
-                  const selection: LineagePowerSelection = {
-                    id: choiceId,
-                    lineage: 'esper',
-                    label: `Framework Choice — ${choiceLabel}`,
-                    kind: 'esper-framework-choice',
-                    meta: {
-                      root: mentalistRoot,
-                      parent: mentalistRoot,
-                      path: [mentalistRoot, `choice-${index}`],
+                <ul className="power-list">
+                  {frameworkDetails.foundationalChoices.map((choice, index) => {
+                    const choiceLabel = typeof choice === 'string' ? choice : String(choice);
+                    const rootKey = mentalistRoot ?? 'mentalist';
+                    const choiceId = `${rootKey}-choice-${index}`;
+                    const selection: LineagePowerSelection = {
+                      id: choiceId,
+                      lineage: 'esper',
+                      label: `Framework Choice — ${choiceLabel}`,
+                      kind: 'esper-framework-choice',
+                      meta: {
+                        root: rootKey,
+                        parent: rootKey,
+                        path: [rootKey, `choice-${index}`],
                         depth: 1,
                         category: 'esper-mentalist'
                       }
                     };
                     const isSelected = selectedIds.has(selection.id);
-                    const disabled = mentalistRoot === 'mentalist' || !isDepthAllowed(1);
+                    const disabled = !isRootSelected(rootKey) || !isDepthAllowed(rootKey, 1);
                     const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
                     const itemClass = `power-list__item${isSelected ? ' power-list__item--selected' : ''}`;
                     return (

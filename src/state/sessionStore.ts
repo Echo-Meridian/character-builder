@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { analytics } from '../utils/analytics';
 
-const GM_PASSPHRASE = 'VEIL-917';
+const GM_PASSPHRASE = 'CodexRules!!!!!';
 
 type AnalyticsConsent = 'unknown' | 'accepted' | 'declined';
 

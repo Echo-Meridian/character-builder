@@ -72,6 +72,21 @@ function renderTextSheet(build: CharacterBuild): string {
   lines.push(`Concept: ${build.profile.concept}`);
   lines.push(`Pronouns: ${build.profile.pronouns}`);
   lines.push(`Summary: ${build.profile.summary}`);
+  if (build.profile.alias) {
+    lines.push(`Alias: ${build.profile.alias}`);
+  }
+  if (build.profile.physicalDescription) {
+    lines.push(`Physical Description: ${build.profile.physicalDescription}`);
+  }
+  if (build.profile.code) {
+    lines.push(`Code: ${build.profile.code}`);
+  }
+  if (build.profile.lineNotCrossed) {
+    lines.push(`Line Not Crossed: ${build.profile.lineNotCrossed}`);
+  }
+  if (build.profile.temptation) {
+    lines.push(`Temptation: ${build.profile.temptation}`);
+  }
   lines.push('');
   lines.push('Priorities:');
   Object.entries(build.priorities).forEach(([key, value]) => {
