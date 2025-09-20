@@ -1,0 +1,407 @@
+    Beta Test Materials for Character Creation
+
+
+
+
+Section 4 Character Creation Guide
+
+Step 1: The Priority System
+"Alright, so you're still here. Haven't run for the hills yet. Good. Or maybe just stupid. Time will tell.
+Before we get to the nuts and bolts, we gotta figure out your angle. Everyone in this city has one. It's the thing they lean on when the chips are down. Think of it as your primary currency. In Sidonia, power comes in five flavors, and     you had better know which one you're peddling. Look at this chart. This is you. That 'A' you pick? That's your ace in the hole. It's the thing that's gonna keep you alive when everything else has gone sideways. So choose your poison."
+You put your faith in LINEAGE? You're a Freak. And I say that with a straight face. Your power comes from what you are—a Chimera, a Neosapien, a Sorcerer. Something nature cooked up wrong or a back-alley surgeon put together right. Your blood runs hot with abilities that make normal folks nervous, and for good reason. Just remember, being special is a neon sign in a city that loves to shoot out the lights.
+You're banking on RESOURCES? You're a Player. Some people need to throw fireballs. You just need to make a phone call. Your power comes from what you own—the safehouse with no address, the contact who owes you a favor, the clean bank account that can solve messy problems. Don't let anyone tell you money is the root of all evil. In this city, it's the root of survival.
+You think your BACKGROUND is your edge? You're a Ghost. Your power comes from who you were. A former Red Sentinel, an ex-corporate spy, a washed-up detective... You've got a history, and that history has teeth. It opens doors and it slams them shut. Your past follows you around like a stray dog, kid. It can be your most loyal companion or the thing that bites you when you least expect it.
+You're counting on your SKILLS? You're a Pro. In a city of amateurs, you're a master craftsman. The surgeon with the steady hand, the thief with the light touch, the talker with the silver tongue. Others have flash, but you have competence. Your power is the simple, undeniable fact that you're the best at what you do. And in a world this broken, that kind of talent is a damn superpower.
+You're betting on your ATTRIBUTES? You're a Natural. Guess you were just born lucky. Stronger, faster, smarter, or just plain prettier than the rest of us schmucks. You don't have the calluses of the Pro or the scars of the Ghost, but you've got raw, uncut talent. That's a hell of an advantage, but listen close: potential is just a fancy word for "hasn't been tested yet." This city will test you. Count on it.
+"So, what'll it be, kid? What's your story gonna be? Once you know that, we can talk about the fine print."
+
+Step 2: Your Place in the Freak Show
+"Alright, so you've picked your hustle. You know where your power comes from. Now let's talk about the meat-puppet you're walking around in.
+See, it doesn't matter if you're rolling in Resources or haunted by your past—you still have to look at yourself in the mirror every morning. And in Sidonia, what looks back at you is more than just a pretty face. It's your history, your curse, your weapon. It's your Lineage.
+This isn't about your family tree, kid. This is about what's in your blood, your bones, or the wires where your nerves used to be. This is about what makes the normals cross the street when they see you coming. So, let's go down the list. What kind of monster are you?"
+
+The Neosapien: The Pinnacle of Human Potential
+The Neosapien represents humanity unbound by its natural limitations. While corporate clinics offer flawless cosmetic alterations, the true pinnacle of augmentation lies in the Red Sentinels' Forge Program. Through the masterful application of bespoke bio-artistry and flesh-grafting, they create living weapons and paragons of human potential. To receive Forge augments is to transcend the flesh, becoming a symbol of strength and progress in a dangerous world. It is an     opportunity for those with the right connections or deep     pockets to become more.
+“More than human, huh? That's the sales pitch. The Forge Program sells transcendence, but what they're really building are better soldiers. Priority A or B gets you that top-tier military hardware grafted to your bones. Below that? You're getting street-level junk or corporate knock-offs. The promise is a way to climb the ladder in a city with no rungs, but you're still just a product. And in my experience, every product has a warranty that's shorter than you think."
+Neosapien (Synergistic Design)
+
+Synergy Bonus Framework: When a player chooses augments that create a logical "package" (e.g., Muscle Weave + Bone Lacing for a "Bruiser" build, or a Neural Accelerator + Eidetic Memory for a "Analyst" build), the GM can grant a small bonus. This could be:
+A 1-point discount on the Permanent Corruption cost of one of the synergistic augments.
+A minor narrative benefit, such as being well-known in certain circles for their specific brand of augmentation.
+
+The Sorcerer: The Architect of Reality
+The path of the Sorcerer is one of supreme intellectual discipline. They are the physicists of reality's deepest laws. Through grueling study and flawless memorization, they can petition the Aether to reshape the world. Theirs is not a gift, but an achievement earned through tireless dedication. They see not magic, but the elegant, immutable mathematics of existence, and possess the will to solve its most challenging equations.
+"Architects of Reality... right. They're librarians, kid. The most dangerous kind. They spend their whole lives learning a language that can set the air on fire. They'll tell you it's all about precision and discipline, and they're not wrong. But I've seen the look in their eyes. They're not worried about temptation; they're terrified of distraction. One wrong thought, one slip of the tongue, and that 'elegant equation' goes catastrophically sideways. Never trust a person whose main occupational hazard is accidentally turning their breakfast into a pile of spiders."
+Sorcerer (Knowledge & Training)
+
+
+The Esper: The Natural Talent
+Unlike the learned Sorcerer, the Esper's connection to the Aether is an innate biological fact. Their abilities are not learned from books but emerge from a unique, mutated organ within their brain that resonates with the psycho-reactive field around us. Their power is intuitive, emotional, and deeply personal. They do not calculate; they feel. The Esper is a natural channel for the world's hidden energies, a living conduit for the power that animates all things.
+"A 'living conduit' is a nice way of saying 'a walking fuse box.' Their power is tied to their gut, which means a bad mood can sour the milk and a really bad day can buckle the walls. They're powerful, no doubt, but they're also unpredictable. Trusting an Esper is trusting a lightning storm to miss your house."
+Esper & Mentalist (The New Hierarchy)
+
+
+The Chimera: The Unstable Genome
+The Chimera is the most potent and visible expression of humanity's unstable genome. Possessing a host of non-human traits, they represent life's chaotic and tenacious will to survive. From those who can pass as human with minor, concealable mutations (the "Kimmie"), to those whose altered forms are a part of their daily identity, to the overtly alien (the "Under-Kin"), the Chimera embodies a vast spectrum of biological diversity. Their unique resilience often makes them indispensable, yet their existence is a constant reminder of the thin line between man and beast.
+"Here's the only thing you need to know about being a Chimera: this city will judge you by how well you can hide what you are. If you can pass for human, you're a Kimmie, living a lie. If you can't, you're just another freak trying to get by. Their 'resilience' is just a pretty word for being too damn stubborn to die in a world that wishes they'd just go away."
+Chimera (A La Carte / Genetic Chaos)
+Mutation Cost: Tier 1 = 2 MP, Tier 2 = 2 MP, Tier 3 = 3 MP 
+
+The Automata: The Ghosts of Yesterday
+The Automata are marvels of a bygone Imperial age, their crystalline consciousnesses representing a unique form of sentient life. After centuries of dormancy, they are being     reactivated to once again serve Sidonia in an era of rebuilding. Each Automata is a living repository of history, their minds—shaped by a millennium of silent, dream-like evolution or ceaseless labor—offering a perspective wholly alien to our own. Their return marks a new dawn of partnership between humanity and its most sophisticated creations.
+"A 'new dawn' of partnership? We're digging up old tools because we're too lazy to make new ones. These things went to sleep a thousand years ago. Nobody knows what a millennium of dreaming does to a mind, machine or otherwise. Are they the same loyal servants that got shelved? Or are they something new? Something broken? Everyone's trying to figure out if they're people or property, and my gut tells me that answer's gonna come the hard way."
+
+
+"Who is my hero in the world of Sidonia?"
+Step 3 Attributes: Your Natural Talent
+"Alright, let's get specific. Your Priority choice determines how many points you have to build your foundation. The higher the Priority, the more of a natural prodigy you are. But here's a free tip, kid: everyone's got one thing they're good at. Pick one Specialization from the lists below, on the house. It's that one spark of talent you were born with. After that, you get what you pay for."
+
+The Point Buy: Your chosen Priority for Attributes gives you a pool of points to spend. 
+Assign these points to your three Attributes: Physique, Intellect, and Presence.
+Attribute Ratings: A score of 0 is a significant flaw. 1 is below average. 2 is Average. 3 is exceptional. 4 is Extraordinary. 5 is Peerless.
+PHYSIQUE: The Meat This is your body's raw capability. How tough, fast, and perceptive you are.
+Specializations: Strength, Agility, Stamina, Perception
+Strength: Raw physical power.
+Agility: Finesse, balance, and reflexes.
+Stamina: Health, endurance, and resilience.
+Perception: The raw acuity of your senses—eyesight, hearing, smell, etc.
+The Detective's Note on the Attribute Gate: "Listen up, because this is important. A high skill can't always save you from a weak body. You can have a Master-level knowledge of surgery, but if you've got a Physique of 0, your hands are gonna shake. You might be able to tell someone else how to do the job, but you can't do it yourself. Some doors, you just don't have the physical key to open. Pushing that lock is a desperation play, and the odds ain't in your favor."
+INTELLECT: The Smarts This is your mind's horsepower. Logic, intuition, and thinking on your feet.
+Specializations: Reasoning, Intuition, Wits, Willpower
+ Reasoning: Logic, deduction, and connecting evidence.
+ Intuition: Gut feelings, instinct, and subconscious insight.
+Wits: Thinking on your feet and quick, clever improvisation.
+Willpower: Mental fortitude, determination, and focus.
+The Detective's Note on Specializations: "Having a high Intellect just means the engine's big. A Specialization is how you tune it. A high Intellect with Reasoning makes you a master detective. The same score with Wits makes you a fast-talking con artist who can lie his way out of a locked room. The Specialization defines how you're smart. It's your edge."
+PRESENCE: The Juice This is your force of personality. Your charm, your menace, your ability to command a room.
+Specializations: Charisma, Manipulation, Empathy, Composure
+Charisma: Natural charm and likability.
+Manipulation: Deception and leverage.
+Empathy: Reading people's emotions and motives.
+Composure: Maintaining a poker face and resisting social pressure.
+The Detective's Note on Presence: "Don't confuse this with being 'nice.' A high Presence just means when you walk into a room, people notice. Whether they love you, fear you, or just can't look away is up to you. With Charisma, they'll follow you into a fire. With Manipulation, you'll convince them it was their idea to go in first. It's the difference between a leader and a liar. Both are damn useful in this city."
+
+Secondary Mechanics: The Character Sheet Engine
+These are the core stats derived from a character's Attributes and other choices. They represent the fundamental "how much" and "how fast" of your character.
+1. Health Boxes (Durability & Resilience)
+Instead of a complex formula, we can use a direct table based on a character's Physique Attribute. This determines the base number of Health Boxes for each location.
+The Stamina Specialization: If you have the Stamina specialization, you add +1 Health Box to all areas
+The Stun Track: Each location's Stun Track is equal to its number of Health Boxes. This keeps things simple and symmetrical.
+2. The Corruption Threshold Framework
+This system calculates a character's total resistance to the Worm's influence, creating a much larger and more dynamic pool for the "slippery slope" mechanic.
+The Formula
+A character's Corruption Threshold is determined by the following formula:
+Base 10 + (Highest Attribute x 2) + Integrity Bonuses
+The Integrity Bonuses
+A character adds a +2 bonus to their final Threshold for each of the following "integrity" specializations they possess. These three specializations represent the core pillars of a person's resistance to internal and external decay.
+Stamina (Physique): The integrity of the body. The sheer physical resilience to resist unnatural change.
+Willpower (Intellect): The integrity of the mind. The mental fortitude to maintain one's sense of self.
+Composure (Presence): The integrity of the spirit. The social and emotional resilience to maintain one's identity under pressure.
+
+3. Speed (Movement Rate)
+For a narrative game, we can keep this simple and descriptive, with mechanics that trigger based on these states.
+Base Speed: Every character has a base speed of "Average." In combat terms, this allows them to mov    e anywhere within a reasonable area (e.g., across a large room, 30-40 feet).
+The Agility Specialization: If you have the Agility specialization, your movement is fluid and fast. You can use a "Dash" action to move twice your base speed.
+The Strength Specialization: While not faster, your momentum is incredible. When you use a "Charge" action (moving your full speed before an attack), you add +1 to your melee damage.
+Modifiers: Other factors (augments, mutations, heavy armor) can modify this, changing a character's speed to "Slow" (half movement) or "Fast" (bonuses to dashing/charging).
+4. Initiative (Reaction Time)
+This determines the order of action in combat and other fast-paced situations. It is derived from your Intellect Attribute.
+Initiative Roll: 2d6 + Wits Specialization (if you have it).
+2d6 + ( 1 for Wits Specialization Bonus).
+
+Attribute Gates: The Limit of Raw Talent
+Sometimes, a high skill level cannot compensate for a low natural aptitude.
+The GM can use "Attribute Gates" to determine if an action is even possible for a character, regardless of their skill. This isn't a penalty; it's a narrative reality check. 
+  Physical Gate: 
+A character with a Physique of 1 simply lacks the steady hands and physical endurance to perform delicate, hours-long surgery, even if they have Master-level Science (Biology). They could direct someone else, but they can't do it themselves.
+  Mental Gate: 
+A character with an Intellect of 1 might be a Master of "Lore" and have memorized countless facts from books, but they lack the critical thinking and processing speed to synthesize that information into a brilliant deduction in a split second during a crisis.
+  Social Gate: 
+A character with a Presence of 1 may have Expert training in "Social (Deception)," but their tells are so obvious and their presence so off-putting that they can't possibly pull off a high-stakes con against a perceptive target. They might be able to lie about where they were last night, but not talk their way into the Mayor's gala.
+However, some things are just extremely improbable, and trying may very well make things much worse… but you just have to try.
+This is when the game master can use the adjusted outcome results.
+12: Clean Success.
+10-11: Success with complication.
+7-9: Failure.
+3-6: Critical Failure.
+2: Catastrophic Failure.
+Beyond     that, a player may take on a temporary corruption point to act in a way that defies what their natural capabilities would allow (by one step: a physique of 1 may act as a physique of 2 for one action. This is only available to those whose lives are shaped by the Aether). Even given the incredible cost and the obvious distortion of reality to any     observers, the outcome is not a foregone     conclusion, and the final arbiter is the game master.
+
+
+
+
+Step 4 Skills: Your Learned Expertise
+"Alright, I've had another look at this list. It had too much fat. We've trimmed it down. This is the real list. The skills that matter on the streets of this city. Forget the rest. This is what keeps you alive, what gets you paid, or what gets you buried."
+
+Skills:
+
+Max Skill Rank is the highest achievable rank in any skill for that Priority. 
+This Chart does not include the free specialization choice from your background if it gives one.
+
+
+ Skills (0-5): This is the main your primary modifier.
+    Rating 0: You are Untrained. You roll with a -2 penalty.
+    Rating 1-2: You are Trained. You get no bonus or penalty (+0). You roll a straight 2d6.
+    Rating 3-4: You are an Expert. You get a +1 bonus to your roll.
+    Rating 5: You are a Master. You get a +2 bonus to your roll.
+The Two-Tiered System:
+The Broad Skill: The skills on our list ("Engineering," "Science," "Social," "Larceny") are broad, umbrella categories. A character's rating in this skill (Trained +0, Expert +1, Master +2) represents their general competence across the entire field. A Master Engineer can look at almost any device and have a good general idea of how it works.
+The Specialization: This is your true area of deep expertise.
+  Engineering -> (Specializations: Bio Mods, Demolitions, Mechanics)
+  Science -> (Specializations: Forensics, Chemistry, Aether Physics, Biology)
+  Larceny -> (Specializations: Safecracking, Sleight of Hand, Stealth, Forgery)
+  Social -> (Specializations: Deception, Etiquette, Intimidation, Performance)
+
+
+
+Specializations & Backgrounds: Narrative Permissions
+Specializations     and Backgrounds grant narrative permissions—they allow you to do things others simply can't.
+  A Dexterity specialization doesn't give you +1 to shoot; it means you are one of the few people who can attempt the "ricochet a bullet off a wall to hit a target behind cover" shot.
+  A "Detective" Background doesn't give you +1 to investigate; it means you can flash a badge to get past a police cordon, or you know the procedures of a crime scene.
+  A "Femme Fatale" Background might allow you to use your Social skill in place of your Mental skill when trying to resist interrogation.
+"Here are the tools of the trade. Learn 'em well."
+Combat Skills:
+HAND-TO-HAND: When you're out of bullets and excuses.
+Specializations: Brawling (raw power), Martial Arts (technique), Subdual (non-lethal holds).
+MELEE: For when you want to get your point across, up close.
+Specializations: Blades (knives & swords), Bludgeons (bats & pipes), Improvised (whatever's handy).
+RANGED: The smart way to have a disagreement.
+Specializations: Pistols (up close & personal), Rifles (far away & personal), Heavy (making a statement).
+Physical & Covert Skills:
+ATHLETICS: Running, jumping, climbing. The basics.
+Specializations: Acrobatics (fancy falling), Feats of Strength (brute force), Endurance (outlasting them).
+LARCENY: The art of unauthorized acquisition.
+Specializations: Infiltration (getting in), Sleight of Hand (lifting it), Security (bypassing their toys), Safecracking (opening the prize).
+ALERTNESS: Noticing what they tried to hide.
+Specializations: Investigation (piecing together clues), Perception (spotting the details), Interrogation (reading the liar).
+OPERATOR: Making the machines dance to your tune.
+Specializations: Ground Vehicles (cars & trucks), Aether-Tech (the weird stuff), Heavy Machinery (industrial muscle).
+Social & Intellectual Skills:
+SOCIAL: People are the most complicated lock to pick.
+Specializations: Persuasion (winning them over), Deception (playing them for fools), Intimidation (breaking them down), Performance (being someone else).
+ACADEMICS: Knowing things from books.
+Specializations: Research (finding the facts), History (knowing the old lies), Linguistics (breaking codes), Appraisal (knowing the price).
+SCIENCE: Knowing how the world really works.
+Specializations: Forensics (reading the dead), Chemistry (poisons & explosives), Biology (understanding the freaks).
+OCCULT: Knowing how the world shouldn't work.
+Specializations: Aether Theory (the 'how'), Alchemy (brewing trouble), Spirit Lore (ghosts & wraiths), Enchantment (haunted junk).
+Professional & Setting-Specific Skills:
+ENGINEERING: Building it, breaking it, or making it better.
+Specializations: Mechanical (engines), Electrical (circuits), Structural (buildings & Forge-Crete), Aetheric (the really weird stuff).
+BUREAUCRACY: The real magic that runs the city: paperwork.
+Specializations: Procedure (the official way), Forgery (the unofficial way), Research (digging through their files), Blackmail (using their files against them).
+MEDICINE: People are just complicated machines that leak.
+Specializations: Trauma Surgery (gunshots & knives), Fleshcrafting (Neosapien mods), Genesplicing (Chimera weirdness), Toxicology (poisons).
+
+
+Step 5 Background System: Your Place in the Story
+Your background is more than just a job title; it's your history, your network, and your place in the food chain of Sidonia. It defines the skills you learned, the resources you understand, and the kind of trouble you're likely to find. The following mechanics apply to all backgrounds.
+
+
+1. Background Specialization
+Every history teaches you something. When you choose your background, you gain one free Specialization in a relevant skill. This represents the practical, on-the-job training you received long before your story began.
+This specialization is a bonus and does not count against the specialization limit determined by your Skills Priority.
+The specific specializations to choose from for each background ar    e listed in its description.
+2. Resource Synergies
+Your past defines what tools you know how to use best. If your background provides a Resource Synergy, you gain enhanced benefits when you also choose a high Priority in Resources and purchase assets that align with your history. This represents your innate, expert understanding of these specific tools of the trade.
+Example of Resource Synergy: The Private Investigator
+If you have the Private Investigator background and invest in Resources, your assets are a cut above the rest:
+Example (Contact): A standard resource might get you a cynical beat cop who trades tips for cash. With synergy, your contact is a Homicide Detective who owes you their career. They don't just feed you case files; they actively steer you away from danger, warn you when you're flying too close to the sun, and grant you access to crime scenes.
+Example (Property): Instead of a simple rented room, your "Office Space" is a     soundproofed, hard-to-find haven with a hidden exit, a built-in darkroom for developing compromising photos, and a secret compartment for hiding sensitive evidence, all inherited from your mentor.
+Example (Item): A standard "License" might be a simple laminated card. With synergy, your Private Investigator's License is a hard-earned credential that carries weight. Its reputation gets you past police tape, makes reluctant witnesses talk, and tells the city's power players that you're a serious professional.
+3. Tiered Backgrounds
+Some roles in Sidonia are not so rigidly defined. These classic archetypes can be entered from different walks of life and at different stages of a career. These backgrounds are "Tiered," offering multiple buy-in points at different Priority levels. Choosing a higher Priority tier doesn't just mean you're "better"—it means the scale of your story, your influence, and your problems are fundamentally different.
+Background: The Criminal Element
+"Maybe you looked at all that and said, 'to hell with it.' Smart move. There's more honesty on the wrong side of the law anyway. But don't think for a second it's any less complicated."
+Skill Specializations: (Choose One: Social: Intimidation, Melee: Knives, Larceny: Stealth)
+Resource Synergy Examples: (Contacts: Fence, Property: Stash House, Secrets: Ward Boss’s Kid has a favorite dealer, and you know who it is.)
+Priority A (The Banu): "A Banu is a king of a very small, very violent castle. They run a Ward or a neighborhood, and their power is tied to their territory. This ain't just about collecting protection money; it's a social contract. Your pipes burst? The cops shaking you down too hard? A rival crew moving in on your block? You go to your Banu. They're the unofficial mayor, judge, and jury. In return for your loyalty—and your cut—they keep the peace. Most take that obligation seriously; it's what separates them from common thugs. But pray you never get caught in a pissing match between your Banu and your Ward Boss. Because when two powers like that have a problem, the easiest way to solve it is to get rid of the person caught in the middle. And that'll be you, kid."
+Priority B (The Syndicate Enforcer): "These guys are a different beast. They don't care about turf; they care about product. Drugs, weapons, information... they control the supply lines. A Syndicate Enforcer isn't loyal to a neighborhood; they're loyal to the network. They're ghosts, and they're everywhere. More professional than the Banu's thugs, and a hell of a lot scarier."
+Priority C (The Fixer): "A Fixer is an independent contractor in the business of making problems go away. They're the     middlemen, the brokers, the ones who know everybody. Their power is their neutrality... or at least, the illusion of it. Everyone knows they have their favorite patrons, but they're useful enough that most people are willing to pretend they don't."
+Priority E(The Street-Level): "This is where everyone starts. You're a Gaki, a street kid who knows how to survive. Or you're a Corner Boy in a local gang, holding down a piece of turf. You want to move up? You become a Bully Boy, the hired muscle who hangs out at the right bars, hoping a Syndicate Enforcer notices you're good at violence and decides to give you a shot. It's a ladder, kid. A bloody, rickety ladder, but a ladder all the same."
+ 
+Background: The Entertainer
+"You think this city's all grit and shadows? Kid, people are desperate for a distraction, and if you're the one selling it, that's a special kind of power. But fame in Sidonia is a tricky beast. Depending on how big your stage is, you're either a god, a local hero, or just another voice in the crowd.
+Skill Specialization: (Choose One: Social: Persuasion, Alertness: Detect Lie, Social Performance (Or choose one related to chosen artistic expression))
+Resource Synergy Examples: (Contact: Talent Agent, Property: Furnished Artist Studio, Equipment: Licensed Performer)
+Priority A (Icon / Movie Star): "This is a new kind of power, something that didn't exist a generation ago. Thanks to the film reels, your face is known from the Southern slums to the Northern spires. You're an Icon, like Dita was in her prime. You're a shared dream in a city of nightmares. But that fame is a leash. The Ministry of Information watches every frame you shoot, and you only exist because you've learned not to bite the hand that allows you to feed. You're not just an actor; you're high-value, city-wide propaganda."
+Priority B (District Legend): "You're not on the silver screen, but in your District, you're a household name. Maybe you're the charismatic leader of a rebel faction in the West, a feared Banu in the South, or a celebrated philosopher in the North. You're the local legend everyone tells stories about. Your power is immense, but it stops hard at the district line. You're a king in your own little kingdom, but step outside, and you're just another face in the crowd."
+Priority C (Performer): "You work the Wards. You're a singer whose voice can make a jaded Sentinel weep, a stage actor in a rundown theater, a musician playing in smoky back-alley clubs. You're not famous, you're known. People in your Ward know your name, buy you drinks, and feel a connection to you. Your power is intimate, a real bond with a community that sees you as one of their own."
+Priority D (Arena Champion / Local Artist): "Your stage is the neighborhood. Maybe you're the undefeated champion of a brutal fighting pit, a master artist who designs the clothes everyone wants to wear, or the genius who brews the best damn moonshine in five blocks. Your fame is hyperlocal, built on raw talent and reputation. You're a big fish in a very small, very murky pond."
+Priority E (Writer): "You're at the bottom of the food chain, kid. You're a poet, a novelist, a pamphleteer. You bleed your soul onto the page for a handful of people who get it. Your power isn't influence; it's impact. You're not changing the city, but you might just change the life of the one person who reads your work in a dimly lit room and feels a little less alone. It won't pay the rent, but sometimes, that's enough."
+ 
+Background: The Legal System
+"You think the Law is about justice? Kid, that's adorable. In Sidonia, the law is about contracts, and contracts are about loopholes. Justice is just a commodity, and these are the merchants who sell it by the hour. If you want to play in this sandbox, you better know the players."
+Skill Specialization: (Choose One: Academics: Criminal Law, Social: Debate, Bureaucracy: Contract Law)
+Resource Synergy Examples: (Contacts: District Judge, Equipment: Law License, Employee: Investigator.)
+Priority A (Judge): "At the top of the food chain, you've got the city Judges. They're politically appointed, which is a nice way of saying they were bought and paid for long before they ever put on the robes. Their job isn't to find the truth; it's to sign off on whatever deal was already made in a back room somewhere. They don't wield power; they're a symbol of someone else's."
+Priority B (Arbitrator): "When talking fails, you go to an Arbitrator. This is where the decisions get real. They're a private judge, a hired gun with a gavel. They listen to both     sides, and then they lay down the law. Their decision is binding. More often than not, they're just deciding which powerful patron they're more afraid of upsetting."
+Priority C (Mediator): "This is the first stop for most disputes. A Mediator is a professional peacemaker, a neutral third party who tries to get two people to stop arguin    g long enough to sign a piece of paper so they can avoid the real courts. It's a noble idea, which is why it so rarely works."
+Priority D (Assessor): "When a crime happens, the first question isn't 'who did it?' It's 'how much is it worth?' That's where these ghouls come in. The Damage Assessors are accountants with a morbid streak, putting a price tag on everything from a broken window to a broken life. The Arcane Assessors? They're the weird ones who have to figure out the property value of a curse or how much a rogue fire spell costs in damages. They're the city's official bean counters for human misery."
+Priority E (Contract Lawyer): "This is where it all begins. Every deal, every promise, every threat in this city is written down on paper somewhere, and these are the guys who write it. They're masters of the fine print, the little clauses that can make you a king or leave you with nothing. They're the architects of the chains that bind this city together."
+
+The Private Detective
+You're a professional searcher in a city that hates the light. Your power isn't a badge; it's the stubborn refusal to let a secret stay buried.
+Skill Specialization: (Choose One: Alertness: Investigation, Social: Interrogation, Academics: Criminal Law)
+Resource Synergy Examples: (Contacts: Police Captain, Equipment: Detective License, Property: Detective Office)
+
+The Femme Fatale
+It’s not about seduction; it's about savvy. Everyone sees a pretty face and makes assumptions. You’ve     learned that those assumptions are the best weapon you'll ever have.
+Skill Specialization: (Choose One: Social: Persuasion, Social: Deception, Academics:  Appraisal)
+Resource Synergy Examples: (Contacts: Syndicate Enforcer, Equipment: Palm Pistol, Property: Second Identity.)
+
+Old Blood
+Your family name is older than the Republic. It’s a key, a weapon, and a cage, all in one.
+Skill Specialization: (Choose One: Academics: History, Social: Etiquette, Bureaucracy: Graft)
+Resource Synergy Examples: (Contacts: Family Fixer, Income: Trust, Property: Central Residence.)
+
+The Info Broker
+You're a merchant, but your product is secrets. You're a vital part of the city's ecosystem—which is a polite way of saying you're a target for everyone.
+Skill Specialization: (Choose One: Social: Barter, Academics: Appraisal, Alertness: Perception)
+Resource Synergy Examples: (Contacts: All?, Employee: Bodyguard, Equipment: Travel Visa)
+
+The Driver & The Transporter
+Most people in this city will live and die without owning a car. That makes you essential. You're a ghost in the traffic, an escape artist, the master of the city's arteries.
+Skill Specialization: (Choose One: Operator: Drive Auto, Ranged: Handguns, Engineering: Mechanics)
+Resource Synergy Examples: (Equipment: Vehicle, Equipment: Travel Visa, Property: Garage)
+
+
+
+The Cop
+You are the law—or at least, you wear the badge. Whether you're a jaded detective or a beat cop trying to keep the peace, you walk a fine line between order and the abyss.
+Skill Specialization: (Choose One: Operator: Drive Auto, Bureaucracy: Law, Alertness: Investigation)
+Resource Synergy Examples: (Equipment: Revolver, Contact: Snitch, License: Badge)
+
+The Syndicate Member
+You're part of a family—the kind that settles disputes with violence and funds itself through illicit enterprise. You have a place, you have a purpose, and you are protected, so long as you remain loyal.
+Skill Specialization: (Choose One: Hand to Hand: Brawler, Social: Intimidation, Larceny: Security)
+Resource Synergy Examples: (Equipment: Brass Knuckles, Contact: Syndicate Member, Property: Safe House)
+
+The Medic
+In a city this sick, someone has to patch up the wounded. You're a healer, though your methods and clientele may vary wildly.
+Skill Specialization: (Choose One: Medicine: Triage, Social: Empathy, Alertness: Assessment)
+Resource Synergy Examples: (Equipment: Vehicle, License: Medical, Equipment: Trauma Kit)
+
+The Occultist
+You've peered behind the curtain of reality and seen the things that lurk there. This knowledge has marked you, granting you insight and drawing you into a world of secrets, symbols, and sacrifice.
+Skill Specialization: (Choose One: Academics: Occult, Alertness: Investigation, Languages: Old Tongue)
+Resource Synergy Examples: (Equipment: Occultist Journal, License: Central University Degree in Occult Studies, Contact: Mysterious Patron)
+
+The Journalist
+Everyone has a story, and you're here to tell it. You're a truth-seeker, a muckraker, and a storyteller, chasing down leads in a city built on lies.
+Skill Specialization: (Choose One: Social: Interrogation, Academics: Research, Bureaucracy: Graft)
+Resource Synergy Examples: (Equipment: Vehicle, Equipment: Travel Visa, Contact: Central Records Clerk)
+
+
+
+Step 6 The Resource System
+
+Priority A 24RP Maximum Value on any one resource quality is 5 and the maximum TOTAL value is 8. 5/3, 4/4 or 3/5 and/or any combination that has a total of less than 8. 3 Specializations to be applied however
+Priority B 16RP Maximum value one any one resource quality is 4 and the maximum TOTAL value is 6. 4/2, 3/3, or 2/4 and/or any combination that has a total of less than 6 2 Specializations to be applied however
+Priotity C 10RP Maximum value one any one resource quality is 3 and the maximum TOTAL value is 5.  3/2 or 2/3 and/or any combination that has a total of less than 5 1 Specializations to be applied however
+Priority D 6RP Maximum value one any one resource quality is 3 and the maximum TOTAL value is 4. 1/3, 2/2, or 3/1 and/or any combination that has a total of less than 4 1 Specializations to be applied however
+Priority E 4RP Maximum value one any one resource quality is 2 and the maximum TOTAL value is 3. 1/2, or 2/1 and/or any combination that has a total of less than 3 0 specializations
+
+Axis 1: Tenure Types (The Nature of Your Claim)
+Own: You hold the deed. It is yours, outright. This is the most straightforward but often most expensive option. It provides the highest degree of security and autonomy, but also makes you a clear target.
+Lease: A long-term, binding contract. You don't own the property, but you have exclusive rights to it for a set period. This is the standard for most legitimate businesses, allowing them to operate without the massive capital outlay of full ownership.
+Rent: A short-term, flexible agreement. The most common form of habitation for the average Sidonian. It provides little security but maximum deniability.
+Sublet: You operate within another's property, often with their tacit (and sometimes illegal) approval. A classic arrangement for deniable safehouses or clandestine workshops.
+Special Designation: Perpetuity Grant (The "Old Blood" Claim): This is the rarest and most powerful form of tenure. It is not something one can buy. It is a hereditary right to a piece of land, granted generations ago for service to the nascent Republic—often, as you said, a politically expedient way for the old noble families to cement their power in the new world.
+Gameplay Impact: Owning a Perpetuity Grant provides immense social and political capital. It gives you an unshakable historical claim that politicians, ward bosses, and even Syndicate leaders must respect, if grudgingly. As the Riverside example proves, it is the foundation upon which dynasties are built, even for those on the "losing" side of a secret war.
+Axis 2: Zoning Types (The Function of the Property)
+Residential: Your home. Its location (Downside shack, Mid-Ward apartment, High-Ward hab-unit, Riverside manor) is the single clearest indicator of your social standing.
+Commercial: The public face of an enterprise. A storefront, an office, a clinic, a bar. It is where you interact with clients and customers.
+Industrial: The functional backbone. A factory, a workshop, a warehouse. Essential for manufacturing, distribution, and storage. Given Sidonia's hyper-local economy, controlling industrial space is a source of immense logistical power.
+Agricultural: In a blighted world, the right to produce food or organic resources is a license to print money. This includes everything from hydroponics bays and Devil Fruit farms to secure greenhouses for rare alchemical flora.
+Special: The catch-all for properties that defy standard classification. This is where the secrets live: hidden safehouses, repurposed pre-Collapse bunkers, clandestine laboratories, Aetheric research sites, and other locations that do not officially exist on any map.
+
+1. Goods:
+Function: This Contact is a master of procurement and logistics for physical items. They are a fence, a quartermaster, a black marketeer, or a junk dealer with a preternatural talent for finding the specific widget you need.
+Low Reach Example: Can get you a box of non-standard ammunition, a specific brand of hard-to-find liquor, or some scavenged copper wire.
+High Reach Example: Can arrange the "acquisition" of a corporate vehicle, a crate of military-grade weaponry, or a rare, restricted alchemical component.
+2. Services:
+Function: This Contact connects you with people who perform tasks. They know who is available for hire, from day laborers to elite mercenaries. You still have to pay the people doing the work, but this Contact makes the introduction.
+Low Reach Example: Can find some local kids to watch your car, a reliable (if unlicensed) plumber, or a strong back to help move heavy equipment.
+High Reach Example: Can get you a crew of deniable Syndicate enforcers for a single operation, a discreet and highly-skilled cybernetics surgeon, or a team of professional cat burglars.
+3. Intel:
+Function: The classic information broker. This Contact lives and breathes secrets. They trade in blackmail, corporate espionage, street-level rumors, and sensitive personal data.
+Low Reach Example: Knows which Ward official is having an affair, the patrol schedule of the local security forces, or where a particular gang fences their stolen goods.
+High Reach Example: Has access to encrypted corporate financial records, the guest list for a private Spire-level event, or the true identity of a reclusive Syndicate leader.
+4. Connections:
+Function: The social butterfly and gatekeeper. This Contact's specialty is arranging introductions. They always "know a guy who knows a guy." They don't broker deals or gather intel themselves; they get you in the room with the person you need to see.
+Low Reach Example: Can get you a brief, informal meeting with a local Ward Boss's lieutenant.
+High Reach Example: Can arrange a formal, sit-down meeting with a member of one of the Five Families or a high-ranking official at the Ministry of Aetheric Ecology.
+5. Mediation:
+Function: The neutral arbiter. This Contact has a reputation for fairness, discretion, and the ability to de-escalate volatile situations. When two rival parties need to talk without bloodshed, they call this person. Their presence at a meeting is a guarantee of temporary neutrality.
+This is a fascinating and unique specialization that reinforces the game's noir and political themes.
+Low Reach Example: Can broker a truce between two warring street gangs.
+High Reach Example: Can mediate a high-stakes corporate merger dispute or a territorial disagreement between two Syndicates.
+6. Expertise:
+Function: The academic and technical liaison. This Contact operates within the world of knowledge and specialized skill. They don't just know experts; they understand the landscape of expertise and can find the rightperson with the specific, niche knowledge you require.
+Low Reach Example: Can find a local mechanic who knows how to work on pre-Collapse engines.
+High Reach Example: Can get you a consultation with the leading (and likely heretical) theoretical physicist at Central University, or the only living expert on a forgotten dialect of the Imperial language.
+1. Bureaucracy:
+Function: The ability to navigate the labyrinthine corridors of Sidonia's ministries. This person knows the loopholes, the correct forms to file, which clerks can be bribed (and with what), and how to get a permit stamped in days instead of months.
+Retainer Example: "The Expediter." A former ministry clerk who now works as a consultant, using their inside knowledge to cut through red tape for a price.
+2. Contract Law:
+Function: In a world where contracts are magically binding, this skill is paramount. It involves the ability to draft iron-clad agreements, find exploitable loopholes in the contracts of others, and litigate disputes. It's both a shield and a sword.
+Retainer Example: "The Counselor." A sharp, often cynical lawyer who specializes exclusively in contract negotiation and enforcement. They don't care about guilt or innocence, only the letter of the law.
+3. Security:
+Function: Goes far beyond physical protection. This is about understanding the unique threats of Sidonia. It includes threat assessment against supernatural predators, Aetheric phenomena, corporate espionage, and Syndicate strong-arming. It's about designing safe routes, securing locations against both physical and esoteric threats, and vetting personnel.
+Retainer Example: "The Warden." A former member of the White Wardens or a corporate security division who now runs their own private security consultancy.
+4. Liaison (The "Bag Man"):
+Function: The art of interfacing with the underworld. This person is a trusted neutral party who can broker deals between legitimate businesses and criminal organizations. They understand the protocols, the tribute systems, and the personalities of the Syndicate bosses. They are the human firewall that allows a "legitimate" business to benefit from illegal activities without getting their hands dirty.
+Retainer Example: "The Attache." An impeccably dressed, unnervingly calm individual who can sit down for coffee with a Ward Boss one hour and a corporate VP the next, ensuring everyone gets their cut and no blood is shed.
+5. Management (Logistics & Personnel):
+Function: The skill of practical organization in a corrupt environment. This is about more than just efficiency; it's about managing people. It's knowing which foreman is skimming, which driver is a Syndicate informant, and which security guard can be trusted. It's about keeping the machine running, even when its parts are actively trying to rust.
+Retainer Example: "The Foreman." A grizzled veteran of the factory floors or shipping yards who runs a tight ship through a combination of respect, fear, and an uncanny ability to spot a liar.
+6. Intelligence:
+Function: The acquisition of valuable information. This can be anything from corporate espionage (product designs, shipping routes) to social intelligence (who is having an affair with whom, who has a hidden debt) to operational intelligence (the layout of a rival's warehouse, the security schedule of a target).
+Retainer Example: "The Analyst" or "The Ferret." A data-miner and info-broker who can pull threads from the vast sea of Sidonia's data streams, finding the one piece of information that can make or break an operation.
+
+1. The Core Budget & Limits 
+2. The Quantified Reach Hierarchy
+This is the brilliant new piece. You've defined not just the score, but what the score means. This provides concrete examples for players and GMs.
+4. The Competence Ladder (For Retainers)
+We can apply a similar quantified logic to Competence.
+The Duality of Human Capital: Loyalty vs. Influence
+Core Principle: We will maintain two distinct but parallel relationship stats, each with its own unique flavor and progression. Both are rated on a 1-5 scale.
+System 1: Loyalty (For Retainers - The People You Employ)
+This stat measures a retainer's personal dedication and feelings toward you as their employer. It dictates the quality of their work when no one is watching and their willingness to go above and beyond the letter of their contract.
+1 - Antagonistic: They actively dislike you. They took the job for the money, nothing more. They will do the bare minimum required, will likely skim off the top, and will complain about you behind your back. They won't betray you outright (unless properly incentivized), but they won't lift a finger to help you if you're in trouble.
+2 - Indifferent: This is a job. You are a paycheck. They perform their duties as specified in their contract, no more, no less. Their relationship with you is purely professional and transactional.
+3 - Respectful: They have a grudging professional respect for you. You've proven your competence or fairness. They will carry out their duties diligently and might offer a piece of unsolicited but useful advice now and then.
+4 - Kindred: They genuinely look up to you and believe in what you're doing. They are happy to work for you and will take initiative to solve problems before they reach your desk. They are a true and trusted member of your team.
+5 - Devoted: "Let me jump in front of that truck for you." Their personal identity is tied to your success and well-being. They would risk their life, career, and reputation for you without a second thought. This is a bond forged in shared trauma or profound triumph.
+System 2: Influence (For Contacts - The People You Know)
+This stat measures your leverage over an external contact. It dictates their willingness to provide information or services. Crucially, as you pointed out, high influence is not always positive.
+1 - Grudging: They will deal with you, but they don't like it. Every interaction is an annoyance. They will provide the information you ask for, but it might be incomplete, late, or filtered. They will never offer anything extra.
+2 - Transactional: A purely business relationship. You have something they need (money, access, information), and they have something you need. Favors are tracked on a strict one-for-one ledger.
+3 - Cooperative: You have a working partnership based on mutual benefit. They see you as a valuable part of their network. They might proactively share a piece of intel if they think it will help you and, by extension, them.
+4. Leveraged: You have significant leverage over this person. This could be through a history of mutual trust and respect, but it could also be through a substantial amount of blackmail material. They will skirt the line of self-destructive behavior for you, but this is a tense and potentially unstable relationship. They are looking for a way out if the leverage is negative.
+5. Bound: You effectively own them. This is a relationship of absolute, terrifying leverage.
+The Positive ("The Protector"): They are a devoted mentor, a family member, or someone who owes you a profound life-debt. They would never let anything happen to you because you are that important to them.
+The Negative ("The Puppet Master"): You have such catastrophic blackmail material that their life is forfeit if they disobey. You may not know where their children go to school, but as you said, they know that one of your top lieutenants is their tutor. This is the deepest, darkest expression of noir power.
+
+
+
+
+
+
+
+The Final Step: Learning the Rules of the Street
+The player has their character sheet. It's full of potential. But the sheet doesn't tell them how to survive. The first session is a practical education in the three fundamental truths of Sidonia, truths that your mechanics are built to reinforce.
+Truth #1: Violence is a Conversation Ender, Usually for Everyone
+A player coming from a more traditional RPG might see a problem (a guard blocking a door) and think the solution is combat. Sidonia teaches them otherwise, quickly and harshly.
+The Experience: The player gets into their first real fight. Maybe they win. But the Health & Injury system is so punishing that they limp away, their Arm "Wounded" (imposing Disadvantage), and they've ticked off Health Boxes that will take a long time to heal. Or worse, they kill someone. Now they have to worry about a potential Wraith, an angry ghost drawn to the scene of its violent death. And even if no ghost appears, they have a body to dispose of and the paranoia of reprisal.
+The Lesson: The player learns that a fight is not a solution; it's a failure state. It's what happens when cleverness, negotiation, and preparation have failed. They learn that the threat of violence is a far more useful tool than the act itself. The most successful Syndicate Enforcer isn't the one who kills everyone; it's the one who beats someone so badly they know not to cross the line again, leaving them alive to carry that message.
+Truth #2: Knowledge Isn't Power; It's Currency
+In other games, information leads to a quest marker. In Sidonia, information is the treasure.
+The Experience: A player wants a file from a Bureaucrat. They succeed on a bribe. The Bureaucrat hands over the file. The next day, a rival faction seems to know the player's exact plans. The player realizes the Bureaucrat didn't just take their money; he immediately sold the information that they were asking about that file to the highest bidder.
+The Lesson: Every interaction is a transaction, and every piece of information has a market value. Players learn to be paranoid and selective about who they talk to. They learn that a "loyal" contact (one bought with Resource points) is invaluable not just for the information they provide, but for the information they don't sell to others. The game becomes less about what you know and more about controlling who else knows it.
+Truth #3: Everyone Serves Someone
+This is the central pillar of Sidonian society. The patronage system creates a web of invisible power that governs every interaction.
+The Experience: The players are being shaken down by a mid-level thug. He seems confident, almost arrogant. The players could probably take him in a fight, but something feels off. Instead of throwing a punch, the player with the high Bureaucracy skill makes a call to a contact. They learn the thug's boss is a lieutenant in a syndicate run by a Banu who, in turn, is secretly backed by the same Ward Boss the players have been trying to get close to.
+The Lesson: Attacking the thug would have been attacking the Ward Boss by proxy. The player learns to stop seeing NPCs as individuals and start seeing them as representatives of an invisible hierarchy. Ambiguity is a shield. If an NPC doesn't know who the players' patron is, they have to assume the worst and act cautiously. The players, in turn, learn that their greatest defense is cultivating the perception of powerful backing, even if they don't have it. Not being corrupt isn't a virtue; it's a sign that you're not connected, making you a safe and easy target.
+

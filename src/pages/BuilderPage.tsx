@@ -43,6 +43,7 @@ export function BuilderPage() {
   const setAttributeScore = useCharacterStore((state) => state.setAttributeScore);
   const updateAttributeNotes = useCharacterStore((state) => state.updateAttributeNotes);
   const toggleAttributeSpecialization = useCharacterStore((state) => state.toggleAttributeSpecialization);
+  const resetActiveBuild = useCharacterStore((state) => state.resetActiveBuild);
   const adjustExperience = useCharacterStore((state) => state.adjustExperience);
   const setExperience = useCharacterStore((state) => state.setExperience);
   const updateAdvancement = useCharacterStore((state) => state.updateAdvancement);
@@ -70,7 +71,9 @@ export function BuilderPage() {
 
   const selectedPowerSet = build.lineage.key ? data.powerSets?.[build.lineage.key] : undefined;
   const backgroundTemplate = build.background.title ? data.backgrounds[build.background.title] : undefined;
-  const backgroundSkillOptions = backgroundTemplate?.skillSpecializationOptions ?? [];
+  const backgroundSkillOptions = Array.isArray(backgroundTemplate?.skillSpecializationOptions)
+    ? backgroundTemplate!.skillSpecializationOptions
+    : [];
 
   const handlePrioritySelect = (category: PriorityCategory, rank: PriorityRank) => assignPriority(category, rank);
   const handlePriorityClear = (category: PriorityCategory) => assignPriority(category, null);
@@ -191,6 +194,11 @@ export function BuilderPage() {
   return (
     <div className="builder-screen" style={builderStyle}>
       <CharacterProfileCard build={build} onUpdate={updateProfile} />
+      <div className="builder-actions">
+        <button type="button" onClick={resetActiveBuild}>
+          Reset Character
+        </button>
+      </div>
       <StageNavigation current={build.stage} onNavigate={setStage} />
       {stageContent}
     </div>

@@ -57,7 +57,7 @@ const DESIGN_DOC_FILES: DesignDocumentMeta[] = [
 ];
 
 export async function loadCharacterBuilderData(): Promise<CharacterBuilderData> {
-  const [backgrounds, skills, resources, resourceCosts, legal, powerSchemasEntries, powerSets, attributes, characterSheet, designDocs] = await Promise.all([
+  const [backgrounds, skills, resources, resourceCosts, legal, powerSchemasEntries, powerSets, attributesRaw, characterSheetRaw, designDocs] = await Promise.all([
     fetchJson<BackgroundsData>('/data/backgrounds.json'),
     fetchJson<SkillsData>('/data/Sidonia-Skills.Json'),
     fetchJson<ResourceSystem>('/data/resources-system.json'),
@@ -65,10 +65,13 @@ export async function loadCharacterBuilderData(): Promise<CharacterBuilderData> 
     fetchJson<LegalData>('/data/legal.json'),
     loadPowerSchemas(),
     loadPowerSets(),
-    fetchJson<AttributesData>('/data/attributes.json'),
-    fetchJson<CharacterSheetStructure>('/data/character-sheet-structure.json'),
+    fetchJson<unknown>('/data/attributes.json'),
+    fetchJson<unknown>('/data/character-sheet-structure.json'),
     loadDesignDocs()
   ]);
+
+  const attributes = normalizeAttributes(attributesRaw);
+  const characterSheet = normalizeCharacterSheet(characterSheetRaw);
 
   return {
     backgrounds,
@@ -121,6 +124,20 @@ function normalizePowerSet(lineage: LineageKey, data: RawLineagePowerData): RawL
   }
   normalized.lineageId = lineage;
   return normalized;
+}
+
+function normalizeAttributes(raw: unknown): AttributesData {
+  if (raw && typeof raw === 'object' && 'attributes' in (raw as Record<string, unknown>)) {
+    return (raw as { attributes: AttributesData }).attributes;
+  }
+  return raw as AttributesData;
+}
+
+function normalizeCharacterSheet(raw: unknown): CharacterSheetStructure {
+  if (raw && typeof raw === 'object' && 'characterSheet' in (raw as Record<string, unknown>)) {
+    return (raw as { characterSheet: CharacterSheetStructure }).characterSheet;
+  }
+  return raw as CharacterSheetStructure;
 }
 
 async function loadDesignDocs(): Promise<DesignDocument[]> {

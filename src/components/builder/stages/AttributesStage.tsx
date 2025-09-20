@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import type { AttributesData, PriorityRank } from '../../../data/types';
+import type { AttributesData, AttributeSpecializationEntry, PriorityRank } from '../../../data/types';
 import type { CharacterBuild } from '../../../state/characterStore';
 import type { AttributeKey } from '../../../state/characterStore';
 import './attributes-stage.css';
@@ -21,6 +21,13 @@ const ATTRIBUTE_NAME_TO_KEY: Record<string, AttributeKey> = {
   Presence: 'presence'
 };
 
+interface AttributeView {
+  key: AttributeKey;
+  displayName: string;
+  description: string;
+  specializations: AttributeSpecializationEntry[];
+}
+
 export function AttributesStage({
   priority,
   scores,
@@ -31,12 +38,20 @@ export function AttributesStage({
   selectedSpecializations,
   onToggleSpecialization
 }: AttributesStageProps) {
+  if (!data || !Array.isArray(data.pointBuy) || !data.definitions) {
+    return (
+      <div className="stage stage--attributes">
+        <p>Attribute data failed to load. Please refresh.</p>
+      </div>
+    );
+  }
+
   const pointBuyEntry = useMemo(
     () => (priority ? data.pointBuy.find((entry) => entry.priority === priority) ?? null : null),
     [data.pointBuy, priority]
   );
 
-  const attributeEntries = useMemo(() => {
+  const attributeEntries = useMemo<AttributeView[]>(() => {
     return Object.entries(data.definitions)
       .map(([displayName, definition]) => {
         const key = ATTRIBUTE_NAME_TO_KEY[displayName];
@@ -44,10 +59,11 @@ export function AttributesStage({
         return {
           key,
           displayName,
-          ...definition
-        };
+          description: definition.description,
+          specializations: definition.specializations ?? []
+        } satisfies AttributeView;
       })
-      .filter((entry): entry is { key: AttributeKey; displayName: string; description: string; specializations: typeof data.definitions[string]['specializations'] } => entry !== null);
+      .filter((entry): entry is AttributeView => entry !== null);
   }, [data.definitions]);
 
   const pool = pointBuyEntry?.attributePoints ?? 0;

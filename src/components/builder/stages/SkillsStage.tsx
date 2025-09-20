@@ -149,6 +149,7 @@ export function SkillsStage({
                           type="range"
                           min={0}
                           max={maxRank}
+                          step={1}
                           value={current}
                           disabled={!rule}
                           onChange={handleRatingChange(skillId, current)}
@@ -175,7 +176,7 @@ export function SkillsStage({
                               <li key={selectionId}>
                                 <button
                                   type="button"
-                                  className={`attribute-specialization__toggle ${isSelected ? 'selected' : ''}`}
+                                  className={`skills-specialization__toggle ${isSelected ? 'selected' : ''}`}
                                   onClick={() => handlePredefinedToggle(skillId, skill.name, specialization.id, specialization.name)}
                                   disabled={limitReached}
                                 >

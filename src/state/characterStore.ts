@@ -107,6 +107,7 @@ export interface CharacterStore {
   archiveBuild: (id: string) => void;
   renameBuild: (id: string, label: string) => void;
   duplicateBuild: (id: string) => string | null;
+  resetActiveBuild: () => void;
   updateProfile: (changes: Partial<CharacterProfile>) => void;
   assignPriority: (category: PriorityCategory, rank: PriorityRank | null) => void;
   setStage: (stage: CharacterStage) => void;
@@ -348,6 +349,33 @@ export const useCharacterStore = create<CharacterStore>()(
         analytics.track('build.duplicated', {});
         return duplicate.id;
       },
+      resetActiveBuild: () => {
+        set((state) => {
+          const activeId = state.activeBuildId;
+          if (!activeId) {
+            return state;
+          }
+          const existing = state.builds[activeId];
+          if (!existing) {
+            return state;
+          }
+          const fresh = makeBuild(existing.label);
+          const resetBuild: CharacterBuild = {
+            ...fresh,
+            id: activeId,
+            createdAt: existing.createdAt,
+            updatedAt: nowIso()
+          };
+          analytics.track('build.reset', {});
+          return {
+            ...state,
+            builds: {
+              ...state.builds,
+              [activeId]: resetBuild
+            }
+          };
+        });
+      },
       updateProfile: (changes) => {
         withActive(set, (build) => ({
           ...build,
@@ -443,10 +471,18 @@ export const useCharacterStore = create<CharacterStore>()(
         }));
       },
       updateBackground: (changes) => {
-        withActive(set, (build) => ({
-          ...build,
-          background: { ...build.background, ...changes }
-        }));
+        withActive(set, (build) => {
+          const updatedBackground = { ...build.background, ...changes };
+          const backgroundChanged =
+            typeof changes.title === 'string' && changes.title !== build.background.title;
+          return {
+            ...build,
+            background: updatedBackground,
+            skills: backgroundChanged
+              ? { ...build.skills, backgroundSpecialization: null }
+              : build.skills
+          };
+        });
       },
       setSkillRating: (skillId, value) => {
         withActive(set, (build) => ({
@@ -702,83 +738,101 @@ export const useCharacterStore = create<CharacterStore>()(
     }),
     {
       name: 'sidonia-character-builder',
-      version: 2,
+      version: 3,
       migrate: (state, version) => {
-        if (!state) {
+        if (!state || typeof state !== 'object') {
           return state;
         }
-        if (version < 2) {
-          const mapLegacyAttributeKey = (scores: Record<string, number> | undefined): Record<AttributeKey, number> => {
-            const legacy = scores ?? {};
-            return {
-              physique:
-                typeof legacy.physique === 'number'
-                  ? legacy.physique
-                  : typeof legacy.grit === 'number'
-                  ? legacy.grit
-                  : 0,
-              intellect:
-                typeof legacy.intellect === 'number'
-                  ? legacy.intellect
-                  : typeof legacy.guile === 'number'
-                  ? legacy.guile
-                  : 0,
-              presence:
-                typeof legacy.presence === 'number'
-                  ? legacy.presence
-                  : typeof legacy.gravitas === 'number'
-                  ? legacy.gravitas
-                  : 0
-            };
-          };
 
-          const normalizeSpecializations = (
-            specializations: Record<string, string[]> | undefined
-          ): Record<AttributeKey, string[]> => {
-            const source = specializations ?? {};
-            return {
-              physique: Array.isArray(source.physique) ? source.physique : [],
-              intellect: Array.isArray(source.intellect) ? source.intellect : [],
-              presence: Array.isArray(source.presence) ? source.presence : []
-            };
+        const mapLegacyAttributeKey = (scores: Record<string, number> | undefined): Record<AttributeKey, number> => {
+          const legacy = scores ?? {};
+          return {
+            physique:
+              typeof legacy.physique === 'number'
+                ? legacy.physique
+                : typeof legacy.grit === 'number'
+                ? legacy.grit
+                : 0,
+            intellect:
+              typeof legacy.intellect === 'number'
+                ? legacy.intellect
+                : typeof legacy.guile === 'number'
+                ? legacy.guile
+                : 0,
+            presence:
+              typeof legacy.presence === 'number'
+                ? legacy.presence
+                : typeof legacy.gravitas === 'number'
+                ? legacy.gravitas
+                : 0
           };
+        };
 
-          const upgradeSkills = (skills: unknown) => {
-            const legacy = skills as { focus?: unknown; notes?: unknown } | undefined;
-            const legacyFocus = Array.isArray(legacy?.focus) ? (legacy?.focus as string[]) : [];
-            const ratings = legacyFocus.reduce<Record<string, number>>((acc, id) => {
-              acc[id] = 1;
-              return acc;
-            }, {});
+        const normalizeAttributeSpecializations = (
+          specializations: Record<string, string[]> | undefined
+        ): Record<AttributeKey, string[]> => {
+          const source = specializations ?? {};
+          return {
+            physique: Array.isArray(source.physique) ? source.physique : [],
+            intellect: Array.isArray(source.intellect) ? source.intellect : [],
+            presence: Array.isArray(source.presence) ? source.presence : []
+          };
+        };
+
+        const upgradeSkills = (skills: unknown): CharacterBuild['skills'] => {
+          const legacy = (skills ?? {}) as Partial<CharacterBuild['skills']> & {
+            focus?: unknown;
+          };
+          if (legacy.ratings && legacy.specializations && legacy.backgroundSpecialization !== undefined) {
             return {
-              ratings,
-              specializations: [],
-              backgroundSpecialization: null,
-              notes: typeof legacy?.notes === 'string' ? legacy.notes : ''
+              ratings: legacy.ratings,
+              specializations: Array.isArray(legacy.specializations) ? legacy.specializations : [],
+              backgroundSpecialization: legacy.backgroundSpecialization ?? null,
+              notes: typeof legacy.notes === 'string' ? legacy.notes : ''
             } satisfies CharacterBuild['skills'];
-          };
+          }
 
-          const upgradedBuilds = Object.fromEntries(
-            Object.entries((state as CharacterStore).builds ?? {}).map(([id, build]) => {
-              const upgraded: CharacterBuild = {
-                ...build,
-                skills: upgradeSkills(build.skills),
-                attributes: {
-                  scores: mapLegacyAttributeKey(build.attributes?.scores as Record<string, number> | undefined),
-                  notes: build.attributes?.notes ?? '',
-                  specializations: normalizeSpecializations(build.attributes?.specializations as Record<string, string[]> | undefined)
-                }
-              };
-              return [id, upgraded];
-            })
-          );
+          const legacyFocus = Array.isArray(legacy.focus) ? (legacy.focus as string[]) : [];
+          const ratings = legacyFocus.reduce<Record<string, number>>((acc, id) => {
+            acc[id] = 1;
+            return acc;
+          }, {});
 
           return {
-            ...(state as CharacterStore),
-            builds: upgradedBuilds
-          } satisfies CharacterStore;
-        }
-        return state as CharacterStore;
+            ratings,
+            specializations: [],
+            backgroundSpecialization: null,
+            notes: typeof legacy.notes === 'string' ? legacy.notes : ''
+          } satisfies CharacterBuild['skills'];
+        };
+
+        const upgradedBuilds = Object.fromEntries(
+          Object.entries(((state as CharacterStore).builds ?? {}) as Record<string, unknown>).map(([id, rawBuild]) => {
+            const build = rawBuild as Partial<CharacterBuild> & { attributes?: any; skills?: any };
+            const upgradedAttributes: CharacterBuild['attributes'] = {
+              scores: mapLegacyAttributeKey(build.attributes?.scores as Record<string, number> | undefined),
+              notes: typeof build.attributes?.notes === 'string' ? build.attributes.notes : '',
+              specializations: normalizeAttributeSpecializations(
+                build.attributes?.specializations as Record<string, string[]> | undefined
+              )
+            };
+
+            const upgradedSkills = upgradeSkills(build.skills);
+
+            const upgradedBuild: CharacterBuild = {
+              ...(build as CharacterBuild),
+              skills: upgradedSkills,
+              attributes: upgradedAttributes
+            };
+
+            return [id, upgradedBuild];
+          })
+        );
+
+        return {
+          ...(state as CharacterStore),
+          builds: upgradedBuilds
+        } satisfies CharacterStore;
       }
     }
   )
