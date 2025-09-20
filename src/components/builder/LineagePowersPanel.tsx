@@ -1,10 +1,11 @@
-import type { LineageKey, RawLineagePowerData } from '../../data/types';
+import type { LineageKey, PriorityRank, RawLineagePowerData } from '../../data/types';
 import './lineage-powers.css';
 
 interface LineagePowersPanelProps {
   lineage: LineageKey | null;
   powerData?: RawLineagePowerData;
   gmEnabled: boolean;
+  lineagePriority: PriorityRank | null;
 }
 
 type UnknownRecord = Record<string, unknown>;
@@ -233,7 +234,7 @@ function extractFrameworkDetails(framework: UnknownRecord) {
   };
 }
 
-export function LineagePowersPanel({ lineage, powerData, gmEnabled }: LineagePowersPanelProps) {
+export function LineagePowersPanel({ lineage, powerData, gmEnabled, lineagePriority }: LineagePowersPanelProps) {
   if (!lineage) {
     return (
       <section className="lineage-powers-panel">
@@ -369,61 +370,67 @@ export function LineagePowersPanel({ lineage, powerData, gmEnabled }: LineagePow
     const archetypes = powerData.esper_archetypes ?? {};
     const frameworkRaw = powerData.mentalist_framework ?? {};
     const frameworkDetails = isRecord(frameworkRaw) ? extractFrameworkDetails(frameworkRaw) : null;
+    const showBaseArchetypes = lineagePriority !== 'C';
     return (
       <section className="lineage-powers-panel">
         <header>
           <h3>Esper / Mentalist Evolutions</h3>
           <p>Baseline talents and branching focuses define your psionic expression.</p>
         </header>
-        <div className="lineage-powers-grid">
-          {Object.values(archetypes).map((archetype) => (
-            <article key={archetype.id ?? archetype.name} className="lineage-power-card">
-              <header>
-                <h4>{archetype.name}</h4>
-              </header>
-              {archetype.philosophy && <p className="power-description__detail">{archetype.philosophy}</p>}
-              {archetype.baseline_moves && archetype.baseline_moves.length > 0 && (
-                <section className="lineage-power-subsection">
-                  <h5>Baseline Moves</h5>
-                  <ul className="power-list">
-                    {archetype.baseline_moves.map((move) => (
-                      <li key={move.id ?? move.name}>
-                        <div>
-                          <strong>{move.name}</strong>
-                          {move.type && <span className="badge badge--type">{move.type}</span>}
+        {showBaseArchetypes && (
+          <div className="lineage-powers-grid">
+            {Object.values(archetypes).map((archetype) => (
+              <article key={archetype.id ?? archetype.name} className="lineage-power-card">
+                <header>
+                  <h4>{archetype.name}</h4>
+                </header>
+                {archetype.philosophy && <p className="power-description__detail">{archetype.philosophy}</p>}
+                {archetype.baseline_moves && archetype.baseline_moves.length > 0 && (
+                  <section className="lineage-power-subsection">
+                    <h5>Baseline Moves</h5>
+                    <ul className="power-list">
+                      {archetype.baseline_moves.map((move) => (
+                        <li key={move.id ?? move.name}>
+                          <div>
+                            <strong>{move.name}</strong>
+                            {move.type && <span className="badge badge--type">{move.type}</span>}
+                          </div>
+                          {move.description && <p>{move.description}</p>}
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+                {archetype.focuses && (
+                  <section className="lineage-power-subsection">
+                    <h5>Focus Paths</h5>
+                    <div className="focus-grid">
+                      {Object.values(archetype.focuses).map((focus) => (
+                        <div key={focus.id ?? focus.name} className="focus-card">
+                          <h6>{focus.name}</h6>
+                          {focus.philosophy && <p>{focus.philosophy}</p>}
+                          {focus.moves && (
+                            <ul className="power-list">
+                              {focus.moves.map((move) => (
+                                <li key={move.id ?? move.name}>
+                                  <strong>{move.name}</strong>
+                                  {move.description && <p>{move.description}</p>}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </div>
-                        {move.description && <p>{move.description}</p>}
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              )}
-              {archetype.focuses && (
-                <section className="lineage-power-subsection">
-                  <h5>Focus Paths</h5>
-                  <div className="focus-grid">
-                    {Object.values(archetype.focuses).map((focus) => (
-                      <div key={focus.id ?? focus.name} className="focus-card">
-                        <h6>{focus.name}</h6>
-                        {focus.philosophy && <p>{focus.philosophy}</p>}
-                        {focus.moves && (
-                          <ul className="power-list">
-                            {focus.moves.map((move) => (
-                              <li key={move.id ?? move.name}>
-                                <strong>{move.name}</strong>
-                                {move.description && <p>{move.description}</p>}
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </section>
-              )}
-            </article>
-          ))}
-        </div>
+                      ))}
+                    </div>
+                  </section>
+                )}
+              </article>
+            ))}
+          </div>
+        )}
+        {!showBaseArchetypes && (
+          <p className="lineage-note">Priority C Espers begin as Mentalists. Choose from the paths below.</p>
+        )}
         {frameworkDetails && (
           <article className="lineage-power-card framework">
             <header>

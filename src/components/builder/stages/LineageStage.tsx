@@ -101,7 +101,12 @@ export function LineageStage({
         })}
       </section>
 
-      <LineagePowersPanel lineage={selected} powerData={powerSet} gmEnabled={gmViewActive} />
+      <LineagePowersPanel
+        lineage={selected}
+        lineagePriority={lineagePriority}
+        powerData={powerSet}
+        gmEnabled={gmViewActive}
+      />
 
       <section className="lineage-notes">
         <label className="field">
