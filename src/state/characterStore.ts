@@ -29,6 +29,43 @@ export interface SkillSpecializationSelection {
   gmApproved: boolean;
 }
 
+export type LineagePowerKind =
+  | 'neosapien-augment'
+  | 'chimera-mutation'
+  | 'sorcery-sphere-primary'
+  | 'sorcery-sphere-secondary'
+  | 'sorcery-move'
+  | 'esper-archetype'
+  | 'esper-focus'
+  | 'esper-framework-choice'
+  | 'esper-framework-path'
+  | 'automata-capability'
+  | 'automata-model';
+
+export interface LineagePowerMeta {
+  slots?: number;
+  mutationPoints?: number;
+  permanentCorruption?: number;
+  sphere?: string;
+  moveType?: string;
+  branch?: string;
+  chassis?: string;
+  category?: string;
+  tierLabel?: string;
+  root?: string;
+  parent?: string;
+  path?: string[];
+  depth?: number;
+}
+
+export interface LineagePowerSelection {
+  id: string;
+  lineage: LineageKey;
+  label: string;
+  kind: LineagePowerKind;
+  meta?: LineagePowerMeta;
+}
+
 interface BaseResourceEntry {
   id: string;
   name: string;
@@ -89,6 +126,7 @@ export interface CharacterBuild {
     key: LineageKey | null;
     notes: string;
     revealMechanics: boolean;
+    powers: LineagePowerSelection[];
   };
   resources: {
     contacts: ContactResourceEntry[];
@@ -151,6 +189,8 @@ export interface CharacterStore {
   selectLineage: (key: LineageKey | null) => void;
   toggleLineageReveal: () => void;
   updateLineageNotes: (notes: string) => void;
+  toggleLineagePower: (selection: LineagePowerSelection) => void;
+  clearLineagePowers: () => void;
   addContactResource: (payload?: Partial<Omit<ContactResourceEntry, 'id'>>) => void;
   updateContactResource: (id: string, changes: Partial<ContactResourceEntry>) => void;
   removeContactResource: (id: string) => void;
@@ -221,6 +261,16 @@ const defaultHealth = (): CharacterBuild['health'] => ({
   rightLeg: { current: 4, max: 4, scar: '' }
 });
 
+const ESPER_DEPTH_LIMIT: Record<PriorityRank, number> = {
+  A: 3,
+  B: 2,
+  C: 2,
+  D: 1,
+  E: 0
+};
+
+const getEsperDepthLimit = (priority: PriorityRank | null): number => (priority ? ESPER_DEPTH_LIMIT[priority] : 0);
+
 const createEmptyProfile = (): CharacterProfile => ({
   name: '',
   pronouns: '',
@@ -249,7 +299,8 @@ const makeBuild = (label?: string): CharacterBuild => {
     lineage: {
       key: null,
       notes: '',
-      revealMechanics: false
+      revealMechanics: false,
+      powers: []
     },
     resources: {
       contacts: [],
@@ -475,15 +526,19 @@ export const useCharacterStore = create<CharacterStore>()(
         get().setStage(prev);
       },
       selectLineage: (key) => {
-        withActive(set, (build) => ({
-          ...build,
-          lineage: {
-            ...build.lineage,
-            key,
-            // Reset reveal when switching lineages
-            revealMechanics: key ? build.lineage.revealMechanics : false
-          }
-        }));
+        withActive(set, (build) => {
+          const sameLineage = build.lineage.key === key && key !== null;
+          return {
+            ...build,
+            lineage: {
+              ...build.lineage,
+              key,
+              // Reset reveal when switching lineages
+              revealMechanics: key ? build.lineage.revealMechanics : false,
+              powers: sameLineage ? build.lineage.powers : []
+            }
+          };
+        });
         analytics.track('lineage.selected', { lineage: key });
       },
       toggleLineageReveal: () => {
@@ -501,6 +556,89 @@ export const useCharacterStore = create<CharacterStore>()(
           ...build,
           lineage: { ...build.lineage, notes }
         }));
+      },
+      toggleLineagePower: (selection) => {
+        withActive(set, (build) => {
+          if (!build.lineage.key || build.lineage.key !== selection.lineage) {
+            return build;
+          }
+          const isEsper = selection.lineage === 'esper';
+          const exists = build.lineage.powers.some((entry) => entry.id === selection.id);
+          const lineagePriority = build.priorities.lineage ?? null;
+          let powers = build.lineage.powers;
+
+          if (exists) {
+            powers = powers.filter((entry) => entry.id !== selection.id);
+            if (isEsper && selection.meta?.root) {
+              if (selection.kind === 'esper-archetype') {
+                powers = powers.filter((entry) => entry.meta?.root !== selection.meta?.root);
+              } else if (selection.meta?.path) {
+                const targetPath = selection.meta.path.join('/');
+                powers = powers.filter((entry) => {
+                  const entryPath = entry.meta?.path?.join('/') ?? '';
+                  return entry.meta?.root !== selection.meta?.root || !entryPath.startsWith(`${targetPath}/`);
+                });
+              }
+            }
+            return {
+              ...build,
+              lineage: {
+                ...build.lineage,
+                powers
+              }
+            };
+          }
+
+          if (isEsper) {
+            const meta = selection.meta ?? {};
+            const category = meta.category;
+            if (selection.kind === 'esper-archetype') {
+              if (category === 'esper-base' && lineagePriority === 'C') {
+                return build;
+              }
+              if (category === 'esper-mentalist' && !(lineagePriority === 'A' || lineagePriority === 'C')) {
+                return build;
+              }
+              powers = powers.filter((entry) => entry.lineage !== 'esper');
+            } else {
+              const root = meta.root;
+              if (!root) {
+                return build;
+              }
+              const depthLimit = getEsperDepthLimit(lineagePriority);
+              const depth = meta.depth ?? 0;
+              if (depth > depthLimit) {
+                return build;
+              }
+              const hasBase = powers.some(
+                (entry) => entry.kind === 'esper-archetype' && entry.meta?.root === root
+              );
+              if (!hasBase) {
+                return build;
+              }
+            }
+          }
+
+          powers = [...powers, selection];
+          return {
+            ...build,
+            lineage: {
+              ...build.lineage,
+              powers
+            }
+          };
+        });
+        analytics.track('lineage.power_toggled', { id: selection.id, lineage: selection.lineage });
+      },
+      clearLineagePowers: () => {
+        withActive(set, (build) => ({
+          ...build,
+          lineage: {
+            ...build.lineage,
+            powers: []
+          }
+        }));
+        analytics.track('lineage.powers_cleared', {});
       },
       addContactResource: (payload: Partial<Omit<ContactResourceEntry, 'id'>> = {}) => {
         const entry: ContactResourceEntry = {
@@ -971,7 +1109,7 @@ export const useCharacterStore = create<CharacterStore>()(
     }),
     {
       name: 'sidonia-character-builder',
-      version: 4,
+      version: 5,
       migrate: (state, version) => {
         if (!state || typeof state !== 'object') {
           return state;
@@ -1037,6 +1175,24 @@ export const useCharacterStore = create<CharacterStore>()(
             backgroundSpecialization: null,
             notes: typeof legacy.notes === 'string' ? legacy.notes : ''
           } satisfies CharacterBuild['skills'];
+        };
+
+        const upgradeLineage = (lineage: unknown): CharacterBuild['lineage'] => {
+          const legacy = (lineage ?? {}) as Partial<CharacterBuild['lineage']> & {
+            powers?: unknown;
+          };
+          const powers = Array.isArray(legacy.powers)
+            ? (legacy.powers as LineagePowerSelection[]).filter(
+                (entry): entry is LineagePowerSelection =>
+                  !!entry && typeof entry.id === 'string' && typeof entry.lineage === 'string'
+              )
+            : [];
+          return {
+            key: (legacy.key ?? null) as LineageKey | null,
+            notes: typeof legacy.notes === 'string' ? legacy.notes : '',
+            revealMechanics: Boolean(legacy.revealMechanics),
+            powers
+          } satisfies CharacterBuild['lineage'];
         };
 
         const upgradeResources = (resources: unknown): CharacterBuild['resources'] => {
@@ -1136,10 +1292,12 @@ export const useCharacterStore = create<CharacterStore>()(
             };
 
             const upgradedSkills = upgradeSkills(build.skills);
+            const upgradedLineage = upgradeLineage(build.lineage);
             const upgradedResources = upgradeResources(build.resources);
 
             const upgradedBuild: CharacterBuild = {
               ...(build as CharacterBuild),
+              lineage: upgradedLineage,
               resources: upgradedResources,
               skills: upgradedSkills,
               attributes: upgradedAttributes

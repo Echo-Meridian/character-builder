@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import type { PriorityRank, LineageKey, RawLineagePowerData } from '../../../data/types';
 import { LINEAGE_DEFINITIONS, getLineageDefinition } from '../../../data/lineages';
-import type { PriorityCategory } from '../../../state/characterStore';
+import type { LineagePowerSelection, PriorityCategory } from '../../../state/characterStore';
 import './lineage-stage.css';
 import { LineagePowersPanel } from '../LineagePowersPanel';
 
@@ -15,6 +15,9 @@ interface LineageStageProps {
   notes: string;
   onUpdateNotes: (text: string) => void;
   powerSet?: RawLineagePowerData;
+  powers: LineagePowerSelection[];
+  onTogglePower: (selection: LineagePowerSelection) => void;
+  onClearPowers: () => void;
 }
 
 export function LineageStage({
@@ -26,7 +29,10 @@ export function LineageStage({
   onToggleReveal,
   notes,
   onUpdateNotes,
-  powerSet
+  powerSet,
+  powers,
+  onTogglePower,
+  onClearPowers
 }: LineageStageProps) {
   const lineagePriority = priorities.lineage;
   const activeDefinition = useMemo(() => getLineageDefinition(selected), [selected]);
@@ -106,6 +112,9 @@ export function LineageStage({
         lineagePriority={lineagePriority}
         powerData={powerSet}
         gmEnabled={gmViewActive}
+        selections={powers}
+        onToggleSelection={onTogglePower}
+        onClearSelections={onClearPowers}
       />
 
       <section className="lineage-notes">

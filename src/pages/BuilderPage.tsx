@@ -31,6 +31,8 @@ export function BuilderPage() {
   const selectLineage = useCharacterStore((state) => state.selectLineage);
   const toggleLineageReveal = useCharacterStore((state) => state.toggleLineageReveal);
   const updateLineageNotes = useCharacterStore((state) => state.updateLineageNotes);
+  const toggleLineagePower = useCharacterStore((state) => state.toggleLineagePower);
+  const clearLineagePowers = useCharacterStore((state) => state.clearLineagePowers);
   const updateResourceNotes = useCharacterStore((state) => state.updateResourceNotes);
   const updateBackground = useCharacterStore((state) => state.updateBackground);
   const addContactResource = useCharacterStore((state) => state.addContactResource);
@@ -110,6 +112,9 @@ export function BuilderPage() {
           notes={build.lineage.notes}
           onUpdateNotes={updateLineageNotes}
           powerSet={selectedPowerSet}
+          powers={build.lineage.powers}
+          onTogglePower={toggleLineagePower}
+          onClearPowers={clearLineagePowers}
         />
       );
       break;

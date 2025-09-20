@@ -80,6 +80,22 @@ function renderTextSheet(build: CharacterBuild): string {
   lines.push('');
   lines.push(`Lineage: ${build.lineage.key ?? 'Unchosen'}`);
   lines.push(`Lineage Notes: ${build.lineage.notes}`);
+  if (build.lineage.powers.length > 0) {
+    lines.push('Selected Lineage Powers:');
+    build.lineage.powers.forEach((power) => {
+      const details: string[] = [];
+      if (power.meta?.tierLabel) details.push(power.meta.tierLabel);
+      if (power.meta?.sphere) details.push(power.meta.sphere);
+      if (power.meta?.moveType) details.push(power.meta.moveType);
+      if (power.meta?.branch) details.push(power.meta.branch);
+      if (power.meta?.chassis) details.push(power.meta.chassis);
+      if (power.meta?.category && !['esper-base', 'esper-mentalist'].includes(power.meta.category)) {
+        details.push(power.meta.category);
+      }
+      const suffix = details.length > 0 ? ` (${details.join(', ')})` : '';
+      lines.push(`  - ${power.label}${suffix}`);
+    });
+  }
   lines.push('');
   lines.push('Resources:');
   if (build.resources.contacts.length > 0) {
