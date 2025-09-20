@@ -27,9 +27,11 @@ export function SkillsStage({ priority, data, focus, onUpdateFocus, notes, onUpd
   const [customLabel, setCustomLabel] = useState('');
 
   const availableSlots = useMemo(() => {
-    if (!limit) return Infinity;
+    if (!limit) {
+      return priority ? 0 : Infinity;
+    }
     return Math.max(limit - focus.length, 0);
-  }, [limit, focus.length]);
+  }, [limit, focus.length, priority]);
 
   const toggleFocus = (skillId: string) => {
     const exists = focus.includes(skillId);
@@ -126,7 +128,11 @@ export function SkillsStage({ priority, data, focus, onUpdateFocus, notes, onUpd
                 <li key={entry} className={entry.startsWith(CUSTOM_SPECIALIZATION_PREFIX) ? 'focus-pills__custom' : ''}>
                   <span>{formatSkillId(entry)}</span>
                   {entry.startsWith(CUSTOM_SPECIALIZATION_PREFIX) && <span className="gm-tag">Pending GM Approval</span>}
-                  <button type="button" onClick={() => removeFocus(entry)} aria-label="Remove focus">
+                  <button
+                    type="button"
+                    onClick={() => removeFocus(entry)}
+                    aria-label={`Remove ${formatSkillId(entry)}`}
+                  >
                     ×
                   </button>
                 </li>
@@ -152,7 +158,10 @@ export function SkillsStage({ priority, data, focus, onUpdateFocus, notes, onUpd
                 </button>
               </div>
             </label>
-            <p className="skills-custom__hint">Custom options are provisional until your GM approves them.</p>
+            <p className="skills-custom__hint">
+              Custom options are provisional until your GM approves them.
+              {Number.isFinite(availableSlots) && priority ? ` Slots remaining: ${availableSlots}.` : ''}
+            </p>
           </div>
         </div>
         <label className="field">

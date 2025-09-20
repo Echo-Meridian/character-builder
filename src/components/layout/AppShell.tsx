@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../../styles/layout.css';
 import { AnalyticsBanner } from '../experience/AnalyticsBanner';
+import { LegalFooter } from './LegalFooter';
 
 interface AppShellProps {
   children: ReactNode;
@@ -31,6 +32,7 @@ export function AppShell({ children }: AppShellProps) {
         </nav>
       </header>
       <main className="app-shell__main">{children}</main>
+      <LegalFooter />
       <AnalyticsBanner />
     </div>
   );

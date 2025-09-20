@@ -38,6 +38,7 @@ export function BuilderPage() {
   const updateSkillNotes = useCharacterStore((state) => state.updateSkillNotes);
   const setAttributeScore = useCharacterStore((state) => state.setAttributeScore);
   const updateAttributeNotes = useCharacterStore((state) => state.updateAttributeNotes);
+  const toggleAttributeSpecialization = useCharacterStore((state) => state.toggleAttributeSpecialization);
   const adjustExperience = useCharacterStore((state) => state.adjustExperience);
   const setExperience = useCharacterStore((state) => state.setExperience);
   const updateAdvancement = useCharacterStore((state) => state.updateAdvancement);
@@ -135,6 +136,8 @@ export function BuilderPage() {
           notes={build.attributes.notes}
           onUpdateNotes={updateAttributeNotes}
           data={data.attributes}
+          selectedSpecializations={build.attributes.specializations}
+          onToggleSpecialization={toggleAttributeSpecialization}
         />
       );
       break;

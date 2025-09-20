@@ -11,6 +11,8 @@ interface AttributesStageProps {
   notes: string;
   onUpdateNotes: (notes: string) => void;
   data: AttributesData;
+  selectedSpecializations: Record<AttributeKey, string[]>;
+  onToggleSpecialization: (attribute: AttributeKey, specialization: string) => void;
 }
 
 const ATTRIBUTE_NAME_TO_KEY: Record<string, AttributeKey> = {
@@ -19,7 +21,16 @@ const ATTRIBUTE_NAME_TO_KEY: Record<string, AttributeKey> = {
   Presence: 'presence'
 };
 
-export function AttributesStage({ priority, scores, onUpdateScore, notes, onUpdateNotes, data }: AttributesStageProps) {
+export function AttributesStage({
+  priority,
+  scores,
+  onUpdateScore,
+  notes,
+  onUpdateNotes,
+  data,
+  selectedSpecializations,
+  onToggleSpecialization
+}: AttributesStageProps) {
   const pointBuyEntry = useMemo(
     () => (priority ? data.pointBuy.find((entry) => entry.priority === priority) ?? null : null),
     [data.pointBuy, priority]
@@ -43,6 +54,14 @@ export function AttributesStage({ priority, scores, onUpdateScore, notes, onUpda
   const spent = (Object.values(scores) as number[]).reduce((sum, value) => sum + value, 0);
   const remaining = pool - spent;
   const specializationAllowance = pointBuyEntry?.specializations ?? 0;
+  const totalSelectedSpecializations = useMemo(
+    () =>
+      Object.values(selectedSpecializations).reduce((sum, list) =>
+        sum + (Array.isArray(list) ? list.length : 0),
+      0),
+    [selectedSpecializations]
+  );
+  const remainingSpecializations = Math.max(specializationAllowance - totalSelectedSpecializations, 0);
 
   return (
     <div className="stage stage--attributes">
@@ -61,7 +80,9 @@ export function AttributesStage({ priority, scores, onUpdateScore, notes, onUpda
               <p>
                 Pool {pool} • Remaining {remaining}
               </p>
-              <p className="attribute-pool__detail">Specializations available: {specializationAllowance}</p>
+              <p className="attribute-pool__detail">
+                Specializations: {specializationAllowance > 0 ? `${remainingSpecializations} of ${specializationAllowance} remaining` : 'None available'}
+              </p>
             </>
           ) : (
             <p>Assign a priority letter to calculate your attribute pool.</p>
@@ -90,12 +111,26 @@ export function AttributesStage({ priority, scores, onUpdateScore, notes, onUpda
               <div className="attribute-specializations">
                 <h4>Specializations</h4>
                 <ul>
-                  {attribute.specializations.map((specialization) => (
-                    <li key={specialization.name}>
-                      <strong>{specialization.name}</strong>
-                      <span>{specialization.description}</span>
-                    </li>
-                  ))}
+                  {attribute.specializations.map((specialization) => {
+                    const selections = selectedSpecializations[attribute.key] ?? [];
+                    const isSelected = selections.includes(specialization.name);
+                    const limitReached =
+                      (specializationAllowance === 0 && !isSelected) ||
+                      (specializationAllowance > 0 && remainingSpecializations === 0 && !isSelected);
+                    return (
+                      <li key={specialization.name}>
+                        <button
+                          type="button"
+                          className={`attribute-specialization__toggle ${isSelected ? 'selected' : ''}`}
+                          onClick={() => onToggleSpecialization(attribute.key, specialization.name)}
+                          disabled={limitReached}
+                        >
+                          <strong>{specialization.name}</strong>
+                          <span>{specialization.description}</span>
+                        </button>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             )}

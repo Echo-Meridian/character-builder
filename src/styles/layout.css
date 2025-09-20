@@ -1,6 +1,6 @@
 .app-shell {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .app-shell__main {
-  padding: 2.5rem 2rem 3rem;
+  padding: 2.5rem 2rem 2rem;
 }
 
 @media (max-width: 768px) {

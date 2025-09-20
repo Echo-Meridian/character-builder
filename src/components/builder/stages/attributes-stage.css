@@ -92,6 +92,34 @@
   text-transform: uppercase;
 }
 
+.attribute-specialization__toggle {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.attribute-specialization__toggle:hover:not(:disabled) {
+  border-color: rgba(240, 200, 120, 0.4);
+}
+
+.attribute-specialization__toggle.selected {
+  border-color: rgba(240, 200, 120, 0.7);
+  background: rgba(240, 200, 120, 0.18);
+  box-shadow: 0 8px 18px rgba(240, 200, 120, 0.18);
+}
+
+.attribute-specialization__toggle:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .attribute-ratings {
   padding: 1rem 1.2rem;
   border-radius: 14px;

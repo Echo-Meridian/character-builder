@@ -87,6 +87,8 @@ export interface AttributesData {
   definitions: Record<string, AttributeDefinitionEntry>;
 }
 
+export type CharacterSheetStructure = Record<string, unknown>;
+
 export interface SkillSpecialization {
   id: string;
   name: string;
@@ -142,6 +144,7 @@ export interface CharacterBuilderData {
   powerSchemas: Record<string, unknown>;
   powerSets: Partial<Record<LineageKey, RawLineagePowerData>>;
   attributes: AttributesData;
+  characterSheet: CharacterSheetStructure;
   designDocs: DesignDocument[];
 }
 

@@ -1,5 +1,7 @@
 import type { CharacterBuild } from '../state/characterStore';
-import type { CharacterBuilderData } from '../data/types';
+import type { BackgroundEntry, CharacterBuilderData } from '../data/types';
+
+const CUSTOM_SPECIALIZATION_PREFIX = 'custom::';
 
 interface ExportPayload {
   version: string;
@@ -19,10 +21,15 @@ interface ExportPayload {
     resources: CharacterBuilderData['resources'];
     resourceCosts: CharacterBuilderData['resourceCosts'];
     powerSchemas: CharacterBuilderData['powerSchemas'];
+    attributes: CharacterBuilderData['attributes'];
+    backgrounds: CharacterBuilderData['backgrounds'];
+    selectedBackgroundTemplate: BackgroundEntry | null;
+    characterSheet: CharacterBuilderData['characterSheet'];
   };
 }
 
 export function buildExportPayload(build: CharacterBuild, data: CharacterBuilderData): ExportPayload {
+  const selectedBackgroundTemplate = build.background.title ? data.backgrounds[build.background.title] ?? null : null;
   return {
     version: '0.1.0',
     generatedAt: new Date().toISOString(),
@@ -40,7 +47,11 @@ export function buildExportPayload(build: CharacterBuild, data: CharacterBuilder
     reference: {
       resources: data.resources,
       resourceCosts: data.resourceCosts,
-      powerSchemas: data.powerSchemas
+      powerSchemas: data.powerSchemas,
+      attributes: data.attributes,
+      backgrounds: data.backgrounds,
+      selectedBackgroundTemplate,
+      characterSheet: data.characterSheet
     }
   };
 }
@@ -83,13 +94,20 @@ function renderTextSheet(build: CharacterBuild): string {
   lines.push(`Contacts: ${build.background.contacts}`);
   lines.push('');
   lines.push('Skill Focus:');
-  build.skills.focus.forEach((entry) => lines.push(`  - ${entry}`));
+  build.skills.focus.forEach((entry) => lines.push(`  - ${formatSkillFocusLabel(entry)}`));
   lines.push(`Skill Notes: ${build.skills.notes}`);
   lines.push('');
   lines.push('Attributes:');
   Object.entries(build.attributes.scores).forEach(([key, value]) => {
     lines.push(`  ${key}: ${value}`);
   });
+  const attributeSpecializations = Object.entries(build.attributes.specializations).filter(([, list]) => list.length > 0);
+  if (attributeSpecializations.length > 0) {
+    lines.push('Attribute Specializations:');
+    attributeSpecializations.forEach(([key, list]) => {
+      lines.push(`  ${key}: ${list.join(', ')}`);
+    });
+  }
   lines.push(`Attribute Notes: ${build.attributes.notes}`);
   lines.push('');
   lines.push(`Corruption: ${build.corruption.current} / ${build.corruption.warning}`);
@@ -124,4 +142,20 @@ function triggerDownload(filename: string, blob: Blob) {
 function slugify(value: string) {
   const cleaned = value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
   return cleaned || 'sidonia-character';
+}
+
+function formatSkillFocusLabel(value: string) {
+  if (value.startsWith(CUSTOM_SPECIALIZATION_PREFIX)) {
+    return `Custom · ${value.slice(CUSTOM_SPECIALIZATION_PREFIX.length)}`;
+  }
+  const [discipline, skill] = value.split(':');
+  return `${toTitleCase(discipline)} · ${toTitleCase(skill?.replace(/-/g, ' ') ?? '')}`;
+}
+
+function toTitleCase(value: string) {
+  return value
+    .split(/\s+/)
+    .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
+    .join(' ')
+    .trim();
 }

@@ -1,0 +1,120 @@
+{
+  "characterSheet": {
+    "identity": {
+      "portrait": {
+        "type": "image",
+        "maxSize": "2MB",
+        "formats": ["jpg", "png", "webp"],
+        "dimensions": "recommended 400x600",
+        "placeholder": "Silhouette with '?' for new characters"
+      },
+      "name": "text",
+      "lineage": "dropdown",
+      "background": "dropdown with tier",
+      "ward": "number (2-32,34-65,67-98)",
+      "appearance": "text (supports portrait description)",
+      "personality": "text",
+      "history": "text"
+    },
+    "attributes": {
+      "physique": {
+        "value": "0-5",
+        "specializations": ["strength", "agility", "stamina", "perception"]
+      },
+      "intellect": {
+        "value": "0-5",
+        "specializations": ["reasoning", "intuition", "wits", "willpower"]
+      },
+      "presence": {
+        "value": "0-5",
+        "specializations": ["charisma", "manipulation", "empathy", "composure"]
+      }
+    },
+    "derivedStats": {
+      "health": {
+        "head": "boxes based on physique",
+        "torso": "boxes based on physique",
+        "leftArm": "boxes based on physique",
+        "rightArm": "boxes based on physique",
+        "leftLeg": "boxes based on physique",
+        "rightLeg": "boxes based on physique"
+      },
+      "stunTrack": "equals health boxes per location",
+      "corruption": {
+        "threshold": "10 + (highest attribute × 2) + integrity bonuses",
+        "permanent": "from augments",
+        "temporary": "from gameplay"
+      },
+      "initiative": "2d6 + wits bonus",
+      "speed": "base/agility/strength variants"
+    },
+  "skills": {
+    "structure": {
+      "rating": "0-5",
+      "specializations": {
+        "predefined": "select from skill list",
+        "custom": {
+          "enabled": true,
+          "fields": {
+            "name": "text input",
+            "description": "text input", 
+            "gmApproved": "boolean (default false)",
+            "approvalTag": "displays 'GM Approval Required' until true"
+          }
+        }
+      }
+    },
+    "example": {
+      "larceny": {
+        "rating": 3,
+        "specializations": [
+          {"type": "predefined", "name": "Infiltration"},
+          {"type": "custom", "name": "Electronic Locks", "gmApproved": false}
+        ]
+      }
+    },
+    "ui": {
+      "customSpecialization": {
+        "inputField": "text",
+        "placeholder": "Custom specialization (requires GM approval)",
+        "visualIndicator": "Yellow warning icon until approved",
+        "approvedIndicator": "Green checkmark when GM approves"
+      }
+    }
+   },
+    "resources": {
+      "contacts": [
+        {
+          "name": "text",
+          "specialization": "dropdown",
+          "reach": "1-5",
+          "influence": "1-5"
+        }
+      ],
+      "retainers": [
+        {
+          "name": "text",
+          "specialization": "dropdown",
+          "competence": "1-5",
+          "loyalty": "1-5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "text",
+          "tenure": "dropdown",
+          "zoning": "dropdown",
+          "ward": "2-99"
+        }
+      ]
+    },
+    "powers": {
+      "display": "varies by lineage",
+      "neosapien": "Bio Mods",
+      "sorcerer": "Spheres",
+      "esper": "Type",
+      "chimera": "Mutations",
+      "automata": "chassis-branch-model"
+    }
+  }
+}

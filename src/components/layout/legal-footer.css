@@ -1,0 +1,25 @@
+.legal-footer {
+  margin-top: 2rem;
+  padding: 1rem 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(210, 210, 220, 0.75);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.legal-footer__text {
+  text-transform: uppercase;
+}
+
+.legal-footer__link {
+  color: rgba(235, 215, 160, 0.85);
+  text-decoration: none;
+}
+
+.legal-footer__link:hover {
+  text-decoration: underline;
+}

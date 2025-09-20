@@ -67,6 +67,7 @@ export interface CharacterBuild {
   attributes: {
     scores: Record<AttributeKey, number>;
     notes: string;
+    specializations: Record<AttributeKey, string[]>;
   };
   corruption: {
     current: number;
@@ -111,6 +112,7 @@ export interface CharacterStore {
   updateSkillNotes: (notes: string) => void;
   setAttributeScore: (attribute: AttributeKey, value: number) => void;
   updateAttributeNotes: (notes: string) => void;
+  toggleAttributeSpecialization: (attribute: AttributeKey, specialization: string) => void;
   adjustExperience: (delta: number) => void;
   setExperience: (value: number) => void;
   updateAdvancement: (changes: Partial<CharacterBuild['advancement']>) => void;
@@ -139,6 +141,12 @@ const defaultAttributes = (): Record<AttributeKey, number> => ({
   physique: 0,
   intellect: 0,
   presence: 0
+});
+
+const defaultAttributeSpecializations = (): Record<AttributeKey, string[]> => ({
+  physique: [],
+  intellect: [],
+  presence: []
 });
 
 const defaultHealth = (): CharacterBuild['health'] => ({
@@ -195,7 +203,8 @@ const makeBuild = (label?: string): CharacterBuild => {
     },
     attributes: {
       scores: defaultAttributes(),
-      notes: ''
+      notes: '',
+      specializations: defaultAttributeSpecializations()
     },
     corruption: {
       current: 0,
@@ -454,6 +463,25 @@ export const useCharacterStore = create<CharacterStore>()(
           attributes: { ...build.attributes, notes }
         }));
       },
+      toggleAttributeSpecialization: (attribute, specialization) => {
+        withActive(set, (build) => {
+          const specializations = build.attributes.specializations ?? defaultAttributeSpecializations();
+          const current = specializations[attribute] ?? [];
+          const exists = current.includes(specialization);
+          const updatedList = exists ? current.filter((entry) => entry !== specialization) : [...current, specialization];
+          return {
+            ...build,
+            attributes: {
+              ...build.attributes,
+              specializations: {
+                ...specializations,
+                [attribute]: updatedList
+              }
+            }
+          };
+        });
+        analytics.track('attributes.specialization_toggled', { attribute, specialization });
+      },
       adjustExperience: (delta) => {
         withActive(set, (build) => ({
           ...build,
@@ -605,13 +633,25 @@ export const useCharacterStore = create<CharacterStore>()(
             };
           };
 
+          const normalizeSpecializations = (
+            specializations: Record<string, string[]> | undefined
+          ): Record<AttributeKey, string[]> => {
+            const source = specializations ?? {};
+            return {
+              physique: Array.isArray(source.physique) ? source.physique : [],
+              intellect: Array.isArray(source.intellect) ? source.intellect : [],
+              presence: Array.isArray(source.presence) ? source.presence : []
+            };
+          };
+
           const upgradedBuilds = Object.fromEntries(
             Object.entries((state as CharacterStore).builds ?? {}).map(([id, build]) => {
               const upgraded: CharacterBuild = {
                 ...build,
                 attributes: {
                   scores: mapLegacyAttributeKey(build.attributes?.scores as Record<string, number> | undefined),
-                  notes: build.attributes?.notes ?? ''
+                  notes: build.attributes?.notes ?? '',
+                  specializations: normalizeSpecializations(build.attributes?.specializations as Record<string, string[]> | undefined)
                 }
               };
               return [id, upgraded];
