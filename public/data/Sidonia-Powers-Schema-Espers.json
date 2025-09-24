@@ -1,0 +1,133 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Sidonia Esper Powers Schema",
+  "description": "A schema to validate the structure of Esper archetypes, their focuses, and abilities.",
+  "type": "object",
+  "properties": {
+    "esper_archetypes": {
+      "description": "A container for all top-level Esper archetypes.",
+      "type": "object",
+      "patternProperties": {
+        "^[a-z-]+$": {
+          "$ref": "#/$defs/archetypeObject"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "esper_archetypes"
+  ],
+  "$defs": {
+    "abilityObject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "A unique, machine-readable ID for the ability."
+        },
+        "name": {
+          "type": "string",
+          "description": "The display name of the ability."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the ability, either a passive augment or an active move.",
+          "enum": [
+            "move",
+            "augment"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "The full rules text and flavor for the ability."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "type",
+        "description"
+      ]
+    },
+    "focusObject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string",
+          "description": "The progression path leading to this focus, e.g., 'Sentinel -> Juggernaut'."
+        },
+        "philosophy": {
+          "type": "string"
+        },
+        "abilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/abilityObject"
+          }
+        },
+        "focuses": {
+          "type": "object",
+          "description": "Recursively defines further specializations.",
+          "patternProperties": {
+            "^[a-z-]+$": {
+              "$ref": "#/$defs/focusObject"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "path",
+        "philosophy",
+        "abilities"
+      ]
+    },
+    "archetypeObject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "philosophy": {
+          "type": "string"
+        },
+        "abilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/abilityObject"
+          }
+        },
+        "focuses": {
+          "type": "object",
+          "description": "The first level of specializations for this archetype.",
+          "patternProperties": {
+            "^[a-z-]+$": {
+              "$ref": "#/$defs/focusObject"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "philosophy",
+        "abilities",
+        "focuses"
+      ]
+    }
+  }
+}
+

@@ -1,0 +1,469 @@
+{
+  "mentalist_archetypes": {
+    "foundational_augments": {
+      "polarity": [
+        {
+          "id": "receiver-configuration",
+          "name": "Receiver Configuration",
+          "description": "Your mind is a sensitive antenna. You are adept at perceiving your chosen domain. When you use Moves related to perceiving/sensing, you may re-roll one die. When you use Moves to influence/project, you suffer Disadvantage.",
+          "cost": "1 Permanent Corruption"
+        },
+        {
+          "id": "influencer-configuration",
+          "name": "Influencer Configuration",
+          "description": "Your mind is a powerful transmitter. You are adept at influencing your chosen domain. When you use Moves to influence/project, you may re-roll one die. When you use Moves to perceive/sense, you suffer Disadvantage.",
+          "cost": "1 Permanent Corruption"
+        }
+      ],
+      "scope": [
+        {
+          "id": "targeted-scope",
+          "name": "Targeted",
+          "description": "Your power is a concentrated scalpel, affecting only one target at a time with potent, focused effects.",
+          "cost": "0 Permanent Corruption"
+        },
+        {
+          "id": "aural-scope",
+          "name": "Aural",
+          "description": "Your power radiates outward, affecting everyone (friend and foe) in a small area around you. You cannot selectively target.",
+          "cost": "2 Permanent Corruption"
+        }
+      ]
+    },
+    "empath": {
+      "id": "empath",
+      "name": "The Empath",
+      "philosophy": "Conductor of the Heart's Torrent. Empaths are living resonators for the feelings that drive individuals and mobs alike, excelling at sensing and manipulating the emotional fabric of situations.",
+      "natural_lean": "Receiver",
+      "power_selections": {
+        "receiver_all": {
+          "id": "self-preservation-instinct",
+          "name": "Self Preservation Instinct",
+          "type": "augment",
+          "description": "All Empath Receivers possess an innate awareness of hostility and aggression, making them almost impossible to surprise."
+        },
+        "influencer_all": {
+          "id": "natural-leader",
+          "name": "Natural Leader",
+          "type": "augment",
+          "description": "All Empath Influencers possess an 'it' factor. When they speak with genuine, strong feeling, people are more inclined to listen and be moved.",
+          "cost": "1 Permanent Corruption"
+        },
+        "aural_receiver": {
+          "id": "aural-anomaly",
+          "name": "Aural Anomaly",
+          "type": "move",
+          "description": "As an action, open your senses to a location to learn the dominant emotion of the crowd and sense strong deviations within it."
+        },
+        "aural_influencer": {
+          "id": "emotional-broadcast",
+          "name": "Emotional Broadcast",
+          "type": "move",
+          "description": "Project an emotion you are feeling (or just read) to push the area's emotional state in that direction. Amplifying an existing feeling is easier."
+        },
+        "targeted_receiver": {
+          "id": "isolate",
+          "name": "Isolate",
+          "type": "move",
+          "description": "Focus on an individual in a crowd to identify the person feeling a specific emotion most strongly or to track them by their unique emotional 'scent'."
+        },
+        "targeted_influencer": {
+          "id": "empathic-spike",
+          "name": "Empathic Spike",
+          "type": "move",
+          "description": "Touch a target and flood their mind with a single, raw, overwhelming emotion of your choice. The effect is intense but brief."
+        }
+      }
+    },
+    "mesmer": {
+      "id": "mesmer",
+      "name": "The Mesmer",
+      "philosophy": "Architect of the Reasoning Mind. Mesmers dissect and reconstruct thought, understanding how people think to create confusion, plant ideas, and craft flawless illusions.",
+      "natural_lean": "Influencer",
+      "power_selections": {
+        "receiver_all": {
+          "id": "predict-action",
+          "name": "Predict Action",
+          "type": "move",
+          "description": "Focus on a target's mind to perceive their intended course of action, reading the logical framework of their plan."
+        },
+        "influencer_all": {
+          "id": "implant-suggestion",
+          "name": "Implant Suggestion",
+          "type": "move",
+          "description": "Plant a 'logic bomb' in a target's mind, making a specific course of action seem like the most logical and reasonable thing to do (cannot betray core values or cause immediate harm)."
+        },
+        "aural_receiver": {
+          "id": "life-in-the-flow-state",
+          "name": "Life in the Flow State",
+          "type": "augment",
+          "description": "You naturally integrate perception signals from an area, moving through crowds like smoke and slipping through gaps in attention with unnatural grace.",
+          "cost": "1 Permanent Corruption"
+        },
+        "aural_influencer": {
+          "id": "shared-delusion",
+          "name": "Shared Delusion",
+          "type": "move",
+          "description": "Plant a simple, non-contradictory fact into a small, like-minded group, provided it isn't immediately and obviously false."
+        },
+        "targeted_receiver": {
+          "id": "predictive-insight",
+          "name": "Predictive Insight",
+          "type": "move",
+          "description": "Focus on a target to gain a flash of insight (a key visual, static image, or keyword) into their immediate intentions or logical next steps."
+        },
+        "targeted_influencer": {
+          "id": "logical-twist",
+          "name": "Logical Twist",
+          "type": "move",
+          "description": "Plant a minor logical fallacy in a target's reasoning, making them temporarily susceptible to a simple suggestion or causing them to rationalize a slightly irrational decision."
+        }
+      }
+    },
+    "siren": {
+      "id": "siren",
+      "name": "The Siren",
+      "philosophy": "Weaver of the Body's Song. Sirens govern the mind-body connection, manipulating the autonomic nervous system—breath, heartbeat, adrenaline—through touch or voice.",
+      "natural_lean": "Influencer",
+      "power_selections": {
+        "receiver_all": {
+          "id": "read-reflex",
+          "name": "Read Reflex",
+          "type": "move",
+          "description": "Focus on a target's nervous system to read the micro-signals before a physical action. On a 10+, you know exactly what they'll do. On a 7-9, you get a partial read or take 1 Stun. On a 6-, you misread the signal."
+        },
+        "influencer_all": {
+          "id": "overwhelm-senses",
+          "name": "Overwhelm Senses",
+          "type": "move",
+          "description": "Project your will to manipulate a target's pain, induce pleasure, or lull them. On a 10+, the effect is potent. On a 7-9, the effect is uncontrolled (adds 1 DP or costs 1 Temp Corruption). On a 6-, the backlash affects you."
+        },
+        "aural_receiver": {
+          "id": "mind-mapping",
+          "name": "Mind Mapping",
+          "type": "move",
+          "description": "Use the active perception of people in an area to create a mental map of the internal layout, including estimations of unobserved sections."
+        },
+        "aural_influencer": [
+          {
+            "id": "dissonance-field",
+            "name": "Dissonance Field",
+            "type": "move",
+            "description": "Project a small field of autonomic chaos. Everyone inside (friend or foe) feels their heart race and slow erratically, wrecking fine motor skills."
+          },
+          {
+            "id": "suppress-reflexes",
+            "name": "Suppress Reflexes",
+            "type": "move",
+            "description": "Project a calming wave. On a 10+, you steady an ally or prevent a target from startling. On a 7-9, it's only partially successful. On a 6-, your wave is too strong, making the target lethargic."
+          }
+        ],
+        "targeted_receiver": {
+          "id": "bio-feedback",
+          "name": "Bio-Feedback",
+          "type": "move",
+          "description": "While active on a target, you read their physical state with perfect clarity (heart rate, respiration, micro-expressions), becoming a flawless lie detector for that person."
+        },
+        "targeted_influencer": [
+           {
+            "id": "autonomic-override",
+            "name": "Autonomic Override",
+            "type": "move",
+            "description": "Through touch or focus, manipulate a target's basic biological functions (heart rate, pain receptors) to temporarily incapacitate or disorient."
+          },
+          {
+            "id": "self-overclock",
+            "name": "Self-Overclock",
+            "type": "move",
+            "description": "Briefly push your own body beyond its natural limits for enhanced physical attributes, suffering repercussions like fatigue or strain afterward."
+          }
+        ]
+      }
+    },
+    "dreamer": {
+      "id": "dreamer",
+      "name": "The Dreamer",
+      "philosophy": "Navigator of the Collective Unconscious. Dreamers are psychic amplifiers who drift in the subconscious, blurring the lines between what is real and what is desired.",
+      "natural_lean": "Receiver",
+      "power_selections": {
+        "dreamer_all": [
+          {
+            "id": "aetheric-amplifier",
+            "name": "Aetheric Amplifier",
+            "type": "augment",
+            "description": "Your presence thins the veil. You are a constant amplifier. While not actively suppressed, any other supernatural being (friend or foe) in your vicinity may re-roll one die on their next power-related check.",
+            "cost": "2 Permanent Corruption"
+          },
+          {
+            "id": "idol-or-anathema",
+            "name": "Idol or Anathema",
+            "type": "augment",
+            "description": "You are what the moment makes you. You are rarely faced with indifference from observers, inspiring love or hate.",
+            "cost": "2 Permanent Corruption"
+          }
+        ],
+        "receiver_all": {
+          "id": "perceive-psyche",
+          "name": "Perceive Psyche",
+          "type": "move",
+          "description": "Look at a person and perceive the symbolic icons of their subconscious. On a 10+, you get a clear reading and its meaning. On a 7-9, the symbols are cryptic or you take 1 Stun. On a 6-, you misinterpret the symbol entirely."
+        },
+        "influencer_all": {
+          "id": "dream-walk",
+          "name": "Dream Walk",
+          "type": "move",
+          "description": "Project your consciousness into a sleeping target's dreams. On a 10+, you have full control. On a 7-9, you are swept along by the dream's narrative or take 1 Temp Corruption. On a 6-, you become trapped until woken, taking 2 Stun."
+        },
+        "aural_receiver": {
+            "id": "mind-field",
+            "name": "Mind Field",
+            "type": "move",
+            "description": "Open yourself to the dreaming while awake, becoming aware of every mind's state (awake/asleep) locally. The knowledge can be overwhelming."
+        },
+        "aural_influencer": [
+            {
+                "id": "shared-fright",
+                "name": "Shared Fright",
+                "type": "move",
+                "description": "A nightmarish image flickers at the edge of vision for everyone nearby, causing shared confusion and dread."
+            },
+            {
+                "id": "aetheric-gateway",
+                "name": "Aetheric Gateway",
+                "type": "move",
+                "description": "Become a temporary anchor for a spirit. You have no control. On a 10+, a neutral spirit appears. On a 7-9, a mischievous one. On a 6-, a malicious one."
+            }
+        ],
+        "targeted_receiver": [
+            {
+                "id": "waking-trace",
+                "name": "Waking Trace",
+                "type": "move",
+                "description": "Touch someone to get a fleeting, symbolic image of what they last dreamt about."
+            },
+            {
+                "id": "skill-echo",
+                "name": "Skill Echo",
+                "type": "move",
+                "description": "Briefly 'download' a general skill or archetype from the collective consciousness, gaining competence but also having your demeanor subtly shift to reflect the archetype."
+            }
+        ],
+        "targeted_influencer": [
+             {
+                "id": "dream-heist",
+                "name": "Dream Heist",
+                "type": "move",
+                "description": "Enter a sleeping target's dreams to search for specific information, represented as a surreal 'dungeon'."
+            },
+            {
+                "id": "subconscious-suggestion",
+                "name": "Subconscious Suggestion",
+                "type": "move",
+                "description": "Plant a symbolic idea deep within a dream, which will influence the target's waking decisions in subtle ways."
+            }
+        ]
+      }
+    },
+    "meta-mind": {
+      "id": "meta-mind",
+      "name": "The Meta-Mind",
+      "philosophy": "The Anomaly in the Self. A reclusive and dangerous path focusing inward, manipulating one's own brain for superhuman cognitive function at appalling risk.",
+      "natural_lean": "Not Applicable",
+      "core_mechanics": {
+        "standard_moves": {
+          "name": "Standard Meta-Mind Moves",
+          "description": "Applies to most Instanced abilities.",
+          "outcomes": {
+            "12+": "Critical Success. Heightened effect and an additional benefit.",
+            "10-11": "Clean Success. Move works as intended.",
+            "7-9": "Success with Lingering Strain. Move works, but gain 1 Temporary Corruption. After effect ends, roll on the Neural Glitch Table.",
+            "6-": "Failure & Cascade. Move fails. Roll on the Psychic Catastrophe Table.",
+            "nat_2": "Critical Failure. Suffer effects of a 6- AND gain 1 Permanent Corruption."
+          }
+        },
+        "deep_surgery": {
+          "name": "Deep Surgery Mechanic",
+          "description": "Applies to the most dangerous, Persistent abilities. These moves are always costly.",
+          "outcomes": {
+            "12+": "Treat as a 10-11.",
+            "10-11": "Costly Success. Move succeeds, but gain 1 Permanent Corruption.",
+            "7-9": "Flawed Success. Move works with a severe, permanent flaw introduced by the GM. Gain 1 Permanent Corruption.",
+            "6-": "Same as Standard Moves.",
+            "nat_2": "Same as Standard Moves."
+          }
+        }
+      },
+      "consequence_tables": {
+          "neural_glitch_table": [
+              {"roll": 1, "result": "Sensory Bleed: One of your senses gives false positives (phantom sounds, visual tracers, scents of ozone)."},
+              {"roll": 2, "result": "Emotional Numbness: You cannot feel or project any emotion. Suffer Disadvantage on all social rolls."},
+              {"roll": 3, "result": "Synaptic Lag: Your reaction time is off. Suffer a -1 penalty to all rolls requiring quick reflexes or perception."},
+              {"roll": 4, "result": "Memory Echoes: Fragments of old, unrelated memories bubble to the surface, causing momentary confusion."},
+              {"roll": 5, "result": "Verbal Tic: You develop a noticeable verbal or physical tic that you cannot control."},
+              {"roll": 6, "result": "Cognitive Lock: You become fixated on a single, irrelevant detail and have trouble focusing on the bigger picture."}
+          ],
+          "psychic_catastrophe_table": [
+              {"roll": 1, "result": "Amnesia Fugue: You forget a crucial piece of information or lose all memory of the last 24 hours. The GM determines the specifics. You gain 1 Temporary Corruption."},
+              {"roll": 2, "result": "Neural Glitch: For the next scene, one of your senses gives you false information (e.g., auditory hallucinations, visual distortions, phantom smells)."},
+              {"roll": 3, "result": "Synaptic Misfire: You immediately take Stun damage equal to your current Cognitive Strain total as your brain's pain receptors fire chaotically."},
+              {"roll": 4, "result": "Personality Bleed: One of your core memories is temporarily rewritten. You act on a false belief (e.g., 'My ally is a traitor') until you can be convinced otherwise."},
+              {"roll": 5, "result": "Skill Hemorrhage: One of your skills is temporarily burned out. You cannot use any skill at a rank higher than Novice for the rest of the day."},
+              {"roll": 6, "result": "Catastrophic Meltdown: This triggers a Trauma. You must immediately choose a new Meta-Mind Trauma Augment or take 3 Permanent Corruption."}
+          ]
+      },
+      "powers": [
+        {
+          "id": "cognitive-acceleration",
+          "name": "Cognitive Acceleration",
+          "type": "move",
+          "duration": "Instanced",
+          "scope": "Systemic",
+          "description": "Temporarily boost your mental processing speed for rapid calculation, perfect recall, or hyper-focused problem-solving."
+        },
+        {
+          "id": "sensory-re-routing",
+          "name": "Sensory Re-routing",
+          "type": "move",
+          "duration": "Instanced",
+          "scope": "Discrete",
+          "description": "For one scene, re-route your sensory input, like 'seeing' with your ears to bypass blindness."
+        },
+        {
+          "id": "eidetic-mimicry",
+          "name": "Eidetic Mimicry",
+          "type": "move",
+          "duration": "Instanced",
+          "scope": "Discrete",
+          "description": "Perfectly observe a physical action or skill. On a 10+, you can perform that action for the scene as if you had an Expert rank. Can be used for impersonation with significant study."
+        },
+        {
+            "id": "emotional-dampening",
+            "name": "Emotional Dampening",
+            "type": "move",
+            "duration": "Instanced",
+            "scope": "Systemic",
+            "description": "For one scene, sever your emotional responses. You are immune to fear and emotional manipulation, but suffer a -2 penalty on social rolls requiring empathy."
+        },
+        {
+            "id": "abstract-solution-space",
+            "name": "Abstract Solution Space",
+            "type": "move",
+            "duration": "Instanced",
+            "scope": "Systemic",
+            "description": "Enter a 'mind palace'. Describe a complex problem to the GM, who must give you a direct, truthful answer or a significant clue."
+        },
+        {
+          "id": "self-memory-edit",
+          "name": "Self-Memory Edit",
+          "type": "augment",
+          "duration": "Persistent",
+          "scope": "Discrete",
+          "description": "The ability to alter, enhance, or suppress your own memories. This is a Deep Surgery move."
+        },
+        {
+          "id": "cognitive-firewall",
+          "name": "Cognitive Firewall",
+          "type": "augment",
+          "duration": "Persistent",
+          "scope": "Systemic",
+          "description": "Re-architect your mind's defenses, granting a +2 bonus when resisting any form of mental intrusion.",
+          "cost": "2 Permanent Corruption"
+        },
+        {
+          "id": "persona-polarity",
+          "name": "Persona Polarity",
+          "type": "augment",
+          "duration": "Persistent",
+          "scope": "Systemic",
+          "description": "Fracture your consciousness into two distinct, switchable personas designed at character creation. This is a Deep Surgery move.",
+          "cost": "3 Permanent Corruption"
+        },
+        {
+            "id": "sleep-purge",
+            "name": "Sleep Purge",
+            "type": "augment",
+            "duration": "Persistent",
+            "scope": "Systemic",
+            "description": "Edit your brain to no longer require sleep. You cannot be rendered unconscious by exhaustion, but you can no longer dream or benefit from a Dreamer's powers.",
+            "cost": "2 Permanent Corruption"
+        }
+      ]
+    }
+  },
+  "trauma_mutations": {
+      "empath": [
+          {
+              "id": "leechs-drain",
+              "name": "Leech's Drain",
+              "prerequisite": "Suffer a specific in-game trauma.",
+              "cost": "15 XP",
+              "effect": "When you use a move to amplify emotion in a crowd, you can 'feed' on it. The effect is more potent, but you must roll to resist gaining Temporary Corruption as your own emotional core decays."
+          }
+      ],
+      "mesmer": [
+          {
+              "id": "mirage-projection",
+              "name": "Mirage Projection",
+              "prerequisite": "Suffer severe sensory overload trauma.",
+              "cost": "3 Permanent Corruption",
+              "effect": "You can use the 'Weave Illusion' Sorcery Move. However, when under extreme stress, the GM can spend DP to have you perceive one of your own traumatic illusions as real."
+          },
+          {
+              "id": "iq-eater",
+              "name": "IQ Eater",
+              "prerequisite": "Suffer a trauma related to intellectual inadequacy.",
+              "cost": "2 Permanent Corruption",
+              "effect": "Gain the 'Mind Leech' Move: Once per day, link with a helpless/willing target for one hour. For the rest of the day, you gain +1 to all Intellect rolls, while the target suffers -2. This causes cumulative, permanent damage to the target's mind with each use."
+          }
+      ],
+      "siren": [
+          {
+              "id": "harmonizer",
+              "name": "Harmonizer",
+              "prerequisite": "Suffer a trauma associated with a loss of control over your own body.",
+              "cost": "3 Permanent Corruption",
+              "effect": "Gain the 'Neural Hijack' Move. Your own body is now more vulnerable, and you suffer a penalty when resisting powers that affect your body. New Move 'Neural Hijack': On a 10+ with a physical connection, you take full control of a target's body for one minute (your body is helpless). On 7-9, you only get one action."
+          },
+          {
+              "id": "blood-singer",
+              "name": "Blood Singer",
+              "prerequisite": "Suffer a severe trauma that awakens a deep, primal rage.",
+              "cost": "3 Permanent Corruption",
+              "effect": "Gain the 'Song of Rage' Move. New Move 'Song of Rage': Unleash a psychic scream. On 10+, all characters in the area (friend and foe) enter a berserker rage for one minute. On 7-9, it only lasts a few moments. On 6-, only you go berserk."
+          }
+      ],
+      "dreamer": [
+          {
+              "id": "nightmares-idol",
+              "name": "The Nightmare's Idol",
+              "prerequisite": "Suffer a trauma related to a profound loss of identity or public failure.",
+              "cost": "3 Permanent Corruption",
+              "effect": "You become a caricature of how others see you. The GM assigns you a 'role' when you meet someone. You have a penalty to resist acting that role, but gain a bonus to Social rolls when you lean into it."
+          },
+          {
+              "id": "untethered-wraith",
+              "name": "Untethered Wraith",
+              "prerequisite": "Suffer a near-death experience.",
+              "cost": "3 Permanent Corruption",
+              "effect": "Your connection to your body is severed. You can use 'Cast Mind Out' at will. However, all damage to your Health Boxes is doubled, and being forced from your astral form can cause you to become permanently lost."
+          }
+      ],
+      "meta-mind": [
+          {
+              "id": "hyde-mind",
+              "name": "The Hyde Mind",
+              "prerequisite": "Have Persona Polarity and become dependent on one persona during a trauma.",
+              "cost": "3 Permanent Corruption",
+              "effect": "You can no longer switch personas at will. At the start of each day, you must roll. On a failure, your 'weaker' persona is in control for the day."
+          },
+          {
+              "id": "savant-syndrome",
+              "name": "Savant Syndrome",
+              "prerequisite": "Suffer a catastrophic failure while using 'Cognitive Acceleration' or 'Eidetic Mimicry'.",
+              "cost": "2 Permanent Corruption",
+              "effect": "Choose one of your Master/Expert skills; it gains a permanent +1 bonus. However, choose one entire Attribute (Physique, Intellect, or Presence); you now suffer Disadvantage on all rolls related to that Attribute that do not also involve your Savant skill."
+          }
+      ]
+  }
+}
+

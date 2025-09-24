@@ -144,25 +144,41 @@ interface SorceryData extends RawLineagePowerData {
   };
 }
 
+interface EsperAbility {
+  id?: string;
+  name?: string;
+  type?: string;
+  description?: string;
+  cost?: string;
+  duration?: string;
+  scope?: string;
+}
+
 interface EsperFocus {
   id?: string;
   name?: string;
   path?: string;
   philosophy?: string;
-  moves?: Array<{ id?: string; name?: string; description?: string }>;
+  abilities?: EsperAbility[];
+  focuses?: Record<string, EsperFocus>;
 }
 
 interface EsperArchetype {
   id?: string;
   name?: string;
   philosophy?: string;
-  baseline_moves?: Array<{ id?: string; name?: string; type?: string; description?: string }>;
+  abilities?: EsperAbility[];
   focuses?: Record<string, EsperFocus>;
+}
+
+interface MentalistData {
+  mentalist_archetypes?: Record<string, unknown>;
+  trauma_mutations?: Record<string, unknown>;
 }
 
 interface EsperData extends RawLineagePowerData {
   esper_archetypes?: Record<string, EsperArchetype>;
-  mentalist_framework?: Record<string, unknown>;
+  mentalist_data?: MentalistData;
 }
 
 interface AutomataCapability {
@@ -262,34 +278,148 @@ function renderCapabilities(capabilities: AutomataCapability[] | undefined, gmEn
   );
 }
 
-function extractFrameworkDetails(framework: UnknownRecord) {
-  const description = typeof framework.description === 'string' ? framework.description : undefined;
+interface AbilityEntry {
+  id: string;
+  name: string;
+  type?: string;
+  description?: string;
+  cost?: string;
+  duration?: string;
+  scope?: string;
+}
 
-  const foundationalChoices = Array.isArray(framework.foundational_choices)
-    ? (framework.foundational_choices as unknown[]).filter((entry): entry is string => typeof entry === 'string')
-    : undefined;
+interface AbilityGroups {
+  moves: AbilityEntry[];
+  augments: AbilityEntry[];
+  other: AbilityEntry[];
+}
 
-  let paths: Record<string, { description?: string; moves?: string[] }> | undefined;
-  if (isRecord(framework.paths)) {
-    paths = Object.entries(framework.paths).reduce<Record<string, { description?: string; moves?: string[] }>>((acc, [key, value]) => {
-      if (!isRecord(value)) return acc;
-      const pathDescription = typeof value.description === 'string' ? value.description : undefined;
-      const moves = Array.isArray(value.moves)
-        ? (value.moves as unknown[]).filter((entry): entry is string => typeof entry === 'string')
-        : undefined;
-      acc[key] = { description: pathDescription, moves };
-      return acc;
-    }, {});
-    if (Object.keys(paths).length === 0) {
-      paths = undefined;
-    }
+interface OutcomeEntry {
+  label: string;
+  result: string;
+}
+
+interface ConsequenceEntry {
+  id: string;
+  roll?: number;
+  result?: string;
+}
+
+interface MentalistTraumaEntry {
+  id: string;
+  name: string;
+  prerequisite?: string;
+  cost?: string;
+  effect?: string;
+}
+
+const toTitleCase = (value: string) =>
+  value
+    .split(/[-_\s]/)
+    .filter((segment) => segment.length > 0)
+    .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
+    .join(' ');
+
+function normalizeAbilityCollection(value: unknown): UnknownRecord[] {
+  if (Array.isArray(value)) {
+    return value.filter((entry): entry is UnknownRecord => isRecord(entry));
   }
+  if (isRecord(value)) {
+    return [value];
+  }
+  return [];
+}
 
-  return {
-    description,
-    foundationalChoices,
-    paths
-  };
+function createAbilityEntries(records: UnknownRecord[], baseId: string): AbilityEntry[] {
+  return records.map((record, index) => {
+    const fallbackId = `${baseId}-${index}`;
+    const id = typeof record.id === 'string' && record.id.length > 0 ? record.id : fallbackId;
+    const name = typeof record.name === 'string' && record.name.length > 0 ? record.name : `Ability ${index + 1}`;
+    const type = typeof record.type === 'string' && record.type.length > 0 ? record.type : undefined;
+    const description = typeof record.description === 'string' && record.description.length > 0 ? record.description : undefined;
+    const cost = typeof record.cost === 'string' && record.cost.length > 0 ? record.cost : undefined;
+    const duration = typeof record.duration === 'string' && record.duration.length > 0 ? record.duration : undefined;
+    const scope = typeof record.scope === 'string' && record.scope.length > 0 ? record.scope : undefined;
+    return { id, name, type, description, cost, duration, scope } satisfies AbilityEntry;
+  });
+}
+
+function groupAbilities(entries: AbilityEntry[]): AbilityGroups {
+  return entries.reduce<AbilityGroups>(
+    (acc, entry) => {
+      const type = entry.type?.toLowerCase();
+      if (type === 'move') {
+        acc.moves.push(entry);
+      } else if (type === 'augment') {
+        acc.augments.push(entry);
+      } else {
+        acc.other.push(entry);
+      }
+      return acc;
+    },
+    { moves: [], augments: [], other: [] }
+  );
+}
+
+function renderAbilitySection(
+  title: string,
+  abilities: AbilityEntry[],
+  headingLevel: 'h4' | 'h5' | 'h6' = 'h5',
+  key?: string
+) {
+  if (abilities.length === 0) return null;
+  const HeadingTag = headingLevel;
+  return (
+    <section className="lineage-power-subsection" key={key}>
+      <HeadingTag>{title}</HeadingTag>
+      <ul className="power-list">
+        {abilities.map((ability) => (
+          <li key={ability.id} className="power-list__item">
+            <div>
+              <strong>{ability.name}</strong>
+              {ability.type && <span className="badge badge--type">{toTitleCase(ability.type)}</span>}
+              {ability.cost && <span className="badge badge--cost">{ability.cost}</span>}
+              {ability.duration && <span className="badge">{ability.duration}</span>}
+              {ability.scope && <span className="badge">{ability.scope}</span>}
+            </div>
+            {ability.description && <p>{ability.description}</p>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function mapOutcomeEntries(raw: unknown): OutcomeEntry[] {
+  if (!isRecord(raw)) return [];
+  return Object.entries(raw)
+    .filter((entry): entry is [string, string] => typeof entry[1] === 'string')
+    .map(([label, result]) => ({ label, result }));
+}
+
+function mapConsequenceEntries(raw: unknown, baseId: string): ConsequenceEntry[] {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .filter((entry): entry is UnknownRecord => isRecord(entry))
+    .map((entry, index) => {
+      const fallbackId = `${baseId}-${index}`;
+      const roll = typeof entry.roll === 'number' ? entry.roll : undefined;
+      const result = typeof entry.result === 'string' ? entry.result : undefined;
+      const id = typeof entry.id === 'string' && entry.id.length > 0 ? entry.id : fallbackId;
+      return { id, roll, result } satisfies ConsequenceEntry;
+    });
+}
+
+function mapTraumaEntries(raw: unknown, baseId: string): MentalistTraumaEntry[] {
+  return normalizeAbilityCollection(raw).map((entry, index) => {
+    const fallbackId = `${baseId}-${index}`;
+    const id = typeof entry.id === 'string' && entry.id.length > 0 ? entry.id : fallbackId;
+    const name = typeof entry.name === 'string' && entry.name.length > 0 ? entry.name : `Trauma ${index + 1}`;
+    const prerequisite = typeof entry.prerequisite === 'string' ? entry.prerequisite : undefined;
+    const cost = typeof entry.cost === 'string' ? entry.cost : undefined;
+    const effect = typeof entry.effect === 'string' ? entry.effect : undefined;
+    return { id, name, prerequisite, cost, effect } satisfies MentalistTraumaEntry;
+  });
 }
 
 export function LineagePowersPanel({
@@ -653,8 +783,29 @@ export function LineagePowersPanel({
 
   if (lineage === 'esper' && isEsperData(powerData)) {
     const archetypes = (powerData.esper_archetypes ?? {}) as Record<string, EsperArchetype>;
-    const frameworkRaw = powerData.mentalist_framework ?? {};
-    const frameworkDetails = isRecord(frameworkRaw) ? extractFrameworkDetails(frameworkRaw) : null;
+    const mentalistData = powerData.mentalist_data;
+    const mentalistArchetypesRaw =
+      mentalistData && isRecord(mentalistData.mentalist_archetypes)
+        ? (mentalistData.mentalist_archetypes as Record<string, unknown>)
+        : {};
+    const foundationalAugmentsRaw = (() => {
+      const candidate = (mentalistArchetypesRaw as { foundational_augments?: unknown }).foundational_augments;
+      return isRecord(candidate) ? (candidate as Record<string, unknown>) : undefined;
+    })();
+    const mentalistPathEntries = Object.entries(mentalistArchetypesRaw).reduce<Array<[string, UnknownRecord]>>(
+      (acc, [key, value]) => {
+        if (key === 'foundational_augments') return acc;
+        if (isRecord(value)) {
+          acc.push([key, value as UnknownRecord]);
+        }
+        return acc;
+      },
+      []
+    );
+    const traumaMutationsRaw =
+      mentalistData && isRecord(mentalistData.trauma_mutations)
+        ? (mentalistData.trauma_mutations as Record<string, unknown>)
+        : {};
     const baseAllowed = lineagePriority !== 'C';
     const mentalistAllowed = lineagePriority === 'A' || lineagePriority === 'C';
     const esperNote = lineagePriority ? ESPER_NOTES[lineagePriority] : undefined;
@@ -750,8 +901,9 @@ export function LineagePowersPanel({
       depth: number,
       rootId: string
     ): JSX.Element => {
-      const focusName = typeof focus.name === 'string' ? focus.name : path[path.length - 1];
-      const focusId = typeof focus.id === 'string' ? focus.id : path.join('-');
+      const focusName = typeof focus.name === 'string' && focus.name.length > 0 ? focus.name : path[path.length - 1];
+      const focusId = typeof focus.id === 'string' && focus.id.length > 0 ? focus.id : path.join('-');
+      const focusPath = typeof focus.path === 'string' && focus.path.length > 0 ? focus.path : undefined;
       const selection: LineagePowerSelection = {
         id: focusId,
         lineage: 'esper',
@@ -768,11 +920,11 @@ export function LineagePowersPanel({
       const disabled = !isRootSelected(rootId) || !isDepthAllowed(rootId, depth);
       const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
       const cardClass = `focus-card${isSelected ? ' focus-card--selected' : ''}`;
-      const moveEntries = Array.isArray(focus.moves) ? (focus.moves as unknown[]) : [];
-      const augmentEntries = Array.isArray(focus.augments) ? (focus.augments as unknown[]) : [];
-      const mutationEntries = Array.isArray(focus.mutations) ? (focus.mutations as unknown[]) : [];
-      const traumaEntries = Array.isArray(focus.trauma_mutations) ? (focus.trauma_mutations as unknown[]) : [];
-      const childFocuses = isRecord(focus.focuses) ? (focus.focuses as Record<string, unknown>) : undefined;
+      const abilityRecords = normalizeAbilityCollection((focus as { abilities?: unknown }).abilities);
+      const abilityEntries = createAbilityEntries(abilityRecords, `${focusId}-ability`);
+      const abilityGroups = groupAbilities(abilityEntries);
+      const childFocusesRaw = (focus as { focuses?: unknown }).focuses;
+      const childFocuses = isRecord(childFocusesRaw) ? (childFocusesRaw as Record<string, unknown>) : undefined;
 
       return (
         <details key={focusId} className={cardClass} open={isSelected}>
@@ -794,103 +946,11 @@ export function LineagePowersPanel({
               </button>
             </div>
           </summary>
+          {focusPath && <p className="power-description__detail">{focusPath}</p>}
           {typeof focus.philosophy === 'string' && <p>{focus.philosophy}</p>}
-      {moveEntries.length > 0 && (
-        <section className="lineage-power-subsection">
-          <h5>Signature Moves</h5>
-          <ul className="power-list">
-            {moveEntries.map((move, index) => {
-              const moveRecord = move as UnknownRecord;
-              const moveId =
-                typeof moveRecord.id === 'string' && moveRecord.id.length > 0
-                  ? moveRecord.id
-                  : `${focusId}-move-${index}`;
-              const moveName =
-                typeof moveRecord.name === 'string' && moveRecord.name.length > 0
-                  ? moveRecord.name
-                  : `Move ${index + 1}`;
-              return (
-                <li key={moveId} className="power-list__item">
-                  <strong>{moveName}</strong>
-                  {typeof moveRecord.description === 'string' && <p>{moveRecord.description}</p>}
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-      )}
-      {augmentEntries.length > 0 && (
-        <section className="lineage-power-subsection">
-          <h5>Augments</h5>
-          <ul className="power-list">
-            {augmentEntries.map((augment, index) => {
-              const augmentRecord = augment as UnknownRecord;
-              const augmentId =
-                typeof augmentRecord.id === 'string' && augmentRecord.id.length > 0
-                  ? augmentRecord.id
-                  : `${focusId}-augment-${index}`;
-              const augmentName =
-                typeof augmentRecord.name === 'string' && augmentRecord.name.length > 0
-                  ? augmentRecord.name
-                  : `Augment ${index + 1}`;
-              return (
-                <li key={augmentId} className="power-list__item">
-                  <strong>{augmentName}</strong>
-                  {typeof augmentRecord.description === 'string' && <p>{augmentRecord.description}</p>}
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-      )}
-      {mutationEntries.length > 0 && (
-        <section className="lineage-power-subsection">
-          <h5>Mutations</h5>
-          <ul className="power-list">
-            {mutationEntries.map((mutation, index) => {
-              const mutationRecord = mutation as UnknownRecord;
-              const mutationId =
-                typeof mutationRecord.id === 'string' && mutationRecord.id.length > 0
-                  ? mutationRecord.id
-                  : `${focusId}-mutation-${index}`;
-              const mutationName =
-                typeof mutationRecord.name === 'string' && mutationRecord.name.length > 0
-                  ? mutationRecord.name
-                  : `Mutation ${index + 1}`;
-              return (
-                <li key={mutationId} className="power-list__item">
-                  <strong>{mutationName}</strong>
-                  {typeof mutationRecord.description === 'string' && <p>{mutationRecord.description}</p>}
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-      )}
-      {traumaEntries.length > 0 && (
-        <section className="lineage-power-subsection">
-          <h5>Trauma Mutations</h5>
-          <ul className="power-list">
-            {traumaEntries.map((mutation, index) => {
-              const mutationRecord = mutation as UnknownRecord;
-              const mutationId =
-                typeof mutationRecord.id === 'string' && mutationRecord.id.length > 0
-                  ? mutationRecord.id
-                  : `${focusId}-trauma-${index}`;
-              const mutationName =
-                typeof mutationRecord.name === 'string' && mutationRecord.name.length > 0
-                  ? mutationRecord.name
-                  : `Mutation ${index + 1}`;
-              return (
-                <li key={mutationId} className="power-list__item">
-                  <strong>{mutationName}</strong>
-                  {typeof mutationRecord.description === 'string' && <p>{mutationRecord.description}</p>}
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-      )}
+          {renderAbilitySection('Signature Moves', abilityGroups.moves)}
+          {renderAbilitySection('Augments', abilityGroups.augments)}
+          {renderAbilitySection('Psionic Abilities', abilityGroups.other)}
           {childFocuses && (
             <section className="lineage-power-subsection">
               <h5>Advanced Paths</h5>
@@ -914,6 +974,9 @@ export function LineagePowersPanel({
     const renderArchetypeCard = (archetype: EsperArchetype) => {
       const archetypeName = typeof archetype.name === 'string' ? archetype.name : 'Archetype';
       const rootId = typeof archetype.id === 'string' ? archetype.id : slugify(archetypeName);
+      const abilityRecords = normalizeAbilityCollection((archetype as { abilities?: unknown }).abilities);
+      const abilityEntries = createAbilityEntries(abilityRecords, `${rootId}-ability`);
+      const abilityGroups = groupAbilities(abilityEntries);
       const selection: LineagePowerSelection = {
         id: rootId,
         lineage: 'esper',
@@ -952,26 +1015,9 @@ export function LineagePowersPanel({
             </div>
           </summary>
           {typeof archetype.philosophy === 'string' && <p className="power-description__detail">{archetype.philosophy}</p>}
-          {Array.isArray(archetype.baseline_moves) && archetype.baseline_moves.length > 0 && (
-            <section className="lineage-power-subsection">
-              <h5>Baseline Moves</h5>
-              <ul className="power-list">
-                {archetype.baseline_moves.map((move, index) => {
-                  const moveId = typeof move?.id === 'string' && move.id.length > 0 ? move.id : `${rootId}-baseline-${index}`;
-                  const moveName = typeof move?.name === 'string' && move.name.length > 0 ? move.name : `Move ${index + 1}`;
-                  return (
-                    <li key={moveId} className="power-list__item">
-                      <div>
-                        <strong>{moveName}</strong>
-                        {typeof move?.type === 'string' && <span className="badge badge--type">{move.type}</span>}
-                      </div>
-                      {typeof move?.description === 'string' && <p>{move.description}</p>}
-                    </li>
-                  );
-                })}
-              </ul>
-            </section>
-          )}
+          {renderAbilitySection('Baseline Moves', abilityGroups.moves)}
+          {renderAbilitySection('Baseline Augments', abilityGroups.augments)}
+          {renderAbilitySection('Baseline Abilities', abilityGroups.other)}
           {archetype.focuses && (
             <section className="lineage-power-subsection">
               <h5>Focus Paths</h5>
@@ -992,12 +1038,70 @@ export function LineagePowersPanel({
       );
     };
 
-    const renderMentalistPath = (pathName: string, pathData: UnknownRecord) => {
-      const rootId = typeof pathData.id === 'string' ? pathData.id : slugify(pathName);
+    const renderMentalistPath = (pathKey: string, pathData: UnknownRecord, traumaSource: unknown) => {
+      const rootId = typeof pathData.id === 'string' && pathData.id.length > 0 ? pathData.id : slugify(pathKey);
+      const pathLabel = typeof pathData.name === 'string' && pathData.name.length > 0 ? pathData.name : toTitleCase(pathKey);
+      const philosophy = typeof pathData.philosophy === 'string' ? pathData.philosophy : undefined;
+      const naturalLean = typeof pathData.natural_lean === 'string' ? pathData.natural_lean : undefined;
+      const powerSelectionsRaw = isRecord((pathData as { power_selections?: unknown }).power_selections)
+        ? ((pathData as { power_selections?: unknown }).power_selections as Record<string, unknown>)
+        : undefined;
+      const powerSelectionGroups = powerSelectionsRaw
+        ? Object.entries(powerSelectionsRaw)
+            .map(([key, value]) => {
+              const abilities = createAbilityEntries(normalizeAbilityCollection(value), `${rootId}-${key}`);
+              if (abilities.length === 0) return null;
+              return { key, label: toTitleCase(key), abilities };
+            })
+            .filter(
+              (entry): entry is { key: string; label: string; abilities: AbilityEntry[] } => entry !== null
+            )
+        : [];
+      const pathPowers = createAbilityEntries(
+        normalizeAbilityCollection((pathData as { powers?: unknown }).powers),
+        `${rootId}-power`
+      );
+      const coreMechanicsRaw = isRecord((pathData as { core_mechanics?: unknown }).core_mechanics)
+        ? ((pathData as { core_mechanics?: unknown }).core_mechanics as Record<string, unknown>)
+        : undefined;
+      const coreMechanics = coreMechanicsRaw
+        ? Object.entries(coreMechanicsRaw).reduce<
+            Array<{ key: string; name: string; description?: string; outcomes: OutcomeEntry[] }>
+          >((acc, [key, value]) => {
+            if (!isRecord(value)) {
+              return acc;
+            }
+            const name = typeof value.name === 'string' && value.name.length > 0 ? value.name : toTitleCase(key);
+            const description = typeof value.description === 'string' ? value.description : undefined;
+            const outcomes = mapOutcomeEntries((value as { outcomes?: unknown }).outcomes);
+            acc.push({ key, name, description, outcomes });
+            return acc;
+          }, [])
+        : [];
+      const consequenceTablesRaw = isRecord((pathData as { consequence_tables?: unknown }).consequence_tables)
+        ? ((pathData as { consequence_tables?: unknown }).consequence_tables as Record<string, unknown>)
+        : undefined;
+      const consequenceTables = consequenceTablesRaw
+        ? Object.entries(consequenceTablesRaw).reduce<
+            Array<{ key: string; label: string; entries: ConsequenceEntry[] }>
+          >((acc, [key, tableValue]) => {
+            const entries = mapConsequenceEntries(tableValue, `${rootId}-${key}`);
+            if (entries.length === 0) {
+              return acc;
+            }
+            acc.push({ key, label: toTitleCase(key), entries });
+            return acc;
+          }, [])
+        : [];
+      const traumaEntries = mapTraumaEntries(traumaSource, `${rootId}-trauma`);
+      const childFocuses = isRecord((pathData as { focuses?: unknown }).focuses)
+        ? ((pathData as { focuses?: unknown }).focuses as Record<string, unknown>)
+        : undefined;
+
       const selection: LineagePowerSelection = {
         id: rootId,
         lineage: 'esper',
-        label: `Mentalist Path — ${pathName}`,
+        label: `Mentalist Path — ${pathLabel}`,
         kind: 'esper-archetype',
         meta: {
           root: rootId,
@@ -1010,15 +1114,12 @@ export function LineagePowersPanel({
       const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
       const disabled = !mentalistAllowed;
       const cardClass = `lineage-power-card${isSelected ? ' lineage-power-card--selected' : ''}`;
-      const pathMoves = Array.isArray(pathData.moves) ? (pathData.moves as unknown[]) : [];
-      const pathTrauma = Array.isArray(pathData.trauma_mutations) ? (pathData.trauma_mutations as unknown[]) : [];
-      const childFocuses = isRecord(pathData.focuses) ? (pathData.focuses as Record<string, unknown>) : undefined;
 
       return (
         <details key={rootId} className={cardClass} open={isSelected}>
           <summary>
             <div className="lineage-power-card__summary">
-              <h4>{pathName}</h4>
+              <h4>{pathLabel}</h4>
               <button
                 type="button"
                 className={toggleClass}
@@ -1034,51 +1135,78 @@ export function LineagePowersPanel({
               </button>
             </div>
           </summary>
-          {typeof pathData.description === 'string' && <p>{pathData.description}</p>}
-          {pathMoves.length > 0 && (
+          {naturalLean && <p className="power-description__detail">Natural Lean: {naturalLean}</p>}
+          {philosophy && <p>{philosophy}</p>}
+          {powerSelectionGroups.length > 0 && (
             <section className="lineage-power-subsection">
-              <h5>Signature Moves</h5>
+              <h5>Power Selections</h5>
+              {powerSelectionGroups.map((group) =>
+                renderAbilitySection(group.label, group.abilities, 'h6', `${rootId}-${group.key}`)
+              )}
+            </section>
+          )}
+          {renderAbilitySection('Path Powers', pathPowers, 'h5', `${rootId}-powers`)}
+          {coreMechanics.length > 0 && (
+            <section className="lineage-power-subsection">
+              <h5>Core Mechanics</h5>
               <ul className="power-list">
-                {pathMoves.map((move, index) => {
-                  const moveRecord = move as UnknownRecord;
-                  const moveId =
-                    typeof moveRecord.id === 'string' && moveRecord.id.length > 0
-                      ? moveRecord.id
-                      : `${rootId}-move-${index}`;
-                  const moveLabel =
-                    typeof moveRecord.name === 'string' && moveRecord.name.length > 0
-                      ? moveRecord.name
-                      : `Move ${index + 1}`;
-                  return (
-                    <li key={moveId} className="power-list__item">
-                      {moveLabel}
-                    </li>
-                  );
-                })}
+                {coreMechanics.map((mechanic) => (
+                  <li key={mechanic.key} className="power-list__item">
+                    <strong>{mechanic.name}</strong>
+                    {mechanic.description && <p>{mechanic.description}</p>}
+                    {mechanic.outcomes.length > 0 && (
+                      <ul className="power-description__outcomes">
+                        {mechanic.outcomes.map((outcome) => (
+                          <li key={outcome.label}>
+                            <strong>{outcome.label}</strong>
+                            <span>{outcome.result}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
               </ul>
             </section>
           )}
-          {pathTrauma.length > 0 && (
+          {consequenceTables.length > 0 && (
+            <section className="lineage-power-subsection">
+              <h5>Consequence Tables</h5>
+              <div className="focus-grid">
+                {consequenceTables.map((table) => (
+                  <div key={table.key} className="focus-card">
+                    <h6>{table.label}</h6>
+                    <ul className="power-description__outcomes">
+                      {table.entries.map((entry) => (
+                        <li key={entry.id}>
+                          {typeof entry.roll === 'number' && <strong>Roll {entry.roll}</strong>}
+                          {entry.result && <span>{entry.result}</span>}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+          {traumaEntries.length > 0 && (
             <section className="lineage-power-subsection">
               <h5>Trauma Mutations</h5>
               <ul className="power-list">
-                {pathTrauma.map((mutation, index) => {
-                  const mutationRecord = mutation as UnknownRecord;
-                  const mutationId =
-                    typeof mutationRecord.id === 'string' && mutationRecord.id.length > 0
-                      ? mutationRecord.id
-                      : `${rootId}-trauma-${index}`;
-                  const mutationName =
-                    typeof mutationRecord.name === 'string' && mutationRecord.name.length > 0
-                      ? mutationRecord.name
-                      : `Mutation ${index + 1}`;
-                  return (
-                    <li key={mutationId} className="power-list__item">
-                      <strong>{mutationName}</strong>
-                      {typeof mutationRecord.description === 'string' && <p>{mutationRecord.description}</p>}
-                    </li>
-                  );
-                })}
+                {traumaEntries.map((entry) => (
+                  <li key={entry.id} className="power-list__item">
+                    <div>
+                      <strong>{entry.name}</strong>
+                      {entry.cost && <span className="badge badge--cost">{entry.cost}</span>}
+                    </div>
+                    {entry.prerequisite && (
+                      <p>
+                        <em>Prerequisite:</em> {entry.prerequisite}
+                      </p>
+                    )}
+                    {entry.effect && <p>{entry.effect}</p>}
+                  </li>
+                ))}
               </ul>
             </section>
           )}
@@ -1088,11 +1216,11 @@ export function LineagePowersPanel({
               <div className="focus-grid">
                 {Object.values(childFocuses).map((focus) => {
                   const focusRecord = focus as UnknownRecord;
-                  const focusName = typeof focusRecord.name === 'string' ? focusRecord.name : 'Focus';
+                  const childName = typeof focusRecord.name === 'string' ? focusRecord.name : 'Focus';
                   const focusId =
                     typeof focusRecord.id === 'string' && focusRecord.id.length > 0
                       ? focusRecord.id
-                      : slugify(`${rootId}-${focusName}`);
+                      : slugify(`${rootId}-${childName}`);
                   return renderEsperFocusNode(focusRecord, [rootId, focusId], 1, rootId);
                 })}
               </div>
@@ -1134,73 +1262,110 @@ export function LineagePowersPanel({
           </div>
         )}
         {!baseAllowed && <p className="lineage-note">Priority C Espers begin as Mentalists. Select a path below.</p>}
-        {mentalistAllowed && frameworkDetails && (
-          <article className="lineage-power-card framework">
-            <header>
-              <h4>Mentalist Framework</h4>
-            </header>
-            {frameworkDetails.description && <p>{frameworkDetails.description}</p>}
-            {frameworkDetails.foundationalChoices && frameworkDetails.foundationalChoices.length > 0 && (
-              <section className="lineage-power-subsection">
-                <h5>Foundational Choices</h5>
-                <ul className="power-list">
-                  {frameworkDetails.foundationalChoices.map((choice, index) => {
-                    const choiceLabel = typeof choice === 'string' ? choice : String(choice);
+        {(() => {
+          const foundationalAugmentGroups = foundationalAugmentsRaw
+            ? Object.entries(foundationalAugmentsRaw).reduce<
+                Array<{ key: string; label: string; abilities: AbilityEntry[] }>
+              >((acc, [categoryKey, value]) => {
+                const abilities = createAbilityEntries(
+                  normalizeAbilityCollection(value),
+                  `${(mentalistRoot ?? 'mentalist')}-${categoryKey}`
+                );
+                if (abilities.length > 0) {
+                  acc.push({ key: categoryKey, label: toTitleCase(categoryKey), abilities });
+                }
+                return acc;
+              }, [])
+            : [];
+          const hasMentalistData = foundationalAugmentGroups.length > 0 || mentalistPathEntries.length > 0;
+          if (!mentalistAllowed || !hasMentalistData) {
+            return (
+              !mentalistAllowed && hasMentalistData && lineagePriority !== null && (
+                <p className="lineage-note">Mentalist paths unlock at Priority A or C.</p>
+              )
+            );
+          }
+
+          return (
+            <article className="lineage-power-card framework">
+              <header>
+                <h4>Mentalist Framework</h4>
+              </header>
+              {foundationalAugmentGroups.length > 0 && (
+                <section className="lineage-power-subsection">
+                  <h5>Foundational Augments</h5>
+                  {foundationalAugmentGroups.map((group) => {
                     const rootKey = mentalistRoot ?? 'mentalist';
-                    const choiceId = `${rootKey}-choice-${index}`;
-                    const selection: LineagePowerSelection = {
-                      id: choiceId,
-                      lineage: 'esper',
-                      label: `Framework Choice — ${choiceLabel}`,
-                      kind: 'esper-framework-choice',
-                      meta: {
-                        root: rootKey,
-                        parent: rootKey,
-                        path: [rootKey, `choice-${index}`],
-                        depth: 1,
-                        category: 'esper-mentalist'
-                      }
-                    };
-                    const isSelected = selectedIds.has(selection.id);
-                    const disabled = !isRootSelected(rootKey) || !isDepthAllowed(rootKey, 1);
-                    const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
-                    const itemClass = `power-list__item${isSelected ? ' power-list__item--selected' : ''}`;
                     return (
-                      <li key={choiceId} className={itemClass}>
-                        <div className="power-list__header">
-                          <span>{choiceLabel}</span>
-                          <button
-                            type="button"
-                            className={toggleClass}
-                            disabled={disabled && !isSelected}
-                            onClick={() => {
-                              if (!disabled || isSelected) {
-                                handleFocusToggle(selection);
+                      <section key={group.key} className="lineage-power-subsection">
+                        <h6>{group.label}</h6>
+                        <ul className="power-list">
+                          {group.abilities.map((ability, index) => {
+                            const fallbackId = `${rootKey}-${group.key}-${index}`;
+                            const abilityId = ability.id || fallbackId;
+                            const selection: LineagePowerSelection = {
+                              id: abilityId,
+                              lineage: 'esper',
+                              label: `Foundational Augment — ${ability.name}`,
+                              kind: 'esper-framework-choice',
+                              meta: {
+                                root: rootKey,
+                                parent: rootKey,
+                                path: [rootKey, 'foundational', group.key, abilityId],
+                                depth: 1,
+                                category: 'esper-mentalist'
                               }
-                            }}
-                          >
-                            {isSelected ? 'Selected' : 'Add'}
-                          </button>
-                        </div>
-                      </li>
+                            };
+                            const isSelected = selectedIds.has(selection.id);
+                            const disabled = !isRootSelected(rootKey) || !isDepthAllowed(rootKey, 1);
+                            const itemClass = `power-list__item${isSelected ? ' power-list__item--selected' : ''}`;
+                            const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
+                            return (
+                              <li key={abilityId} className={itemClass}>
+                                <div className="power-list__header">
+                                  <div>
+                                    <strong>{ability.name}</strong>
+                                    {ability.type && <span className="badge badge--type">{toTitleCase(ability.type)}</span>}
+                                    {ability.cost && <span className="badge badge--cost">{ability.cost}</span>}
+                                    {ability.duration && <span className="badge">{ability.duration}</span>}
+                                    {ability.scope && <span className="badge">{ability.scope}</span>}
+                                  </div>
+                                  <button
+                                    type="button"
+                                    className={toggleClass}
+                                    disabled={disabled && !isSelected}
+                                    onClick={() => {
+                                      if (!disabled || isSelected) {
+                                        handleFocusToggle(selection);
+                                      }
+                                    }}
+                                  >
+                                    {isSelected ? 'Selected' : 'Add'}
+                                  </button>
+                                </div>
+                                {ability.description && <p>{ability.description}</p>}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </section>
                     );
                   })}
-                </ul>
-              </section>
-            )}
-            {frameworkDetails.paths && (
-              <section className="lineage-power-subsection">
-                <h5>Paths</h5>
-                <div className="lineage-powers-grid lineage-powers-grid--tall">
-                  {Object.entries(frameworkDetails.paths).map(([pathName, pathData]) => renderMentalistPath(pathName, pathData))}
-                </div>
-              </section>
-            )}
-          </article>
-        )}
-        {!mentalistAllowed && frameworkDetails && lineagePriority !== null && (
-          <p className="lineage-note">Mentalist paths unlock at Priority A or C.</p>
-        )}
+                </section>
+              )}
+              {mentalistPathEntries.length > 0 && (
+                <section className="lineage-power-subsection">
+                  <h5>Paths</h5>
+                  <div className="lineage-powers-grid lineage-powers-grid--tall">
+                    {mentalistPathEntries.map(([pathKey, pathRecord]) =>
+                      renderMentalistPath(pathKey, pathRecord, traumaMutationsRaw[pathKey])
+                    )}
+                  </div>
+                </section>
+              )}
+            </article>
+          );
+        })()}
       </section>
     );
   }
