@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import type { AttributesData, AttributeSpecializationEntry, PriorityRank } from '../../../data/types';
-import type { CharacterBuild } from '../../../state/characterStore';
-import type { AttributeKey } from '../../../state/characterStore';
+import type { CharacterBuild, AttributeKey } from '../../../state/characterStore';
+import { ATTRIBUTE_SCORE_MAX } from '../../../state/characterStore';
 import './attributes-stage.css';
 
 interface AttributesStageProps {
@@ -67,8 +67,19 @@ export function AttributesStage({
   }, [data.definitions]);
 
   const pool = pointBuyEntry?.attributePoints ?? 0;
-  const spent = (Object.values(scores) as number[]).reduce((sum, value) => sum + value, 0);
-  const remaining = pool - spent;
+  const cappedScores = useMemo(
+    () =>
+      (Object.entries(scores) as Array<[AttributeKey, number]>).reduce<Record<AttributeKey, number>>(
+        (acc, [key, value]) => {
+          acc[key] = Math.min(ATTRIBUTE_SCORE_MAX, Math.max(0, value));
+          return acc;
+        },
+        { physique: 0, intellect: 0, presence: 0 }
+      ),
+    [scores]
+  );
+  const spent = (Object.values(cappedScores) as number[]).reduce((sum, value) => sum + value, 0);
+  const remaining = Math.max(pool - spent, 0);
   const specializationAllowance = pointBuyEntry?.specializations ?? 0;
   const totalSelectedSpecializations = useMemo(
     () =>
@@ -107,54 +118,63 @@ export function AttributesStage({
       </header>
 
       <section className="attributes-grid">
-        {attributeEntries.map((attribute) => (
-          <article key={attribute.key}>
-            <header>
-              <h3>{attribute.displayName}</h3>
-              <p>{attribute.description}</p>
-            </header>
-            <div className="attribute-control">
-              <input
-                type="range"
-                min={0}
-                max={pool}
-                value={scores[attribute.key] ?? 0}
-                onChange={(event) => onUpdateScore(attribute.key, Number(event.target.value))}
+        {attributeEntries.map((attribute) => {
+          const rawValue = scores[attribute.key] ?? 0;
+          const currentValue = Math.min(rawValue, ATTRIBUTE_SCORE_MAX);
+          const otherSpent = spent - cappedScores[attribute.key];
+          const poolHeadroom = Math.max(pool - otherSpent, 0);
+          const attributeMax = Math.min(ATTRIBUTE_SCORE_MAX, poolHeadroom);
+          return (
+            <article key={attribute.key}>
+              <header>
+                <h3>{attribute.displayName}</h3>
+                <p>{attribute.description}</p>
+              </header>
+              <div className="attribute-control">
+                <input
+                  type="range"
+                  min={0}
+                  max={attributeMax}
+                  value={currentValue}
+                  onChange={(event) => {
+                    const requested = Number(event.target.value);
+                    const nextValue = Math.min(attributeMax, Math.max(0, requested));
+                    onUpdateScore(attribute.key, nextValue);
+                  }}
               />
-              <span className="attribute-value">{scores[attribute.key] ?? 0}</span>
+              <span className="attribute-value">{currentValue}</span>
             </div>
-            {attribute.specializations?.length > 0 && (
-              <div className="attribute-specializations">
-                <h4>Specializations</h4>
-                <ul>
-                  {attribute.specializations.map((specialization) => {
-                    const selections = selectedSpecializations[attribute.key] ?? [];
-                    const isSelected = selections.includes(specialization.name);
-                    const limitReached =
-                      (specializationAllowance === 0 && !isSelected) ||
-                      (specializationAllowance > 0 && remainingSpecializations === 0 && !isSelected);
-                    return (
-                      <li key={specialization.name}>
-                        <button
-                          type="button"
-                          className={`attribute-specialization__toggle ${isSelected ? 'selected' : ''}`}
-                          onClick={() => onToggleSpecialization(attribute.key, specialization.name)}
-                          disabled={limitReached}
-                        >
-                          <strong>{specialization.name}</strong>
-                          <span>{specialization.description}</span>
-                        </button>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            )}
-          </article>
-        ))}
+              {attribute.specializations?.length > 0 && (
+                <div className="attribute-specializations">
+                  <h4>Specializations</h4>
+                  <ul>
+                    {attribute.specializations.map((specialization) => {
+                      const selections = selectedSpecializations[attribute.key] ?? [];
+                      const isSelected = selections.includes(specialization.name);
+                      const limitReached =
+                        (specializationAllowance === 0 && !isSelected) ||
+                        (specializationAllowance > 0 && remainingSpecializations === 0 && !isSelected);
+                      return (
+                        <li key={specialization.name}>
+                          <button
+                            type="button"
+                            className={`attribute-specialization__toggle ${isSelected ? 'selected' : ''}`}
+                            onClick={() => onToggleSpecialization(attribute.key, specialization.name)}
+                            disabled={limitReached}
+                          >
+                            <strong>{specialization.name}</strong>
+                            <span>{specialization.description}</span>
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+            </article>
+          );
+        })}
       </section>
-
-      {remaining < 0 && <p className="attribute-warning">You are overspending your pool. Reduce a score or raise your priority.</p>}
 
       {data.ratings?.length > 0 && (
         <section className="attribute-ratings">

@@ -20,6 +20,7 @@ export const STAGES: CharacterStage[] = ['priorities', 'lineage', 'resources', '
 export const LINEAGES: LineageKey[] = ['neosapien', 'sorcery', 'esper', 'chimera', 'automata'];
 
 export type AttributeKey = 'physique' | 'intellect' | 'presence';
+export const ATTRIBUTE_SCORE_MAX = 5;
 
 export interface SkillSpecializationSelection {
   id: string;
@@ -954,7 +955,7 @@ export const useCharacterStore = create<CharacterStore>()(
             ...build.attributes,
             scores: {
               ...build.attributes.scores,
-              [attribute]: Math.max(0, value)
+              [attribute]: Math.min(ATTRIBUTE_SCORE_MAX, Math.max(0, value))
             }
           }
         }));

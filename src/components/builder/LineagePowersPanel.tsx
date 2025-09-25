@@ -305,14 +305,6 @@ interface ConsequenceEntry {
   result?: string;
 }
 
-interface MentalistTraumaEntry {
-  id: string;
-  name: string;
-  prerequisite?: string;
-  cost?: string;
-  effect?: string;
-}
-
 const toTitleCase = (value: string) =>
   value
     .split(/[-_\s]/)
@@ -361,6 +353,89 @@ function groupAbilities(entries: AbilityEntry[]): AbilityGroups {
   );
 }
 
+type PolarityType = 'receiver' | 'influencer';
+type ScopeType = 'aural' | 'targeted';
+
+const POLARITY_KEY_TO_TYPE: Partial<Record<string, PolarityType>> = {
+  receiver_all: 'receiver',
+  influencer_all: 'influencer'
+};
+
+const SCOPE_KEY_TO_DESCRIPTOR: Partial<Record<string, { scope: ScopeType; polarity: PolarityType }>> = {
+  aural_receiver: { scope: 'aural', polarity: 'receiver' },
+  aural_influencer: { scope: 'aural', polarity: 'influencer' },
+  targeted_receiver: { scope: 'targeted', polarity: 'receiver' },
+  targeted_influencer: { scope: 'targeted', polarity: 'influencer' }
+};
+
+const POLARITY_FRAMEWORK_GROUPS: Record<PolarityType, string[]> = {
+  receiver: ['receiver_all', 'aural_receiver', 'targeted_receiver'],
+  influencer: ['influencer_all', 'aural_influencer', 'targeted_influencer']
+};
+
+const SCOPE_FRAMEWORK_GROUPS: Record<ScopeType, string[]> = {
+  aural: ['aural_receiver', 'aural_influencer'],
+  targeted: ['targeted_receiver', 'targeted_influencer']
+};
+
+const GROUP_REQUIREMENTS: Record<string, string> = {
+  receiver_all: 'Requires Receiver configuration.',
+  influencer_all: 'Requires Influencer configuration.',
+  aural_receiver: 'Requires Receiver configuration and Aural scope.',
+  aural_influencer: 'Requires Influencer configuration and Aural scope.',
+  targeted_receiver: 'Requires Receiver configuration and Targeted scope.',
+  targeted_influencer: 'Requires Influencer configuration and Targeted scope.'
+};
+
+interface MentalistChoiceGroup {
+  key: string;
+  label: string;
+  abilities: AbilityEntry[];
+}
+
+interface MentalistChoiceCollection {
+  general: MentalistChoiceGroup[];
+  polarity: Partial<Record<PolarityType, MentalistChoiceGroup>>;
+  scope: Record<ScopeType, Partial<Record<PolarityType, MentalistChoiceGroup>>>;
+}
+
+const createEmptyChoiceCollection = (): MentalistChoiceCollection => ({
+  general: [],
+  polarity: {},
+  scope: {
+    aural: {},
+    targeted: {}
+  }
+});
+
+const inferPolarityFromSelection = (selection: LineagePowerSelection | undefined): PolarityType | null => {
+  if (!selection) return null;
+  const candidates = [selection.meta?.path?.[3], selection.id, selection.label]
+    .filter((value): value is string => typeof value === 'string')
+    .map((value) => value.toLowerCase());
+  if (candidates.some((value) => value.includes('receiver'))) {
+    return 'receiver';
+  }
+  if (candidates.some((value) => value.includes('influencer'))) {
+    return 'influencer';
+  }
+  return null;
+};
+
+const inferScopeFromSelection = (selection: LineagePowerSelection | undefined): ScopeType | null => {
+  if (!selection) return null;
+  const candidates = [selection.meta?.path?.[3], selection.id, selection.label]
+    .filter((value): value is string => typeof value === 'string')
+    .map((value) => value.toLowerCase());
+  if (candidates.some((value) => value.includes('aural'))) {
+    return 'aural';
+  }
+  if (candidates.some((value) => value.includes('targeted'))) {
+    return 'targeted';
+  }
+  return null;
+};
+
 function renderAbilitySection(
   title: string,
   abilities: AbilityEntry[],
@@ -408,18 +483,6 @@ function mapConsequenceEntries(raw: unknown, baseId: string): ConsequenceEntry[]
       const id = typeof entry.id === 'string' && entry.id.length > 0 ? entry.id : fallbackId;
       return { id, roll, result } satisfies ConsequenceEntry;
     });
-}
-
-function mapTraumaEntries(raw: unknown, baseId: string): MentalistTraumaEntry[] {
-  return normalizeAbilityCollection(raw).map((entry, index) => {
-    const fallbackId = `${baseId}-${index}`;
-    const id = typeof entry.id === 'string' && entry.id.length > 0 ? entry.id : fallbackId;
-    const name = typeof entry.name === 'string' && entry.name.length > 0 ? entry.name : `Trauma ${index + 1}`;
-    const prerequisite = typeof entry.prerequisite === 'string' ? entry.prerequisite : undefined;
-    const cost = typeof entry.cost === 'string' ? entry.cost : undefined;
-    const effect = typeof entry.effect === 'string' ? entry.effect : undefined;
-    return { id, name, prerequisite, cost, effect } satisfies MentalistTraumaEntry;
-  });
 }
 
 export function LineagePowersPanel({
@@ -802,10 +865,6 @@ export function LineagePowersPanel({
       },
       []
     );
-    const traumaMutationsRaw =
-      mentalistData && isRecord(mentalistData.trauma_mutations)
-        ? (mentalistData.trauma_mutations as Record<string, unknown>)
-        : {};
     const baseAllowed = lineagePriority !== 'C';
     const mentalistAllowed = lineagePriority === 'A' || lineagePriority === 'C';
     const esperNote = lineagePriority ? ESPER_NOTES[lineagePriority] : undefined;
@@ -884,13 +943,112 @@ export function LineagePowersPanel({
           return entryPath[depth] !== selectionPath[depth];
         }
 
-        const sharesPrefix = selectionPath.every((value, index) => entryPath[index] === value);
-        return !sharesPrefix;
-      });
+    const sharesPrefix = selectionPath.every((value, index) => entryPath[index] === value);
+    return !sharesPrefix;
+  });
 
-      conflicts.forEach((entry) => onToggleSelection(entry));
+  conflicts.forEach((entry) => onToggleSelection(entry));
+  onToggleSelection(selection);
+};
+
+const getFrameworkGroupKey = (entry: LineagePowerSelection) => entry.meta?.path?.[2] ?? null;
+
+const clearFrameworkPathSelections = (root: string, groupKeys: string[]) => {
+  if (groupKeys.length === 0) return;
+  const targets = new Set(groupKeys);
+  selectionsForLineage
+    .filter(
+      (entry) =>
+        entry.kind === 'esper-framework-path' &&
+        entry.meta?.root === root &&
+        targets.has(getFrameworkGroupKey(entry) ?? '')
+    )
+    .forEach((entry) => onToggleSelection(entry));
+};
+
+const handleFrameworkChoiceToggle = (selection: LineagePowerSelection, groupKey: string) => {
+  const root = selection.meta?.root;
+  const depth = selection.meta?.depth ?? 0;
+  if (!root || !isRootSelected(root) || !isDepthAllowed(root, depth)) {
+    const isSelected = selectedIds.has(selection.id);
+    if (isSelected) {
       onToggleSelection(selection);
-    };
+    }
+    return;
+  }
+
+  const isSelected = selectedIds.has(selection.id);
+  const conflicts = selectionsForLineage.filter(
+    (entry) =>
+      entry.id !== selection.id &&
+      entry.kind === 'esper-framework-choice' &&
+      entry.meta?.root === root &&
+      getFrameworkGroupKey(entry) === groupKey
+  );
+
+  const polarity = groupKey === 'polarity' ? inferPolarityFromSelection(selection) : null;
+  const scope = groupKey === 'scope' ? inferScopeFromSelection(selection) : null;
+
+  if (isSelected) {
+    if (groupKey === 'polarity') {
+      clearFrameworkPathSelections(root, [
+        ...POLARITY_FRAMEWORK_GROUPS.receiver,
+        ...POLARITY_FRAMEWORK_GROUPS.influencer
+      ]);
+    }
+    if (groupKey === 'scope') {
+      clearFrameworkPathSelections(root, [...SCOPE_FRAMEWORK_GROUPS.aural, ...SCOPE_FRAMEWORK_GROUPS.targeted]);
+    }
+    onToggleSelection(selection);
+    return;
+  }
+
+  conflicts.forEach((entry) => onToggleSelection(entry));
+
+  if (groupKey === 'polarity') {
+    const groupsToClear = polarity
+      ? POLARITY_FRAMEWORK_GROUPS[polarity === 'receiver' ? 'influencer' : 'receiver']
+      : [...POLARITY_FRAMEWORK_GROUPS.receiver, ...POLARITY_FRAMEWORK_GROUPS.influencer];
+    clearFrameworkPathSelections(root, groupsToClear);
+  }
+
+  if (groupKey === 'scope') {
+    const groupsToClear = scope
+      ? SCOPE_FRAMEWORK_GROUPS[scope === 'aural' ? 'targeted' : 'aural']
+      : [...SCOPE_FRAMEWORK_GROUPS.aural, ...SCOPE_FRAMEWORK_GROUPS.targeted];
+    clearFrameworkPathSelections(root, groupsToClear);
+  }
+
+  onToggleSelection(selection);
+};
+
+const handleFrameworkPathToggle = (selection: LineagePowerSelection, groupKey: string, canToggle: boolean) => {
+  if (!canToggle) return;
+
+  const root = selection.meta?.root;
+  const depth = selection.meta?.depth ?? 0;
+  if (!root || !isRootSelected(root) || !isDepthAllowed(root, depth)) {
+    return;
+  }
+
+  const isSelected = selectedIds.has(selection.id);
+  if (isSelected) {
+    onToggleSelection(selection);
+    return;
+  }
+
+  selectionsForLineage
+    .filter(
+      (entry) =>
+        entry.id !== selection.id &&
+        entry.kind === 'esper-framework-path' &&
+        entry.meta?.root === root &&
+        getFrameworkGroupKey(entry) === groupKey
+    )
+    .forEach((entry) => onToggleSelection(entry));
+
+  onToggleSelection(selection);
+};
 
     const isRootSelected = (root: string) => root === baseRoot || root === mentalistRoot;
     const isDepthAllowed = (root: string, depth: number) => depth <= depthLimit;
@@ -1038,7 +1196,7 @@ export function LineagePowersPanel({
       );
     };
 
-    const renderMentalistPath = (pathKey: string, pathData: UnknownRecord, traumaSource: unknown) => {
+    const renderMentalistPath = (pathKey: string, pathData: UnknownRecord) => {
       const rootId = typeof pathData.id === 'string' && pathData.id.length > 0 ? pathData.id : slugify(pathKey);
       const pathLabel = typeof pathData.name === 'string' && pathData.name.length > 0 ? pathData.name : toTitleCase(pathKey);
       const philosophy = typeof pathData.philosophy === 'string' ? pathData.philosophy : undefined;
@@ -1046,17 +1204,34 @@ export function LineagePowersPanel({
       const powerSelectionsRaw = isRecord((pathData as { power_selections?: unknown }).power_selections)
         ? ((pathData as { power_selections?: unknown }).power_selections as Record<string, unknown>)
         : undefined;
-      const powerSelectionGroups = powerSelectionsRaw
-        ? Object.entries(powerSelectionsRaw)
-            .map(([key, value]) => {
-              const abilities = createAbilityEntries(normalizeAbilityCollection(value), `${rootId}-${key}`);
-              if (abilities.length === 0) return null;
-              return { key, label: toTitleCase(key), abilities };
-            })
-            .filter(
-              (entry): entry is { key: string; label: string; abilities: AbilityEntry[] } => entry !== null
-            )
-        : [];
+      const choiceCollection = powerSelectionsRaw
+        ? Object.entries(powerSelectionsRaw).reduce<MentalistChoiceCollection>((acc, [key, value]) => {
+            const normalizedKey = key.toLowerCase();
+            const abilities = createAbilityEntries(normalizeAbilityCollection(value), `${rootId}-${normalizedKey}`);
+            if (abilities.length === 0) {
+              return acc;
+            }
+            const labelKey = normalizedKey.replace(/_/g, ' ');
+            const group: MentalistChoiceGroup = {
+              key: normalizedKey,
+              label: toTitleCase(labelKey),
+              abilities
+            };
+            const polarity = POLARITY_KEY_TO_TYPE[normalizedKey];
+            if (polarity) {
+              acc.polarity[polarity] = group;
+              return acc;
+            }
+            const scopeDescriptor = SCOPE_KEY_TO_DESCRIPTOR[normalizedKey];
+            if (scopeDescriptor) {
+              const { scope, polarity: scopePolarity } = scopeDescriptor;
+              acc.scope[scope][scopePolarity] = group;
+              return acc;
+            }
+            acc.general.push(group);
+            return acc;
+          }, createEmptyChoiceCollection())
+        : createEmptyChoiceCollection();
       const pathPowers = createAbilityEntries(
         normalizeAbilityCollection((pathData as { powers?: unknown }).powers),
         `${rootId}-power`
@@ -1093,10 +1268,128 @@ export function LineagePowersPanel({
             return acc;
           }, [])
         : [];
-      const traumaEntries = mapTraumaEntries(traumaSource, `${rootId}-trauma`);
       const childFocuses = isRecord((pathData as { focuses?: unknown }).focuses)
         ? ((pathData as { focuses?: unknown }).focuses as Record<string, unknown>)
         : undefined;
+      const frameworkChoiceSelections = selectionsForLineage.filter(
+        (entry) => entry.kind === 'esper-framework-choice' && entry.meta?.root === rootId
+      );
+      const polaritySelection = frameworkChoiceSelections.find((entry) => getFrameworkGroupKey(entry) === 'polarity');
+      const scopeSelection = frameworkChoiceSelections.find((entry) => getFrameworkGroupKey(entry) === 'scope');
+      const selectedPolarity = inferPolarityFromSelection(polaritySelection);
+      const selectedScope = inferScopeFromSelection(scopeSelection);
+      const isMetaMindPath = pathKey.toLowerCase() === 'meta-mind' || rootId === 'meta-mind';
+
+      const translateTerminology = (value: string): string => {
+        if (!isMetaMindPath) return value;
+        return value
+          .replace(/Receiver/gi, 'Instanced')
+          .replace(/Influencer/gi, 'Persistent')
+          .replace(/Aural/gi, 'Systemic')
+          .replace(/Targeted/gi, 'Discrete');
+      };
+
+      const renderChoiceGroup = (
+        group: MentalistChoiceGroup,
+        options: { enabled: boolean; requirement?: string }
+      ) => {
+        if (!group || group.abilities.length === 0) return null;
+        const { enabled, requirement } = options;
+        const label = translateTerminology(group.label);
+        const requirementLabel = requirement ? translateTerminology(requirement) : undefined;
+        return (
+          <div key={`${rootId}-${group.key}`} className="lineage-choice-group">
+            <h6>{label}</h6>
+            {requirementLabel && <p className="power-description__detail">{requirementLabel}</p>}
+            <ul className="power-list">
+              {group.abilities.map((ability, index) => {
+                const fallbackId = `${rootId}-${group.key}-${index}`;
+                const abilityId = ability.id || fallbackId;
+                const choiceSelection: LineagePowerSelection = {
+                  id: abilityId,
+                  lineage: 'esper',
+                  label: `Framework Power — ${ability.name}`,
+                  kind: 'esper-framework-path',
+                  meta: {
+                    root: rootId,
+                    parent: rootId,
+                    path: [rootId, 'framework', group.key, abilityId],
+                    depth: 2,
+                    category: 'esper-mentalist'
+                  }
+                };
+                const isSelected = selectedIds.has(choiceSelection.id);
+                const canToggle = enabled || isSelected;
+                const itemClass = `power-list__item${isSelected ? ' power-list__item--selected' : ''}`;
+                const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
+                return (
+                  <li key={abilityId} className={itemClass}>
+                    <div className="power-list__header">
+                      <div>
+                        <strong>{ability.name}</strong>
+                        {ability.type && <span className="badge badge--type">{toTitleCase(ability.type)}</span>}
+                        {ability.cost && <span className="badge badge--cost">{ability.cost}</span>}
+                        {ability.duration && <span className="badge">{translateTerminology(ability.duration)}</span>}
+                        {ability.scope && <span className="badge">{translateTerminology(ability.scope)}</span>}
+                      </div>
+                      <button
+                        type="button"
+                        className={toggleClass}
+                        disabled={!canToggle}
+                        onClick={() => handleFrameworkPathToggle(choiceSelection, group.key, canToggle)}
+                      >
+                        {isSelected ? 'Selected' : 'Add'}
+                      </button>
+                    </div>
+                    {ability.description && <p>{ability.description}</p>}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        );
+      };
+
+      const polarityGroups = (['receiver', 'influencer'] as PolarityType[]) // order matters
+        .map((polarity) => {
+          const group = choiceCollection.polarity[polarity];
+          if (!group) return null;
+          const isActive = selectedPolarity === polarity;
+          const requirement = isActive
+            ? undefined
+            : GROUP_REQUIREMENTS[group.key] ?? `Requires ${toTitleCase(polarity)} configuration.`;
+          return renderChoiceGroup(group, { enabled: isActive, requirement });
+        })
+        .filter((element): element is JSX.Element => element !== null);
+
+      const scopeGroups = (['aural', 'targeted'] as ScopeType[])
+        .map((scope) => {
+          const scopeEntry = choiceCollection.scope[scope];
+          const entries = (['receiver', 'influencer'] as PolarityType[]) // matches polarity selection mapping
+            .map((polarity) => {
+              const group = scopeEntry?.[polarity];
+              if (!group) return null;
+              const isActive = selectedPolarity === polarity && selectedScope === scope;
+              const requirement = isActive
+                ? undefined
+                : GROUP_REQUIREMENTS[group.key] ??
+                  `Requires ${toTitleCase(scope)} scope and ${toTitleCase(polarity)} configuration.`;
+              return renderChoiceGroup(group, { enabled: isActive, requirement });
+            })
+            .filter((element): element is JSX.Element => element !== null);
+          if (entries.length === 0) return null;
+          return (
+            <div key={`${rootId}-scope-${scope}`} className="lineage-choice-scope">
+              <p className="lineage-choice-scope__label">{translateTerminology(`${toTitleCase(scope)} Options`)}</p>
+              {entries}
+            </div>
+          );
+        })
+        .filter((element): element is JSX.Element => element !== null);
+
+      const generalGroups = choiceCollection.general
+        .map((group) => renderChoiceGroup(group, { enabled: true }))
+        .filter((element): element is JSX.Element => element !== null);
 
       const selection: LineagePowerSelection = {
         id: rootId,
@@ -1137,11 +1430,26 @@ export function LineagePowersPanel({
           </summary>
           {naturalLean && <p className="power-description__detail">Natural Lean: {naturalLean}</p>}
           {philosophy && <p>{philosophy}</p>}
-          {powerSelectionGroups.length > 0 && (
+          {(polarityGroups.length > 0 || scopeGroups.length > 0 || generalGroups.length > 0) && (
             <section className="lineage-power-subsection">
-              <h5>Power Selections</h5>
-              {powerSelectionGroups.map((group) =>
-                renderAbilitySection(group.label, group.abilities, 'h6', `${rootId}-${group.key}`)
+              <h5>{isMetaMindPath ? 'Cognitive Framework' : 'Power Selections'}</h5>
+              {polarityGroups.length > 0 && (
+                <div className="lineage-choice-section">
+                  <h6>{isMetaMindPath ? 'Mode Selection' : 'Polarity Selection'}</h6>
+                  {polarityGroups}
+                </div>
+              )}
+              {scopeGroups.length > 0 && (
+                <div className="lineage-choice-section">
+                  <h6>{isMetaMindPath ? 'Expression Range' : 'Scope Selection'}</h6>
+                  {scopeGroups}
+                </div>
+              )}
+              {generalGroups.length > 0 && (
+                <div className="lineage-choice-section">
+                  <h6>{isMetaMindPath ? 'Additional Routines' : 'Additional Powers'}</h6>
+                  {generalGroups}
+                </div>
               )}
             </section>
           )}
@@ -1187,27 +1495,6 @@ export function LineagePowersPanel({
                   </div>
                 ))}
               </div>
-            </section>
-          )}
-          {traumaEntries.length > 0 && (
-            <section className="lineage-power-subsection">
-              <h5>Trauma Mutations</h5>
-              <ul className="power-list">
-                {traumaEntries.map((entry) => (
-                  <li key={entry.id} className="power-list__item">
-                    <div>
-                      <strong>{entry.name}</strong>
-                      {entry.cost && <span className="badge badge--cost">{entry.cost}</span>}
-                    </div>
-                    {entry.prerequisite && (
-                      <p>
-                        <em>Prerequisite:</em> {entry.prerequisite}
-                      </p>
-                    )}
-                    {entry.effect && <p>{entry.effect}</p>}
-                  </li>
-                ))}
-              </ul>
             </section>
           )}
           {childFocuses && (
@@ -1291,74 +1578,87 @@ export function LineagePowersPanel({
               <header>
                 <h4>Mentalist Framework</h4>
               </header>
-              {foundationalAugmentGroups.length > 0 && (
-                <section className="lineage-power-subsection">
-                  <h5>Foundational Augments</h5>
-                  {foundationalAugmentGroups.map((group) => {
-                    const rootKey = mentalistRoot ?? 'mentalist';
-                    return (
-                      <section key={group.key} className="lineage-power-subsection">
-                        <h6>{group.label}</h6>
-                        <ul className="power-list">
-                          {group.abilities.map((ability, index) => {
-                            const fallbackId = `${rootKey}-${group.key}-${index}`;
-                            const abilityId = ability.id || fallbackId;
-                            const selection: LineagePowerSelection = {
-                              id: abilityId,
-                              lineage: 'esper',
-                              label: `Foundational Augment — ${ability.name}`,
-                              kind: 'esper-framework-choice',
-                              meta: {
-                                root: rootKey,
-                                parent: rootKey,
-                                path: [rootKey, 'foundational', group.key, abilityId],
-                                depth: 1,
-                                category: 'esper-mentalist'
-                              }
-                            };
-                            const isSelected = selectedIds.has(selection.id);
-                            const disabled = !isRootSelected(rootKey) || !isDepthAllowed(rootKey, 1);
-                            const itemClass = `power-list__item${isSelected ? ' power-list__item--selected' : ''}`;
-                            const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
-                            return (
-                              <li key={abilityId} className={itemClass}>
-                                <div className="power-list__header">
-                                  <div>
-                                    <strong>{ability.name}</strong>
-                                    {ability.type && <span className="badge badge--type">{toTitleCase(ability.type)}</span>}
-                                    {ability.cost && <span className="badge badge--cost">{ability.cost}</span>}
-                                    {ability.duration && <span className="badge">{ability.duration}</span>}
-                                    {ability.scope && <span className="badge">{ability.scope}</span>}
-                                  </div>
-                                  <button
-                                    type="button"
-                                    className={toggleClass}
-                                    disabled={disabled && !isSelected}
-                                    onClick={() => {
-                                      if (!disabled || isSelected) {
-                                        handleFocusToggle(selection);
-                                      }
-                                    }}
-                                  >
-                                    {isSelected ? 'Selected' : 'Add'}
-                                  </button>
-                                </div>
-                                {ability.description && <p>{ability.description}</p>}
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </section>
-                    );
-                  })}
-                </section>
-              )}
+              {foundationalAugmentGroups.length > 0 && (() => {
+                const rootKey = mentalistRoot ?? 'mentalist';
+                const polarityGroup = foundationalAugmentGroups.find((group) => group.key === 'polarity');
+                const scopeGroup = foundationalAugmentGroups.find((group) => group.key === 'scope');
+                const remainingGroups = foundationalAugmentGroups.filter(
+                  (group) => group.key !== 'polarity' && group.key !== 'scope'
+                );
+
+                const renderFoundationalList = (
+                  group: { key: string; label: string; abilities: AbilityEntry[] },
+                  title?: string
+                ) => (
+                  <div key={group.key} className="lineage-choice-section">
+                    <h6>{title ?? group.label}</h6>
+                    <ul className="power-list">
+                      {group.abilities.map((ability, index) => {
+                        const fallbackId = `${rootKey}-${group.key}-${index}`;
+                        const abilityId = ability.id || fallbackId;
+                        const selection: LineagePowerSelection = {
+                          id: abilityId,
+                          lineage: 'esper',
+                          label: `Foundational Augment — ${ability.name}`,
+                          kind: 'esper-framework-choice',
+                          meta: {
+                            root: rootKey,
+                            parent: rootKey,
+                            path: [rootKey, 'foundational', group.key, abilityId],
+                            depth: 1,
+                            category: 'esper-mentalist'
+                          }
+                        };
+                        const isSelected = selectedIds.has(selection.id);
+                        const disabled = !isRootSelected(rootKey) || !isDepthAllowed(rootKey, 1);
+                        const itemClass = `power-list__item${isSelected ? ' power-list__item--selected' : ''}`;
+                        const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
+                        return (
+                          <li key={abilityId} className={itemClass}>
+                            <div className="power-list__header">
+                              <div>
+                                <strong>{ability.name}</strong>
+                                {ability.type && <span className="badge badge--type">{toTitleCase(ability.type)}</span>}
+                                {ability.cost && <span className="badge badge--cost">{ability.cost}</span>}
+                                {ability.duration && <span className="badge">{ability.duration}</span>}
+                                {ability.scope && <span className="badge">{ability.scope}</span>}
+                              </div>
+                              <button
+                                type="button"
+                                className={toggleClass}
+                                disabled={disabled && !isSelected}
+                                onClick={() => {
+                                  if (!disabled || isSelected) {
+                                    handleFrameworkChoiceToggle(selection, group.key);
+                                  }
+                                }}
+                              >
+                                {isSelected ? 'Selected' : 'Add'}
+                              </button>
+                            </div>
+                            {ability.description && <p>{ability.description}</p>}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                );
+
+                return (
+                  <section className="lineage-power-subsection">
+                    <h5>Foundational Augments</h5>
+                    {polarityGroup && renderFoundationalList(polarityGroup, 'Polarity Configuration')}
+                    {scopeGroup && renderFoundationalList(scopeGroup, 'Scope Configuration')}
+                    {remainingGroups.map((group) => renderFoundationalList(group))}
+                  </section>
+                );
+              })()}
               {mentalistPathEntries.length > 0 && (
                 <section className="lineage-power-subsection">
                   <h5>Paths</h5>
                   <div className="lineage-powers-grid lineage-powers-grid--tall">
                     {mentalistPathEntries.map(([pathKey, pathRecord]) =>
-                      renderMentalistPath(pathKey, pathRecord, traumaMutationsRaw[pathKey])
+                      renderMentalistPath(pathKey, pathRecord)
                     )}
                   </div>
                 </section>
