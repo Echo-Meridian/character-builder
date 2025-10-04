@@ -83,6 +83,7 @@ export function BuilderPage() {
     return null;
   }
 
+  const lineagePowers = Array.isArray(build.lineage.powers) ? build.lineage.powers : [];
   const selectedPowerSet = build.lineage.key ? data.powerSets?.[build.lineage.key] : undefined;
   const backgroundTemplate = build.background.title ? data.backgrounds[build.background.title] : undefined;
   const backgroundSkillOptions = Array.isArray(backgroundTemplate?.skillSpecializationOptions)
@@ -112,7 +113,7 @@ export function BuilderPage() {
           notes={build.lineage.notes}
           onUpdateNotes={updateLineageNotes}
           powerSet={selectedPowerSet}
-          powers={build.lineage.powers}
+          powers={lineagePowers}
           onTogglePower={toggleLineagePower}
           onClearPowers={clearLineagePowers}
         />

@@ -67,6 +67,19 @@ export interface LineagePowerSelection {
   meta?: LineagePowerMeta;
 }
 
+const ensureLineagePowersArray = (value: unknown): LineagePowerSelection[] => {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+  return value.filter((entry): entry is LineagePowerSelection => {
+    if (!entry || typeof entry !== 'object') {
+      return false;
+    }
+    const candidate = entry as Partial<LineagePowerSelection>;
+    return typeof candidate.id === 'string' && typeof candidate.lineage === 'string';
+  });
+};
+
 interface BaseResourceEntry {
   id: string;
   name: string;
@@ -541,6 +554,7 @@ export const useCharacterStore = create<CharacterStore>()(
       selectLineage: (key) => {
         withActive(set, (build) => {
           const sameLineage = build.lineage.key === key && key !== null;
+          const currentPowers = ensureLineagePowersArray(build.lineage.powers);
           return {
             ...build,
             lineage: {
@@ -548,7 +562,7 @@ export const useCharacterStore = create<CharacterStore>()(
               key,
               // Reset reveal when switching lineages
               revealMechanics: key ? build.lineage.revealMechanics : false,
-              powers: sameLineage ? build.lineage.powers : []
+              powers: sameLineage ? currentPowers : []
             }
           };
         });
@@ -575,10 +589,11 @@ export const useCharacterStore = create<CharacterStore>()(
           if (!build.lineage.key || build.lineage.key !== selection.lineage) {
             return build;
           }
+          const currentPowers = ensureLineagePowersArray(build.lineage.powers);
           const isEsper = selection.lineage === 'esper';
-          const exists = build.lineage.powers.some((entry) => entry.id === selection.id);
+          const exists = currentPowers.some((entry) => entry.id === selection.id);
           const lineagePriority = build.priorities.lineage ?? null;
-          let powers = build.lineage.powers;
+          let powers = currentPowers;
 
           if (exists) {
             powers = powers.filter((entry) => entry.id !== selection.id);
@@ -1122,7 +1137,7 @@ export const useCharacterStore = create<CharacterStore>()(
     }),
     {
       name: 'sidonia-character-builder',
-      version: 5,
+      version: 6,
       migrate: (state, version) => {
         if (!state || typeof state !== 'object') {
           return state;
@@ -1212,12 +1227,7 @@ export const useCharacterStore = create<CharacterStore>()(
           const legacy = (lineage ?? {}) as Partial<CharacterBuild['lineage']> & {
             powers?: unknown;
           };
-          const powers = Array.isArray(legacy.powers)
-            ? (legacy.powers as LineagePowerSelection[]).filter(
-                (entry): entry is LineagePowerSelection =>
-                  !!entry && typeof entry.id === 'string' && typeof entry.lineage === 'string'
-              )
-            : [];
+          const powers = ensureLineagePowersArray(legacy.powers);
           return {
             key: (legacy.key ?? null) as LineageKey | null,
             notes: typeof legacy.notes === 'string' ? legacy.notes : '',
