@@ -1,5 +1,6 @@
+import { DecoCard } from '../ui/DecoCard';
+import { DecoInput } from '../ui/DecoInput';
 import type { CharacterBuild, CharacterProfile } from '../../state/characterStore';
-import './character-profile-card.css';
 
 interface CharacterProfileCardProps {
   build: CharacterBuild | null;
@@ -14,101 +15,140 @@ export function CharacterProfileCard({ build, onUpdate }: CharacterProfileCardPr
   const { profile, updatedAt } = build;
 
   return (
-    <section className="profile-card">
-      <header>
-        <h2>Character Dossier</h2>
-        <span className="profile-card__timestamp">Auto-saved {new Date(updatedAt).toLocaleString()}</span>
+    <DecoCard>
+      {/* Header */}
+      <header className="flex justify-between items-baseline mb-deco-md pb-deco-sm border-b border-sidonia-gold/20">
+        <h2 className="font-display text-2xl tracking-wider uppercase text-sidonia-gold">
+          Character Dossier
+        </h2>
+        <span className="text-label text-sidonia-muted">
+          Auto-saved {new Date(updatedAt).toLocaleString()}
+        </span>
       </header>
-      <div className="profile-card__layout">
-        <div className="profile-card__details">
-          <div className="profile-card__grid">
-            <label className="field">
-              <span>Name</span>
-              <input value={profile.name} onChange={(event) => onUpdate({ name: event.target.value })} />
-            </label>
-            <label className="field">
-              <span>Alias</span>
-              <input value={profile.alias} onChange={(event) => onUpdate({ alias: event.target.value })} />
-            </label>
-            <label className="field">
-              <span>Pronouns</span>
-              <input value={profile.pronouns} onChange={(event) => onUpdate({ pronouns: event.target.value })} />
-            </label>
-            <label className="field">
-              <span>Concept</span>
-              <input
-                value={profile.concept}
-                placeholder="Ex: Disgraced sorcerer moonlighting as a fixer"
-                onChange={(event) => onUpdate({ concept: event.target.value })}
-              />
-            </label>
+
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-deco-md items-start">
+        {/* Main Details */}
+        <div className="space-y-deco-sm">
+          {/* Name/Alias/CurrentProfession/WardOfResidence Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-deco-sm">
+            <DecoInput
+              label="Name"
+              value={profile.name}
+              onChange={(e) => onUpdate({ name: e.target.value })}
+            />
+            <DecoInput
+              label="Alias"
+              value={profile.alias}
+              onChange={(e) => onUpdate({ alias: e.target.value })}
+            />
+            <DecoInput
+              label="Current Profession"
+              value={profile.currentProfession}
+              onChange={(e) => onUpdate({ currentProfession: e.target.value })}
+            />
+            <DecoInput
+              label="Ward of Residence"
+              value={profile.wardOfResidence}
+              placeholder="Which ward do they call home?"
+              onChange={(e) => onUpdate({ wardOfResidence: e.target.value })}
+            />
           </div>
 
-          <label className="field profile-card__summary">
-            <span>Summary</span>
+          {/* Backstory */}
+          <div className="flex flex-col gap-1">
+            <label className="text-label">Backstory</label>
             <textarea
-              value={profile.summary}
+              value={profile.backstory}
               placeholder="High-level summary you can hand to a new player or GM."
-              onChange={(event) => onUpdate({ summary: event.target.value })}
+              onChange={(e) => onUpdate({ backstory: e.target.value })}
+              className="min-h-[100px] bg-sidonia-black border border-sidonia-gold/50 text-sidonia-text
+                       px-deco-sm py-2 font-body placeholder:text-sidonia-muted
+                       focus:outline-none focus:ring-1 focus:border-sidonia-gold focus:ring-sidonia-gold/20
+                       transition-all duration-300 resize-y"
             />
-          </label>
+          </div>
 
-          <label className="field profile-card__textarea">
-            <span>Physical Description</span>
+          {/* Physical Description */}
+          <div className="flex flex-col gap-1">
+            <label className="text-label">Physical Description</label>
             <textarea
               value={profile.physicalDescription}
               placeholder="How do they carry themselves? Distinguishing features?"
-              onChange={(event) => onUpdate({ physicalDescription: event.target.value })}
+              onChange={(e) => onUpdate({ physicalDescription: e.target.value })}
+              className="min-h-[100px] bg-sidonia-black border border-sidonia-gold/50 text-sidonia-text
+                       px-deco-sm py-2 font-body placeholder:text-sidonia-muted
+                       focus:outline-none focus:ring-1 focus:border-sidonia-gold focus:ring-sidonia-gold/20
+                       transition-all duration-300 resize-y"
             />
-          </label>
+          </div>
 
-          <label className="field profile-card__textarea">
-            <span>Code</span>
+          {/* Code */}
+          <div className="flex flex-col gap-1">
+            <label className="text-label">Code</label>
             <textarea
               value={profile.code}
               placeholder="What guiding principle can they not compromise?"
-              onChange={(event) => onUpdate({ code: event.target.value })}
+              onChange={(e) => onUpdate({ code: e.target.value })}
+              className="min-h-[100px] bg-sidonia-black border border-sidonia-gold/50 text-sidonia-text
+                       px-deco-sm py-2 font-body placeholder:text-sidonia-muted
+                       focus:outline-none focus:ring-1 focus:border-sidonia-gold focus:ring-sidonia-gold/20
+                       transition-all duration-300 resize-y"
             />
-          </label>
+          </div>
 
-          <div className="profile-card__duo">
-            <label className="field profile-card__textarea">
-              <span>Line They Will Not Cross</span>
+          {/* Line Not Crossed / Temptation */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-deco-sm">
+            <div className="flex flex-col gap-1">
+              <label className="text-label">Line They Will Not Cross</label>
               <textarea
                 value={profile.lineNotCrossed}
                 placeholder="The red line that defines them."
-                onChange={(event) => onUpdate({ lineNotCrossed: event.target.value })}
+                onChange={(e) => onUpdate({ lineNotCrossed: e.target.value })}
+                className="min-h-[100px] bg-sidonia-black border border-sidonia-gold/50 text-sidonia-text
+                         px-deco-sm py-2 font-body placeholder:text-sidonia-muted
+                         focus:outline-none focus:ring-1 focus:border-sidonia-gold focus:ring-sidonia-gold/20
+                         transition-all duration-300 resize-y"
               />
-            </label>
-            <label className="field profile-card__textarea">
-              <span>Temptation</span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <label className="text-label">Temptation</label>
               <textarea
                 value={profile.temptation}
                 placeholder="The lure that could make them fall."
-                onChange={(event) => onUpdate({ temptation: event.target.value })}
+                onChange={(e) => onUpdate({ temptation: e.target.value })}
+                className="min-h-[100px] bg-sidonia-black border border-sidonia-gold/50 text-sidonia-text
+                         px-deco-sm py-2 font-body placeholder:text-sidonia-muted
+                         focus:outline-none focus:ring-1 focus:border-sidonia-gold focus:ring-sidonia-gold/20
+                         transition-all duration-300 resize-y"
               />
-            </label>
+            </div>
           </div>
         </div>
 
-        <aside className="profile-card__portrait">
-          <div className="profile-card__portrait-frame">
+        {/* Portrait Sidebar */}
+        <aside className="flex flex-col gap-deco-sm">
+          <div className="relative w-full pt-[120%] rounded-lg border-2 border-dashed border-sidonia-gold/40
+                        bg-sidonia-black/45 overflow-hidden">
             {profile.portraitUrl ? (
-              <img src={profile.portraitUrl} alt={`${profile.name || 'Character'} portrait`} />
+              <img
+                src={profile.portraitUrl}
+                alt={`${profile.name || 'Character'} portrait`}
+                className="absolute top-0 left-0 w-full h-full object-cover"
+              />
             ) : (
-              <span>Portrait Pending</span>
+              <div className="absolute inset-0 flex items-center justify-center text-sidonia-muted text-sm font-body">
+                Portrait Pending
+              </div>
             )}
           </div>
-          <label className="field">
-            <span>Portrait URL (optional)</span>
-            <input
-              value={profile.portraitUrl}
-              onChange={(event) => onUpdate({ portraitUrl: event.target.value })}
-              placeholder="Link to artwork or leave blank"
-            />
-          </label>
+          <DecoInput
+            label="Portrait URL (optional)"
+            value={profile.portraitUrl}
+            placeholder="Link to artwork or leave blank"
+            onChange={(e) => onUpdate({ portraitUrl: e.target.value })}
+          />
         </aside>
       </div>
-    </section>
+    </DecoCard>
   );
 }

@@ -226,15 +226,43 @@ export function BuilderPage() {
     : undefined;
 
   return (
-    <div className="builder-screen" style={builderStyle}>
-      <CharacterProfileCard build={build} onUpdate={updateProfile} />
-      <div className="builder-actions">
-        <button type="button" onClick={resetActiveBuild}>
-          Reset Character
-        </button>
+    <div
+      className="min-h-screen px-deco-md py-deco-lg space-y-deco-lg relative"
+      style={builderStyle}
+    >
+      {/* Lineage-specific background glow */}
+      {lineageDefinition && (
+        <div
+          className="absolute inset-0 opacity-40 pointer-events-none -z-10"
+          style={{
+            background: lineageDefinition.aesthetic.glow ||
+              'radial-gradient(circle at 10% 10%, rgba(212, 175, 55, 0.1), transparent 65%)'
+          }}
+        />
+      )}
+
+      <div className="max-w-7xl mx-auto space-y-deco-lg">
+        <CharacterProfileCard build={build} onUpdate={updateProfile} />
+
+        <div className="flex justify-end">
+          <button
+            type="button"
+            onClick={resetActiveBuild}
+            className="px-deco-md py-2 rounded-full border border-sidonia-gold/30
+                     bg-sidonia-black/90 text-sidonia-text hover:border-sidonia-gold/60
+                     font-body text-xs uppercase tracking-wider transition-all duration-300
+                     hover:bg-sidonia-gold/5"
+          >
+            Reset Character
+          </button>
+        </div>
+
+        <StageNavigation current={build.stage} onNavigate={setStage} />
+
+        <div className="stage">
+          {stageContent}
+        </div>
       </div>
-      <StageNavigation current={build.stage} onNavigate={setStage} />
-      {stageContent}
     </div>
   );
 }

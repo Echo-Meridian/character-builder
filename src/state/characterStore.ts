@@ -126,9 +126,9 @@ export const BODY_LOCATIONS: Record<BodyLocationKey, string> = {
 export interface CharacterProfile {
   name: string;
   alias: string;
-  pronouns: string;
-  concept: string;
-  summary: string;
+  currentProfession: string;
+  wardOfResidence: string;
+  backstory: string;
   physicalDescription: string;
   code: string;
   lineNotCrossed: string;
@@ -296,9 +296,9 @@ const getEsperDepthLimit = (priority: PriorityRank | null): number => (priority 
 const createEmptyProfile = (): CharacterProfile => ({
   name: '',
   alias: '',
-  pronouns: '',
-  concept: '',
-  summary: '',
+  currentProfession: '',
+  wardOfResidence: '',
+  backstory: '',
   physicalDescription: '',
   code: '',
   lineNotCrossed: '',
@@ -1217,9 +1217,18 @@ export const useCharacterStore = create<CharacterStore>()(
           return {
             name: typeof legacy.name === 'string' ? legacy.name : '',
             alias: typeof legacy.alias === 'string' ? legacy.alias : '',
-            pronouns: typeof legacy.pronouns === 'string' ? legacy.pronouns : '',
-            concept: typeof legacy.concept === 'string' ? legacy.concept : '',
-            summary: typeof legacy.summary === 'string' ? legacy.summary : '',
+            // Migrate old "pronouns" field to "currentProfession"
+            currentProfession: typeof legacy.currentProfession === 'string'
+              ? legacy.currentProfession
+              : typeof legacy.pronouns === 'string' ? legacy.pronouns : '',
+            // Migrate old "concept" field to "wardOfResidence"
+            wardOfResidence: typeof legacy.wardOfResidence === 'string'
+              ? legacy.wardOfResidence
+              : typeof legacy.concept === 'string' ? legacy.concept : '',
+            // Migrate old "summary" field to "backstory"
+            backstory: typeof legacy.backstory === 'string'
+              ? legacy.backstory
+              : typeof legacy.summary === 'string' ? legacy.summary : '',
             physicalDescription:
               typeof legacy.physicalDescription === 'string' ? legacy.physicalDescription : '',
             code: typeof legacy.code === 'string' ? legacy.code : '',

@@ -1,32 +1,44 @@
+/* Art Deco Lineage Powers Panel */
 .lineage-powers-panel {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(18, 18, 26, 0.7);
-  backdrop-filter: blur(12px);
+  @apply mt-deco-lg p-deco-md rounded-lg;
+  @apply border-2 border-sidonia-gold/30 bg-sidonia-dark/90;
+  @apply backdrop-blur-md;
   display: grid;
   gap: 1.2rem;
+
+  /* Art Deco corner decorations */
+  position: relative;
+}
+
+.lineage-powers-panel::before {
+  content: '';
+  @apply absolute top-0 left-0;
+  @apply w-deco-md h-deco-md;
+  @apply border-t-2 border-l-2 border-sidonia-gold;
+}
+
+.lineage-powers-panel::after {
+  content: '';
+  @apply absolute bottom-0 right-0;
+  @apply w-deco-md h-deco-md;
+  @apply border-b-2 border-r-2 border-sidonia-gold;
 }
 
 .lineage-powers-panel header h3 {
-  margin: 0;
+  @apply m-0 font-display text-3xl tracking-wider uppercase text-sidonia-gold;
 }
 
 .lineage-powers-panel header p {
-  margin: 0.35rem 0 0;
-  color: rgba(220, 220, 235, 0.7);
+  @apply mt-2 mb-0;
+  @apply text-sidonia-text/70 font-body text-sm;
 }
 
+/* Power Summary Stats Bar */
 .lineage-power-summary {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem 1.5rem;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  @apply flex flex-wrap items-center;
+  @apply gap-3 p-deco-sm rounded-lg;
+  @apply bg-sidonia-black/60 border-2 border-sidonia-gold/20;
+  @apply backdrop-blur-sm;
 }
 
 .lineage-power-summary > div {
@@ -36,56 +48,101 @@
 }
 
 .lineage-power-summary span {
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(235, 220, 190, 0.7);
+  @apply text-label text-sidonia-muted;
 }
 
 .lineage-power-summary strong {
-  font-size: 1rem;
+  @apply text-sidonia-gold font-display text-lg tracking-wide;
 }
 
 .lineage-power-summary__warning {
-  margin: 0;
-  font-size: 0.85rem;
-  color: #ff9a9a;
+  @apply m-0 text-corruption-red font-body text-sm;
 }
 
 .lineage-power-summary__note {
-  margin: 0;
-  font-size: 0.85rem;
-  color: rgba(210, 210, 235, 0.75);
+  @apply m-0 text-sidonia-text/70 font-body text-sm italic;
 }
 
+/* Power Cards Grid */
 .lineage-powers-grid {
   display: grid;
   gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
+/* Individual Power Cards - Art Deco Style */
 .lineage-power-card {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 1rem 1.2rem;
+  @apply border-2 border-sidonia-gold/20 rounded-lg p-deco-sm;
+  @apply bg-sidonia-black/80 backdrop-blur-sm;
+  @apply transition-all duration-300;
   display: grid;
   gap: 0.75rem;
-  background: rgba(12, 12, 18, 0.75);
+  position: relative;
 }
 
-.lineage-power-card--selected {
-  border-color: rgba(120, 200, 255, 0.6);
-  box-shadow: 0 0 0 1px rgba(120, 200, 255, 0.2);
+.lineage-power-card:hover {
+  @apply border-sidonia-gold/40 shadow-md;
 }
 
+.lineage-power-card--selected,
+.lineage-power-card--has-selection {
+  @apply border-sidonia-gold shadow-lg shadow-sidonia-gold/20;
+}
+
+/* Vertical Power Card Layout */
 .lineage-power-card__summary,
 .sphere-card__summary,
 .focus-card__summary,
-.branch-card__summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
+.branch-card__summary,
+.automata-package-summary {
+  @apply flex flex-col gap-2;
+  cursor: pointer;
+}
+
+.lineage-power-card__summary h4,
+.lineage-power-card__summary h5,
+.sphere-card__summary h5,
+.automata-package-summary h5 {
+  @apply m-0 font-display text-lg tracking-wide uppercase text-sidonia-brass;
+}
+
+.lineage-power-card__short-desc,
+.sphere-card__description,
+.automata-package-count {
+  @apply text-sidonia-text/70 font-body text-sm;
+  @apply mb-2;
+}
+
+/* Expand for Details Section */
+.lineage-power-card__summary::after,
+.sphere-card__summary::after,
+.automata-package-card summary::after {
+  content: 'Expand for Details ›';
+  @apply font-display text-xs uppercase tracking-wider;
+  @apply text-sidonia-gold/60;
+  @apply mt-1 pt-2 border-t border-sidonia-gold/20;
+  @apply transition-all duration-300;
+  @apply self-start;
+}
+
+.lineage-power-card__summary:hover::after,
+.sphere-card__summary:hover::after,
+.automata-package-card summary:hover::after {
+  @apply text-sidonia-gold;
+}
+
+details[open] .lineage-power-card__summary::after,
+details[open] .sphere-card__summary::after,
+details[open].automata-package-card summary::after {
+  content: 'Collapse Details ‹';
+  @apply text-sidonia-gold;
+}
+
+/* Move any buttons in summary to the end */
+.lineage-power-card__summary button,
+.sphere-card__summary button,
+.automata-package-summary button {
+  @apply order-last mt-2;
 }
 
 .lineage-power-card.framework {
@@ -93,7 +150,7 @@
 }
 
 .lineage-power-card header h4 {
-  margin: 0;
+  @apply m-0 font-display tracking-wide uppercase;
 }
 
 .lineage-power-card__body {
@@ -101,99 +158,107 @@
   gap: 0.75rem;
 }
 
+/* Tier/Grade Sections */
+.lineage-power-tier,
 .lineage-power-grade {
-  border-radius: 14px;
-  padding: 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  @apply rounded-lg p-deco-sm;
+  @apply bg-sidonia-black/40 border-2 border-sidonia-gold/10;
+  @apply transition-all duration-300;
   display: grid;
   gap: 0.5rem;
 }
 
-.lineage-power-grade--selected {
-  border-color: rgba(120, 200, 255, 0.6);
-  box-shadow: 0 0 0 1px rgba(120, 200, 255, 0.2);
+.lineage-power-tier:hover,
+.lineage-power-grade:hover {
+  @apply border-sidonia-gold/30;
 }
 
+.lineage-power-tier--selected,
+.lineage-power-grade--selected {
+  @apply border-sidonia-gold shadow-md shadow-sidonia-gold/20;
+}
+
+.lineage-power-tier__header,
 .lineage-power-grade__header {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  align-items: center;
+  @apply flex flex-wrap items-center gap-2;
+}
+
+.lineage-power-tier__info {
+  @apply flex items-center gap-2 flex-1;
+}
+
+.lineage-power-tier__cost {
+  @apply text-sidonia-muted font-body text-xs;
 }
 
 .lineage-power-grade__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  color: rgba(235, 215, 170, 0.8);
+  @apply flex flex-wrap gap-2;
+  @apply text-sidonia-brass font-body text-xs;
 }
 
+/* Art Deco Badges */
 .badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: rgba(240, 200, 120, 0.2);
-  border: 1px solid rgba(240, 200, 120, 0.4);
+  @apply inline-flex items-center;
+  @apply px-2 py-1 rounded-full;
+  @apply font-display text-xs uppercase tracking-wider;
+  @apply bg-sidonia-gold/20 border border-sidonia-gold/50 text-sidonia-gold;
 }
 
 .badge--grade {
-  background: rgba(120, 180, 255, 0.2);
-  border-color: rgba(120, 180, 255, 0.4);
+  @apply bg-blue-500/20 border-blue-500/50 text-blue-400;
 }
 
 .badge--type {
-  background: rgba(160, 120, 255, 0.2);
-  border-color: rgba(160, 120, 255, 0.4);
+  @apply bg-purple-500/20 border-purple-500/50 text-purple-400;
 }
 
 .badge--cost {
-  background: rgba(255, 160, 120, 0.2);
-  border-color: rgba(255, 160, 120, 0.4);
+  @apply bg-orange-500/20 border-orange-500/50 text-orange-400;
 }
 
 .badge--tier {
-  background: rgba(140, 220, 160, 0.2);
-  border-color: rgba(140, 220, 160, 0.4);
+  @apply bg-green-500/20 border-green-500/50 text-green-400;
 }
 
 .badge--locked {
-  background: rgba(255, 120, 120, 0.2);
-  border-color: rgba(255, 120, 120, 0.4);
-  color: #ff9090;
+  @apply bg-corruption-red/20 border-corruption-red/50 text-corruption-red;
 }
 
+/* Power Descriptions */
 .power-description {
   display: grid;
   gap: 0.45rem;
-  font-size: 0.9rem;
+  @apply font-body text-sm text-sidonia-text/80;
 }
 
 .power-description__detail {
-  color: rgba(220, 220, 235, 0.75);
+  @apply text-sidonia-text/70;
 }
 
+.power-description__short {
+  @apply text-sidonia-text/70 text-xs;
+}
+
+.power-description__flaw,
 .power-description__detail.flaw {
-  color: #ff8f8f;
+  @apply text-corruption-red;
 }
 
-.power-description__outcomes {
-  list-style: none;
+.power-description__outcomes,
+.power-outcomes {
+  @apply list-none m-0 p-0;
   display: grid;
   gap: 0.35rem;
-  margin: 0;
-  padding: 0;
-  font-size: 0.85rem;
+  @apply font-body text-sm;
 }
 
 .power-description__outcomes li {
   display: grid;
   gap: 0.25rem;
+}
+
+.power-cost {
+  @apply text-orange-400 font-body text-sm;
 }
 
 .lineage-powers-columns {
@@ -214,47 +279,65 @@
   text-transform: uppercase;
 }
 
+/* Sphere Cards (Sorcery) */
 .sphere-card {
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 0.9rem 1rem;
-  background: rgba(12, 12, 18, 0.7);
+  @apply rounded-lg p-deco-sm;
+  @apply border-2 border-lineage-sorcerer/20 bg-sidonia-black/80;
+  @apply transition-all duration-300;
   display: grid;
   gap: 0.5rem;
+}
+
+.sphere-card:hover {
+  @apply border-lineage-sorcerer/40;
 }
 
 .sphere-card--selected {
-  border-color: rgba(160, 140, 255, 0.6);
-  box-shadow: 0 0 0 1px rgba(160, 140, 255, 0.2);
+  @apply border-lineage-sorcerer shadow-lg shadow-lineage-sorcerer/30;
 }
 
+.sphere-card__description {
+  @apply text-sidonia-text/70 font-body text-sm italic;
+}
+
+.sphere-prerequisite-message {
+  @apply text-sidonia-muted font-body text-sm italic text-center py-2;
+}
+
+/* Power Lists */
 .power-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  @apply list-none m-0 p-0;
   display: grid;
   gap: 0.5rem;
 }
 
-.power-list li {
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  padding: 0.6rem 0.7rem;
+.power-list li,
+.power-list__item {
+  @apply rounded-lg p-deco-sm;
+  @apply bg-sidonia-black/40 border-2 border-sidonia-gold/10;
+  @apply transition-all duration-300;
   display: grid;
   gap: 0.35rem;
 }
 
+.power-list__item:hover {
+  @apply border-sidonia-gold/30;
+}
+
 .power-list__item--selected {
-  border-color: rgba(120, 200, 255, 0.6);
-  box-shadow: 0 0 0 1px rgba(120, 200, 255, 0.2);
+  @apply border-sidonia-gold shadow-md shadow-sidonia-gold/20;
+}
+
+.power-list__item--granted {
+  @apply border-green-500/30 bg-green-500/5;
+}
+
+.power-list__item--disabled {
+  @apply opacity-40;
 }
 
 .power-list__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
+  @apply flex items-center justify-between gap-3;
 }
 
 .focus-grid {
@@ -337,29 +420,50 @@
   align-items: center;
 }
 
+/* Art Deco Power Toggle Buttons */
 .power-toggle {
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.08);
-  color: inherit;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 0.25rem 0.9rem;
-  cursor: pointer;
-  transition: background 0.2s ease, border 0.2s ease;
+  @apply px-deco-sm py-1.5 rounded-full;
+  @apply font-display text-xs uppercase tracking-wider;
+  @apply border-2 border-sidonia-gold/30 bg-sidonia-black/50 text-sidonia-text;
+  @apply cursor-pointer transition-all duration-300;
+}
+
+.power-toggle:hover:not(:disabled) {
+  @apply border-sidonia-gold/60 bg-sidonia-gold/10 shadow-md shadow-sidonia-gold/10;
 }
 
 .power-toggle--active {
-  background: rgba(120, 200, 255, 0.2);
-  border-color: rgba(120, 200, 255, 0.6);
+  @apply bg-sidonia-gold/20 border-sidonia-gold text-sidonia-gold;
+  @apply shadow-lg shadow-sidonia-gold/30;
+}
+
+.power-toggle--primary {
+  @apply bg-sidonia-gold/10 border-sidonia-gold text-sidonia-gold;
+}
+
+.power-toggle--primary:hover:not(:disabled) {
+  @apply bg-sidonia-gold/20 shadow-lg shadow-sidonia-gold/30;
+}
+
+.power-toggle--radio {
+  @apply w-8 h-8 p-0 text-base font-bold;
+}
+
+.power-toggle--radio.power-toggle--active {
+  @apply text-sidonia-gold;
 }
 
 .power-toggle--clear {
-  margin-left: auto;
-  background: rgba(255, 120, 120, 0.15);
-  border-color: rgba(255, 120, 120, 0.4);
-  color: #ff9a9a;
+  @apply ml-auto;
+  @apply bg-corruption-dark/20 border-corruption-red text-corruption-red;
+}
+
+.power-toggle--clear:hover:not(:disabled) {
+  @apply bg-corruption-red/20 shadow-md shadow-corruption-red/20;
+}
+
+.power-toggle:disabled {
+  @apply opacity-40 cursor-not-allowed;
 }
 
 details summary {
@@ -381,8 +485,102 @@ details summary::-webkit-details-marker {
   margin: 0;
 }
 
+/* Chimera Core Mutations */
+.lineage-core-mutations {
+  @apply mb-deco-md;
+}
+
+.lineage-core-mutations h4 {
+  @apply font-display text-lg tracking-wide uppercase text-lineage-chimera mb-deco-sm;
+}
+
+.lineage-core-mutations-list {
+  @apply grid gap-3 grid-cols-1 md:grid-cols-2;
+}
+
+.core-mutation-card {
+  @apply p-deco-sm rounded-lg;
+  @apply bg-lineage-chimera/10 border-2 border-lineage-chimera/30;
+}
+
+.core-mutation-card h5 {
+  @apply m-0 font-display text-sm tracking-wide uppercase text-lineage-chimera;
+}
+
+.core-mutation-card p {
+  @apply mt-1 text-sidonia-text/70 font-body text-xs;
+}
+
+/* Esper/Automata Specialized Sections */
+.esper-evolution-section,
+.mentalist-selection-section,
+.automata-selection-grid {
+  @apply space-y-deco-sm;
+}
+
+.section-description,
+.archetype-description,
+.foundation-description {
+  @apply text-sidonia-text/70 font-body text-sm;
+}
+
+.automata-chassis-section h4 {
+  @apply font-display text-xl tracking-wide uppercase text-lineage-automata mb-deco-sm;
+}
+
+.automata-package-card {
+  @apply rounded-lg border-2 border-lineage-automata/20 bg-sidonia-black/80 p-deco-sm;
+  @apply transition-all duration-300;
+}
+
+.automata-package-card:hover {
+  @apply border-lineage-automata/40;
+}
+
+.automata-package-summary {
+  @apply flex items-start justify-between gap-3;
+}
+
+.automata-package-summary h5 {
+  @apply m-0 font-display text-base tracking-wide uppercase text-lineage-automata;
+}
+
+.automata-package-count {
+  @apply text-sidonia-muted font-body text-xs mt-1;
+}
+
+.automata-package-details,
+.automata-selected-powers {
+  @apply space-y-deco-sm;
+}
+
+.automata-package-note {
+  @apply text-sidonia-text/70 font-body text-sm italic;
+}
+
+.mentalist-foundation {
+  @apply flex flex-wrap gap-2;
+}
+
+.evolution-options {
+  @apply mt-deco-sm pt-deco-sm border-t border-sidonia-gold/20;
+}
+
+.evolution-options h6 {
+  @apply font-display text-sm tracking-wide uppercase text-sidonia-brass mb-2;
+}
+
+.power-preview summary {
+  @apply font-body text-sm text-sidonia-brass cursor-pointer;
+}
+
 @media (max-width: 640px) {
   .lineage-powers-panel {
     padding: 1.2rem;
+  }
+
+  .lineage-powers-panel::before,
+  .lineage-powers-panel::after {
+    @apply w-deco-sm h-deco-sm;
   }
 }

@@ -1,19 +1,27 @@
+/* Art Deco Resource Summary Panel */
 .stage--resources .resource-summary {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 14px;
-  padding: 1rem 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  @apply flex flex-col gap-3 p-deco-md rounded-lg;
+  @apply border-2 border-sidonia-gold/40 bg-sidonia-dark/95;
+  @apply backdrop-blur-md shadow-lg shadow-sidonia-gold/10;
   min-width: 240px;
+  position: relative;
+}
+
+/* Corner decoration for summary */
+.stage--resources .resource-summary::before {
+  content: '';
+  @apply absolute top-0 left-0 w-deco-sm h-deco-sm;
+  @apply border-t-2 border-l-2 border-sidonia-gold;
+}
+
+.stage--resources .resource-summary::after {
+  content: '';
+  @apply absolute bottom-0 right-0 w-deco-sm h-deco-sm;
+  @apply border-b-2 border-r-2 border-sidonia-gold;
 }
 
 .resource-summary__label {
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(240, 220, 160, 0.85);
+  @apply font-display text-sm tracking-wider uppercase text-sidonia-gold;
 }
 
 .resource-summary dl {
@@ -24,134 +32,137 @@
 }
 
 .resource-summary dt {
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(235, 220, 170, 0.65);
+  @apply font-display text-xs tracking-wider uppercase text-sidonia-brass/70;
 }
 
 .resource-summary dd {
-  margin: 0;
-  font-weight: 600;
-  font-size: 0.95rem;
+  @apply m-0 font-display text-base font-semibold text-sidonia-text;
 }
 
 .resource-summary__warning dd {
-  color: #ff8787;
+  @apply text-corruption-red;
 }
 
 .resource-ledger {
-  margin: 0.5rem 0;
-  font-size: 0.95rem;
-  color: rgba(220, 220, 235, 0.85);
+  @apply my-2 font-body text-base text-sidonia-text/85;
 }
 
 .resource-ledger--warning {
-  color: #ffadad;
+  @apply text-corruption-red/80;
 }
 
 .resource-ledger__warning {
-  margin-left: 0.75rem;
-  color: #ff8787;
+  @apply ml-3 text-corruption-red;
 }
 
+/* Art Deco Resource Grid */
 .resource-grid {
   display: grid;
-  gap: 1.75rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  margin: 2rem 0;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  @apply my-deco-lg;
 }
 
+/* Resource Section with Corner Decorations */
 .resource-section {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  @apply flex flex-col gap-deco-md p-deco-md rounded-lg;
+  @apply border-2 border-sidonia-gold/20 bg-sidonia-black/60;
+  @apply backdrop-blur-sm;
+  position: relative;
+}
+
+.resource-section::before {
+  content: '';
+  @apply absolute top-0 right-0 w-deco-sm h-deco-sm;
+  @apply border-t-2 border-r-2 border-sidonia-brass/60;
 }
 
 .resource-section__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  @apply flex items-center justify-between gap-deco-md pb-deco-sm;
+  @apply border-b-2 border-sidonia-gold/20;
+}
+
+.resource-section__header h3 {
+  @apply m-0 font-display text-2xl tracking-wider uppercase text-sidonia-brass;
 }
 
 .resource-section__header button {
-  padding: 0.45rem 0.8rem;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.08);
-  color: inherit;
-  cursor: pointer;
+  @apply px-deco-sm py-1.5 rounded-full;
+  @apply font-display text-xs uppercase tracking-wider;
+  @apply border-2 border-sidonia-gold/40 bg-sidonia-gold/10 text-sidonia-gold;
+  @apply cursor-pointer transition-all duration-300;
+}
+
+.resource-section__header button:hover {
+  @apply border-sidonia-gold bg-sidonia-gold/20 shadow-md shadow-sidonia-gold/20;
 }
 
 .resource-section__empty {
-  margin: 0;
-  font-size: 0.9rem;
-  color: rgba(210, 210, 225, 0.7);
+  @apply m-0 font-body text-sm text-sidonia-muted/70 text-center py-deco-md;
 }
 
+/* Art Deco Resource Cards */
 .resource-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding: 1rem 1.2rem;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(18, 18, 26, 0.85);
+  @apply flex flex-col gap-3 p-deco-md rounded-lg;
+  @apply border-2 border-sidonia-gold/10 bg-sidonia-dark/80;
+  @apply backdrop-blur-sm transition-all duration-300;
+  position: relative;
+}
+
+.resource-card:hover {
+  @apply border-sidonia-gold/30 shadow-md;
+}
+
+.resource-card::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-deco-xs h-deco-xs;
+  @apply border-b-2 border-l-2 border-sidonia-brass/40;
 }
 
 .resource-card--flagged {
-  border-color: rgba(255, 160, 120, 0.75);
-  box-shadow: 0 0 0 1px rgba(255, 160, 120, 0.3);
+  @apply border-sidonia-copper shadow-lg shadow-sidonia-copper/20;
 }
 
 .resource-card__header {
-  display: flex;
-  gap: 1rem;
-  align-items: baseline;
-  justify-content: space-between;
+  @apply flex gap-deco-md items-baseline justify-between pb-2;
+  @apply border-b border-sidonia-gold/20;
 }
 
 .resource-card__title {
-  flex: 1;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  font-size: 1.05rem;
-  padding: 0.25rem 0;
-  color: inherit;
+  @apply flex-1 bg-transparent border-none;
+  @apply border-b-2 border-sidonia-gold/20 font-body text-lg text-sidonia-text;
+  @apply py-1 px-0 transition-all duration-300;
+  @apply focus:border-sidonia-gold focus:outline-none;
 }
 
 .resource-card__title::placeholder {
-  color: rgba(220, 220, 235, 0.4);
+  @apply text-sidonia-muted/40;
 }
 
 .resource-card__cost {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: rgba(240, 220, 160, 0.85);
+  @apply font-display text-base font-semibold text-sidonia-copper tracking-wide;
 }
 
 .resource-card__field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
+  @apply flex flex-col gap-2;
+}
+
+.resource-card__field label {
+  @apply font-display text-xs tracking-wider uppercase text-sidonia-brass/80;
 }
 
 .resource-card__field textarea {
-  min-height: 70px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 0.65rem 0.75rem;
-  background: rgba(12, 12, 20, 0.9);
-  color: inherit;
+  @apply min-h-[70px] rounded-lg p-3;
+  @apply border-2 border-sidonia-gold/20 bg-sidonia-black/90 text-sidonia-text;
+  @apply font-body transition-all duration-300;
+  @apply focus:border-sidonia-gold focus:outline-none focus:ring-1 focus:ring-sidonia-gold/20;
   resize: vertical;
 }
 
 .resource-card__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0.75rem;
+  @apply gap-3;
 }
 
 .resource-card__grid--wide {
@@ -159,158 +170,152 @@
 }
 
 .resource-card__grid label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-  font-size: 0.85rem;
+  @apply flex flex-col gap-2;
+  @apply font-display text-xs tracking-wider uppercase text-sidonia-brass/80;
 }
 
 .resource-card__grid input,
 .resource-card__grid select {
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(12, 12, 20, 0.9);
-  color: inherit;
-  padding: 0.55rem 0.65rem;
+  @apply rounded-lg p-2.5;
+  @apply border-2 border-sidonia-gold/20 bg-sidonia-black/90 text-sidonia-text;
+  @apply font-body transition-all duration-300;
+  @apply focus:border-sidonia-gold focus:outline-none focus:ring-1 focus:ring-sidonia-gold/20;
 }
 
 .resource-card__grid small {
-  margin-top: 0.2rem;
-  font-size: 0.75rem;
-  color: rgba(210, 210, 225, 0.6);
+  @apply mt-1 font-body text-xs text-sidonia-muted/60;
 }
 
 .resource-card__issues {
-  margin: 0;
-  padding-left: 1.1rem;
-  font-size: 0.85rem;
-  color: #ffadad;
-  display: grid;
-  gap: 0.3rem;
+  @apply m-0 pl-deco-sm grid gap-1;
+  @apply font-body text-sm text-corruption-red/80;
 }
 
 .resource-card__footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  @apply flex justify-between items-center flex-wrap gap-3;
+  @apply pt-2 border-t border-sidonia-gold/20;
 }
 
+/* Art Deco Badges */
 .badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.35rem 0.7rem;
-  border-radius: 999px;
-  background: rgba(120, 200, 255, 0.25);
-  border: 1px solid rgba(120, 200, 255, 0.4);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  cursor: pointer;
+  @apply inline-flex items-center justify-center;
+  @apply px-3 py-1.5 rounded-full;
+  @apply font-display text-xs tracking-wider uppercase;
+  @apply bg-sidonia-gold/20 border-2 border-sidonia-gold/40 text-sidonia-gold;
+  @apply cursor-pointer transition-all duration-300;
+}
+
+.badge:hover {
+  @apply bg-sidonia-gold/30 border-sidonia-gold shadow-md shadow-sidonia-gold/20;
 }
 
 .badge--attention {
-  background: rgba(255, 160, 120, 0.2);
-  border-color: rgba(255, 160, 120, 0.5);
+  @apply bg-sidonia-copper/20 border-sidonia-copper/50 text-sidonia-copper;
+}
+
+.badge--attention:hover {
+  @apply bg-sidonia-copper/30 border-sidonia-copper shadow-md shadow-sidonia-copper/20;
 }
 
 .link {
-  background: none;
-  border: none;
-  color: rgba(180, 215, 255, 0.85);
-  text-decoration: underline;
-  cursor: pointer;
-  font-size: 0.85rem;
-  padding: 0;
+  @apply bg-transparent border-none;
+  @apply font-body text-sm text-sidonia-gold/70 underline;
+  @apply cursor-pointer transition-all duration-300 p-0;
 }
 
+.link:hover {
+  @apply text-sidonia-gold;
+}
+
+/* Liquid Assets Section */
 .resource-liquid {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin: 1.5rem 0;
-  padding: 1rem 1.2rem;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(15, 15, 22, 0.8);
+  @apply flex items-start gap-deco-md my-deco-lg p-deco-md rounded-lg;
+  @apply border-2 border-sidonia-gold/30 bg-sidonia-dark/90;
+  @apply backdrop-blur-md;
+  position: relative;
+}
+
+.resource-liquid::before {
+  content: '';
+  @apply absolute top-0 left-0 w-deco-xs h-deco-xs;
+  @apply border-t-2 border-l-2 border-sidonia-brass/60;
 }
 
 .resource-liquid label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  @apply flex flex-col gap-2;
+  @apply font-display text-xs tracking-wider uppercase text-sidonia-brass/80;
 }
 
 .resource-liquid input {
-  width: 160px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(12, 12, 20, 0.9);
-  color: inherit;
-  padding: 0.55rem 0.65rem;
+  @apply w-40 rounded-lg p-2.5;
+  @apply border-2 border-sidonia-gold/20 bg-sidonia-black/90 text-sidonia-text;
+  @apply font-body transition-all duration-300;
+  @apply focus:border-sidonia-gold focus:outline-none focus:ring-1 focus:ring-sidonia-gold/20;
 }
 
+/* Reference Section - Art Deco Style */
 .resource-reference {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  @apply mt-deco-lg;
 }
 
 .resource-reference article {
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(18, 18, 26, 0.75);
-  padding: 1rem 1.2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
+  @apply rounded-lg p-deco-md;
+  @apply border-2 border-sidonia-gold/10 bg-sidonia-black/60;
+  @apply backdrop-blur-sm;
+  @apply flex flex-col gap-3;
+  position: relative;
+}
+
+.resource-reference article::after {
+  content: '';
+  @apply absolute top-0 right-0 w-deco-xs h-deco-xs;
+  @apply border-t-2 border-r-2 border-sidonia-brass/40;
+}
+
+.resource-reference article h4 {
+  @apply m-0 font-display text-base tracking-wider uppercase text-sidonia-brass;
+  @apply pb-2 border-b border-sidonia-gold/20;
 }
 
 .resource-reference__grid {
-  display: grid;
-  gap: 0.75rem;
+  @apply grid gap-3;
 }
 
 .resource-reference__grid ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.35rem;
+  @apply list-none m-0 p-0 grid gap-1.5;
 }
 
 .resource-reference__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.45rem;
-  font-size: 0.9rem;
+  @apply list-none m-0 p-0 grid gap-2;
+  @apply font-body text-sm text-sidonia-text/80;
 }
 
+/* Art Deco Scale Values */
 .scale__value {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  margin-right: 0.45rem;
-  font-size: 0.85rem;
+  @apply inline-flex items-center justify-center;
+  @apply w-7 h-7 rounded-full mr-2;
+  @apply border-2 border-sidonia-gold/30 bg-sidonia-gold/10;
+  @apply font-display text-xs font-semibold text-sidonia-gold;
 }
 
+/* Responsive Adjustments */
 @media (max-width: 720px) {
   .resource-card__header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.4rem;
+    @apply flex-col items-start gap-2;
   }
 
   .resource-liquid {
-    flex-direction: column;
+    @apply flex-col;
+  }
+
+  .resource-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-section::before {
+    @apply w-deco-xs h-deco-xs;
   }
 }
