@@ -69,9 +69,9 @@ export function downloadCharacterSheet(build: CharacterBuild) {
 function renderTextSheet(build: CharacterBuild): string {
   const lines: string[] = [];
   lines.push(`SIDONIA DOSSIER :: ${build.profile.name || build.label}`);
-  lines.push(`Concept: ${build.profile.concept}`);
-  lines.push(`Pronouns: ${build.profile.pronouns}`);
-  lines.push(`Summary: ${build.profile.summary}`);
+  lines.push(`Current Profession: ${build.profile.currentProfession}`);
+  lines.push(`Ward of Residence: ${build.profile.wardOfResidence}`);
+  lines.push(`Backstory: ${build.profile.backstory}`);
   if (build.profile.alias) {
     lines.push(`Alias: ${build.profile.alias}`);
   }
