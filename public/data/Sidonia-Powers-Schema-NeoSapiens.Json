@@ -1,146 +1,187 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "NeoSapien Powers",
-  "description": "A schema for defining powers for the NeoSapien lineage in the Sidonia game.",
+  "title": "NeoSapien Power Extension",
+  "description": "Extension schema for NeoSapien lineage powers. Adds tiered augmentation system with street/corporate/military quality levels.",
+  "version": "2.0",
+  "extends": "sidonia-power-base.json",
   "type": "object",
-  "required": [
-    "lineage",
-    "powers"
-  ],
-  "properties": {
-    "lineage": {
-      "description": "The character lineage, which should be 'neosapien'.",
-      "type": "string",
-      "const": "neosapien"
+  "allOf": [
+    {
+      "$ref": "sidonia-power-base.json"
     },
-    "powers": {
-      "description": "An array of all available powers for the lineage.",
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": [
-          "type",
-          "id",
-          "name",
-          "category",
-          "grades"
-        ],
-        "properties": {
-          "type": {
-            "description": "The type of ability, e.g., 'augment'.",
-            "type": "string"
+    {
+      "type": "object",
+      "required": ["lineage", "tiers"],
+      "properties": {
+        "lineage": {
+          "description": "Must be 'neosapien' for NeoSapien powers.",
+          "type": "string",
+          "const": "neosapien"
+        },
+        "tiers": {
+          "description": "Tiered quality system for NeoSapien augmentations. Each power has 1-3 tiers representing street/corporate/military quality.",
+          "type": "object",
+          "properties": {
+            "tier1": {
+              "$ref": "#/definitions/neosapienTier"
+            },
+            "tier2": {
+              "$ref": "#/definitions/neosapienTier"
+            },
+            "tier3": {
+              "$ref": "#/definitions/neosapienTier"
+            }
           },
-          "id": {
-            "description": "A unique, URL-friendly identifier for the power.",
-            "type": "string"
-          },
-          "name": {
-            "description": "The display name of the power.",
-            "type": "string"
-          },
-          "category": {
-            "description": "The category the power belongs to (e.g., Physical Mods, Mental Mods).",
-            "type": "string"
-          },
-          "grades": {
-            "description": "An object containing the different tiers (grades) of the power.",
-            "type": "object",
-            "required": [
-              "street",
-              "corporate",
-              "military"
-            ],
-            "properties": {
-              "street": {
-                "$ref": "#/definitions/powerGrade"
-              },
-              "corporate": {
-                "$ref": "#/definitions/powerGrade"
-              },
-              "military": {
-                "$ref": "#/definitions/powerGrade"
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "neosapienTier": {
+      "description": "A single quality tier of a NeoSapien augmentation.",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "tier",
+        "augmentTier",
+        "slots",
+        "permanentCorruption",
+        "description",
+        "effects"
+      ],
+      "properties": {
+        "id": {
+          "description": "Unique identifier for this specific tier (e.g., 'muscle-weave-corporate').",
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "name": {
+          "description": "Display name for this tier (e.g., 'Cultured Muscle Latticework').",
+          "type": "string",
+          "minLength": 1
+        },
+        "tier": {
+          "description": "Which tier this is (1=street, 2=corporate, 3=military).",
+          "type": "integer",
+          "enum": [1, 2, 3]
+        },
+        "augmentTier": {
+          "description": "Quality tier name: street (cheap/flawed), corporate (reliable), military (premium).",
+          "type": "string",
+          "enum": ["street", "corporate", "military"]
+        },
+        "slots": {
+          "description": "Number of augmentation slots this tier consumes. Total slots available based on Lineage Priority.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "permanentCorruption": {
+          "description": "Permanent Corruption incurred by installing this tier. Usually matches tier number.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "description": {
+          "description": "Description object (inherits from base schema).",
+          "type": "object",
+          "required": ["short", "player"],
+          "properties": {
+            "short": {
+              "type": "string",
+              "minLength": 1
+            },
+            "player": {
+              "type": "string",
+              "minLength": 1
+            },
+            "flaw": {
+              "type": ["string", "null"]
+            },
+            "gm": {
+              "type": ["string", "null"]
+            }
+          }
+        },
+        "effects": {
+          "description": "Array of mechanical effects for this tier.",
+          "type": "array",
+          "items": {
+            "$ref": "sidonia-power-base.json#/definitions/effect"
+          }
+        },
+        "flaws": {
+          "description": "Array of mechanical flaws for this tier (common in street tier).",
+          "type": "array",
+          "items": {
+            "$ref": "sidonia-power-base.json#/definitions/flaw"
+          }
+        },
+        "synergyBonus": {
+          "description": "Optional synergy bonus if this augment is part of a recognized package (e.g., 'Bruiser', 'Analyst').",
+          "type": "object",
+          "properties": {
+            "packageName": {
+              "description": "Name of the synergy package (e.g., 'Bruiser Build', 'Infiltrator Package').",
+              "type": "string"
+            },
+            "compatibleWith": {
+              "description": "Array of augment IDs that synergize with this one.",
+              "type": "array",
+              "items": {
+                "type": "string"
               }
+            },
+            "bonus": {
+              "description": "Description of the synergy bonus (e.g., '-1 Permanent Corruption', 'narrative benefit').",
+              "type": "string"
+            }
+          }
+        },
+        "installationRequirements": {
+          "description": "Optional prerequisites for installing this augment.",
+          "type": "object",
+          "properties": {
+            "minPhysique": {
+              "description": "Minimum Physique attribute required.",
+              "type": "integer",
+              "minimum": 0
+            },
+            "incompatibleWith": {
+              "description": "Array of augment IDs that cannot be installed alongside this one.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "forgeAccess": {
+              "description": "Whether this requires access to Forge Program facilities.",
+              "type": "boolean",
+              "default": false
             }
           }
         }
       }
     }
   },
-  "definitions": {
-    "powerGrade": {
-      "type": "object",
-      "required": [
-        "id",
-        "name",
-        "tier",
-        "slots",
-        "permanentCorruption",
-        "description"
-      ],
-      "properties": {
-        "id": {
-          "description": "A unique, URL-friendly identifier for the specific grade.",
-          "type": "string"
-        },
-        "name": {
-          "description": "The display name of the power's grade.",
-          "type": "string"
-        },
-        "tier": {
-          "description": "The tier of the power grade (1, 2, or 3).",
-          "type": "integer",
-          "enum": [
-            1,
-            2,
-            3
-          ]
-        },
-        "slots": {
-          "description": "The number of slots the power grade occupies, corresponding to its tier.",
-          "type": "integer",
-          "enum": [
-            1,
-            2,
-            3
-          ]
-        },
-        "permanentCorruption": {
-          "description": "The amount of permanent corruption incurred, corresponding to its tier.",
-          "type": "integer",
-          "enum": [
-            1,
-            2,
-            3
-          ]
-        },
-        "description": {
-          "description": "An object containing descriptive text for the power grade.",
-          "type": "object",
-          "required": [
-            "short",
-            "player"
-          ],
-          "properties": {
-            "short": {
-              "description": "A brief summary of the power's mechanical effect.",
-              "type": "string"
-            },
-            "player": {
-              "description": "Flavor text and description from the player's perspective.",
-              "type": "string"
-            },
-            "flaw": {
-              "description": "The mechanical drawback or flaw of the power, most common in street grade.",
-              "type": "string"
-            },
-            "gm": {
-              "description": "Hidden information or context for the Game Master.",
-              "type": "string"
-            }
-          }
-        }
-      }
-    }
+  "notes": {
+    "tierProgression": "Like Chimera, NeoSapiens can purchase any tier directly without prerequisites. A character can buy Military-grade (tier 3) without owning Street or Corporate versions.",
+    "tierMapping": {
+      "tier1": "Street tier - cheap, available, often has flaws. Typically 1 slot, 1 Corruption.",
+      "tier2": "Corporate tier - reliable, clean, no flaws. Typically 2 slots, 2 Corruption.",
+      "tier3": "Military tier - premium, enhanced effects. Typically 3 slots, 3 Corruption."
+    },
+    "slotCosts": "Slot costs vary by complexity, not just tier. Simple augments may be 1 slot at all tiers, complex ones may be 2+ slots even at street tier.",
+    "permanentCorruption": "Usually matches tier number (Tier 1 = 1 PC, Tier 2 = 2 PC, Tier 3 = 3 PC)",
+    "flaws": "Street tier augments often have flaws. Higher tiers typically remove flaws while improving effects.",
+    "synergySystem": "GMs can grant bonuses when augments form logical packages (e.g., -1 Corruption discount or narrative benefit)",
+    "augmentationSlots": {
+      "priorityA": "9 slots total",
+      "priorityB": "7 slots",
+      "priorityC": "6 slots",
+      "priorityD": "4 slots",
+      "priorityE": "2 slots"
+    },
+    "categoryNote": "Categories like 'Physical Mods', 'Neural Mods' etc. are organizational only - they don't affect mechanics."
   }
 }
-

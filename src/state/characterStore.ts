@@ -41,7 +41,8 @@ export type LineagePowerKind =
   | 'esper-framework-choice'
   | 'esper-framework-path'
   | 'automata-capability'
-  | 'automata-model';
+  | 'automata-model'
+  | 'automata-package';
 
 export interface LineagePowerMeta {
   slots?: number;
@@ -57,6 +58,7 @@ export interface LineagePowerMeta {
   parent?: string;
   path?: string[];
   depth?: number;
+  archetype?: string;
 }
 
 export interface LineagePowerSelection {
@@ -620,14 +622,46 @@ export const useCharacterStore = create<CharacterStore>()(
           if (isEsper) {
             const meta = selection.meta ?? {};
             const category = meta.category;
-            if (selection.kind === 'esper-archetype') {
+
+            // Allow foundational choices (polarity/scope) without validation
+            if (selection.kind === 'esper-framework-choice') {
+              // No validation needed for foundational selections
+            } else if (selection.kind === 'esper-archetype') {
               if (category === 'esper-base' && lineagePriority === 'C') {
                 return build;
               }
               if (category === 'esper-mentalist' && !(lineagePriority === 'A' || lineagePriority === 'C')) {
                 return build;
               }
-              powers = powers.filter((entry) => entry.lineage !== 'esper');
+
+              // For Priority A: allow both Esper and Mentalist archetypes
+              // Only clear selections from the same subsystem
+              const ESPER_ARCHETYPES = ['sentinel', 'median', 'weaver', 'summoner', 'linker'];
+              const MENTALIST_ARCHETYPES = ['empath', 'mesmer', 'siren', 'dreamer', 'meta-mind'];
+              const selectedArchetype = meta.archetype;
+              const isEsperArchetype = ESPER_ARCHETYPES.includes(selectedArchetype || '');
+              const isMentalistArchetype = MENTALIST_ARCHETYPES.includes(selectedArchetype || '');
+
+              if (lineagePriority === 'A') {
+                // Priority A: Keep selections from the other subsystem
+                if (isEsperArchetype) {
+                  // Selecting Esper archetype - only clear other Esper selections
+                  powers = powers.filter((entry) =>
+                    !ESPER_ARCHETYPES.includes(entry.meta?.archetype || '') &&
+                    entry.kind !== 'esper-focus' &&
+                    entry.kind !== 'esper-framework-path'
+                  );
+                } else if (isMentalistArchetype) {
+                  // Selecting Mentalist archetype - only clear other Mentalist selections
+                  powers = powers.filter((entry) =>
+                    !MENTALIST_ARCHETYPES.includes(entry.meta?.archetype || '') &&
+                    entry.kind !== 'esper-framework-choice'
+                  );
+                }
+              } else {
+                // Other priorities: clear all Esper selections (original behavior)
+                powers = powers.filter((entry) => entry.lineage !== 'esper');
+              }
             } else {
               const root = meta.root;
               if (!root) {
@@ -1137,7 +1171,7 @@ export const useCharacterStore = create<CharacterStore>()(
     }),
     {
       name: 'sidonia-character-builder',
-      version: 6,
+      version: 7,
       migrate: (state, version) => {
         if (!state || typeof state !== 'object') {
           return state;

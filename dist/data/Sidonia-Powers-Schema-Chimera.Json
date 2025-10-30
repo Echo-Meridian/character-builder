@@ -1,72 +1,46 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Chimera Powers",
-  "description": "A schema for defining powers for the Chimera lineage in the Sidonia game.",
+  "title": "Chimera Power Extension",
+  "description": "Extension schema for Chimera lineage powers. Adds tiered progression system with Mutation Points and Permanent Corruption costs.",
+  "version": "1.0",
+  "extends": "sidonia-power-base.json",
   "type": "object",
-  "required": [
-    "lineage",
-    "powers"
-  ],
-  "properties": {
-    "lineage": {
-      "description": "The character lineage, which should be 'chimera'.",
-      "type": "string",
-      "const": "chimera"
+  "allOf": [
+    {
+      "$ref": "sidonia-power-base.json"
     },
-    "powers": {
-      "description": "An array of all available powers (mutations) for the lineage.",
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": [
-          "type",
-          "id",
-          "name",
-          "category",
-          "tiers"
-        ],
-        "properties": {
-          "type": {
-            "description": "The type of ability, e.g., 'augment'.",
-            "type": "string"
-          },
-          "id": {
-            "description": "A unique, URL-friendly identifier for the power.",
-            "type": "string"
-          },
-          "name": {
-            "description": "The display name of the power.",
-            "type": "string"
-          },
-          "category": {
-            "description": "The category the power belongs to (e.g., Primal Manifestations, Core Augments).",
-            "type": "string"
-          },
-          "tiers": {
-            "description": "An object containing the different tiers of the power.",
-            "type": "object",
-            "required": [
-              "tier1"
-            ],
-            "properties": {
-              "tier1": {
-                "$ref": "#/definitions/powerTier"
-              },
-              "tier2": {
-                "$ref": "#/definitions/powerTier"
-              },
-              "tier3": {
-                "$ref": "#/definitions/powerTier"
-              }
+    {
+      "type": "object",
+      "required": ["lineage", "tiers"],
+      "properties": {
+        "lineage": {
+          "description": "Must be 'chimera' for Chimera powers.",
+          "type": "string",
+          "const": "chimera"
+        },
+        "tiers": {
+          "description": "Tiered progression system for Chimera mutations. Each power has 1-3 tiers.",
+          "type": "object",
+          "required": ["tier1"],
+          "properties": {
+            "tier1": {
+              "$ref": "#/definitions/chimeraTier"
             },
-            "additionalProperties": false
-          }
+            "tier2": {
+              "$ref": "#/definitions/chimeraTier"
+            },
+            "tier3": {
+              "$ref": "#/definitions/chimeraTier"
+            }
+          },
+          "additionalProperties": false
         }
       }
     }
-  },
+  ],
   "definitions": {
-    "powerTier": {
+    "chimeraTier": {
+      "description": "A single tier of a Chimera mutation.",
       "type": "object",
       "required": [
         "id",
@@ -74,68 +48,88 @@
         "tier",
         "mutationPoints",
         "permanentCorruption",
-        "description"
+        "description",
+        "effects"
       ],
       "properties": {
         "id": {
-          "description": "A unique, URL-friendly identifier for the specific tier.",
-          "type": "string"
+          "description": "Unique identifier for this specific tier (e.g., 'armored-hide-tier2').",
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
         },
         "name": {
-          "description": "The display name of the power's tier.",
-          "type": "string"
+          "description": "Display name for this tier (e.g., 'Segmented Carapace').",
+          "type": "string",
+          "minLength": 1
         },
         "tier": {
-          "description": "The tier of the power (1, 2, or 3).",
+          "description": "Which tier this is (1, 2, or 3).",
           "type": "integer",
-          "enum": [
-            1,
-            2,
-            3
-          ]
+          "enum": [1, 2, 3]
         },
         "mutationPoints": {
-          "description": "The cost of the mutation in points.",
+          "description": "Mutation Point cost to purchase this tier. Tier 1-2 typically cost 2 MP, Tier 3 costs 3 MP.",
           "type": "integer",
           "minimum": 1
         },
         "permanentCorruption": {
-          "description": "The amount of permanent corruption incurred, corresponding to its tier.",
+          "description": "Permanent Corruption incurred by purchasing this tier. Usually matches tier number.",
           "type": "integer",
-          "enum": [
-            1,
-            2,
-            3
-          ]
+          "minimum": 1
         },
         "description": {
-          "description": "An object containing descriptive text for the power tier.",
+          "description": "Description object (inherits from base schema).",
           "type": "object",
-          "required": [
-            "short",
-            "player"
-          ],
+          "required": ["short", "player"],
           "properties": {
             "short": {
-              "description": "A brief summary of the power's mechanical effect.",
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "player": {
-              "description": "Flavor text and description from the player's perspective.",
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "flaw": {
-              "description": "The mechanical drawback or flaw of the power, most common in tier 1.",
-              "type": "string"
+              "type": ["string", "null"]
             },
             "gm": {
-              "description": "Hidden information or context for the Game Master.",
-              "type": "string"
+              "type": ["string", "null"]
             }
+          }
+        },
+        "effects": {
+          "description": "Array of mechanical effects for this tier.",
+          "type": "array",
+          "items": {
+            "$ref": "sidonia-power-base.json#/definitions/effect"
+          }
+        },
+        "flaws": {
+          "description": "Array of mechanical flaws for this tier.",
+          "type": "array",
+          "items": {
+            "$ref": "sidonia-power-base.json#/definitions/flaw"
           }
         }
       }
     }
+  },
+  "notes": {
+    "tierProgression": "Chimera can purchase any tier directly without prerequisites (no tier gates). A character can buy Tier 3 without owning Tier 1 or 2.",
+    "mutationPointCosts": {
+      "tier1": "Typically 2 MP",
+      "tier2": "Typically 2 MP",
+      "tier3": "Typically 3 MP"
+    },
+    "permanentCorruption": "Usually matches tier number (Tier 1 = 1 PC, Tier 2 = 2 PC, Tier 3 = 3 PC)",
+    "flaws": "Tier 1 powers often have flaws. Higher tiers typically remove flaws while improving effects.",
+    "categories": [
+      "Core Augments",
+      "Primal Manifestations",
+      "Utility & Social Augments",
+      "Aetheric Mutations",
+      "Mastery Augment"
+    ]
   }
 }
-

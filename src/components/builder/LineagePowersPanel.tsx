@@ -43,15 +43,15 @@ const SORCERY_LIMITS: Record<PriorityRank, { primary: number; secondary: number;
 };
 
 const ESPER_DEPTH_LIMIT: Record<PriorityRank, number> = {
-  A: 3,
+  A: 0, // Priority A gets Esper archetype + full Mentalist (no Esper evolution)
   B: 2,
-  C: 2,
+  C: 2, // Mentalist only (Esper depth not relevant)
   D: 1,
   E: 0
 };
 
 const ESPER_NOTES: Record<PriorityRank, string> = {
-  A: 'Priority A: Access to both Esper archetypes and full Mentalist framework.',
+  A: 'Priority A: Choose one Esper archetype (base only) and one Mentalist archetype with full framework.',
   B: 'Priority B: Esper prodigy – evolve two steps beyond the baseline.',
   C: 'Priority C: Begin as a Mentalist. Select framework paths to define focus.',
   D: 'Priority D: Gifted Esper – evolve one step beyond baseline talents.',
@@ -82,7 +82,7 @@ interface PowerDescription {
   [key: string]: unknown;
 }
 
-interface NeoSapienGrade {
+interface NeoSapienTier {
   id?: string;
   name?: string;
   tier?: number;
@@ -96,7 +96,7 @@ interface NeoSapienPower {
   name?: string;
   type?: string;
   category?: string;
-  grades: Record<string, NeoSapienGrade>;
+  tiers: Record<string, NeoSapienTier>;
 }
 
 interface NeoSapienData extends RawLineagePowerData {
@@ -116,6 +116,7 @@ interface ChimeraPower {
   id?: string;
   name?: string;
   category?: string;
+  tags?: string[];
   tiers: Record<string, ChimeraTier>;
 }
 
@@ -123,100 +124,51 @@ interface ChimeraData extends RawLineagePowerData {
   powers: ChimeraPower[];
 }
 
-interface SorceryMove {
+// New unified power structure
+interface UnifiedPower {
+  type?: string;
   id?: string;
   name?: string;
-  type?: string;
+  lineage?: string;
+  category?: string;
+  tags?: string[];
+  metadata?: Record<string, unknown>;
   description?: PowerDescription;
-}
-
-interface SorcerySphere {
-  id?: string;
-  name?: string;
-  type?: string;
-  moves: SorceryMove[];
-}
-
-interface SorceryData extends RawLineagePowerData {
-  spheres: {
-    primary?: Record<string, SorcerySphere>;
-    secondary?: Record<string, SorcerySphere>;
-  };
-}
-
-interface EsperAbility {
-  id?: string;
-  name?: string;
-  type?: string;
-  description?: string;
-  cost?: string;
-  duration?: string;
-  scope?: string;
-}
-
-interface EsperFocus {
-  id?: string;
-  name?: string;
+  outcomes?: Record<string, string>;
+  effects?: unknown[];
+  flaws?: unknown[];
+  // Sorcery-specific
+  sphere?: string;
+  sphereTier?: string;
+  moveType?: string;
+  rollStat?: string;
+  // Esper-specific
+  archetype?: string;
   path?: string;
-  philosophy?: string;
-  abilities?: EsperAbility[];
-  focuses?: Record<string, EsperFocus>;
-}
-
-interface EsperArchetype {
-  id?: string;
-  name?: string;
-  philosophy?: string;
-  abilities?: EsperAbility[];
-  focuses?: Record<string, EsperFocus>;
-}
-
-interface MentalistData {
-  mentalist_archetypes?: Record<string, unknown>;
-  trauma_mutations?: Record<string, unknown>;
-}
-
-interface EsperData extends RawLineagePowerData {
-  esper_archetypes?: Record<string, EsperArchetype>;
-  mentalist_data?: MentalistData;
-}
-
-interface AutomataCapability {
-  type?: string;
-  name?: string;
-  description?: string;
+  evolutionStage?: number;
+  permanentCorruption?: number;
+  // Automata-specific
+  chassis?: string;
+  branch?: string;
+  augmentLevel?: string;
   cost?: number;
 }
 
-interface AutomataModel {
-  tier?: string;
-  name?: string;
-  available?: boolean;
-  augments?: AutomataCapability[];
-  moves?: AutomataCapability[];
+interface SorceryData extends RawLineagePowerData {
+  powers: UnifiedPower[];
 }
 
-interface AutomataBranch {
-  id?: string;
-  name?: string;
-  focus?: string;
-  general_capabilities?: AutomataCapability[];
-  models?: Record<string, AutomataModel>;
-}
-
-interface AutomataChassis {
-  id?: string;
-  name?: string;
-  branches?: Record<string, AutomataBranch>;
+interface EsperData extends RawLineagePowerData {
+  powers: UnifiedPower[];
 }
 
 interface AutomataData extends RawLineagePowerData {
-  chassis: Record<string, AutomataChassis>;
+  powers: UnifiedPower[];
 }
 
 function isNeoSapienData(value: RawLineagePowerData): value is NeoSapienData {
   const maybe = value as Partial<NeoSapienData>;
-  return Array.isArray(maybe.powers) && maybe.powers.some((power) => power && typeof power === 'object' && 'grades' in power);
+  return Array.isArray(maybe.powers) && maybe.powers.some((power) => power && typeof power === 'object' && 'tiers' in power);
 }
 
 function isChimeraData(value: RawLineagePowerData): value is ChimeraData {
@@ -226,17 +178,17 @@ function isChimeraData(value: RawLineagePowerData): value is ChimeraData {
 
 function isSorceryData(value: RawLineagePowerData): value is SorceryData {
   const maybe = value as Partial<SorceryData>;
-  return typeof maybe.spheres === 'object' && maybe.spheres !== null;
+  return Array.isArray(maybe.powers) && maybe.powers.some((power) => power && typeof power === 'object' && 'sphere' in power);
 }
 
 function isEsperData(value: RawLineagePowerData): value is EsperData {
   const maybe = value as Partial<EsperData>;
-  return typeof maybe.esper_archetypes === 'object' && maybe.esper_archetypes !== null;
+  return Array.isArray(maybe.powers) && maybe.powers.some((power) => power && typeof power === 'object' && 'archetype' in power);
 }
 
 function isAutomataData(value: RawLineagePowerData): value is AutomataData {
   const maybe = value as Partial<AutomataData>;
-  return typeof maybe.chassis === 'object' && maybe.chassis !== null;
+  return Array.isArray(maybe.powers) && maybe.powers.some((power) => power && typeof power === 'object' && 'chassis' in power);
 }
 
 function renderDescription(description: PowerDescription | undefined, gmEnabled: boolean) {
@@ -245,7 +197,7 @@ function renderDescription(description: PowerDescription | undefined, gmEnabled:
     <div className="power-description">
       {description.short && <p>{description.short}</p>}
       {gmEnabled && description.player && <p className="power-description__detail">{description.player}</p>}
-      {gmEnabled && description.flaw && <p className="power-description__detail flaw">Flaw: {description.flaw}</p>}
+      {description.flaw && <p className="power-description__detail power-description__flaw">Flaw: {description.flaw}</p>}
       {description.outcomes && (
         <ul className="power-description__outcomes">
           {Object.entries(description.outcomes).map(([key, value]) => (
@@ -260,23 +212,7 @@ function renderDescription(description: PowerDescription | undefined, gmEnabled:
   );
 }
 
-function renderCapabilities(capabilities: AutomataCapability[] | undefined, gmEnabled: boolean) {
-  if (!capabilities || capabilities.length === 0) return null;
-  return (
-    <ul className="power-list">
-      {capabilities.map((entry, index) => (
-        <li key={`${entry.name}-${index}`}>
-          <div>
-            <strong>{entry.name}</strong>
-            {entry.type && <span className="badge badge--type">{entry.type}</span>}
-            {typeof entry.cost === 'number' && <span className="badge badge--cost">Cost {entry.cost}</span>}
-          </div>
-          {entry.description && <p>{entry.description}</p>}
-        </li>
-      ))}
-    </ul>
-  );
-}
+// renderCapabilities function removed - no longer needed with simplified Automata rendering
 
 interface AbilityEntry {
   id: string;
@@ -525,6 +461,25 @@ export function LineagePowersPanel({
     const corruptionTotal = selectionsForLineage.reduce((sum, entry) => sum + (entry.meta?.permanentCorruption ?? 0), 0);
     const slotWarning = slotLimit > 0 && slotsUsed > slotLimit;
 
+    // Handle tier selection with radio button behavior
+    const handleNeoSapienTierSelection = (selection: LineagePowerSelection) => {
+      const isSelected = selectedIds.has(selection.id);
+      const rootId = selection.meta?.root;
+
+      if (!isSelected && rootId) {
+        // Deselect other tiers of the same power before selecting this one
+        const otherTiersSelected = selectionsForLineage.filter(
+          (entry) => entry.meta?.root === rootId && entry.id !== selection.id
+        );
+        otherTiersSelected.forEach((entry) => {
+          onToggleSelection(entry);
+        });
+      }
+
+      // Toggle the clicked tier
+      onToggleSelection(selection);
+    };
+
     return (
       <section className="lineage-powers-panel">
         <header>
@@ -553,57 +508,70 @@ export function LineagePowersPanel({
         <div className="lineage-powers-grid">
           {powerData.powers.map((power) => {
             const rootId = power.id ?? slugify(power.name ?? 'augment');
+            const shortDesc = power.tiers?.tier1?.description?.short ??
+                             Object.values(power.tiers ?? {})[0]?.description?.short ??
+                             'No description available';
+
+            // Check if any tier of this power is selected
+            const anyTierSelected = selectionsForLineage.some((entry) => entry.meta?.root === rootId);
+
             return (
-              <article key={power.id ?? power.name} className="lineage-power-card">
-                <header>
-                  <h4>{power.name}</h4>
-                  {power.category && <span className="badge">{power.category}</span>}
-                </header>
+              <details key={power.id ?? power.name} className={`lineage-power-card${anyTierSelected ? ' lineage-power-card--has-selection' : ''}`} open={anyTierSelected}>
+                <summary>
+                  <div className="lineage-power-card__summary">
+                    <h4>{power.name}</h4>
+                    <p className="lineage-power-card__short-desc">{shortDesc}</p>
+                  </div>
+                </summary>
                 <div className="lineage-power-card__body">
-                {Object.entries(power.grades ?? {}).map(([gradeKey, grade]) => {
-                  const gradeLabel = grade.name ?? gradeKey;
-                  const gradeId = grade.id ?? `${rootId}-${slugify(gradeKey)}`;
+                {Object.entries(power.tiers ?? {}).map(([tierKey, tier]) => {
+                  const tierId = tier.id ?? `${rootId}-${slugify(tierKey)}`;
+                  const tierNum = tier.tier ?? 1;
+                  // NeoSapien costs: Slots = tier, Corruption = tier (1,2,3 pattern for both)
                   const selection: LineagePowerSelection = {
-                    id: gradeId,
+                    id: tierId,
                     lineage: 'neosapien',
-                    label: `${power.name} — ${gradeLabel}`,
+                    label: `${power.name} — Tier ${tierNum}`,
                     kind: 'neosapien-augment',
                     meta: {
                       root: rootId,
                       parent: rootId,
-                      path: [rootId, gradeKey],
+                      path: [rootId, tierKey],
                       depth: 1,
-                      slots: typeof grade.slots === 'number' ? grade.slots : undefined,
-                      permanentCorruption:
-                        typeof grade.permanentCorruption === 'number' ? grade.permanentCorruption : undefined,
+                      slots: tierNum,
+                      permanentCorruption: tierNum,
                       category: power.category,
-                      tierLabel: gradeLabel
+                      tierLabel: `Tier ${tierNum}`
                     }
                   };
                   const isSelected = selectedIds.has(selection.id);
-                  const gradeClass = `lineage-power-grade${isSelected ? ' lineage-power-grade--selected' : ''}`;
-                  const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
+                  const tierClass = `lineage-power-tier${isSelected ? ' lineage-power-tier--selected' : ''}`;
+                  const buttonClass = `power-toggle power-toggle--radio${isSelected ? ' power-toggle--active' : ''}`;
+
                   return (
-                    <section key={gradeId} className={gradeClass}>
-                      <div className="lineage-power-grade__header">
-                        <span className="badge badge--grade">{gradeLabel}</span>
-                        <div className="lineage-power-grade__meta">
-                          {typeof grade.tier === 'number' && <span>Tier {grade.tier}</span>}
-                          {typeof grade.slots === 'number' && <span>{grade.slots} Slot{grade.slots === 1 ? '' : 's'}</span>}
-                          {typeof grade.permanentCorruption === 'number' && (
-                            <span>{grade.permanentCorruption} Permanent Corruption</span>
-                          )}
+                    <div key={tierId} className={tierClass}>
+                      <div className="lineage-power-tier__header">
+                        <div className="lineage-power-tier__info">
+                          <span className="badge badge--tier">Tier {tierNum}</span>
+                          <span className="lineage-power-tier__cost">
+                            {tierNum} Slot{tierNum === 1 ? '' : 's'} · {tierNum} Corruption
+                          </span>
                         </div>
-                        <button type="button" className={toggleClass} onClick={() => onToggleSelection(selection)}>
-                          {isSelected ? 'Selected' : 'Add'}
+                        <button
+                          type="button"
+                          className={buttonClass}
+                          onClick={() => handleNeoSapienTierSelection(selection)}
+                          aria-label={isSelected ? `Deselect Tier ${tierNum}` : `Select Tier ${tierNum}`}
+                        >
+                          {isSelected ? '●' : '○'}
                         </button>
                       </div>
-                      {renderDescription(grade.description, gmEnabled)}
-                    </section>
+                      {renderDescription(tier.description, gmEnabled)}
+                    </div>
                   );
                 })}
                 </div>
-              </article>
+              </details>
             );
           })}
         </div>
@@ -616,6 +584,29 @@ export function LineagePowersPanel({
     const mutationUsed = selectionsForLineage.reduce((sum, entry) => sum + (entry.meta?.mutationPoints ?? 0), 0);
     const corruptionTotal = selectionsForLineage.reduce((sum, entry) => sum + (entry.meta?.permanentCorruption ?? 0), 0);
     const mutationWarning = mutationLimit > 0 && mutationUsed > mutationLimit;
+
+    // Separate core mutations (all Chimera have these) from selectable mutations
+    const coreMutations = powerData.powers.filter((power) => power.tags?.includes('core'));
+    const selectableMutations = powerData.powers.filter((power) => !power.tags?.includes('core'));
+
+    // Handle tier selection with radio button behavior
+    const handleChimeraTierSelection = (selection: LineagePowerSelection) => {
+      const isSelected = selectedIds.has(selection.id);
+      const rootId = selection.meta?.root;
+
+      if (!isSelected && rootId) {
+        // Deselect other tiers of the same power before selecting this one
+        const otherTiersSelected = selectionsForLineage.filter(
+          (entry) => entry.meta?.root === rootId && entry.id !== selection.id
+        );
+        otherTiersSelected.forEach((entry) => {
+          onToggleSelection(entry);
+        });
+      }
+
+      // Toggle the clicked tier
+      onToggleSelection(selection);
+    };
 
     return (
       <section className="lineage-powers-panel">
@@ -642,60 +633,93 @@ export function LineagePowersPanel({
             </button>
           )}
         </aside>
+
+        {coreMutations.length > 0 && (
+          <section className="lineage-core-mutations">
+            <h4>Core Mutations — All Chimera Possess These</h4>
+            <div className="lineage-core-mutations-list">
+              {coreMutations.map((power) => {
+                const shortDesc = power.tiers?.tier1?.description?.short ??
+                                 Object.values(power.tiers ?? {})[0]?.description?.short ??
+                                 'Core mutation';
+                return (
+                  <div key={power.id ?? power.name} className="core-mutation-card">
+                    <h5>{power.name}</h5>
+                    <p>{shortDesc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
         <div className="lineage-powers-grid">
-          {powerData.powers.map((power) => {
+          {selectableMutations.map((power) => {
             const rootId = power.id ?? slugify(power.name ?? 'mutation');
+            const shortDesc = power.tiers?.tier1?.description?.short ??
+                             Object.values(power.tiers ?? {})[0]?.description?.short ??
+                             'No description available';
+
+            // Check if any tier of this power is selected
+            const anyTierSelected = selectionsForLineage.some((entry) => entry.meta?.root === rootId);
+
             return (
-              <article key={power.id ?? power.name} className="lineage-power-card">
-                <header>
-                  <h4>{power.name}</h4>
-                  {power.category && <span className="badge">{power.category}</span>}
-                </header>
+              <details key={power.id ?? power.name} className={`lineage-power-card${anyTierSelected ? ' lineage-power-card--has-selection' : ''}`} open={anyTierSelected}>
+                <summary>
+                  <div className="lineage-power-card__summary">
+                    <h4>{power.name}</h4>
+                    <p className="lineage-power-card__short-desc">{shortDesc}</p>
+                  </div>
+                </summary>
                 <div className="lineage-power-card__body">
                 {Object.entries(power.tiers ?? {}).map(([tierKey, tier]) => {
-                  const tierLabel = tier.name ?? tierKey;
                   const tierId = tier.id ?? `${rootId}-${slugify(tierKey)}`;
+                  const tierNum = tier.tier ?? 1;
+                  // Chimera costs: MP = tier, Corruption = tier (1,2,3 pattern for both)
                   const selection: LineagePowerSelection = {
                     id: tierId,
                     lineage: 'chimera',
-                    label: `${power.name} — ${tierLabel}`,
+                    label: `${power.name} — Tier ${tierNum}`,
                     kind: 'chimera-mutation',
                     meta: {
                       root: rootId,
                       parent: rootId,
                       path: [rootId, tierKey],
                       depth: 1,
-                      mutationPoints: typeof tier.mutationPoints === 'number' ? tier.mutationPoints : undefined,
-                      permanentCorruption:
-                        typeof tier.permanentCorruption === 'number' ? tier.permanentCorruption : undefined,
+                      mutationPoints: tierNum,
+                      permanentCorruption: tierNum,
                       category: power.category,
-                      tierLabel
+                      tierLabel: `Tier ${tierNum}`
                     }
                   };
                   const isSelected = selectedIds.has(selection.id);
-                  const tierClass = `lineage-power-grade${isSelected ? ' lineage-power-grade--selected' : ''}`;
-                  const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
+                  const tierClass = `lineage-power-tier${isSelected ? ' lineage-power-tier--selected' : ''}`;
+                  const buttonClass = `power-toggle power-toggle--radio${isSelected ? ' power-toggle--active' : ''}`;
+
                   return (
-                    <section key={tierId} className={tierClass}>
-                      <div className="lineage-power-grade__header">
-                        <span className="badge badge--grade">{tierLabel}</span>
-                        <div className="lineage-power-grade__meta">
-                          {typeof tier.tier === 'number' && <span>Tier {tier.tier}</span>}
-                          {typeof tier.mutationPoints === 'number' && <span>{tier.mutationPoints} Mutation Pts</span>}
-                          {typeof tier.permanentCorruption === 'number' && (
-                            <span>{tier.permanentCorruption} Permanent Corruption</span>
-                          )}
+                    <div key={tierId} className={tierClass}>
+                      <div className="lineage-power-tier__header">
+                        <div className="lineage-power-tier__info">
+                          <span className="badge badge--tier">Tier {tierNum}</span>
+                          <span className="lineage-power-tier__cost">
+                            {tierNum} MP · {tierNum} Corruption
+                          </span>
                         </div>
-                        <button type="button" className={toggleClass} onClick={() => onToggleSelection(selection)}>
-                          {isSelected ? 'Selected' : 'Add'}
+                        <button
+                          type="button"
+                          className={buttonClass}
+                          onClick={() => handleChimeraTierSelection(selection)}
+                          aria-label={isSelected ? `Deselect Tier ${tierNum}` : `Select Tier ${tierNum}`}
+                        >
+                          {isSelected ? '●' : '○'}
                         </button>
                       </div>
                       {renderDescription(tier.description, gmEnabled)}
-                    </section>
+                    </div>
                   );
                 })}
                 </div>
-              </article>
+              </details>
             );
           })}
         </div>
@@ -704,7 +728,6 @@ export function LineagePowersPanel({
   }
 
   if (lineage === 'sorcery' && isSorceryData(powerData)) {
-    const { spheres } = powerData;
     const limits = getPriorityValue(SORCERY_LIMITS, lineagePriority, {
       primary: 0,
       secondary: 0,
@@ -714,6 +737,58 @@ export function LineagePowersPanel({
     const secondaryCount = selectionsForLineage.filter((entry) => entry.kind === 'sorcery-sphere-secondary').length;
     const moveCount = selectionsForLineage.filter((entry) => entry.kind === 'sorcery-move').length;
     const summaryNote = lineagePriority ? SORCERY_LIMITS[lineagePriority].note : undefined;
+
+    // Track which spheres are selected
+    const selectedSpheres = new Set(
+      selectionsForLineage
+        .filter((entry) => entry.kind === 'sorcery-sphere-primary' || entry.kind === 'sorcery-sphere-secondary')
+        .map((entry) => entry.meta?.sphere)
+        .filter((s): s is string => !!s)
+    );
+
+    // Handle sphere selection/deselection with cascade
+    const handleSphereToggle = (selection: LineagePowerSelection) => {
+      const isSelected = selectedIds.has(selection.id);
+      const sphereName = selection.meta?.sphere;
+
+      // If deselecting a sphere, also deselect all its moves
+      if (isSelected && sphereName) {
+        const movesInSphere = selectionsForLineage.filter(
+          (entry) => entry.kind === 'sorcery-move' && entry.meta?.sphere === sphereName
+        );
+        movesInSphere.forEach((move) => {
+          onToggleSelection(move);
+        });
+      }
+
+      // Toggle the sphere itself
+      onToggleSelection(selection);
+    };
+
+    // Sphere descriptions (TODO: Move these to JSON metadata)
+    const sphereDescriptions: Record<string, string> = {
+      'Creation': 'Manifest matter and energy from the Aether, bringing the unreal into reality.',
+      'Destruction': 'Unmake and dissolve, returning solid form to primordial chaos.',
+      'Transformation': 'Reshape existing matter, altering form and substance through will.',
+      'Mind': 'Touch thoughts, memories, and the psyche of sentient beings.',
+      'Time': 'Glimpse past and future, or stretch and compress the flow of moments.',
+      'Space': 'Bend distance, fold reality, and traverse the impossible.',
+      'Life': 'Mend flesh, accelerate growth, or drain vitality from the living.',
+      'Death': 'Command spirits, commune with the departed, and channel entropic energies.',
+      'Fate': 'Perceive probabilities, nudge destiny, and read the threads of chance.',
+      'Protection': 'Weave wards and barriers against physical and supernatural threats.'
+    };
+
+    // Group powers by sphere and tier
+    const spheresByTier = powerData.powers.reduce<Record<string, Record<string, UnifiedPower[]>>>((acc, power) => {
+      const tier = power.sphereTier ?? 'unknown';
+      const sphere = power.sphere ?? 'Unknown Sphere';
+      if (!acc[tier]) acc[tier] = {};
+      if (!acc[tier][sphere]) acc[tier][sphere] = [];
+      acc[tier][sphere].push(power);
+      return acc;
+    }, {});
+
     return (
       <section className="lineage-powers-panel">
         <header>
@@ -751,14 +826,13 @@ export function LineagePowersPanel({
         </aside>
         <div className="lineage-powers-columns">
           {['primary', 'secondary'].map((tier) => {
-            const sphereGroup = spheres?.[tier as keyof typeof spheres];
-            if (!sphereGroup) return null;
+            const spheresInTier = spheresByTier[tier] ?? {};
+            if (Object.keys(spheresInTier).length === 0) return null;
             return (
               <div key={tier} className="sphere-column">
                 <h4 className="sphere-column__heading">{tier === 'primary' ? 'Primary Spheres' : 'Secondary Spheres'}</h4>
-                {Object.values(sphereGroup).map((sphere, index) => {
-                  const sphereName = sphere.name ?? `Sphere ${index + 1}`;
-                  const sphereId = sphere.id ?? `${tier}-${slugify(sphereName)}`;
+                {Object.entries(spheresInTier).map(([sphereName, powers]) => {
+                  const sphereId = `${tier}-${slugify(sphereName)}`;
                   const kind = tier === 'primary' ? 'sorcery-sphere-primary' : 'sorcery-sphere-secondary';
                   const selection: LineagePowerSelection = {
                     id: sphereId,
@@ -776,33 +850,41 @@ export function LineagePowersPanel({
                   const isSelected = selectedIds.has(selection.id);
                   const cardClass = `sphere-card${isSelected ? ' sphere-card--selected' : ''}`;
                   const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
+                  const sphereDesc = sphereDescriptions[sphereName] || 'A sphere of sorcerous power.';
+                  const sphereIsSelected = selectedSpheres.has(sphereName);
                   return (
                     <details key={sphereId} className={cardClass} open={isSelected}>
                       <summary>
                         <div className="sphere-card__summary">
-                          <h5>{sphereName}</h5>
+                          <div>
+                            <h5>{sphereName}</h5>
+                            <p className="sphere-card__description">{sphereDesc}</p>
+                          </div>
                           <button
                             type="button"
                             className={toggleClass}
                             onClick={(event) => {
                               event.preventDefault();
-                              onToggleSelection(selection);
+                              handleSphereToggle(selection);
                             }}
                           >
-                            {isSelected ? 'Selected' : 'Add'}
+                            {isSelected ? 'Selected' : 'Select Sphere'}
                           </button>
                         </div>
                       </summary>
+                      {!sphereIsSelected && (
+                        <p className="sphere-prerequisite-message">Select this sphere to unlock its moves.</p>
+                      )}
                       <ul className="power-list">
-                        {sphere.moves?.map((move, moveIndex) => {
-                          const moveId = move.id ?? `${sphereId}-move-${moveIndex}`;
+                        {powers.map((power) => {
+                          const moveId = power.id ?? slugify(power.name ?? 'move');
                           const moveSelection: LineagePowerSelection = {
                             id: moveId,
                             lineage: 'sorcery',
-                            label: `${move.name ?? 'Move'} (${sphereName})`,
+                            label: `${power.name ?? 'Move'} (${sphereName})`,
                             kind: 'sorcery-move',
                             meta: {
-                              moveType: move.type,
+                              moveType: power.moveType,
                               sphere: sphereName,
                               root: sphereId,
                               parent: sphereId,
@@ -811,24 +893,40 @@ export function LineagePowersPanel({
                             }
                           };
                           const moveSelected = selectedIds.has(moveSelection.id);
-                          const moveItemClass = `power-list__item${moveSelected ? ' power-list__item--selected' : ''}`;
+                          const moveDisabled = !sphereIsSelected;
+                          const moveItemClass = `power-list__item${moveSelected ? ' power-list__item--selected' : ''}${moveDisabled ? ' power-list__item--disabled' : ''}`;
                           const moveToggleClass = `power-toggle${moveSelected ? ' power-toggle--active' : ''}`;
                           return (
                             <li key={moveId} className={moveItemClass}>
                               <div className="power-list__header">
                                 <div>
-                                  <strong>{move.name}</strong>
-                                  {move.type && <span className="badge badge--type">{move.type}</span>}
+                                  <strong>{power.name}</strong>
+                                  {power.moveType && <span className="badge badge--type">{power.moveType}</span>}
                                 </div>
                                 <button
                                   type="button"
                                   className={moveToggleClass}
-                                  onClick={() => onToggleSelection(moveSelection)}
+                                  onClick={() => {
+                                    if (!moveDisabled) {
+                                      onToggleSelection(moveSelection);
+                                    }
+                                  }}
+                                  disabled={moveDisabled}
+                                  title={moveDisabled ? 'Select the sphere first' : undefined}
                                 >
                                   {moveSelected ? 'Selected' : 'Add'}
                                 </button>
                               </div>
-                              {renderDescription(move.description as PowerDescription | undefined, gmEnabled)}
+                              {renderDescription(power.description, gmEnabled)}
+                              {power.outcomes && Object.keys(power.outcomes).length > 0 && (
+                                <div className="power-outcomes">
+                                  {Object.entries(power.outcomes).map(([roll, outcome]) => (
+                                    <div key={roll}>
+                                      <strong>{roll}:</strong> {outcome}
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
                             </li>
                           );
                         })}
@@ -844,697 +942,540 @@ export function LineagePowersPanel({
     );
   }
 
+  // ESPER SECTION - Evolution tree and Mentalist selection system
   if (lineage === 'esper' && isEsperData(powerData)) {
-    const archetypes = (powerData.esper_archetypes ?? {}) as Record<string, EsperArchetype>;
-    const mentalistData = powerData.mentalist_data;
-    const mentalistArchetypesRaw =
-      mentalistData && isRecord(mentalistData.mentalist_archetypes)
-        ? (mentalistData.mentalist_archetypes as Record<string, unknown>)
-        : {};
-    const foundationalAugmentsRaw = (() => {
-      const candidate = (mentalistArchetypesRaw as { foundational_augments?: unknown }).foundational_augments;
-      return isRecord(candidate) ? (candidate as Record<string, unknown>) : undefined;
-    })();
-    const mentalistPathEntries = Object.entries(mentalistArchetypesRaw).reduce<Array<[string, UnknownRecord]>>(
-      (acc, [key, value]) => {
-        if (key === 'foundational_augments') return acc;
-        if (isRecord(value)) {
-          acc.push([key, value as UnknownRecord]);
-        }
-        return acc;
-      },
-      []
-    );
-    const baseAllowed = lineagePriority !== 'C';
-    const mentalistAllowed = lineagePriority === 'A' || lineagePriority === 'C';
     const esperNote = lineagePriority ? ESPER_NOTES[lineagePriority] : undefined;
     const depthLimit = lineagePriority ? ESPER_DEPTH_LIMIT[lineagePriority] : 0;
 
-    const baseSelection = selectionsForLineage.find(
-      (entry) => entry.kind === 'esper-archetype' && entry.meta?.category === 'esper-base'
+    // Separate Esper powers from Mentalist powers
+    const ESPER_ARCHETYPES = ['sentinel', 'median', 'weaver', 'summoner', 'linker'];
+    const MENTALIST_ARCHETYPES = ['empath', 'mesmer', 'siren', 'dreamer', 'meta-mind'];
+
+    const esperPowers = powerData.powers.filter(p => ESPER_ARCHETYPES.includes(p.archetype ?? ''));
+    const mentalistPowers = powerData.powers.filter(p => MENTALIST_ARCHETYPES.includes(p.archetype ?? '') || p.archetype === 'foundational');
+
+    // Check if Priority A (can have both Esper and Mentalist)
+    const canHaveBoth = lineagePriority === 'A';
+
+    // Helper function to get all powers for a given path (cumulative)
+    const getPowersForPath = (pathString: string): UnifiedPower[] => {
+      const pathParts = pathString.split('.');
+      const archetype = pathParts[0];
+
+      // Get all powers that are part of this path (including parent paths)
+      return esperPowers.filter(power => {
+        const powerPath = power.path ?? '';
+        // Include if power's path is a prefix of or equal to the selected path
+        return powerPath === archetype || pathString.startsWith(powerPath + '.') || powerPath === pathString;
+      }).sort((a, b) => (a.evolutionStage ?? 0) - (b.evolutionStage ?? 0));
+    };
+
+    // Check if a path is currently selected
+    // Find the MOST EVOLVED selection (highest depth) - not just the first match
+    const esperPathSelections = selectionsForLineage.filter(s =>
+      (s.kind === 'esper-archetype' || s.kind === 'esper-focus' || s.kind === 'esper-framework-path') &&
+      ESPER_ARCHETYPES.includes(s.meta?.archetype ?? '')
     );
-    const mentalistSelection = selectionsForLineage.find(
-      (entry) => entry.kind === 'esper-archetype' && entry.meta?.category === 'esper-mentalist'
-    );
-    const baseRoot = baseSelection?.meta?.root ?? null;
-    const mentalistRoot = mentalistSelection?.meta?.root ?? null;
+    const selectedEsperPathSelection = esperPathSelections.sort((a, b) => {
+      const depthA = a.meta?.depth ?? 0;
+      const depthB = b.meta?.depth ?? 0;
+      return depthB - depthA; // Sort descending - highest depth first
+    })[0];
+    const selectedEsperPath = selectedEsperPathSelection?.meta?.path?.join('.');
+    const selectedArchetype = selectedEsperPath?.split('.')[0];
 
-    const archetypeCount = selectionsForLineage.filter(
-      (entry) => entry.kind === 'esper-archetype' && entry.meta?.category === 'esper-base'
-    ).length;
-    const focusCount = selectionsForLineage.filter((entry) => entry.kind === 'esper-focus').length;
-    const frameworkChoiceCount = selectionsForLineage.filter((entry) => entry.kind === 'esper-framework-choice').length;
-    const frameworkPathCount = selectionsForLineage.filter((entry) => entry.kind === 'esper-framework-path').length;
+    // Handler for path selection
+    const handlePathSelection = (pathString: string, stage: number) => {
+      const pathParts = pathString.split('.');
+      const newArchetype = pathParts[0];
 
-    const handleArchetypeToggle = (selection: LineagePowerSelection) => {
-      const isSelected = selectedIds.has(selection.id);
-      const category = selection.meta?.category;
-      if (category === 'esper-base' && !baseAllowed) return;
-      if (category === 'esper-mentalist' && !mentalistAllowed) return;
-
-      if (isSelected) {
-        onToggleSelection(selection);
-        return;
-      }
-
-      selectionsForLineage
-        .filter((entry) => entry.kind === 'esper-archetype' && entry.meta?.category === category)
-        .forEach((entry) => onToggleSelection(entry));
-
-      onToggleSelection(selection);
-    };
-
-    const handleFocusToggle = (selection: LineagePowerSelection) => {
-      const root = selection.meta?.root;
-      if (!root || (root !== baseRoot && root !== mentalistRoot)) {
-        return;
-      }
-
-      const depth = selection.meta?.depth ?? 0;
-      if (depth > depthLimit) {
-        return;
-      }
-
-      const parentId = selection.meta?.parent;
-      if (depth > 0 && (!parentId || !selectionMap.has(parentId))) {
-        return;
-      }
-
-      const alreadySelected = selectedIds.has(selection.id);
-      if (alreadySelected) {
-        onToggleSelection(selection);
-        return;
-      }
-
-      const selectionPath = selection.meta?.path ?? [selection.id];
-
-      const conflicts = selectionsForLineage.filter((entry) => {
-        if (entry.id === selection.id) return false;
-        if (entry.meta?.root !== root) return false;
-        const entryPath = entry.meta?.path ?? [entry.id];
-        const entryDepth = entry.meta?.depth ?? 0;
-
-        if (entryDepth < depth) {
-          return false;
-        }
-
-        if (entryDepth === depth) {
-          if (entryPath.length <= depth || selectionPath.length <= depth) return false;
-          return entryPath[depth] !== selectionPath[depth];
-        }
-
-    const sharesPrefix = selectionPath.every((value, index) => entryPath[index] === value);
-    return !sharesPrefix;
-  });
-
-  conflicts.forEach((entry) => onToggleSelection(entry));
-  onToggleSelection(selection);
-};
-
-const getFrameworkGroupKey = (entry: LineagePowerSelection) => entry.meta?.path?.[2] ?? null;
-
-const clearFrameworkPathSelections = (root: string, groupKeys: string[]) => {
-  if (groupKeys.length === 0) return;
-  const targets = new Set(groupKeys);
-  selectionsForLineage
-    .filter(
-      (entry) =>
-        entry.kind === 'esper-framework-path' &&
-        entry.meta?.root === root &&
-        targets.has(getFrameworkGroupKey(entry) ?? '')
-    )
-    .forEach((entry) => onToggleSelection(entry));
-};
-
-const handleFrameworkChoiceToggle = (selection: LineagePowerSelection, groupKey: string) => {
-  const root = selection.meta?.root;
-  const depth = selection.meta?.depth ?? 0;
-  if (!root || !isRootSelected(root) || !isDepthAllowed(root, depth)) {
-    const isSelected = selectedIds.has(selection.id);
-    if (isSelected) {
-      onToggleSelection(selection);
-    }
-    return;
-  }
-
-  const isSelected = selectedIds.has(selection.id);
-  const conflicts = selectionsForLineage.filter(
-    (entry) =>
-      entry.id !== selection.id &&
-      entry.kind === 'esper-framework-choice' &&
-      entry.meta?.root === root &&
-      getFrameworkGroupKey(entry) === groupKey
-  );
-
-  const polarity = groupKey === 'polarity' ? inferPolarityFromSelection(selection) : null;
-  const scope = groupKey === 'scope' ? inferScopeFromSelection(selection) : null;
-
-  if (isSelected) {
-    if (groupKey === 'polarity') {
-      clearFrameworkPathSelections(root, [
-        ...POLARITY_FRAMEWORK_GROUPS.receiver,
-        ...POLARITY_FRAMEWORK_GROUPS.influencer
-      ]);
-    }
-    if (groupKey === 'scope') {
-      clearFrameworkPathSelections(root, [...SCOPE_FRAMEWORK_GROUPS.aural, ...SCOPE_FRAMEWORK_GROUPS.targeted]);
-    }
-    onToggleSelection(selection);
-    return;
-  }
-
-  conflicts.forEach((entry) => onToggleSelection(entry));
-
-  if (groupKey === 'polarity') {
-    const groupsToClear = polarity
-      ? POLARITY_FRAMEWORK_GROUPS[polarity === 'receiver' ? 'influencer' : 'receiver']
-      : [...POLARITY_FRAMEWORK_GROUPS.receiver, ...POLARITY_FRAMEWORK_GROUPS.influencer];
-    clearFrameworkPathSelections(root, groupsToClear);
-  }
-
-  if (groupKey === 'scope') {
-    const groupsToClear = scope
-      ? SCOPE_FRAMEWORK_GROUPS[scope === 'aural' ? 'targeted' : 'aural']
-      : [...SCOPE_FRAMEWORK_GROUPS.aural, ...SCOPE_FRAMEWORK_GROUPS.targeted];
-    clearFrameworkPathSelections(root, groupsToClear);
-  }
-
-  onToggleSelection(selection);
-};
-
-const handleFrameworkPathToggle = (selection: LineagePowerSelection, groupKey: string, canToggle: boolean) => {
-  if (!canToggle) return;
-
-  const root = selection.meta?.root;
-  const depth = selection.meta?.depth ?? 0;
-  if (!root || !isRootSelected(root) || !isDepthAllowed(root, depth)) {
-    return;
-  }
-
-  const isSelected = selectedIds.has(selection.id);
-  if (isSelected) {
-    onToggleSelection(selection);
-    return;
-  }
-
-  selectionsForLineage
-    .filter(
-      (entry) =>
-        entry.id !== selection.id &&
-        entry.kind === 'esper-framework-path' &&
-        entry.meta?.root === root &&
-        getFrameworkGroupKey(entry) === groupKey
-    )
-    .forEach((entry) => onToggleSelection(entry));
-
-  onToggleSelection(selection);
-};
-
-    const isRootSelected = (root: string) => root === baseRoot || root === mentalistRoot;
-    const isDepthAllowed = (root: string, depth: number) => depth <= depthLimit;
-
-    const renderEsperFocusNode = (
-      focus: UnknownRecord,
-      path: string[],
-      depth: number,
-      rootId: string
-    ): JSX.Element => {
-      const focusName = typeof focus.name === 'string' && focus.name.length > 0 ? focus.name : path[path.length - 1];
-      const focusId = typeof focus.id === 'string' && focus.id.length > 0 ? focus.id : path.join('-');
-      const focusPath = typeof focus.path === 'string' && focus.path.length > 0 ? focus.path : undefined;
-      const selection: LineagePowerSelection = {
-        id: focusId,
+      // Create new selection
+      const newSelection: LineagePowerSelection = {
+        id: `esper-path-${pathString}`,
         lineage: 'esper',
-        label: `Focus — ${focusName}`,
-        kind: 'esper-focus',
+        label: `${pathString.split('.').pop()?.replace(/-/g, ' ')} (Evolution Stage ${stage})`,
+        kind: stage === 0 ? 'esper-archetype' : stage === 1 ? 'esper-focus' : 'esper-framework-path',
         meta: {
-          root: rootId,
-          parent: path[path.length - 2] ?? rootId,
-          path,
-          depth
+          archetype: newArchetype,
+          path: pathParts,
+          depth: stage,
+          root: newArchetype  // The base archetype is the root
         }
       };
-      const isSelected = selectedIds.has(selection.id);
-      const disabled = !isRootSelected(rootId) || !isDepthAllowed(rootId, depth);
-      const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
-      const cardClass = `focus-card${isSelected ? ' focus-card--selected' : ''}`;
-      const abilityRecords = normalizeAbilityCollection((focus as { abilities?: unknown }).abilities);
-      const abilityEntries = createAbilityEntries(abilityRecords, `${focusId}-ability`);
-      const abilityGroups = groupAbilities(abilityEntries);
-      const childFocusesRaw = (focus as { focuses?: unknown }).focuses;
-      const childFocuses = isRecord(childFocusesRaw) ? (childFocusesRaw as Record<string, unknown>) : undefined;
 
-      return (
-        <details key={focusId} className={cardClass} open={isSelected}>
-          <summary>
-            <div className="focus-card__summary">
-              <h6>{focusName}</h6>
-              <button
-                type="button"
-                className={toggleClass}
-                disabled={disabled}
-                onClick={(event) => {
-                  event.preventDefault();
-                  if (!disabled) {
-                    handleFocusToggle(selection);
-                  }
-                }}
-              >
-                {isSelected ? 'Selected' : 'Add'}
-              </button>
-            </div>
-          </summary>
-          {focusPath && <p className="power-description__detail">{focusPath}</p>}
-          {typeof focus.philosophy === 'string' && <p>{focus.philosophy}</p>}
-          {renderAbilitySection('Signature Moves', abilityGroups.moves)}
-          {renderAbilitySection('Augments', abilityGroups.augments)}
-          {renderAbilitySection('Psionic Abilities', abilityGroups.other)}
-          {childFocuses && (
-            <section className="lineage-power-subsection">
-              <h5>Advanced Paths</h5>
-              <div className="focus-grid">
-                {Object.values(childFocuses).map((child) => {
-                  const childRecord = child as UnknownRecord;
-                  const childName = typeof childRecord.name === 'string' ? childRecord.name : `Focus ${depth + 1}`;
-                  const childId =
-                    typeof childRecord.id === 'string' && childRecord.id.length > 0
-                      ? childRecord.id
-                      : slugify(childName);
-                  return renderEsperFocusNode(childRecord, [...path, childId], depth + 1, rootId);
-                })}
-              </div>
-            </section>
-          )}
-        </details>
-      );
+      // Clear old selections first
+      if (!selectedEsperPath || selectedArchetype !== newArchetype) {
+        // Changing archetype - clear all Esper selections
+        selectionsForLineage
+          .filter(s => s.kind === 'esper-archetype' || s.kind === 'esper-focus' || s.kind === 'esper-framework-path')
+          .forEach(s => onToggleSelection(s));
+      } else if (stage > 0) {
+        // Evolving within same tree
+        // Only clear evolution selections (esper-focus, esper-framework-path), NOT the base archetype
+        selectionsForLineage
+          .filter(s =>
+            (s.kind === 'esper-focus' || s.kind === 'esper-framework-path') &&
+            s.meta?.root === newArchetype
+          )
+          .forEach(s => onToggleSelection(s));
+      }
+
+      // Add new selection
+      onToggleSelection(newSelection);
     };
 
-    const renderArchetypeCard = (archetype: EsperArchetype) => {
-      const archetypeName = typeof archetype.name === 'string' ? archetype.name : 'Archetype';
-      const rootId = typeof archetype.id === 'string' ? archetype.id : slugify(archetypeName);
-      const abilityRecords = normalizeAbilityCollection((archetype as { abilities?: unknown }).abilities);
-      const abilityEntries = createAbilityEntries(abilityRecords, `${rootId}-ability`);
-      const abilityGroups = groupAbilities(abilityEntries);
-      const selection: LineagePowerSelection = {
-        id: rootId,
-        lineage: 'esper',
-        label: `Archetype — ${archetypeName}`,
-        kind: 'esper-archetype',
-        meta: {
-          root: rootId,
-          path: [rootId],
-          depth: 0,
-          category: 'esper-base'
-        }
-      };
-      const isSelected = selectedIds.has(selection.id);
-      const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
-      const disabled = !baseAllowed;
-      const cardClass = `lineage-power-card${isSelected ? ' lineage-power-card--selected' : ''}`;
+    // Render Esper evolution tree
+    const renderEsperSection = () => {
+      // If a path is selected, show all powers for that path
+      if (selectedEsperPath) {
+        const powersForPath = getPowersForPath(selectedEsperPath);
+        const currentStage = selectedEsperPath.split('.').length - 1;
 
-      return (
-        <details key={rootId} className={cardClass} open={isSelected}>
-          <summary>
-            <div className="lineage-power-card__summary">
-              <h4>{archetypeName}</h4>
-              <button
-                type="button"
-                className={toggleClass}
-                disabled={disabled && !isSelected}
-                onClick={(event) => {
-                  event.preventDefault();
-                  if (!disabled || isSelected) {
-                    handleArchetypeToggle(selection);
-                  }
-                }}
-              >
-                {isSelected ? 'Selected' : 'Add'}
-              </button>
-            </div>
-          </summary>
-          {typeof archetype.philosophy === 'string' && <p className="power-description__detail">{archetype.philosophy}</p>}
-          {renderAbilitySection('Baseline Moves', abilityGroups.moves)}
-          {renderAbilitySection('Baseline Augments', abilityGroups.augments)}
-          {renderAbilitySection('Baseline Abilities', abilityGroups.other)}
-          {archetype.focuses && (
-            <section className="lineage-power-subsection">
-              <h5>Focus Paths</h5>
-              <div className="focus-grid">
-                {Object.values(archetype.focuses).map((focus) => {
-                  const focusRecord = focus as UnknownRecord;
-                  const focusName = typeof focusRecord.name === 'string' ? focusRecord.name : 'Focus';
-                  const focusId =
-                    typeof focusRecord.id === 'string' && focusRecord.id.length > 0
-                      ? focusRecord.id
-                      : slugify(`${rootId}-${focusName}`);
-                  return renderEsperFocusNode(focusRecord, [rootId, focusId], 1, rootId);
-                })}
-              </div>
-            </section>
-          )}
-        </details>
-      );
-    };
-
-    const renderMentalistPath = (pathKey: string, pathData: UnknownRecord) => {
-      const rootId = typeof pathData.id === 'string' && pathData.id.length > 0 ? pathData.id : slugify(pathKey);
-      const pathLabel = typeof pathData.name === 'string' && pathData.name.length > 0 ? pathData.name : toTitleCase(pathKey);
-      const philosophy = typeof pathData.philosophy === 'string' ? pathData.philosophy : undefined;
-      const naturalLean = typeof pathData.natural_lean === 'string' ? pathData.natural_lean : undefined;
-      const powerSelectionsRaw = isRecord((pathData as { power_selections?: unknown }).power_selections)
-        ? ((pathData as { power_selections?: unknown }).power_selections as Record<string, unknown>)
-        : undefined;
-      const choiceCollection = powerSelectionsRaw
-        ? Object.entries(powerSelectionsRaw).reduce<MentalistChoiceCollection>((acc, [key, value]) => {
-            const normalizedKey = key.toLowerCase();
-            const abilities = createAbilityEntries(normalizeAbilityCollection(value), `${rootId}-${normalizedKey}`);
-            if (abilities.length === 0) {
-              return acc;
-            }
-            const labelKey = normalizedKey.replace(/_/g, ' ');
-            const group: MentalistChoiceGroup = {
-              key: normalizedKey,
-              label: toTitleCase(labelKey),
-              abilities
-            };
-            const polarity = POLARITY_KEY_TO_TYPE[normalizedKey];
-            if (polarity) {
-              acc.polarity[polarity] = group;
-              return acc;
-            }
-            const scopeDescriptor = SCOPE_KEY_TO_DESCRIPTOR[normalizedKey];
-            if (scopeDescriptor) {
-              const { scope, polarity: scopePolarity } = scopeDescriptor;
-              acc.scope[scope][scopePolarity] = group;
-              return acc;
-            }
-            acc.general.push(group);
-            return acc;
-          }, createEmptyChoiceCollection())
-        : createEmptyChoiceCollection();
-      const pathPowers = createAbilityEntries(
-        normalizeAbilityCollection((pathData as { powers?: unknown }).powers),
-        `${rootId}-power`
-      );
-      const coreMechanicsRaw = isRecord((pathData as { core_mechanics?: unknown }).core_mechanics)
-        ? ((pathData as { core_mechanics?: unknown }).core_mechanics as Record<string, unknown>)
-        : undefined;
-      const coreMechanics = coreMechanicsRaw
-        ? Object.entries(coreMechanicsRaw).reduce<
-            Array<{ key: string; name: string; description?: string; outcomes: OutcomeEntry[] }>
-          >((acc, [key, value]) => {
-            if (!isRecord(value)) {
-              return acc;
-            }
-            const name = typeof value.name === 'string' && value.name.length > 0 ? value.name : toTitleCase(key);
-            const description = typeof value.description === 'string' ? value.description : undefined;
-            const outcomes = mapOutcomeEntries((value as { outcomes?: unknown }).outcomes);
-            acc.push({ key, name, description, outcomes });
-            return acc;
-          }, [])
-        : [];
-      const consequenceTablesRaw = isRecord((pathData as { consequence_tables?: unknown }).consequence_tables)
-        ? ((pathData as { consequence_tables?: unknown }).consequence_tables as Record<string, unknown>)
-        : undefined;
-      const consequenceTables = consequenceTablesRaw
-        ? Object.entries(consequenceTablesRaw).reduce<
-            Array<{ key: string; label: string; entries: ConsequenceEntry[] }>
-          >((acc, [key, tableValue]) => {
-            const entries = mapConsequenceEntries(tableValue, `${rootId}-${key}`);
-            if (entries.length === 0) {
-              return acc;
-            }
-            acc.push({ key, label: toTitleCase(key), entries });
-            return acc;
-          }, [])
-        : [];
-      const childFocuses = isRecord((pathData as { focuses?: unknown }).focuses)
-        ? ((pathData as { focuses?: unknown }).focuses as Record<string, unknown>)
-        : undefined;
-      const frameworkChoiceSelections = selectionsForLineage.filter(
-        (entry) => entry.kind === 'esper-framework-choice' && entry.meta?.root === rootId
-      );
-      const polaritySelection = frameworkChoiceSelections.find((entry) => getFrameworkGroupKey(entry) === 'polarity');
-      const scopeSelection = frameworkChoiceSelections.find((entry) => getFrameworkGroupKey(entry) === 'scope');
-      const selectedPolarity = inferPolarityFromSelection(polaritySelection);
-      const selectedScope = inferScopeFromSelection(scopeSelection);
-      const isMetaMindPath = pathKey.toLowerCase() === 'meta-mind' || rootId === 'meta-mind';
-
-      const translateTerminology = (value: string): string => {
-        if (!isMetaMindPath) return value;
-        return value
-          .replace(/Receiver/gi, 'Instanced')
-          .replace(/Influencer/gi, 'Persistent')
-          .replace(/Aural/gi, 'Systemic')
-          .replace(/Targeted/gi, 'Discrete');
-      };
-
-      const renderChoiceGroup = (
-        group: MentalistChoiceGroup,
-        options: { enabled: boolean; requirement?: string }
-      ) => {
-        if (!group || group.abilities.length === 0) return null;
-        const { enabled, requirement } = options;
-        const label = translateTerminology(group.label);
-        const requirementLabel = requirement ? translateTerminology(requirement) : undefined;
         return (
-          <div key={`${rootId}-${group.key}`} className="lineage-choice-group">
-            <h6>{label}</h6>
-            {requirementLabel && <p className="power-description__detail">{requirementLabel}</p>}
-            <ul className="power-list">
-              {group.abilities.map((ability, index) => {
-                const fallbackId = `${rootId}-${group.key}-${index}`;
-                const abilityId = ability.id || fallbackId;
-                const choiceSelection: LineagePowerSelection = {
-                  id: abilityId,
-                  lineage: 'esper',
-                  label: `Framework Power — ${ability.name}`,
-                  kind: 'esper-framework-path',
-                  meta: {
-                    root: rootId,
-                    parent: rootId,
-                    path: [rootId, 'framework', group.key, abilityId],
-                    depth: 2,
-                    category: 'esper-mentalist'
-                  }
-                };
-                const isSelected = selectedIds.has(choiceSelection.id);
-                const canToggle = enabled || isSelected;
-                const itemClass = `power-list__item${isSelected ? ' power-list__item--selected' : ''}`;
-                const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
-                return (
-                  <li key={abilityId} className={itemClass}>
-                    <div className="power-list__header">
-                      <div>
-                        <strong>{ability.name}</strong>
-                        {ability.type && <span className="badge badge--type">{toTitleCase(ability.type)}</span>}
-                        {ability.cost && <span className="badge badge--cost">{ability.cost}</span>}
-                        {ability.duration && <span className="badge">{translateTerminology(ability.duration)}</span>}
-                        {ability.scope && <span className="badge">{translateTerminology(ability.scope)}</span>}
+          <div className="esper-evolution-section">
+            <h4>Esper Evolution Path</h4>
+            <p className="section-description">
+              Selected: {selectedEsperPath.split('.').map(p => p.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())).join(' → ')}
+            </p>
+            <button type="button" className="power-toggle power-toggle--clear" onClick={onClearSelections}>
+              Change Path
+            </button>
+
+            <div className="lineage-power-card">
+              <h5>All Powers for This Path ({powersForPath.length} total)</h5>
+              <ul className="power-list">
+                {powersForPath.map(power => {
+                  const powerId = power.id ?? slugify(power.name ?? 'power');
+                  return (
+                    <li key={powerId} className="power-list__item power-list__item--granted">
+                      <div className="power-list__header">
+                        <div>
+                          <strong>{power.name}</strong>
+                          <span className="badge">Stage {power.evolutionStage}</span>
+                          <span className="badge">{power.moveType}</span>
+                        </div>
                       </div>
-                      <button
-                        type="button"
-                        className={toggleClass}
-                        disabled={!canToggle}
-                        onClick={() => handleFrameworkPathToggle(choiceSelection, group.key, canToggle)}
-                      >
-                        {isSelected ? 'Selected' : 'Add'}
-                      </button>
-                    </div>
-                    {ability.description && <p>{ability.description}</p>}
-                  </li>
-                );
-              })}
-            </ul>
+                      {renderDescription(power.description, gmEnabled)}
+                    </li>
+                  );
+                })}
+              </ul>
+
+              {/* Show available next evolution if not at depth limit */}
+              {currentStage < depthLimit && (
+                <div className="evolution-options">
+                  <h6>Available Evolutions</h6>
+                  {(() => {
+                    const nextStagePaths = new Set(
+                      esperPowers
+                        .filter(p => {
+                          const pPath = p.path ?? '';
+                          const pStage = p.evolutionStage ?? 0;
+                          return pStage === currentStage + 1 && pPath.startsWith(selectedEsperPath + '.');
+                        })
+                        .map(p => p.path ?? '')
+                    );
+
+                    return Array.from(nextStagePaths).map(nextPath => {
+                      const pathName = nextPath.split('.').pop() ?? '';
+                      const powersCount = getPowersForPath(nextPath).length;
+                      return (
+                        <button
+                          key={nextPath}
+                          type="button"
+                          className="power-toggle"
+                          onClick={() => handlePathSelection(nextPath, currentStage + 1)}
+                        >
+                          Evolve to {pathName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())} (+{powersCount - powersForPath.length} powers)
+                        </button>
+                      );
+                    });
+                  })()}
+                </div>
+              )}
+            </div>
           </div>
         );
-      };
+      }
 
-      const polarityGroups = (['receiver', 'influencer'] as PolarityType[]) // order matters
-        .map((polarity) => {
-          const group = choiceCollection.polarity[polarity];
-          if (!group) return null;
-          const isActive = selectedPolarity === polarity;
-          const requirement = isActive
-            ? undefined
-            : GROUP_REQUIREMENTS[group.key] ?? `Requires ${toTitleCase(polarity)} configuration.`;
-          return renderChoiceGroup(group, { enabled: isActive, requirement });
-        })
-        .filter((element): element is JSX.Element => element !== null);
-
-      const scopeGroups = (['aural', 'targeted'] as ScopeType[])
-        .map((scope) => {
-          const scopeEntry = choiceCollection.scope[scope];
-          const entries = (['receiver', 'influencer'] as PolarityType[]) // matches polarity selection mapping
-            .map((polarity) => {
-              const group = scopeEntry?.[polarity];
-              if (!group) return null;
-              const isActive = selectedPolarity === polarity && selectedScope === scope;
-              const requirement = isActive
-                ? undefined
-                : GROUP_REQUIREMENTS[group.key] ??
-                  `Requires ${toTitleCase(scope)} scope and ${toTitleCase(polarity)} configuration.`;
-              return renderChoiceGroup(group, { enabled: isActive, requirement });
-            })
-            .filter((element): element is JSX.Element => element !== null);
-          if (entries.length === 0) return null;
-          return (
-            <div key={`${rootId}-scope-${scope}`} className="lineage-choice-scope">
-              <p className="lineage-choice-scope__label">{translateTerminology(`${toTitleCase(scope)} Options`)}</p>
-              {entries}
-            </div>
-          );
-        })
-        .filter((element): element is JSX.Element => element !== null);
-
-      const generalGroups = choiceCollection.general
-        .map((group) => renderChoiceGroup(group, { enabled: true }))
-        .filter((element): element is JSX.Element => element !== null);
-
-      const selection: LineagePowerSelection = {
-        id: rootId,
-        lineage: 'esper',
-        label: `Mentalist Path — ${pathLabel}`,
-        kind: 'esper-archetype',
-        meta: {
-          root: rootId,
-          path: [rootId],
-          depth: 0,
-          category: 'esper-mentalist'
-        }
-      };
-      const isSelected = selectedIds.has(selection.id);
-      const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
-      const disabled = !mentalistAllowed;
-      const cardClass = `lineage-power-card${isSelected ? ' lineage-power-card--selected' : ''}`;
+      // No path selected yet - show archetype selection
+      const powersByArchetype = esperPowers.reduce<Record<string, UnifiedPower[]>>((acc, power) => {
+        const archetype = power.archetype ?? 'Unknown';
+        if (!acc[archetype]) acc[archetype] = [];
+        acc[archetype].push(power);
+        return acc;
+      }, {});
 
       return (
-        <details key={rootId} className={cardClass} open={isSelected}>
-          <summary>
-            <div className="lineage-power-card__summary">
-              <h4>{pathLabel}</h4>
-              <button
-                type="button"
-                className={toggleClass}
-                disabled={disabled && !isSelected}
-                onClick={(event) => {
-                  event.preventDefault();
-                  if (!disabled || isSelected) {
-                    handleArchetypeToggle(selection);
-                  }
-                }}
-              >
-                {isSelected ? 'Selected' : 'Add'}
-              </button>
-            </div>
-          </summary>
-          {naturalLean && <p className="power-description__detail">Natural Lean: {naturalLean}</p>}
-          {philosophy && <p>{philosophy}</p>}
-          {(polarityGroups.length > 0 || scopeGroups.length > 0 || generalGroups.length > 0) && (
-            <section className="lineage-power-subsection">
-              <h5>{isMetaMindPath ? 'Cognitive Framework' : 'Power Selections'}</h5>
-              {polarityGroups.length > 0 && (
-                <div className="lineage-choice-section">
-                  <h6>{isMetaMindPath ? 'Mode Selection' : 'Polarity Selection'}</h6>
-                  {polarityGroups}
-                </div>
-              )}
-              {scopeGroups.length > 0 && (
-                <div className="lineage-choice-section">
-                  <h6>{isMetaMindPath ? 'Expression Range' : 'Scope Selection'}</h6>
-                  {scopeGroups}
-                </div>
-              )}
-              {generalGroups.length > 0 && (
-                <div className="lineage-choice-section">
-                  <h6>{isMetaMindPath ? 'Additional Routines' : 'Additional Powers'}</h6>
-                  {generalGroups}
-                </div>
-              )}
-            </section>
-          )}
-          {renderAbilitySection('Path Powers', pathPowers, 'h5', `${rootId}-powers`)}
-          {coreMechanics.length > 0 && (
-            <section className="lineage-power-subsection">
-              <h5>Core Mechanics</h5>
-              <ul className="power-list">
-                {coreMechanics.map((mechanic) => (
-                  <li key={mechanic.key} className="power-list__item">
-                    <strong>{mechanic.name}</strong>
-                    {mechanic.description && <p>{mechanic.description}</p>}
-                    {mechanic.outcomes.length > 0 && (
-                      <ul className="power-description__outcomes">
-                        {mechanic.outcomes.map((outcome) => (
-                          <li key={outcome.label}>
-                            <strong>{outcome.label}</strong>
-                            <span>{outcome.result}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-          {consequenceTables.length > 0 && (
-            <section className="lineage-power-subsection">
-              <h5>Consequence Tables</h5>
-              <div className="focus-grid">
-                {consequenceTables.map((table) => (
-                  <div key={table.key} className="focus-card">
-                    <h6>{table.label}</h6>
-                    <ul className="power-description__outcomes">
-                      {table.entries.map((entry) => (
-                        <li key={entry.id}>
-                          {typeof entry.roll === 'number' && <strong>Roll {entry.roll}</strong>}
-                          {entry.result && <span>{entry.result}</span>}
+        <div className="esper-evolution-section">
+          <h4>Choose Esper Archetype</h4>
+          <p className="section-description">Select a starting archetype. You can evolve further based on your priority.</p>
+          <div className="lineage-powers-grid">
+            {Object.entries(powersByArchetype).map(([archetype, powers]) => {
+              const baseArchetypePowers = powers.filter(p => p.evolutionStage === 0);
+              const basePowerCount = baseArchetypePowers.length;
+
+              return (
+                <div key={archetype} className="lineage-power-card">
+                  <h5>{archetype.charAt(0).toUpperCase() + archetype.slice(1)}</h5>
+                  <p className="archetype-description">
+                    {basePowerCount} base {basePowerCount === 1 ? 'power' : 'powers'}
+                  </p>
+
+                  {/* Show base powers preview */}
+                  <details className="power-preview">
+                    <summary>View Base Powers</summary>
+                    <ul className="power-list">
+                      {baseArchetypePowers.map(power => (
+                        <li key={power.id} className="power-list__item">
+                          <strong>{power.name}</strong> ({power.moveType})
+                          {power.description?.short && <p className="power-description__short">{power.description.short}</p>}
                         </li>
                       ))}
                     </ul>
+                  </details>
+
+                  <button
+                    type="button"
+                    className="power-toggle power-toggle--primary"
+                    onClick={() => handlePathSelection(archetype, 0)}
+                  >
+                    Select {archetype.charAt(0).toUpperCase() + archetype.slice(1)}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    };
+
+    // Get selected Mentalist configuration
+    const selectedMentalistArchetype = selectionsForLineage.find(s =>
+      s.kind === 'esper-archetype' && MENTALIST_ARCHETYPES.includes(s.meta?.archetype ?? '')
+    )?.meta?.archetype;
+
+    const selectedPolarity = selectionsForLineage.find(s =>
+      s.kind === 'esper-framework-choice' && (s.id === 'receiver-configuration' || s.id === 'influencer-configuration')
+    );
+
+    const selectedScope = selectionsForLineage.find(s =>
+      s.kind === 'esper-framework-choice' && (s.id === 'targeted-scope' || s.id === 'aural-scope')
+    );
+
+
+    // Determine if Mentalist section should be shown based on priority
+    // Priority A: Both Esper and Mentalist
+    // Priority C: Mentalist only
+    // Priority D: Esper only (no Mentalist)
+    // Priority E: Esper only (no Mentalist)
+    const showMentalist = canHaveBoth || lineagePriority === 'C' || (selectedMentalistArchetype !== undefined);
+    const showEsper = !lineagePriority || lineagePriority !== 'C'; // Priority C is Mentalist only
+
+    // Render Mentalist selection system
+    const renderMentalistSection = () => {
+      // Get foundational powers
+      const foundationalPowers = mentalistPowers.filter(p => p.archetype === 'foundational');
+      const polarityPowers = foundationalPowers.filter(p => p.path?.includes('polarity'));
+      const scopePowers = foundationalPowers.filter(p => p.path?.includes('scope'));
+
+      // If archetype selected, show configuration flow
+      if (selectedMentalistArchetype) {
+        const archetypePowers = mentalistPowers.filter(p => p.archetype === selectedMentalistArchetype);
+        const isMeta = selectedMentalistArchetype === 'meta-mind';
+
+
+        // Get automatically granted powers based on selections
+        const grantedPowers: UnifiedPower[] = [];
+
+        // Step 1: Polarity grants "_all" power
+        if (selectedPolarity) {
+          const polarityType = selectedPolarity.id === 'receiver-configuration' ? 'receiver' :
+                              selectedPolarity.id === 'influencer-configuration' ? 'influencer' : '';
+
+          const allPower = archetypePowers.find(p =>
+            p.path?.includes('_all') && p.path?.includes(polarityType)
+          );
+          if (allPower) grantedPowers.push(allPower);
+        }
+
+        // Step 2: Polarity + Scope combination
+        if (selectedPolarity && selectedScope) {
+          const polarityType = selectedPolarity.id === 'receiver-configuration' ? 'receiver' :
+                              selectedPolarity.id === 'influencer-configuration' ? 'influencer' : '';
+          const scopeType = selectedScope.id === 'targeted-scope' ? 'targeted' :
+                           selectedScope.id === 'aural-scope' ? 'aural' : '';
+
+          // Find matching combination powers
+          const comboPowers = archetypePowers.filter(p =>
+            !p.path?.includes('_all') &&
+            p.path?.includes(scopeType) &&
+            p.path?.includes(polarityType)
+          );
+
+          // If only one power matches, grant it automatically
+          // If multiple, player must choose (will be handled by showing selection buttons)
+          if (comboPowers.length === 1) {
+            grantedPowers.push(comboPowers[0]);
+          }
+        }
+
+        return (
+          <div className="mentalist-selection-section">
+            <h4>Mentalist: {selectedMentalistArchetype.charAt(0).toUpperCase() + selectedMentalistArchetype.slice(1)}</h4>
+            <button type="button" className="power-toggle power-toggle--clear" onClick={onClearSelections}>
+              Change Archetype
+            </button>
+
+            {/* Show granted foundational powers */}
+            {(selectedPolarity || selectedScope) && (
+              <div className="lineage-power-card">
+                <h5>Foundational Configuration</h5>
+                <ul className="power-list">
+                  {selectedPolarity && (
+                    <li className="power-list__item power-list__item--granted">
+                      <strong>{polarityPowers.find(p => p.id === selectedPolarity.id)?.name}</strong>
+                    </li>
+                  )}
+                  {selectedScope && (
+                    <li className="power-list__item power-list__item--granted">
+                      <strong>{scopePowers.find(p => p.id === selectedScope.id)?.name}</strong>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            )}
+
+            {/* Show granted archetype powers */}
+            {grantedPowers.length > 0 && (
+              <div className="lineage-power-card">
+                <h5>Granted Powers</h5>
+                <ul className="power-list">
+                  {grantedPowers.map(power => (
+                    <li key={power.id} className="power-list__item power-list__item--granted">
+                      <div className="power-list__header">
+                        <div>
+                          <strong>{power.name}</strong>
+                          <span className="badge">{power.moveType}</span>
+                        </div>
+                      </div>
+                      {renderDescription(power.description, gmEnabled)}
+                      {power.permanentCorruption !== undefined && (
+                        <p className="power-cost">Corruption: {power.permanentCorruption}</p>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Configuration selection */}
+            {!selectedPolarity && (
+              <div className="lineage-power-card">
+                <h5>Step 1: Choose {isMeta ? 'Temporal Configuration' : 'Polarity'}</h5>
+                <p className="foundation-description">
+                  {isMeta ? 'Instanced (temporary) or Persistent (lasting)' : 'Receiver (pull/perceive) or Influencer (push/project)'}
+                </p>
+                <div className="mentalist-foundation">
+                  {polarityPowers.map(power => {
+                    // For now, Meta-Mind not fully supported - skip instanced/persistent
+                    // Only show receiver/influencer
+                    const isRelevant = power.id === 'receiver-configuration' || power.id === 'influencer-configuration';
+
+                    if (!isRelevant) return null;
+
+                    const powerId = power.id ?? slugify(power.name ?? 'power');
+                    const selection: LineagePowerSelection = {
+                      id: powerId,
+                      lineage: 'esper',
+                      label: power.name ?? 'Unknown Power',
+                      kind: 'esper-framework-choice',
+                      meta: { archetype: 'foundational' }
+                    };
+
+                    return (
+                      <button
+                        key={powerId}
+                        type="button"
+                        className="power-toggle power-toggle--primary"
+                        onClick={() => onToggleSelection(selection)}
+                      >
+                        {power.name}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {selectedPolarity && !selectedScope && (
+              <div className="lineage-power-card">
+                <h5>Step 2: Choose {isMeta ? 'Change Scope' : 'Scope'}</h5>
+                <p className="foundation-description">
+                  {isMeta ? 'Discrete (specific) or Systemic (broad)' : 'Targeted (individual) or Aural (area/group)'}
+                </p>
+                <div className="mentalist-foundation">
+                  {scopePowers.map(power => {
+                    // For now, Meta-Mind not fully supported - skip discrete/systemic
+                    // Only show targeted/aural
+                    const isRelevant = power.id === 'targeted-scope' || power.id === 'aural-scope';
+
+                    if (!isRelevant) return null;
+
+                    const powerId = power.id ?? slugify(power.name ?? 'power');
+                    const selection: LineagePowerSelection = {
+                      id: powerId,
+                      lineage: 'esper',
+                      label: power.name ?? 'Unknown Power',
+                      kind: 'esper-framework-choice',
+                      meta: { archetype: 'foundational' }
+                    };
+
+                    return (
+                      <button
+                        key={powerId}
+                        type="button"
+                        className="power-toggle power-toggle--primary"
+                        onClick={() => onToggleSelection(selection)}
+                      >
+                        {power.name}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Power selection (if multiple powers available for combination) */}
+            {selectedPolarity && selectedScope && (() => {
+              const polarityType = selectedPolarity.id === 'receiver-configuration' ? 'receiver' :
+                                  selectedPolarity.id === 'influencer-configuration' ? 'influencer' : '';
+              const scopeType = selectedScope.id === 'targeted-scope' ? 'targeted' :
+                               selectedScope.id === 'aural-scope' ? 'aural' : '';
+
+              const comboPowers = archetypePowers.filter(p =>
+                !p.path?.includes('_all') &&
+                p.path?.includes(scopeType) &&
+                p.path?.includes(polarityType)
+              );
+
+              if (comboPowers.length > 1) {
+                // Player must choose one
+                const selectedComboPower = selectionsForLineage.find(s =>
+                  s.kind === 'esper-focus' && comboPowers.some(cp => cp.id === s.id)
+                );
+
+                return (
+                  <div className="lineage-power-card">
+                    <h5>Step 3: Choose Power</h5>
+                    <p className="foundation-description">Multiple powers available - select one</p>
+                    <div className="lineage-powers-grid">
+                      {comboPowers.map(power => {
+                        const powerId = power.id ?? slugify(power.name ?? 'power');
+                        const selection: LineagePowerSelection = {
+                          id: powerId,
+                          lineage: 'esper',
+                          label: power.name ?? 'Unknown Power',
+                          kind: 'esper-focus',
+                          meta: { archetype: selectedMentalistArchetype }
+                        };
+                        const isSelected = selectedComboPower?.id === powerId;
+
+                        return (
+                          <div key={powerId} className="lineage-power-card">
+                            <h6>{power.name}</h6>
+                            <span className="badge">{power.moveType}</span>
+                            {renderDescription(power.description, gmEnabled)}
+                            <button
+                              type="button"
+                              className={`power-toggle${isSelected ? ' power-toggle--active' : ''}`}
+                              onClick={() => {
+                                // Deselect other combo powers first
+                                if (selectedComboPower && selectedComboPower.id !== powerId) {
+                                  onToggleSelection(selectedComboPower);
+                                }
+                                onToggleSelection(selection);
+                              }}
+                            >
+                              {isSelected ? 'Selected' : 'Select'}
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-                ))}
-              </div>
-            </section>
-          )}
-          {childFocuses && (
-            <section className="lineage-power-subsection">
-              <h5>Advanced Paths</h5>
-              <div className="focus-grid">
-                {Object.values(childFocuses).map((focus) => {
-                  const focusRecord = focus as UnknownRecord;
-                  const childName = typeof focusRecord.name === 'string' ? focusRecord.name : 'Focus';
-                  const focusId =
-                    typeof focusRecord.id === 'string' && focusRecord.id.length > 0
-                      ? focusRecord.id
-                      : slugify(`${rootId}-${childName}`);
-                  return renderEsperFocusNode(focusRecord, [rootId, focusId], 1, rootId);
-                })}
-              </div>
-            </section>
-          )}
-        </details>
+                );
+              }
+              return null;
+            })()}
+          </div>
+        );
+      }
+
+      // No archetype selected - show archetype choices
+      const powersByArchetype = mentalistPowers
+        .filter(p => p.archetype !== 'foundational')
+        .reduce<Record<string, UnifiedPower[]>>((acc, power) => {
+          const archetype = power.archetype ?? 'Unknown';
+          if (!acc[archetype]) acc[archetype] = [];
+          acc[archetype].push(power);
+          return acc;
+        }, {});
+
+      return (
+        <div className="mentalist-selection-section">
+          <h4>Choose Mentalist Archetype</h4>
+          <p className="section-description">Select an archetype to begin configuring your Mentalist powers.</p>
+          <div className="lineage-powers-grid">
+            {Object.entries(powersByArchetype).map(([archetype, powers]) => {
+              const polarityPowers = powers.filter(p => p.path?.includes('_all'));
+              const comboPowers = powers.filter(p => !p.path?.includes('_all'));
+              const totalPowers = polarityPowers.length + comboPowers.length;
+
+              return (
+                <div key={archetype} className="lineage-power-card">
+                  <h5>{archetype.charAt(0).toUpperCase() + archetype.slice(1)}</h5>
+                  <p className="archetype-description">
+                    {totalPowers} {totalPowers === 1 ? 'power' : 'powers'} available
+                  </p>
+                  <button
+                    type="button"
+                    className="power-toggle power-toggle--primary"
+                    onClick={() => {
+                      const selection: LineagePowerSelection = {
+                        id: `mentalist-${archetype}`,
+                        lineage: 'esper',
+                        label: archetype,
+                        kind: 'esper-archetype',
+                        meta: { archetype }
+                      };
+                      onToggleSelection(selection);
+                    }}
+                  >
+                    Select {archetype.charAt(0).toUpperCase() + archetype.slice(1)}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       );
     };
 
     return (
       <section className="lineage-powers-panel">
         <header>
-          <h3>Esper / Mentalist Evolutions</h3>
-          <p>Baseline talents and branching focuses define your psionic expression.</p>
+          <h3>Esper & Mentalist Powers</h3>
+          <p>Innate psionic abilities - evolution-based or selection-based systems.</p>
         </header>
         <aside className="lineage-power-summary">
           <div>
-            <span>Archetypes Selected</span>
-            <strong>{archetypeCount}</strong>
+            <span>Evolution Depth</span>
+            <strong>{depthLimit}</strong>
           </div>
           <div>
-            <span>Focus Paths</span>
-            <strong>{focusCount}</strong>
-          </div>
-          <div>
-            <span>Framework Choices</span>
-            <strong>{frameworkChoiceCount + frameworkPathCount}</strong>
+            <span>Powers Selected</span>
+            <strong>{selectionsForLineage.length}</strong>
           </div>
           {esperNote && <p className="lineage-power-summary__note">{esperNote}</p>}
           {selectionsForLineage.length > 0 && (
@@ -1543,276 +1484,184 @@ const handleFrameworkPathToggle = (selection: LineagePowerSelection, groupKey: s
             </button>
           )}
         </aside>
-        {baseAllowed && (
-          <div className="lineage-powers-grid lineage-powers-grid--tall">
-            {Object.values(archetypes).map((archetype) => renderArchetypeCard(archetype))}
-          </div>
-        )}
-        {!baseAllowed && <p className="lineage-note">Priority C Espers begin as Mentalists. Select a path below.</p>}
-        {(() => {
-          const foundationalAugmentGroups = foundationalAugmentsRaw
-            ? Object.entries(foundationalAugmentsRaw).reduce<
-                Array<{ key: string; label: string; abilities: AbilityEntry[] }>
-              >((acc, [categoryKey, value]) => {
-                const abilities = createAbilityEntries(
-                  normalizeAbilityCollection(value),
-                  `${(mentalistRoot ?? 'mentalist')}-${categoryKey}`
-                );
-                if (abilities.length > 0) {
-                  acc.push({ key: categoryKey, label: toTitleCase(categoryKey), abilities });
-                }
-                return acc;
-              }, [])
-            : [];
-          const hasMentalistData = foundationalAugmentGroups.length > 0 || mentalistPathEntries.length > 0;
-          if (!mentalistAllowed || !hasMentalistData) {
-            return (
-              !mentalistAllowed && hasMentalistData && lineagePriority !== null && (
-                <p className="lineage-note">Mentalist paths unlock at Priority A or C.</p>
-              )
-            );
-          }
-
-          return (
-            <article className="lineage-power-card framework">
-              <header>
-                <h4>Mentalist Framework</h4>
-              </header>
-              {foundationalAugmentGroups.length > 0 && (() => {
-                const rootKey = mentalistRoot ?? 'mentalist';
-                const polarityGroup = foundationalAugmentGroups.find((group) => group.key === 'polarity');
-                const scopeGroup = foundationalAugmentGroups.find((group) => group.key === 'scope');
-                const remainingGroups = foundationalAugmentGroups.filter(
-                  (group) => group.key !== 'polarity' && group.key !== 'scope'
-                );
-
-                const renderFoundationalList = (
-                  group: { key: string; label: string; abilities: AbilityEntry[] },
-                  title?: string
-                ) => (
-                  <div key={group.key} className="lineage-choice-section">
-                    <h6>{title ?? group.label}</h6>
-                    <ul className="power-list">
-                      {group.abilities.map((ability, index) => {
-                        const fallbackId = `${rootKey}-${group.key}-${index}`;
-                        const abilityId = ability.id || fallbackId;
-                        const selection: LineagePowerSelection = {
-                          id: abilityId,
-                          lineage: 'esper',
-                          label: `Foundational Augment — ${ability.name}`,
-                          kind: 'esper-framework-choice',
-                          meta: {
-                            root: rootKey,
-                            parent: rootKey,
-                            path: [rootKey, 'foundational', group.key, abilityId],
-                            depth: 1,
-                            category: 'esper-mentalist'
-                          }
-                        };
-                        const isSelected = selectedIds.has(selection.id);
-                        const disabled = !isRootSelected(rootKey) || !isDepthAllowed(rootKey, 1);
-                        const itemClass = `power-list__item${isSelected ? ' power-list__item--selected' : ''}`;
-                        const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
-                        return (
-                          <li key={abilityId} className={itemClass}>
-                            <div className="power-list__header">
-                              <div>
-                                <strong>{ability.name}</strong>
-                                {ability.type && <span className="badge badge--type">{toTitleCase(ability.type)}</span>}
-                                {ability.cost && <span className="badge badge--cost">{ability.cost}</span>}
-                                {ability.duration && <span className="badge">{ability.duration}</span>}
-                                {ability.scope && <span className="badge">{ability.scope}</span>}
-                              </div>
-                              <button
-                                type="button"
-                                className={toggleClass}
-                                disabled={disabled && !isSelected}
-                                onClick={() => {
-                                  if (!disabled || isSelected) {
-                                    handleFrameworkChoiceToggle(selection, group.key);
-                                  }
-                                }}
-                              >
-                                {isSelected ? 'Selected' : 'Add'}
-                              </button>
-                            </div>
-                            {ability.description && <p>{ability.description}</p>}
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                );
-
-                return (
-                  <section className="lineage-power-subsection">
-                    <h5>Foundational Augments</h5>
-                    {polarityGroup && renderFoundationalList(polarityGroup, 'Polarity Configuration')}
-                    {scopeGroup && renderFoundationalList(scopeGroup, 'Scope Configuration')}
-                    {remainingGroups.map((group) => renderFoundationalList(group))}
-                  </section>
-                );
-              })()}
-              {mentalistPathEntries.length > 0 && (
-                <section className="lineage-power-subsection">
-                  <h5>Paths</h5>
-                  <div className="lineage-powers-grid lineage-powers-grid--tall">
-                    {mentalistPathEntries.map(([pathKey, pathRecord]) =>
-                      renderMentalistPath(pathKey, pathRecord)
-                    )}
-                  </div>
-                </section>
-              )}
-            </article>
-          );
-        })()}
+        {showEsper && renderEsperSection()}
+        {showMentalist && renderMentalistSection()}
       </section>
     );
   }
 
+  // AUTOMATA SECTION - Package selection system
   if (lineage === 'automata' && isAutomataData(powerData)) {
-    const capabilityCount = selectionsForLineage.filter((entry) => entry.kind === 'automata-capability').length;
-    const modelCount = selectionsForLineage.filter((entry) => entry.kind === 'automata-model').length;
+    // Priority determines available quality levels
+    const QUALITY_BY_PRIORITY: Record<string, { worker: string[]; soldier: string[]; overseer: string[] }> = {
+      A: { worker: [], soldier: ['imperial'], overseer: ['imperial'] },
+      B: { worker: [], soldier: ['advanced'], overseer: ['advanced'] },
+      C: { worker: [], soldier: ['basic'], overseer: ['basic'] },
+      D: { worker: ['advanced'], soldier: [], overseer: [] },
+      E: { worker: ['basic'], soldier: [], overseer: [] }
+    };
+
+    const availableQualities = lineagePriority ? QUALITY_BY_PRIORITY[lineagePriority] : { worker: [], soldier: [], overseer: [] };
+
+    // Get unique chassis/branch combinations
+    const chassisBranchMap = powerData.powers.reduce<Record<string, Set<string>>>((acc, power) => {
+      const chassis = power.chassis ?? 'unknown';
+      const branch = power.branch ?? 'unknown';
+      if (!acc[chassis]) acc[chassis] = new Set();
+      acc[chassis].add(branch);
+      return acc;
+    }, {});
+
+    // Check if player has selected a chassis/branch combo
+    const selectedCombo = selectionsForLineage.find((s) => s.kind === 'automata-package');
+    const selectedChassis = selectedCombo?.meta?.chassis;
+    const selectedBranch = selectedCombo?.meta?.branch;
+    const selectedQuality = selectedCombo?.meta?.category;
+
+    // Get powers for a specific chassis/branch/quality combo
+    const getPowersForCombo = (chassis: string, branch: string, quality: string): UnifiedPower[] => {
+      return powerData.powers.filter((p) => {
+        if (p.chassis !== chassis) return false;
+        // Include general chassis powers OR branch-specific powers
+        if (p.augmentLevel === 'general') return true;
+        if (p.branch !== branch) return false;
+        // Include powers up to and including the quality level
+        const levels = ['basic', 'advanced', 'imperial'];
+        const qualityIndex = levels.indexOf(quality);
+        const powerIndex = levels.indexOf(p.augmentLevel ?? '');
+        return powerIndex >= 0 && powerIndex <= qualityIndex;
+      });
+    };
+
     return (
       <section className="lineage-powers-panel">
         <header>
-          <h3>Chassis & Branches</h3>
-          <p>Choose a chassis, explore its branches, and escalate from basic to imperial protocols.</p>
+          <h3>Automata Configuration</h3>
+          <p>Choose your chassis, branch, and quality level. You automatically receive ALL powers for that configuration.</p>
         </header>
         <aside className="lineage-power-summary">
-          <div>
-            <span>Capabilities</span>
-            <strong>{capabilityCount}</strong>
-          </div>
-          <div>
-            <span>Models</span>
-            <strong>{modelCount}</strong>
-          </div>
-          {selectionsForLineage.length > 0 && (
-            <button type="button" className="power-toggle power-toggle--clear" onClick={onClearSelections}>
-              Clear selections
-            </button>
+          {selectedCombo && (
+            <>
+              <div>
+                <span>Selected Configuration</span>
+                <strong>{selectedQuality?.toUpperCase()} {selectedBranch?.toUpperCase()} ({selectedChassis?.toUpperCase()})</strong>
+              </div>
+              <button type="button" className="power-toggle power-toggle--clear" onClick={onClearSelections}>
+                Clear selection
+              </button>
+            </>
+          )}
+          {!selectedCombo && (
+            <p>Select a chassis/branch configuration below. Priority {lineagePriority ?? '—'} determines available quality levels.</p>
           )}
         </aside>
-        <div className="chassis-grid">
-          {Object.values(powerData.chassis).map((chassis) => (
-            <details key={chassis.id ?? chassis.name} className="lineage-power-card" open>
-              <summary>
-                <div className="lineage-power-card__summary">
-                  <h4>{chassis.name}</h4>
-                </div>
-              </summary>
-              {chassis.branches && (
-                <div className="branch-grid">
-                  {Object.values(chassis.branches).map((branch) => {
-                    const branchName = branch.name ?? 'Branch';
-                    const branchId = branch.id ?? `${chassis.id ?? slugify(chassis.name ?? 'chassis')}-${slugify(branchName)}`;
-                    const branchCapabilities = branch.general_capabilities ?? [];
-                    return (
-                      <details key={branchId} className="branch-card" open>
-                        <summary>
-                          <div className="branch-card__summary">
-                            <h5>{branchName}</h5>
-                            {branch.focus && <span>{branch.focus}</span>}
-                          </div>
-                        </summary>
-                        {branchCapabilities.length > 0 && (
-                          <section className="lineage-power-subsection">
-                            <h6>General Capabilities</h6>
-                            <ul className="power-list">
-                              {branchCapabilities.map((capability, index) => {
-                                const capabilityName = capability.name ?? 'Capability';
-                                const capabilityId = `${branchId}-cap-${index}-${slugify(capabilityName)}`;
-                                const capabilitySelection: LineagePowerSelection = {
-                                  id: capabilityId,
-                                  lineage: 'automata',
-                                  label: `Capability — ${capabilityName}`,
-                                  kind: 'automata-capability',
-                                  meta: {
-                                    branch: branchName,
-                                    chassis: chassis.name,
-                                    category: capability.type
-                                  }
-                                };
-                                const capabilitySelected = selectedIds.has(capabilitySelection.id);
-                                const capabilityItemClass = `power-list__item${capabilitySelected ? ' power-list__item--selected' : ''}`;
-                                const capabilityToggleClass = `power-toggle${capabilitySelected ? ' power-toggle--active' : ''}`;
-                                return (
-                                  <li key={capabilityId} className={capabilityItemClass}>
-                                    <div className="power-list__header">
-                                      <div>
-                                        <strong>{capabilityName}</strong>
-                                        {capability.type && <span className="badge badge--type">{capability.type}</span>}
-                                        {typeof capability.cost === 'number' && (
-                                          <span className="badge badge--cost">Cost {capability.cost}</span>
-                                        )}
-                                      </div>
-                                      <button
-                                        type="button"
-                                        className={capabilityToggleClass}
-                                        onClick={() => onToggleSelection(capabilitySelection)}
-                                      >
-                                        {capabilitySelected ? 'Selected' : 'Add'}
-                                      </button>
-                                    </div>
-                                    {capability.description && <p>{capability.description}</p>}
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          </section>
-                        )}
-                        {branch.models && (
-                          <section className="lineage-power-subsection">
-                            <h6>Models</h6>
-                            <div className="model-grid">
-                              {Object.values(branch.models).map((model) => {
-                                const modelName = model.name ?? 'Model';
-                                const modelId = `${branchId}-model-${slugify(modelName)}`;
-                                const modelSelection: LineagePowerSelection = {
-                                  id: modelId,
-                                  lineage: 'automata',
-                                  label: `Model — ${modelName}`,
-                                  kind: 'automata-model',
-                                  meta: {
-                                    branch: branchName,
-                                    chassis: chassis.name,
-                                    category: model.tier
-                                  }
-                                };
-                                const modelSelected = selectedIds.has(modelSelection.id);
-                                const modelClass = `model-card${model.available === false ? ' model-card--locked' : ''}${modelSelected ? ' model-card--selected' : ''}`;
-                                const modelToggleClass = `power-toggle${modelSelected ? ' power-toggle--active' : ''}`;
-                                return (
-                                  <div key={modelId} className={modelClass}>
-                                    <div className="model-card__header">
-                                      <strong>{modelName}</strong>
-                                      {model.tier && <span className="badge badge--tier">{model.tier}</span>}
-                                      {model.available === false && <span className="badge badge--locked">Locked</span>}
-                                      <button
-                                        type="button"
-                                        className={modelToggleClass}
-                                        onClick={() => onToggleSelection(modelSelection)}
-                                      >
-                                        {modelSelected ? 'Selected' : 'Add'}
-                                      </button>
-                                    </div>
-                                    {renderCapabilities(model.augments, gmEnabled)}
-                                    {renderCapabilities(model.moves, gmEnabled)}
-                                  </div>
-                                );
-                              })}
+
+        {!selectedCombo && (
+          <div className="automata-selection-grid">
+            {Object.entries(chassisBranchMap).map(([chassis, branches]) => {
+              const availableLevels = availableQualities[chassis as keyof typeof availableQualities] || [];
+              if (availableLevels.length === 0) return null;
+
+              return (
+                <div key={chassis} className="automata-chassis-section">
+                  <h4>{chassis.charAt(0).toUpperCase() + chassis.slice(1)} Chassis</h4>
+                  {Array.from(branches).map((branch) => {
+                    return availableLevels.map((quality) => {
+                      const comboId = `${chassis}-${branch}-${quality}`;
+                      const powers = getPowersForCombo(chassis, branch, quality);
+                      const selection: LineagePowerSelection = {
+                        id: comboId,
+                        lineage: 'automata',
+                        label: `${quality.toUpperCase()} ${branch} (${chassis})`,
+                        kind: 'automata-package',
+                        meta: {
+                          chassis,
+                          branch,
+                          category: quality
+                        }
+                      };
+
+                      return (
+                        <details key={comboId} className="automata-package-card">
+                          <summary>
+                            <div className="automata-package-summary">
+                              <div>
+                                <h5>{quality.toUpperCase()} {branch.charAt(0).toUpperCase() + branch.slice(1)}</h5>
+                                <p className="automata-package-count">{powers.length} powers included</p>
+                              </div>
+                              <button
+                                type="button"
+                                className="power-toggle"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  onToggleSelection(selection);
+                                }}
+                              >
+                                Select This Configuration
+                              </button>
                             </div>
-                          </section>
-                        )}
-                      </details>
-                    );
+                          </summary>
+                          <div className="automata-package-details">
+                            <p className="automata-package-note">Selecting this configuration grants you ALL of these powers automatically:</p>
+                            <ul className="power-list">
+                              {powers.map((power) => (
+                                <li key={power.id} className="power-list__item">
+                                  <div>
+                                    <strong>{power.name}</strong>
+                                    <span className="badge badge--type">{power.augmentLevel}</span>
+                                    {power.moveType && <span className="badge">{power.moveType}</span>}
+                                  </div>
+                                  {renderDescription(power.description, gmEnabled)}
+                                  {power.outcomes && Object.keys(power.outcomes).length > 0 && (
+                                    <div className="power-outcomes">
+                                      {Object.entries(power.outcomes).map(([roll, outcome]) => (
+                                        <div key={roll}>
+                                          <strong>{roll}:</strong> {outcome}
+                                        </div>
+                                      ))}
+                                    </div>
+                                  )}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </details>
+                      );
+                    });
                   })}
                 </div>
-              )}
-            </details>
-          ))}
-        </div>
+              );
+            })}
+          </div>
+        )}
+
+        {selectedCombo && selectedChassis && selectedBranch && selectedQuality && (
+          <div className="automata-selected-powers">
+            <h4>Your Powers</h4>
+            <p>As a {selectedQuality.toUpperCase()} {selectedBranch} ({selectedChassis}), you have these capabilities:</p>
+            <ul className="power-list">
+              {getPowersForCombo(selectedChassis, selectedBranch, selectedQuality).map((power) => (
+                <li key={power.id} className="power-list__item">
+                  <div>
+                    <strong>{power.name}</strong>
+                    <span className="badge badge--type">{power.augmentLevel}</span>
+                    {power.moveType && <span className="badge">{power.moveType}</span>}
+                  </div>
+                  {renderDescription(power.description, gmEnabled)}
+                  {power.outcomes && Object.keys(power.outcomes).length > 0 && (
+                    <div className="power-outcomes">
+                      {Object.entries(power.outcomes).map(([roll, outcome]) => (
+                        <div key={roll}>
+                          <strong>{roll}:</strong> {outcome}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </section>
     );
   }

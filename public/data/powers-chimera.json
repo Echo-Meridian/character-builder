@@ -6,6 +6,11 @@
       "id": "primal-form",
       "name": "Primal Form",
       "category": "Core Augments",
+      "tags": ["core", "specialization", "tier-of-effect"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "primal-form-core",
@@ -16,7 +21,19 @@
           "description": {
             "short": "Choose one Physique specialization: Strength, Agility, Perception or Stamina. When you succeed on a roll (7+) using that specialization, your Tier of Effect is increased by one.",
             "player": "Your body is fundamentally reshaped by your animalistic nature, granting you a level of physical prowess beyond normal human limits."
-          }
+          },
+          "effects": [
+            {
+              "type": "tier_of_effect",
+              "value": 1,
+              "target": "chosen_physique_specialization",
+              "conditional": true,
+              "condition": "on_success_7_plus",
+              "duration": "permanent",
+              "description": "Increase Tier of Effect by 1 on successful rolls with chosen Physique specialization"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -25,6 +42,11 @@
       "id": "unstable-genome",
       "name": "Unstable Genome",
       "category": "Core Augments",
+      "tags": ["core", "progression", "narrative"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "unstable-genome-core",
@@ -35,7 +57,14 @@
           "description": {
             "short": "Your mutations can evolve. During Downtime, you can spend XP to gain new mutations. Significant trauma can also trigger unpredictable changes at the GM's discretion.",
             "player": "Your genetic code is not a fixed script but a living document, prone to edits and revisions. This is the source of your greatest strengths and most profound fears."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "description": "Enables mutation evolution through XP or trauma during Downtime"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -44,6 +73,11 @@
       "id": "blight-resistance",
       "name": "Blight Resistance",
       "category": "Core Augments",
+      "tags": ["core", "defensive", "blight", "resistance"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "blight-resistance-core",
@@ -54,7 +88,18 @@
           "description": {
             "short": "You gain a +2 bonus on all rolls made to resist the effects of Blight exposure, corrupted zones, and the direct attacks of Blight-mutated creatures.",
             "player": "Your biology is inherently hostile to the Blight's corrupting influence. While others succumb to its toxic whisper, your body actively fights it off."
-          }
+          },
+          "effects": [
+            {
+              "type": "skill_bonus",
+              "value": 2,
+              "target": "blight_resistance",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "+2 bonus on all Blight resistance rolls"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -63,6 +108,11 @@
       "id": "armored-hide",
       "name": "Armored Hide",
       "category": "Primal Manifestations",
+      "tags": ["defensive", "physical", "armor", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "armored-hide-tier1",
@@ -74,7 +124,25 @@
             "short": "You gain 1 point of natural armor against Blunt damage.",
             "player": "Your skin is a chaotic mosaic of hardened calluses, thick hide, or isolated bony plates. It's ugly and uneven, but offers a desperate level of protection.",
             "flaw": "The plating is poorly integrated. When you take Wound damage, the shock causes painful microfractures. You suffer 1 additional Stun damage."
-          }
+          },
+          "effects": [
+            {
+              "type": "armor_bonus",
+              "armor_value": 0,
+              "padding_value": 1,
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Natural armor: AV 0, PV 1 (protects against Blunt damage only)"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "on_wound_damage",
+              "effect": "stun_damage",
+              "value": 1,
+              "description": "Microfractures cause 1 additional Stun damage when taking Wound damage"
+            }
+          ]
         },
         "tier2": {
           "id": "armored-hide-tier2",
@@ -85,7 +153,18 @@
           "description": {
             "short": "You gain 1 point of natural armor against both Blunt and Wound damage.",
             "player": "Your skin is covered in a logical, articulated pattern of chitinous plates or thick, scaled hide. It moves with you, providing excellent, reliable protection without sacrificing much flexibility."
-          }
+          },
+          "effects": [
+            {
+              "type": "armor_bonus",
+              "armor_value": 1,
+              "padding_value": 1,
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Natural armor: AV 1, PV 1 (protects against both Wound and Blunt damage)"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "armored-hide-tier3",
@@ -96,7 +175,18 @@
           "description": {
             "short": "You gain 2 points of natural armor against both Blunt and Wound damage.",
             "player": "Your body is a fortress of bioceramic bone or hyper-dense, interlocking scales. Your entire physiology is geared toward absorbing and deflecting harm with terrifying efficiency."
-          }
+          },
+          "effects": [
+            {
+              "type": "armor_bonus",
+              "armor_value": 2,
+              "padding_value": 2,
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Natural armor: AV 2, PV 2 (military-grade protection against both Wound and Blunt damage)"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -105,6 +195,11 @@
       "id": "natural-weapons",
       "name": "Natural Weapons",
       "category": "Primal Manifestations",
+      "tags": ["offensive", "physical", "weapon", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "natural-weapons-tier1",
@@ -116,7 +211,27 @@
             "short": "Your unarmed strikes count as melee weapons, dealing Wound damage.",
             "player": "Your knuckles are studded with sharp, overgrown bone or your fingers end in brittle, jagged claws. They are crude, permanently exposed, and terrifying weapons.",
             "flaw": "Your natural weapons are brittle. When you roll a critical failure on an attack roll using them, a claw or spur breaks off painfully. The weapon is unusable until you have Downtime to regrow it, and you take 1 point of Wound damage yourself."
-          }
+          },
+          "effects": [
+            {
+              "type": "damage_bonus",
+              "damage_type": "wound",
+              "target": "unarmed_strikes",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Unarmed strikes count as melee weapons dealing Wound damage (base 1 Wound + Physique modifier)"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "on_critical_failure_attack",
+              "effect": "weapon_break_and_wound_damage",
+              "value": 1,
+              "target": "self_health_boxes",
+              "duration": "until_downtime",
+              "description": "On critical failure, weapon breaks and you mark 1 Health Box"
+            }
+          ]
         },
         "tier2": {
           "id": "natural-weapons-tier2",
@@ -127,7 +242,22 @@
           "description": {
             "short": "Your unarmed strikes count as melee weapons, dealing Wound damage. You can extend or retract them as a free action.",
             "player": "You possess well-formed, durable claws, fangs, or spurs made of a tough keratin. They can be extended or retracted at will, allowing for an element of surprise."
-          }
+          },
+          "effects": [
+            {
+              "type": "damage_bonus",
+              "damage_type": "wound",
+              "target": "unarmed_strikes",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Unarmed strikes count as melee weapons dealing Wound damage (base 1 Wound + Physique modifier)"
+            },
+            {
+              "type": "custom",
+              "description": "Can extend or retract weapons as a free action for concealment"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "natural-weapons-tier3",
@@ -138,7 +268,26 @@
           "description": {
             "short": "Your unarmed strikes count as melee weapons that deal Wound damage. Due to their terrifying sharpness and perfect integration, you gain a +1 bonus to all attack rolls made with them.",
             "player": "Your natural weapons are masterpieces of biological engineering, impossibly sharp and durable. They might be laced with metal harvested from your diet or hardened by a unique crystalline structure."
-          }
+          },
+          "effects": [
+            {
+              "type": "damage_bonus",
+              "damage_type": "wound",
+              "target": "unarmed_strikes",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Unarmed strikes count as melee weapons dealing Wound damage (base 1 Wound + Physique modifier)"
+            },
+            {
+              "type": "skill_bonus",
+              "value": 1,
+              "target": "melee_attack_rolls",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "+1 bonus to attack rolls with natural weapons (applies to 2d6 roll)"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -147,6 +296,11 @@
       "id": "enhanced-sense",
       "name": "Enhanced Sense",
       "category": "Primal Manifestations",
+      "tags": ["sensory", "perception", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "enhanced-sense-tier1",
@@ -158,7 +312,25 @@
             "short": "Choose one sense: sight or hearing. You gain a new sensory mode. With enhanced sight, you gain thermal vision. With enhanced hearing, you can hear ultrasonic frequencies.",
             "player": "One of your senses is honed to an animalistic degree. Your eyes are unnervingly sharp, or your hearing is disturbingly acute, constantly picking up background details.",
             "flaw": "Your sense is unfiltered and overwhelming. You suffer a penalty to all rolls that require concentration in sensorily 'loud' environments as you are bombarded with useless data."
-          }
+          },
+          "effects": [
+            {
+              "type": "special_sense",
+              "value": "thermal_vision_or_ultrasonic_hearing",
+              "target": "chosen_sense",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Gain new sensory mode based on chosen sense"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "in_loud_environment",
+              "effect": "penalty",
+              "target": "concentration_rolls",
+              "description": "Penalty to concentration rolls in sensorily overwhelming environments"
+            }
+          ]
         },
         "tier2": {
           "id": "enhanced-sense-tier2",
@@ -169,7 +341,17 @@
           "description": {
             "short": "Choose one sense: sight or hearing. You are immune to penalties from environmental conditions related to that sense. You can see perfectly in dim light or glare, or you can filter out background noise to hear a specific conversation in a loud room.",
             "player": "Your mind has adapted to your enhanced sense, allowing you to filter and focus with incredible precision."
-          }
+          },
+          "effects": [
+            {
+              "type": "resistance",
+              "target": "environmental_penalties_chosen_sense",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Immune to environmental penalties for chosen sense (see perfectly in darkness/glare, filter out background noise in loud environments)"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "enhanced-sense-tier3",
@@ -180,7 +362,18 @@
           "description": {
             "short": "Choose one sense: sight, hearing, or smell. This Augment increases your Tier of Effect on all rolls using the Perception specialization related to that sense.",
             "player": "Your senses have transcended the physical, attuning to the Aether itself. You don't just see body heat; you see the glow of a life force. You don't just hear sound; you hear the resonance of a soul."
-          }
+          },
+          "effects": [
+            {
+              "type": "tier_of_effect",
+              "value": 1,
+              "target": "perception_chosen_sense",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Increase Tier of Effect on Perception rolls related to chosen sense"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -189,6 +382,11 @@
       "id": "grasping-surfaces",
       "name": "Grasping Surfaces",
       "category": "Primal Manifestations",
+      "tags": ["mobility", "climbing", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "grasping-surfaces-tier1",
@@ -200,7 +398,24 @@
             "short": "You can climb sheer but textured surfaces (brick walls, rough rock) at half your normal movement speed without needing a roll.",
             "player": "You have developed a crude but effective method for clinging to surfaces, like rough pads on your hands and feet or sharp keratinous hooks.",
             "flaw": "Your climbing method is clumsy and destructive. You cannot climb smooth surfaces like glass or polished metal at all, and you always leave behind evidence."
-          }
+          },
+          "effects": [
+            {
+              "type": "movement_modifier",
+              "value": "0.5x_movement_speed",
+              "target": "climbing_textured_surfaces",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Climb sheer but textured surfaces (brick, rough rock) at half normal movement speed without needing Athletics rolls"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "climbing",
+              "effect": "limitation_and_evidence",
+              "description": "Cannot climb smooth surfaces; always leaves evidence"
+            }
+          ]
         },
         "tier2": {
           "id": "grasping-surfaces-tier2",
@@ -211,7 +426,18 @@
           "description": {
             "short": "You can climb any surface, including smooth glass, at your normal movement speed. You no longer need to make rolls to maintain your grip.",
             "player": "Your climbing ability is now second nature, like a spider's silent grace or a gecko's adhesive pads."
-          }
+          },
+          "effects": [
+            {
+              "type": "movement_modifier",
+              "value": "1x_movement_speed",
+              "target": "climbing_any_surface",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Climb any surface (including smooth glass) at normal movement speed without making Athletics rolls to maintain grip"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "grasping-surfaces-tier3",
@@ -220,9 +446,20 @@
           "mutationPoints": 3,
           "permanentCorruption": 3,
           "description": {
-            "short": "You can move along any surface\u2014walls, ceilings\u2014at full speed and can even hang motionless indefinitely. You may even take a 'sprinting' action while climbing.",
+            "short": "You can move along any surface—walls, ceilings—at full speed and can even hang motionless indefinitely. You may even take a 'sprinting' action while climbing.",
             "player": "You are no longer just climbing; you are ignoring gravity's claim on you, perhaps by manipulating micro-gravitational fields or bonding at a molecular level."
-          }
+          },
+          "effects": [
+            {
+              "type": "movement_modifier",
+              "value": "1x_movement_speed_plus_sprint",
+              "target": "climbing_walls_ceilings",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Move on any surface (walls, ceilings) at full movement speed. Can hang motionless indefinitely. Can use Sprint/Dash actions while climbing"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -231,6 +468,11 @@
       "id": "shifting-visage",
       "name": "Shifting Visage",
       "category": "Primal Manifestations",
+      "tags": ["stealth", "camouflage", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "shifting-visage-tier1",
@@ -242,7 +484,25 @@
             "short": "When you are perfectly still and in an environment that matches your natural camouflage, observers suffer a significant penalty to Alertness rolls to spot you.",
             "player": "Your skin or fur has a natural coloration that helps you blend into a specific type of environment.",
             "flaw": "Your camouflage is specialized and slow. It only works in one type of environment, and moving at more than a slow crawl immediately breaks the illusion."
-          }
+          },
+          "effects": [
+            {
+              "type": "skill_bonus",
+              "value": "significant_penalty_to_observers",
+              "target": "stealth_when_still",
+              "conditional": true,
+              "condition": "perfectly_still_and_matching_environment",
+              "duration": "permanent",
+              "description": "Observers suffer penalty to spot you when still in matching environment"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "movement_faster_than_crawl",
+              "effect": "breaks_camouflage",
+              "description": "Only works in specific environment; movement breaks illusion"
+            }
+          ]
         },
         "tier2": {
           "id": "shifting-visage-tier2",
@@ -253,7 +513,17 @@
           "description": {
             "short": "You can become effectively invisible as long as you move slowly. This grants you an advantage on all Larceny (Stealth) rolls.",
             "player": "You can consciously and rapidly change your appearance, using chromatophores or light-bending fur to mimic your surroundings."
-          }
+          },
+          "effects": [
+            {
+              "type": "skill_bonus",
+              "target": "larceny_stealth_rolls",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Roll 3d6 drop lowest (Advantage) on all Larceny (Stealth) rolls. Effectively invisible when moving slowly"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "shifting-visage-tier3",
@@ -262,9 +532,20 @@
           "mutationPoints": 3,
           "permanentCorruption": 3,
           "description": {
-            "short": "You are utterly imperceptible\u2014unseen, unheard, unremembered\u2014as long as you do not directly interact with anything. This effect lasts for up to a minute at a time.",
+            "short": "You are utterly imperceptible—unseen, unheard, unremembered—as long as you do not directly interact with anything. This effect lasts for up to a minute at a time.",
             "player": "Your camouflage is now a psycho-Aetheric phenomenon. You don't just hide from sight; you edit yourself out of your target's perception."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "complete_imperceptibility",
+              "conditional": true,
+              "condition": "no_direct_interaction",
+              "duration": "up_to_1_minute",
+              "description": "Utterly imperceptible - unseen, unheard, unremembered while not interacting"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -273,6 +554,11 @@
       "id": "venomous-expulsion",
       "name": "Venomous Expulsion",
       "category": "Primal Manifestations",
+      "tags": ["offensive", "ranged", "status-effect", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "venomous-expulsion-tier1",
@@ -284,7 +570,26 @@
             "short": "You can make a ranged attack against a single target within 10 feet. On a hit, the target is afflicted with a minor penalty on their next action.",
             "player": "You can forcefully project a stream of irritating biological fluid from your mouth, like a foul musk or sticky saliva.",
             "flaw": "Your body has a limited supply. You can only use this ability a few times before needing a full scene to rest and regenerate the fluid."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "ranged_attack_10ft_penalty",
+              "target": "single_target",
+              "conditional": true,
+              "condition": "on_hit",
+              "duration": "next_action",
+              "description": "Ranged attack within 10 feet that inflicts penalty on target's next action"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "limited_uses",
+              "effect": "resource_exhaustion",
+              "duration": "scene",
+              "description": "Limited uses per scene; requires full scene rest to regenerate"
+            }
+          ]
         },
         "tier2": {
           "id": "venomous-expulsion-tier2",
@@ -295,7 +600,18 @@
           "description": {
             "short": "Make a ranged attack. On a hit (10+), a chosen effect (paralytic, adhesive, or corrosive) works perfectly. On a 7-9, the effect is weaker.",
             "player": "You have developed a potent and specialized biological weapon. Define its nature with your GM (paralytic venom, web-like adhesive, or corrosive acid)."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "specialized_ranged_attack",
+              "target": "chosen_effect_type",
+              "conditional": true,
+              "condition": "roll_result",
+              "description": "Ranged attack with chosen effect: paralytic, adhesive, or corrosive"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "venomous-expulsion-tier3",
@@ -306,7 +622,16 @@
           "description": {
             "short": "Your specialized spit attack is now incredibly potent. Poison can render a target unconscious, adhesive can immobilize them, and acid deals Wound damage or destroys locks.",
             "player": "Your body is a living chemical factory, capable of producing a truly devastating projectile."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "potent_ranged_attack",
+              "target": "specialized_effect",
+              "description": "Highly potent effect: unconsciousness (poison), immobilization (adhesive), or Wound damage (acid)"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -315,6 +640,11 @@
       "id": "prehensile-tail",
       "name": "Prehensile Tail",
       "category": "Primal Manifestations",
+      "tags": ["utility", "mobility", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "prehensile-tail-tier1",
@@ -326,7 +656,24 @@
             "short": "Your tail provides a +1 bonus to all Athletics rolls made to keep your balance or recover from a fall. It can perform very simple interactions.",
             "player": "You have a tail, but its musculature is simple. It mainly acts as a balancing aid.",
             "flaw": "Your tail has a mind of its own when you are stressed or not paying attention, betraying your emotional state at inconvenient times."
-          }
+          },
+          "effects": [
+            {
+              "type": "skill_bonus",
+              "value": 1,
+              "target": "athletics_balance_and_fall_recovery",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "+1 bonus to Athletics for balance and fall recovery"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "stress_or_inattention",
+              "effect": "reveals_emotional_state",
+              "description": "Tail betrays emotional state at inconvenient times"
+            }
+          ]
         },
         "tier2": {
           "id": "prehensile-tail-tier2",
@@ -337,7 +684,15 @@
           "description": {
             "short": "You can use your tail as a 'third hand' to hold objects or manipulate simple tools. When it would be beneficial, you gain an advantage on complex physical action rolls.",
             "player": "Your tail is now a strong, flexible, and fully controllable appendage."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "third_hand",
+              "description": "Can use tail as third hand; advantage on complex physical actions when beneficial"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "prehensile-tail-tier3",
@@ -348,7 +703,18 @@
           "description": {
             "short": "Your tail now counts as an integrated melee weapon (piercing, slashing, or blunt/grappling). You can attack with it as a normal combat action.",
             "player": "Your tail has evolved into a formidable natural weapon, tipped with a stinger, covered in spurs, or possessing crushing strength."
-          }
+          },
+          "effects": [
+            {
+              "type": "damage_bonus",
+              "damage_type": "wound",
+              "target": "tail_attacks",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Tail counts as integrated melee weapon dealing Wound damage (base 1 Wound + Physique modifier). Choose type: piercing, slashing, or blunt"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -357,6 +723,11 @@
       "id": "aerial-mobility",
       "name": "Aerial Mobility",
       "category": "Primal Manifestations",
+      "tags": ["mobility", "flight", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "aerial-mobility-tier1",
@@ -368,7 +739,24 @@
             "short": "You can never suffer damage from falling from any height, as long as you have space to slow yourself. You can guide your fall within a 30-foot radius.",
             "player": "You have developed a way to fight gravity's pull, like membranes between your limbs or an unnaturally light bone structure.",
             "flaw": "You have very little horizontal control. Strong winds can easily blow you off course, and you cannot gain altitude."
-          }
+          },
+          "effects": [
+            {
+              "type": "resistance",
+              "target": "fall_damage",
+              "conditional": true,
+              "condition": "has_space_to_slow",
+              "duration": "permanent",
+              "description": "Immune to all fall damage from any height (if space exists to slow descent). Can guide fall within 30-foot radius of landing point"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "strong_winds",
+              "effect": "loss_of_control",
+              "description": "Little horizontal control; vulnerable to strong winds; cannot gain altitude"
+            }
+          ]
         },
         "tier2": {
           "id": "aerial-mobility-tier2",
@@ -379,7 +767,18 @@
           "description": {
             "short": "You can glide. For every 10 feet you descend, you can travel 30 feet forward. You can ride thermal updrafts to maintain or slightly gain altitude.",
             "player": "Your method of aerial movement is now efficient and controlled, with larger membranes or feathered forelimbs."
-          }
+          },
+          "effects": [
+            {
+              "type": "movement_modifier",
+              "value": "glide_3_to_1_ratio",
+              "target": "gliding",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Can glide: for every 10 feet descended, travel 30 feet forward. Can ride thermal updrafts to maintain or slightly gain altitude"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "aerial-mobility-tier3",
@@ -390,7 +789,18 @@
           "description": {
             "short": "You can fly freely for the duration of a scene. Your flight speed is equivalent to your normal running speed.",
             "player": "You possess the miracle of true, self-powered flight through powerful wings or even localized gravity manipulation."
-          }
+          },
+          "effects": [
+            {
+              "type": "movement_modifier",
+              "value": "1x_running_speed",
+              "target": "powered_flight",
+              "conditional": false,
+              "duration": "scene",
+              "description": "True powered flight for duration of scene. Flight speed equals normal running speed. Can hover, ascend, and maneuver freely"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -399,6 +809,11 @@
       "id": "metabolic-furnace",
       "name": "Metabolic Furnace",
       "category": "Primal Manifestations",
+      "tags": ["healing", "regeneration", "resistance", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "metabolic-furnace-tier1",
@@ -410,7 +825,26 @@
             "short": "Once per scene, as an action, you can clear all of your current Stun damage by forcing your body into metabolic overdrive.",
             "player": "Your body is a high-performance engine that is always burning hot, healing minor scrapes with visible speed.",
             "flaw": "You must consume at least twice the amount of food and water as a normal person each day. If you miss a meal, you suffer a penalty to all Intellect-based rolls."
-          }
+          },
+          "effects": [
+            {
+              "type": "healing",
+              "value": "all",
+              "target": "stun_track",
+              "conditional": true,
+              "condition": "once_per_scene_as_action",
+              "duration": "instant",
+              "description": "Clear all ticked boxes from all Stun Tracks once per scene (requires action)"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "missed_meal",
+              "effect": "penalty",
+              "target": "intellect_rolls",
+              "description": "Requires double food/water; penalty to Intellect rolls if meal missed"
+            }
+          ]
         },
         "tier2": {
           "id": "metabolic-furnace-tier2",
@@ -421,7 +855,18 @@
           "description": {
             "short": "When you are first exposed to a mundane poison or disease, you may make a roll to resist its effects with an advantage. If you succeed, you are immune to that specific threat going forward.",
             "player": "Your internal chemistry is a fortress, aggressively neutralizing foreign agents from rotgut to neurotoxins."
-          }
+          },
+          "effects": [
+            {
+              "type": "resistance",
+              "target": "mundane_poison_and_disease",
+              "conditional": true,
+              "condition": "first_exposure_roll_with_advantage",
+              "duration": "permanent_immunity_on_success",
+              "description": "Roll 3d6 drop lowest (Advantage) to resist poison/disease on first exposure. On success (10+), gain permanent immunity to that specific toxin/pathogen"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "metabolic-furnace-tier3",
@@ -432,7 +877,19 @@
           "description": {
             "short": "During any Downtime where you are resting, you automatically clear one additional box of Wound or Stun damage (player's choice), in addition to any normal healing.",
             "player": "Your body's ability to repair itself is miraculous and terrifying. Deep cuts clot and seal in moments."
-          }
+          },
+          "effects": [
+            {
+              "type": "healing",
+              "value": 1,
+              "target": "health_or_stun_box_choice",
+              "conditional": true,
+              "condition": "during_downtime_rest",
+              "duration": "per_downtime",
+              "description": "Automatically clear 1 additional Health Box OR Stun box (player's choice) during Downtime, in addition to normal healing"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -441,6 +898,11 @@
       "id": "living-lantern",
       "name": "Living Lantern",
       "category": "Primal Manifestations",
+      "tags": ["utility", "light", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "living-lantern-tier1",
@@ -452,7 +914,21 @@
             "short": "You can produce enough light to read by.",
             "player": "Parts of your body produce a soft, eerie light, from glowing patches of skin to shining eyes.",
             "flaw": "You have no conscious control over this light. In darkness, you are always glowing, and the light may change color with your emotions."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "reading_light",
+              "description": "Produce enough light to read by"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "darkness",
+              "effect": "always_glowing",
+              "description": "No control; always glowing in darkness; color changes with emotions"
+            }
+          ]
         },
         "tier2": {
           "id": "living-lantern-tier2",
@@ -463,7 +939,15 @@
           "description": {
             "short": "You can control the intensity of your light, from a soft ambient glow to a focused beam equivalent to a powerful flashlight. You can turn it on or off at will.",
             "player": "You have mastered your inner light and can consciously will the bioluminescent cells in your body to activate, dim, or deactivate."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "controllable_light",
+              "description": "Variable intensity light from glow to flashlight; can turn on/off at will"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "living-lantern-tier3",
@@ -474,7 +958,17 @@
           "description": {
             "short": "Once per scene, you can unleash a blinding flash. Anyone looking at you in your immediate vicinity must make a Physique roll or be Stunned for their next turn.",
             "player": "You can overload your bioluminescent organs for a single, stunning burst of light."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "blinding_flash",
+              "conditional": true,
+              "condition": "once_per_scene",
+              "description": "Blinding flash; observers make Physique roll or be Stunned for next turn"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -483,6 +977,11 @@
       "id": "internalized-cavity",
       "name": "Internalized Cavity",
       "category": "Primal Manifestations",
+      "tags": ["utility", "storage", "concealment", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "internalized-cavity-tier1",
@@ -494,7 +993,22 @@
             "short": "You have a hidden compartment in your flesh, capable of holding an object about the size of a deck of cards.",
             "player": "You have a crude, hidden cavity within your body, serving as a desperate place to stash small items.",
             "flaw": "The cavity is unsanitary. Carrying items for more than a few hours may lead to a raging infection, inflicting a penalty on all physical actions until cleaned."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "hidden_storage_small",
+              "description": "Hidden flesh compartment for deck-of-cards sized objects"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "extended_use_hours",
+              "effect": "infection_risk",
+              "target": "physical_actions",
+              "description": "Risk of infection after hours of use; penalty until cleaned"
+            }
+          ]
         },
         "tier2": {
           "id": "internalized-cavity-tier2",
@@ -505,7 +1019,15 @@
           "description": {
             "short": "You have a high-security internal compartment, about the size of a fist. Any non-living item stored within it is completely shielded from all forms of magical and most technological detection.",
             "player": "Your internal storage has evolved into a dedicated, specialized organ lined with non-reactive tissue that prevents decay."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "shielded_storage_medium",
+              "description": "Fist-sized compartment shielded from magical and technological detection"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "internalized-cavity-tier3",
@@ -516,7 +1038,15 @@
           "description": {
             "short": "You can carry one item (up to the size of a pistol) within your body. The item is utterly undetectable by any means short of invasive surgery. Retrieval takes about a minute.",
             "player": "Your internal cavity is a semi-sentient symbiote. It envelops an item, placing it in perfect stasis and subsuming its physical and Aetheric pattern into your own."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "symbiotic_storage_large",
+              "description": "Pistol-sized storage; utterly undetectable except by surgery; 1 minute retrieval"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -525,6 +1055,11 @@
       "id": "earth-swimmer",
       "name": "Earth-Swimmer",
       "category": "Primal Manifestations",
+      "tags": ["mobility", "burrowing", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "earth-swimmer-tier1",
@@ -536,7 +1071,24 @@
             "short": "You can burrow through loose materials (soil, sand, mud) at a slow pace. The tunnel is crude and unstable.",
             "player": "You are a natural excavator, equipped with features like shovel-like claws or a hardened snout for moving soft earth.",
             "flaw": "Your digging is noisy and obvious, and tunnels are prone to collapsing. You cannot burrow through anything harder than packed earth."
-          }
+          },
+          "effects": [
+            {
+              "type": "movement_modifier",
+              "value": "0.25x_movement_speed",
+              "target": "burrowing_loose_materials",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Burrow through loose materials (soil, sand, mud) at slow pace (quarter normal movement speed)"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "burrowing",
+              "effect": "noisy_unstable_limited",
+              "description": "Noisy, unstable tunnels; cannot burrow harder than packed earth"
+            }
+          ]
         },
         "tier2": {
           "id": "earth-swimmer-tier2",
@@ -547,7 +1099,18 @@
           "description": {
             "short": "You can burrow through packed earth, clay, and soft rock. Tunnels are structurally sound.",
             "player": "Your burrowing is remarkably efficient, with claws that chew through rock or a body shaped like a biological drill."
-          }
+          },
+          "effects": [
+            {
+              "type": "movement_modifier",
+              "value": "0.5x_movement_speed",
+              "target": "burrowing_hard_materials",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Burrow through packed earth, clay, and soft rock at half normal movement speed. Tunnels created are structurally sound"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "earth-swimmer-tier3",
@@ -558,7 +1121,26 @@
           "description": {
             "short": "You can burrow through solid stone and concrete. You also gain 'tremor sense,' detecting any moving thing in contact with the same surface within 50 feet.",
             "player": "You no longer just dig; you are a part of the earth, swimming through stone or pulverizing it with seismic vibrations."
-          }
+          },
+          "effects": [
+            {
+              "type": "movement_modifier",
+              "value": "0.5x_movement_speed",
+              "target": "burrowing_stone_concrete",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Burrow through solid stone and concrete at half normal movement speed"
+            },
+            {
+              "type": "special_sense",
+              "value": "tremorsense",
+              "target": "50_feet_radius",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Detect any moving thing in contact with the same surface within 50 feet (tremorsense)"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -567,6 +1149,11 @@
       "id": "piston-legs",
       "name": "Piston-Legs",
       "category": "Primal Manifestations",
+      "tags": ["mobility", "jumping", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "piston-legs-tier1",
@@ -578,7 +1165,24 @@
             "short": "You can jump up to twice the normal height and distance.",
             "player": "Your leg structure is visibly altered for powerful leaps, with oversized, muscular haunches like a frog or grasshopper.",
             "flaw": "Your powerful leaps are difficult to control. Landing from a maximum-distance jump requires an Athletics roll to avoid stumbling."
-          }
+          },
+          "effects": [
+            {
+              "type": "movement_modifier",
+              "value": "2x_jump_height_and_distance",
+              "target": "jumping",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Jump up to twice the normal height and distance without making Athletics rolls"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "maximum_jump_landing",
+              "effect": "athletics_roll_or_stumble",
+              "description": "Difficult to control; Athletics roll to avoid stumbling on max jumps"
+            }
+          ]
         },
         "tier2": {
           "id": "piston-legs-tier2",
@@ -589,7 +1193,18 @@
           "description": {
             "short": "You can jump up to three times the normal height and distance. You always land perfectly on your feet, absorbing the shock silently.",
             "player": "Your entire body now works in concert with your powerful legs, granting you exceptional grace and control, like a cat's inner ear for balance."
-          }
+          },
+          "effects": [
+            {
+              "type": "movement_modifier",
+              "value": "3x_jump_height_and_distance",
+              "target": "jumping",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Jump up to three times normal height and distance. Always land perfectly on your feet, absorbing shock silently. No Athletics rolls needed"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "piston-legs-tier3",
@@ -600,7 +1215,28 @@
           "description": {
             "short": "You can leap to the top of a three-story building vertically or across a wide street horizontally. You can also make a 'pounce' attack, adding bonus damage to your initial melee attack upon landing.",
             "player": "Your legs store and release kinetic energy with explosive force. The sound of your jump is a sharp crack like a whip."
-          }
+          },
+          "effects": [
+            {
+              "type": "movement_modifier",
+              "value": "extreme_jump",
+              "target": "jumping",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Leap up to three stories vertically or across a wide street horizontally. Explosive force with audible crack"
+            },
+            {
+              "type": "damage_bonus",
+              "damage_type": "either",
+              "value": "+1 or +2",
+              "target": "pounce_melee_attack",
+              "conditional": true,
+              "condition": "after_maximum_jump_landing",
+              "duration": "first_attack_only",
+              "description": "Pounce attack: add +1 or +2 damage (GM discretion) to first melee attack after landing from maximum jump"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -609,6 +1245,11 @@
       "id": "unnatural-celerity",
       "name": "Unnatural Celerity",
       "category": "Primal Manifestations",
+      "tags": ["mobility", "speed", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "unnatural-celerity-tier1",
@@ -620,7 +1261,25 @@
             "short": "Your base running speed is increased by 50%.",
             "player": "You are built for bursts of speed, with a long, loping stride and a flexible spine like a cheetah's.",
             "flaw": "You are built for straight-line speed, not agility. You suffer a penalty on rolls to swerve or make tight turns while at top speed."
-          }
+          },
+          "effects": [
+            {
+              "type": "movement_modifier",
+              "value": "1.5x_running_speed",
+              "target": "running",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "Base running speed increased by 50% (if base is 30 feet, now 45 feet)"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "turning_at_top_speed",
+              "effect": "penalty",
+              "target": "agility_rolls",
+              "description": "Penalty on agility rolls for swerving or tight turns at speed"
+            }
+          ]
         },
         "tier2": {
           "id": "unnatural-celerity-tier2",
@@ -631,7 +1290,17 @@
           "description": {
             "short": "You can run at your top speed for an entire scene without needing to make rolls to resist exhaustion.",
             "player": "Your cardiovascular and respiratory systems are marvels of biological engineering. You simply do not get tired from running."
-          }
+          },
+          "effects": [
+            {
+              "type": "resistance",
+              "target": "running_exhaustion",
+              "conditional": false,
+              "duration": "scene",
+              "description": "Can run at top speed for entire scene without making exhaustion/Stamina rolls"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "unnatural-celerity-tier3",
@@ -642,7 +1311,18 @@
           "description": {
             "short": "Once per scene, you can push your body into a state of supernatural celerity. On your turn, you may take one additional action, which can only be used to Move.",
             "player": "Your speed is no longer purely physical; it is a flicker of motion that seems to defy the normal flow of time."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "additional_move_action",
+              "conditional": true,
+              "condition": "once_per_scene",
+              "duration": "single_turn",
+              "description": "Once per scene, on your turn you may take one additional action which can only be used to Move. Represents supernatural burst of speed"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -651,6 +1331,11 @@
       "id": "pack-instinct",
       "name": "Pack Instinct",
       "category": "Utility & Social Augments",
+      "tags": ["combat", "teamwork", "single-tier"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "pack-instinct-tier1",
@@ -661,7 +1346,19 @@
           "description": {
             "short": "When you and at least one ally are engaged in melee with the same target, you are considered to be flanking and gain a +1 bonus to all Melee or Hand-to-Hand attack rolls against that target.",
             "player": "A deep, primal instinct for pack coordination is hardwired into your brain. You intuitively understand flanking maneuvers and non-verbal cues."
-          }
+          },
+          "effects": [
+            {
+              "type": "skill_bonus",
+              "value": 1,
+              "target": "melee_attack_rolls",
+              "conditional": true,
+              "condition": "flanking_with_ally",
+              "duration": "permanent",
+              "description": "+1 bonus to Melee and Hand-to-Hand attack rolls when you and at least one ally are both engaged with same target"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -670,6 +1367,11 @@
       "id": "death-sleep",
       "name": "Death-Sleep",
       "category": "Utility & Social Augments",
+      "tags": ["healing", "survival", "single-tier"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "death-sleep-tier1",
@@ -681,7 +1383,25 @@
             "short": "During a long Downtime (at least one week), you may enter hibernation. You emerge with all Wound and Stun damage healed and one long-term disease or poison purged.",
             "player": "To survive grave injuries or scarce resources, your body can enter a deep, coma-like state of suspended animation.",
             "flaw": "While in this state, you are completely helpless and unaware, and cannot be woken by any means short of a powerful external stimulus (like being moved or injured)."
-          }
+          },
+          "effects": [
+            {
+              "type": "healing",
+              "value": "all",
+              "target": "all_health_and_stun_boxes",
+              "conditional": true,
+              "condition": "week_long_hibernation_downtime",
+              "duration": "on_awakening",
+              "description": "During long Downtime (at least one week), enter hibernation. Upon awakening: all Health Boxes and Stun Tracks cleared, one long-term disease or poison purged"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "hibernating",
+              "effect": "helpless_and_unaware",
+              "description": "Completely helpless and cannot be woken except by powerful stimulus"
+            }
+          ]
         }
       }
     },
@@ -690,6 +1410,11 @@
       "id": "aetheric-absorption",
       "name": "Aetheric Absorption",
       "category": "Aetheric Mutations",
+      "tags": ["aetheric", "energy", "stamina", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "aetheric-absorption-tier1",
@@ -701,7 +1426,25 @@
             "short": "Once per scene, you can activate this ability to ignore one level of exhaustion or fatigue for the remainder of the scene.",
             "player": "Your body has developed primitive ether-filtering organs. You can draw upon ambient Aether to supplement your cellular energy.",
             "flaw": "The unrefined process causes your veins to glow faintly with Aetheric energy, clearly marking you as inhuman."
-          }
+          },
+          "effects": [
+            {
+              "type": "resistance",
+              "target": "exhaustion",
+              "value": 1,
+              "conditional": true,
+              "condition": "once_per_scene_activation",
+              "duration": "scene",
+              "description": "Ignore one level of exhaustion/fatigue for remainder of scene (once per scene)"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "ability_active",
+              "effect": "glowing_veins",
+              "description": "Veins glow with Aetheric energy, marking you as inhuman"
+            }
+          ]
         },
         "tier2": {
           "id": "aetheric-absorption-tier2",
@@ -712,7 +1455,18 @@
           "description": {
             "short": "You gain accelerated healing. Once per scene, you can surge this ability to immediately heal 1 point of Wound damage.",
             "player": "Your ether cortex has developed more sophisticated filtration, allowing you to convert Aetheric energy directly into cellular repair."
-          }
+          },
+          "effects": [
+            {
+              "type": "healing",
+              "value": 1,
+              "target": "wound",
+              "conditional": true,
+              "condition": "once_per_scene",
+              "description": "Immediately heal 1 Wound damage once per scene"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "aetheric-absorption-tier3",
@@ -723,7 +1477,25 @@
           "description": {
             "short": "When you succeed on a Strength-based roll, you can surge your power to increase your Tier of Effect by two levels. Once per scene, you can perform a feat of strength that would normally be impossible.",
             "player": "Your body has achieved perfect symbiosis with Aetheric energy. You can flood your muscles with pure power for brief moments of superhuman strength."
-          }
+          },
+          "effects": [
+            {
+              "type": "tier_of_effect",
+              "value": 2,
+              "target": "strength_rolls",
+              "conditional": true,
+              "condition": "on_success",
+              "description": "Increase Tier of Effect by 2 on successful Strength rolls"
+            },
+            {
+              "type": "custom",
+              "value": "impossible_feat",
+              "conditional": true,
+              "condition": "once_per_scene",
+              "description": "Perform normally impossible feat of strength once per scene"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -732,6 +1504,11 @@
       "id": "aetheric-markings",
       "name": "Aetheric Markings",
       "category": "Aetheric Mutations",
+      "tags": ["aetheric", "sensory", "perception", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "aetheric-markings-tier1",
@@ -743,7 +1520,22 @@
             "short": "You can sense hostile intent directed at you within 30 feet. You cannot be surprised by attacks from beings with conscious intent.",
             "player": "Faint, tattoo-like markings trace your skin, pulsing with barely perceptible light. They resonate with aggressive Aetheric signatures.",
             "flaw": "The markings pulse visibly when detecting hostility, potentially revealing your awareness to observant enemies."
-          }
+          },
+          "effects": [
+            {
+              "type": "special_sense",
+              "value": "hostile_intent",
+              "target": "30_feet",
+              "description": "Sense hostile intent within 30 feet; cannot be surprised by conscious attacks"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "detecting_hostility",
+              "effect": "visible_pulse",
+              "description": "Markings pulse visibly when detecting hostility"
+            }
+          ]
         },
         "tier2": {
           "id": "aetheric-markings-tier2",
@@ -754,7 +1546,16 @@
           "description": {
             "short": "You gain 360-degree blindsight within 20 feet. This functions even in complete darkness or when blinded.",
             "player": "Your markings have spread into complex geometric patterns that create a complete sensory web around you."
-          }
+          },
+          "effects": [
+            {
+              "type": "special_sense",
+              "value": "360_blindsight",
+              "target": "20_feet",
+              "description": "360-degree blindsight within 20 feet, works in darkness and when blinded"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "aetheric-markings-tier3",
@@ -765,7 +1566,16 @@
           "description": {
             "short": "You can sense all Aetheric activity within 60 feet, including spirits, wraiths, active Esper abilities, and the emotional 'charge' of locations.",
             "player": "Your markings have evolved into intricate mandala patterns that shimmer between dimensions, allowing you to perceive the Aetheric layer beneath the physical world."
-          }
+          },
+          "effects": [
+            {
+              "type": "special_sense",
+              "value": "aetheric_perception",
+              "target": "60_feet",
+              "description": "Sense all Aetheric activity including spirits, powers, and emotional charges"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -774,6 +1584,11 @@
       "id": "aetheric-authority",
       "name": "Aetheric Authority",
       "category": "Aetheric Mutations",
+      "tags": ["aetheric", "social", "support", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "aetheric-authority-tier1",
@@ -785,7 +1600,24 @@
             "short": "You gain a significant bonus to Intimidation rolls. Weak-willed individuals must make a Willpower check or instinctively back away.",
             "player": "When you tap into your ether cortex, your features shift subtly, becoming primal and commanding, triggering fear responses in observers.",
             "flaw": "You cannot fully control this. In moments of strong emotion, your visage shifts unbidden, potentially ruining social situations."
-          }
+          },
+          "effects": [
+            {
+              "type": "skill_bonus",
+              "value": 2,
+              "target": "social_intimidation_rolls",
+              "conditional": false,
+              "duration": "permanent",
+              "description": "+2 bonus to Social (Intimidation) rolls. Weak-willed NPCs must make Willpower check or instinctively back away"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "strong_emotion",
+              "effect": "uncontrolled_shift",
+              "description": "Visage shifts unbidden during strong emotions"
+            }
+          ]
         },
         "tier2": {
           "id": "aetheric-authority-tier2",
@@ -796,7 +1628,16 @@
           "description": {
             "short": "You can suppress Aetheric instability in a 10-foot radius around you. This reduces Blight exposure for allies and calms aggressive spirits.",
             "player": "Your ether cortex can project a calming field that pacifies chaotic Aetheric energy, making you an eye of tranquility in the storm."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "aetheric_suppression",
+              "target": "10_foot_radius",
+              "description": "Suppress Aetheric instability, reduce Blight exposure, calm spirits"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "aetheric-authority-tier3",
@@ -807,7 +1648,16 @@
           "description": {
             "short": "You can establish mental links with a number of willing Espers and Automata equal to your Intellect score within 30 feet, allowing for silent coordination and shared thoughts.",
             "player": "Your ether cortex has evolved into a biological networking hub that can interface with both Esper organs and Automata processing cores."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "mental_network",
+              "target": "intellect_score_targets",
+              "description": "Mental links with Espers/Automata for silent coordination"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -816,6 +1666,11 @@
       "id": "spore-production",
       "name": "Spore Production",
       "category": "Aetheric Mutations",
+      "tags": ["aetheric", "offensive", "area-effect", "tiered"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "spore-production-tier1",
@@ -826,8 +1681,26 @@
           "description": {
             "short": "Once per scene, release a spore cloud in a 10-foot radius. Those caught must make a Stamina check or be incapacitated by coughing and tearing for one round.",
             "player": "Specialized glands can release a cloud of irritant spores, similar to military-grade pepper spray but biological.",
-            "flaw": "You\u2019re not immune to your own spores. A strong wind or poor positioning can affect you as badly as your enemies."
-          }
+            "flaw": "You're not immune to your own spores. A strong wind or poor positioning can affect you as badly as your enemies."
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "incapacitating_cloud",
+              "target": "10_foot_radius",
+              "conditional": true,
+              "condition": "once_per_scene",
+              "duration": "one_round",
+              "description": "Spore cloud incapacitates targets who fail Stamina check"
+            }
+          ],
+          "flaws": [
+            {
+              "trigger": "wind_or_positioning",
+              "effect": "self_affect",
+              "description": "Not immune to own spores; can affect self"
+            }
+          ]
         },
         "tier2": {
           "id": "spore-production-tier2",
@@ -838,7 +1711,18 @@
           "description": {
             "short": "Your spore clouds now cause bleeding. Those who fail their Stamina check take 1 Wound damage that continues to bleed (1 additional damage per scene) until treated.",
             "player": "Your spores contain powerful anticoagulant compounds that seep through skin and mucous membranes."
-          }
+          },
+          "effects": [
+            {
+              "type": "damage_bonus",
+              "value": "1_wound_plus_bleed",
+              "target": "spore_cloud_victims",
+              "conditional": true,
+              "condition": "failed_stamina_check",
+              "description": "1 Wound damage plus ongoing bleed damage until treated"
+            }
+          ],
+          "flaws": []
         },
         "tier3": {
           "id": "spore-production-tier3",
@@ -848,8 +1732,17 @@
           "permanentCorruption": 3,
           "description": {
             "short": "You can direct spore clouds up to 100 feet away, sending them through vents or under doors. You can see, hear, and smell through the cloud as if you were present.",
-            "player": "You\u2019ve achieved conscious control over your spores, creating clouds that act as extensions of your nervous system."
-          }
+            "player": "You've achieved conscious control over your spores, creating clouds that act as extensions of your nervous system."
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "remote_sensory_cloud",
+              "target": "100_feet",
+              "description": "Remote spore cloud provides sight, sound, smell as if present"
+            }
+          ],
+          "flaws": []
         }
       }
     },
@@ -858,6 +1751,11 @@
       "id": "genetic-sovereignty",
       "name": "Genetic Sovereignty",
       "category": "Mastery Augment",
+      "tags": ["mastery", "progression", "single-tier"],
+      "metadata": {
+        "source": "Sidonia-Chimera.docx",
+        "version": "1.0"
+      },
       "tiers": {
         "tier1": {
           "id": "genetic-sovereignty-mastery",
@@ -868,7 +1766,15 @@
           "description": {
             "short": "Spend XP during Downtime to choose your next mutation's direction or to suppress the Flaw of one of your Tier 1 Augments. Requires a major story milestone.",
             "player": "Through sheer force of will and a lifetime of struggle, you have seized control of your own unstable blueprint. You are no longer a victim of your biology; you are its master."
-          }
+          },
+          "effects": [
+            {
+              "type": "custom",
+              "value": "mutation_control",
+              "description": "Control mutation direction or suppress Tier 1 flaws via XP during Downtime"
+            }
+          ],
+          "flaws": []
         }
       }
     }

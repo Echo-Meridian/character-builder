@@ -1,126 +1,168 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Automata Lineage",
-  "description": "A detailed schema for the Automata lineage, including chassis, branches, models, and their specific abilities.",
+  "title": "Automata Power Extension",
+  "description": "Extension schema for Automata lineage powers. Selection-based system: choose chassis + branch + quality level, gain all powers up to that level.",
+  "version": "2.0",
+  "extends": "sidonia-power-base.json",
   "type": "object",
-  "required": ["lineage", "chassis"],
-  "properties": {
-    "lineage": {
-      "description": "The character lineage, which must be 'automata'.",
-      "type": "string",
-      "const": "automata"
+  "allOf": [
+    {
+      "$ref": "sidonia-power-base.json"
     },
-    "chassis": {
-      "description": "An object containing the available chassis types.",
+    {
       "type": "object",
+      "required": ["lineage", "chassis", "branch", "augmentLevel"],
       "properties": {
-        "overseer": { "$ref": "#/$defs/chassis" },
-        "soldier": { "$ref": "#/$defs/chassis" },
-        "worker": { "$ref": "#/$defs/chassis" }
-      },
-      "required": ["overseer", "soldier", "worker"]
-    }
-  },
-  "$defs": {
-    "chassis": {
-      "type": "object",
-      "required": ["id", "name", "branches"],
-      "properties": {
-        "id": { "type": "string" },
-        "name": { "type": "string" },
-        "branches": {
-          "type": "object",
-          "patternProperties": {
-            "^[a-zA-Z]+$": { "$ref": "#/$defs/branch" }
-          }
-        }
-      }
-    },
-    "branch": {
-      "type": "object",
-      "required": ["id", "name", "focus", "general_capabilities", "models"],
-      "properties": {
-        "id": { "type": "string" },
-        "name": { "type": "string" },
-        "focus": { "type": "string" },
-        "general_capabilities": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/capability" }
+        "lineage": {
+          "description": "Must be 'automata' for Automata powers.",
+          "type": "string",
+          "const": "automata"
         },
-        "models": {
+        "chassis": {
+          "description": "Which chassis type this power belongs to. Determines chassis selection at character creation.",
+          "type": "string",
+          "enum": ["worker", "soldier", "overseer"]
+        },
+        "branch": {
+          "description": "Specialization within the chassis. Examples: 'administrator', 'advocate', 'scribe' (overseer), 'grunt', 'guardian', 'scout' (soldier), 'laborer', 'maintenance' (worker).",
+          "type": "string"
+        },
+        "augmentLevel": {
+          "description": "Quality/complexity tier. 'general' = all chassis of this type get it. basic/advanced/imperial = tied to build quality.",
+          "type": "string",
+          "enum": ["general", "basic", "advanced", "imperial"]
+        },
+        "isGeneralPower": {
+          "description": "True if this power is granted to ALL branches of this chassis type, regardless of branch choice.",
+          "type": "boolean",
+          "default": false
+        },
+        "cost": {
+          "description": "Resource cost for future mod/upgrade system. Most built-in powers are null (free).",
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "moveType": {
+          "description": "For active powers: whether this requires a roll (move) or is passive (augment).",
+          "type": "string",
+          "enum": ["move", "augment"]
+        },
+        "rollStat": {
+          "description": "Which attribute to roll for active moves (if moveType is 'move').",
+          "type": "string"
+        },
+        "outcomes": {
+          "description": "PbtA-style outcomes for active moves (similar to Espers/Sorcerers).",
           "type": "object",
           "properties": {
-            "basic": { "$ref": "#/$defs/model" },
-            "advanced": { "$ref": "#/$defs/model" },
-            "imperial": { "$ref": "#/$defs/model" }
-          },
-          "required": ["basic", "advanced", "imperial"]
-        }
-      }
-    },
-    "model": {
-      "type": "object",
-      "required": ["tier", "name", "available"],
-      "properties": {
-        "tier": { "type": "string", "enum": ["basic", "advanced", "imperial"] },
-        "name": { "type": "string" },
-        "available": { "type": "boolean" },
-        "augments": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/augment" }
+            "10+": {
+              "description": "Clean success - works as intended.",
+              "type": "string"
+            },
+            "7-9": {
+              "description": "Success with cost or complication.",
+              "type": "string"
+            },
+            "6-": {
+              "description": "Failure - GM makes a move.",
+              "type": "string"
+            }
+          }
         },
-        "moves": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/move" }
+        "hasVariants": {
+          "description": "True if this power has multiple model options to choose from (rare).",
+          "type": "boolean",
+          "default": false
         },
-        "packages": {
+        "variantOptions": {
+          "description": "If hasVariants is true, array of variant descriptions player can choose from.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "activationRequirement": {
+          "description": "Special conditions required to use this augment.",
           "type": "object",
-          "patternProperties": {
-            "^[a-zA-Z]+$": { "$ref": "#/$defs/package" }
+          "properties": {
+            "requiresPower": {
+              "description": "Whether this requires active power draw (may have usage limits).",
+              "type": "boolean",
+              "default": false
+            },
+            "cooldown": {
+              "description": "Time before augment can be used again (e.g., 'scene', 'hour', 'day').",
+              "type": "string"
+            },
+            "energyCost": {
+              "description": "If the chassis has an energy system, cost per use.",
+              "type": "integer"
+            }
+          }
+        },
+        "durability": {
+          "description": "How resistant this augment is to damage or malfunction.",
+          "type": "object",
+          "properties": {
+            "canBeDamaged": {
+              "description": "Whether targeted attacks can disable this augment.",
+              "type": "boolean",
+              "default": true
+            },
+            "repairDifficulty": {
+              "description": "How hard it is to repair if damaged.",
+              "type": "string",
+              "enum": ["trivial", "moderate", "difficult", "requires_specialist"]
+            }
           }
         }
       }
-    },
-    "capability": {
-      "oneOf": [
-        { "$ref": "#/$defs/augment" },
-        { "$ref": "#/$defs/move" }
-      ]
-    },
-    "augment": {
-      "type": "object",
-      "required": ["name", "description"],
-      "properties": {
-        "type": { "type": "string", "const": "augment" },
-        "name": { "type": "string" },
-        "description": { "type": "string" },
-        "cost": { "type": "integer" }
-      }
-    },
-    "move": {
-      "type": "object",
-      "required": ["name", "description"],
-      "properties": {
-        "type": { "type": "string", "const": "move" },
-        "name": { "type": "string" },
-        "description": { "type": "string" }
-      }
-    },
-    "package": {
-      "type": "object",
-      "required": ["name", "augments", "moves"],
-      "properties": {
-        "name": { "type": "string" },
-        "augments": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/augment" }
-        },
-        "moves": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/move" }
-        }
-      }
     }
+  ],
+  "notes": {
+    "systemSummary": "Automata is a SELECTION-based system, not progression. Choose chassis + branch + quality at character creation, gain ALL powers of that combination.",
+    "prioritySystem": {
+      "priorityA": "Imperial Soldier OR Imperial Overseer chassis (choose one)",
+      "priorityB": "Advanced Soldier OR Advanced Overseer",
+      "priorityC": "Basic Soldier OR Basic Overseer",
+      "priorityD": "Advanced Worker",
+      "priorityE": "Basic Worker"
+    },
+    "selectionProcess": {
+      "step1": "Priority determines which chassis + quality combinations are available",
+      "step2": "Choose ONE chassis (Worker, Soldier, or Overseer)",
+      "step3": "Choose ONE branch within that chassis (Administrator, Guardian, Laborer, etc.)",
+      "step4": "Receive ALL powers for that selection: general chassis powers + all branch powers up to your quality level"
+    },
+    "powerStacking": {
+      "example": "Advanced Administrator Overseer gets:",
+      "receives": [
+        "ALL 'general' Overseer powers (universal to overseer chassis)",
+        "ALL 'basic' Administrator powers",
+        "ALL 'advanced' Administrator powers"
+      ],
+      "note": "Imperial quality would also include 'imperial' powers"
+    },
+    "chassisTypes": {
+      "worker": "Built for labor and utility. Branches: Laborer, Maintenance, etc.",
+      "soldier": "Combat chassis. Branches: Grunt, Guardian, Scout, etc.",
+      "overseer": "Command and coordination. Branches: Administrator, Advocate, Scribe, etc."
+    },
+    "augmentLevels": {
+      "general": "Universal chassis powers - ALL branches of this chassis type get these",
+      "basic": "Standard equipment for this branch. Reliable but limited.",
+      "advanced": "Enhanced systems for this branch. Superior performance.",
+      "imperial": "Ancient pre-Collapse technology for this branch. Extraordinary capabilities."
+    },
+    "noProgression": "Automata do NOT evolve or advance their chassis/branch. What you pick at creation is static. Future advancement comes from adding mods/upgrades.",
+    "dataStructure": "Powers are FLAT. Filter by chassis + branch + quality to show what a selection grants.",
+    "uiGuidance": {
+      "characterCreation": "Show: 'If you pick Advanced Guardian (Soldier), you automatically gain these X powers' (list all general + basic + advanced Guardian powers)",
+      "display": "Group by: Chassis → Branch → Quality Level. Show cumulative power list.",
+      "filtering": "When player selects 'Advanced Administrator', filter: chassis='overseer' AND (augmentLevel='general' OR (branch='administrator' AND augmentLevel IN ('basic','advanced')))"
+    },
+    "variants": "1-2 powers may have multiple model options (e.g., weapon system variants). Use 'hasVariants' + 'variantOptions' for these rare cases.",
+    "imperialMystery": "Imperial augments are from the lost age. Their full capabilities may not be fully understood.",
+    "reactivationNarrative": "Automata have been dormant for 1000+ years. Some augments may activate unexpectedly or have unknown functions."
   }
 }
-

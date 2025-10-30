@@ -38,7 +38,6 @@ const POWER_SCHEMA_FILES: Record<string, string> = {
   automata: '/data/Sidonia-Powers-Schema-Automata.Json',
   chimera: '/data/Sidonia-Powers-Schema-Chimera.Json',
   espers: '/data/Sidonia-Powers-Schema-Espers.json',
-  mentalists: '/data/Sidonia-Powers-Schema-Mentalists.json',
   neosapiens: '/data/Sidonia-Powers-Schema-NeoSapiens.Json',
   sorcery: '/data/Sidonia-Powers-Schema-Sorcery.Json'
 };
@@ -50,8 +49,6 @@ const POWER_SET_FILES: Record<LineageKey, string> = {
   neosapien: '/data/powers-neosapien.json',
   sorcery: '/data/powers-sorcery.json'
 };
-
-const MENTALIST_POWER_FILE = '/data/powers-mentalist.json';
 
 const DESIGN_DOC_FILES: DesignDocumentMeta[] = [
   { id: 'lineage-architecture', title: 'Lineage Architecture', path: '/content/lineage-architecture.md' },
@@ -103,12 +100,7 @@ async function loadPowerSchemas(): Promise<Record<string, unknown>> {
 async function loadPowerSets(): Promise<Partial<Record<LineageKey, RawLineagePowerData>>> {
   const requests = Object.entries(POWER_SET_FILES).map(async ([key, path]) => {
     const lineage = key as LineageKey;
-    let data = await fetchJson<RawLineagePowerData>(path);
-
-    if (lineage === 'esper') {
-      data = await mergeEsperWithMentalistData(data);
-    }
-
+    const data = await fetchJson<RawLineagePowerData>(path);
     return [lineage, normalizePowerSet(lineage, data)] as const;
   });
 
@@ -123,20 +115,6 @@ async function loadPowerSets(): Promise<Partial<Record<LineageKey, RawLineagePow
     }
   });
   return Object.fromEntries(entries);
-}
-
-async function mergeEsperWithMentalistData(esperData: RawLineagePowerData): Promise<RawLineagePowerData> {
-  try {
-    const mentalistData = await fetchJson<RawLineagePowerData>(MENTALIST_POWER_FILE);
-    return {
-      ...esperData,
-      mentalist_data: mentalistData
-    } satisfies RawLineagePowerData;
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.warn('[sidonia] Failed to load mentalist power data:', error);
-    return esperData;
-  }
 }
 
 function normalizePowerSet(lineage: LineageKey, data: RawLineagePowerData): RawLineagePowerData {

@@ -1,139 +1,151 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Sorcerer Lineage",
-  "description": "A schema for the Sorcerer lineage, detailing Primary and Secondary Spheres and their associated Moves.",
+  "title": "Sorcerer Power Extension",
+  "description": "Extension schema for Sorcerer lineage powers. Adds sphere system with moves and PbtA-style outcomes.",
+  "version": "1.0",
+  "extends": "sidonia-power-base.json",
   "type": "object",
-  "required": [
-    "lineage",
-    "spheres"
-  ],
-  "properties": {
-    "lineage": {
-      "description": "The character lineage, which must be 'sorcerer'.",
-      "type": "string",
-      "const": "sorcerer"
+  "allOf": [
+    {
+      "$ref": "sidonia-power-base.json"
     },
-    "spheres": {
-      "description": "An object containing the primary and secondary spheres of magic.",
+    {
       "type": "object",
-      "required": [
-        "primary",
-        "secondary"
-      ],
+      "required": ["lineage", "sphere", "sphereTier", "moveType"],
       "properties": {
-        "primary": {
-          "$ref": "#/$defs/sphereContainer"
-        },
-        "secondary": {
-          "$ref": "#/$defs/sphereContainer"
-        }
-      }
-    }
-  },
-  "$defs": {
-    "sphereContainer": {
-      "description": "A container for a set of spheres.",
-      "type": "object",
-      "patternProperties": {
-        "^[a-zA-Z]+$": {
-          "$ref": "#/$defs/sphere"
-        }
-      },
-      "additionalProperties": false
-    },
-    "sphere": {
-      "description": "Defines a single sphere of magic.",
-      "type": "object",
-      "required": [
-        "id",
-        "name",
-        "type",
-        "moves"
-      ],
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "type": {
+        "lineage": {
+          "description": "Must be 'sorcerer' for Sorcerer powers.",
           "type": "string",
-          "enum": [
-            "primary",
-            "secondary"
-          ]
+          "const": "sorcerer"
         },
-        "moves": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/move"
-          }
-        }
-      }
-    },
-    "move": {
-      "description": "Defines a single magical move or augment.",
-      "type": "object",
-      "required": [
-        "id",
-        "name",
-        "type",
-        "description"
-      ],
-      "properties": {
-        "id": {
+        "sphere": {
+          "description": "Which sphere of magic this move belongs to (e.g., 'Fire', 'Water', 'Mind', 'Death').",
           "type": "string"
         },
-        "name": {
-          "type": "string"
-        },
-        "type": {
+        "sphereTier": {
+          "description": "Whether this is a Primary Sphere (deep mastery) or Secondary Sphere (limited access).",
           "type": "string",
-          "enum": [
-            "move",
-            "augment"
-          ]
+          "enum": ["primary", "secondary"]
         },
-        "ritual": {
-          "type": "boolean"
+        "moveType": {
+          "description": "Type of sorcerous action: move (quick spell) or ritual (time-consuming ceremony).",
+          "type": "string",
+          "enum": ["move", "ritual"]
         },
-        "description": {
-          "$ref": "#/$defs/moveDescription"
-        }
-      }
-    },
-    "moveDescription": {
-      "description": "Contains the descriptive text and outcomes for a move.",
-      "type": "object",
-      "required": [
-        "short"
-      ],
-      "properties": {
-        "short": {
+        "rollStat": {
+          "description": "Which attribute or specialization to roll when using this move (e.g., 'Intellect', 'Willpower').",
           "type": "string"
+        },
+        "dpCost": {
+          "description": "Dissonance Pool cost to use this move (if applicable).",
+          "type": "integer",
+          "minimum": 0
         },
         "outcomes": {
+          "description": "PbtA-style outcomes based on roll results. These change with advancement!",
           "type": "object",
           "properties": {
+            "12": {
+              "description": "Critical success (natural 12) - extraordinary result.",
+              "type": "string"
+            },
             "10+": {
+              "description": "Clean success (10 or 11) - the spell works as intended.",
               "type": "string"
             },
             "7-9": {
+              "description": "Success with cost (7, 8, or 9) - it works but with complications.",
               "type": "string"
             },
             "6-": {
+              "description": "Failure (6 or less) - it doesn't work, and things get worse.",
+              "type": "string"
+            },
+            "2": {
+              "description": "Critical failure (natural 2) - catastrophic backfire.",
               "type": "string"
             }
-          },
-          "required": [
-            "10+",
-            "7-9",
-            "6-"
-          ]
+          }
+        },
+        "castingTime": {
+          "description": "How long it takes to cast (e.g., 'action', 'minutes', 'hours').",
+          "type": "string",
+          "enum": ["instant", "action", "minutes", "hours", "days"]
+        },
+        "range": {
+          "description": "Effective range of the spell (e.g., 'touch', 'sight', '100 feet').",
+          "type": "string"
+        },
+        "duration": {
+          "description": "How long the spell's effects last.",
+          "type": "string"
+        },
+        "components": {
+          "description": "What's required to cast (material components, gestures, etc.).",
+          "type": "object",
+          "properties": {
+            "verbal": {
+              "description": "Requires spoken formula.",
+              "type": "boolean",
+              "default": true
+            },
+            "material": {
+              "description": "Requires material components (described in move text).",
+              "type": "boolean",
+              "default": false
+            },
+            "focus": {
+              "description": "Requires a specific focus item.",
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
+        "advancement": {
+          "description": "How this move can be advanced/improved (not in MVP, placeholder for future).",
+          "type": "object",
+          "properties": {
+            "canBeAdvanced": {
+              "description": "Whether this move has advancement options.",
+              "type": "boolean",
+              "default": false
+            },
+            "advancementPath": {
+              "description": "Reference to advancement data (future feature).",
+              "type": "string"
+            }
+          }
         }
       }
     }
+  ],
+  "notes": {
+    "sphereSystem": "Sorcerers select Primary and Secondary spheres based on Lineage Priority",
+    "startingMoves": {
+      "priorityA": "1 Primary + 2 Secondary spheres, 5 total moves",
+      "priorityB": "1 Primary + 1 Secondary sphere, 4 total moves",
+      "priorityC": "1 Primary OR 2 Secondary spheres, 3 total moves",
+      "priorityD": "1 Secondary sphere, 2 moves",
+      "priorityE": "1 Secondary sphere, 1 move"
+    },
+    "outcomeAdvancement": "Outcomes improve with advancement! Basic moves have weaker effects than advanced versions.",
+    "moveTypes": {
+      "move": "Quick spell, can be cast in combat or under pressure",
+      "ritual": "Time-consuming ceremony, requires setup and concentration"
+    },
+    "commonSpheres": [
+      "Fire",
+      "Water",
+      "Earth",
+      "Air",
+      "Mind",
+      "Body",
+      "Death",
+      "Life",
+      "Light",
+      "Shadow"
+    ],
+    "dissonancePool": "Some moves cost DP to cast. Failed casts add to DP. Building DP is dangerous!",
+    "criticalOutcomes": "Natural 12 and natural 2 have special outcomes different from normal success/failure"
   }
 }
-

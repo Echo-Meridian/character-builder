@@ -1,133 +1,174 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Sidonia Esper Powers Schema",
-  "description": "A schema to validate the structure of Esper archetypes, their focuses, and abilities.",
+  "title": "Esper Power Extension",
+  "description": "Extension schema for Esper lineage powers. Flat structure with directed hierarchy via path references. Covers both Espers (evolution paths) and Mentalists (polarity/scope system).",
+  "version": "2.0",
+  "extends": "sidonia-power-base.json",
   "type": "object",
-  "properties": {
-    "esper_archetypes": {
-      "description": "A container for all top-level Esper archetypes.",
+  "allOf": [
+    {
+      "$ref": "sidonia-power-base.json"
+    },
+    {
       "type": "object",
-      "patternProperties": {
-        "^[a-z-]+$": {
-          "$ref": "#/$defs/archetypeObject"
-        }
-      },
-      "additionalProperties": false
-    }
-  },
-  "required": [
-    "esper_archetypes"
-  ],
-  "$defs": {
-    "abilityObject": {
-      "type": "object",
+      "required": ["lineage", "archetype", "path", "moveType", "evolutionStage"],
       "properties": {
-        "id": {
+        "lineage": {
+          "description": "Must be 'esper' for Esper powers (also covers Mentalists).",
           "type": "string",
-          "description": "A unique, machine-readable ID for the ability."
+          "const": "esper"
         },
-        "name": {
+        "archetype": {
+          "description": "The base Esper archetype or Mentalist type (e.g., 'sentinel', 'median', 'empath', 'mesmer').",
           "type": "string",
-          "description": "The display name of the ability."
-        },
-        "type": {
-          "type": "string",
-          "description": "The type of the ability, either a passive augment or an active move.",
           "enum": [
-            "move",
-            "augment"
+            "sentinel",
+            "median",
+            "weaver",
+            "summoner",
+            "linker",
+            "empath",
+            "mesmer",
+            "siren",
+            "dreamer",
+            "meta-mind",
+            "foundational"
           ]
         },
-        "description": {
-          "type": "string",
-          "description": "The full rules text and flavor for the ability."
-        }
-      },
-      "required": [
-        "id",
-        "name",
-        "type",
-        "description"
-      ]
-    },
-    "focusObject": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
         "path": {
+          "description": "Dot-notation path showing evolution lineage. Examples: 'sentinel.dragoon.lancer', 'empath.targeted_receiver', 'foundational.polarity.receiver'",
           "type": "string",
-          "description": "The progression path leading to this focus, e.g., 'Sentinel -> Juggernaut'."
+          "pattern": "^[a-z-_.]+(\\.[a-z-_]+)*$"
         },
-        "philosophy": {
+        "evolutionStage": {
+          "description": "How many steps evolved from base archetype. 0 = base/foundational, 1 = first evolution, 2 = second evolution, etc.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "moveType": {
+          "description": "Whether this is an active move (requires roll) or passive augment (always on).",
+          "type": "string",
+          "enum": ["move", "augment"]
+        },
+        "rollStat": {
+          "description": "Which attribute to roll for active moves (e.g., 'Presence', 'Intellect').",
           "type": "string"
         },
-        "abilities": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/abilityObject"
+        "parentAbility": {
+          "description": "ID of the prerequisite ability. Null for base archetypes and foundational Mentalist powers.",
+          "type": ["string", "null"]
+        },
+        "isBaseArchetype": {
+          "description": "True if this is a starting choice (Sentinel, Summoner, Weaver, Median, Linker, or Mentalist foundation).",
+          "type": "boolean",
+          "default": false
+        },
+        "isMentalist": {
+          "description": "True if this is a Mentalist power (uses polarity/scope system instead of evolution).",
+          "type": "boolean",
+          "default": false
+        },
+        "isSelectionPoint": {
+          "description": "True if this power presents a choice (e.g., Dragoon/Battle Saint/Juggernaut from Sentinel).",
+          "type": "boolean",
+          "default": false
+        },
+        "mentalistPolarity": {
+          "description": "For Mentalists: Receiver (pull/introverted) or Influencer (push/extroverted). Meta-Minds: Instanced vs Persistent.",
+          "type": "string",
+          "enum": ["receiver", "influencer", "instanced", "persistent"]
+        },
+        "mentalistScope": {
+          "description": "For Mentalists: Targeted (individual) or Aural (group/area). Meta-Minds: Discrete vs Systemic.",
+          "type": "string",
+          "enum": ["targeted", "aural", "discrete", "systemic"]
+        },
+        "grantedBy": {
+          "description": "For Mentalist powers: what selection grants this power. Examples: 'polarity_receiver', 'scope_targeted', 'targeted_receiver'",
+          "type": "string"
+        },
+        "outcomes": {
+          "description": "PbtA-style outcomes for active moves (similar to Sorcerers).",
+          "type": "object",
+          "properties": {
+            "12": {
+              "description": "Critical success - extraordinary effect.",
+              "type": "string"
+            },
+            "10+": {
+              "description": "Clean success - works as intended.",
+              "type": "string"
+            },
+            "7-9": {
+              "description": "Success with cost (1 Stun or 1 DP).",
+              "type": "string"
+            },
+            "6-": {
+              "description": "Failure - GM makes a move.",
+              "type": "string"
+            },
+            "2": {
+              "description": "Critical failure - catastrophic psychic backlash.",
+              "type": "string"
+            }
           }
         },
-        "focuses": {
-          "type": "object",
-          "description": "Recursively defines further specializations.",
-          "patternProperties": {
-            "^[a-z-]+$": {
-              "$ref": "#/$defs/focusObject"
-            }
-          },
-          "additionalProperties": false
+        "range": {
+          "description": "Effective range of the ability (e.g., 'touch', 'sight', 'within_30_feet').",
+          "type": "string"
+        },
+        "duration": {
+          "description": "How long the ability's effects last.",
+          "type": "string"
         }
-      },
-      "required": [
-        "id",
-        "name",
-        "path",
-        "philosophy",
-        "abilities"
-      ]
-    },
-    "archetypeObject": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "philosophy": {
-          "type": "string"
-        },
-        "abilities": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/abilityObject"
-          }
-        },
-        "focuses": {
-          "type": "object",
-          "description": "The first level of specializations for this archetype.",
-          "patternProperties": {
-            "^[a-z-]+$": {
-              "$ref": "#/$defs/focusObject"
-            }
-          },
-          "additionalProperties": false
-        }
-      },
-      "required": [
-        "id",
-        "name",
-        "philosophy",
-        "abilities",
-        "focuses"
-      ]
+      }
     }
+  ],
+  "notes": {
+    "dataStructure": "Powers are stored FLAT with parent references. UI builds the hierarchy tree from 'path' and 'parentAbility' fields.",
+    "prioritySystem": {
+      "priorityA": "Esper-Mentalist: Choose one Esper archetype AND one Mentalist archetype",
+      "priorityB": "Esper Prodigy: Choose one archetype, evolve 2 steps",
+      "priorityC": "Mentalist: Choose one Mentalist archetype + polarity + scope + 1 additional",
+      "priorityD": "Gifted Esper: Evolve one step",
+      "priorityE": "Esper: Base archetype only"
+    },
+    "esperEvolution": {
+      "structure": "Directed hierarchy with choices at each level",
+      "example": "Esper → Sentinel → (Dragoon | Battle Saint | Juggernaut) → Battle Saint → (Gun Saint | Sword Saint | Weapon Saint)",
+      "stages": "0 = base archetype, 1 = first evolution, 2 = second evolution",
+      "selection": "At each evolution stage, player chooses ONE path from available options"
+    },
+    "mentalistSystem": {
+      "structure": "Two-step selection system that grants powers",
+      "step1_polarity": "Choose Receiver (pull) OR Influencer (push). Meta-Minds: Instanced OR Persistent. Grants 'All Receivers' or 'All Influencers' power.",
+      "step2_scope": "Choose Targeted (individual) OR Aural (group). Meta-Minds: Discrete OR Systemic.",
+      "combinations": "Each polarity+scope combo grants specific powers (e.g., Targeted+Receiver). If multiple options exist, player selects one.",
+      "example": "Empath chooses Receiver → gains 'All Receivers' power → chooses Targeted → gains choice of Targeted+Receiver powers"
+    },
+    "moveVsAugment": {
+      "move": "Active ability requiring a roll (like Flash Step, Aetheric Overclock)",
+      "augment": "Passive enhancement always active (like Battle Cognition, Aetheric Defense)"
+    },
+    "esperArchetypes": [
+      "Sentinel (combat specialist)",
+      "Median (balance/healing)",
+      "Weaver (reality manipulation)",
+      "Summoner (entity control)",
+      "Linker (connection/networking)"
+    ],
+    "mentalistArchetypes": [
+      "Empath (emotion reading/manipulation)",
+      "Mesmer (direct mind control)",
+      "Siren (group influence)",
+      "Dreamer (subconscious access)",
+      "Meta-Mind (cognitive enhancement)"
+    ],
+    "uiGuidance": {
+      "esperUI": "Display as tree: base archetypes → evolution choices → further evolutions. Use 'isSelectionPoint' to show radio buttons.",
+      "mentalistUI": "Display as two-stage selection: Polarity choice → Scope choice → Power choice (if multiple). Use 'grantedBy' to show what unlocks each power.",
+      "duality": "Priority A characters get both Esper AND Mentalist sections simultaneously."
+    },
+    "evolutionCost": "Evolving requires XP and narrative justification (not in MVP scope)"
   }
 }
-
