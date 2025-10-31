@@ -4,7 +4,7 @@
     {
       "type": "augment",
       "id": "adrenal-activator",
-      "name": "Illicit \"Rage\" Gland",
+      "name": "Adrenal Activator",
       "category": "Physical Mods",
       "tags": [
         "flawed",
@@ -105,7 +105,7 @@
     {
       "type": "augment",
       "id": "arc-discharger-system",
-      "name": "The \"Jumper Cable\" Knuckles",
+      "name": "Arc Discharger System",
       "category": "Miscellaneous Mods",
       "tags": [
         "electrical",
@@ -208,7 +208,7 @@
     {
       "type": "augment",
       "id": "bone-lacing",
-      "name": "Junkyard Ossification",
+      "name": "Bone Lacing",
       "category": "Physical Mods",
       "tags": [
         "armor",
@@ -304,7 +304,7 @@
     {
       "type": "augment",
       "id": "bone-spur-systems",
-      "name": "The \"Marrow-Shank\" Graft",
+      "name": "Bone Spur Systems",
       "category": "Miscellaneous Mods",
       "tags": [
         "flawed",
@@ -412,7 +412,7 @@
     {
       "type": "augment",
       "id": "cardio-mod",
-      "name": "Gutter-Pump",
+      "name": "Cardio Mod",
       "category": "Physical Mods",
       "tags": [
         "endurance",
@@ -511,7 +511,7 @@
     {
       "type": "augment",
       "id": "computational-core",
-      "name": "The \"Dreg-Mind\"",
+      "name": "Computational Core",
       "category": "Mental Mods",
       "tags": [
         "flawed",
@@ -607,7 +607,7 @@
     {
       "type": "augment",
       "id": "concealed-weapon-mount",
-      "name": "The \"Clunker\" Rig",
+      "name": "Concealed Weapon Mount",
       "category": "Miscellaneous Mods",
       "tags": [
         "dimensional",
@@ -703,7 +703,7 @@
     {
       "type": "augment",
       "id": "courier-system",
-      "name": "The \"Meat-Pocket\"",
+      "name": "Courier System",
       "category": "Miscellaneous Mods",
       "tags": [
         "flawed",
@@ -801,7 +801,7 @@
     {
       "type": "augment",
       "id": "creative-core",
-      "name": "The Chaos Collector",
+      "name": "Creative Core",
       "category": "Mental Mods",
       "tags": [
         "creativity",
@@ -901,7 +901,7 @@
     {
       "type": "augment",
       "id": "eidetic-memory",
-      "name": "Jury-Rigged Mem-Coil",
+      "name": "Eidetic Memory",
       "category": "Mental Mods",
       "tags": [
         "intelligence",
@@ -997,7 +997,7 @@
     {
       "type": "augment",
       "id": "mental-fortress",
-      "name": "The Lead-Lined Skull",
+      "name": "Mental Fortress",
       "category": "Mental Mods",
       "tags": [
         "flawed",
@@ -1094,7 +1094,7 @@
     {
       "type": "augment",
       "id": "metabolic-accelerator",
-      "name": "Back-Alley \"Scab-Vat\"",
+      "name": "Metabolic Accelerator",
       "category": "Physical Mods",
       "tags": [
         "survival",
@@ -1196,7 +1196,7 @@
     {
       "type": "augment",
       "id": "multi-tasking-module",
-      "name": "The \"Cross-Wired\" Brainpan",
+      "name": "Multi Tasking Module",
       "category": "Mental Mods",
       "tags": [
         "flawed",
@@ -1293,7 +1293,7 @@
     {
       "type": "augment",
       "id": "muscle-weave",
-      "name": "Frankenstein Grafts",
+      "name": "Muscle Weave",
       "category": "Physical Mods",
       "tags": [
         "flawed",
@@ -1391,7 +1391,7 @@
     {
       "type": "augment",
       "id": "neural-accelerator",
-      "name": "The \"Spur\"",
+      "name": "Neural Accelerator",
       "category": "Mental Mods",
       "tags": [
         "flawed",
@@ -1491,7 +1491,7 @@
     {
       "type": "augment",
       "id": "pain-editor",
-      "name": "The \"Jolt-Block\"",
+      "name": "Pain Editor",
       "category": "Physical Mods",
       "tags": [
         "pain-suppression",
@@ -1587,7 +1587,7 @@
     {
       "type": "augment",
       "id": "pheromone-emitters",
-      "name": "The \"Musk-Gland\"",
+      "name": "Pheromone Emitters",
       "category": "Social Mods",
       "tags": [
         "morale",
@@ -1688,7 +1688,7 @@
     {
       "type": "augment",
       "id": "reflex-boost",
-      "name": "Twitch-Wire System",
+      "name": "Reflex Boost",
       "category": "Physical Mods",
       "tags": [
         "initiative",
@@ -1784,7 +1784,7 @@
     {
       "type": "augment",
       "id": "second-skin",
-      "name": "Patchwork Dermis",
+      "name": "Second Skin",
       "category": "Physical Mods",
       "tags": [
         "armor",
@@ -1880,7 +1880,7 @@
     {
       "type": "augment",
       "id": "sensory-boost",
-      "name": "Scrapper's Optics / Tin-Ear Implant",
+      "name": "Sensory Boost",
       "category": "Physical Mods",
       "tags": [
         "hearing",
@@ -1974,7 +1974,7 @@
     {
       "type": "augment",
       "id": "social-algorithm-processor",
-      "name": "The \"Vibe-Catcher\"",
+      "name": "Social Algorithm Processor",
       "category": "Social Mods",
       "tags": [
         "flawed",
@@ -2072,7 +2072,7 @@
     {
       "type": "augment",
       "id": "toxin-filters-immune-boosters",
-      "name": "Sump-Sponge",
+      "name": "Toxin Filters Immune Boosters",
       "category": "Physical Mods",
       "tags": [
         "flawed",
@@ -2170,7 +2170,7 @@
     {
       "type": "augment",
       "id": "venom-glands-toxin-sacs",
-      "name": "Gutter-Wyrm Gland",
+      "name": "Venom Glands Toxin Sacs",
       "category": "Miscellaneous Mods",
       "tags": [
         "assassination",

@@ -195,9 +195,10 @@ function renderDescription(description: PowerDescription | undefined, gmEnabled:
   if (!description) return null;
   return (
     <div className="power-description">
-      {description.short && <p>{description.short}</p>}
-      {gmEnabled && description.player && <p className="power-description__detail">{description.player}</p>}
+      {description.player && <p className="power-description__flavor">{description.player}</p>}
+      {description.short && <p className="power-description__mechanics">{description.short}</p>}
       {description.flaw && <p className="power-description__detail power-description__flaw">Flaw: {description.flaw}</p>}
+      {gmEnabled && description.gm && <p className="power-description__detail power-description__gm">GM: {description.gm}</p>}
       {description.outcomes && (
         <ul className="power-description__outcomes">
           {Object.entries(description.outcomes).map(([key, value]) => (
@@ -508,9 +509,6 @@ export function LineagePowersPanel({
         <div className="lineage-powers-grid">
           {powerData.powers.map((power) => {
             const rootId = power.id ?? slugify(power.name ?? 'augment');
-            const shortDesc = power.tiers?.tier1?.description?.short ??
-                             Object.values(power.tiers ?? {})[0]?.description?.short ??
-                             'No description available';
 
             // Check if any tier of this power is selected
             const anyTierSelected = selectionsForLineage.some((entry) => entry.meta?.root === rootId);
@@ -520,7 +518,6 @@ export function LineagePowersPanel({
                 <summary>
                   <div className="lineage-power-card__summary">
                     <h4>{power.name}</h4>
-                    <p className="lineage-power-card__short-desc">{shortDesc}</p>
                   </div>
                 </summary>
                 <div className="lineage-power-card__body">
@@ -552,16 +549,19 @@ export function LineagePowersPanel({
                     <div key={tierId} className={tierClass}>
                       <div className="lineage-power-tier__header">
                         <div className="lineage-power-tier__info">
-                          <span className="badge badge--tier">Tier {tierNum}</span>
-                          <span className="lineage-power-tier__cost">
-                            {tierNum} Slot{tierNum === 1 ? '' : 's'} · {tierNum} Corruption
-                          </span>
+                          <h5 className="lineage-power-tier__name">{tier.name ?? `Tier ${tierNum}`}</h5>
+                          <div className="lineage-power-tier__meta">
+                            <span className="badge badge--tier">Tier {tierNum}</span>
+                            <span className="lineage-power-tier__cost">
+                              {tierNum} Slot{tierNum === 1 ? '' : 's'} · {tierNum} Corruption
+                            </span>
+                          </div>
                         </div>
                         <button
                           type="button"
                           className={buttonClass}
                           onClick={() => handleNeoSapienTierSelection(selection)}
-                          aria-label={isSelected ? `Deselect Tier ${tierNum}` : `Select Tier ${tierNum}`}
+                          aria-label={isSelected ? `Deselect ${tier.name ?? `Tier ${tierNum}`}` : `Select ${tier.name ?? `Tier ${tierNum}`}`}
                         >
                           {isSelected ? '●' : '○'}
                         </button>
@@ -656,9 +656,6 @@ export function LineagePowersPanel({
         <div className="lineage-powers-grid">
           {selectableMutations.map((power) => {
             const rootId = power.id ?? slugify(power.name ?? 'mutation');
-            const shortDesc = power.tiers?.tier1?.description?.short ??
-                             Object.values(power.tiers ?? {})[0]?.description?.short ??
-                             'No description available';
 
             // Check if any tier of this power is selected
             const anyTierSelected = selectionsForLineage.some((entry) => entry.meta?.root === rootId);
@@ -668,7 +665,6 @@ export function LineagePowersPanel({
                 <summary>
                   <div className="lineage-power-card__summary">
                     <h4>{power.name}</h4>
-                    <p className="lineage-power-card__short-desc">{shortDesc}</p>
                   </div>
                 </summary>
                 <div className="lineage-power-card__body">
@@ -700,16 +696,19 @@ export function LineagePowersPanel({
                     <div key={tierId} className={tierClass}>
                       <div className="lineage-power-tier__header">
                         <div className="lineage-power-tier__info">
-                          <span className="badge badge--tier">Tier {tierNum}</span>
-                          <span className="lineage-power-tier__cost">
-                            {tierNum} MP · {tierNum} Corruption
-                          </span>
+                          <h5 className="lineage-power-tier__name">{tier.name ?? `Tier ${tierNum}`}</h5>
+                          <div className="lineage-power-tier__meta">
+                            <span className="badge badge--tier">Tier {tierNum}</span>
+                            <span className="lineage-power-tier__cost">
+                              {tierNum} MP · {tierNum} Corruption
+                            </span>
+                          </div>
                         </div>
                         <button
                           type="button"
                           className={buttonClass}
                           onClick={() => handleChimeraTierSelection(selection)}
-                          aria-label={isSelected ? `Deselect Tier ${tierNum}` : `Select Tier ${tierNum}`}
+                          aria-label={isSelected ? `Deselect ${tier.name ?? `Tier ${tierNum}`}` : `Select ${tier.name ?? `Tier ${tierNum}`}`}
                         >
                           {isSelected ? '●' : '○'}
                         </button>
