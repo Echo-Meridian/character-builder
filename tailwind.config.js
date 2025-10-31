@@ -35,8 +35,9 @@ export default {
       },
 
       fontFamily: {
-        'display': ['Bebas Neue', 'sans-serif'],  // Headers, titles
-        'body': ['Oswald', 'sans-serif'],         // Body text
+        'display': ['Limelight', 'serif'],        // Large headers, titles
+        'accent': ['Old Standard TT', 'serif'],   // Section headers, accents
+        'body': ['Newsreader', 'serif'],          // Body text, readable
         'mono': ['Courier New', 'monospace'],     // Data, numbers
       },
 

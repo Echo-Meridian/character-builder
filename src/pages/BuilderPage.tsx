@@ -242,14 +242,16 @@ export function BuilderPage() {
       )}
 
       <div className="max-w-7xl mx-auto space-y-deco-lg">
-        <CharacterProfileCard build={build} onUpdate={updateProfile} />
+        <div className="mb-deco-xl">
+          <CharacterProfileCard build={build} onUpdate={updateProfile} />
+        </div>
 
-        <div className="flex justify-end">
+        <div className="flex justify-end mb-deco-lg">
           <button
             type="button"
             onClick={resetActiveBuild}
-            className="px-deco-md py-2 rounded-full border border-sidonia-gold/30
-                     bg-sidonia-black/90 text-sidonia-text hover:border-sidonia-gold/60
+            className="px-deco-md py-2 rounded-full border-2 border-sidonia-gold/60
+                     bg-sidonia-dark text-sidonia-text hover:border-sidonia-gold
                      font-body text-xs uppercase tracking-wider transition-all duration-300
                      hover:bg-sidonia-gold/5"
           >
@@ -257,7 +259,9 @@ export function BuilderPage() {
           </button>
         </div>
 
-        <StageNavigation current={build.stage} onNavigate={setStage} />
+        <div className="mb-deco-xl">
+          <StageNavigation current={build.stage} onNavigate={setStage} />
+        </div>
 
         <div className="stage">
           {stageContent}

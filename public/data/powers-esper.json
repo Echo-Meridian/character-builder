@@ -22,8 +22,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You have an advantage on all Initiative rolls and are immune to mundane fear. You have an advantage on rolls to resist supernatural fear.",
-        "player": "You have an advantage on all Initiative rolls and are immune to mundane fear. You have an advantage on rolls to resist supernatural fear."
+        "short": "You have an advantage on all Initiative rolls (roll 3d6, drop the lowest). Additionally, you are immune to the negative effects of fear from mundane sources (gunfire, intimidation) and have an advantage on rolls to resist supernatural fear.",
+        "player": "You have a battle-honed mind. You instinctively perceive tactical patterns, remain calm under fire, and anticipate enemy actions with an unnerving prescience. This is not a conscious thought; it is an innate state of being in a high-stress environment."
       },
       "effects": [],
       "flaws": []
@@ -48,8 +48,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You have a pool of 3 regenerating Shield Boxes that absorb damage before your Health/Stun tracks.",
-        "player": "You have a pool of 3 regenerating Shield Boxes that absorb damage before your Health/Stun tracks."
+        "short": "You have innate, regenerating protection. You have a pool of 3 Shield Boxes. At the start of your turn, if you have taken damage to this pool, it regenerates 1 Shield Box. Incoming damage ticks off these Shield Boxes before affecting your Health/Stun tracks. This pool does not stack with the Sorcerer's Aegis Shield Move.",
+        "player": "Your Aether-organ reacts to incoming threats, hardening your bio-field an instant before impact. This is not armor; it is a flicker of reactive, localized reality warping that dulls the force of a blow."
       },
       "effects": [],
       "flaws": []
@@ -102,8 +102,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Instantly move to any location you can see within a short distance without provoking attacks. A 7-9 causes 1 Stun damage or adds 1 DP.",
-        "player": "Instantly move to any location you can see within a short distance without provoking attacks. A 7-9 causes 1 Stun damage or adds 1 DP."
+        "short": "You push your Aether-organ to its limit, creating a momentary, localized warp.",
+        "player": "You push your Aether-organ to its limit, creating a momentary, localized warp. You don't run; you simply cease to be in one place and arrive in another. 10+: You instantly move to any location you can see within a short distance (e.g., 50 feet). This movement does not provoke any reactionary attacks. 7-9: You make the jump successfully, but the biological strain is intense. You suffer 1 Stun damage, or the chaotic exit adds 1 DP to the Dissonance Pool. 6-: The warp is unstable. You arrive at a location near your intended target, but not precisely where you wanted, possibly leaving you in a poor tactical position."
       },
       "effects": [],
       "flaws": [],
@@ -130,8 +130,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Perform a weaponized leap. On a 10+, your first melee attack upon landing automatically hits and deals +1 damage.",
-        "player": "Perform a weaponized leap. On a 10+, your first melee attack upon landing automatically hits and deals +1 damage."
+        "short": "You channel Aether into your legs, unleashing a single, impossibly powerful leap aimed at delivering a devastating blow.",
+        "player": "You channel Aether into your legs, unleashing a single, impossibly powerful leap aimed at delivering a devastating blow. This is not for travel; it is a weaponized trajectory. 10+: Your leap is perfect. You can launch yourself from any surface and land adjacent to any target within a significant range (e.g., across a wide street, or from a rooftop down to the street). Your first melee attack upon landing automatically hits and deals +1 damage from the sheer force of the impact. 7-9: The landing is rough. Your attack still hits, but you suffer the \"shaken\" effect for a moment, taking a minor penalty on your next defensive roll as you recover your footing. 6-: You misjudge the arc. You land near your target but not in melee range, and the jarring impact means you cannot take an attack action this turn."
       },
       "effects": [],
       "flaws": [],
@@ -158,8 +158,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can run up walls, slide down surfaces, and ignore movement penalties from difficult terrain.",
-        "player": "You can run up walls, slide down surfaces, and ignore movement penalties from difficult terrain."
+        "short": "You have mastered supernatural mobility. You can run up walls for short distances, slide down sheer surfaces without harm, and leap across gaps that would be impossible for a normal athlete. You ignore all movement penalties from difficult or uneven terrain. This represents your character's new, fundamental relationship with their environment.",
+        "player": "This is a passive state of grace. The Aether subtly cushions your falls, lightens your steps, and guides your hands and feet to impossible holds. Walls become temporary floors, and long falls are merely an opportunity to reposition."
       },
       "effects": [],
       "flaws": []
@@ -186,8 +186,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Once per combat, teleport to an enemy and make a melee attack as a single action. This attack is impossible to dodge or parry.",
-        "player": "Once per combat, teleport to an enemy and make a melee attack as a single action. This attack is impossible to dodge or parry."
+        "short": "Once per combat scene, you can perform a Flash Strike. You teleport to an enemy and make a melee attack as a single action. This attack is impossible to dodge or parry; it can only be soaked with armor.",
+        "player": "You have mastered the offensive application of the Flash Step. Instead of re-orienting, you arrive from the warp with your weapon already in motion, giving your target no time to react."
       },
       "effects": [],
       "flaws": [],
@@ -215,8 +215,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "When you hit with Pierce the Sky, the impact creates a concussive blast, knocking down all adjacent characters and dealing 1 Stun damage.",
-        "player": "When you hit with Pierce the Sky, the impact creates a concussive blast, knocking down all adjacent characters and dealing 1 Stun damage."
+        "short": "When you successfully hit a target with your Pierce the Sky Move, the impact creates a concussive blast. All other characters (friend or foe) adjacent to your target are knocked off their feet and suffer 1 Stun damage.",
+        "player": "An evolution of the Dragoon's signature attack. Your controlled descent is now so powerful that your landing creates a localized shockwave."
       },
       "effects": [],
       "flaws": [],
@@ -244,8 +244,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "If no enemies are within 5 feet at the start of your turn, your first melee attack gains a +1 bonus.",
-        "player": "If no enemies are within 5 feet at the start of your turn, your first melee attack gains a +1 bonus."
+        "short": "When there are no enemies within 5 feet of you at the start of your turn, your first melee attack that turn gains a +1 bonus to its roll.",
+        "player": "You are at your most dangerous when you have room to maneuver. Your combat style is predicated on charges, lunges, and wide, sweeping attacks."
       },
       "effects": [],
       "flaws": []
@@ -272,8 +272,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Forge a permanent Aetheric bond with a single vehicle or creature, granting it rudimentary intelligence and loyalty.",
-        "player": "Forge a permanent Aetheric bond with a single vehicle or creature, granting it rudimentary intelligence and loyalty."
+        "short": "You designate one conveyance or creature as your Bonded Mount. This mount gains a rudimentary intelligence and loyalty to you. It can understand and follow your simple commands even when you are not physically present.",
+        "player": "You perform a ritual (which may be as simple as laying hands on the mount's frame or looking a beast in the eye) to forge a permanent Aetheric bond with a single mount. This bond imbues the mount with a sliver of your own consciousness."
       },
       "effects": [],
       "flaws": [],
@@ -301,8 +301,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Once per day, summon your Bonded Mount to your location as quickly as it can travel.",
-        "player": "Once per day, summon your Bonded Mount to your location as quickly as it can travel."
+        "short": "Once per day, you can summon your Bonded Mount. It will arrive at your location as quickly as it can reasonably travel. If it is a conveyance and is blocked (e.g., in a secured shed), it cannot reach you.",
+        "player": "By calling out through your Aetheric bond, you can summon your mount to your location. For a conveyance, this might manifest as it driving itself to you from a nearby nearby; for a beast, it might travel across the city to find you."
       },
       "effects": [],
       "flaws": [],
@@ -330,8 +330,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You are a perfect rider. You can operate your Bonded Mount with expert proficiency, even if you've never used it before, and gain an advantage on all related rolls.",
-        "player": "You are a perfect rider. You can operate your Bonded Mount with expert proficiency, even if you've never used it before, and gain an advantage on all related rolls."
+        "short": "You are a perfect rider. When you are on or in your Bonded Mount, you can perform any piloting or riding maneuver as if you were a master. This means you can drive a motorcar, fly a airship, or ride a beast with expert proficiency, even if you have never done so before. You gain an advantage on all rolls made to pilot or control your mount.",
+        "player": "Your bond grants you an intuitive, supernatural understanding of how to operate your mount. This is not learned knowledge; it is pure instinct."
       },
       "effects": [],
       "flaws": []
@@ -357,8 +357,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You do not suffer the normal penalties from exhaustion, but you must spend twice the time resting in Downtime to recover.",
-        "player": "You do not suffer the normal penalties from exhaustion, but you must spend twice the time resting in Downtime to recover."
+        "short": "You do not suffer the normal penalties from exhaustion. You can continue to fight, run, or perform strenuous physical activity for hours without penalty. However, you are only deferring the cost. For every scene you use this ability, you must spend twice that amount of time in complete rest during the next Downtime before you can recover any Health or Stun damage. You can push your body to incredible limits, but the bill always comes due.",
+        "player": "You activate a \"sustained performance\" technique within your Aether-organ. Your body's need for rest and recovery is deferred, allowing you to operate at peak physical capacity long after others would have collapsed from exhaustion. You are relentless."
       },
       "effects": [],
       "flaws": []
@@ -384,8 +384,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your next melee attack this turn automatically hits and deals +3 damage on a 10+. On a 7-9, it hits but leaves you open to attack.",
-        "player": "Your next melee attack this turn automatically hits and deals +3 damage on a 10+. On a 7-9, it hits but leaves you open to attack."
+        "short": "You channel all of your Aetheric energy into a single, massive, all-or-nothing blow.",
+        "player": "You channel all of your Aetheric energy into a single, massive, all-or-nothing blow. This is not a quick strike; it is a telegraphed, earth-shattering display of force, perfect for breaking down defenses or obliterating a stationary target. 10+: Your attack is overwhelming. Your next melee attack this turn automatically hits and deals +3 damage. 7-9: The blow is powerful but uncontrolled. The attack still hits and deals the bonus damage, but the wild exertion leaves you wide open. Your opponents have an advantage on their next attack roll against you. 6-: You over-commit to the swing, losing your balance and staggering. You miss your attack completely and cannot take a defensive action until your next turn."
       },
       "effects": [],
       "flaws": [],
@@ -412,8 +412,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You gain a permanent +1 natural armor against both Wound and Blunt damage, which stacks with Aetheric Defense.",
-        "player": "You gain a permanent +1 natural armor against both Wound and Blunt damage, which stacks with Aetheric Defense."
+        "short": "Your baseline durability is increased. You gain a permanent +1 natural armor against both Wound and Blunt damage. This stacks with the protection from your Aetheric Defense Shield Boxes, making you incredibly tough to injure.",
+        "player": "Your Aetheric Defense has become proactive rather than reactive. Your bio-field is now permanently hardened, creating a tangible, armor-like barrier that is always active."
       },
       "effects": [],
       "flaws": []
@@ -440,8 +440,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "When an adjacent designated 'ward' is attacked, you can have the attack target you instead.",
-        "player": "When an adjacent designated 'ward' is attacked, you can have the attack target you instead."
+        "short": "When an adjacent ally you have designated as your ward is attacked, you can choose to have that attack target you instead. You can use your Aetheric Defense or a physical shield to block the blow as if you were the original target. You may only have one ward designated at a time. Changing your ward mid-scene requires a successful Willpower roll, representing a significant shift in your protective desire.",
+        "player": "You designate a single ally as your \"ward.\" This is a deep, instinctual choice that cannot be easily changed. Your Aether-organ now perceives threats to your ward as threats to yourself, allowing you to intercede with supernatural speed and certainty."
       },
       "effects": [],
       "flaws": [],
@@ -469,8 +469,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "As your entire action, double the effectiveness of your Aetheric Defense and natural armor until your next turn.",
-        "player": "As your entire action, double the effectiveness of your Aetheric Defense and natural armor until your next turn."
+        "short": "As your entire action for a turn, you enter a state of Full Defense. Until the start of your next turn, you double the effectiveness of your Aetheric Defense (e.g., it regenerates 2 boxes instead of 1) and your natural armor. You cannot take any offensive actions while in this state, but you are incredibly difficult to harm.",
+        "player": "You forgo all pretense of offense, planting your feet and focusing every ounce of your Aetheric and physical being into becoming an immovable, impenetrable object. You are the eye of the storm."
       },
       "effects": [],
       "flaws": [],
@@ -498,8 +498,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "When wielding a physical shield, you can make a melee attack with it that deals significant Stun damage and can knock an opponent off balance.",
-        "player": "When wielding a physical shield, you can make a melee attack with it that deals significant Stun damage and can knock an opponent off balance."
+        "short": "When wielding a physical shield, you can make a melee attack with it. A successful shield bash deals significant Stun damage and has a chance to knock your opponent off balance, giving you an advantage on your next action against them.",
+        "player": "You have mastered the art of turning your primary defensive tool into a brutal offensive weapon. Your shield is not just a barrier; it's a battering ram."
       },
       "effects": [],
       "flaws": []
@@ -696,8 +696,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Gain a +2 bonus on a single attack, but your Aetheric Defense is depleted and cannot regenerate until your next turn.",
-        "player": "Gain a +2 bonus on a single attack, but your Aetheric Defense is depleted and cannot regenerate until your next turn."
+        "short": "As part of a melee or ranged attack action, you can choose to go \"All In.\" For that single attack, you gain a +2 bonus to your roll. However, your Aetheric Defense pool is completely depleted and cannot regenerate until the start of your next turn, leaving you vulnerable.",
+        "player": "You deliberately drop your reactive Aetheric defenses, shunting that power directly into your offensive capabilities for a single, decisive attack."
       },
       "effects": [],
       "flaws": [],
@@ -724,8 +724,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "As an action, the GM will tell you an opponent's general fighting style and proficiency level.",
-        "player": "As an action, the GM will tell you an opponent's general fighting style and proficiency level."
+        "short": "As an action, you can assess a single opponent. The GM will tell you their general fighting style (e.g., brawler, martial artist, marksman) and their level of proficiency (Untrained, Trained, Expert, or Master) in their primary combat skill.",
+        "player": "You use your Battle Cognition not just for awareness, but for analysis. By observing a target's stance, movements, and equipment, you can instantly get a read on their martial capabilities."
       },
       "effects": [],
       "flaws": [],
@@ -752,8 +752,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You are considered Trained (0) with every weapon. The XP cost to reach Expert rank with a specific weapon is halved.",
-        "player": "You are considered Trained (0) with every weapon. The XP cost to reach Expert rank with a specific weapon is halved."
+        "short": "You are considered to have a Trained (0) skill level with every weapon, even those you have never seen before. You will never suffer an \"untrained\" penalty. Furthermore, if you decide to spend XP to increase your skill with a specific weapon, the cost to reach the Expert rank is halved.",
+        "player": "Your Aether-organ grants you an intuitive, baseline understanding of any weapon you pick up. You instinctively know the proper grip, balance, and basic function of any tool designed for combat."
       },
       "effects": [],
       "flaws": []
@@ -780,8 +780,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your shot curves around partial cover to hit its mark.",
-        "player": "Your shot curves around partial cover to hit its mark."
+        "short": "You can target an enemy who is behind partial cover (e.g., peeking around a corner, behind a crate). Your shot ignores the defensive bonus of that cover as the bullet curves in flight to find its mark.",
+        "player": "You subtly manipulate the Aether around your bullet's trajectory, allowing it to curve around cover."
       },
       "effects": [],
       "flaws": [],
@@ -809,8 +809,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Make a ranged attack at a penalty to ricochet a shot off a surface and hit a target behind total cover.",
-        "player": "Make a ranged attack at a penalty to ricochet a shot off a surface and hit a target behind total cover."
+        "short": "You can make a ranged attack against a target who is behind total cover, provided there is a viable surface to ricochet your shot off of. This attack is made at a penalty, but it allows you to hit the \"unhittable.\"",
+        "player": "You have a supernatural understanding of angles and ricochet potential. You can intentionally fire a bullet at a surface to strike an enemy who is completely out of your line of sight."
       },
       "effects": [],
       "flaws": [],
@@ -838,8 +838,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Once per scene, as a reaction, you may make an opposed attack roll to shoot an incoming bullet out of the air.",
-        "player": "Once per scene, as a reaction, you may make an opposed attack roll to shoot an incoming bullet out of the air."
+        "short": "Once per scene, as a reaction when you are targeted by a single ranged firearm attack, you can attempt to block it. Make an opposed attack roll against your attacker. If you succeed, you shoot their bullet out of the air, negating the attack completely in a spectacular display of skill.",
+        "player": "Your connection to your firearm is so absolute that you can perform the ultimate defensive feat: shooting a bullet out of the air."
       },
       "effects": [],
       "flaws": [],
@@ -867,8 +867,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "At the start of combat, you can interrupt the initiative order to immediately take your turn. Your first attack gains a +1 bonus.",
-        "player": "At the start of combat, you can interrupt the initiative order to immediately take your turn. Your first attack gains a +1 bonus."
+        "short": "At the start of any combat where you have not yet acted, you can choose to perform a First Strike. This allows you to interrupt the initiative order and immediately take your turn. Your first attack on this turn gains a +1 bonus. After this action, you rejoin the normal initiative order.",
+        "player": "You have mastered the art of Iaijutsu\u2014the single, lightning-fast draw and cut. You strike before your opponent has even registered the threat."
       },
       "effects": [],
       "flaws": [],
@@ -896,8 +896,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Once per scene, your next melee attack ignores any defensive bonuses the target has from cover or defensive stances.",
-        "player": "Once per scene, your next melee attack ignores any defensive bonuses the target has from cover or defensive stances."
+        "short": "Once per scene, you can declare an Aetheric Strike. Your next melee attack ignores any defensive bonuses the target might have from cover or defensive stances (like a Shield Warden's Full Defense).",
+        "player": "You channel your Aether into your blade, not to imbue it with an element, but to guide it along the most perfect, efficient path to its target, bypassing clumsy defenses."
       },
       "effects": [],
       "flaws": [],
@@ -925,8 +925,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "When you attack a disadvantaged enemy (stunned, prone), the attack is automatically a Critical Hit if it hits.",
-        "player": "When you attack a disadvantaged enemy (stunned, prone), the attack is automatically a Critical Hit if it hits."
+        "short": "When you attack an enemy who is stunned, knocked prone, or otherwise significantly disadvantaged (GM's discretion), you can declare a Final Strike. If the attack hits, it is automatically considered a Critical Hit.",
+        "player": "You see the fatal opening. When your opponent is staggered, off-balance, or otherwise vulnerable, you can deliver a precise finishing blow."
       },
       "effects": [],
       "flaws": [],
@@ -954,8 +954,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "When you attack a disadvantaged enemy (stunned, prone), the attack is automatically a Critical Hit if it hits.",
-        "player": "When you attack a disadvantaged enemy (stunned, prone), the attack is automatically a Critical Hit if it hits."
+        "short": "You designate a single weapon as your Attuned Weapon. You can only have one at a time. This attunement is a prerequisite for your other abilities.",
+        "player": "You perform a lengthy ritual during Downtime, forming a deep, Aetheric bond with one specific weapon of your choice. This weapon becomes your signature, your Excalibur."
       },
       "effects": [],
       "flaws": [],
@@ -983,7 +983,7 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Through your attunement, your skill with your chosen weapon has reached a level of supernatural mastery that transcends mere training.",
+        "short": "When using your Attuned Weapon, you are always considered to have a Master (+2) skill rank, regardless of your actual trained skill level. This bonus does not apply to any other weapon.",
         "player": "Through your attunement, your skill with your chosen weapon has reached a level of supernatural mastery that transcends mere training."
       },
       "effects": [],
@@ -1012,7 +1012,7 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can channel your Aetheric power through your attuned weapon, unleashing a single, spectacular signature move. This effect should be personal and defined by the player in collaboration with the GM when they first attune the weapon.",
+        "short": "Once per combat scene, you can activate your weapon's unique imbued power. Examples include:",
         "player": "You can channel your Aetheric power through your attuned weapon, unleashing a single, spectacular signature move. This effect should be personal and defined by the player in collaboration with the GM when they first attune the weapon."
       },
       "effects": [],
@@ -1039,8 +1039,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You place your hand on a living being and attune your Aether-organ to its biological rhythms, allowing you to instantly diagnose its physical state. You know their exact Health and Stun boxes, can detect any diseases or poisons, and identify the presence of mutations or bioware.",
-        "player": "You place your hand on a living being and attune your Aether-organ to its biological rhythms, allowing you to instantly diagnose its physical state. You know their exact Health and Stun boxes, can detect any diseases or poisons, and identify the presence of mutations or bioware."
+        "short": "You gain precise information about the target's health. You know their exact Health and Stun boxes, can detect any diseases or poisons, and identify the presence of mutations or bioware.",
+        "player": "You place your hand on a living being and attune your Aether-organ to its biological rhythms, allowing you to instantly diagnose its physical state."
       },
       "effects": [],
       "flaws": [],
@@ -1066,8 +1066,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You channel raw Aether directly into a wounded living being, kickstarting its natural healing processes. Clear two ticked boxes from one location's Stun Track OR one box from its Health Boxes. This can be used on yourself or a target you touch.",
-        "player": "You channel raw Aether directly into a wounded living being, kickstarting its natural healing processes. Clear two ticked boxes from one location's Stun Track OR one box from its Health Boxes. This can be used on yourself or a target you touch."
+        "short": "You can mend fresh wounds. Clear two ticked boxes from one location's Stun Track OR one boxfrom its Health Boxes. This can be used on yourself or a target you touch.",
+        "player": "You channel raw Aether directly into a wounded living being, kickstarting its natural healing processes. This is battlefield medicine, quick and potent."
       },
       "effects": [],
       "flaws": [],
@@ -1093,8 +1093,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You perform a more focused and sustained application of Aetheric healing to combat chronic conditions, diseases, or poisons. Over a period of minutes or even a scene, you can effectively treat one disease or poison affecting a target. On a successful roll, you either neutralize the poison, or halt the progression of a disease, allowing natural recovery to begin.",
-        "player": "You perform a more focused and sustained application of Aetheric healing to combat chronic conditions, diseases, or poisons. Over a period of minutes or even a scene, you can effectively treat one disease or poison affecting a target. On a successful roll, you either neutralize the poison, or halt the progression of a disease, allowing natural recovery to begin."
+        "short": "Over a period of minutes or even a scene, you can effectively treat one disease or poison affecting a target. On a successful roll, you either neutralize the poison, or halt the progression of a disease, allowing natural recovery to begin.",
+        "player": "You perform a more focused and sustained application of Aetheric healing to combat chronic conditions, diseases, or poisons. This takes time and concentration."
       },
       "effects": [],
       "flaws": [],
@@ -1121,8 +1121,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You perform an incredibly detailed bioscan, not just of a being's current state, but of its fundamental biological blueprint. You gain access to the target's complete genetic code, revealing predispositions, hidden flaws, or latent mutations.",
-        "player": "You perform an incredibly detailed bioscan, not just of a being's current state, but of its fundamental biological blueprint. You gain access to the target's complete genetic code, revealing predispositions, hidden flaws, or latent mutations."
+        "short": "You gain access to the target's complete genetic code, revealing predispositions, hidden flaws, or latent mutations. This also allows you to identify all their innate biological strengths and weaknesses, giving you deep insight into their physical nature.",
+        "player": "You perform an incredibly detailed bioscan, not just of a being's current state, but of its fundamental biological pattern."
       },
       "effects": [],
       "flaws": [],
@@ -1149,8 +1149,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can manipulate a creature's genetic structure to remove flaws or integrate new biological components. Over a period of Downtime and with appropriate materials (bioware, tissue samples), you can repair chronic conditions or remove congenital defects.",
-        "player": "You can manipulate a creature's genetic structure to remove flaws or integrate new biological components. Over a period of Downtime and with appropriate materials (bioware, tissue samples), you can repair chronic conditions or remove congenital defects."
+        "short": "Over a period of Downtime and with appropriate materials (bioware, tissue samples), you can repair chronic conditions or remove congenital defects.",
+        "player": "You can manipulate a creature's genetic structure to remove flaws or integrate new biological components."
       },
       "effects": [],
       "flaws": [],
@@ -1177,8 +1177,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your expertise allows you to understand and work with basic and corporate-grade bioware. You can install, maintain, and repair any Tier 1 or Tier 2 Bio-Mods on any willing or helpless subject.",
-        "player": "Your expertise allows you to understand and work with basic and corporate-grade bioware. You can install, maintain, and repair any Tier 1 or Tier 2 Bio-Mods on any willing or helpless subject."
+        "short": "You can install, maintain, and repair any Tier 1 or Tier 2 Bio-Mods on any willing or helpless subject.",
+        "player": "Your expertise allows you to understand and work with basic and corporate-grade bioware."
       },
       "effects": [],
       "flaws": []
@@ -1205,7 +1205,7 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can sculpt and integrate new organs or tissues from raw Aether and genetic material, creating entirely new biological systems within a living being.",
+        "short": "You can create and install a new minor organ (e.g., a secondary liver, an enhanced optic nerve) or a cosmetic alteration (e.g., iridescent skin, bioluminescent eyes) in a living being. This is a complex, time-consuming procedure.",
         "player": "You can sculpt and integrate new organs or tissues from raw Aether and genetic material, creating entirely new biological systems within a living being."
       },
       "effects": [],
@@ -1234,8 +1234,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can enhance the synergy between two existing biological features in a target, granting a bonus to relevant rolls.",
-        "player": "You can enhance the synergy between two existing biological features in a target, granting a bonus to relevant rolls."
+        "short": "You can enhance the synergy between two existing biological features in a target (e.g., making their muscle strength work better with their bone density). This grants a bonus (e.g., +1) to relevant rolls.",
+        "player": "Your understanding of biological systems is so profound that you can identify and enhance the natural interoperability of existing traits."
       },
       "effects": [],
       "flaws": [],
@@ -1263,8 +1263,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your expertise extends to the most advanced and dangerous bioware. You can install, maintain, and repair Tier 3 Bio-Mods.",
-        "player": "Your expertise extends to the most advanced and dangerous bioware. You can install, maintain, and repair Tier 3 Bio-Mods."
+        "short": "You can install, maintain, and repair Tier 3 Bio-Mods.",
+        "player": "Your expertise extends to the most advanced and dangerous bioware."
       },
       "effects": [],
       "flaws": []
@@ -1291,8 +1291,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "As long as you are not actively using your Esper powers, you are undetectable as an Esper to all forms of magical and psychic detection.",
-        "player": "As long as you are not actively using your Esper powers, you are undetectable as an Esper to all forms of magical and psychic detection."
+        "short": "As long as you are not actively using your Esper powers, you are undetectable as an Esper. You appear to all forms of magical and psychic detection as a normal, non-powered human.",
+        "player": "You have learned to instinctively suppress your own Aetheric signature, cloaking your nature from other sensitives."
       },
       "effects": [],
       "flaws": []
@@ -1319,8 +1319,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can automatically sense the presence of other Espers and can make a Perception roll to detect a 'Spark'\u2014a non-powered individual with the latent potential to become an Esper.",
-        "player": "You can automatically sense the presence of other Espers and can make a Perception roll to detect a 'Spark'\u2014a non-powered individual with the latent potential to become an Esper."
+        "short": "You can automatically sense the presence of other Espers who are not using Aetheric Masking. Furthermore, you can make a Perception roll to detect a \"Spark\"\u2014a non-powered individual with the latent potential to become an Esper.",
+        "player": "You can attune your senses to detect the subtle Aetheric hum of a latent or active Cortex in others."
       },
       "effects": [],
       "flaws": [],
@@ -1348,8 +1348,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "On a 10+, you perform a difficult ritual to forcibly activate a latent Esper's Cortex, turning them into a full-fledged Esper. On a 7-9, the awakening is traumatic and inflicts Permanent Corruption. On a 6-, the potential is burned out forever.",
-        "player": "On a 10+, you perform a difficult ritual to forcibly activate a latent Esper's Cortex, turning them into a full-fledged Esper. On a 7-9, the awakening is traumatic and inflicts Permanent Corruption. On a 6-, the potential is burned out forever."
+        "short": "This is the Waker's most coveted and feared ability.",
+        "player": "This is the Waker's most coveted and feared ability. You can perform a difficult and dangerous ritual to forcibly activate a latent Esper's Cortex, pushing them through a traumatic, accelerated evolution into a full-fledged Esper. 10+: The awakening is clean. The target awakens to their new powers, gaining their chosen Archetype. 7-9: The awakening is traumatic. The target awakens, but the psychic shock of the forced evolution inflicts 1 Permanent Corruption upon them. 6-: The procedure fails catastrophically. The Spark's potential is burned out forever, rendering them unable to ever become an Esper, and the psychic backlash inflicts 2 Stun damage on both you and the target."
       },
       "effects": [],
       "flaws": [],
@@ -1376,8 +1376,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You channel life-giving Aether into a plant, dramatically accelerating its growth cycle. You can touch a seed or small plant and cause it to grow to its full maturity in a matter of minutes.",
-        "player": "You channel life-giving Aether into a plant, dramatically accelerating its growth cycle. You can touch a seed or small plant and cause it to grow to its full maturity in a matter of minutes."
+        "short": "You can touch a seed or small plant and cause it to grow to its full maturity in a matter of minutes. You could cause vines to rapidly snake up a wall to create a ladder, or cause thorny bushes to instantly erupt from the ground to form a barrier.",
+        "player": "You channel life-giving Aether into a plant, dramatically accelerating its growth cycle."
       },
       "effects": [],
       "flaws": [],
@@ -1404,8 +1404,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You use your healing abilities to mend damage to plants or purge them of disease and corruption. You can touch a diseased or damaged plant and restore it to health.",
-        "player": "You use your healing abilities to mend damage to plants or purge them of disease and corruption. You can touch a diseased or damaged plant and restore it to health."
+        "short": "You can touch a diseased or damaged plant and restore it to health. This can be used to neutralize blights, cure infections, or even mend physical damage to ancient, important trees.",
+        "player": "You use your healing abilities to mend damage to plants or purge them of disease and corruption."
       },
       "effects": [],
       "flaws": [],
@@ -1432,8 +1432,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You possess an intuitive, encyclopedic knowledge of plant life. You are considered to have an Expert (+1) skill rank in Science (Botany). You can identify any plant, know its properties, and understand what it needs to thrive.",
-        "player": "You possess an intuitive, encyclopedic knowledge of plant life. You are considered to have an Expert (+1) skill rank in Science (Botany). You can identify any plant, know its properties, and understand what it needs to thrive."
+        "short": "You are considered to have an Expert (+1) skill rank in Science (Botany) or a similar knowledge skill. You can identify any plant, know its properties (poisonous, edible, medicinal), and understand what it needs to thrive.",
+        "player": "You possess an intuitive, encyclopedic knowledge of plant life. You understand soil composition, nutrient requirements, and the fundamental biology of any plant you encounter."
       },
       "effects": [],
       "flaws": []
@@ -1632,7 +1632,7 @@
       },
       "description": {
         "short": "Your Triage and Treatment Moves are exceptionally effective when used on animals or Chimeras. When healing them, you can choose to clear one additional Stun box or automatically succeed on a Treatment roll without needing to roll the dice.",
-        "player": "Your Triage and Treatment Moves are exceptionally effective when used on animals or Chimeras. When healing them, you can choose to clear one additional Stun box or automatically succeed on a Treatment roll without needing to roll the dice."
+        "player": "You have specialized your healing arts to work on the complex and often unstable biology of Chimeras and other animalistic creatures."
       },
       "effects": [],
       "flaws": [],
@@ -1659,8 +1659,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You passively emit a complex series of pheromones that are calming to non-human animals. They instinctively recognize you as a non-threatening, even comforting, presence. Animals will not willingly attack you unless you or an ally act aggressively toward them first.",
-        "player": "You passively emit a complex series of pheromones that are calming to non-human animals. They instinctively recognize you as a non-threatening, even comforting, presence. Animals will not willingly attack you unless you or an ally act aggressively toward them first."
+        "short": "Animals will not willingly attack you unless you or an ally act aggressively toward them first. You have an advantage on all Social rolls made to calm, tame, or interact with animals.",
+        "player": "You passively emit a complex series of pheromones that are calming to non-human animals. They instinctively recognize you as a non-threatening, even comforting, presence."
       },
       "effects": [],
       "flaws": []
@@ -1687,8 +1687,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You possess an encyclopedic, intuitive knowledge of the animal kingdom. You are considered to have an Expert (+1) skill rank in Science (Zoology).",
-        "player": "You possess an encyclopedic, intuitive knowledge of the animal kingdom. You are considered to have an Expert (+1) skill rank in Science (Zoology)."
+        "short": "You are considered to have an Expert (+1) skill rank in Science (Zoology). You can identify any creature, understand its likely behaviors, and know its strengths and weaknesses.",
+        "player": "You possess an encyclopedic, intuitive knowledge of the animal kingdom, from the most mundane pests to the most bizarre Blight-mutated predators."
       },
       "effects": [],
       "flaws": []
@@ -1716,7 +1716,7 @@
       },
       "description": {
         "short": "When you are solely observing and not interacting, animals and non-sentient creatures are completely unaware of your presence. You have a massive advantage on any stealth rolls made to avoid detection by animals.",
-        "player": "When you are solely observing and not interacting, animals and non-sentient creatures are completely unaware of your presence. You have a massive advantage on any stealth rolls made to avoid detection by animals."
+        "player": "You can instinctively dampen your Aetheric signature and muffle your physical presence when observing wildlife."
       },
       "effects": [],
       "flaws": []
@@ -1743,8 +1743,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You have learned to perform your Bioscan from a short distance (up to 15 feet), allowing you to gather data without needing to risk physical contact.",
-        "player": "You have learned to perform your Bioscan from a short distance (up to 15 feet), allowing you to gather data without needing to risk physical contact."
+        "short": "You can now use your Bioscan Move on any target within 15 feet of you.",
+        "player": "You have learned to perform your Bioscan from a short distance, allowing you to gather information without needing to risk physical contact with a dangerous creature."
       },
       "effects": [],
       "flaws": [],
@@ -1770,8 +1770,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can attune your senses to perceive the flow of energy around you. This includes electrical currents in the walls, the heat signature of a living being, or the Aetheric glow of a magical effect. As an action, the GM will describe the significant energy sources in your immediate vicinity.",
-        "player": "You can attune your senses to perceive the flow of energy around you. This includes electrical currents in the walls, the heat signature of a living being, or the Aetheric glow of a magical effect. As an action, the GM will describe the significant energy sources in your immediate vicinity."
+        "short": "As an action, you can open your senses to energy. The GM will describe the significant energy sources in your immediate vicinity, allowing you to spot active electronics, hidden power conduits, or active magical wards.",
+        "player": "You can attune your senses to perceive the flow of energy around you. This includes electrical currents in the walls, the heat signature of a living being, or the Aetheric glow of a magical effect."
       },
       "effects": [],
       "flaws": [],
@@ -1797,8 +1797,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your mind is naturally inclined to see the patterns in all things. Once per scene, you can study a situation or an opponent and ask the GM for the 'pattern.' The GM will reveal a single, exploitable pattern.",
-        "player": "Your mind is naturally inclined to see the patterns in all things. Once per scene, you can study a situation or an opponent and ask the GM for the 'pattern.' The GM will reveal a single, exploitable pattern."
+        "short": "Once per scene, you can study a situation or an opponent and ask the GM for the \"pattern.\" The GM will reveal a single, exploitable pattern (e.g., \"The guard's patrol route has a consistent blind spot,\" \"This opponent always telegraphs their heavy attack with a slight dip of their left shoulder\").",
+        "player": "Your mind is naturally inclined to see the patterns in all things, from the trajectory of a ricocheting bullet to the subtle tells in a person's speech or the flaw in a structural support."
       },
       "effects": [],
       "flaws": [],
@@ -1824,8 +1824,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "By creating a small, dissonant pulse of Aether, you can interfere with a targeted energy pattern. You can target a single, simple electronic device and cause it to temporarily malfunction, or you can attempt to disrupt a sustained magical effect, causing it to flicker or weaken for a moment.",
-        "player": "By creating a small, dissonant pulse of Aether, you can interfere with a targeted energy pattern. You can target a single, simple electronic device and cause it to temporarily malfunction, or you can attempt to disrupt a sustained magical effect, causing it to flicker or weaken for a moment."
+        "short": "You can target a single, simple electronic device (an electrical switch, a radio, a light) and cause it to temporarily malfunction, or you can attempt to disrupt a sustained magical effect, causing it to flicker or weaken for a moment.",
+        "player": "By creating a small, dissonant pulse of Aether, you can interfere with a targeted energy pattern."
       },
       "effects": [],
       "flaws": [],
@@ -1852,8 +1852,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You possess a perfect, intuitive sense of distance, dimension, and relation. You never suffer penalties for misjudging the distance for a thrown weapon, a leap, or a ranged attack.",
-        "player": "You possess a perfect, intuitive sense of distance, dimension, and relation. You never suffer penalties for misjudging the distance for a thrown weapon, a leap, or a ranged attack."
+        "short": "You have a perfect sense of range. You never suffer penalties for misjudging the distance for a thrown weapon, a leap, or a ranged attack. You instinctively know if a target is 10 feet away or 11.",
+        "player": "You possess a perfect, intuitive sense of distance, dimension, and relation. Your mind is a three-dimensional map of your immediate surroundings."
       },
       "effects": [],
       "flaws": []
@@ -1879,8 +1879,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your understanding of angles and trajectories is supernatural. You can perform impossible trick shots with thrown objects or ranged weapons, bouncing them off walls to strike targets behind cover.",
-        "player": "Your understanding of angles and trajectories is supernatural. You can perform impossible trick shots with thrown objects or ranged weapons, bouncing them off walls to strike targets behind cover."
+        "short": "This is the \"never play pool against them\" augment. You can perform impossible trick shots with thrown objects or ranged weapons, bouncing them off walls to strike targets behind cover. This functions similarly to the Gun Saint's Bounce It move, but can be applied to any projectile.",
+        "player": "Your understanding of angles and trajectories is supernatural. You can calculate the precise path an object will take after bouncing off one or multiple surfaces."
       },
       "effects": [],
       "flaws": []
@@ -1906,8 +1906,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You see the 'weave' of the environment, allowing you to move across it with uncanny efficiency. You can move through any complex or difficult terrain at your full speed without penalty.",
-        "player": "You see the 'weave' of the environment, allowing you to move across it with uncanny efficiency. You can move through any complex or difficult terrain at your full speed without penalty."
+        "short": "You can use your knowledge of patterns to find the perfect path. You can move through any complex or difficult terrain (a dense forest, a rubble-strewn street, a crowded ballroom) at your full speed without penalty, flowing through the environment like water.",
+        "player": "You see the \"weave\" of the environment, allowing you to move across it with uncanny efficiency."
       },
       "effects": [],
       "flaws": [],
@@ -1935,8 +1935,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Once per scene, when an attack would kill you or inflict a maiming injury, you may choose to 'flicker.' You instantly teleport a few feet to an adjacent safe location, causing the attack to miss completely.",
-        "player": "Once per scene, when an attack would kill you or inflict a maiming injury, you may choose to 'flicker.' You instantly teleport a few feet to an adjacent safe location, causing the attack to miss completely."
+        "short": "Once per scene, when an attack would kill you or inflict a maiming injury, you may choose to \"flicker.\" You instantly teleport a few feet to an adjacent safe location, causing the attack to miss completely.",
+        "player": "Your Aether-organ is hardwired to your survival instinct. When faced with overwhelming harm, it will instinctively fold space to move you out of the way."
       },
       "effects": [],
       "flaws": []
@@ -1963,8 +1963,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can manipulate the space between your eyes and a distant object, effectively creating a 'zoom lens' out of thin air. You gain telescopic vision.",
-        "player": "You can manipulate the space between your eyes and a distant object, effectively creating a 'zoom lens' out of thin air. You gain telescopic vision."
+        "short": "You gain telescopic vision, allowing you to see with perfect clarity at extreme distances and ignoring range penalties for Perception checks.",
+        "player": "You can manipulate the space between your eyes and a distant object, effectively creating a \"zoom lens\" out of thin air."
       },
       "effects": [],
       "flaws": [],
@@ -1992,8 +1992,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can instantly teleport to any location you can see within a significant range (e.g., up to 500m).",
-        "player": "You can instantly teleport to any location you can see within a significant range (e.g., up to 500m)."
+        "short": "You can instantly teleport to any location you can see within a significant range (e.g., up to 500m). This requires concentration and cannot be done as a purely reflexive action.",
+        "player": "You have learned to consciously control your flicker, allowing you to instantly traverse any space you can see."
       },
       "effects": [],
       "flaws": [],
@@ -2021,8 +2021,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "When you would be damaged by a source of electricity, you can make a roll to absorb it. On a success, you take no damage and gain a 'Charge.'",
-        "player": "When you would be damaged by a source of electricity, you can make a roll to absorb it. On a success, you take no damage and gain a 'Charge.'"
+        "short": "When you would be damaged by a source of electricity (a faulty power conduit, a stunning device), you can make a roll to absorb it. On a success, you take no damage and gain a \"Charge.\"",
+        "player": "You can safely absorb a significant amount of electrical energy into your body, storing it for later use."
       },
       "effects": [],
       "flaws": [],
@@ -2050,8 +2050,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "By expending a Charge, you can choose to automatically win an Initiative roll or gain a significant bonus to a single Agility-based defense roll.",
-        "player": "By expending a Charge, you can choose to automatically win an Initiative roll or gain a significant bonus to a single Agility-based defense roll."
+        "short": "By expending a Charge, you can choose to automatically win an Initiative roll, going first. Alternatively, you can expend a Charge to gain a significant bonus to a single Agility-based defense roll.",
+        "player": "You can spend a stored \"Charge\" to flood your nervous system with bio-electricity, granting you a short burst of incredible speed and reaction time."
       },
       "effects": [],
       "flaws": [],
@@ -2080,7 +2080,7 @@
       },
       "description": {
         "short": "By expending a Charge, you may take one additional Move action on your turn.",
-        "player": "By expending a Charge, you may take one additional Move action on your turn."
+        "player": "You expend a Charge to Surge your entire system, allowing you to move with unnatural celerity."
       },
       "effects": [],
       "flaws": [],
@@ -2107,8 +2107,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You have a flawless internal chronometer. You have an advantage on all rolls where precise timing is the most critical factor.",
-        "player": "You have a flawless internal chronometer. You have an advantage on all rolls where precise timing is the most critical factor."
+        "short": "Your timing is impeccable. You have an advantage on all rolls where precise timing is the most critical factor (e.g., disarming a bomb, hitting a switch at the exact right moment, synchronized actions with an ally).",
+        "player": "You have a flawless internal chronometer. You know the exact time down to the microsecond, can perfectly measure elapsed time, and have an intuitive sense of rhythm and tempo."
       },
       "effects": [],
       "flaws": []
@@ -2134,8 +2134,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "At the GM's discretion, or once per session at a dramatic moment, you receive a cryptic, one-sentence vision of the future. You have no control over what you see or when you see it.",
-        "player": "At the GM's discretion, or once per session at a dramatic moment, you receive a cryptic, one-sentence vision of the future. You have no control over what you see or when you see it."
+        "short": "At the GM's discretion, or once per session at a dramatic moment, you receive a cryptic, one-sentence vision of the future (e.g., \"The gun misfires,\" \"The floor gives way,\" \"He's lying\"). You have no control over what you see or when you see it.",
+        "player": "Your mind is constantly brushing against the threads of the future. Occasionally, you get a flash of foresight, a brief, contextless vision of a future event."
       },
       "effects": [],
       "flaws": []
@@ -2161,8 +2161,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "After observing an opponent for one round, you can make a roll. On a success, the GM will tell you the most likely action your opponent will take on their next turn.",
-        "player": "After observing an opponent for one round, you can make a roll. On a success, the GM will tell you the most likely action your opponent will take on their next turn."
+        "short": "After observing an opponent for one round, you can make a Predictive Analysis roll. On a success, the GM will tell you the most likely action your opponent will take on their next turn.",
+        "player": "You take your Pattern Recognition to the next level. You don't just see what an opponent isdoing; you see what they will do next based on their established patterns."
       },
       "effects": [],
       "flaws": [],
@@ -2363,8 +2363,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You have a unique Aetheric 'non-presence' and are remarkably unremarkable, blending into any group with supernatural ease. You have an advantage on any roll made to go unnoticed.",
-        "player": "You have a unique Aetheric 'non-presence' and are remarkably unremarkable, blending into any group with supernatural ease. You have an advantage on any roll made to go unnoticed."
+        "short": "Unless you deliberately draw attention to yourself, you are easily overlooked. You have an advantage on any roll made to blend in, go unnoticed in a crowd, or be forgotten by witnesses. People's memories of you are hazy and indistinct.",
+        "player": "You have a unique Aetheric \"non-presence.\" You are remarkably unremarkable, blending into any group or social setting with supernatural ease."
       },
       "effects": [],
       "flaws": []
@@ -2391,8 +2391,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Once per story arc, you can tell the GM you are 'following the feeling.' The GM will then narrate how you end up in a location or situation that is critically important to the plot.",
-        "player": "Once per story arc, you can tell the GM you are 'following the feeling.' The GM will then narrate how you end up in a location or situation that is critically important to the plot."
+        "short": "Once per story arc, you can tell the GM you are \"following the feeling.\" The GM will then narrate how you end up in a location or situation that is, or will soon become, critically important to the current plot, even if you had no logical reason to go there.",
+        "player": "You are guided by an uncanny instinct, a \"gut feeling\" that tells you where you need to be."
       },
       "effects": [],
       "flaws": [],
@@ -2420,8 +2420,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "After a major event has occurred in a scene you are present for, you can make a Pattern Recognition roll to notice one critical detail that is not immediately obvious.",
-        "player": "After a major event has occurred in a scene you are present for, you can make a Pattern Recognition roll to notice one critical detail that is not immediately obvious."
+        "short": "After a major event has occurred in a scene you are present for (a car wreck, an assassination, a negotiation), you can make a Pattern Recognition roll to notice one critical detail that is not immediately obvious (the model of the getaway car, the expensive coat on the bureaucrat, the slight tremor in the killer's hand).",
+        "player": "Because you are always where things happen, you have developed a supernatural eye for the small, crucial details that others miss in the heat of the moment."
       },
       "effects": [],
       "flaws": [],
@@ -2449,8 +2449,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your visions and prophecies almost always pertain to events that will occur within the next year, and often much sooner.",
-        "player": "Your visions and prophecies almost always pertain to events that will occur within the next year, and often much sooner."
+        "short": "Your visions and prophecies almost always pertain to events that will occur within the next year, and often much sooner. The magnitude of the event determines how far out you see it; a personal betrayal might appear a week in advance, while a city-shaking conspiracy might cast its shadow a year ahead of time.",
+        "player": "Your visions are focused on events that are relatively close, temporally speaking. You see the ripples, not the distant tidal waves."
       },
       "effects": [],
       "flaws": []
@@ -2477,8 +2477,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "When you use your Fleeting Glimpses ability, the GM will describe the vision not as a direct event, but as a series of 2-3 symbolic images (e.g., 'A cracked porcelain mask, a wilting white rose'). It is up to you to interpret their meaning.",
-        "player": "When you use your Fleeting Glimpses ability, the GM will describe the vision not as a direct event, but as a series of 2-3 symbolic images (e.g., 'A cracked porcelain mask, a wilting white rose'). It is up to you to interpret their meaning."
+        "short": "When you use your Fleeting Glimpses ability, the GM will describe the vision not as a direct event, but as a series of 2-3 symbolic images (e.g., \"A cracked porcelain mask, a wilting white rose, and a key turning in a rusted lock\"). It is up to you, the player, to interpret their meaning.",
+        "player": "When you attempt to look into the future, you receive your visions as a series of powerful, symbolic images, like a tarot reading."
       },
       "effects": [],
       "flaws": [],
@@ -2506,8 +2506,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "When you receive a new vision, you can ask the GM if it 'resonates' with any previous vision you have had. If there is a causal or thematic link, the GM will confirm it.",
-        "player": "When you receive a new vision, you can ask the GM if it 'resonates' with any previous vision you have had. If there is a causal or thematic link, the GM will confirm it."
+        "short": "When you receive a new vision, you can ask the GM if it \"resonates\" with any previous vision you have had. If there is a causal or thematic link between the two events, the GM will confirm it, allowing you to start piecing together the larger puzzle of coming events.",
+        "player": "You have learned to see the thematic threads that connect your disparate visions."
       },
       "effects": [],
       "flaws": [],
@@ -2534,8 +2534,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Once per scene, you can look at a target (a person, a machine, a plan) and ask the GM for its 'corrupting truth.' The GM will tell you a single, hidden flaw, secret desire, or repressed vice that can be exploited.",
-        "player": "Once per scene, you can look at a target (a person, a machine, a plan) and ask the GM for its 'corrupting truth.' The GM will tell you a single, hidden flaw, secret desire, or repressed vice that can be exploited."
+        "short": "Once per scene, you can look at a target (a person, a machine, a plan) and ask the GM for its \"corrupting truth.\" The GM will tell you a single, hidden flaw, secret desire, or repressed vice that can be exploited (e.g., \"The guard captain is secretly a gambling addict,\" \"This machine has a critical design flaw in its cooling system that no one knows about,\" \"The leader's 'noble' plan is secretly motivated by deep-seated jealousy\").",
+        "player": "You have taken a bite of the proverbial apple. You now perceive the world through a lens of duality and corruption, allowing you to see the inherent flaws and potential for chaos in any person, object, or system."
       },
       "effects": [],
       "flaws": [],
@@ -2562,8 +2562,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You instinctively move against the rhythm of your opponents, disrupting their flow. You gain a bonus to all defensive rolls made to dodge or parry.",
-        "player": "You instinctively move against the rhythm of your opponents, disrupting their flow. You gain a bonus to all defensive rolls made to dodge or parry."
+        "short": "You gain a bonus to all defensive rolls made to dodge or parry. Your movements are jerky, unpredictable, and difficult to track, making you a frustrating and slippery opponent.",
+        "player": "You instinctively move against the rhythm of your opponents, disrupting their flow and creating openings through sheer, calculated awkwardness."
       },
       "effects": [],
       "flaws": []
@@ -2590,7 +2590,7 @@
       },
       "description": {
         "short": "You can target a 20-foot area. For the rest of the scene, all technology within that area becomes unreliable\u2014lights flicker, audio becomes garbled with static, and any rolls made to operate complex machinery are at a penalty.",
-        "player": "You can target a 20-foot area. For the rest of the scene, all technology within that area becomes unreliable\u2014lights flicker, audio becomes garbled with static, and any rolls made to operate complex machinery are at a penalty."
+        "player": "An evolution of Disrupt Energy. You can now create a persistent field of Aetheric static in an area."
       },
       "effects": [],
       "flaws": [],
@@ -2705,8 +2705,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can instinctively dampen your Aetheric signature, making you incredibly difficult to detect by magical or psychic means.",
-        "player": "You can instinctively dampen your Aetheric signature, making you incredibly difficult to detect by magical or psychic means."
+        "short": "When you are solely observing and not interacting, animals and non-sentient creatures are completely unaware of your presence. You have a massive advantage on any stealth rolls made to avoid detection by animals.",
+        "player": "You can instinctively dampen your Aetheric signature and muffle your physical presence when observing wildlife."
       },
       "effects": [],
       "flaws": []
@@ -2789,8 +2789,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can sense the 'gaps' in reality, the places where the Void touches the world.",
-        "player": "You can sense the 'gaps' in reality, the places where the Void touches the world."
+        "short": "You can automatically sense the presence of active Void magic, portals to the Void, and creatures deeply corrupted by its influence.",
+        "player": "You can sense the \"gaps\" in reality, the places where the Void touches the world."
       },
       "effects": [],
       "flaws": [],
@@ -2817,8 +2817,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can temporarily attune a magical ward or barrier to the frequency of the Void, causing a momentary 'hole' in its defense that you can slip through.",
-        "player": "You can temporarily attune a magical ward or barrier to the frequency of the Void, causing a momentary 'hole' in its defense that you can slip through."
+        "short": "You can make a roll to bypass a single magical ward or barrier. On a success, you pass through it unharmed, leaving it intact behind you.",
+        "player": "You can temporarily attune a magical ward or barrier to the frequency of the Void, causing a momentary \"hole\" in its defense that you can slip through."
       },
       "effects": [],
       "flaws": [],
@@ -2845,7 +2845,7 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can touch a simple runic inscription and flood it with chaotic Void energy, causing the structured magic to collapse.",
+        "short": "You can instantly destroy any simple, non-permanent magical rune you can touch.",
         "player": "You can touch a simple runic inscription and flood it with chaotic Void energy, causing the structured magic to collapse."
       },
       "effects": [],
@@ -3043,8 +3043,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can automatically sense the presence and general direction of any significant, free-willed supernatural entity in your immediate vicinity. This does not allow you to see the entity or know its specific nature, only that something powerful and 'other' is nearby.",
-        "player": "You can automatically sense the presence and general direction of any significant, free-willed supernatural entity in your immediate vicinity. This does not allow you to see the entity or know its specific nature, only that something powerful and 'other' is nearby."
+        "short": "You can automatically sense the presence and general direction of any significant, free-willed supernatural entity in your immediate vicinity (e.g., within the same large building or down the street). This is most commonly used to detect the terrifying presence of a Wraith, but can also sense powerful spirits or other unique Aetheric beings. This does not allow you to see the entity or know its specific nature, only that something powerful and \"other\" is nearby.",
+        "player": "You can attune your senses to the Aether, allowing you to detect the presence of organized, independent consciousness nearby. This is a constant, low-level awareness, a \"sixth sense\" for the supernatural."
       },
       "effects": [],
       "flaws": []
@@ -3069,8 +3069,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can focus on a specific location or object, opening your mind to the psychic residue left behind by moments of intense emotion. On a 10+, you receive a clear sensory flash. On a 7-9, the echo is fragmented. On a 6-, you connect to a meaningless echo.",
-        "player": "You can focus on a specific location or object, opening your mind to the psychic residue left behind by moments of intense emotion. On a 10+, you receive a clear sensory flash. On a 7-9, the echo is fragmented. On a 6-, you connect to a meaningless echo."
+        "short": "You can focus on a specific location or object, opening your mind to the psychic residue left behind by moments of intense emotion.",
+        "player": "You can focus on a specific location or object, opening your mind to the psychic residue left behind by moments of intense emotion. You are, in effect, reading the emotional \"stains\" on the world. 10+: You receive a clear, though brief, sensory flash of a single, significant event that happened here (e.g., you see a ghostly image of a person being shot, you hear the echo of a panicked scream, you feel the sudden chill of profound loss). 7-9: The echo is fragmented or confusing. You get a single, muddled sensory input (the smell of ozone, the feeling of being watched) without the context of the full event. 6-: You connect to a meaningless or misleading psychic echo, learning nothing of value."
       },
       "effects": [],
       "flaws": [],
@@ -3096,8 +3096,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can give form and purpose to the simplest of 'spirits'\u2014the Sprites. At character creation, you define three types of Sprites you are attuned to, each with a single, simple function (e.g., Messenger, Warden, Spark). As an action, you can summon one of your known Sprites to perform its function.",
-        "player": "You can give form and purpose to the simplest of 'spirits'\u2014the Sprites. At character creation, you define three types of Sprites you are attuned to, each with a single, simple function (e.g., Messenger, Warden, Spark). As an action, you can summon one of your known Sprites to perform its function."
+        "short": "At character creation, you define three types of Sprites you are attuned to. Each Sprite has a single, simple function it can perform. Examples include:",
+        "player": "You can reach into the raw stuff of the Aether and give form and purpose to the simplest of \"spirits\"\u2014the Sprites. These are not true intelligences, but more like simple patterns, basic imperatives you can command."
       },
       "effects": [],
       "flaws": [],
@@ -3124,8 +3124,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Designate one of your Sprites as your 'Bonded Sprite.' This Sprite is now a permanent companion, is more intelligent, and can follow more complex commands.",
-        "player": "Designate one of your Sprites as your 'Bonded Sprite.' This Sprite is now a permanent companion, is more intelligent, and can follow more complex commands."
+        "short": "Designate one of your Sprites as your \"Bonded Sprite.\" This Sprite is now a permanent companion. It is more intelligent, can follow more complex commands, and can manifest physically without requiring a separate action. However, this bond creates a vulnerability; if your Bonded Sprite is destroyed, you suffer 1 Stun damage from the psychic feedback.",
+        "player": "You select one of your known Sprite types and form a deep, personal bond with it, sharing a fraction of your own consciousness to enhance its capabilities."
       },
       "effects": [],
       "flaws": [],
@@ -3152,8 +3152,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "On a 10+, temporarily imbue a simple, mundane object with an animating spirit that will follow one simple, ongoing command for the scene. On a 7-9, the animation is flawed.",
-        "player": "On a 10+, temporarily imbue a simple, mundane object with an animating spirit that will follow one simple, ongoing command for the scene. On a 7-9, the animation is flawed."
+        "short": "You can temporarily imbue a simple, mundane object (a chair, a statue, a pile of rubble) with a rudimentary animating spirit of your own creation.",
+        "player": "You can temporarily imbue a simple, mundane object (a chair, a statue, a pile of rubble) with a rudimentary animating spirit of your own creation. 10+: The object animates and will follow one simple, ongoing command for the scene (e.g., \"Guard this doorway,\" \"Attack anyone who comes near me\"). 7-9: The animation is flawed. It only lasts for a few minutes, or it follows your command too literally, causing unintended complications. 6-: The animating force is unstable. The object shudders and moves, but not in a useful way, and then falls inert."
       },
       "effects": [],
       "flaws": [],
@@ -3180,8 +3180,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can now imbue your animated servants with simple IF-THEN logic.",
-        "player": "You can now imbue your animated servants with simple IF-THEN logic."
+        "short": "When you use Animate the Inanimate, you can now give your construct a conditional command (e.g., \"If someone opens that door, then attack them.\" \"If I say the word 'danger,' then create a distraction.\").",
+        "player": "You have learned the basics of Aetheric \"inscribing with purpose.\" You can now imbue your animated servants with simple IF-THEN logic."
       },
       "effects": [],
       "flaws": []
@@ -3208,8 +3208,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You project your consciousness into one of your active animated constructs, seeing through its 'eyes' and controlling its every move directly. Your physical body remains behind, unconscious and vulnerable.",
-        "player": "You project your consciousness into one of your active animated constructs, seeing through its 'eyes' and controlling its every move directly. Your physical body remains behind, unconscious and vulnerable."
+        "short": "While piloting a construct, you perceive everything it senses. You can control it with perfect precision, using your own skills for its actions. Your physical body remains behind, unconscious and vulnerable. You can maintain this link up to a significant distance (e.g., across a city block).",
+        "player": "You project your consciousness into one of your active animated constructs, seeing through its \"eyes\" and controlling its every move directly."
       },
       "effects": [],
       "flaws": [],
@@ -3294,8 +3294,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can split your consciousness, animating and directing a number of simple constructs (up to your Presence attribute) simultaneously with the same simple, conditional command.",
-        "player": "You can split your consciousness, animating and directing a number of simple constructs (up to your Presence attribute) simultaneously with the same simple, conditional command."
+        "short": "You can now use Animate the Inanimate on a number of simple constructs (mannequins, skeletons, etc.) up to your Presence attribute at the same time. You can give them all the same simple, conditional command as a single action.",
+        "player": "You can split your consciousness, animating and directing a number of simple constructs simultaneously. Each puppet acts as a node, sharing the perceiving load and allowing for complex, coordinated action."
       },
       "effects": [],
       "flaws": [],
@@ -3351,8 +3351,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "During Downtime, you can modify your inanimate puppets for specific roles (e.g., a 'bearer' to carry heavy loads, a 'hitter' with weighted clubs).",
-        "player": "During Downtime, you can modify your inanimate puppets for specific roles (e.g., a 'bearer' to carry heavy loads, a 'hitter' with weighted clubs)."
+        "short": "You can modify your puppets. A \"bearer\" puppet might be reinforced to carry heavy loads. A \"hitter\" puppet might have its hands replaced with weighted clubs. A \"distraction\" puppet might be filled with noisy junk. This allows you to customize your horde for the mission at hand.",
+        "player": "You have learned to shape your constructs for specific roles. During Downtime, you can modify your inanimate puppets to better suit a task."
       },
       "effects": [],
       "flaws": []
@@ -3379,8 +3379,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your Spirit Sense is now attuned to the specific resonance of death. You can automatically sense the location and number of any intact dead bodies within a significant radius.",
-        "player": "Your Spirit Sense is now attuned to the specific resonance of death. You can automatically sense the location and number of any intact dead bodies within a significant radius."
+        "short": "You can automatically sense the location and number of any intact dead bodies within a significant radius.",
+        "player": "Your Spirit Sense is now attuned to the specific resonance of death. You can feel the presence of corpses nearby."
       },
       "effects": [],
       "flaws": [],
@@ -3408,7 +3408,7 @@
         "version": "1.0"
       },
       "description": {
-        "short": "An evolution of Master of Puppets, this allows you to raise and command a large number of undead servants at once.",
+        "short": "You can animate a large number of corpses, creating a horde of shambling, witless undead who will follow your simple commands.",
         "player": "An evolution of Master of Puppets, this allows you to raise and command a large number of undead servants at once."
       },
       "effects": [],
@@ -3438,7 +3438,7 @@
       },
       "description": {
         "short": "Your horde acts as a single, coordinated entity. You can give them complex conditional commands, and they will execute them with mindless, relentless efficiency.",
-        "player": "Your horde acts as a single, coordinated entity. You can give them complex conditional commands, and they will execute them with mindless, relentless efficiency."
+        "player": "You have absolute control over your undead legion."
       },
       "effects": [],
       "flaws": []
@@ -3464,8 +3464,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Initiate a formal, binding negotiation with a spirit to create a contract. The negotiation itself is a roleplaying scene. If a pact is agreed upon, its terms are magically binding.",
-        "player": "Initiate a formal, binding negotiation with a spirit to create a contract. The negotiation itself is a roleplaying scene. If a pact is agreed upon, its terms are magically binding."
+        "short": "This move allows you to formally propose a contract to a spirit, offering the vessel in exchange for service. The negotiation itself is a roleplaying scene. If a pact is agreed upon, the spirit is bound to the vessel and your terms.",
+        "player": "You can initiate a formal, binding negotiation with a spirit to convince it to inhabit a vessel you have prepared."
       },
       "effects": [],
       "flaws": [],
@@ -3492,8 +3492,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your Aether-organ acts as a universal translator for spiritual consciousness, allowing for clearer communication. You have an advantage on all rolls made to negotiate with or understand a spiritual entity.",
-        "player": "Your Aether-organ acts as a universal translator for spiritual consciousness, allowing for clearer communication. You have an advantage on all rolls made to negotiate with or understand a spiritual entity."
+        "short": "You can understand and speak the \"language\" of spirits. You can hold complex, nuanced conversations, perceive their true intent (though they can still lie with words), and have an advantage on all rolls made to negotiate with or understand a spiritual entity.",
+        "player": "Your Aether-organ acts as a universal translator for spiritual consciousness, allowing for clearer and more intuitive communication than a sorcerer could ever achieve."
       },
       "effects": [],
       "flaws": [],
@@ -3520,8 +3520,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You open your body as a temporary vessel, allowing a spirit you have a connection with to speak and perceive through you for a scene. You remain in control, but the spirit's presence can be mentally taxing.",
-        "player": "You open your body as a temporary vessel, allowing a spirit you have a connection with to speak and perceive through you for a scene. You remain in control, but the spirit's presence can be mentally taxing."
+        "short": "You can allow a spirit to inhabit your body for a scene. While channeling, the spirit can speak using your voice and see through your eyes. This is often used as a service to allow others to speak with a specific spirit. You remain in control, but the spirit's presence can be mentally taxing.",
+        "player": "You open your body as a temporary vessel, allowing a spirit you have a connection with to speak and perceive through you."
       },
       "effects": [],
       "flaws": [],
@@ -3722,8 +3722,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Initiate a formal, binding negotiation with a spirit to convince it to inhabit a vessel you have prepared. If a pact is agreed upon, the spirit is bound to the vessel and your terms.",
-        "player": "Initiate a formal, binding negotiation with a spirit to convince it to inhabit a vessel you have prepared. If a pact is agreed upon, the spirit is bound to the vessel and your terms."
+        "short": "This move allows you to formally propose a contract to a spirit, offering the vessel in exchange for service. The negotiation itself is a roleplaying scene. If a pact is agreed upon, the spirit is bound to the vessel and your terms.",
+        "player": "You can initiate a formal, binding negotiation with a spirit to convince it to inhabit a vessel you have prepared."
       },
       "effects": [],
       "flaws": [],
@@ -3750,8 +3750,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You perform a ritual over a non-living object during Downtime to make it more appealing and stable for a spirit to inhabit. A prepared vessel makes any Spirit Pact negotiation easier.",
-        "player": "You perform a ritual over a non-living object during Downtime to make it more appealing and stable for a spirit to inhabit. A prepared vessel makes any Spirit Pact negotiation easier."
+        "short": "You can spend time during a Downtime phase to prepare an object as a potential vessel. A prepared vessel makes any Spirit Pact negotiation with a suitable spirit easier (granting a bonus to the roll) and allows the spirit to inhabit it for a longer duration.",
+        "player": "You perform a ritual over a non-living object, attuning its Aetheric resonance to make it more appealing and stable for a spirit to inhabit."
       },
       "effects": [],
       "flaws": [],
@@ -3779,7 +3779,7 @@
       },
       "description": {
         "short": "You can successfully create vessels for and forge pacts with spirits of a low power tier.",
-        "player": "You can successfully create vessels for and forge pacts with spirits of a low power tier."
+        "player": "You have the knowledge and personal Aetheric strength to prepare vessels capable of housing common, lesser spirits."
       },
       "effects": [],
       "flaws": []
@@ -3806,8 +3806,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your reputation precedes you. You gain a permanent bonus to all Social rolls made when negotiating a Spirit Pact.",
-        "player": "Your reputation precedes you. You gain a permanent bonus to all Social rolls made when negotiating a Spirit Pact."
+        "short": "You gain a permanent bonus to all Social rolls made when negotiating a Spirit Pact. It is very difficult to lose this favor unless you are caught repeatedly breaking the spirit of your agreements.",
+        "player": "Your reputation precedes you. You are known as a master vessel-crafter and an honest broker, and spirits are inherently more disposed to deal with you favorably."
       },
       "effects": [],
       "flaws": []
@@ -3834,8 +3834,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your skill has grown immensely. You can now prepare vessels of exquisite quality, capable of containing more powerful and influential spirits of a medium power tier.",
-        "player": "Your skill has grown immensely. You can now prepare vessels of exquisite quality, capable of containing more powerful and influential spirits of a medium power tier."
+        "short": "You can now create vessels for and forge pacts with spirits of a medium power tier.",
+        "player": "Your skill has grown immensely. You can now prepare vessels of exquisite quality, capable of containing more powerful and influential spirits."
       },
       "effects": [],
       "flaws": []
@@ -3862,8 +3862,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can temporarily attune an area's Aetheric resonance to match that of a specific spirit, granting an advantage on any attempt to summon, negotiate with, or command that spirit within the area.",
-        "player": "You can temporarily attune an area's Aetheric resonance to match that of a specific spirit, granting an advantage on any attempt to summon, negotiate with, or command that spirit within the area."
+        "short": "By spending a few minutes in concentration, you can create a temporary \"domain\" that is highly receptive to a specific spirit or type of spirit. While within this area, any attempt to summon, negotiate with, or command that spirit gains a significant advantage. The domain dissipates at the end of the scene.",
+        "player": "You can temporarily attune an area's Aetheric resonance to match that of a specific spirit you are trying to summon or bargain with."
       },
       "effects": [],
       "flaws": [],
@@ -3891,8 +3891,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You maintain a 'mental Rolodex' of spirits. When a client needs a specific service, you can make a Lore roll to know which spirit in your Index would be the best fit for the job.",
-        "player": "You maintain a 'mental Rolodex' of spirits. When a client needs a specific service, you can make a Lore roll to know which spirit in your Index would be the best fit for the job."
+        "short": "You have a mental list of spirits you can potentially contact. When a client needs a specific service (enforcement, information, protection), you can make a Lore roll to know which spirit in your Index would be the best fit for the job.",
+        "player": "You maintain a \"mental archive\" of spirits you have knowledge of, categorized by their nature, domain, and the services they are likely to provide."
       },
       "effects": [],
       "flaws": []
@@ -3919,8 +3919,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can draft a physical or psychic document that, once agreed upon by two or more parties (one must be a spirit), is magically absolute.",
-        "player": "You can draft a physical or psychic document that, once agreed upon by two or more parties (one must be a spirit), is magically absolute."
+        "short": "You can draft an Aetheric Contract. This is a physical or psychic document that, once agreed upon by two or more parties (at least one of which must be a spirit), is magically absolute. You have perfect recall of every contract you have ever drafted.",
+        "player": "You are the architect of the magical agreement. You know the precise language, symbols, and Aetheric structures needed to create a contract that is intelligible and binding to both a mortal and a spirit."
       },
       "effects": [],
       "flaws": [],
@@ -3948,8 +3948,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "As part of the contract, you can weave a minor sympathetic link between the signing parties, allowing them to feel each other's general emotional state or know when the bargain is fulfilled or broken.",
-        "player": "As part of the contract, you can weave a minor sympathetic link between the signing parties, allowing them to feel each other's general emotional state or know when the bargain is fulfilled or broken."
+        "short": "You can add a \"Soul Brand\" clause to your Aetheric Contract. This creates a one-way or two-way connection between the signatories, allowing them to feel each other's general emotional state, send a simple one-word message, or know when the other has fulfilled (or broken) their part of the bargain.",
+        "player": "As part of the contract, you can weave a minor sympathetic link between the signing parties. This is a spiritual \"handshake\" that creates a conduit for communication or fulfillment."
       },
       "effects": [],
       "flaws": [],
@@ -3976,8 +3976,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can summon a number of Psychomata at once. They are amorphous and their nature is determined by your current emotional state. They are not under your direct control and will act according to their core emotion.",
-        "player": "You can summon a number of Psychomata at once. They are amorphous and their nature is determined by your current emotional state. They are not under your direct control and will act according to their core emotion."
+        "short": "You can summon a number of Psychomata at once. At this stage, they are amorphous and their nature is determined by your current emotional state (as determined by the GM or player). They are not under your direct control and will act according to their core emotion (fearful summons will hide or cause panic, angry summons will attack indiscriminately, etc.).",
+        "player": "You open a floodgate to your subconscious, letting loose a legion of your inner beings into the world."
       },
       "effects": [],
       "flaws": [],
@@ -4004,8 +4004,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "As an action, you can give a single, one-word command (e.g., 'Attack,' 'Flee,' 'Protect') to all of your active Psychomata. They will obey this command for one round before reverting to their instinctual behavior.",
-        "player": "As an action, you can give a single, one-word command (e.g., 'Attack,' 'Flee,' 'Protect') to all of your active Psychomata. They will obey this command for one round before reverting to their instinctual behavior."
+        "short": "As an action, you can give a single, one-word command (e.g., \"Attack,\" \"Flee,\" \"Protect\") to all of your active Psychomata. They will obey this command for one round before reverting to their instinctual behavior.",
+        "player": "You can briefly exert your conscious will over your unruly subconscious creations, forcing them toward a single purpose."
       },
       "effects": [],
       "flaws": [],
@@ -4032,8 +4032,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "When your Psychomata are active, the immediate environment changes to reflect the nature of your summoned entity (e.g., fear causes shadows to deepen, joy causes colors to oversaturate). This provides a narrative bonus or penalty to social interactions.",
-        "player": "When your Psychomata are active, the immediate environment changes to reflect the nature of your summoned entity (e.g., fear causes shadows to deepen, joy causes colors to oversaturate). This provides a narrative bonus or penalty to social interactions."
+        "short": "This is a powerful, passive thematic effect. When your Psychomata are active, the immediate environment changes. A summon born of fear might cause shadows to deepen and strange whispers to echo. A summon born of joy might cause colors to become oversaturated and the air to feel warm. This provides a narrative bonus or penalty to social interactions in the area, depending on the mood.",
+        "player": "When you summon your Psychomata, reality itself thins around you, taking on a surreal, dreamlike quality that reflects the nature of your summoned entity."
       },
       "effects": [],
       "flaws": []
@@ -4147,8 +4147,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You work with your GM to define the core 'Mythos' of your summons (e.g., The Carnival of Souls, The Clockwork Legion). This defines the aesthetic and hierarchy of all your future summons.",
-        "player": "You work with your GM to define the core 'Mythos' of your summons (e.g., The Carnival of Souls, The Clockwork Legion). This defines the aesthetic and hierarchy of all your future summons."
+        "short": "Your summons now have a consistent, defined form based on your Mythos. They are no longer amorphous.",
+        "player": "You work with your GM to define the core \"Mythos\" of your summons (e.g., The Carnival of Souls, The Clockwork Legion, The Ashen Court). This defines the aesthetic and hierarchy of all your future summons."
       },
       "effects": [],
       "flaws": []
@@ -4175,8 +4175,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "When you summon your Lucid Legion, you can choose to summon one specific, more powerful 'officer' from your Mythos instead of a group of lesser ones.",
-        "player": "When you summon your Lucid Legion, you can choose to summon one specific, more powerful 'officer' from your Mythos instead of a group of lesser ones."
+        "short": "When you summon your Lucid Legion, you can choose to summon one specific, more powerful \"officer\" from your Mythos instead of a group of lesser ones. This officer will have a unique ability related to its role in your personal story.",
+        "player": "You can reach into your personal Mythos and pull out a more specialized entity suited for the current situation."
       },
       "effects": [],
       "flaws": [],
@@ -4204,8 +4204,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can fully open the gates to your inner world, letting your Mythos spill into reality, summoning a large horde of your lesser Mythos creatures at once.",
-        "player": "You can fully open the gates to your inner world, letting your Mythos spill into reality, summoning a large horde of your lesser Mythos creatures at once."
+        "short": "You can summon a large horde of your lesser Mythos creatures at once, creating a chaotic but impressive fighting force.",
+        "player": "You can fully open the gates to your inner world, letting your Mythos spill into reality."
       },
       "effects": [],
       "flaws": [],
@@ -4231,8 +4231,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can establish a wide-net psychic link with up to five willing individuals, including yourself, for a scene. All linked members share a general awareness of each other's location and status. You can send simple, one-sentence commands telepathically to the entire group. All linked members gain a minor bonus (+1) to any roll made as part of a coordinated group action.",
-        "player": "You can establish a wide-net psychic link with up to five willing individuals, including yourself, for a scene. All linked members share a general awareness of each other's location and status. You can send simple, one-sentence commands telepathically to the entire group. All linked members gain a minor bonus (+1) to any roll made as part of a coordinated group action."
+        "short": "For the duration of a scene, all linked members share a general awareness of each other's location and status (healthy, wounded, in danger). You, the Linker, can send simple, one-sentence commands telepathically to the entire group.",
+        "player": "You can establish a wide-net psychic link with up to five willing individuals, including yourself. This is the foundational team-based link."
       },
       "effects": [],
       "flaws": [],
@@ -4258,8 +4258,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can create a deeper, more intimate connection between yourself and one other willing individual. For the duration of a scene, you and your linked partner can communicate freely and instantly, thought-to-thought. You share a clear sense of each other's emotional state and can even share fleeting sensory impressions.",
-        "player": "You can create a deeper, more intimate connection between yourself and one other willing individual. For the duration of a scene, you and your linked partner can communicate freely and instantly, thought-to-thought. You share a clear sense of each other's emotional state and can even share fleeting sensory impressions."
+        "short": "For the duration of a scene, you and your linked partner can communicate freely and instantly, thought-to-thought. You share a clear sense of each other's emotional state and can even share fleeting sensory impressions (a brief glimpse through their eyes, the echo of a sound they heard).",
+        "player": "You forge a direct, intimate psychic link with one other willing individual."
       },
       "effects": [],
       "flaws": [],
@@ -4285,8 +4285,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can automatically sense the presence and approximate number of sentient minds in your immediate vicinity, even through walls. You cannot read their thoughts, only know that they are there.",
-        "player": "You can automatically sense the presence and approximate number of sentient minds in your immediate vicinity, even through walls. You cannot read their thoughts, only know that they are there."
+        "short": "You can automatically sense the presence and approximate number of sentient minds in your immediate vicinity (e.g., within the same large building), even through walls. You cannot read their thoughts, only know that they are there.",
+        "player": "Your Aether-organ is constantly scanning for the \"signal\" of other thinking minds."
       },
       "effects": [],
       "flaws": []
@@ -4312,8 +4312,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Through repeated linking and a deep emotional connection, you can forge a permanent, unbreakable two-way link with one specific individual. You are always aware of each other's general status, no matter the distance.",
-        "player": "Through repeated linking and a deep emotional connection, you can forge a permanent, unbreakable two-way link with one specific individual. You are always aware of each other's general status, no matter the distance."
+        "short": "You and your bonded partner are now permanently linked. You are always aware of each other's general status, no matter the distance. This permanent bond is a prerequisite for your other abilities.",
+        "player": "Through repeated linking and a deep emotional connection, you can forge a permanent, unbreakable two-way link with one specific individual."
       },
       "effects": [],
       "flaws": [],
@@ -4340,8 +4340,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "This is a narrative-focused move. The longer you are bonded, the more your minds start to bleed into one another, leading to shared tics, skill-bleed, or emotional transference.",
-        "player": "This is a narrative-focused move. The longer you are bonded, the more your minds start to bleed into one another, leading to shared tics, skill-bleed, or emotional transference."
+        "short": "This represents a gradual blurring of lines between human and animal consciousness, a core theme for this path.",
+        "player": "Your mind begins to align with the beasts you link with. You start to think more instinctually, while they may adopt some of your more complex reasoning."
       },
       "effects": [],
       "flaws": [],
@@ -4369,8 +4369,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "The psychic 'bandwidth' of your permanent bond is increased. You can now share simple sentences, brief impressions, and some sensory information (sight and sound) with your partner within 100m.",
-        "player": "The psychic 'bandwidth' of your permanent bond is increased. You can now share simple sentences, brief impressions, and some sensory information (sight and sound) with your partner within 100m."
+        "short": "The psychic \"bandwidth\" of your permanent bond is increased. You can now share simple sentences, brief impressions, and some sensory information (sight and sound) with your partner within 100m.",
+        "player": "An evolution of the permanent bond. The connection is now deeper and more resilient."
       },
       "effects": [],
       "flaws": [],
@@ -4398,8 +4398,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "As an action, you can make a roll to either absorb a negative emotional state from your partner onto yourself, or grant them a positive emotional state you are feeling, giving them an advantage on their next relevant roll.",
-        "player": "As an action, you can make a roll to either absorb a negative emotional state from your partner onto yourself, or grant them a positive emotional state you are feeling, giving them an advantage on their next relevant roll."
+        "short": "As an action, you can make a roll to either absorb a negative emotional state (like fear or rage) from your partner onto yourself, or grant them a positive emotional state you are feeling (like calm or determination), giving them an advantage on their next relevant roll.",
+        "player": "You can intentionally push or pull emotional states across your bond, steadying your partner's nerves or drawing on their courage."
       },
       "effects": [],
       "flaws": [],
@@ -4427,8 +4427,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Whenever you and your bonded partner perform a coordinated action against the same target, you both gain a significant bonus (+2) to your rolls.",
-        "player": "Whenever you and your bonded partner perform a coordinated action against the same target, you both gain a significant bonus (+2) to your rolls."
+        "short": "Whenever you and your bonded partner perform a coordinated action against the same target (e.g., you both attack the same enemy, you create a distraction while they pick a lock), you both gain a significant bonus (+2) to your rolls.",
+        "player": "Your actions and your partner's actions are now so perfectly in sync that you move as one."
       },
       "effects": [],
       "flaws": []
@@ -4455,8 +4455,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can project your consciousness into a target you can touch, becoming a passive observer within their mind. You can see, hear, taste, and smell everything your host experiences.",
-        "player": "You can project your consciousness into a target you can touch, becoming a passive observer within their mind. You can see, hear, taste, and smell everything your host experiences."
+        "short": "You can see, hear, taste, and smell everything your host experiences. You have no control over their actions; you are simply along for the ride.",
+        "player": "You can project your consciousness into a target you can touch, becoming a passive observer within their mind."
       },
       "effects": [],
       "flaws": [],
@@ -4484,7 +4484,7 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You have learned to muffle your psychic presence, making it incredibly difficult for even other meta-humans to detect your mental passenger.",
+        "short": "When you use Borrow Senses, your target is completely unaware of your presence unless they are a powerful telepath or have specific anti-intrusion defenses.",
         "player": "You have learned to muffle your psychic presence, making it incredibly difficult for even other meta-humans to detect your mental passenger."
       },
       "effects": [],
@@ -4514,7 +4514,7 @@
       },
       "description": {
         "short": "While you are a passenger in a host, if they make physical contact with another person, you can make a roll to instantly transfer your consciousness from your current host to the new one.",
-        "player": "While you are a passenger in a host, if they make physical contact with another person, you can make a roll to instantly transfer your consciousness from your current host to the new one."
+        "player": "You can use physical contact as a bridge to leap from one consciousness to another."
       },
       "effects": [],
       "flaws": [],
@@ -4541,8 +4541,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your team-based link is now more stable and has greater bandwidth. The coordination bonus increases to +2, and you can relay fleeting sensory data to the group.",
-        "player": "Your team-based link is now more stable and has greater bandwidth. The coordination bonus increases to +2, and you can relay fleeting sensory data to the group."
+        "short": "The coordination bonus for linked members increases to +2. Furthermore, you can now relay more complex information, including fleeting sensory information (a quick glimpse of what one member sees, the sound of a gunshot another hears) to the entire group.",
+        "player": "Your team-based link is now more stable and has greater bandwidth."
       },
       "effects": [],
       "flaws": [],
@@ -4569,7 +4569,7 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can now function as a psychic switchboard operator, creating private, firewalled channels within your larger 5x5 link.",
+        "short": "Within your 5x5 link, you can choose to have a private, two-way telepathic conversation with any single member, without the others being aware of the communication.",
         "player": "You can now function as a psychic switchboard operator, creating private, firewalled channels within your larger 5x5 link."
       },
       "effects": [],
@@ -4597,8 +4597,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "The more a team works together under the Hub's link, the more they will develop shared mannerisms, finish each other's sentences, and anticipate each other's actions without needing explicit commands.",
-        "player": "The more a team works together under the Hub's link, the more they will develop shared mannerisms, finish each other's sentences, and anticipate each other's actions without needing explicit commands."
+        "short": "This represents a gradual blurring of lines between human and animal consciousness, a core theme for this path.",
+        "player": "Your mind begins to align with the beasts you link with. You start to think more instinctually, while they may adopt some of your more complex reasoning."
       },
       "effects": [],
       "flaws": []
@@ -4625,8 +4625,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can manage your link's communication and tactical input without penalty to your own physical actions.",
-        "player": "You can manage your link's communication and tactical input without penalty to your own physical actions."
+        "short": "You can manage your link's communication and tactical input without penalty to your own physical actions. You can perform complex mental actions (like assessing or directing allies) and still take your full physical action.",
+        "player": "Your mind is capable of simultaneously perceiving multiple streams of complex information, allowing you to manage and direct your team with unparalleled efficiency."
       },
       "effects": [],
       "flaws": []
@@ -4654,7 +4654,7 @@
       },
       "description": {
         "short": "When directing your team, you always know the most tactically advantageous action for each member to take. When you issue a command that aligns with this optimal strategy, the affected ally gains a +1 bonus to their roll.",
-        "player": "When directing your team, you always know the most tactically advantageous action for each member to take. When you issue a command that aligns with this optimal strategy, the affected ally gains a +1 bonus to their roll."
+        "player": "Your Orchestrator's mind instantly identifies the optimal strategy for any given situation, seeing openings and anticipating enemy movements with impossible clarity."
       },
       "effects": [],
       "flaws": []
@@ -4681,8 +4681,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "As an action, you can activate your Tactical Overview. You gain a perfect, bird's-eye view of the entire operational area covered by your link.",
-        "player": "As an action, you can activate your Tactical Overview. You gain a perfect, bird's-eye view of the entire operational area covered by your link."
+        "short": "As an action, you can activate your Tactical Overview. You gain a perfect, birds-eye view of the entire operational area covered by your link. You see all allies and known enemies, their positions, and their line of sight.",
+        "player": "By rapidly perceiving the sensory input from every member of your link, you can construct a dynamic, real-time tactical map in your mind."
       },
       "effects": [],
       "flaws": [],
@@ -4796,7 +4796,7 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can successfully establish your Basic 5x5 Link or Basic 2-Way Link with non-human, animalistic minds.",
+        "short": "You can form a psychic link with beasts. The nature of the link depends on the creature's intelligence; a simple beast might only convey basic emotions, while a more intelligent creature could share complex ideas.",
         "player": "You can successfully establish your Basic 5x5 Link or Basic 2-Way Link with non-human, animalistic minds."
       },
       "effects": [],
@@ -4824,8 +4824,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You can communicate complex ideas and understand the non-verbal 'language' of any animal you are linked with.",
-        "player": "You can communicate complex ideas and understand the non-verbal 'language' of any animal you are linked with."
+        "short": "You can hold a two-way \"conversation\" with any beast you have a Primal Link with, understanding its needs, fears, and intentions perfectly.",
+        "player": "You can communicate complex ideas and understand the non-verbal \"language\" of any animal you are linked with."
       },
       "effects": [],
       "flaws": [],
@@ -4852,7 +4852,7 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your mind begins to align with the beasts you link with. You start to think more instinctually, while they may adopt some of your more complex reasoning.",
+        "short": "This represents a gradual blurring of lines between human and animal consciousness, a core theme for this path.",
         "player": "Your mind begins to align with the beasts you link with. You start to think more instinctually, while they may adopt some of your more complex reasoning."
       },
       "effects": [],
@@ -4938,8 +4938,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You possess an encyclopedic knowledge of animal biology, behavior, and needs.",
-        "player": "You possess an encyclopedic knowledge of animal biology, behavior, and needs."
+        "short": "You are considered to have an Expert (+1) skill rank in Science (Zoology). You can identify any creature, understand its likely behaviors, and know its strengths and weaknesses.",
+        "player": "You possess an encyclopedic, intuitive knowledge of the animal kingdom, from the most mundane pests to the most bizarre Blight-mutated predators."
       },
       "effects": [],
       "flaws": []
@@ -5023,8 +5023,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "You possess an encyclopedic knowledge of animal biology, behavior, and needs.",
-        "player": "You possess an encyclopedic knowledge of animal biology, behavior, and needs."
+        "short": "You are considered to have an Expert (+1) skill rank in Science (Zoology). You can identify any creature, understand its likely behaviors, and know its strengths and weaknesses.",
+        "player": "You possess an encyclopedic, intuitive knowledge of the animal kingdom, from the most mundane pests to the most bizarre Blight-mutated predators."
       },
       "effects": [],
       "flaws": []
@@ -5058,8 +5058,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your mind is a sensitive antenna. You are adept at perceiving your chosen domain. When you use Moves related to perceiving/sensing, you may re-roll one die. When you use Moves to influence/project, you suffer Disadvantage.",
-        "player": "Your mind is a sensitive antenna. You are adept at perceiving your chosen domain. When you use Moves related to perceiving/sensing, you may re-roll one die. When you use Moves to influence/project, you suffer Disadvantage."
+        "short": "",
+        "player": ""
       },
       "effects": [],
       "flaws": [],
@@ -5094,8 +5094,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your mind is a powerful transmitter. You are adept at influencing your chosen domain. When you use Moves to influence/project, you may re-roll one die. When you use Moves to perceive/sense, you suffer Disadvantage.",
-        "player": "Your mind is a powerful transmitter. You are adept at influencing your chosen domain. When you use Moves to influence/project, you may re-roll one die. When you use Moves to perceive/sense, you suffer Disadvantage."
+        "short": "",
+        "player": ""
       },
       "effects": [],
       "flaws": [],
@@ -5130,8 +5130,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your power is a concentrated scalpel, affecting only one target at a time with potent, focused effects.",
-        "player": "Your power is a concentrated scalpel, affecting only one target at a time with potent, focused effects."
+        "short": "",
+        "player": ""
       },
       "effects": [],
       "flaws": []
@@ -5165,8 +5165,8 @@
         "version": "1.0"
       },
       "description": {
-        "short": "Your power radiates outward, affecting everyone (friend and foe) in a small area around you. You cannot selectively target.",
-        "player": "Your power radiates outward, affecting everyone (friend and foe) in a small area around you. You cannot selectively target."
+        "short": "",
+        "player": ""
       },
       "effects": [],
       "flaws": [],
@@ -6061,5 +6061,397 @@
       "effects": [],
       "flaws": []
     }
-  ]
+  ],
+  "archetypes": {
+    "sentinel": {
+      "id": "sentinel",
+      "name": "Sentinel",
+      "path": "",
+      "description": "The Sentinel is a living fortress, an Esper whose Aether-organ is fundamentally attuned to the realities of combat. They perceive the battlefield not as chaos, but as a flow of information to be understood and acted upon. Their power is reactive, intuitive, and focused on control and survival. This is the baseline from which all Sentinel specializations evolve."
+    },
+    "dragoon": {
+      "id": "dragoon",
+      "name": "Dragoon",
+      "path": "Sentinel (Archetype) -> Dragoon (Focus)",
+      "description": "Mobility. The Dragoon redefines their relationship with the battlefield, treating it not as a static grid but as a three-dimensional space to be crossed in an instant. They are masters of the sudden strike and the impossible repositioning."
+    },
+    "lancer": {
+      "id": "lancer",
+      "name": "Lancer",
+      "path": "Sentinel -> Dragoon -> Lancer",
+      "description": "The Lancer has honed the Dragoon's mobility into a single purpose: the perfect, unstoppable charge. They treat their own body as the ultimate spearhead, a living projectile meant to shatter enemy lines. This path is defined by a focus on large, two-handed melee weapons (spears, greatswords, polearms)."
+    },
+    "rider": {
+      "id": "rider",
+      "name": "Rider",
+      "path": "Sentinel -> Dragoon -> Rider",
+      "description": "The Rider extends their sense of mobility beyond their own body, forming a deep, supernatural bond with a mount. Whether it's a motorized cycle, a skycraft, a horse, or a captured Sand Drake, the Rider and mount become a single, synergistic entity."
+    },
+    "juggernaut": {
+      "id": "juggernaut",
+      "name": "Juggernaut",
+      "path": "Sentinel (Archetype) -> Juggernaut (Focus)",
+      "description": "Defense through inexorable force. The Juggernaut abandons tactical finesse in favor of becoming an unstoppable, unbreakable wall of flesh and Aether. They are the anchor point of a battle, weathering blows that would fell lesser beings and delivering single, telegraphed, but utterly devastating attacks. Their power is not about speed; it's about momentum."
+    },
+    "shield-warden": {
+      "id": "shield-warden",
+      "name": "Shield Warden",
+      "path": "Sentinel -> Juggernaut -> Shield Warden",
+      "description": "Protection above all. The Shield Warden has taken the Juggernaut's unbreakable nature and turned it outward. They are not just a wall; they are a sanctuary. Their existence is defined by the absolute, unwavering defense of a chosen ward. They are the ultimate bodyguard, a living shield for another."
+    },
+    "brute": {
+      "id": "brute",
+      "name": "Brute",
+      "path": "Sentinel -> Juggernaut -> Brute",
+      "description": "Flesh is the ultimate weapon. The Brute has eschewed complex defenses and weaponry in favor of perfecting their own body into an instrument of overwhelming physical force. They are masters of the brawl, turning their fists into hammers and their skin into steel."
+    },
+    "knight": {
+      "id": "knight",
+      "name": "Knight",
+      "path": "Sentinel -> Juggernaut -> Knight",
+      "description": "My armor is my second skin. The Knight has embraced the ideal of the armored warrior, using their Aether to summon, modify, and master a signature suit of armor. They are a walking fortress, a perfect union of person and plate."
+    },
+    "knightmare": {
+      "id": "knightmare",
+      "name": "Knightmare",
+      "path": "Sentinel -> Juggernaut -> Knightmare",
+      "description": "Fear is a weapon. The Knightmare has embraced the terrifying, monstrous aspects of their power. They are no longer just a warrior; they are a walking horror story, a slaughter machine that feeds on the terror it creates. This is a path of trauma and darkness."
+    },
+    "battle-saint": {
+      "id": "battle-saint",
+      "name": "Battle Saint",
+      "path": "Sentinel (Archetype) -> Battle Saint (Focus)",
+      "description": "The best defense is a relentless offense. The Battle Saint has repurposed their defensive Aetheric abilities into tools for aggression and analysis. They are not concerned with enduring the fight; they are focused on ending it. They are students of violence in all its forms."
+    },
+    "weapon-saint": {
+      "id": "weapon-saint",
+      "name": "Weapon Saint",
+      "path": "Sentinel -> Battle Saint -> Weapon Saint",
+      "description": "This is not a generalist path; it is the path of the ultimate specialist. The Weapon Saint has chosen to pour their entire martial identity into a single, signature weapon, becoming so attuned to it that the weapon is no longer a tool but an extension of their soul."
+    },
+    "sword-saint": {
+      "id": "sword-saint",
+      "name": "Sword Saint",
+      "path": "Sentinel -> Battle Saint -> Sword Saint",
+      "description": "The perfect strike. The Sword Saint's art is one of lethal minimalism. They do not waste movement or energy. Every action is dedicated to creating the single, perfect opportunity to end the fight with one clean, decisive blow. They are masters of anticipation, timing, and killing intent."
+    },
+    "blade-dancer": {
+      "id": "blade-dancer",
+      "name": "Blade Dancer",
+      "path": "Sentinel -> Battle Saint -> Blade Dancer",
+      "description": "Combat is a performance. The Blade Dancer flows through battle like water, a whirlwind of constant, fluid motion. They turn defense into offense and offense into a seamless, beautiful, and deadly dance. To fight them is to be drawn into their rhythm, a rhythm that almost always leads to your defeat."
+    },
+    "gun-saint": {
+      "id": "gun-saint",
+      "name": "Gun Saint",
+      "path": "Sentinel -> Battle Saint -> Gun Saint",
+      "description": "The bullet is not a projectile; it is an extension of my will. The Gun Saint has transcended marksmanship and entered the realm of ballistic artistry. They treat firearms with a quasi-religious reverence, capable of feats that defy physics and logic through a combination of Aetheric manipulation and impossible skill."
+    },
+    "overwatch": {
+      "id": "overwatch",
+      "name": "Overwatch",
+      "path": "Sentinel -> Battle Saint -> Gun Saint -> Overwatch",
+      "description": "One shot, one kill. The Overwatch is the patient hunter, the master of the long-range engagement. They find a perch, become one with their rifle, and control the entire battlefield from a distance, delivering death from an unseen quarter."
+    },
+    "gun-devil": {
+      "id": "gun-devil",
+      "name": "Gun Devil",
+      "path": "Sentinel -> Battle Saint -> Gun Saint -> Gun Devil",
+      "description": "Punish the wicked. The Gun Devil is a dark reflection of the Prophet, driven not by a moral code to protect the innocent, but by a consuming need to punish the guilty. They are bounty hunters, executioners, and grim reapers who draw power from the very sins they seek to erase."
+    },
+    "operator": {
+      "id": "operator",
+      "name": "Operator",
+      "path": "Summoner -> Animata -> Operator",
+      "description": "The Ghost in the Machine. The Operator moves beyond simple commands to form a direct, one-to-one attune to their creations. They do not just command their constructs; they become them, piloting them with the precision of their own bodies."
+    },
+    "orb-weaver": {
+      "id": "orb-weaver",
+      "name": "Orb Weaver",
+      "path": "Summoner -> Animata -> Operator -> Orb Weaver",
+      "description": "The Linked Swarm. The Orb Weaver has specialized in creating small, versatile, and interconnected constructs. They eschew a single, powerful servant in favor of a swarm of \"orb\" drones that function as a mobile security system, a distributed attack platform, and a multi-tool for infiltration."
+    },
+    "dollmaker": {
+      "id": "dollmaker",
+      "name": "Dollmaker",
+      "path": "Summoner -> Animata -> Dollmaker",
+      "description": "The Legion of One. The Dollmaker has moved beyond single constructs to command a small army of puppets. Their power is not in the strength of one servant, but in the coordinated action of many. They are a master conductor, and their puppets are the orchestra."
+    },
+    "gremlins": {
+      "id": "gremlins",
+      "name": "Gremlins",
+      "path": "... -> Dollmaker -> Gremlins",
+      "description": "Chaos and Replication. Influenced by the chaotic whisper of The Worm, your constructs have become self-perpetuating, cannibalistic monstrosities. They are no longer your tools; you are merely the origin point for their infestation."
+    },
+    "corpse-lord": {
+      "id": "corpse-lord",
+      "name": "Corpse Lord",
+      "path": "Summoner -> Animata -> Corpse Lord",
+      "description": "Flesh is the Ultimate Puppet. The Corpse Lord has turned their art of animation from inorganic matter to the far more pliable medium of the dead. They are not necromancers dealing with souls, but macabre puppeteers who see bodies as nothing more than marionettes waiting for a string."
+    },
+    "champion": {
+      "id": "champion",
+      "name": "Champion",
+      "path": "... -> Medium -> Champion",
+      "description": "Partnership is power. The Champion has chosen to align themselves with the spirits, acting as their agent, ally, and anchor in the physical world."
+    },
+    "exorcist": {
+      "id": "exorcist",
+      "name": "Exorcist",
+      "path": "... -> Medium -> Exorcist",
+      "description": "This world is for the living. The Exorcist sees rogue spirits and Wraiths not as beings to be negotiated with, but as infections to be contained and purged."
+    },
+    "facilitator": {
+      "id": "facilitator",
+      "name": "Facilitator",
+      "path": "... -> Automata -> Facilitator",
+      "description": "The broker of worlds. The Facilitator has built a reputation in the Aether. They are known as a reliable and effective bridge to the physical world, and spirits actively seek them out for the opportunity. Their power comes from their influence and the quality of the bargains they can strike."
+    },
+    "herald": {
+      "id": "herald",
+      "name": "Herald",
+      "path": "... -> Facilitator -> Herald",
+      "description": "I am the voice of my master. The Herald has sworn themself to the service of a single, immensely powerful Aetheric entity (a demigod, an arch-spirit, one of The Thirteen). They are no longer an independent broker; they are a prophet, a high priest, and the primary agent for their patron's will in the mortal world. This is a mutation born of devotion."
+    },
+    "contractor": {
+      "id": "contractor",
+      "name": "Contractor",
+      "path": "Summoner (Archetype) -> Automata -> Contractor",
+      "description": "The deal is the art. The Contractor is a master of supernatural law. They understand that the greatest power lies not in binding a spirit to a vessel for themselves, but in facilitating the binding agreements between spirits and mortals. They are sought-after arcane notaries, their trade being trust, knowledge, and the unshakeable power of a contract enforced by the timeless logic of the Aether."
+    },
+    "broker": {
+      "id": "broker",
+      "name": "Broker",
+      "path": "... -> Contractor -> Broker",
+      "description": "The deal serves me. The Broker has moved beyond mere facilitation. They are now an active player, leveraging their contracts to gain power and influence within the Aether itself. Their deals are weighted, their bargains are sharp, and every contract signed is another step up the spiritual ladder, for good or for ill. This is a mutation born from ambition."
+    },
+    "median": {
+      "id": "median",
+      "name": "Median",
+      "path": "",
+      "description": "The Median is a living conduit of biological Aether. Their power resonates with the patterns of life itself, allowing them to sense, influence, and mend the intricate biological processes of living beings. They are the doctors, the healers, and, at their most extreme, the architects of flesh."
+    },
+    "splicer": {
+      "id": "splicer",
+      "name": "Splicer",
+      "path": "Median (Archetype) -> Gene-Splicer (Focus)",
+      "description": "Flesh is mutable. The Gene-Splicer has moved beyond simple mending to become an architect of biological form. They understand the Aetheric pattern of life itself, allowing them to rewrite it."
+    },
+    "waker": {
+      "id": "waker",
+      "name": "Waker",
+      "path": "Median (Archetype) -> Gene-Splicer -> Waker",
+      "description": "Potential is a key to be turned. The Waker has mutated beyond merely shaping existing life. Their Aetheric Cortex has attuned to the very frequency of potential itself. They can sense the \"Sparks\" of latent Espers in the populace, and more terrifyingly, they can force that potential into being. They are the creators of new Espers, a power that makes them one of the most valuable and hunted beings in Sidonia."
+    },
+    "amp": {
+      "id": "amp",
+      "name": "Amp",
+      "path": "... -> Waker -> Bio-Amp",
+      "description": "Evolution needs a guiding hand. The Bio-Amp has moved beyond simple awakening. They can now see the branching evolutionary paths within another Esper's Aetheric Cortex and have learned to corrupt and force those paths to their will."
+    },
+    "green-thumb": {
+      "id": "green-thumb",
+      "name": "Green Thumb",
+      "path": "Median (Archetype) -> Green Thumb (Focus)",
+      "description": "The pulse of life is not limited to blood. The Green Thumb has attuned their Aetheric Cortex to the unique biological frequencies of the plant kingdom. They are gardeners, botanists, and masters of flora, able to sense the needs of plants and accelerate their growth with a touch."
+    },
+    "green-smith": {
+      "id": "green-smith",
+      "name": "Green Smith",
+      "path": "... -> Green Thumb -> Green Smith",
+      "description": "Nature can be improved. The Green Smith is a master horticulturalist, a biological architect who doesn't just grow plants but actively designs them for greater utility, yield, and resilience."
+    },
+    "blight-smith": {
+      "id": "blight-smith",
+      "name": "Blight Smith",
+      "path": "... -> Green Thumb -> Blight Smith",
+      "description": "Survival at any cost. The Blight Smith has been exposed to and warped by the corrupting influence of the Blight. Instead of fighting it, they have embraced it, becoming a master of the twisted, toxic life that thrives in those poisoned lands. They are a corrupted echo of the Green Thumb's art."
+    },
+    "beast-doctor": {
+      "id": "beast-doctor",
+      "name": "Beast Doctor",
+      "path": "Median (Archetype) -> Beast Doctor (Focus)",
+      "description": "Life is life, whether it walks on two legs or four. The Beast Doctor has attuned their healing abilities specifically to the non-human creatures of the world. They understand animal biology with an intuitive grace and can soothe the most savage beast with their calming presence."
+    },
+    "researcher": {
+      "id": "researcher",
+      "name": "Researcher",
+      "path": "... -> Beast Doctor -> Researcher",
+      "description": "To understand is to protect. The Researcher has taken their love of animals and turned it into a scientific pursuit. They are dedicated to observing, cataloging, and understanding the strange and often dangerous fauna of Sidonia without interfering. They are the Jane Goodalls of a world filled with monsters."
+    },
+    "weaver": {
+      "id": "weaver",
+      "name": "Weaver",
+      "path": "",
+      "description": "The Weaver perceives the world not as solid objects, but as an intricate tapestry of energy and patterns. They are living conduits, attuned to the flow of power, the geometry of space, and the subtle rhythms of reality. They do not force their will upon the world like a Sorcerer; instead, they gently pluck at the threads of existence to create their desired effect."
+    },
+    "web-walker": {
+      "id": "web-walker",
+      "name": "Web Walker",
+      "path": "Weaver (Archetype) -> Web Walker (Focus)",
+      "description": "Space is not a barrier; it is a path. The Web Walker has focused their understanding of patterns onto the physical geometry of the world. They see the lines, the angles, and the connections that others miss, allowing them to traverse their environment with impossible grace and precision. They are the ultimate parkour artists and masters of positioning."
+    },
+    "broadcaster": {
+      "id": "broadcaster",
+      "name": "Broadcaster",
+      "path": "... -> Surgeer -> Broadcaster",
+      "description": "The grid is my voice. The Broadcaster has learned to interface directly with Sidonia's unique, Forge-Crete-based power infrastructure. They don't just absorb electricity; they ride it, turning the city's own veins of power into their personal communication collective link."
+    },
+    "flicker": {
+      "id": "flicker",
+      "name": "Flicker",
+      "path": "Weaver (Archetype) -> Web Walker -> Flicker",
+      "description": "Reality is a suggestion. The Flicker has taken the Web Walker's understanding of geometry and applied it to their own physical form. They don't just navigate space; they treat it as a mutable, optional construct. They are a glitch in the world, a step ahead of reality, existing where they should be, not necessarily where they are."
+    },
+    "heavy": {
+      "id": "heavy",
+      "name": "Heavy",
+      "path": "... -> Flicker -> Heavy",
+      "description": "Gravity is a personal choice. The Heavy has focused their spatial manipulation inward, learning to control their own mass and gravitational pull. They are an immovable object and an unstoppable force, all depending on their whim."
+    },
+    "boomer": {
+      "id": "boomer",
+      "name": "Boomer",
+      "path": "... -> Flicker -> Boomer",
+      "description": "Space is a toy. The Boomer delights in small, localized, and often very loud manipulations of reality. They \"yoink,\" \"pop,\" and \"bang\" their way through problems, leaving chaos and confusion in their wake."
+    },
+    "web-spinner": {
+      "id": "web-spinner",
+      "name": "Web Spinner",
+      "path": "Weaver (Archetype) -> Web Spinner (Focus)",
+      "description": "The world is a story, and I have read ahead. The Web Spinner sees the patterns not in space, but in time and choice. They are masters of causality, seeing the threads of probability that connect actions to outcomes. They don't predict the future so much as they understand the present so perfectly that the future becomes obvious."
+    },
+    "hex": {
+      "id": "hex",
+      "name": "Hex",
+      "path": "... -> Web Spinner -> Hex",
+      "description": "If misfortune exists, it should be directed. The Hex has learned to gather the ambient bad luck of the world and focus it into a targeted, personal curse. They don't create chaos; they weaponize it."
+    },
+    "witness": {
+      "id": "witness",
+      "name": "Witness",
+      "path": "Weaver (Archetype) -> Web Spinner -> Witness",
+      "description": "I am where I am meant to be. The Witness is a passive conduit for causality, guided by an unseen hand or an unconscious compulsion. They don't predict the future; they are simply delivered to the exact time and place where the future is being forged. They are the Zelig of Sidonia, fated to be present at every pivotal moment."
+    },
+    "catalyst": {
+      "id": "catalyst",
+      "name": "Catalyst",
+      "path": "... -> Witness -> Catalyst",
+      "description": "History is a story, and I am its author. The Catalyst has been tempted by the Wyrm, rejecting the passive role of an observer for the active role of a creator. They no longer just record history; they rewrite it, twisting events and narratives to serve a new, chaotic purpose."
+    },
+    "oracle": {
+      "id": "oracle",
+      "name": "Oracle",
+      "path": "Weaver (Archetype) -> Web Spinner -> Oracle",
+      "description": "The future whispers, but rarely speaks clearly. The Oracle is attuned to the grand, sweeping patterns of causality. They do not see precise futures, but rather receive symbolic, metaphorical glimpses of what is to come. They are interpreters of omens, readers of cosmic tarot cards, trying to make sense of a future that is always in motion."
+    },
+    "web-warper": {
+      "id": "web-warper",
+      "name": "Web Warper",
+      "path": "Weaver (Archetype) -> Web Warper (Mutation)",
+      "description": "A perfect pattern is a boring pattern. The Web Warper has embraced dissonance, finding power and beauty in the corruption of pure systems. They are agents of chaos, not through random chance, but through the deliberate introduction of disharmonious frequencies into the weave of reality."
+    },
+    "banshee": {
+      "id": "banshee",
+      "name": "Banshee",
+      "path": "... -> Web Warper -> Banshee",
+      "description": "Sound is the perfect weapon. The Banshee has focused their corrupting influence into their voice, turning it into an instrument capable of shattering both matter and flesh with pure, resonant frequency."
+    },
+    "nightstalker": {
+      "id": "nightstalker",
+      "name": "Nightstalker",
+      "path": "... -> Web Warper -> Nightstalker",
+      "description": "The shadow is my home. The Nightstalker has learned to weave dissonance into light itself, creating pockets of unnatural darkness and making their own form indistinct and terrifying."
+    },
+    "mage-eater": {
+      "id": "mage-eater",
+      "name": "Mage Eater",
+      "path": "... -> Web Eater -> Mage Eater",
+      "description": "Magic is a flaw to be corrected. The Mage Eater has specialized in hunting those who use the Aether. They are a living counter-spell, their very presence anathema to sorcery and enchantment."
+    },
+    "linker": {
+      "id": "linker",
+      "name": "Linker",
+      "path": "",
+      "description": "The mind is a collective link. The Linker is the ultimate force multiplier, an Esper whose Aetheric Cortex functions like a biological wireless router. They do not excel in personal combat or overt power, but in their unparalleled ability to forge psychic connections between conscious minds. They are the strategists, the coordinators, and the heart of any effective team. A single Linker can turn five individuals into a single, cohesive, and terrifyingly efficient unit."
+    },
+    "companion": {
+      "id": "companion",
+      "name": "Companion",
+      "path": "Linker -> The Bonder -> Companion",
+      "description": "My bond is my strength. The Companion has dedicated themselves to the art of the two-way link. They seek to create a partnership so profound that the two linked individuals become more than the sum of their parts, sharing thoughts, emotions, and strengths in a seamless, synergistic union."
+    },
+    "guardian": {
+      "id": "guardian",
+      "name": "Guardian",
+      "path": "... -> Companion -> Guardian",
+      "description": "I am your shield. This bond is not one of equals, but one of protection. One individual (the Guardian) takes on the role of protector, while the other (the Ward) benefits from that protection. This path awakens Aetheric protocols related to ancient bodyguard and sentinel pairings."
+    },
+    "hub": {
+      "id": "hub",
+      "name": "Hub",
+      "path": "Linker (Archetype) -> The Hub (Focus)",
+      "description": "One mind, many bodies. The Hub has dedicated themself to mastering the complex art of the 5x5 link. They are the ultimate team captain, the central server through which all communication and coordination flows. Their power is measured by the flawless efficiency of the team they command."
+    },
+    "coordinator": {
+      "id": "coordinator",
+      "name": "Coordinator",
+      "path": "... -> The Hub -> Coordinator",
+      "description": "The collective link is everything. The Coordinator focuses on the mastery of the link itself. They are masters of bond strength, range, and clarity of connection, ensuring their team stays connected and coordinated under any circumstances. They are the Ops Chief, the master of coordination."
+    },
+    "booster": {
+      "id": "booster",
+      "name": "Booster",
+      "path": "... -> Coordinator -> Booster",
+      "description": "The whole is greater than the sum of its parts. The Booster has moved beyond just maintaining the link; they now actively cultivate and manage the team's collective energy and knowledge. They are a living force multiplier, turning their team's shared experiences and skills into a tangible, powerful resource that everyone can draw upon."
+    },
+    "relay": {
+      "id": "relay",
+      "name": "Relay",
+      "path": "... -> Coordinator -> Relay",
+      "description": "Information is victory. The Relay has perfected the art of information transmission across their collective link. They are no longer just a switchboard operator; they are a high-speed, encrypted server, ensuring that the right information gets to the right person at the right time, with perfect clarity."
+    },
+    "sin-eater": {
+      "id": "sin-eater",
+      "name": "Sin Eater",
+      "path": "... -> Coordinator -> Sin Eater",
+      "description": "The crowd is a single mind, and I am its shepherd. The Sin Eater has learned to create a wide, shallow psychic link with entire groups of people, tapping into their shared emotions to manipulate them on a grand scale. They are social parasites, feeding on and amplifying the mood of a crowd for their own ends."
+    },
+    "orchestrator": {
+      "id": "orchestrator",
+      "name": "Orchestrator",
+      "path": "Linker (Archetype) -> The Hub -> Orchestrator",
+      "description": "The team is my symphony. The Orchestrator does not just manage a collective link; they conduct it. They process information, anticipate actions, and direct their team with such precision that every movement is part of a grander design, turning a chaotic firefight into a perfectly synchronized tactical dance."
+    },
+    "conductor": {
+      "id": "conductor",
+      "name": "Conductor",
+      "path": "... -> Orchestrator -> Conductor",
+      "description": "I am the perfect strategy. The Conductor is the ultimate tactical genius, capable of assessing the capabilities of every team member and orchestrating a perfectly synchronized, devastating attack that ends a conflict with surgical precision."
+    },
+    "crowd-surfer": {
+      "id": "crowd-surfer",
+      "name": "Crowd Surfer",
+      "path": "... -> Orchestrator -> Crowd Surfer",
+      "description": "The mob is my puppet. The Crowd Surfer takes the Puppeteer's ability to control and scales it to a horrifying degree. They infiltrate groups, hijack their collective consciousness, and turn them into a malleable, weaponized \"flash mob,\" dancing to their hidden tune."
+    },
+    "animist": {
+      "id": "animist",
+      "name": "Animist",
+      "path": "Linker (Archetype) -> Animist (Focus)",
+      "description": "All life is a collective link. The Animist attunes their mind not to the logic of humanity, but to the primal, instinctual consciousness of the animal kingdom. They are masters of non-human communication, capable of forging links with beasts, monsters, and even alien hive minds."
+    },
+    "beast-breeder": {
+      "id": "beast-breeder",
+      "name": "Beast Breeder",
+      "path": "... -> Animist -> Beast Breeder",
+      "description": "The pack is family. The Beast Breeder focuses on raising, managing, and understanding entire groups of animals. They are the alpha, the zookeeper, and the master of pack dynamics."
+    },
+    "beast-tamer": {
+      "id": "beast-tamer",
+      "name": "Beast Tamer",
+      "path": "... -> Animist -> Beast Tamer",
+      "description": "Every beast has a soul. The Beast Tamer focuses on forming a deep, empathetic bond with individual creatures. They are the rehabilitators, the whisperers, the ones who can soothe the savage heart."
+    }
+  }
 }

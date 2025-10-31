@@ -7,8 +7,8 @@ export function LandingPage() {
     <div className="min-h-screen flex items-center justify-center px-deco-md py-deco-xl">
       <div className="max-w-4xl w-full space-y-deco-lg">
         {/* Hero Section */}
-        <header className="text-center space-y-deco-md">
-          <h1 className="text-display-lg text-sidonia-gold text-shadow-gold">
+        <header className="text-center space-y-deco-md mb-deco-xl">
+          <h1 className="text-display-lg text-shadow-gold">
             Character Creation as Descent
           </h1>
           <div className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-sidonia-gold to-transparent" />
@@ -34,7 +34,7 @@ export function LandingPage() {
           </div>
 
           {/* Action Buttons */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-deco-sm pt-deco-md border-t border-sidonia-gold/20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-deco-sm pt-deco-md border-t border-sidonia-gold/60">
             <Link to="/builder" className="block">
               <DecoButton variant="primary" size="lg" className="w-full">
                 New Character

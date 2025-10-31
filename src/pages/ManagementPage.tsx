@@ -35,18 +35,18 @@ export function ManagementPage() {
     <div className="min-h-screen px-deco-md py-deco-lg">
       <div className="max-w-7xl mx-auto space-y-deco-lg">
         {/* Header */}
-        <header className="text-center space-y-deco-sm">
-          <h1 className="text-display-lg text-sidonia-gold text-shadow-gold">
+        <header className="text-center space-y-deco-sm mb-deco-xl">
+          <h1 className="text-display-lg text-shadow-gold">
             Character Management
           </h1>
           <div className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-sidonia-gold to-transparent" />
-          <p className="text-body text-sidonia-text/80 max-w-2xl mx-auto">
+          <p className="text-body text-sidonia-text max-w-2xl mx-auto">
             Spin up new dossiers, duplicate existing ones, and export packages for your virtual tabletop or print.
           </p>
         </header>
 
         {/* Create New Character */}
-        <DecoCard>
+        <DecoCard className="mb-deco-lg">
           <div className="flex flex-col sm:flex-row gap-deco-sm items-end">
             <div className="flex-1 w-full">
               <DecoInput
@@ -72,7 +72,7 @@ export function ManagementPage() {
         )}
 
         {/* Character Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-deco-md">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {buildList.map((build) => {
             const isActive = build.id === activeBuildId;
             return (
@@ -83,7 +83,7 @@ export function ManagementPage() {
                   'transition-all duration-300',
                   isActive
                     ? 'border-sidonia-gold shadow-lg shadow-sidonia-gold/20'
-                    : 'border-sidonia-gold/20 hover:border-sidonia-gold/40'
+                    : 'border-sidonia-gold/60 hover:border-sidonia-gold'
                 )}
               >
                 {/* Active Badge */}
@@ -117,7 +117,7 @@ export function ManagementPage() {
                 </header>
 
                 {/* Character Details */}
-                <dl className="space-y-2 py-deco-sm border-t border-b border-sidonia-gold/20">
+                <dl className="space-y-2 py-deco-sm border-t border-b border-sidonia-gold/60">
                   <div>
                     <dt className="text-label">Name</dt>
                     <dd className="text-sidonia-text font-body">{build.profile.name || '—'}</dd>
@@ -128,7 +128,7 @@ export function ManagementPage() {
                   </div>
                   <div>
                     <dt className="text-label">Updated</dt>
-                    <dd className="text-sidonia-text/70 font-body text-sm">
+                    <dd className="text-sidonia-text font-body text-sm">
                       {new Date(build.updatedAt).toLocaleString()}
                     </dd>
                   </div>

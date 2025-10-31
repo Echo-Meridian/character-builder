@@ -14,15 +14,27 @@
   }
 
   .text-display-lg {
-    @apply font-display text-5xl tracking-wider uppercase;
+    @apply font-display text-7xl tracking-wider uppercase text-sidonia-gold;
   }
 
   .text-display-md {
-    @apply font-display text-3xl tracking-wider uppercase;
+    @apply font-display text-4xl tracking-wider uppercase;
   }
 
   .text-display-sm {
-    @apply font-display text-xl tracking-wide uppercase;
+    @apply font-display text-2xl tracking-wide uppercase;
+  }
+
+  .text-accent-lg {
+    @apply font-accent text-2xl font-bold tracking-wide;
+  }
+
+  .text-accent-md {
+    @apply font-accent text-xl font-bold tracking-wide;
+  }
+
+  .text-accent-sm {
+    @apply font-accent text-lg font-semibold tracking-wide;
   }
 
   .text-body-lg {

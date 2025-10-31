@@ -25,7 +25,7 @@
 }
 
 .lineage-powers-panel header h3 {
-  @apply m-0 font-display text-3xl tracking-wider uppercase text-sidonia-gold;
+  @apply m-0 font-display text-4xl tracking-wider uppercase text-sidonia-gold;
 }
 
 .lineage-powers-panel header p {
@@ -48,11 +48,11 @@
 }
 
 .lineage-power-summary span {
-  @apply text-label text-sidonia-muted;
+  @apply font-body text-xs uppercase tracking-widest text-sidonia-muted;
 }
 
 .lineage-power-summary strong {
-  @apply text-sidonia-gold font-display text-lg tracking-wide;
+  @apply text-sidonia-gold font-accent text-lg tracking-wide;
 }
 
 .lineage-power-summary__warning {
@@ -103,7 +103,14 @@
 .lineage-power-card__summary h5,
 .sphere-card__summary h5,
 .automata-package-summary h5 {
-  @apply m-0 font-display text-lg tracking-wide uppercase text-sidonia-brass;
+  @apply m-0 font-accent text-xl font-bold tracking-wide text-sidonia-gold;
+}
+
+/* NeoSapien augment system names use Limelight */
+.lineage-power-card__summary h4 {
+  font-family: 'Limelight', serif;
+  font-size: 2rem;
+  font-weight: 400;
 }
 
 .lineage-power-card__short-desc,
@@ -118,7 +125,7 @@
 .sphere-card__summary::after,
 .automata-package-card summary::after {
   content: 'Expand for Details ›';
-  @apply font-display text-xs uppercase tracking-wider;
+  @apply font-body text-xs uppercase tracking-wider;
   @apply text-sidonia-gold/60;
   @apply mt-1 pt-2 border-t border-sidonia-gold/20;
   @apply transition-all duration-300;
@@ -161,33 +168,58 @@ details[open].automata-package-card summary::after {
 /* Tier/Grade Sections */
 .lineage-power-tier,
 .lineage-power-grade {
-  @apply rounded-lg p-deco-sm;
-  @apply bg-sidonia-black/40 border-2 border-sidonia-gold/10;
+  @apply rounded-lg p-deco-md;
+  @apply bg-sidonia-dark border-2 border-sidonia-gold/60;
   @apply transition-all duration-300;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .lineage-power-tier:hover,
 .lineage-power-grade:hover {
-  @apply border-sidonia-gold/30;
+  @apply border-sidonia-gold;
 }
 
 .lineage-power-tier--selected,
 .lineage-power-grade--selected {
-  @apply border-sidonia-gold shadow-md shadow-sidonia-gold/20;
+  @apply border-sidonia-gold shadow-md shadow-sidonia-gold/20 bg-sidonia-gold/5;
 }
 
-.lineage-power-tier__header,
+.lineage-power-tier__header {
+  display: grid;
+  gap: 0.5rem;
+}
+
 .lineage-power-grade__header {
   @apply flex flex-wrap items-center gap-2;
 }
 
 .lineage-power-tier__info {
-  @apply flex items-center gap-2 flex-1;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.lineage-power-tier__name {
+  @apply font-accent text-xl font-bold text-sidonia-gold m-0;
+}
+
+.lineage-power-tier__meta {
+  @apply flex items-center gap-2;
+}
+
+.lineage-power-tier__footer {
+  display: grid;
+  gap: 0.75rem;
+  @apply mt-2 pt-3 border-t border-sidonia-gold/20;
 }
 
 .lineage-power-tier__cost {
+  @apply text-sidonia-text font-body text-xs;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.lineage-power-tier__cost span {
   @apply text-sidonia-muted font-body text-xs;
 }
 
@@ -199,9 +231,17 @@ details[open].automata-package-card summary::after {
 /* Art Deco Badges */
 .badge {
   @apply inline-flex items-center;
-  @apply px-2 py-1 rounded-full;
-  @apply font-display text-xs uppercase tracking-wider;
+  @apply px-2 py-0.5 rounded-full;
+  @apply font-body text-xs uppercase tracking-wide;
   @apply bg-sidonia-gold/20 border border-sidonia-gold/50 text-sidonia-gold;
+}
+
+.badge--tier {
+  font-family: 'Newsreader', serif;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 300;
+  font-style: italic;
 }
 
 .badge--grade {
@@ -232,7 +272,7 @@ details[open].automata-package-card summary::after {
 }
 
 .power-description__detail {
-  @apply text-sidonia-text/70;
+  @apply text-sidonia-text/80 font-body;
 }
 
 .power-description__short {
@@ -240,21 +280,30 @@ details[open].automata-package-card summary::after {
 }
 
 .power-description__flaw,
-.power-description__detail.flaw {
-  @apply text-corruption-red;
+.power-description__detail.power-description__flaw {
+  @apply text-orange-400 font-body text-xs italic;
+  @apply mt-2 pt-2 border-t border-sidonia-gold/20;
 }
 
 .power-description__outcomes,
 .power-outcomes {
   @apply list-none m-0 p-0;
   display: grid;
-  gap: 0.35rem;
+  gap: 0.5rem;
   @apply font-body text-sm;
+  @apply mt-3 pt-3 border-t border-sidonia-gold/30;
 }
 
-.power-description__outcomes li {
+.power-description__outcomes li,
+.power-outcomes > div {
+  @apply p-2 rounded;
+  @apply bg-sidonia-black/40 border-l-2 border-sidonia-brass/60;
   display: grid;
   gap: 0.25rem;
+}
+
+.power-outcomes strong {
+  @apply text-sidonia-brass font-accent;
 }
 
 .power-cost {
@@ -274,30 +323,36 @@ details[open].automata-package-card summary::after {
 
 .sphere-column__heading {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 1.25rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  @apply font-accent font-bold text-sidonia-gold;
 }
 
 /* Sphere Cards (Sorcery) */
 .sphere-card {
-  @apply rounded-lg p-deco-sm;
-  @apply border-2 border-lineage-sorcerer/20 bg-sidonia-black/80;
+  @apply rounded-lg p-deco-md;
+  @apply border-2 border-lineage-sorcerer/60 bg-sidonia-dark;
   @apply transition-all duration-300;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .sphere-card:hover {
-  @apply border-lineage-sorcerer/40;
+  @apply border-lineage-sorcerer;
 }
 
 .sphere-card--selected {
   @apply border-lineage-sorcerer shadow-lg shadow-lineage-sorcerer/30;
 }
 
+.sphere-card summary h5 {
+  @apply font-display text-2xl text-sidonia-gold m-0;
+}
+
 .sphere-card__description {
-  @apply text-sidonia-text/70 font-body text-sm italic;
+  @apply text-sidonia-brass font-body text-sm italic;
+  @apply mt-1;
 }
 
 .sphere-prerequisite-message {
@@ -308,28 +363,28 @@ details[open].automata-package-card summary::after {
 .power-list {
   @apply list-none m-0 p-0;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .power-list li,
 .power-list__item {
-  @apply rounded-lg p-deco-sm;
-  @apply bg-sidonia-black/40 border-2 border-sidonia-gold/10;
+  @apply rounded-lg p-deco-md;
+  @apply bg-sidonia-dark border-2 border-sidonia-gold/60;
   @apply transition-all duration-300;
   display: grid;
-  gap: 0.35rem;
+  gap: 0.75rem;
 }
 
 .power-list__item:hover {
-  @apply border-sidonia-gold/30;
+  @apply border-sidonia-gold;
 }
 
 .power-list__item--selected {
-  @apply border-sidonia-gold shadow-md shadow-sidonia-gold/20;
+  @apply border-sidonia-gold shadow-md shadow-sidonia-gold/20 bg-sidonia-gold/5;
 }
 
 .power-list__item--granted {
-  @apply border-green-500/30 bg-green-500/5;
+  @apply border-green-500/60 bg-green-500/5;
 }
 
 .power-list__item--disabled {
@@ -337,7 +392,16 @@ details[open].automata-package-card summary::after {
 }
 
 .power-list__header {
-  @apply flex items-center justify-between gap-3;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.power-list__title {
+  @apply font-accent text-xl font-bold text-sidonia-gold m-0;
+}
+
+.power-list__meta {
+  @apply flex items-center gap-2 flex-wrap;
 }
 
 .focus-grid {
@@ -422,14 +486,14 @@ details[open].automata-package-card summary::after {
 
 /* Art Deco Power Toggle Buttons */
 .power-toggle {
-  @apply px-deco-sm py-1.5 rounded-full;
-  @apply font-display text-xs uppercase tracking-wider;
-  @apply border-2 border-sidonia-gold/30 bg-sidonia-black/50 text-sidonia-text;
+  @apply px-deco-md py-2 rounded-full;
+  @apply font-accent text-sm tracking-wider;
+  @apply border-2 border-sidonia-gold/60 bg-sidonia-black text-sidonia-text;
   @apply cursor-pointer transition-all duration-300;
 }
 
 .power-toggle:hover:not(:disabled) {
-  @apply border-sidonia-gold/60 bg-sidonia-gold/10 shadow-md shadow-sidonia-gold/10;
+  @apply border-sidonia-gold bg-sidonia-gold/10 shadow-md shadow-sidonia-gold/10;
 }
 
 .power-toggle--active {
@@ -446,11 +510,12 @@ details[open].automata-package-card summary::after {
 }
 
 .power-toggle--radio {
-  @apply w-8 h-8 p-0 text-base font-bold;
+  @apply w-auto px-deco-md py-1 text-sm;
+  @apply justify-self-start;
 }
 
 .power-toggle--radio.power-toggle--active {
-  @apply text-sidonia-gold;
+  @apply text-sidonia-gold bg-sidonia-gold/10;
 }
 
 .power-toggle--clear {
@@ -491,7 +556,14 @@ details summary::-webkit-details-marker {
 }
 
 .lineage-core-mutations h4 {
-  @apply font-display text-lg tracking-wide uppercase text-lineage-chimera mb-deco-sm;
+  font-family: 'Limelight', serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  @apply text-lineage-chimera mb-1;
+}
+
+.lineage-core-mutations__subtitle {
+  @apply text-sidonia-text/70 font-body text-sm mb-deco-sm;
 }
 
 .lineage-core-mutations-list {
@@ -503,12 +575,33 @@ details summary::-webkit-details-marker {
   @apply bg-lineage-chimera/10 border-2 border-lineage-chimera/30;
 }
 
-.core-mutation-card h5 {
-  @apply m-0 font-display text-sm tracking-wide uppercase text-lineage-chimera;
+.core-mutation-card summary {
+  @apply cursor-pointer;
+  list-style: none;
+}
+
+.core-mutation-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.core-mutation-card summary h5 {
+  @apply m-0 font-accent text-base font-bold tracking-wide uppercase text-lineage-chimera;
+  display: inline;
+}
+
+.core-mutation-card summary h5::after {
+  content: ' ›';
+  @apply text-lineage-chimera/60 ml-1;
+  font-weight: 400;
+}
+
+.core-mutation-card[open] summary h5::after {
+  content: ' ‹';
 }
 
 .core-mutation-card p {
-  @apply mt-1 text-sidonia-text/70 font-body text-xs;
+  @apply mt-2 pt-2 border-t border-lineage-chimera/20;
+  @apply text-sidonia-text/70 font-body text-xs;
 }
 
 /* Esper/Automata Specialized Sections */
@@ -525,7 +618,7 @@ details summary::-webkit-details-marker {
 }
 
 .automata-chassis-section h4 {
-  @apply font-display text-xl tracking-wide uppercase text-lineage-automata mb-deco-sm;
+  @apply font-accent text-2xl font-bold tracking-wide uppercase text-lineage-automata mb-deco-sm;
 }
 
 .automata-package-card {
@@ -542,7 +635,7 @@ details summary::-webkit-details-marker {
 }
 
 .automata-package-summary h5 {
-  @apply m-0 font-display text-base tracking-wide uppercase text-lineage-automata;
+  @apply m-0 font-accent text-lg font-bold tracking-wide uppercase text-lineage-automata;
 }
 
 .automata-package-count {
@@ -567,7 +660,7 @@ details summary::-webkit-details-marker {
 }
 
 .evolution-options h6 {
-  @apply font-display text-sm tracking-wide uppercase text-sidonia-brass mb-2;
+  @apply font-accent text-base font-bold tracking-wide uppercase text-sidonia-brass mb-2;
 }
 
 .power-preview summary {

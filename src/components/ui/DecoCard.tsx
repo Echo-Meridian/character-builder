@@ -16,7 +16,8 @@ export const DecoCard: React.FC<DecoCardProps> = ({
   lineage,
   corrupted = false,
 }) => {
-  const borderColor = lineage ? `border-lineage-${lineage}/30` : 'border-sidonia-gold/30';
+  const borderColor = lineage ? `border-lineage-${lineage}/60` : 'border-sidonia-gold/60';
+  const hoverBorderColor = lineage ? `hover:border-lineage-${lineage}` : 'hover:border-sidonia-gold';
   const cornerColor = lineage ? `border-lineage-${lineage}` : 'border-sidonia-gold';
 
   return (
@@ -24,7 +25,9 @@ export const DecoCard: React.FC<DecoCardProps> = ({
       className={clsx(
         // Base card styling
         'relative bg-sidonia-dark border-2 p-deco-md overflow-hidden',
+        'transition-all duration-300',
         borderColor,
+        hoverBorderColor,
         // Corner decorations (top-left)
         'before:absolute before:top-0 before:left-0',
         'before:w-deco-md before:h-deco-md',

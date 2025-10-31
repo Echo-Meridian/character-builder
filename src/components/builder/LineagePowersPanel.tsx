@@ -86,6 +86,7 @@ interface NeoSapienTier {
   id?: string;
   name?: string;
   tier?: number;
+  augmentTier?: string;
   slots?: number;
   permanentCorruption?: number;
   description?: PowerDescription;
@@ -107,6 +108,7 @@ interface ChimeraTier {
   id?: string;
   name?: string;
   tier?: number;
+  augmentTier?: string;
   mutationPoints?: number;
   permanentCorruption?: number;
   description?: PowerDescription;
@@ -158,8 +160,16 @@ interface SorceryData extends RawLineagePowerData {
   powers: UnifiedPower[];
 }
 
+interface ArchetypeDefinition {
+  id: string;
+  name: string;
+  path: string;
+  description: string;
+}
+
 interface EsperData extends RawLineagePowerData {
   powers: UnifiedPower[];
+  archetypes?: Record<string, ArchetypeDefinition>;
 }
 
 interface AutomataData extends RawLineagePowerData {
@@ -545,28 +555,36 @@ export function LineagePowersPanel({
                   const tierClass = `lineage-power-tier${isSelected ? ' lineage-power-tier--selected' : ''}`;
                   const buttonClass = `power-toggle power-toggle--radio${isSelected ? ' power-toggle--active' : ''}`;
 
+                  // Get augment tier label with context
+                  const augmentTierLabel = tier.augmentTier
+                    ? `${tier.augmentTier} level bio mod`
+                    : `Tier ${tierNum}`;
+
                   return (
                     <div key={tierId} className={tierClass}>
                       <div className="lineage-power-tier__header">
                         <div className="lineage-power-tier__info">
                           <h5 className="lineage-power-tier__name">{tier.name ?? `Tier ${tierNum}`}</h5>
                           <div className="lineage-power-tier__meta">
-                            <span className="badge badge--tier">Tier {tierNum}</span>
-                            <span className="lineage-power-tier__cost">
-                              {tierNum} Slot{tierNum === 1 ? '' : 's'} · {tierNum} Corruption
-                            </span>
+                            <span className="badge badge--tier">{augmentTierLabel}</span>
                           </div>
                         </div>
+                      </div>
+                      {renderDescription(tier.description, gmEnabled)}
+                      <div className="lineage-power-tier__footer">
                         <button
                           type="button"
                           className={buttonClass}
                           onClick={() => handleNeoSapienTierSelection(selection)}
                           aria-label={isSelected ? `Deselect ${tier.name ?? `Tier ${tierNum}`}` : `Select ${tier.name ?? `Tier ${tierNum}`}`}
                         >
-                          {isSelected ? '●' : '○'}
+                          {isSelected ? 'Selected' : 'Select'}
                         </button>
+                        <div className="lineage-power-tier__cost">
+                          <span>{tierNum} Slot{tierNum === 1 ? '' : 's'}</span>
+                          <span>{tierNum} Corruption</span>
+                        </div>
                       </div>
-                      {renderDescription(tier.description, gmEnabled)}
                     </div>
                   );
                 })}
@@ -636,17 +654,20 @@ export function LineagePowersPanel({
 
         {coreMutations.length > 0 && (
           <section className="lineage-core-mutations">
-            <h4>Core Mutations — All Chimera Possess These</h4>
+            <h4>Core Mutations</h4>
+            <p className="lineage-core-mutations__subtitle">All Chimera possess these</p>
             <div className="lineage-core-mutations-list">
               {coreMutations.map((power) => {
                 const shortDesc = power.tiers?.tier1?.description?.short ??
                                  Object.values(power.tiers ?? {})[0]?.description?.short ??
                                  'Core mutation';
                 return (
-                  <div key={power.id ?? power.name} className="core-mutation-card">
-                    <h5>{power.name}</h5>
+                  <details key={power.id ?? power.name} className="core-mutation-card">
+                    <summary>
+                      <h5>{power.name}</h5>
+                    </summary>
                     <p>{shortDesc}</p>
-                  </div>
+                  </details>
                 );
               })}
             </div>
@@ -692,28 +713,36 @@ export function LineagePowersPanel({
                   const tierClass = `lineage-power-tier${isSelected ? ' lineage-power-tier--selected' : ''}`;
                   const buttonClass = `power-toggle power-toggle--radio${isSelected ? ' power-toggle--active' : ''}`;
 
+                  // Get augment tier label with context
+                  const augmentTierLabel = tier.augmentTier
+                    ? `${tier.augmentTier} level mutation`
+                    : `Tier ${tierNum}`;
+
                   return (
                     <div key={tierId} className={tierClass}>
                       <div className="lineage-power-tier__header">
                         <div className="lineage-power-tier__info">
                           <h5 className="lineage-power-tier__name">{tier.name ?? `Tier ${tierNum}`}</h5>
                           <div className="lineage-power-tier__meta">
-                            <span className="badge badge--tier">Tier {tierNum}</span>
-                            <span className="lineage-power-tier__cost">
-                              {tierNum} MP · {tierNum} Corruption
-                            </span>
+                            <span className="badge badge--tier">{augmentTierLabel}</span>
                           </div>
                         </div>
+                      </div>
+                      {renderDescription(tier.description, gmEnabled)}
+                      <div className="lineage-power-tier__footer">
                         <button
                           type="button"
                           className={buttonClass}
                           onClick={() => handleChimeraTierSelection(selection)}
                           aria-label={isSelected ? `Deselect ${tier.name ?? `Tier ${tierNum}`}` : `Select ${tier.name ?? `Tier ${tierNum}`}`}
                         >
-                          {isSelected ? '●' : '○'}
+                          {isSelected ? 'Selected' : 'Select'}
                         </button>
+                        <div className="lineage-power-tier__cost">
+                          <span>{tierNum} Mutation Point{tierNum === 1 ? '' : 's'}</span>
+                          <span>{tierNum} Corruption</span>
+                        </div>
                       </div>
-                      {renderDescription(tier.description, gmEnabled)}
                     </div>
                   );
                 })}
@@ -898,23 +927,23 @@ export function LineagePowersPanel({
                           return (
                             <li key={moveId} className={moveItemClass}>
                               <div className="power-list__header">
-                                <div>
-                                  <strong>{power.name}</strong>
+                                <h6 className="power-list__title">{power.name}</h6>
+                                <div className="power-list__meta">
                                   {power.moveType && <span className="badge badge--type">{power.moveType}</span>}
+                                  <button
+                                    type="button"
+                                    className={moveToggleClass}
+                                    onClick={() => {
+                                      if (!moveDisabled) {
+                                        onToggleSelection(moveSelection);
+                                      }
+                                    }}
+                                    disabled={moveDisabled}
+                                    title={moveDisabled ? 'Select the sphere first' : undefined}
+                                  >
+                                    {moveSelected ? 'Selected' : 'Add'}
+                                  </button>
                                 </div>
-                                <button
-                                  type="button"
-                                  className={moveToggleClass}
-                                  onClick={() => {
-                                    if (!moveDisabled) {
-                                      onToggleSelection(moveSelection);
-                                    }
-                                  }}
-                                  disabled={moveDisabled}
-                                  title={moveDisabled ? 'Select the sphere first' : undefined}
-                                >
-                                  {moveSelected ? 'Selected' : 'Add'}
-                                </button>
                               </div>
                               {renderDescription(power.description, gmEnabled)}
                               {power.outcomes && Object.keys(power.outcomes).length > 0 && (
@@ -1105,6 +1134,9 @@ export function LineagePowersPanel({
         return acc;
       }, {});
 
+      // Get archetype definitions if available
+      const archetypeDefinitions = (powerData as EsperData).archetypes ?? {};
+
       return (
         <div className="esper-evolution-section">
           <h4>Choose Esper Archetype</h4>
@@ -1113,17 +1145,25 @@ export function LineagePowersPanel({
             {Object.entries(powersByArchetype).map(([archetype, powers]) => {
               const baseArchetypePowers = powers.filter(p => p.evolutionStage === 0);
               const basePowerCount = baseArchetypePowers.length;
+              const archetypeInfo = archetypeDefinitions[archetype];
 
               return (
                 <div key={archetype} className="lineage-power-card">
-                  <h5>{archetype.charAt(0).toUpperCase() + archetype.slice(1)}</h5>
-                  <p className="archetype-description">
-                    {basePowerCount} base {basePowerCount === 1 ? 'power' : 'powers'}
-                  </p>
+                  <h5>{archetypeInfo?.name ?? archetype.charAt(0).toUpperCase() + archetype.slice(1)}</h5>
+
+                  {archetypeInfo?.description && (
+                    <p className="archetype-description">{archetypeInfo.description}</p>
+                  )}
+
+                  {!archetypeInfo?.description && (
+                    <p className="archetype-description">
+                      {basePowerCount} base {basePowerCount === 1 ? 'power' : 'powers'}
+                    </p>
+                  )}
 
                   {/* Show base powers preview */}
                   <details className="power-preview">
-                    <summary>View Base Powers</summary>
+                    <summary>View Base Powers ({basePowerCount})</summary>
                     <ul className="power-list">
                       {baseArchetypePowers.map(power => (
                         <li key={power.id} className="power-list__item">
@@ -1139,7 +1179,7 @@ export function LineagePowersPanel({
                     className="power-toggle power-toggle--primary"
                     onClick={() => handlePathSelection(archetype, 0)}
                   >
-                    Select {archetype.charAt(0).toUpperCase() + archetype.slice(1)}
+                    Select {archetypeInfo?.name ?? archetype.charAt(0).toUpperCase() + archetype.slice(1)}
                   </button>
                 </div>
               );
@@ -1421,6 +1461,9 @@ export function LineagePowersPanel({
           return acc;
         }, {});
 
+      // Get archetype definitions if available
+      const archetypeDefinitions = (powerData as EsperData).archetypes ?? {};
+
       return (
         <div className="mentalist-selection-section">
           <h4>Choose Mentalist Archetype</h4>
@@ -1430,13 +1473,22 @@ export function LineagePowersPanel({
               const polarityPowers = powers.filter(p => p.path?.includes('_all'));
               const comboPowers = powers.filter(p => !p.path?.includes('_all'));
               const totalPowers = polarityPowers.length + comboPowers.length;
+              const archetypeInfo = archetypeDefinitions[archetype];
 
               return (
                 <div key={archetype} className="lineage-power-card">
-                  <h5>{archetype.charAt(0).toUpperCase() + archetype.slice(1)}</h5>
-                  <p className="archetype-description">
-                    {totalPowers} {totalPowers === 1 ? 'power' : 'powers'} available
-                  </p>
+                  <h5>{archetypeInfo?.name ?? archetype.charAt(0).toUpperCase() + archetype.slice(1)}</h5>
+
+                  {archetypeInfo?.description && (
+                    <p className="archetype-description">{archetypeInfo.description}</p>
+                  )}
+
+                  {!archetypeInfo?.description && (
+                    <p className="archetype-description">
+                      {totalPowers} {totalPowers === 1 ? 'power' : 'powers'} available
+                    </p>
+                  )}
+
                   <button
                     type="button"
                     className="power-toggle power-toggle--primary"
@@ -1444,14 +1496,14 @@ export function LineagePowersPanel({
                       const selection: LineagePowerSelection = {
                         id: `mentalist-${archetype}`,
                         lineage: 'esper',
-                        label: archetype,
+                        label: archetypeInfo?.name ?? archetype,
                         kind: 'esper-archetype',
                         meta: { archetype }
                       };
                       onToggleSelection(selection);
                     }}
                   >
-                    Select {archetype.charAt(0).toUpperCase() + archetype.slice(1)}
+                    Select {archetypeInfo?.name ?? archetype.charAt(0).toUpperCase() + archetype.slice(1)}
                   </button>
                 </div>
               );

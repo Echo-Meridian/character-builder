@@ -17,7 +17,7 @@ export function CharacterProfileCard({ build, onUpdate }: CharacterProfileCardPr
   return (
     <DecoCard>
       {/* Header */}
-      <header className="flex justify-between items-baseline mb-deco-md pb-deco-sm border-b border-sidonia-gold/20">
+      <header className="flex justify-between items-baseline mb-deco-md pb-deco-sm border-b border-sidonia-gold/60">
         <h2 className="font-display text-2xl tracking-wider uppercase text-sidonia-gold">
           Character Dossier
         </h2>
@@ -61,8 +61,8 @@ export function CharacterProfileCard({ build, onUpdate }: CharacterProfileCardPr
               value={profile.backstory}
               placeholder="High-level summary you can hand to a new player or GM."
               onChange={(e) => onUpdate({ backstory: e.target.value })}
-              className="min-h-[100px] bg-sidonia-black border border-sidonia-gold/50 text-sidonia-text
-                       px-deco-sm py-2 font-body placeholder:text-sidonia-muted
+              className="min-h-[100px] bg-sidonia-black border-2 border-sidonia-gold/60 text-sidonia-text
+                       px-deco-sm py-2 font-body placeholder:text-sidonia-muted rounded
                        focus:outline-none focus:ring-1 focus:border-sidonia-gold focus:ring-sidonia-gold/20
                        transition-all duration-300 resize-y"
             />
@@ -75,8 +75,8 @@ export function CharacterProfileCard({ build, onUpdate }: CharacterProfileCardPr
               value={profile.physicalDescription}
               placeholder="How do they carry themselves? Distinguishing features?"
               onChange={(e) => onUpdate({ physicalDescription: e.target.value })}
-              className="min-h-[100px] bg-sidonia-black border border-sidonia-gold/50 text-sidonia-text
-                       px-deco-sm py-2 font-body placeholder:text-sidonia-muted
+              className="min-h-[100px] bg-sidonia-black border-2 border-sidonia-gold/60 text-sidonia-text
+                       px-deco-sm py-2 font-body placeholder:text-sidonia-muted rounded
                        focus:outline-none focus:ring-1 focus:border-sidonia-gold focus:ring-sidonia-gold/20
                        transition-all duration-300 resize-y"
             />
@@ -89,8 +89,8 @@ export function CharacterProfileCard({ build, onUpdate }: CharacterProfileCardPr
               value={profile.code}
               placeholder="What guiding principle can they not compromise?"
               onChange={(e) => onUpdate({ code: e.target.value })}
-              className="min-h-[100px] bg-sidonia-black border border-sidonia-gold/50 text-sidonia-text
-                       px-deco-sm py-2 font-body placeholder:text-sidonia-muted
+              className="min-h-[100px] bg-sidonia-black border-2 border-sidonia-gold/60 text-sidonia-text
+                       px-deco-sm py-2 font-body placeholder:text-sidonia-muted rounded
                        focus:outline-none focus:ring-1 focus:border-sidonia-gold focus:ring-sidonia-gold/20
                        transition-all duration-300 resize-y"
             />
