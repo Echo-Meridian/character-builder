@@ -663,20 +663,28 @@ export const useCharacterStore = create<CharacterStore>()(
                 powers = powers.filter((entry) => entry.lineage !== 'esper');
               }
             } else {
-              const root = meta.root;
-              if (!root) {
-                return build;
-              }
-              const depthLimit = getEsperDepthLimit(lineagePriority);
-              const depth = meta.depth ?? 0;
-              if (depth > depthLimit) {
-                return build;
-              }
-              const hasBase = powers.some(
-                (entry) => entry.kind === 'esper-archetype' && entry.meta?.root === root
-              );
-              if (!hasBase) {
-                return build;
+              // Check if this is a Mentalist combo power (esper-focus with mentalist archetype)
+              const MENTALIST_ARCHETYPES = ['empath', 'mesmer', 'siren', 'dreamer', 'meta-mind'];
+              const isMentalistPower = selection.kind === 'esper-focus' &&
+                MENTALIST_ARCHETYPES.includes(meta.archetype || '');
+
+              if (!isMentalistPower) {
+                // Only apply Esper evolution validation to non-Mentalist powers
+                const root = meta.root;
+                if (!root) {
+                  return build;
+                }
+                const depthLimit = getEsperDepthLimit(lineagePriority);
+                const depth = meta.depth ?? 0;
+                if (depth > depthLimit) {
+                  return build;
+                }
+                const hasBase = powers.some(
+                  (entry) => entry.kind === 'esper-archetype' && entry.meta?.root === root
+                );
+                if (!hasBase) {
+                  return build;
+                }
               }
             }
           }

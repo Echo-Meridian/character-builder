@@ -1,0 +1,321 @@
+Mentalists
+
+The Mentalist Framework: A Two-Augment Foundation
+Every Mentalist character, at creation, must define their innate psychic structure by choosing two foundational Augments. These choices are permanent and will shape how all their other abilities function.
+
+Augment 1: Choose Your Polarity (The Core Nature)
+This represents the inverse relationship you described. A Mentalist's mind is naturally tuned to either perceive or project.
+Augment: Receiver Configuration
+   Your mind is a sensitive antenna, tuned to absorb information from the world.
+    Effect: You are adept at perceiving your chosen domain (emotions for an Empath, thoughts for a Mesmer, etc.). When you use Moves related to perceiving or sensing, you may re-roll one of the dice. However, when you use Moves to influence or project, you suffer Disadvantage (roll 3d6, drop highest).
+    Cost: Permanent Corruption +1
+Augment: Influencer Configuration
+   Your mind is a powerful transmitter, built to project your will onto the world.
+    Effect: You are adept at influencing your chosen domain. When you use Moves related to influencing or projecting, you may re-roll one of the dice. However, when you use Moves to perceive or sense, you suffer Disadvantage.
+    Cost: Permanent Corruption +1
+
+Augment 2: Choose Your Scope (The Area of Effect)
+This represents whether your power is a focused scalpel or a wide-area blanket.
+Augment: Targeted
+   Your power is concentrated, allowing for deep, precise influence on a single target.
+    Effect: All of your Mentalist Moves can only ever affect one target at a time, but they are potent and focused.
+    Cost: Permanent Corruption +0 (this is the baseline).
+Augment: Aural
+   Your power radiates outward, affecting everyone in your immediate vicinity.
+    Effect: All of your Mentalist Moves affect everyone (friend and foe) in a small area around you. You cannot selectively target.
+    Cost: Permanent Corruptionn +2  (The lack of control is a form of chaos).
+
+The Nature of the Mentalist
+To be a Mentalist in the world of Sidonia is to walk a razor's edge between incredible power and profound vulnerability. They are individuals whose minds possess a unique and dangerous resonance, allowing them to tap into the psycho-reactive Aether that underpins reality. This is not merely a biological function; it is a fusion of neurochemistry and raw, untamed psychic energy. The Aether carries the endless cacophony of a world's thoughts, dreams, fears, and hopes. The first and most crucial test for any Mentalist is learning to filter this noise. Without discipline and control, they do not simply go mad—they drown.
+Their abilities are feared precisely because they are invisible and intimate. A Mentalist can bypass walls, armor, and arguments to touch the core of a person. This power is governed by a strict hierarchy of connection, a fundamental law of their craft:
+●	Physical Touch: The strongest and most absolute connection, allowing for the deepest influence and clearest reception. It is the gold standard for power and the ultimate violation of personal boundaries.
+●	Eye Contact: A direct, focused conduit to a single mind. It requires line of sight and a target's attention, but allows for precise and potent application of their abilities.
+●	Proximity: The most subtle form of influence. A Mentalist can feel the general "shape" of the minds around them or project their power into a nearby area, though it is diffuse and lacks the precision of more direct methods.
+There are five recognized paths of the Mentalist, though the fifth is an anomaly so rare it is often treated as a myth. Each path represents a different way of touching the Aether and, through it, the minds of others.
+
+The Five Paths of the Mind
+1.	The Empath: Conductor of the Heart's Torrent
+Empaths excel at sensing and manipulating the emotional fabric of situations.
+2.	 The Mesmer: Architect of the Reasoning Mind
+Mesmers dissect and reconstruct thought, focusing on logic, reason, and perception.
+3.	The Siren: Weaver of the Body's Song
+Sirens govern the mind-body connection, manipulating physical states and responses.
+4.	The Dreamer: Navigator of the Collective Unconscious
+Dreamers drift in the collective unconscious, they blur the lines of what is real  and what we wish was. 
+5.	The Meta-Mind: The Anomaly in the Self
+Meta-Minds are unique in their inward focus, manipulating their own cognitive processes. (These are typically high-tier, dangerous abilities).
+
+The Burden of Power: Inherent Qualities & Dangers
+No Mentalist wields their power without cost or consequence. These qualities are universal, shaping their lives and interactions.
+●	The Peril of the Aura: While some Mentalists (especially Sirens) can broadcast their power, sensing a wide area is a path to ruin for most. An "Aura Mentalist" who opens their mind to an entire street or building is flooded with an overwhelming torrent of sensory input. Historically, those who tried this path either ended up in asylums or underwent brutal training in sensory deprivation chambers, with only one in ten ever emerging with their sanity intact.
+●	The Chains of Attunement: All Mentalists attune to people over time. This creates a powerful, often dangerous, psychological interdependence. Just as others can become dependent on a Mentalist's guidance or influence, the Mentalist can become reliant on the feedback from other minds. This is the origin of the "Empathic Leech"—a tragic figure whose own emotional capacity has been burned out by trauma or overuse, forcing them to siphon feelings from others simply to feel anything at all.
+●	The Necessity of Control: More than any other Esper, Mentalists require intensive and early training. Their power is innate and always "on." They must learn to build mental walls, to filter the psychic noise, and to control their projections, lest they unintentionally harm themselves and everyone around them.
+
+
+The Empath: The Resonator of Feeling
+Empaths are attuned to the most primal and powerful of human experiences: emotion. They are living resonators for the feelings that drive individuals and mobs alike.
+●	The Receiver's Focus: The Receiver is a living polygraph, a confidant who feels the truth behind the words. They are masters of detection, sensing the subtle emotional shifts that betray lies, fears, and hidden desires. In combat, this translates to an uncanny ability to anticipate an opponent's intent, feeling the flare of aggression an instant before a punch is thrown. However, this sensitivity comes at a cost; they are often overwhelmed by powerful emotions and find it difficult to be instruments of direct harm.
+●	The Projector's Focus: The Projector uses their own soul as a psychic tuning fork. They can take an emotion—often their own—and amplify it, broadcasting it to those around them. They are more effective at nurturing an existing feeling than creating a new one; it is far easier to stoke a spark of anger into a raging fire than it is to enrage a calm monk. A Projector is a terrifying catalyst for action. While a Mesmer might persuade someone with flawed logic, a Projector can simply seize upon a person's fury and give it the final, irresistible push to act. A starting Projector can learn to "lean" a target's emotions, a subtle but effective nudge that can be developed into true emotional dominance.
+
+Empath Powers
+With these foundational choices made, a player can then learn specific Moves. An Empath who chose "Receiver" and "Focal Point" will play entirely differently from one who chose "Influencer" and "Aural Field," even if they know the same Moves.
+Natural Lean: Receiver
+
+Receiver Selection
+Augment: Self Preservation Instinct (All Empath Receivers)
+All receivers possess an innate awareness of hostility and aggression. They are the first to sense when things are getting out of hand and are the most sensitive when it is directed at them. The human mind is well adapted for self preservation and the empaths natural gifts make them an almost impossible target to surprise.
+
+Influencer Selection
+Augment: Natural Leader (All Empath Influencers)
+All influencers possess an “it” factor that cannot be understated. When they speak, people are more inclined to listen, when they speak of their sorrows, rare is heart that is not moved. When they speak of their frustrations the collective blood pressure of the room spikes. This effect only manifests when the feeling is genuine and strongly felt by the empath.
+Cost: Permanent Corruption: +1
+
+Aural Selection
+Move: Aural Anomaly (Aural Receiver)
+As an action, you can open your senses to the emotional state of a location (a room, a street corner). You get the dominant emotion of the crowd (e.g., "nervous anticipation," "boredom," "anger") and can sense strong deviations in it. (e.g., “murderous rage at a festival”, “euphoria a funeral.”)
+
+Move: Emotional Broadcast: (Aural Influencer)
+You can choose an emotion you are feeling (or one you just read from the aura) and project it, pushing the area's emotional state in that direction. This is how a single Empath can start—or stop—a riot. The stronger the source the easier the amplification.
+
+
+Targeted Selection
+Move: Isolate: (Targeted Receiver)
+You can focus on an individual within the area, filtering out the noise of the crowd. You can identify the person feeling a specific emotion most strongly ("Who is the most afraid person here?") or track someone through a crowd by their unique emotional "scent."
+
+Move: Empathic Spike (Targeted Influencer)
+You touch a target and flood their mind with a single, raw, overwhelming emotion of your choice (fear, joy, sorrow, rage). The effect is intense but brief.
+
+
+
+The Mesmer: The Architect of Logic
+Where the Empath masters emotion, the Mesmer masters the intricate latticework of logic, reason, and higher-order thought. They are not simple "mind readers." A more accurate description is that they are masters of predictive behavior and cognitive exploits. They understand how people think, and they use that understanding to create confusion, plant ideas, and craft flawless illusions by manipulating a person's expectations.
+The core difference is one of insight: An Empath might feel that a guard is about to attack. A Mesmer will know how and where he will strike, having already mapped the flawed strategy playing out in the guard's mind. They are the ultimate strategists, spies, and interrogators, dismantling a person's mental defenses brick by brick.
+
+Mesmer Powers
+A Mesmer character, like all Mentalists, must first choose their two foundational Augments: Polarity (Receiver or Influencer) and Scope (Focal Point or Aural Field). These choices will fundamentally alter how their Moves function.
+Natural Lean: Influencer
+
+Receiver Selection
+Move: Predict Action (All Mesmer Receivers)
+   You focus on a target's mind to perceive their intended course of action, reading the logical framework of their plan.
+
+Influencer Selection
+Move: Implant Suggestion (All Mesmer Influencers)
+   You plant a "logic bomb" in a target's mind, making a specific course of action seem like the most logical and reasonable thing to do. This cannot suggest an action that is an obvious betrayal of their core values or would cause them immediate harm.
+
+Targeted Selection
+Move: Predictive Insight (Targeted Receiver): 
+By focusing on a target, you gain a flash of insight into their immediate intentions or logical next steps. The GM provides a key visual, static image, or keyword related to their predicted action or thought process.
+Move: Logical Twist (Targeted Influencer): 
+You can plant a minor logical fallacy, a subtle contradiction, or an appeal to a "call to authority" within a target's reasoning. This makes them temporarily susceptible to a specific, simple suggestion, or causes them to rationalize a slightly irrational decision as their own.
+
+Aural Selection
+Move: Shared Delusion: (Aural Influencer): 
+You can plant a simple, non-contradictory fact (e.g., "The fire alarm is about to go off") into a small, like-minded group. It only works if the fact isn't immediately and obviously false.
+Augment: Life in the Flow State: (Aural Receiver):
+This Mesmer is exceptionally good at integrating perception signals and immediate intent from an area and naturally adapting there movements to this complex symphony. They move through crowds like smoke, and slip through the gaps in attention with an unnatural grace.
+Cost: Permanent Corruption: +1
+
+
+The Siren: The Conductor of the Body
+The Siren's domain is the primal, undeniable connection between the mind and the body. They manipulate the autonomic nervous system—the rhythms of breath, the beat of the heart, the surge of adrenaline. Their abilities are most potently delivered through physical touch, creating a direct link between their nervous system and their target's.
+However, they are infamous for their ability to project their power through their voice. By modulating their vocal cords to carry an Aetheric frequency, a Siren can affect anyone who can hear them. This makes them exceptional broadcasters of influence, capable of calming a crowd or causing a wave of inexplicable panic. Control is paramount, as an untrained Siren might find their every emotional utterance causing unintended and chaotic physical reactions in those around them.
+
+Siren Powers
+As with all Mentalists, a Siren character must first choose their two foundational Augments: Polarity (Receiver or Influencer) and Scope (Focal Point or Aural Field). An "Aural" Influencer Siren is a terrifying prospect, capable of calming or agitating an entire crowd.
+Natural Lean: Influencer
+
+Receiver Selection
+  Move: Read Reflex (All Siren Receivers)
+   You focus on a target's nervous system, reading the micro-signals that fire just before a physical action.
+·	    10+: You get a perfect read. You know exactly what physical action your target is about to take (e.g., "They're going to draw their pistol," "They're about to lunge to the left"). You can describe a specific defensive preparation you make.
+·	    7-9: You get a jolt of information but not the full picture. You know they're about to do something aggressive, but not what, OR the feedback from their bio-signals inflicts 1 Stun damage on you.
+·	    6-: You misread a twitch or a harmless reflex as a sign of imminent action, causing you to react to a threat that isn't there.
+
+Influencer Selection
+  Move: Overwhelm Senses (All Siren Influencers)
+   You project your will into a target's nervous system to manipulate their pain perception, induce pleasure, or lull them toward unconsciousness.
+·	    10+: The effect is potent. You can inflict a debilitating wave of pain (imposing a penalty on their next action), create a distracting sensation of euphoria, or cause them to become drowsy and suggestible.
+·	    7-9: The effect is uncontrolled. The target feels the desired sensation, but the chaotic neural feedback adds 1 DP to the Dissonance Pool, OR the effort costs you 1 Temporary Corruption.
+·	    6-: The target's autonomic system resists forcefully. Your attempt fails, and the psychic backlash leaves you feeling a phantom version of the effect you were trying to create.
+
+Targeted Selection
+Move: Bio-Feedback (Targeted Receiver):
+While this is active on a target, you can read their physical state with perfect clarity. Heart rate, respiration, tells, micro-expressions—you become a flawless lie detector for that person.
+Move: Autonomic Override (Targeted Influencer): 
+Through touch or intense, sustained focus, you can manipulate a target's basic biological functions (e.g., accelerate or slow heart rate, suppress pain receptors, trigger intense discomfort or pleasure). This can temporarily incapacitate or severely disorient.
+Move: Self-Overclock (Targeted Influencer): 
+You can briefly push your own body beyond its natural limits, granting enhanced physical attributes (speed, strength, pain resistance). This comes with clear physiological repercussions, such as intense fatigue or strain, after the effect ends.
+Move: Damage Bypass (Targeted Influencer): 
+For a limited time, you can override your nervous system's response to severe physical injury, allowing you to temporarily use a damaged or even "dead" limb. This requires intense concentration and active focus, preventing other power use, and exacerbates the long-term damage. While powerful, Sirens cannot directly puppet another person's entire body; such complex coordination is beyond their scope, though high-level Sirens might achieve limited, simple forced movements.
+
+Aural Selection
+Move: Mind Mapping: (Aural Receiver)
+Using the active perception of the people in a given area (e.g. “A building across the street”, “the warehouse that has your clients package”) you can create a mental map of the internal layout and even estimations of the unobserved sections layouts with a successful attempt 
+Move: Suppress Reflexes (Aural Influencer)
+   You project a calming wave to dampen a target's fight-or-flight response or steady their nerves.
+·	    10+: You succeed. You can prevent a person from startling at a loud noise, steady a surgeon's trembling hands, or help an ally calm down from a state of panic.
+·	    7-9: The effect is only partially successful. You can dampen their reaction, but not erase it completely.
+·	    6-: Your calming wave is too strong, making your target lethargic and slow to react for a few moments.
+Move: Dissonance Field: (Aural Influencer)
+You project a small field of autonomic chaos. Everyone inside (friend or foe) feels their heart race and slow erratically. It wreaks havoc on fine motor skills and concentration.
+
+Move: Autonomic Regulation 
+With a touch or brief moment of focus, you can either spike a target's adrenaline (making them jittery, panicked, clumsy) or suppress it (making them lethargic, calm, slow to react).
+Move: Muscle Override You can force a target you can see to perform a single, simple, involuntary motor action: clench/unclench a fist, drop an item, take one step, blink, or speak a single word.
+●	Augment (Receiver Focus): Muscle Memory Read. After forcing the action, you get a psychic echo of the last time they performed that same action with intent. Make them clench a fist and you might see a bar fight. Make them drop their keys and you might see them unlocking their apartment door.
+●	Augment (Targeted Refinement): Complex Signal. You can now force a slightly more complex, but still brief, action. For instance, you could make someone type a 5-character password, holster a weapon instead of dropping it, or turn their head to look at something specific.
+
+
+
+
+The Dreamer: Navigator of the Collective Unconscious
+Dreamers are anomalies, rarer by nature than any other Esper. They do not concern themselves with the active, waking mind, but with the vast, surreal landscape of the subconscious. They are spies of the soul, capable of navigating the symbolic worlds of dreams to unearth secrets or plant ideas that will blossom in the waking world.
+Their true significance, however, is their effect on the Aether itself. A Dreamer is a psychic amplifier. In their presence, the Aether becomes more responsive, more aware of conscious will. Spirits are drawn to them, making them peerless summoners. Sorcerers find their spells manifest with greater ease. Other Espers find their powers magnified. They do not bend reality, but they turn up the "volume" of the Aether for everyone, making the impossible seem suddenly, terrifyingly plausible.
+
+Dreamer Powers
+A Dreamer character, like all Mentalists, begins by choosing their two foundational Augments: Polarity (Receiver or Influencer) and Scope (Focal Point or Aural Field). An Aural Influencer Dreamer who can project nightmares over an entire area is a terrifying thought indeed.
+Natural Lean: Receiver
+Dreamer Selection
+Augment: Aetheric Amplifier: (All Dreamers):
+   Your presence makes the veil between worlds thin.
+    Effect: The Aether resonates strongly with you. You can not choose to become an "Amplifier.", you are one, at best you may attempt to suppress this for a short period of time based on willpower.  While you are not actively suppressing the effect, any other supernatural being (friend or foe) within your vicinity may re-roll one die on their next power-related check. 
+    Cost: Permanent Corruption +2  (This constant resonance is a permanent part of you).
+Augment: Idol or Anathema:  (All Dreamers): 
+You are what the moment makes you. Whether Saint or Sinner, Hero or Villain, You are something more in the minds of your observers. Whether love or hate you are rarely faced with indifference.
+Cost: Permanent Corruption +2
+
+Receiver Selection
+Move: Perceive Psyche (All Receivers)
+   You look at a person and perceive the symbolic icons of their subconscious floating around them—their core drives, fears, and aspirations.
+·	    10+: You get a clear reading. The GM will describe one or two clear symbols and tell you what they represent (e.g., "You see a tarnished badge, representing their lost sense of honor," or "You see a phantom child's hand reaching for theirs, representing a deep-seated guilt over a lost family").
+·	    7-9: The symbols are cryptic. You see the tarnished badge, but you don't know what it means, OR the psychic noise from their mind inflicts 1 Stun damage on you.
+·	    6-: You misinterpret a symbol entirely, projecting your own subconscious onto them and drawing a completely false conclusion.
+Influencer Selection
+Move: Dream Walk (All Influencers)
+   When near a sleeping target, you project your consciousness into their dreams.
+·	    10+: You enter their dreamscape with full awareness and control. You can observe the dream, subtly influence its narrative, or ask the dreamer's subconscious a direct question.
+·	    7-9: You enter the dream, but you are not in control. The dream's narrative sweeps you along as a participant, not a guide, OR the effort of crossing the threshold costs you 1 Temporary Corruption.
+·	    6-: You become trapped in the dream. You lose awareness of the real world and believe the dream is real until you are violently woken up, suffering 2 Stun damage.
+
+
+Targeted Selection
+Move: Dream Heist (Targeted Influencer):
+If you can perceive a sleeping target, you can enter their dreams to search for a specific piece of information. The GM will represent the dream as a surreal "dungeon" with symbolic obstacles. Failure might mean you leave psychic footprints or warp their subconscious in unpredictable ways.
+Move: Subconscious Suggestion: (Targeted Influencer):
+Instead of taking information out, you plant a symbolic idea deep within the dream. The target won't remember it, but it will influence their waking decisions in subtle ways.
+Move: Waking Trace:  (Targeted Receiver):
+You can touch someone and get a fleeting, symbolic image of what they last dreamt about. It gives you a clue to their current anxieties or desires.
+Move: Skill Echo: (Targeted Receiver): 
+You can briefly "download" a general skill or archetype from the Aether's collective consciousness. While active, you gain competence in that skill. However, your own demeanor subtly shifts to reflect the archetype (e.g., downloading a "Thief Echo" makes you more cunning and aloof, downloading a "Scholar Echo" makes you more pedantic). This offers rich role-playing opportunities as your personality momentarily bends to the skill.
+
+Aural Selection
+Move: Shared Fright: (Aural Influencer):  
+The nightmarish image flickers at the edge of vision for everyone in the immediate vicinity. They don't see the same thing, but they all see something unsettling, causing a moment of shared confusion and dread.
+Move: Mind Field: (Aural Receiver):
+You can open yourself up to the dreaming even while awake allowing yourself to be aware of every mind and whether it is awake or asleep of on the cusp of either locally. The knowledge can be overwhelming in crowded locations causing the knowledge to, leak. Rolls to remember the exact number and approximate location are required.
+
+Move: Aetheric Gateway: (Aural Influencer)
+   You open your mind and become a temporary anchor for a spirit from the Aether. You have no control over what comes through.
+·	    10+: You summon a spirit that is generally neutral or curious. It will not harm you (its anchor), but it will act on its own whims for the scene before departing.
+·	    7-9: The spirit you summon is mischievous or alien. It will cause minor, unpredictable chaos before departing.
+·	    6-: You attract a malicious or hungry spirit. It is hostile to everyone, including your allies, and will cause significant harm before it can be banished.
+
+
+The Meta-Mind: The Anomaly in the Self
+Often dismissed as a cautionary tale, the Meta-Mind is the fifth and most reclusive type. Their focus is not outward, but inward. A Meta-Mind manipulates their own brain, overclocking their neural pathways, editing their memories for perfect recall, and achieving states of cognitive function that are utterly superhuman. They can become master strategists, calculators, and analysts beyond any known genius.
+This power comes at an appalling risk. Manipulating one's own mind is the psychic equivalent of performing brain surgery on oneself with a rusty scalpel. The slightest miscalculation can lead to catastrophic, irreversible damage, cascading into madness or the complete loss of self. Most who attempt this path burn out in a flare of brilliance, leaving behind nothing but a shattered intellect.
+
+Natural Lean: Not Applicable
+The Metamind is an anomaly. They do not choose a Polarity or Scope. Their power is innate and focused inward. All Metaminds begin with the same foundational structure and can choose from the following Moves and Augments to shape their unique mental landscape.
+·	Duration:
+o	Instanced: A temporary, fleeting change to your cognitive state. (e.g., Cognitive Acceleration).
+o	Persistent: A permanent, structural change to your mind. These are the most dangerous. (e.g., Self-Memory Edit).
+·	Scope:
+o	Discrete: Affects a single, specific mental function. (e.g., Eidetic Mimicry targeting one action).
+o	Systemic: Affects your entire cognitive architecture. (e.g., Persona Polarity).
+Standard Meta-Mind Moves
+(Applies to most Instanced abilities like Cognitive Acceleration or Eidetic Mimicry)
+
+·	On a 12+ (Critical Success): You achieve a heightened level of effect. The move works perfectly, and you gain an additional benefit.
+Examples: The effect lasts longer, grants a temporary +1 bonus on a  related roll,  or the GM provides an extra piece of crucial information. You  take no  Corruption.
+·	On a 10-11 (Clean Success): The move works exactly as intended. No cost, no complications.
+·	On a 7-9 (Success with Lingering Strain): The move works, but your mind pays the price. You immediately gain 1 Temporary Corruption. After the move's effect ends, the strain settles in: roll on the "Neural Glitch" table (see below) to determine the temporary side effect.
+·	On a 6- (Failure & Cascade): The move fails completely, and the scalpel slips. You immediately roll on the "Psychic Catastrophe Table."
+·	On a Natural 2 (Critical Failure): This is a complete disaster. You suffer the full effect of a 6- (roll on the Psychic Catastrophe Table) AND you gain 1 Permanent Corruption as a part of your mind is irrevocably damaged.
+
+The "Deep Surgery" Mechanic
+(This is the extra layer for the most dangerous, Persistent abilities, like Self-Memory Edit or Persona Polarity)
+
+These moves represent fundamental, permanent changes to the self. They are always costly and carry no chance of a clean getaway.
+
+·	12+ (Critical Success): There is no critical success for Deep Surgery. The best you can hope for is a standard success. Treat a 12+ as a 10-11.
+·	10-11 (Costly Success): The move succeeds, but at great cost. You achieve the permanent change you desired, but you gain 1 Permanent Corruption.
+·	7-9 (Flawed Success): The surgery is a partial success but goes horribly wrong. The move works, but the GM introduces a severe, permanent flaw in the result. You also gain 1 Permanent Corruption.
+·	6- / Natural 2: The effects are the same as for a standard move, ensuring these rolls are always devastating.
+
+The Consequence Tables
+Neural Glitch Table (Roll on a 7-9)
+This table represents the temporary, but debilitating, after-effects of mental strain.
+d6 Roll 	Neural Glitch (Lasts for one scene)
+1	Sensory Bleed: One of your senses gives false positives (phantom sounds, visual tracers, scents of ozone).
+2	Emotional Numbness: You cannot feel or project any emotion. Suffer Disadvantage on all social rolls.
+3	Synaptic Lag: Your reaction time is off. Suffer a -1 penalty to all rolls requiring quick reflexes or perception.
+4	Memory Echoes: Fragments of old, unrelated memories bubble to the surface, causing momentary confusion.
+5	Verbal Tic: You develop a noticeable verbal or physical tic that you cannot control.
+6	Cognitive Lock: You become fixated on a single, irrelevant detail and have trouble focusing on the bigger picture.
+
+Psychic Catastrophe Table (Roll on a 6-)
+This remains the table for severe, immediate, and lasting mental damage.
+ Psychic Catastrophe Table (d6 roll):
+D6 Roll	Result
+1	Amnesia Fugue: You forget a crucial piece of information or lose all memory of the last 24 hours. The GM determines the specifics. You gain 1 Temporary Corruption.
+2	Neural Glitch: For the next scene, one of your senses gives you false information (e.g., auditory hallucinations, visual distortions, phantom smells).
+3	Synaptic Misfire: You immediately take Stun damage equal to your current Cognitive Strain total as your brain's pain receptors fire chaotically.
+4	Personality Bleed: One of your core memories is temporarily rewritten. You act on a false belief (e.g., "My ally is a traitor," "I work for the enemy") until you can be convinced otherwise.
+5	Skill Hemorrhage: One of your skills is temporarily burned out. You cannot use any skill at a rank higher than Novice for the rest of the day. The skill returns, but the experience is terrifying.
+6	Catastrophic Meltdown: This triggers a Trauma. You must immediately choose a new Meta-Mind Trauma Augment (like Hyde Mind or Savant Syndrome) or, if you already have them, take 3 Permanent Corruption as your mind frays.
+
+
+Meta-Mind Powers
+
+Instanced Selection
+Move:Cognitive Acceleration: Instanced, Systemic:
+You can temporarily boost your own mental processing speed, allowing for rapid calculation, perfect recall of short-term memories, or hyper-focused problem-solving that would otherwise take hours or days.
+
+Move: Sensory Re-routing: Instanced, Discrete:
+You can temporarily re-route your sensory input. For one scene, you can choose to "see" with your ears (like sonar) to bypass blindness, or "hear" with your skin to detect vibrations. This allows you to overcome sensory deprivation but can be disorienting. 
+
+
+Persistent Selection
+Augment: Self-Memory Edit: Persistent, Discrete:
+The incredibly dangerous ability to subtly alter, enhance, or suppress your own memories. This grants unparalleled control over your own past and knowledge, but miscalculations can lead to irreversible mental damage, confusion, or even loss of core aptitudes.
+Augment: Cognitive Firewall: Persistent, Systemic:
+You re-architect your mind's defenses, creating psychic baffles and traps. You gain a +2 bonus when resisting any form of mental intrusion (Empath, Mesmer, Siren, etc.).
+Cost: Permanent Corruption +2
+
+Systemic Selection
+Augment: Persona Polarity: Persistent, Systemic:
+   You have fractured your consciousness into two distinct, switchable personas. You design these two "minds" during character creation, distributing your base Intellect Specializations between them. For example, Persona A might have Reasoning and Wits, while Persona B has Intuition and Willpower.
+    Effect: Once per scene, you can switch between your two personas as a free action. This allows you to bring the appropriate mental toolset to bear on a problem.
+Cost: Permanent Corruption +3
+This makes the choice to use this augment a profound roleplaying commitment.Over time, these two personas become more and more divergent. An outside observer would find it difficult to believe they are the same person, noticing distinct changes in speech patterns, mannerisms, posture, and worldview. The character is often asked if they have an identical twin.
+
+Augment: Sleep Purge: Persistent, Systemic:
+You have edited your own brain to no longer require sleep, replacing it with a low-power state of active data processing. You cannot be rendered unconscious by exhaustion. However, this disconnects you from the collective unconscious; you can no longer dream, and Dreamers cannot use their powers on you (or to help you). 
+Cost: Permanent Corruption +2 (and you can never benefit from a Dreamer's Aetheric Amplifier).
+
+Instanced Selection
+ Move: Eidetic Mimicry: Instanced, Discrete:
+   You perfectly observe a physical action or complex skill being performed and create a perfect mental model of it. To physically replicate it, you must have the necessary underlying physical training.
+·	    10+: You successfully create a perfect "muscle memory" template. For the rest of the scene, you can perform that specific action (e.g., a specific sword-fighting maneuver, the sequence to pick a complex lock) as if you had an Expert (+1) skill rank in it.
+·	    7-9: The memory is flawed. You can perform the action, but only once, OR the mental effort of creating the template costs you 1 Temporary Corruption.
+·	    6-: You miss a key detail in your observation. The mental model is corrupt, and any attempt to use it will result in an automatic failure.
+While this Move can be used to mimic a single action, its true potential lies in impersonation. A Metamind who spends significant time studying a person can use Eidetic Mimicry to create a perfect mental model of their subject, allowing them to replicate their voice, mannerisms, and patterns of thought with uncanny accuracy. When combined with the right physical disguise, a Metamind can become the ultimate impersonator.
+
+Move: Emotional Dampening: Instanced, Systemic:
+You sever your own emotional responses to maintain pure logic. For the rest of the scene, you are immune to fear, panic, and emotional manipulation from Empaths. However, you cannot benefit from positive emotions either and suffer a -2 penalty on all social rolls that require empathy or charm. 
+Move: Abstract Solution Space: Instanced, Systemic:
+You enter a "mind palace" for a brief moment that feels like hours. Describe a complex logical problem, puzzle, or strategic question to the GM. The GM must give you a direct, truthful answer or a significant clue. 
+
+

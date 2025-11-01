@@ -1195,11 +1195,21 @@ export function LineagePowersPanel({
     )?.meta?.archetype;
 
     const selectedPolarity = selectionsForLineage.find(s =>
-      s.kind === 'esper-framework-choice' && (s.id === 'receiver-configuration' || s.id === 'influencer-configuration')
+      s.kind === 'esper-framework-choice' && (
+        s.id === 'receiver-configuration' ||
+        s.id === 'influencer-configuration' ||
+        s.id === 'instanced-configuration' ||
+        s.id === 'permanence-configuration'
+      )
     );
 
     const selectedScope = selectionsForLineage.find(s =>
-      s.kind === 'esper-framework-choice' && (s.id === 'targeted-scope' || s.id === 'aural-scope')
+      s.kind === 'esper-framework-choice' && (
+        s.id === 'targeted-scope' ||
+        s.id === 'aural-scope' ||
+        s.id === 'discrete-scope' ||
+        s.id === 'systemic-scope'
+      )
     );
 
 
@@ -1227,30 +1237,43 @@ export function LineagePowersPanel({
         // Get automatically granted powers based on selections
         const grantedPowers: UnifiedPower[] = [];
 
+        // Map selection IDs to polarity/scope types
+        const polarityMap: Record<string, string> = {
+          'receiver-configuration': 'receiver',
+          'influencer-configuration': 'influencer',
+          'instanced-configuration': 'instanced',
+          'permanence-configuration': 'permanence'
+        };
+        const scopeMap: Record<string, string> = {
+          'targeted-scope': 'targeted',
+          'aural-scope': 'aural',
+          'discrete-scope': 'discrete',
+          'systemic-scope': 'systemic'
+        };
+
         // Step 1: Polarity grants "_all" power
         if (selectedPolarity) {
-          const polarityType = selectedPolarity.id === 'receiver-configuration' ? 'receiver' :
-                              selectedPolarity.id === 'influencer-configuration' ? 'influencer' : '';
+          const polarityType = polarityMap[selectedPolarity.id] || '';
 
           const allPower = archetypePowers.find(p =>
-            p.path?.includes('_all') && p.path?.includes(polarityType)
+            (p as any).grantedBy === `polarity_${polarityType}` ||
+            (p.path?.includes('_all') && (p as any).mentalistPolarity === polarityType)
           );
           if (allPower) grantedPowers.push(allPower);
         }
 
         // Step 2: Polarity + Scope combination
         if (selectedPolarity && selectedScope) {
-          const polarityType = selectedPolarity.id === 'receiver-configuration' ? 'receiver' :
-                              selectedPolarity.id === 'influencer-configuration' ? 'influencer' : '';
-          const scopeType = selectedScope.id === 'targeted-scope' ? 'targeted' :
-                           selectedScope.id === 'aural-scope' ? 'aural' : '';
+          const polarityType = polarityMap[selectedPolarity.id] || '';
+          const scopeType = scopeMap[selectedScope.id] || '';
 
-          // Find matching combination powers
-          const comboPowers = archetypePowers.filter(p =>
-            !p.path?.includes('_all') &&
-            p.path?.includes(scopeType) &&
-            p.path?.includes(polarityType)
-          );
+          // Find matching combination powers using mentalistPolarity and mentalistScope
+          const comboPowers = archetypePowers.filter(p => {
+            const power = p as any;
+            return power.mentalistPolarity === polarityType &&
+                   power.mentalistScope === scopeType &&
+                   !p.path?.includes('_all');
+          });
 
           // If only one power matches, grant it automatically
           // If multiple, player must choose (will be handled by showing selection buttons)
@@ -1317,9 +1340,15 @@ export function LineagePowersPanel({
                 </p>
                 <div className="mentalist-foundation">
                   {polarityPowers.map(power => {
-                    // For now, Meta-Mind not fully supported - skip instanced/persistent
-                    // Only show receiver/influencer
-                    const isRelevant = power.id === 'receiver-configuration' || power.id === 'influencer-configuration';
+                    // Filter based on archetype
+                    let isRelevant = false;
+                    if (isMeta) {
+                      // Meta-Mind uses instanced/permanence
+                      isRelevant = power.id === 'instanced-configuration' || power.id === 'permanence-configuration';
+                    } else {
+                      // Other mentalists use receiver/influencer
+                      isRelevant = power.id === 'receiver-configuration' || power.id === 'influencer-configuration';
+                    }
 
                     if (!isRelevant) return null;
 
@@ -1355,9 +1384,15 @@ export function LineagePowersPanel({
                 </p>
                 <div className="mentalist-foundation">
                   {scopePowers.map(power => {
-                    // For now, Meta-Mind not fully supported - skip discrete/systemic
-                    // Only show targeted/aural
-                    const isRelevant = power.id === 'targeted-scope' || power.id === 'aural-scope';
+                    // Filter based on archetype
+                    let isRelevant = false;
+                    if (isMeta) {
+                      // Meta-Mind uses discrete/systemic
+                      isRelevant = power.id === 'discrete-scope' || power.id === 'systemic-scope';
+                    } else {
+                      // Other mentalists use targeted/aural
+                      isRelevant = power.id === 'targeted-scope' || power.id === 'aural-scope';
+                    }
 
                     if (!isRelevant) return null;
 
@@ -1387,16 +1422,15 @@ export function LineagePowersPanel({
 
             {/* Power selection (if multiple powers available for combination) */}
             {selectedPolarity && selectedScope && (() => {
-              const polarityType = selectedPolarity.id === 'receiver-configuration' ? 'receiver' :
-                                  selectedPolarity.id === 'influencer-configuration' ? 'influencer' : '';
-              const scopeType = selectedScope.id === 'targeted-scope' ? 'targeted' :
-                               selectedScope.id === 'aural-scope' ? 'aural' : '';
+              const polarityType = polarityMap[selectedPolarity.id] || '';
+              const scopeType = scopeMap[selectedScope.id] || '';
 
-              const comboPowers = archetypePowers.filter(p =>
-                !p.path?.includes('_all') &&
-                p.path?.includes(scopeType) &&
-                p.path?.includes(polarityType)
-              );
+              const comboPowers = archetypePowers.filter(p => {
+                const power = p as any;
+                return power.mentalistPolarity === polarityType &&
+                       power.mentalistScope === scopeType &&
+                       !p.path?.includes('_all');
+              });
 
               if (comboPowers.length > 1) {
                 // Player must choose one

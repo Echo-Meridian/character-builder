@@ -5174,892 +5174,1935 @@
     },
     {
       "type": "augment",
-      "id": "self-preservation-instinct",
+      "id": "instanced-configuration",
+      "name": "Instanced Configuration",
+      "lineage": "esper",
+      "archetype": "foundational",
+      "path": "foundational.polarity",
+      "evolutionStage": 0,
+      "moveType": "augment",
+      "category": "Mentalist Foundations",
+      "tags": [
+        "mentalist",
+        "foundational",
+        "polarity",
+        "meta-mind"
+      ],
+      "mentalistType": {
+        "foundationalChoice": "polarity",
+        "appliesToArchetypes": [
+          "meta-mind"
+        ]
+      },
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Temporary self-modifications that last for a scene or specific duration",
+        "player": "Your mental alterations are instanced - temporary modifications that can be activated and deactivated. These changes are safer but require conscious effort to maintain and will fade after use."
+      },
+      "effects": [],
+      "flaws": [],
+      "permanentCorruption": 1
+    },
+    {
+      "type": "augment",
+      "id": "permanence-configuration",
+      "name": "Permanence Configuration",
+      "lineage": "esper",
+      "archetype": "foundational",
+      "path": "foundational.polarity",
+      "evolutionStage": 0,
+      "moveType": "augment",
+      "category": "Mentalist Foundations",
+      "tags": [
+        "mentalist",
+        "foundational",
+        "polarity",
+        "meta-mind"
+      ],
+      "mentalistType": {
+        "foundationalChoice": "polarity",
+        "appliesToArchetypes": [
+          "meta-mind"
+        ]
+      },
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Permanent self-modifications that become part of your baseline cognition",
+        "player": "Your mental alterations are permanent - lasting changes to your neural architecture that become your new baseline. These modifications are always active but come with greater risk of unintended consequences."
+      },
+      "effects": [],
+      "flaws": [],
+      "permanentCorruption": 2
+    },
+    {
+      "type": "augment",
+      "id": "discrete-scope",
+      "name": "Discrete Scope",
+      "lineage": "esper",
+      "archetype": "foundational",
+      "path": "foundational.scope",
+      "evolutionStage": 0,
+      "moveType": "augment",
+      "category": "Mentalist Foundations",
+      "tags": [
+        "mentalist",
+        "foundational",
+        "scope",
+        "meta-mind"
+      ],
+      "mentalistType": {
+        "foundationalChoice": "scope",
+        "appliesToArchetypes": [
+          "meta-mind"
+        ]
+      },
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Precise, focused modifications to specific neural functions",
+        "player": "Your self-modifications are discrete - precisely targeted changes to specific neural pathways or cognitive functions. These alterations are surgical and focused, affecting only what you intend to change."
+      },
+      "effects": [],
+      "flaws": [],
+      "permanentCorruption": 1
+    },
+    {
+      "type": "augment",
+      "id": "systemic-scope",
+      "name": "Systemic Scope",
+      "lineage": "esper",
+      "archetype": "foundational",
+      "path": "foundational.scope",
+      "evolutionStage": 0,
+      "moveType": "augment",
+      "category": "Mentalist Foundations",
+      "tags": [
+        "mentalist",
+        "foundational",
+        "scope",
+        "meta-mind"
+      ],
+      "mentalistType": {
+        "foundationalChoice": "scope",
+        "appliesToArchetypes": [
+          "meta-mind"
+        ]
+      },
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Broad modifications that affect multiple cognitive systems",
+        "player": "Your self-modifications are systemic - broad changes that affect multiple interconnected neural systems simultaneously. These alterations are powerful but carry greater risk of cascading effects."
+      },
+      "effects": [],
+      "flaws": [],
+      "permanentCorruption": 2
+    },
+    {
+      "type": "augment",
+      "id": "empath-self-preservation-instinct",
       "name": "Self Preservation Instinct",
       "lineage": "esper",
       "archetype": "empath",
-      "path": "empath.receiver_all",
-      "evolutionStage": 1,
+      "path": "empath.receiver",
+      "evolutionStage": 0,
       "moveType": "augment",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "empath",
-        "receiver_all"
-      ],
-      "mentalistType": {
-        "polarity": "receiver",
-        "scope": "all"
-      },
+      "tags": ["esper", "mentalist", "empath", "receiver", "defensive"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Receiver",
-        "selectionKey": "receiver_all"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "All Empath Receivers possess an innate awareness of hostility and aggression, making them almost impossible to surprise.",
-        "player": "All Empath Receivers possess an innate awareness of hostility and aggression, making them almost impossible to surprise."
+        "short": "Innate awareness of hostility and aggression. Nearly impossible to surprise.",
+        "player": "All receivers possess an innate awareness of hostility and aggression. They are the first to sense when things are getting out of hand and are the most sensitive when it is directed at them. The human mind is well adapted for self preservation and the empaths natural gifts make them an almost impossible target to surprise."
       },
-      "effects": [],
+      "mentalistPolarity": "receiver",
+      "grantedBy": "polarity_receiver",
+      "effects": [
+        {
+          "type": "custom",
+          "description": "You have advantage on rolls to avoid being surprised or ambushed",
+          "duration": "permanent"
+        }
+      ],
       "flaws": []
     },
     {
       "type": "augment",
-      "id": "natural-leader",
+      "id": "empath-natural-leader",
       "name": "Natural Leader",
       "lineage": "esper",
       "archetype": "empath",
-      "path": "empath.influencer_all",
-      "evolutionStage": 1,
+      "path": "empath.influencer",
+      "evolutionStage": 0,
       "moveType": "augment",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "empath",
-        "influencer_all"
-      ],
-      "mentalistType": {
-        "polarity": "influencer",
-        "scope": "all"
-      },
+      "tags": ["esper", "mentalist", "empath", "influencer", "social"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Receiver",
-        "selectionKey": "influencer_all"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "All Empath Influencers possess an 'it' factor. When they speak with genuine, strong feeling, people are more inclined to listen and be moved.",
-        "player": "All Empath Influencers possess an 'it' factor. When they speak with genuine, strong feeling, people are more inclined to listen and be moved."
+        "short": "When you speak with genuine emotion, people listen and are moved. Cost: +1 Permanent Corruption.",
+        "player": "All influencers possess an 'it' factor that cannot be understated. When they speak, people are more inclined to listen, when they speak of their sorrows, rare is heart that is not moved. When they speak of their frustrations the collective blood pressure of the room spikes. This effect only manifests when the feeling is genuine and strongly felt by the empath.",
+        "flaw": "This power requires permanent Corruption. Cost: Permanent Corruption: +1"
       },
-      "effects": [],
-      "flaws": [],
-      "permanentCorruption": 1
+      "mentalistPolarity": "influencer",
+      "grantedBy": "polarity_influencer",
+      "effects": [
+        {
+          "type": "custom",
+          "description": "When expressing genuine, strong emotions, gain advantage on social influence rolls",
+          "duration": "permanent",
+          "conditional": true,
+          "condition": "Emotion must be genuine and strongly felt"
+        }
+      ],
+      "flaws": [
+        {
+          "trigger": "taking_this_power",
+          "effect": "corruption_gain",
+          "value": 1,
+          "target": "permanent_corruption",
+          "duration": "permanent",
+          "description": "Gain +1 Permanent Corruption when selecting this power"
+        }
+      ]
     },
     {
       "type": "move",
-      "id": "aural-anomaly",
+      "id": "empath-aural-anomaly",
       "name": "Aural Anomaly",
       "lineage": "esper",
       "archetype": "empath",
-      "path": "empath.aural_receiver",
-      "evolutionStage": 1,
+      "path": "empath.aural.receiver",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "empath",
-        "aural_receiver"
-      ],
-      "mentalistType": {
-        "polarity": "receiver",
-        "scope": "aural"
-      },
+      "tags": ["esper", "mentalist", "empath", "aural", "receiver", "detection"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Receiver",
-        "selectionKey": "aural_receiver"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "As an action, open your senses to a location to learn the dominant emotion of the crowd and sense strong deviations within it.",
-        "player": "As an action, open your senses to a location to learn the dominant emotion of the crowd and sense strong deviations within it."
+        "short": "Open your senses to the emotional state of a location. Sense dominant emotions and strong deviations.",
+        "player": "As an action, you can open your senses to the emotional state of a location (a room, a street corner). You get the dominant emotion of the crowd (e.g., 'nervous anticipation,' 'boredom,' 'anger') and can sense strong deviations in it. (e.g., 'murderous rage at a festival', 'euphoria a funeral.')"
       },
+      "mentalistPolarity": "receiver",
+      "mentalistScope": "aural",
+      "grantedBy": "aural_receiver",
+      "rollStat": "Presence",
+      "range": "area",
+      "duration": "instant",
       "effects": [],
       "flaws": []
     },
     {
       "type": "move",
-      "id": "emotional-broadcast",
+      "id": "empath-emotional-broadcast",
       "name": "Emotional Broadcast",
       "lineage": "esper",
       "archetype": "empath",
-      "path": "empath.aural_influencer",
-      "evolutionStage": 1,
+      "path": "empath.aural.influencer",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "empath",
-        "aural_influencer"
-      ],
-      "mentalistType": {
-        "polarity": "influencer",
-        "scope": "aural"
-      },
+      "tags": ["esper", "mentalist", "empath", "aural", "influencer", "control"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Receiver",
-        "selectionKey": "aural_influencer"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "Project an emotion you are feeling (or just read) to push the area's emotional state in that direction. Amplifying an existing feeling is easier.",
-        "player": "Project an emotion you are feeling (or just read) to push the area's emotional state in that direction. Amplifying an existing feeling is easier."
+        "short": "Project an emotion you're feeling to push an area's emotional state. Can start or stop riots.",
+        "player": "You can choose an emotion you are feeling (or one you just read from the aura) and project it, pushing the area's emotional state in that direction. This is how a single Empath can start—or stop—a riot. The stronger the source the easier the amplification."
       },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "aural",
+      "grantedBy": "aural_influencer",
+      "rollStat": "Presence",
+      "range": "area",
+      "duration": "scene",
       "effects": [],
       "flaws": []
     },
     {
       "type": "move",
-      "id": "isolate",
+      "id": "empath-isolate",
       "name": "Isolate",
       "lineage": "esper",
       "archetype": "empath",
-      "path": "empath.targeted_receiver",
-      "evolutionStage": 1,
+      "path": "empath.targeted.receiver",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "empath",
-        "targeted_receiver"
-      ],
-      "mentalistType": {
-        "polarity": "receiver",
-        "scope": "targeted"
-      },
+      "tags": ["esper", "mentalist", "empath", "targeted", "receiver", "detection"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Receiver",
-        "selectionKey": "targeted_receiver"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "Focus on an individual in a crowd to identify the person feeling a specific emotion most strongly or to track them by their unique emotional 'scent'.",
-        "player": "Focus on an individual in a crowd to identify the person feeling a specific emotion most strongly or to track them by their unique emotional 'scent'."
+        "short": "Focus on an individual, filtering out crowd noise. Identify strongest emotions or track by emotional scent.",
+        "player": "You can focus on an individual within the area, filtering out the noise of the crowd. You can identify the person feeling a specific emotion most strongly ('Who is the most afraid person here?') or track someone through a crowd by their unique emotional 'scent.'"
       },
+      "mentalistPolarity": "receiver",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_receiver",
+      "rollStat": "Presence",
+      "range": "sight",
+      "duration": "concentration",
       "effects": [],
       "flaws": []
     },
     {
       "type": "move",
-      "id": "empathic-spike",
+      "id": "empath-empathic-spike",
       "name": "Empathic Spike",
       "lineage": "esper",
       "archetype": "empath",
-      "path": "empath.targeted_influencer",
-      "evolutionStage": 1,
+      "path": "empath.targeted.influencer",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "empath",
-        "targeted_influencer"
-      ],
-      "mentalistType": {
-        "polarity": "influencer",
-        "scope": "targeted"
-      },
+      "tags": ["esper", "mentalist", "empath", "targeted", "influencer", "attack"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Receiver",
-        "selectionKey": "targeted_influencer"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "Touch a target and flood their mind with a single, raw, overwhelming emotion of your choice. The effect is intense but brief.",
-        "player": "Touch a target and flood their mind with a single, raw, overwhelming emotion of your choice. The effect is intense but brief."
+        "short": "Touch a target and flood their mind with overwhelming emotion. Intense but brief effect.",
+        "player": "You touch a target and flood their mind with a single, raw, overwhelming emotion of your choice (fear, joy, sorrow, rage). The effect is intense but brief."
       },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_influencer",
+      "rollStat": "Presence",
+      "range": "touch",
+      "duration": "instant",
       "effects": [],
       "flaws": []
     },
     {
       "type": "move",
-      "id": "predict-action",
+      "id": "empath-living-lie-detector",
+      "name": "Living Lie Detector",
+      "lineage": "esper",
+      "archetype": "empath",
+      "path": "empath.targeted.receiver",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "empath", "targeted", "receiver", "detection", "truth"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Read the emotional weight behind words to detect deception.",
+        "player": "You can sense the emotional resonance behind someone's words, detecting not just lies but the type - white lies, self-deception, or malicious intent. Prolonged use creates an empathic tether where you begin feeling their guilt and shame."
+      },
+      "mentalistPolarity": "receiver",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_receiver",
+      "rollStat": "Presence",
+      "range": "sight",
+      "duration": "concentration",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "empath-at-first-sight",
+      "name": "At First Sight",
+      "lineage": "esper",
+      "archetype": "empath",
+      "path": "empath.targeted.influencer",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "empath", "targeted", "influencer", "bond", "manipulation"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Create instant powerful emotional bonds or antipathy.",
+        "player": "You can make someone feel like they've known you forever, creating trust, hatred, or any strong emotional connection. The further you push from their natural state, the more severe the potential rebound when the effect fades - mild shifts cause irritation, extreme changes can trigger obsession or violent rejection."
+      },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_influencer",
+      "rollStat": "Presence",
+      "range": "sight",
+      "duration": "scene",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "empath-ear-for-echoes",
+      "name": "Ear for Echoes",
+      "lineage": "esper",
+      "archetype": "empath",
+      "path": "empath.aural.receiver",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "empath", "aural", "receiver", "emotional-imprint", "area"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Read the emotional imprint left on locations.",
+        "player": "You can sense the emotional residue in an area even without people present. Murder scenes scream with violence, hospitals whisper with grief and hope. Stronger emotions leave deeper imprints - trauma can linger for weeks while everyday frustration fades in hours. Risk of emotional haunting if unprepared."
+      },
+      "mentalistPolarity": "receiver",
+      "mentalistScope": "aural",
+      "grantedBy": "aural_receiver",
+      "rollStat": "Presence",
+      "range": "area",
+      "duration": "instant",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "empath-aetheric-tuner",
+      "name": "Aetheric Tuner",
+      "lineage": "esper",
+      "archetype": "empath",
+      "path": "empath.aural.influencer",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "empath", "aural", "influencer", "cleansing", "restoration"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Cleanse and calm emotionally disturbed areas.",
+        "player": "You can soothe the emotional wounds of a location, calming riots, dispelling the lingering terror of violence, or restoring peace to traumatized spaces. Works best on areas that are emotionally 'wounded' rather than naturally tense - you can calm a riot zone but not make a battlefield peaceful."
+      },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "aural",
+      "grantedBy": "aural_influencer",
+      "rollStat": "Presence",
+      "range": "area",
+      "duration": "lasting",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "mesmer-predict-action",
       "name": "Predict Action",
       "lineage": "esper",
       "archetype": "mesmer",
-      "path": "mesmer.receiver_all",
-      "evolutionStage": 1,
+      "path": "mesmer.receiver",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "mesmer",
-        "receiver_all"
-      ],
-      "mentalistType": {
-        "polarity": "receiver",
-        "scope": "all"
-      },
+      "tags": ["esper", "mentalist", "mesmer", "receiver", "prediction"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Influencer",
-        "selectionKey": "receiver_all"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "Focus on a target's mind to perceive their intended course of action, reading the logical framework of their plan.",
-        "player": "Focus on a target's mind to perceive their intended course of action, reading the logical framework of their plan."
+        "short": "Focus on a target's mind to perceive their intended course of action and logical framework.",
+        "player": "You focus on a target's mind to perceive their intended course of action, reading the logical framework of their plan."
       },
+      "mentalistPolarity": "receiver",
+      "grantedBy": "polarity_receiver",
+      "rollStat": "Intellect",
+      "range": "sight",
+      "duration": "instant",
       "effects": [],
       "flaws": []
     },
     {
       "type": "move",
-      "id": "implant-suggestion",
+      "id": "mesmer-implant-suggestion",
       "name": "Implant Suggestion",
       "lineage": "esper",
       "archetype": "mesmer",
-      "path": "mesmer.influencer_all",
-      "evolutionStage": 1,
+      "path": "mesmer.influencer",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "mesmer",
-        "influencer_all"
-      ],
-      "mentalistType": {
-        "polarity": "influencer",
-        "scope": "all"
-      },
+      "tags": ["esper", "mentalist", "mesmer", "influencer", "control"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Influencer",
-        "selectionKey": "influencer_all"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "Plant a 'logic bomb' in a target's mind, making a specific course of action seem like the most logical and reasonable thing to do (cannot betray core values or cause immediate harm).",
-        "player": "Plant a 'logic bomb' in a target's mind, making a specific course of action seem like the most logical and reasonable thing to do (cannot betray core values or cause immediate harm)."
+        "short": "Plant a 'logic bomb' making an action seem logical. Cannot betray core values or cause immediate harm.",
+        "player": "You plant a 'logic bomb' in a target's mind, making a specific course of action seem like the most logical and reasonable thing to do. This cannot suggest an action that is an obvious betrayal of their core values or would cause them immediate harm."
       },
-      "effects": [],
-      "flaws": []
-    },
-    {
-      "type": "augment",
-      "id": "life-in-the-flow-state",
-      "name": "Life in the Flow State",
-      "lineage": "esper",
-      "archetype": "mesmer",
-      "path": "mesmer.aural_receiver",
-      "evolutionStage": 1,
-      "moveType": "augment",
-      "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "mesmer",
-        "aural_receiver"
-      ],
-      "mentalistType": {
-        "polarity": "receiver",
-        "scope": "aural"
-      },
-      "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Influencer",
-        "selectionKey": "aural_receiver"
-      },
-      "description": {
-        "short": "You naturally integrate perception signals from an area, moving through crowds like smoke and slipping through gaps in attention with unnatural grace.",
-        "player": "You naturally integrate perception signals from an area, moving through crowds like smoke and slipping through gaps in attention with unnatural grace."
-      },
-      "effects": [],
-      "flaws": [],
-      "permanentCorruption": 1
-    },
-    {
-      "type": "move",
-      "id": "shared-delusion",
-      "name": "Shared Delusion",
-      "lineage": "esper",
-      "archetype": "mesmer",
-      "path": "mesmer.aural_influencer",
-      "evolutionStage": 1,
-      "moveType": "move",
-      "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "mesmer",
-        "aural_influencer"
-      ],
-      "mentalistType": {
-        "polarity": "influencer",
-        "scope": "aural"
-      },
-      "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Influencer",
-        "selectionKey": "aural_influencer"
-      },
-      "description": {
-        "short": "Plant a simple, non-contradictory fact into a small, like-minded group, provided it isn't immediately and obviously false.",
-        "player": "Plant a simple, non-contradictory fact into a small, like-minded group, provided it isn't immediately and obviously false."
-      },
+      "mentalistPolarity": "influencer",
+      "grantedBy": "polarity_influencer",
+      "rollStat": "Intellect",
+      "range": "sight",
+      "duration": "scene",
       "effects": [],
       "flaws": []
     },
     {
       "type": "move",
-      "id": "predictive-insight",
+      "id": "mesmer-predictive-insight",
       "name": "Predictive Insight",
       "lineage": "esper",
       "archetype": "mesmer",
-      "path": "mesmer.targeted_receiver",
-      "evolutionStage": 1,
+      "path": "mesmer.targeted.receiver",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "mesmer",
-        "targeted_receiver"
-      ],
-      "mentalistType": {
-        "polarity": "receiver",
-        "scope": "targeted"
-      },
+      "tags": ["esper", "mentalist", "mesmer", "targeted", "receiver", "prediction"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Influencer",
-        "selectionKey": "targeted_receiver"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "Focus on a target to gain a flash of insight (a key visual, static image, or keyword) into their immediate intentions or logical next steps.",
-        "player": "Focus on a target to gain a flash of insight (a key visual, static image, or keyword) into their immediate intentions or logical next steps."
+        "short": "Gain a flash of insight into target's immediate intentions. GM provides visual/keyword of their next action.",
+        "player": "By focusing on a target, you gain a flash of insight into their immediate intentions or logical next steps. The GM provides a key visual, static image, or keyword related to their predicted action or thought process."
       },
+      "mentalistPolarity": "receiver",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_receiver",
+      "rollStat": "Intellect",
+      "range": "sight",
+      "duration": "instant",
       "effects": [],
       "flaws": []
     },
     {
       "type": "move",
-      "id": "logical-twist",
+      "id": "mesmer-logical-twist",
       "name": "Logical Twist",
       "lineage": "esper",
       "archetype": "mesmer",
-      "path": "mesmer.targeted_influencer",
-      "evolutionStage": 1,
+      "path": "mesmer.targeted.influencer",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "mesmer",
-        "targeted_influencer"
-      ],
-      "mentalistType": {
-        "polarity": "influencer",
-        "scope": "targeted"
-      },
+      "tags": ["esper", "mentalist", "mesmer", "targeted", "influencer", "manipulation"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Influencer",
-        "selectionKey": "targeted_influencer"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "Plant a minor logical fallacy in a target's reasoning, making them temporarily susceptible to a simple suggestion or causing them to rationalize a slightly irrational decision.",
-        "player": "Plant a minor logical fallacy in a target's reasoning, making them temporarily susceptible to a simple suggestion or causing them to rationalize a slightly irrational decision."
+        "short": "Plant a logical fallacy or contradiction. Makes target susceptible to simple suggestion.",
+        "player": "You can plant a minor logical fallacy, a subtle contradiction, or an appeal to a 'call to authority' within a target's reasoning. This makes them temporarily susceptible to a specific, simple suggestion, or causes them to rationalize a slightly irrational decision as their own."
       },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_influencer",
+      "rollStat": "Intellect",
+      "range": "sight",
+      "duration": "scene",
       "effects": [],
       "flaws": []
     },
     {
       "type": "move",
-      "id": "read-reflex",
+      "id": "mesmer-shared-delusion",
+      "name": "Shared Delusion",
+      "lineage": "esper",
+      "archetype": "mesmer",
+      "path": "mesmer.aural.influencer",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "mesmer", "aural", "influencer", "illusion"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Plant a simple fact into a like-minded group. Only works if not immediately false.",
+        "player": "You can plant a simple, non-contradictory fact (e.g., 'The fire alarm is about to go off') into a small, like-minded group. It only works if the fact isn't immediately and obviously false."
+      },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "aural",
+      "grantedBy": "aural_influencer",
+      "rollStat": "Intellect",
+      "range": "area",
+      "duration": "scene",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "augment",
+      "id": "mesmer-life-in-flow-state",
+      "name": "Life in the Flow State",
+      "lineage": "esper",
+      "archetype": "mesmer",
+      "path": "mesmer.aural.receiver",
+      "evolutionStage": 0,
+      "moveType": "augment",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "mesmer", "aural", "receiver", "movement"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Integrate perception and intent from an area. Move through crowds like smoke. Cost: +1 Permanent Corruption.",
+        "player": "This Mesmer is exceptionally good at integrating perception signals and immediate intent from an area and naturally adapting there movements to this complex symphony. They move through crowds like smoke, and slip through the gaps in attention with an unnatural grace.",
+        "flaw": "Cost: Permanent Corruption: +1"
+      },
+      "mentalistPolarity": "receiver",
+      "mentalistScope": "aural",
+      "grantedBy": "aural_receiver",
+      "effects": [
+        {
+          "type": "custom",
+          "description": "Move through crowds with supernatural grace, avoiding detection and obstacles",
+          "duration": "permanent"
+        }
+      ],
+      "flaws": [
+        {
+          "trigger": "taking_this_power",
+          "effect": "corruption_gain",
+          "value": 1,
+          "target": "permanent_corruption",
+          "duration": "permanent",
+          "description": "Gain +1 Permanent Corruption when selecting this power"
+        }
+      ]
+    },
+    {
+      "type": "move",
+      "id": "mesmer-association-game",
+      "name": "Association Game",
+      "lineage": "esper",
+      "archetype": "mesmer",
+      "path": "mesmer.targeted.receiver",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "mesmer", "targeted", "receiver", "interrogation", "associations"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Trigger mental associations to reveal hidden information.",
+        "player": "Like playing flash cards in someone's mind - speak a word and catch the association that fires. Say 'uncle' and a name or face might surface. Ask about a crime scene and guilt blazes bright. Not admissible in court, but invaluable for investigation. Stronger emotional associations come through clearer."
+      },
+      "mentalistPolarity": "receiver",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_receiver",
+      "rollStat": "Intellect",
+      "range": "sight",
+      "duration": "instant",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "mesmer-hallucination",
+      "name": "Hallucination",
+      "lineage": "esper",
+      "archetype": "mesmer",
+      "path": "mesmer.targeted.influencer",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "mesmer", "targeted", "influencer", "illusion", "deception"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Create targeted sensory illusions in one person's mind.",
+        "player": "You can make someone perceive something that isn't there. The closer to reality, the easier - a missing door, a different number on a bill. Self-preservation acts as a circuit breaker - convincing someone the roof extends further than it does will likely fail, but making a $20 look like $100 is simple. Non-persistent; they'll be angry when it fades."
+      },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_influencer",
+      "rollStat": "Intellect",
+      "range": "sight",
+      "duration": "concentration",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "mesmer-attention-economy",
+      "name": "Attention Economy",
+      "lineage": "esper",
+      "archetype": "mesmer",
+      "path": "mesmer.aural.receiver",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "mesmer", "aural", "receiver", "patterns", "coordination"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Read the invisible structure of group attention and coordination.",
+        "player": "You perceive the patterns of attention and thought coordination in crowds. Identify hidden gangs by their synchronized awareness, find the real leader by tracking glances, spot the outsider with no attention connections. You're reading the structure of thought, not content - seeing the invisible social threads."
+      },
+      "mentalistPolarity": "receiver",
+      "mentalistScope": "aural",
+      "grantedBy": "aural_receiver",
+      "rollStat": "Intellect",
+      "range": "area",
+      "duration": "concentration",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "mesmer-mental-static",
+      "name": "Mental Static",
+      "lineage": "esper",
+      "archetype": "mesmer",
+      "path": "mesmer.aural.influencer",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "mesmer", "aural", "influencer", "disruption", "confusion"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Broadcast cognitive white noise that impairs thinking.",
+        "player": "You flood the area with confusing non-thoughts - not specific ideas, just mental static. Logic becomes harder, attention scattered, irritation mounts. Excellent at disrupting Linker networks and coordinated groups. Prolonged exposure causes headaches, driving people to naturally flee the area."
+      },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "aural",
+      "grantedBy": "aural_influencer",
+      "rollStat": "Intellect",
+      "range": "area",
+      "duration": "concentration",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "siren-read-reflex",
       "name": "Read Reflex",
       "lineage": "esper",
       "archetype": "siren",
-      "path": "siren.receiver_all",
-      "evolutionStage": 1,
+      "path": "siren.receiver",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "siren",
-        "receiver_all"
-      ],
-      "mentalistType": {
-        "polarity": "receiver",
-        "scope": "all"
-      },
+      "tags": ["esper", "mentalist", "siren", "receiver", "combat"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Influencer",
-        "selectionKey": "receiver_all"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "Focus on a target's nervous system to read the micro-signals before a physical action. On a 10+, you know exactly what they'll do. On a 7-9, you get a partial read or take 1 Stun. On a 6-, you misread the signal.",
-        "player": "Focus on a target's nervous system to read the micro-signals before a physical action. On a 10+, you know exactly what they'll do. On a 7-9, you get a partial read or take 1 Stun. On a 6-, you misread the signal."
+        "short": "Focus on a target's nervous system, reading micro-signals before physical actions.",
+        "player": "You focus on a target's nervous system, reading the micro-signals that fire just before a physical action."
+      },
+      "mentalistPolarity": "receiver",
+      "grantedBy": "polarity_receiver",
+      "rollStat": "Presence",
+      "range": "sight",
+      "duration": "instant",
+      "outcomes": {
+        "10+": "You get a perfect read. You know exactly what physical action your target is about to take (e.g., 'They're going to draw their pistol,' 'They're about to lunge to the left'). You can describe a specific defensive preparation you make.",
+        "7-9": "You get a jolt of information but not the full picture. You know they're about to do something aggressive, but not what, OR the feedback from their bio-signals inflicts 1 Stun damage on you.",
+        "6-": "You misread a twitch or a harmless reflex as a sign of imminent action, causing you to react to a threat that isn't there."
       },
       "effects": [],
       "flaws": []
     },
     {
       "type": "move",
-      "id": "overwhelm-senses",
+      "id": "siren-overwhelm-senses",
       "name": "Overwhelm Senses",
       "lineage": "esper",
       "archetype": "siren",
-      "path": "siren.influencer_all",
-      "evolutionStage": 1,
+      "path": "siren.influencer",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "siren",
-        "influencer_all"
-      ],
-      "mentalistType": {
-        "polarity": "influencer",
-        "scope": "all"
-      },
+      "tags": ["esper", "mentalist", "siren", "influencer", "attack"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Influencer",
-        "selectionKey": "influencer_all"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "Project your will to manipulate a target's pain, induce pleasure, or lull them. On a 10+, the effect is potent. On a 7-9, the effect is uncontrolled (adds 1 DP or costs 1 Temp Corruption). On a 6-, the backlash affects you.",
-        "player": "Project your will to manipulate a target's pain, induce pleasure, or lull them. On a 10+, the effect is potent. On a 7-9, the effect is uncontrolled (adds 1 DP or costs 1 Temp Corruption). On a 6-, the backlash affects you."
+        "short": "Project your will into a target's nervous system to manipulate pain, pleasure, or consciousness.",
+        "player": "You project your will into a target's nervous system to manipulate their pain perception, induce pleasure, or lull them toward unconsciousness."
+      },
+      "mentalistPolarity": "influencer",
+      "grantedBy": "polarity_influencer",
+      "rollStat": "Presence",
+      "range": "sight",
+      "duration": "instant",
+      "outcomes": {
+        "10+": "The effect is potent. You can inflict a debilitating wave of pain (imposing a penalty on their next action), create a distracting sensation of euphoria, or cause them to become drowsy and suggestible.",
+        "7-9": "The effect is uncontrolled. The target feels the desired sensation, but the chaotic neural feedback adds 1 DP to the Dissonance Pool, OR the effort costs you 1 Temporary Corruption.",
+        "6-": "The target's autonomic system resists forcefully. Your attempt fails, and the psychic backlash leaves you feeling a phantom version of the effect you were trying to create."
       },
       "effects": [],
       "flaws": []
     },
     {
       "type": "move",
-      "id": "mind-mapping",
-      "name": "Mind Mapping",
-      "lineage": "esper",
-      "archetype": "siren",
-      "path": "siren.aural_receiver",
-      "evolutionStage": 1,
-      "moveType": "move",
-      "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "siren",
-        "aural_receiver"
-      ],
-      "mentalistType": {
-        "polarity": "receiver",
-        "scope": "aural"
-      },
-      "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Influencer",
-        "selectionKey": "aural_receiver"
-      },
-      "description": {
-        "short": "Use the active perception of people in an area to create a mental map of the internal layout, including estimations of unobserved sections.",
-        "player": "Use the active perception of people in an area to create a mental map of the internal layout, including estimations of unobserved sections."
-      },
-      "effects": [],
-      "flaws": []
-    },
-    {
-      "type": "move",
-      "id": "bio-feedback",
+      "id": "siren-bio-feedback",
       "name": "Bio-Feedback",
       "lineage": "esper",
       "archetype": "siren",
-      "path": "siren.targeted_receiver",
-      "evolutionStage": 1,
+      "path": "siren.targeted.receiver",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "siren",
-        "targeted_receiver"
-      ],
-      "mentalistType": {
-        "polarity": "receiver",
-        "scope": "targeted"
-      },
+      "tags": ["esper", "mentalist", "siren", "targeted", "receiver", "detection"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Influencer",
-        "selectionKey": "targeted_receiver"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "While active on a target, you read their physical state with perfect clarity (heart rate, respiration, micro-expressions), becoming a flawless lie detector for that person.",
-        "player": "While active on a target, you read their physical state with perfect clarity (heart rate, respiration, micro-expressions), becoming a flawless lie detector for that person."
+        "short": "Read a target's physical state with perfect clarity. Flawless lie detector.",
+        "player": "While this is active on a target, you can read their physical state with perfect clarity. Heart rate, respiration, tells, micro-expressions—you become a flawless lie detector for that person."
+      },
+      "mentalistPolarity": "receiver",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_receiver",
+      "rollStat": "Presence",
+      "range": "sight",
+      "duration": "concentration",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "siren-autonomic-override",
+      "name": "Autonomic Override",
+      "lineage": "esper",
+      "archetype": "siren",
+      "path": "siren.targeted.influencer",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "siren", "targeted", "influencer", "control"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Manipulate target's biological functions through touch or focus. Can incapacitate or disorient.",
+        "player": "Through touch or intense, sustained focus, you can manipulate a target's basic biological functions (e.g., accelerate or slow heart rate, suppress pain receptors, trigger intense discomfort or pleasure). This can temporarily incapacitate or severely disorient."
+      },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_influencer",
+      "rollStat": "Presence",
+      "range": "touch",
+      "duration": "concentration",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "siren-self-surge",
+      "name": "Self-Surge",
+      "lineage": "esper",
+      "archetype": "siren",
+      "path": "siren.targeted.influencer",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "siren", "targeted", "influencer", "enhancement"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Push your body beyond limits for enhanced physical attributes. Causes fatigue after.",
+        "player": "You can briefly push your own body beyond its natural limits, granting enhanced physical attributes (speed, strength, pain resistance). This comes with clear physiological repercussions, such as intense fatigue or strain, after the effect ends."
+      },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_influencer",
+      "rollStat": "Presence",
+      "range": "self",
+      "duration": "scene",
+      "effects": [],
+      "flaws": [
+        {
+          "trigger": "power_end",
+          "effect": "fatigue",
+          "value": "intense",
+          "target": "self",
+          "duration": "scene",
+          "description": "Suffer intense fatigue or strain after the effect ends"
+        }
+      ]
+    },
+    {
+      "type": "move",
+      "id": "siren-damage-bypass",
+      "name": "Damage Bypass",
+      "lineage": "esper",
+      "archetype": "siren",
+      "path": "siren.targeted.influencer",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "siren", "targeted", "influencer", "self-modification"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Override nervous system response to injury. Use damaged limbs. Prevents other power use.",
+        "player": "For a limited time, you can override your nervous system's response to severe physical injury, allowing you to temporarily use a damaged or even 'dead' limb. This requires intense concentration and active focus, preventing other power use, and exacerbates the long-term damage. While powerful, Sirens cannot directly puppet another person's entire body; such complex coordination is beyond their scope, though high-level Sirens might achieve limited, simple forced movements."
+      },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_influencer",
+      "rollStat": "Presence",
+      "range": "self",
+      "duration": "concentration",
+      "effects": [],
+      "flaws": [
+        {
+          "trigger": "while_active",
+          "effect": "concentration_required",
+          "value": "prevents_other_powers",
+          "target": "self",
+          "duration": "active",
+          "description": "Requires concentration, preventing use of other powers"
+        },
+        {
+          "trigger": "power_end",
+          "effect": "injury_worsens",
+          "value": "exacerbated_damage",
+          "target": "damaged_limb",
+          "duration": "permanent",
+          "description": "Exacerbates long-term damage to the injured limb"
+        }
+      ]
+    },
+    {
+      "type": "move",
+      "id": "siren-mind-mapping",
+      "name": "Mind Mapping",
+      "lineage": "esper",
+      "archetype": "siren",
+      "path": "siren.aural.receiver",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "siren", "aural", "receiver", "reconnaissance"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Use people's active perception to create mental map of internal layouts.",
+        "player": "Using the active perception of the people in a given area (e.g. 'A building across the street', 'the warehouse that has your clients package') you can create a mental map of the internal layout and even estimations of the unobserved sections layouts with a successful attempt."
+      },
+      "mentalistPolarity": "receiver",
+      "mentalistScope": "aural",
+      "grantedBy": "aural_receiver",
+      "rollStat": "Presence",
+      "range": "area",
+      "duration": "instant",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "siren-suppress-reflexes",
+      "name": "Suppress Reflexes",
+      "lineage": "esper",
+      "archetype": "siren",
+      "path": "siren.aural.influencer",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "siren", "aural", "influencer", "support"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Project calming wave to dampen fight-or-flight response and steady nerves.",
+        "player": "You project a calming wave to dampen a target's fight-or-flight response or steady their nerves."
+      },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "aural",
+      "grantedBy": "aural_influencer",
+      "rollStat": "Presence",
+      "range": "sight",
+      "duration": "scene",
+      "outcomes": {
+        "10+": "You succeed. You can prevent a person from startling at a loud noise, steady a surgeon's trembling hands, or help an ally calm down from a state of panic.",
+        "7-9": "The effect is only partially successful. You can dampen their reaction, but not erase it completely.",
+        "6-": "Your calming wave is too strong, making your target lethargic and slow to react for a few moments."
       },
       "effects": [],
       "flaws": []
     },
     {
       "type": "move",
-      "id": "perceive-psyche",
+      "id": "siren-dissonance-field",
+      "name": "Dissonance Field",
+      "lineage": "esper",
+      "archetype": "siren",
+      "path": "siren.aural.influencer",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "siren", "aural", "influencer", "debuff"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Project field of autonomic chaos. Everyone feels erratic heart rate, disrupting fine motor skills.",
+        "player": "You project a small field of autonomic chaos. Everyone inside (friend or foe) feels their heart race and slow erratically. It wreaks havoc on fine motor skills and concentration."
+      },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "aural",
+      "grantedBy": "aural_influencer",
+      "rollStat": "Presence",
+      "range": "area",
+      "duration": "concentration",
+      "effects": [],
+      "flaws": [
+        {
+          "trigger": "while_active",
+          "effect": "affects_allies",
+          "value": "indiscriminate",
+          "target": "all_in_area",
+          "duration": "active",
+          "description": "Affects everyone in the area, friend or foe"
+        }
+      ]
+    },
+    {
+      "type": "move",
+      "id": "siren-autonomic-regulation",
+      "name": "Autonomic Regulation",
+      "lineage": "esper",
+      "archetype": "siren",
+      "path": "siren",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "siren", "control", "additional"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Spike or suppress a target's adrenaline with a touch or focus.",
+        "player": "With a touch or brief moment of focus, you can either spike a target's adrenaline (making them jittery, panicked, clumsy) or suppress it (making them lethargic, calm, slow to react)."
+      },
+      "grantedBy": "priority_c_additional",
+      "rollStat": "Presence",
+      "range": "touch",
+      "duration": "scene",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "siren-muscle-override",
+      "name": "Muscle Override",
+      "lineage": "esper",
+      "archetype": "siren",
+      "path": "siren",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "siren", "control", "additional"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Force a target to perform a single involuntary motor action.",
+        "player": "You can force a target you can see to perform a single, simple, involuntary motor action: clench/unclench a fist, drop an item, take one step, blink, or speak a single word."
+      },
+      "grantedBy": "priority_c_additional",
+      "rollStat": "Presence",
+      "range": "sight",
+      "duration": "instant",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "siren-vocal-mimicry",
+      "name": "Vocal Mimicry",
+      "lineage": "esper",
+      "archetype": "siren",
+      "path": "siren.targeted.receiver",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "siren", "targeted", "receiver", "mimicry", "voice"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Perfect vocal replication carrying emotional resonance.",
+        "player": "You can perfectly replicate any voice you've heard by reading the nervous system patterns of vocal production. The mimicry carries the emotional state from when you learned it - a voice learned in terror always trembles, one learned in joy carries warmth. Strategic collection of emotional variants required for versatile impersonation."
+      },
+      "mentalistPolarity": "receiver",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_receiver",
+      "rollStat": "Presence",
+      "range": "hearing",
+      "duration": "permanent",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "siren-sympathetic-resonance",
+      "name": "Sympathetic Resonance",
+      "lineage": "esper",
+      "archetype": "siren",
+      "path": "siren.aural.receiver",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "siren", "aural", "receiver", "bio-sensing", "crowd-reading"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Read the collective biological state and disturbances in crowds.",
+        "player": "You sense the aggregate nervous system of crowds - heartbeats, breathing, stress hormones as a biological symphony. Detect when crowds are about to panic, sense ambushes through elevated heart rates, track targets by the ripples they create in the crowd's biology. In high-stress areas, the cacophony can be overwhelming, potentially triggering sympathetic responses in your own body."
+      },
+      "mentalistPolarity": "receiver",
+      "mentalistScope": "aural",
+      "grantedBy": "aural_receiver",
+      "rollStat": "Presence",
+      "range": "area",
+      "duration": "concentration",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "augment",
+      "id": "dreamer-aetheric-amplifier",
+      "name": "Aetheric Amplifier",
+      "lineage": "esper",
+      "archetype": "dreamer",
+      "path": "dreamer",
+      "evolutionStage": 0,
+      "moveType": "augment",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "dreamer", "support", "required"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Your presence makes the Aether resonate. Nearby supernatural beings can re-roll one die. Cost: +2 Permanent Corruption.",
+        "player": "Your presence makes the veil between worlds thin. The Aether resonates strongly with you. You can not choose to become an 'Amplifier.', you are one, at best you may attempt to suppress this for a short period of time based on willpower. While you are not actively suppressing the effect, any other supernatural being (friend or foe) within your vicinity may re-roll one die on their next power-related check.",
+        "flaw": "This constant resonance is a permanent part of you. Cost: Permanent Corruption +2"
+      },
+      "grantedBy": "archetype_dreamer",
+      "effects": [
+        {
+          "type": "custom",
+          "description": "Supernatural beings near you can re-roll one die on power checks",
+          "duration": "permanent",
+          "target": "nearby_supernatural"
+        }
+      ],
+      "flaws": [
+        {
+          "trigger": "taking_this_power",
+          "effect": "corruption_gain",
+          "value": 2,
+          "target": "permanent_corruption",
+          "duration": "permanent",
+          "description": "Gain +2 Permanent Corruption when selecting Dreamer archetype"
+        }
+      ]
+    },
+    {
+      "type": "augment",
+      "id": "dreamer-idol-or-anathema",
+      "name": "Idol or Anathema",
+      "lineage": "esper",
+      "archetype": "dreamer",
+      "path": "dreamer",
+      "evolutionStage": 0,
+      "moveType": "augment",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "dreamer", "social", "required"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "You are what the moment makes you - saint or sinner. Rarely faced with indifference. Cost: +2 Permanent Corruption.",
+        "player": "You are what the moment makes you. Whether Saint or Sinner, Hero or Villain, You are something more in the minds of your observers. Whether love or hate you are rarely faced with indifference.",
+        "flaw": "Cost: Permanent Corruption +2"
+      },
+      "grantedBy": "archetype_dreamer",
+      "effects": [
+        {
+          "type": "custom",
+          "description": "People react to you with strong emotions (love or hate), rarely indifference",
+          "duration": "permanent"
+        }
+      ],
+      "flaws": [
+        {
+          "trigger": "taking_this_power",
+          "effect": "corruption_gain",
+          "value": 2,
+          "target": "permanent_corruption",
+          "duration": "permanent",
+          "description": "Gain +2 Permanent Corruption when selecting Dreamer archetype"
+        }
+      ]
+    },
+    {
+      "type": "move",
+      "id": "dreamer-perceive-psyche",
       "name": "Perceive Psyche",
       "lineage": "esper",
       "archetype": "dreamer",
-      "path": "dreamer.receiver_all",
-      "evolutionStage": 1,
+      "path": "dreamer.receiver",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "dreamer",
-        "receiver_all"
-      ],
-      "mentalistType": {
-        "polarity": "receiver",
-        "scope": "all"
-      },
+      "tags": ["esper", "mentalist", "dreamer", "receiver", "detection"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Receiver",
-        "selectionKey": "receiver_all"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "Look at a person and perceive the symbolic icons of their subconscious. On a 10+, you get a clear reading and its meaning. On a 7-9, the symbols are cryptic or you take 1 Stun. On a 6-, you misinterpret the symbol entirely.",
-        "player": "Look at a person and perceive the symbolic icons of their subconscious. On a 10+, you get a clear reading and its meaning. On a 7-9, the symbols are cryptic or you take 1 Stun. On a 6-, you misinterpret the symbol entirely."
+        "short": "Perceive symbolic icons of a person's subconscious - core drives, fears, aspirations.",
+        "player": "You look at a person and perceive the symbolic icons of their subconscious floating around them—their core drives, fears, and aspirations."
+      },
+      "mentalistPolarity": "receiver",
+      "grantedBy": "polarity_receiver",
+      "rollStat": "Presence",
+      "range": "sight",
+      "duration": "instant",
+      "outcomes": {
+        "10+": "You get a clear reading. The GM will describe one or two clear symbols and tell you what they represent (e.g., 'You see a tarnished badge, representing their lost sense of honor,' or 'You see a phantom child's hand reaching for theirs, representing a deep-seated guilt over a lost family').",
+        "7-9": "The symbols are cryptic. You see the tarnished badge, but you don't know what it means, OR the psychic noise from their mind inflicts 1 Stun damage on you.",
+        "6-": "You misinterpret a symbol entirely, projecting your own subconscious onto them and drawing a completely false conclusion."
       },
       "effects": [],
       "flaws": []
     },
     {
       "type": "move",
-      "id": "dream-walk",
+      "id": "dreamer-dream-walk",
       "name": "Dream Walk",
       "lineage": "esper",
       "archetype": "dreamer",
-      "path": "dreamer.influencer_all",
-      "evolutionStage": 1,
+      "path": "dreamer.influencer",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "dreamer",
-        "influencer_all"
-      ],
-      "mentalistType": {
-        "polarity": "influencer",
-        "scope": "all"
-      },
+      "tags": ["esper", "mentalist", "dreamer", "influencer", "infiltration"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Receiver",
-        "selectionKey": "influencer_all"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "Project your consciousness into a sleeping target's dreams. On a 10+, you have full control. On a 7-9, you are swept along by the dream's narrative or take 1 Temp Corruption. On a 6-, you become trapped until woken, taking 2 Stun.",
-        "player": "Project your consciousness into a sleeping target's dreams. On a 10+, you have full control. On a 7-9, you are swept along by the dream's narrative or take 1 Temp Corruption. On a 6-, you become trapped until woken, taking 2 Stun."
+        "short": "Project your consciousness into a sleeping target's dreams.",
+        "player": "When near a sleeping target, you project your consciousness into their dreams."
+      },
+      "mentalistPolarity": "influencer",
+      "grantedBy": "polarity_influencer",
+      "rollStat": "Presence",
+      "range": "near_sleeping_target",
+      "duration": "scene",
+      "outcomes": {
+        "10+": "You enter their dreamscape with full awareness and control. You can observe the dream, subtly influence its narrative, or ask the dreamer's subconscious a direct question.",
+        "7-9": "You enter the dream, but you are not in control. The dream's narrative sweeps you along as a participant, not a guide, OR the effort of crossing the threshold costs you 1 Temporary Corruption.",
+        "6-": "You become trapped in the dream. You lose awareness of the real world and believe the dream is real until you are violently woken up, suffering 2 Stun damage."
       },
       "effects": [],
       "flaws": []
     },
     {
       "type": "move",
-      "id": "mind-field",
+      "id": "dreamer-aetheric-gateway",
+      "name": "Aetheric Gateway",
+      "lineage": "esper",
+      "archetype": "dreamer",
+      "path": "dreamer.aural.influencer",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "dreamer", "aural", "influencer", "summoning"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Open your mind as temporary anchor for a spirit from the Aether. No control over what comes.",
+        "player": "You open your mind and become a temporary anchor for a spirit from the Aether. You have no control over what comes through."
+      },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "aural",
+      "grantedBy": "aural_influencer",
+      "rollStat": "Presence",
+      "range": "self",
+      "duration": "scene",
+      "outcomes": {
+        "10+": "You summon a spirit that is generally neutral or curious. It will not harm you (its anchor), but it will act on its own whims for the scene before departing.",
+        "7-9": "The spirit you summon is mischievous or alien. It will cause minor, unpredictable chaos before departing.",
+        "6-": "You attract a malicious or hungry spirit. It is hostile to everyone, including your allies, and will cause significant harm before it can be banished."
+      },
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "dreamer-dream-heist",
+      "name": "Dream Heist",
+      "lineage": "esper",
+      "archetype": "dreamer",
+      "path": "dreamer.targeted.influencer",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "dreamer", "targeted", "influencer", "infiltration"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Enter sleeping target's dreams to search for specific information via surreal 'dungeon'.",
+        "player": "If you can perceive a sleeping target, you can enter their dreams to search for a specific piece of information. The GM will represent the dream as a surreal 'dungeon' with symbolic obstacles. Failure might mean you leave psychic footprints or warp their subconscious in unpredictable ways."
+      },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_influencer",
+      "rollStat": "Presence",
+      "range": "sight",
+      "duration": "scene",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "dreamer-subconscious-suggestion",
+      "name": "Subconscious Suggestion",
+      "lineage": "esper",
+      "archetype": "dreamer",
+      "path": "dreamer.targeted.influencer",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "dreamer", "targeted", "influencer", "manipulation"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Plant symbolic idea deep within a dream. Influences waking decisions subtly.",
+        "player": "Instead of taking information out, you plant a symbolic idea deep within the dream. The target won't remember it, but it will influence their waking decisions in subtle ways."
+      },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_influencer",
+      "rollStat": "Presence",
+      "range": "sight",
+      "duration": "until_acted_upon",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "dreamer-waking-trace",
+      "name": "Waking Trace",
+      "lineage": "esper",
+      "archetype": "dreamer",
+      "path": "dreamer.targeted.receiver",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "dreamer", "targeted", "receiver", "detection"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Touch someone to get symbolic image of their last dream. Reveals anxieties or desires.",
+        "player": "You can touch someone and get a fleeting, symbolic image of what they last dreamt about. It gives you a clue to their current anxieties or desires."
+      },
+      "mentalistPolarity": "receiver",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_receiver",
+      "rollStat": "Presence",
+      "range": "touch",
+      "duration": "instant",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "dreamer-skill-echo",
+      "name": "Skill Echo",
+      "lineage": "esper",
+      "archetype": "dreamer",
+      "path": "dreamer.targeted.receiver",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "dreamer", "targeted", "receiver", "utility"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Extract skill archetype from Aether's collective consciousness. Personality shifts to match.",
+        "player": "You can briefly 'extract' a general skill or archetype from the Aether's collective consciousness. While active, you gain competence in that skill. However, your own demeanor subtly shifts to reflect the archetype (e.g., extracting a 'Thief Echo' makes you more cunning and aloof, extracting a 'Scholar Echo' makes you more pedantic). This offers rich role-playing opportunities as your personality momentarily bends to the skill."
+      },
+      "mentalistPolarity": "receiver",
+      "mentalistScope": "targeted",
+      "grantedBy": "targeted_receiver",
+      "rollStat": "Presence",
+      "range": "self",
+      "duration": "scene",
+      "effects": [],
+      "flaws": [
+        {
+          "trigger": "while_active",
+          "effect": "personality_shift",
+          "value": "matches_skill_archetype",
+          "target": "self",
+          "duration": "active",
+          "description": "Your personality shifts to match the skill archetype (e.g., Thief = cunning/aloof, Scholar = pedantic)"
+        }
+      ]
+    },
+    {
+      "type": "move",
+      "id": "dreamer-shared-fright",
+      "name": "Shared Fright",
+      "lineage": "esper",
+      "archetype": "dreamer",
+      "path": "dreamer.aural.influencer",
+      "evolutionStage": 0,
+      "moveType": "move",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "dreamer", "aural", "influencer", "debuff"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Nightmarish image flickers for everyone nearby. Shared confusion and dread.",
+        "player": "The nightmarish image flickers at the edge of vision for everyone in the immediate vicinity. They don't see the same thing, but they all see something unsettling, causing a moment of shared confusion and dread."
+      },
+      "mentalistPolarity": "influencer",
+      "mentalistScope": "aural",
+      "grantedBy": "aural_influencer",
+      "rollStat": "Presence",
+      "range": "area",
+      "duration": "instant",
+      "effects": [],
+      "flaws": []
+    },
+    {
+      "type": "move",
+      "id": "dreamer-mind-field",
       "name": "Mind Field",
       "lineage": "esper",
       "archetype": "dreamer",
-      "path": "dreamer.aural_receiver",
-      "evolutionStage": 1,
+      "path": "dreamer.aural.receiver",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "dreamer",
-        "aural_receiver"
-      ],
-      "mentalistType": {
-        "polarity": "receiver",
-        "scope": "aural"
-      },
+      "tags": ["esper", "mentalist", "dreamer", "aural", "receiver", "detection"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
-        "version": "1.0",
-        "naturalLean": "Receiver",
-        "selectionKey": "aural_receiver"
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
       },
       "description": {
-        "short": "Open yourself to the dreaming while awake, becoming aware of every mind's state (awake/asleep) locally. The knowledge can be overwhelming.",
-        "player": "Open yourself to the dreaming while awake, becoming aware of every mind's state (awake/asleep) locally. The knowledge can be overwhelming."
+        "short": "Aware of every local mind and whether awake/asleep. Overwhelming in crowds.",
+        "player": "You can open yourself up to the dreaming even while awake allowing yourself to be aware of every mind and whether it is awake or asleep of on the cusp of either locally. The knowledge can be overwhelming in crowded locations causing the knowledge to, leak. Rolls to remember the exact number and approximate location are required."
       },
+      "mentalistPolarity": "receiver",
+      "mentalistScope": "aural",
+      "grantedBy": "aural_receiver",
+      "rollStat": "Presence",
+      "range": "area",
+      "duration": "concentration",
       "effects": [],
-      "flaws": []
+      "flaws": [
+        {
+          "trigger": "in_crowded_location",
+          "effect": "information_overload",
+          "value": "requires_roll_to_process",
+          "target": "self",
+          "duration": "active",
+          "description": "In crowded locations, knowledge becomes overwhelming. Requires rolls to remember exact numbers and locations"
+        }
+      ]
+    },
+    {
+      "type": "augment",
+      "id": "dreamer-one-of-us",
+      "name": "One of Us",
+      "lineage": "esper",
+      "archetype": "dreamer",
+      "path": "dreamer.receiver",
+      "evolutionStage": 0,
+      "moveType": "augment",
+      "isMentalist": true,
+      "category": "Mentalist Powers",
+      "tags": ["esper", "mentalist", "dreamer", "receiver", "mimicry", "subconscious"],
+      "metadata": {
+        "source": "mentalist-powers.txt",
+        "version": "1.0"
+      },
+      "description": {
+        "short": "Subconsciously absorb and mirror group identity.",
+        "player": "You naturally align with the collective unconscious of groups, absorbing their mannerisms, body language, slang, and vocal patterns without conscious control. The stronger the group identity (military units, cults), the more pronounced the effect. Many find this constant loss of self maddening - always becoming whoever you're with."
+      },
+      "mentalistPolarity": "receiver",
+      "grantedBy": "polarity_receiver",
+      "permanentCorruption": 1,
+      "effects": [],
+      "flaws": [
+        {
+          "trigger": "taking_this_power",
+          "effect": "corruption_gain",
+          "value": 1,
+          "target": "permanent_corruption",
+          "duration": "permanent",
+          "description": "Gain +1 Permanent Corruption when selecting this power"
+        }
+      ]
     },
     {
       "type": "move",
-      "id": "cognitive-acceleration",
+      "id": "metamind-cognitive-acceleration",
       "name": "Cognitive Acceleration",
       "lineage": "esper",
       "archetype": "meta-mind",
-      "path": "meta-mind.instanced_systemic",
-      "evolutionStage": 1,
+      "path": "meta-mind.instanced.systemic",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "meta-mind",
-        "instanced",
-        "systemic"
-      ],
-      "mentalistType": {
-        "temporal": "Instanced",
-        "changeType": "Systemic"
-      },
+      "tags": ["esper", "mentalist", "meta-mind", "instanced", "systemic", "enhancement"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
+        "source": "mentalist-powers.txt",
         "version": "1.0"
       },
       "description": {
-        "short": "Temporarily boost your mental processing speed for rapid calculation, perfect recall, or hyper-focused problem-solving.",
-        "player": "Temporarily boost your mental processing speed for rapid calculation, perfect recall, or hyper-focused problem-solving."
+        "short": "Temporarily boost mental processing speed for rapid calculation, perfect recall, or hyper-focus.",
+        "player": "You can temporarily boost your own mental perceiving speed, allowing for rapid calculation, perfect recall of short-term memories, or hyper-focused problem-solving that would otherwise take hours or days."
       },
+      "mentalistPolarity": "instanced",
+      "mentalistScope": "systemic",
+      "grantedBy": "instanced_systemic",
+      "rollStat": "Intellect",
+      "range": "self",
+      "duration": "scene",
       "effects": [],
       "flaws": []
     },
     {
       "type": "move",
-      "id": "sensory-re-routing",
+      "id": "metamind-sensory-rerouting",
       "name": "Sensory Re-routing",
       "lineage": "esper",
       "archetype": "meta-mind",
-      "path": "meta-mind.instanced_discrete",
-      "evolutionStage": 1,
+      "path": "meta-mind.instanced.discrete",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "meta-mind",
-        "instanced",
-        "discrete"
-      ],
-      "mentalistType": {
-        "temporal": "Instanced",
-        "changeType": "Discrete"
-      },
+      "tags": ["esper", "mentalist", "meta-mind", "instanced", "discrete", "perception"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
+        "source": "mentalist-powers.txt",
         "version": "1.0"
       },
       "description": {
-        "short": "For one scene, re-route your sensory input, like 'seeing' with your ears to bypass blindness.",
-        "player": "For one scene, re-route your sensory input, like 'seeing' with your ears to bypass blindness."
+        "short": "Re-route sensory input. See with ears (sonar), hear with skin (vibrations). Disorienting.",
+        "player": "You can temporarily re-route your sensory input. For one scene, you can choose to 'see' with your ears (like sonar) to bypass blindness, or 'hear' with your skin to detect vibrations. This allows you to overcome sensory deprivation but can be disorienting."
       },
+      "mentalistPolarity": "instanced",
+      "mentalistScope": "discrete",
+      "grantedBy": "instanced_discrete",
+      "rollStat": "Intellect",
+      "range": "self",
+      "duration": "scene",
       "effects": [],
-      "flaws": []
+      "flaws": [
+        {
+          "trigger": "while_active",
+          "effect": "disorientation",
+          "value": "sensory_confusion",
+          "target": "self",
+          "duration": "active",
+          "description": "Can be disorienting due to unusual sensory input"
+        }
+      ]
     },
     {
       "type": "move",
-      "id": "eidetic-mimicry",
+      "id": "metamind-eidetic-mimicry",
       "name": "Eidetic Mimicry",
       "lineage": "esper",
       "archetype": "meta-mind",
-      "path": "meta-mind.instanced_discrete",
-      "evolutionStage": 1,
+      "path": "meta-mind.instanced.discrete",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "meta-mind",
-        "instanced",
-        "discrete"
-      ],
-      "mentalistType": {
-        "temporal": "Instanced",
-        "changeType": "Discrete"
-      },
+      "tags": ["esper", "mentalist", "meta-mind", "instanced", "discrete", "learning"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
+        "source": "mentalist-powers.txt",
         "version": "1.0"
       },
       "description": {
-        "short": "Perfectly observe a physical action or skill. On a 10+, you can perform that action for the scene as if you had an Expert rank. Can be used for impersonation with significant study.",
-        "player": "Perfectly observe a physical action or skill. On a 10+, you can perform that action for the scene as if you had an Expert rank. Can be used for impersonation with significant study."
+        "short": "Perfectly observe and replicate a physical action or skill. Create muscle memory template.",
+        "player": "You perfectly observe a physical action or complex skill being performed and create a perfect mental model of it. To physically replicate it, you must have the necessary underlying physical training. While this Move can be used to mimic a single action, its true potential lies in impersonation. A Metamind who spends significant time studying a person can use Eidetic Mimicry to create a perfect mental model of their subject, allowing them to replicate their voice, mannerisms, and patterns of thought with uncanny accuracy. When combined with the right physical disguise, a Metamind can become the ultimate impersonator."
+      },
+      "mentalistPolarity": "instanced",
+      "mentalistScope": "discrete",
+      "grantedBy": "instanced_discrete",
+      "rollStat": "Intellect",
+      "range": "sight",
+      "duration": "scene",
+      "outcomes": {
+        "10+": "You successfully create a perfect 'muscle memory' template. For the rest of the scene, you can perform that specific action (e.g., a specific sword-fighting maneuver, the sequence to pick a complex lock) as if you had an Expert (+1) skill rank in it.",
+        "7-9": "The memory is flawed. You can perform the action, but only once, OR the mental effort of creating the template costs you 1 Temporary Corruption.",
+        "6-": "You miss a key detail in your observation. The mental model is corrupt, and any attempt to use it will result in an automatic failure."
       },
       "effects": [],
       "flaws": []
     },
     {
       "type": "move",
-      "id": "emotional-dampening",
+      "id": "metamind-emotional-dampening",
       "name": "Emotional Dampening",
       "lineage": "esper",
       "archetype": "meta-mind",
-      "path": "meta-mind.instanced_systemic",
-      "evolutionStage": 1,
+      "path": "meta-mind.instanced.systemic",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "meta-mind",
-        "instanced",
-        "systemic"
-      ],
-      "mentalistType": {
-        "temporal": "Instanced",
-        "changeType": "Systemic"
-      },
+      "tags": ["esper", "mentalist", "meta-mind", "instanced", "systemic", "defense"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
+        "source": "mentalist-powers.txt",
         "version": "1.0"
       },
       "description": {
-        "short": "For one scene, sever your emotional responses. You are immune to fear and emotional manipulation, but suffer a -2 penalty on social rolls requiring empathy.",
-        "player": "For one scene, sever your emotional responses. You are immune to fear and emotional manipulation, but suffer a -2 penalty on social rolls requiring empathy."
+        "short": "Sever emotional responses for pure logic. Immune to fear/manipulation but socially impaired.",
+        "player": "You sever your own emotional responses to maintain pure logic. For the rest of the scene, you are immune to fear, panic, and emotional manipulation from Empaths. However, you cannot benefit from positive emotions either and suffer a -2 penalty on all social rolls that require empathy or charm."
       },
-      "effects": [],
-      "flaws": []
+      "mentalistPolarity": "instanced",
+      "mentalistScope": "systemic",
+      "grantedBy": "instanced_systemic",
+      "rollStat": "Intellect",
+      "range": "self",
+      "duration": "scene",
+      "effects": [
+        {
+          "type": "resistance",
+          "description": "Immune to fear, panic, and emotional manipulation",
+          "duration": "scene"
+        }
+      ],
+      "flaws": [
+        {
+          "trigger": "while_active",
+          "effect": "social_penalty",
+          "value": -2,
+          "target": "empathy_charm_rolls",
+          "duration": "active",
+          "description": "Suffer -2 penalty on social rolls requiring empathy or charm"
+        }
+      ]
     },
     {
       "type": "move",
-      "id": "abstract-solution-space",
+      "id": "metamind-abstract-solution-space",
       "name": "Abstract Solution Space",
       "lineage": "esper",
       "archetype": "meta-mind",
-      "path": "meta-mind.instanced_systemic",
-      "evolutionStage": 1,
+      "path": "meta-mind.instanced.systemic",
+      "evolutionStage": 0,
       "moveType": "move",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "meta-mind",
-        "instanced",
-        "systemic"
-      ],
-      "mentalistType": {
-        "temporal": "Instanced",
-        "changeType": "Systemic"
-      },
+      "tags": ["esper", "mentalist", "meta-mind", "instanced", "systemic", "problem-solving"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
+        "source": "mentalist-powers.txt",
         "version": "1.0"
       },
       "description": {
-        "short": "Enter a 'mind palace'. Describe a complex problem to the GM, who must give you a direct, truthful answer or a significant clue.",
-        "player": "Enter a 'mind palace'. Describe a complex problem to the GM, who must give you a direct, truthful answer or a significant clue."
+        "short": "Enter 'mind palace' for hours-long analysis in moments. GM provides truthful answer or clue.",
+        "player": "You enter a 'mind palace' for a brief moment that feels like hours. Describe a complex logical problem, puzzle, or strategic question to the GM. The GM must give you a direct, truthful answer or a significant clue."
       },
+      "mentalistPolarity": "instanced",
+      "mentalistScope": "systemic",
+      "grantedBy": "instanced_systemic",
+      "rollStat": "Intellect",
+      "range": "self",
+      "duration": "instant",
       "effects": [],
       "flaws": []
     },
     {
       "type": "augment",
-      "id": "self-memory-edit",
+      "id": "metamind-self-memory-edit",
       "name": "Self-Memory Edit",
       "lineage": "esper",
       "archetype": "meta-mind",
-      "path": "meta-mind.persistent_discrete",
-      "evolutionStage": 1,
+      "path": "meta-mind.persistent.discrete",
+      "evolutionStage": 0,
       "moveType": "augment",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "meta-mind",
-        "persistent",
-        "discrete"
-      ],
-      "mentalistType": {
-        "temporal": "Persistent",
-        "changeType": "Discrete"
-      },
+      "tags": ["esper", "mentalist", "meta-mind", "persistent", "discrete", "dangerous"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
+        "source": "mentalist-powers.txt",
         "version": "1.0"
       },
       "description": {
-        "short": "The ability to alter, enhance, or suppress your own memories. This is a Deep Surgery move.",
-        "player": "The ability to alter, enhance, or suppress your own memories. This is a Deep Surgery move."
+        "short": "Alter, enhance, or suppress your own memories. Dangerous - can cause irreversible damage.",
+        "player": "The incredibly dangerous ability to subtly alter, enhance, or suppress your own memories. This grants unparalleled control over your own past and knowledge, but miscalculations can lead to irreversible mental damage, confusion, or even loss of core aptitudes.",
+        "flaw": "Extremely dangerous. Miscalculations can cause irreversible mental damage."
       },
-      "effects": [],
-      "flaws": []
+      "mentalistPolarity": "persistent",
+      "mentalistScope": "discrete",
+      "grantedBy": "persistent_discrete",
+      "effects": [
+        {
+          "type": "custom",
+          "description": "Can alter, enhance, or suppress own memories",
+          "duration": "permanent"
+        }
+      ],
+      "flaws": [
+        {
+          "trigger": "on_use",
+          "effect": "risk_of_damage",
+          "value": "catastrophic",
+          "target": "self_memory",
+          "duration": "permanent",
+          "description": "Miscalculations can cause irreversible mental damage, confusion, or loss of core aptitudes"
+        }
+      ]
     },
     {
       "type": "augment",
-      "id": "cognitive-firewall",
+      "id": "metamind-cognitive-firewall",
       "name": "Cognitive Firewall",
       "lineage": "esper",
       "archetype": "meta-mind",
-      "path": "meta-mind.persistent_systemic",
-      "evolutionStage": 1,
+      "path": "meta-mind.persistent.systemic",
+      "evolutionStage": 0,
       "moveType": "augment",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "meta-mind",
-        "persistent",
-        "systemic"
-      ],
-      "mentalistType": {
-        "temporal": "Persistent",
-        "changeType": "Systemic"
-      },
+      "tags": ["esper", "mentalist", "meta-mind", "persistent", "systemic", "defense"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
+        "source": "mentalist-powers.txt",
         "version": "1.0"
       },
       "description": {
-        "short": "Re-architect your mind's defenses, granting a +2 bonus when resisting any form of mental intrusion.",
-        "player": "Re-architect your mind's defenses, granting a +2 bonus when resisting any form of mental intrusion."
+        "short": "Re-architect mind's defenses with psychic baffles. +2 vs mental intrusion. Cost: +2 Permanent Corruption.",
+        "player": "You re-architect your mind's defenses, creating psychic baffles and traps. You gain a +2 bonus when resisting any form of mental intrusion (Empath, Mesmer, Siren, etc.).",
+        "flaw": "Cost: Permanent Corruption +2"
       },
-      "effects": [],
-      "flaws": []
+      "mentalistPolarity": "persistent",
+      "mentalistScope": "systemic",
+      "grantedBy": "persistent_systemic",
+      "effects": [
+        {
+          "type": "skill_bonus",
+          "value": 2,
+          "target": "mental_defense",
+          "description": "+2 bonus to resist mental intrusion",
+          "duration": "permanent"
+        }
+      ],
+      "flaws": [
+        {
+          "trigger": "taking_this_power",
+          "effect": "corruption_gain",
+          "value": 2,
+          "target": "permanent_corruption",
+          "duration": "permanent",
+          "description": "Gain +2 Permanent Corruption when selecting this power"
+        }
+      ]
     },
     {
       "type": "augment",
-      "id": "persona-polarity",
+      "id": "metamind-persona-polarity",
       "name": "Persona Polarity",
       "lineage": "esper",
       "archetype": "meta-mind",
-      "path": "meta-mind.persistent_systemic",
-      "evolutionStage": 1,
+      "path": "meta-mind.persistent.systemic",
+      "evolutionStage": 0,
       "moveType": "augment",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "meta-mind",
-        "persistent",
-        "systemic"
-      ],
-      "mentalistType": {
-        "temporal": "Persistent",
-        "changeType": "Systemic"
-      },
+      "tags": ["esper", "mentalist", "meta-mind", "persistent", "systemic", "identity"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
+        "source": "mentalist-powers.txt",
         "version": "1.0"
       },
       "description": {
-        "short": "Fracture your consciousness into two distinct, switchable personas designed at character creation. This is a Deep Surgery move.",
-        "player": "Fracture your consciousness into two distinct, switchable personas designed at character creation. This is a Deep Surgery move."
+        "short": "Fractured consciousness into two switchable personas. Distribute Intellect Specializations between them. Cost: +3 Permanent Corruption.",
+        "player": "You have fractured your consciousness into two distinct, switchable personas. You design these two 'minds' during character creation, distributing your base Intellect Specializations between them. For example, Persona A might have Reasoning and Wits, while Persona B has Intuition and Willpower. Once per scene, you can switch between your two personas as a free action. This allows you to bring the appropriate mental toolset to bear on a problem. Over time, these two personas become more and more divergent. An outside observer would find it difficult to believe they are the same person, noticing distinct changes in speech patterns, mannerisms, posture, and worldview. The character is often asked if they have an identical twin.",
+        "flaw": "This makes the choice to use this augment a profound roleplaying commitment. Cost: Permanent Corruption +3"
       },
-      "effects": [],
-      "flaws": []
+      "mentalistPolarity": "persistent",
+      "mentalistScope": "systemic",
+      "grantedBy": "persistent_systemic",
+      "effects": [
+        {
+          "type": "custom",
+          "description": "Can switch between two distinct personas (once per scene) with different Intellect Specializations",
+          "duration": "permanent"
+        }
+      ],
+      "flaws": [
+        {
+          "trigger": "taking_this_power",
+          "effect": "corruption_gain",
+          "value": 3,
+          "target": "permanent_corruption",
+          "duration": "permanent",
+          "description": "Gain +3 Permanent Corruption when selecting this power"
+        },
+        {
+          "trigger": "over_time",
+          "effect": "personality_divergence",
+          "value": "extreme",
+          "target": "self_identity",
+          "duration": "permanent",
+          "description": "Personas become increasingly divergent over time. Distinct speech, mannerisms, posture, worldview"
+        }
+      ]
     },
     {
       "type": "augment",
-      "id": "sleep-purge",
+      "id": "metamind-sleep-purge",
       "name": "Sleep Purge",
       "lineage": "esper",
       "archetype": "meta-mind",
-      "path": "meta-mind.persistent_systemic",
-      "evolutionStage": 1,
+      "path": "meta-mind.persistent.systemic",
+      "evolutionStage": 0,
       "moveType": "augment",
+      "isMentalist": true,
       "category": "Mentalist Powers",
-      "tags": [
-        "mentalist",
-        "meta-mind",
-        "persistent",
-        "systemic"
-      ],
-      "mentalistType": {
-        "temporal": "Persistent",
-        "changeType": "Systemic"
-      },
+      "tags": ["esper", "mentalist", "meta-mind", "persistent", "systemic", "biological"],
       "metadata": {
-        "source": "Sidonia-Espers.docx",
+        "source": "mentalist-powers.txt",
         "version": "1.0"
       },
       "description": {
-        "short": "Edit your brain to no longer require sleep. You cannot be rendered unconscious by exhaustion, but you can no longer dream or benefit from a Dreamer's powers.",
-        "player": "Edit your brain to no longer require sleep. You cannot be rendered unconscious by exhaustion, but you can no longer dream or benefit from a Dreamer's powers."
+        "short": "No longer require sleep. Cannot dream or benefit from Dreamer powers. Cost: +2 Permanent Corruption.",
+        "player": "You have edited your own brain to no longer require sleep, replacing it with a low-power state of active information perceiving. You cannot be rendered unconscious by exhaustion. However, this disconnects you from the collective unconscious; you can no longer dream, and Dreamers cannot use their powers on you (or to help you).",
+        "flaw": "Cost: Permanent Corruption +2 (and you can never benefit from a Dreamer's Aetheric Amplifier)"
       },
-      "effects": [],
-      "flaws": []
+      "mentalistPolarity": "persistent",
+      "mentalistScope": "systemic",
+      "grantedBy": "persistent_systemic",
+      "effects": [
+        {
+          "type": "custom",
+          "description": "No longer require sleep. Cannot be rendered unconscious by exhaustion",
+          "duration": "permanent"
+        }
+      ],
+      "flaws": [
+        {
+          "trigger": "taking_this_power",
+          "effect": "corruption_gain",
+          "value": 2,
+          "target": "permanent_corruption",
+          "duration": "permanent",
+          "description": "Gain +2 Permanent Corruption when selecting this power"
+        },
+        {
+          "trigger": "permanent",
+          "effect": "disconnected_from_dreams",
+          "value": "complete",
+          "target": "collective_unconscious",
+          "duration": "permanent",
+          "description": "Cannot dream. Immune to Dreamer powers (including beneficial effects like Aetheric Amplifier)"
+        }
+      ]
     }
   ],
   "archetypes": {
@@ -6452,6 +7495,36 @@
       "name": "Beast Tamer",
       "path": "... -> Animist -> Beast Tamer",
       "description": "Every beast has a soul. The Beast Tamer focuses on forming a deep, empathetic bond with individual creatures. They are the rehabilitators, the whisperers, the ones who can soothe the savage heart."
+    },
+    "empath": {
+      "id": "empath",
+      "name": "Empath",
+      "path": "",
+      "description": "The Empath is attuned to the primal language of emotion. They are living resonators who sense the feelings that drive individuals and mobs alike. Receivers detect lies and anticipate intent by feeling emotional shifts, while Influencers amplify and broadcast emotion, stoking existing feelings into overwhelming forces. An Empath can feel the truth behind words or turn a spark of anger into a raging inferno."
+    },
+    "mesmer": {
+      "id": "mesmer",
+      "name": "Mesmer",
+      "path": "",
+      "description": "The Mesmer masters logic, reason, and higher-order thought. They are not simple mind readers but masters of predictive behavior and cognitive exploits who understand how people think and use that understanding to create confusion, plant ideas, and craft flawless illusions by manipulating expectations. Where an Empath feels emotion, a Mesmer maps the flawed logic playing out in a mind, dismantling mental defenses brick by brick."
+    },
+    "siren": {
+      "id": "siren",
+      "name": "Siren",
+      "path": "",
+      "description": "The Siren's domain is the connection between mind and body. They manipulate the autonomic nervous system—breath, heartbeat, adrenaline—most potently through physical touch. They are infamous for projecting their power through voice, modulating vocal cords to carry Aetheric frequencies that can calm a crowd or trigger waves of panic. An untrained Siren's every emotional utterance may cause unintended physical reactions in those nearby."
+    },
+    "dreamer": {
+      "id": "dreamer",
+      "name": "Dreamer",
+      "path": "",
+      "description": "Dreamers navigate the surreal landscape of the subconscious rather than the waking mind. They are spies of the soul who unearth secrets and plant ideas in symbolic dream-worlds. Their true significance is their effect on the Aether itself—they are psychic amplifiers. In their presence, the Aether becomes more responsive. Spirits are drawn to them, sorcerers' spells manifest with ease, and other Espers find their powers magnified."
+    },
+    "meta-mind": {
+      "id": "meta-mind",
+      "name": "Meta-Mind",
+      "path": "",
+      "description": "The Meta-Mind's focus is inward, manipulating their own brain to achieve superhuman cognitive function. They overclock neural pathways, edit memories for perfect recall, and become master strategists beyond any known genius. This power comes at appalling risk—manipulating one's own mind is psychic self-surgery with a rusty scalpel. The slightest miscalculation leads to cascading madness or complete loss of self."
     }
   }
 }
