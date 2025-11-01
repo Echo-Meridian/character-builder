@@ -41,6 +41,16 @@
   @apply backdrop-blur-sm;
 }
 
+/* Sticky on mobile */
+@media (max-width: 767px) {
+  .lineage-power-summary {
+    @apply sticky top-0 z-10;
+    @apply bg-sidonia-black/95 backdrop-blur-md;
+    @apply shadow-lg shadow-black/40;
+    margin-bottom: 1rem;
+  }
+}
+
 .lineage-power-summary > div {
   display: grid;
   gap: 0.15rem;
@@ -63,11 +73,28 @@
   @apply m-0 text-sidonia-text/70 font-body text-sm italic;
 }
 
-/* Power Cards Grid */
+/* Power Cards Grid - Responsive */
 .lineage-powers-grid {
   display: grid;
   gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* Mobile: Single column */
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .lineage-powers-grid {
+    /* Tablet: 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lineage-powers-grid {
+    /* Desktop: 3 columns */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
 }
 
 /* Individual Power Cards - Art Deco Style */
@@ -312,8 +339,17 @@ details[open].automata-package-card summary::after {
 
 .lineage-powers-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.25rem;
+  /* Mobile: Single column */
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .lineage-powers-columns {
+    /* Tablet and Desktop: 2 columns (Primary and Secondary spheres) */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
 }
 
 .sphere-column {
@@ -407,7 +443,22 @@ details[open].automata-package-card summary::after {
 .focus-grid {
   display: grid;
   gap: 0.75rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  /* Mobile: Single column */
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .focus-grid {
+    /* Small screens and up: 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .focus-grid {
+    /* Desktop: 3 columns */
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .focus-card {
@@ -432,7 +483,22 @@ details[open].automata-package-card summary::after {
 .chassis-grid {
   display: grid;
   gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* Mobile: Single column */
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .chassis-grid {
+    /* Tablet: 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .chassis-grid {
+    /* Desktop: 3 columns */
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .branch-grid {
@@ -456,7 +522,22 @@ details[open].automata-package-card summary::after {
 .model-grid {
   display: grid;
   gap: 0.75rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  /* Mobile: Single column */
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .model-grid {
+    /* Small screens: 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .model-grid {
+    /* Desktop: 3 columns */
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .model-card {
@@ -667,13 +748,67 @@ details summary::-webkit-details-marker {
   @apply font-body text-sm text-sidonia-brass cursor-pointer;
 }
 
-@media (max-width: 640px) {
+/* Mobile optimizations - Fix nesting problem */
+@media (max-width: 767px) {
   .lineage-powers-panel {
-    padding: 1.2rem;
+    /* Break out of parent padding for full width on mobile */
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding: 0.5rem;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
   }
 
   .lineage-powers-panel::before,
   .lineage-powers-panel::after {
-    @apply w-deco-sm h-deco-sm;
+    display: none;
+  }
+
+  /* Minimal padding on mobile cards */
+  .lineage-power-card {
+    padding: 0.5rem;
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+    border-left: none;
+    border-right: none;
+  }
+
+  /* Compact tier/grade sections */
+  .lineage-power-tier,
+  .lineage-power-grade,
+  .power-list__item {
+    padding: 0.5rem;
+    border-width: 1px;
+  }
+
+  /* Compress header text on mobile */
+  .lineage-powers-panel header h3 {
+    font-size: 1.5rem;
+  }
+
+  /* Minimal summary padding */
+  .lineage-power-summary {
+    gap: 0.5rem;
+    padding: 0.5rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    border-radius: 0;
+  }
+
+  .lineage-power-summary > div {
+    min-width: auto;
+    flex: 1 1 45%;
+  }
+
+  /* Reduce grid gaps on mobile */
+  .lineage-powers-grid {
+    gap: 0.5rem;
+  }
+
+  /* Compact buttons */
+  .power-toggle {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
   }
 }

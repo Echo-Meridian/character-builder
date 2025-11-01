@@ -58,9 +58,25 @@
 /* Art Deco Resource Grid */
 .resource-grid {
   display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
   @apply my-deco-lg;
+  /* Mobile: Single column */
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .resource-grid {
+    /* Tablet: 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .resource-grid {
+    /* Desktop: 2 columns (resources work better in 2-col) */
+    gap: 2rem;
+  }
 }
 
 /* Resource Section with Corner Decorations */
@@ -257,8 +273,23 @@
 .resource-reference {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   @apply mt-deco-lg;
+  /* Mobile: Single column */
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .resource-reference {
+    /* Small screens: 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .resource-reference {
+    /* Desktop: 3 columns */
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .resource-reference article {

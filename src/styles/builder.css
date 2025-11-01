@@ -71,6 +71,9 @@
 
 @media (max-width: 768px) {
   .stage {
-    padding: 1.25rem;
+    padding: 0.75rem;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
   }
 }

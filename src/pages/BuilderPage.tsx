@@ -227,7 +227,7 @@ export function BuilderPage() {
 
   return (
     <div
-      className="min-h-screen px-deco-md py-deco-lg space-y-deco-lg relative"
+      className="min-h-screen px-deco-md py-deco-lg space-y-deco-lg relative sm:px-deco-md px-2"
       style={builderStyle}
     >
       {/* Lineage-specific background glow */}
