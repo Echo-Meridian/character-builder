@@ -267,8 +267,8 @@ details[open].automata-package-card summary::after {
   width: 16px;
   height: 16px;
   object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(71%) sepia(47%) saturate(449%) hue-rotate(8deg) brightness(93%) contrast(87%);
-  /* This filter converts to gold color #d4af37 */
+  display: block;
+  /* Keep original colors from your artwork */
 }
 
 /* Mobile: icon only, hide text */
