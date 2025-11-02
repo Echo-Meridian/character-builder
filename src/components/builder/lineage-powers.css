@@ -252,10 +252,42 @@ details[open].automata-package-card summary::after {
 
 /* Art Deco Badges */
 .badge {
-  @apply inline-flex items-center;
+  @apply inline-flex items-center gap-1;
   @apply px-2 py-0.5 rounded-full;
   @apply font-body text-xs uppercase tracking-wide;
   @apply bg-sidonia-gold/20 border border-sidonia-gold/50 text-sidonia-gold;
+}
+
+/* Icon badges - show icon only on mobile, icon + text on desktop */
+.badge--icon {
+  @apply gap-1.5;
+}
+
+.badge--icon img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(71%) sepia(47%) saturate(449%) hue-rotate(8deg) brightness(93%) contrast(87%);
+  /* This filter converts to gold color #d4af37 */
+}
+
+/* Mobile: icon only, hide text */
+@media (max-width: 767px) {
+  .badge--icon .badge__text {
+    display: none;
+  }
+
+  .badge--icon {
+    padding: 0.35rem;
+    min-width: 28px;
+    min-height: 28px;
+    justify-content: center;
+  }
+
+  .badge--icon img {
+    width: 14px;
+    height: 14px;
+  }
 }
 
 .badge--tier {
@@ -429,6 +461,12 @@ details[open].automata-package-card summary::after {
 
 .power-list__title {
   @apply font-accent text-xl font-bold text-sidonia-gold m-0;
+}
+
+/* Archetype/branch label under power name */
+.power-list__subtitle {
+  @apply font-body text-sm text-sidonia-brass/80 italic mt-1;
+  @apply tracking-wide;
 }
 
 .power-list__meta {

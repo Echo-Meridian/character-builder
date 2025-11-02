@@ -567,6 +567,10 @@ export function LineagePowersPanel({
                           <h5 className="lineage-power-tier__name">{tier.name ?? `Tier ${tierNum}`}</h5>
                           <div className="lineage-power-tier__meta">
                             <span className="badge badge--tier">{augmentTierLabel}</span>
+                            <span className="badge badge--icon">
+                              <img src="/icons/augment.webp" alt="" />
+                              <span className="badge__text">Augment</span>
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -1074,14 +1078,26 @@ export function LineagePowersPanel({
               <ul className="power-list">
                 {powersForPath.map(power => {
                   const powerId = power.id ?? slugify(power.name ?? 'power');
+                  // Extract archetype name from path (e.g., "sentinel" from "sentinel.juggernaut")
+                  const pathParts = (power.path ?? '').split('.');
+                  const archetypeName = pathParts[0] ? pathParts[0].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : '';
+
                   return (
                     <li key={powerId} className="power-list__item power-list__item--granted">
                       <div className="power-list__header">
                         <div>
-                          <strong>{power.name}</strong>
-                          <span className="badge">Stage {power.evolutionStage}</span>
-                          <span className="badge">{power.moveType}</span>
+                          <strong className="power-list__title">{power.name}</strong>
+                          {archetypeName && <div className="power-list__subtitle">{archetypeName}</div>}
                         </div>
+                      </div>
+                      <div className="power-list__meta">
+                        <span className="badge">Stage {power.evolutionStage}</span>
+                        {power.moveType && (
+                          <span className="badge badge--icon">
+                            <img src="/icons/move.webp" alt="" />
+                            <span className="badge__text">{power.moveType}</span>
+                          </span>
+                        )}
                       </div>
                       {renderDescription(power.description, gmEnabled)}
                     </li>
