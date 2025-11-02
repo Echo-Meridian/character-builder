@@ -729,6 +729,10 @@ export function LineagePowersPanel({
                           <h5 className="lineage-power-tier__name">{tier.name ?? `Tier ${tierNum}`}</h5>
                           <div className="lineage-power-tier__meta">
                             <span className="badge badge--tier">{augmentTierLabel}</span>
+                            <span className="badge badge--icon">
+                              <img src="/icons/Augment.png" alt="" />
+                              <span className="badge__text">Mutation</span>
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -933,7 +937,12 @@ export function LineagePowersPanel({
                               <div className="power-list__header">
                                 <h6 className="power-list__title">{power.name}</h6>
                                 <div className="power-list__meta">
-                                  {power.moveType && <span className="badge badge--type">{power.moveType}</span>}
+                                  {power.moveType && (
+                                    <span className="badge badge--icon">
+                                      <img src="/icons/Move.png" alt="" />
+                                      <span className="badge__text">{power.moveType}</span>
+                                    </span>
+                                  )}
                                   <button
                                     type="button"
                                     className={moveToggleClass}
@@ -1334,7 +1343,12 @@ export function LineagePowersPanel({
                       <div className="power-list__header">
                         <div>
                           <strong>{power.name}</strong>
-                          <span className="badge">{power.moveType}</span>
+                          {power.moveType && (
+                            <span className="badge badge--icon">
+                              <img src="/icons/Move.png" alt="" />
+                              <span className="badge__text">{power.moveType}</span>
+                            </span>
+                          )}
                         </div>
                       </div>
                       {renderDescription(power.description, gmEnabled)}
@@ -1473,7 +1487,12 @@ export function LineagePowersPanel({
                         return (
                           <div key={powerId} className="lineage-power-card">
                             <h6>{power.name}</h6>
-                            <span className="badge">{power.moveType}</span>
+                            {power.moveType && (
+                              <span className="badge badge--icon">
+                                <img src="/icons/Move.png" alt="" />
+                                <span className="badge__text">{power.moveType}</span>
+                              </span>
+                            )}
                             {renderDescription(power.description, gmEnabled)}
                             <button
                               type="button"
@@ -1709,8 +1728,18 @@ export function LineagePowersPanel({
                                 <li key={power.id} className="power-list__item">
                                   <div>
                                     <strong>{power.name}</strong>
-                                    <span className="badge badge--type">{power.augmentLevel}</span>
-                                    {power.moveType && <span className="badge">{power.moveType}</span>}
+                                    {power.augmentLevel && (
+                                      <span className="badge badge--icon">
+                                        <img src="/icons/Augment.png" alt="" />
+                                        <span className="badge__text">{power.augmentLevel}</span>
+                                      </span>
+                                    )}
+                                    {power.moveType && (
+                                      <span className="badge badge--icon">
+                                        <img src="/icons/Move.png" alt="" />
+                                        <span className="badge__text">{power.moveType}</span>
+                                      </span>
+                                    )}
                                   </div>
                                   {renderDescription(power.description, gmEnabled)}
                                   {power.outcomes && Object.keys(power.outcomes).length > 0 && (
@@ -1745,8 +1774,18 @@ export function LineagePowersPanel({
                 <li key={power.id} className="power-list__item">
                   <div>
                     <strong>{power.name}</strong>
-                    <span className="badge badge--type">{power.augmentLevel}</span>
-                    {power.moveType && <span className="badge">{power.moveType}</span>}
+                    {power.augmentLevel && (
+                      <span className="badge badge--icon">
+                        <img src="/icons/Augment.png" alt="" />
+                        <span className="badge__text">{power.augmentLevel}</span>
+                      </span>
+                    )}
+                    {power.moveType && (
+                      <span className="badge badge--icon">
+                        <img src="/icons/Move.png" alt="" />
+                        <span className="badge__text">{power.moveType}</span>
+                      </span>
+                    )}
                   </div>
                   {renderDescription(power.description, gmEnabled)}
                   {power.outcomes && Object.keys(power.outcomes).length > 0 && (
