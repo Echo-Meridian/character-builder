@@ -149,12 +149,38 @@
   @apply mb-2;
 }
 
-/* Don't show "Expand for Details" text - browser disclosure triangle is enough */
+/* Hide default disclosure triangle, show custom "Expand for Details" text */
+.lineage-power-card__summary::-webkit-details-marker,
+.sphere-card__summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
 .lineage-power-card__summary::after,
 .sphere-card__summary::after,
 .automata-package-card summary::after {
-  content: '';
-  display: none;
+  content: 'Expand for Details ›';
+  @apply font-body text-xs uppercase tracking-wider;
+  @apply text-sidonia-gold/60;
+  @apply mt-1 pt-2 border-t border-sidonia-gold/20;
+  @apply transition-all duration-300;
+  display: block;
+}
+
+.lineage-power-card__summary:hover::after,
+.sphere-card__summary:hover::after,
+.automata-package-card summary:hover::after {
+  @apply text-sidonia-gold;
+}
+
+details[open] .lineage-power-card__summary::after,
+details[open] .sphere-card__summary::after,
+details[open].automata-package-card summary::after {
+  content: 'Collapse Details ‹';
+  @apply text-sidonia-gold;
 }
 
 /* Move any buttons in summary to the end */
@@ -230,7 +256,8 @@
 }
 
 .lineage-power-tier__label {
-  @apply font-body text-sm text-sidonia-brass/90 italic;
+  @apply font-body text-sidonia-brass/90 italic;
+  font-size: 0.9rem;
 }
 
 .lineage-power-tier__footer {
@@ -265,9 +292,11 @@
 /* Icon badges - show icon only on mobile, icon + text on desktop */
 .badge--icon {
   @apply gap-1.5;
-  /* Remove button-like appearance */
-  @apply bg-transparent border-none;
-  padding: 0;
+  /* Remove ALL button-like appearance */
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0;
 }
 
 .badge--icon img {
@@ -278,17 +307,14 @@
   /* Keep original colors from your artwork */
 }
 
+.badge--icon .badge__text {
+  @apply text-sidonia-brass text-xs;
+}
+
 /* Mobile: icon only, hide text */
 @media (max-width: 767px) {
   .badge--icon .badge__text {
     display: none;
-  }
-
-  .badge--icon {
-    padding: 0.35rem;
-    min-width: 28px;
-    min-height: 28px;
-    justify-content: center;
   }
 
   .badge--icon img {
@@ -325,19 +351,22 @@
   @apply bg-corruption-red/20 border-corruption-red/50 text-corruption-red;
 }
 
-/* Power Descriptions */
+/* Power Descriptions - Improved contrast for accessibility */
 .power-description {
   display: grid;
   gap: 0.45rem;
-  @apply font-body text-sm text-sidonia-text/80;
+  @apply font-body text-sm;
+  color: rgba(245, 245, 220, 0.95); /* Increased from 0.8 */
 }
 
 .power-description__detail {
-  @apply text-sidonia-text/80 font-body;
+  @apply font-body;
+  color: rgba(245, 245, 220, 0.95); /* Increased from 0.8 */
 }
 
 .power-description__short {
-  @apply text-sidonia-text/70 text-xs;
+  @apply text-xs;
+  color: rgba(245, 245, 220, 0.85); /* Increased from 0.7 */
 }
 
 .power-description__flaw,
