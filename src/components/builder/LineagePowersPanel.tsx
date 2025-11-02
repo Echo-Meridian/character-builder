@@ -566,7 +566,7 @@ export function LineagePowersPanel({
                         <div className="lineage-power-tier__info">
                           <h5 className="lineage-power-tier__name">{tier.name ?? `Tier ${tierNum}`}</h5>
                           <div className="lineage-power-tier__meta">
-                            <span className="badge badge--tier">{augmentTierLabel}</span>
+                            <span className="lineage-power-tier__label">{augmentTierLabel}</span>
                             <span className="badge badge--icon">
                               <img src="/icons/Augment.png" alt="" />
                               <span className="badge__text">Augment</span>

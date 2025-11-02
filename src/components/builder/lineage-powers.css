@@ -131,8 +131,15 @@
 /* NeoSapien augment system names use Limelight */
 .lineage-power-card__summary h4 {
   font-family: 'Limelight', serif;
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 400;
+  text-align: left;
+}
+
+@media (max-width: 767px) {
+  .lineage-power-card__summary h4 {
+    font-size: 1.25rem;
+  }
 }
 
 .lineage-power-card__short-desc,
@@ -142,29 +149,12 @@
   @apply mb-2;
 }
 
-/* Expand for Details Section */
+/* Don't show "Expand for Details" text - browser disclosure triangle is enough */
 .lineage-power-card__summary::after,
 .sphere-card__summary::after,
 .automata-package-card summary::after {
-  content: 'Expand for Details ›';
-  @apply font-body text-xs uppercase tracking-wider;
-  @apply text-sidonia-gold/60;
-  @apply mt-1 pt-2 border-t border-sidonia-gold/20;
-  @apply transition-all duration-300;
-  @apply self-start;
-}
-
-.lineage-power-card__summary:hover::after,
-.sphere-card__summary:hover::after,
-.automata-package-card summary:hover::after {
-  @apply text-sidonia-gold;
-}
-
-details[open] .lineage-power-card__summary::after,
-details[open] .sphere-card__summary::after,
-details[open].automata-package-card summary::after {
-  content: 'Collapse Details ‹';
-  @apply text-sidonia-gold;
+  content: '';
+  display: none;
 }
 
 /* Move any buttons in summary to the end */
@@ -222,11 +212,25 @@ details[open].automata-package-card summary::after {
 }
 
 .lineage-power-tier__name {
-  @apply font-accent text-xl font-bold text-sidonia-gold m-0;
+  @apply m-0 text-sidonia-gold;
+  font-family: 'Limelight', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+@media (max-width: 767px) {
+  .lineage-power-tier__name {
+    font-size: 1.1rem;
+  }
 }
 
 .lineage-power-tier__meta {
-  @apply flex items-center gap-2;
+  @apply flex items-center gap-2 flex-wrap;
+}
+
+.lineage-power-tier__label {
+  @apply font-body text-sm text-sidonia-brass/90 italic;
 }
 
 .lineage-power-tier__footer {
@@ -261,6 +265,9 @@ details[open].automata-package-card summary::after {
 /* Icon badges - show icon only on mobile, icon + text on desktop */
 .badge--icon {
   @apply gap-1.5;
+  /* Remove button-like appearance */
+  @apply bg-transparent border-none;
+  padding: 0;
 }
 
 .badge--icon img {
