@@ -168,6 +168,7 @@ details summary::-webkit-details-marker {
   @apply mt-1 pt-2 border-t border-sidonia-gold/20;
   @apply transition-all duration-300;
   display: block;
+  text-align: center;
 }
 
 .lineage-power-card__summary:hover::after,
@@ -221,6 +222,12 @@ details[open].automata-package-card summary::after {
 .lineage-power-tier--selected,
 .lineage-power-grade--selected {
   @apply border-sidonia-gold shadow-md shadow-sidonia-gold/20 bg-sidonia-gold/5;
+}
+
+.lineage-power-tier--disabled,
+.lineage-power-grade--disabled {
+  @apply opacity-50;
+  pointer-events: none;
 }
 
 .lineage-power-tier__header {
@@ -318,8 +325,8 @@ details[open].automata-package-card summary::after {
   }
 
   .badge--icon img {
-    width: 14px;
-    height: 14px;
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -443,6 +450,11 @@ details[open].automata-package-card summary::after {
 
 .sphere-card--selected {
   @apply border-lineage-sorcerer shadow-lg shadow-lineage-sorcerer/30;
+}
+
+.sphere-card--disabled {
+  @apply opacity-50;
+  pointer-events: none;
 }
 
 .sphere-card summary h5 {
@@ -756,9 +768,20 @@ details summary::-webkit-details-marker {
 
 /* Esper/Automata Specialized Sections */
 .esper-evolution-section,
-.mentalist-selection-section,
-.automata-selection-grid {
+.mentalist-selection-section {
   @apply space-y-deco-sm;
+}
+
+.automata-selection-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .automata-selection-grid {
+    gap: 2rem;
+  }
 }
 
 .section-description,
@@ -767,8 +790,31 @@ details summary::-webkit-details-marker {
   @apply text-sidonia-text/70 font-body text-sm;
 }
 
+.automata-chassis-section {
+  display: grid;
+  gap: 1rem;
+}
+
 .automata-chassis-section h4 {
   @apply font-accent text-2xl font-bold tracking-wide uppercase text-lineage-automata mb-deco-sm;
+}
+
+.automata-packages-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .automata-packages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .automata-packages-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .automata-package-card {
@@ -781,7 +827,13 @@ details summary::-webkit-details-marker {
 }
 
 .automata-package-summary {
-  @apply flex items-start justify-between gap-3;
+  @apply flex flex-col gap-3;
+}
+
+@media (min-width: 640px) {
+  .automata-package-summary {
+    @apply flex-row items-start justify-between;
+  }
 }
 
 .automata-package-summary h5 {

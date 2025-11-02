@@ -4,18 +4,18 @@ import type { PriorityRank, LineageKey } from '../data/types';
 import { analytics } from '../utils/analytics';
 
 export type PriorityCategory = 'lineage' | 'resources' | 'background' | 'skills' | 'attributes';
-export const PRIORITY_CATEGORIES: PriorityCategory[] = ['lineage', 'resources', 'background', 'skills', 'attributes'];
+export const PRIORITY_CATEGORIES: PriorityCategory[] = ['lineage', 'background', 'resources', 'skills', 'attributes'];
 
 export type CharacterStage =
   | 'priorities'
   | 'lineage'
-  | 'resources'
   | 'background'
+  | 'resources'
   | 'skills'
   | 'attributes'
   | 'narrative';
 
-export const STAGES: CharacterStage[] = ['priorities', 'lineage', 'resources', 'background', 'skills', 'attributes', 'narrative'];
+export const STAGES: CharacterStage[] = ['priorities', 'lineage', 'background', 'resources', 'skills', 'attributes', 'narrative'];
 
 export const LINEAGES: LineageKey[] = ['neosapien', 'sorcery', 'esper', 'chimera', 'automata'];
 
@@ -686,6 +686,56 @@ export const useCharacterStore = create<CharacterStore>()(
                   return build;
                 }
               }
+            }
+          }
+
+          // VALIDATION: Prevent exceeding limits before adding selection
+
+          // NeoSapien slot validation
+          if (selection.lineage === 'neosapien') {
+            const SLOT_LIMITS: Record<PriorityRank, number> = { A: 9, B: 7, C: 6, D: 4, E: 2 };
+            const slotLimit = lineagePriority ? SLOT_LIMITS[lineagePriority] : 0;
+            const currentSlots = powers.reduce((sum, entry) => sum + (entry.meta?.slots ?? 0), 0);
+            const newSlots = selection.meta?.slots ?? 0;
+            if (slotLimit > 0 && currentSlots + newSlots > slotLimit) {
+              return build; // Block selection - would exceed limit
+            }
+          }
+
+          // Chimera mutation point validation
+          if (selection.lineage === 'chimera') {
+            const MUTATION_LIMITS: Record<PriorityRank, number> = { A: 7, B: 5, C: 4, D: 3, E: 2 };
+            const mutationLimit = lineagePriority ? MUTATION_LIMITS[lineagePriority] : 0;
+            const currentPoints = powers.reduce((sum, entry) => sum + (entry.meta?.mutationPoints ?? 0), 0);
+            const newPoints = selection.meta?.mutationPoints ?? 0;
+            if (mutationLimit > 0 && currentPoints + newPoints > mutationLimit) {
+              return build; // Block selection - would exceed limit
+            }
+          }
+
+          // Sorcery sphere/move validation
+          if (selection.lineage === 'sorcery') {
+            const SORCERY_LIMITS: Record<PriorityRank, { primary: number; secondary: number; moves: number }> = {
+              A: { primary: 1, secondary: 2, moves: 5 },
+              B: { primary: 1, secondary: 1, moves: 4 },
+              C: { primary: 1, secondary: 2, moves: 3 },
+              D: { primary: 0, secondary: 1, moves: 2 },
+              E: { primary: 0, secondary: 1, moves: 1 }
+            };
+            const limits = lineagePriority ? SORCERY_LIMITS[lineagePriority] : { primary: 0, secondary: 0, moves: 0 };
+
+            const primaryCount = powers.filter((entry) => entry.kind === 'sorcery-sphere-primary').length;
+            const secondaryCount = powers.filter((entry) => entry.kind === 'sorcery-sphere-secondary').length;
+            const moveCount = powers.filter((entry) => entry.kind === 'sorcery-move').length;
+
+            if (selection.kind === 'sorcery-sphere-primary' && primaryCount >= limits.primary) {
+              return build; // Block selection - would exceed primary sphere limit
+            }
+            if (selection.kind === 'sorcery-sphere-secondary' && secondaryCount >= limits.secondary) {
+              return build; // Block selection - would exceed secondary sphere limit
+            }
+            if (selection.kind === 'sorcery-move' && moveCount >= limits.moves) {
+              return build; // Block selection - would exceed move limit
             }
           }
 

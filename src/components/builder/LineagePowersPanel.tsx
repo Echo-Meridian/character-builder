@@ -552,7 +552,12 @@ export function LineagePowersPanel({
                     }
                   };
                   const isSelected = selectedIds.has(selection.id);
-                  const tierClass = `lineage-power-tier${isSelected ? ' lineage-power-tier--selected' : ''}`;
+
+                  // Check if selecting this tier would exceed slot limit
+                  const wouldExceedLimit = !isSelected && slotLimit > 0 && (slotsUsed + tierNum > slotLimit);
+                  const isDisabled = wouldExceedLimit;
+
+                  const tierClass = `lineage-power-tier${isSelected ? ' lineage-power-tier--selected' : ''}${isDisabled ? ' lineage-power-tier--disabled' : ''}`;
                   const buttonClass = `power-toggle power-toggle--radio${isSelected ? ' power-toggle--active' : ''}`;
 
                   // Get augment tier label with context
@@ -566,11 +571,11 @@ export function LineagePowersPanel({
                         <div className="lineage-power-tier__info">
                           <h5 className="lineage-power-tier__name">{tier.name ?? `Tier ${tierNum}`}</h5>
                           <div className="lineage-power-tier__meta">
-                            <span className="lineage-power-tier__label">{augmentTierLabel}</span>
                             <span className="badge badge--icon">
                               <img src="/icons/Augment.png" alt="" />
                               <span className="badge__text">Augment</span>
                             </span>
+                            <span className="lineage-power-tier__label">{augmentTierLabel}</span>
                           </div>
                         </div>
                       </div>
@@ -580,9 +585,11 @@ export function LineagePowersPanel({
                           type="button"
                           className={buttonClass}
                           onClick={() => handleNeoSapienTierSelection(selection)}
+                          disabled={isDisabled}
+                          title={isDisabled ? `Would exceed slot limit (${slotsUsed + tierNum}/${slotLimit})` : undefined}
                           aria-label={isSelected ? `Deselect ${tier.name ?? `Tier ${tierNum}`}` : `Select ${tier.name ?? `Tier ${tierNum}`}`}
                         >
-                          {isSelected ? 'Selected' : 'Select'}
+                          {isSelected ? 'Selected' : isDisabled ? 'Exceeds Limit' : 'Select'}
                         </button>
                         <div className="lineage-power-tier__cost">
                           <span>{tierNum} Slot{tierNum === 1 ? '' : 's'}</span>
@@ -714,7 +721,12 @@ export function LineagePowersPanel({
                     }
                   };
                   const isSelected = selectedIds.has(selection.id);
-                  const tierClass = `lineage-power-tier${isSelected ? ' lineage-power-tier--selected' : ''}`;
+
+                  // Check if selecting this tier would exceed mutation point limit
+                  const wouldExceedLimit = !isSelected && mutationLimit > 0 && (mutationUsed + tierNum > mutationLimit);
+                  const isDisabled = wouldExceedLimit;
+
+                  const tierClass = `lineage-power-tier${isSelected ? ' lineage-power-tier--selected' : ''}${isDisabled ? ' lineage-power-tier--disabled' : ''}`;
                   const buttonClass = `power-toggle power-toggle--radio${isSelected ? ' power-toggle--active' : ''}`;
 
                   // Get augment tier label with context
@@ -728,11 +740,11 @@ export function LineagePowersPanel({
                         <div className="lineage-power-tier__info">
                           <h5 className="lineage-power-tier__name">{tier.name ?? `Tier ${tierNum}`}</h5>
                           <div className="lineage-power-tier__meta">
-                            <span className="badge badge--tier">{augmentTierLabel}</span>
                             <span className="badge badge--icon">
                               <img src="/icons/Augment.png" alt="" />
                               <span className="badge__text">Mutation</span>
                             </span>
+                            <span className="badge badge--tier">{augmentTierLabel}</span>
                           </div>
                         </div>
                       </div>
@@ -742,9 +754,11 @@ export function LineagePowersPanel({
                           type="button"
                           className={buttonClass}
                           onClick={() => handleChimeraTierSelection(selection)}
+                          disabled={isDisabled}
+                          title={isDisabled ? `Would exceed mutation point limit (${mutationUsed + tierNum}/${mutationLimit})` : undefined}
                           aria-label={isSelected ? `Deselect ${tier.name ?? `Tier ${tierNum}`}` : `Select ${tier.name ?? `Tier ${tierNum}`}`}
                         >
-                          {isSelected ? 'Selected' : 'Select'}
+                          {isSelected ? 'Selected' : isDisabled ? 'Exceeds Limit' : 'Select'}
                         </button>
                         <div className="lineage-power-tier__cost">
                           <span>{tierNum} Mutation Point{tierNum === 1 ? '' : 's'}</span>
@@ -884,7 +898,15 @@ export function LineagePowersPanel({
                     }
                   };
                   const isSelected = selectedIds.has(selection.id);
-                  const cardClass = `sphere-card${isSelected ? ' sphere-card--selected' : ''}`;
+
+                  // Check if selecting this sphere would exceed limits
+                  const isPrimary = tier === 'primary';
+                  const currentCount = isPrimary ? primaryCount : secondaryCount;
+                  const limit = isPrimary ? limits.primary : limits.secondary;
+                  const wouldExceedLimit = !isSelected && limit > 0 && currentCount >= limit;
+                  const isDisabled = wouldExceedLimit;
+
+                  const cardClass = `sphere-card${isSelected ? ' sphere-card--selected' : ''}${isDisabled ? ' sphere-card--disabled' : ''}`;
                   const toggleClass = `power-toggle${isSelected ? ' power-toggle--active' : ''}`;
                   const sphereDesc = sphereDescriptions[sphereName] || 'A sphere of sorcerous power.';
                   const sphereIsSelected = selectedSpheres.has(sphereName);
@@ -899,12 +921,16 @@ export function LineagePowersPanel({
                           <button
                             type="button"
                             className={toggleClass}
+                            disabled={isDisabled}
+                            title={isDisabled ? `${isPrimary ? 'Primary' : 'Secondary'} sphere limit reached (${currentCount}/${limit})` : undefined}
                             onClick={(event) => {
                               event.preventDefault();
-                              handleSphereToggle(selection);
+                              if (!isDisabled) {
+                                handleSphereToggle(selection);
+                              }
                             }}
                           >
-                            {isSelected ? 'Selected' : 'Select Sphere'}
+                            {isSelected ? 'Selected' : isDisabled ? 'Limit Reached' : 'Select Sphere'}
                           </button>
                         </div>
                       </summary>
@@ -929,9 +955,19 @@ export function LineagePowersPanel({
                             }
                           };
                           const moveSelected = selectedIds.has(moveSelection.id);
-                          const moveDisabled = !sphereIsSelected;
+                          const sphereNotSelected = !sphereIsSelected;
+                          const wouldExceedMoveLimit = !moveSelected && limits.moves > 0 && moveCount >= limits.moves;
+                          const moveDisabled = sphereNotSelected || wouldExceedMoveLimit;
                           const moveItemClass = `power-list__item${moveSelected ? ' power-list__item--selected' : ''}${moveDisabled ? ' power-list__item--disabled' : ''}`;
                           const moveToggleClass = `power-toggle${moveSelected ? ' power-toggle--active' : ''}`;
+
+                          let disabledTitle: string | undefined;
+                          if (sphereNotSelected) {
+                            disabledTitle = 'Select the sphere first';
+                          } else if (wouldExceedMoveLimit) {
+                            disabledTitle = `Move limit reached (${moveCount}/${limits.moves})`;
+                          }
+
                           return (
                             <li key={moveId} className={moveItemClass}>
                               <div className="power-list__header">
@@ -952,9 +988,9 @@ export function LineagePowersPanel({
                                       }
                                     }}
                                     disabled={moveDisabled}
-                                    title={moveDisabled ? 'Select the sphere first' : undefined}
+                                    title={disabledTitle}
                                   >
-                                    {moveSelected ? 'Selected' : 'Add'}
+                                    {moveSelected ? 'Selected' : wouldExceedMoveLimit ? 'Limit Reached' : 'Add'}
                                   </button>
                                 </div>
                               </div>
@@ -1685,6 +1721,7 @@ export function LineagePowersPanel({
               return (
                 <div key={chassis} className="automata-chassis-section">
                   <h4>{chassis.charAt(0).toUpperCase() + chassis.slice(1)} Chassis</h4>
+                  <div className="automata-packages-grid">
                   {Array.from(branches).map((branch) => {
                     return availableLevels.map((quality) => {
                       const comboId = `${chassis}-${branch}-${quality}`;
@@ -1759,6 +1796,7 @@ export function LineagePowersPanel({
                       );
                     });
                   })}
+                  </div>
                 </div>
               );
             })}

@@ -1,5 +1,6 @@
 import type { PriorityRank } from '../../data/types';
 import type { PriorityCategory } from '../../state/characterStore';
+import { PRIORITY_CATEGORIES } from '../../state/characterStore';
 import './priority-matrix.css';
 
 const RANKS: PriorityRank[] = ['A', 'B', 'C', 'D', 'E'];
@@ -69,8 +70,8 @@ export function PriorityMatrix({ priorities, onSelect, onClear }: PriorityMatrix
         </ul>
       </header>
       <div className="priority-matrix__grid" role="table">
-        {Object.entries(CATEGORY_DETAILS).map(([key, detail]) => {
-          const category = key as PriorityCategory;
+        {PRIORITY_CATEGORIES.map((category) => {
+          const detail = CATEGORY_DETAILS[category];
           const selected = priorities[category];
           return (
             <article key={category} className="priority-matrix__row" role="row">
