@@ -1,0 +1,313 @@
+/**
+ * Mobile Touch Optimizations
+ * Fixes "twitchy" touch behavior and ensures proper mobile layout
+ */
+
+/* Disable tap highlight and improve touch responsiveness */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Prevent double-tap zoom on interactive elements */
+button,
+a,
+summary,
+[role="button"],
+.power-toggle,
+.skills-specialization__toggle,
+.lineage-power-card__summary,
+.sphere-card__summary {
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Allow text selection only on text content */
+p,
+span,
+div:not([role="button"]),
+.power-description,
+.power-description__detail {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Ensure all hover states only apply to pointer devices */
+@media (hover: none) {
+  /* Remove all hover effects on touch devices */
+  .lineage-power-card:hover,
+  .lineage-power-tier:hover,
+  .lineage-power-grade:hover,
+  .sphere-card:hover,
+  .power-list__item:hover,
+  .automata-package-card:hover,
+  .builder-actions button:hover,
+  .power-toggle:hover,
+  .skills-specialization__toggle:hover,
+  .lineage-power-card__summary:hover::after,
+  .sphere-card__summary:hover::after,
+  .automata-package-card summary:hover::after {
+    /* Reset hover styles */
+    border-color: inherit;
+    background: inherit;
+    box-shadow: none;
+    text-decoration: none;
+    color: inherit;
+    transform: none;
+  }
+
+  /* Use active state for touch feedback instead */
+  .power-toggle:active:not(:disabled) {
+    transform: scale(0.97);
+    opacity: 0.8;
+  }
+
+  button:active:not(:disabled) {
+    transform: scale(0.97);
+    opacity: 0.8;
+  }
+
+  .lineage-power-card:active,
+  .lineage-power-tier:active,
+  .lineage-power-grade:active {
+    opacity: 0.9;
+  }
+}
+
+/* Mobile viewport optimizations */
+@media (max-width: 767px) {
+  /* Ensure content doesn't force horizontal scroll */
+  body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  #root,
+  .app-shell,
+  .app-shell__main {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* Remove sticky header on mobile - let summary bars be sticky instead */
+  .app-shell__header {
+    position: relative;
+    top: auto;
+  }
+
+  /* Make resource summary sticky on mobile (like power summary) */
+  .resource-summary {
+    background: rgba(15, 13, 10, 0.98) !important;
+  }
+
+  /* Override any fixed widths that might cause horizontal scroll */
+  .skills-limit {
+    min-width: auto;
+    width: 100%;
+  }
+
+  /* Make grids fully responsive on mobile */
+  .skills-grid,
+  .lineage-powers-grid,
+  .focus-grid,
+  .chassis-grid,
+  .branch-grid,
+  .model-grid {
+    grid-template-columns: 1fr !important;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* AGGRESSIVE space saving - use em/% to avoid rem stacking */
+  .app-shell__main {
+    padding: 0.15em !important;
+  }
+
+  .app-shell__nav {
+    padding: 0.5rem !important;
+  }
+
+  /* Fix stage borders causing offset - minimal padding */
+  .stage {
+    padding: 0.35em !important;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    /* DON'T use overflow-x: hidden here - it breaks sticky positioning */
+  }
+
+  /* Fix builder screen container - zero padding to avoid nesting */
+  .builder-screen {
+    padding: 0 !important;
+    margin: 0;
+    gap: 0.5em;
+  }
+
+  /* Ensure lineage grid stays contained - minimal gaps */
+  .lineage-grid {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    gap: 0.4em !important;
+  }
+
+  /* Make lineage cards fit properly - use em for proportional scaling */
+  .lineage-card {
+    margin: 0;
+    padding: 0.4em !important;
+    font-size: 0.9em;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 0.4em !important;
+  }
+
+  /* Scale down lineage card headings on mobile */
+  .lineage-card h3 {
+    font-size: 1.5em !important;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .lineage-card__tagline {
+    font-size: 0.85em !important;
+    margin: 0.25em 0 0 !important;
+  }
+
+  .lineage-card p {
+    font-size: 0.85em !important;
+    line-height: 1.4;
+    margin: 0.25em 0 !important;
+  }
+
+  .lineage-card__priority {
+    padding: 0.5em !important;
+  }
+
+  .lineage-card__choose {
+    padding: 0.5em 0.75em !important;
+    font-size: 0.8em !important;
+  }
+
+  /* Prevent text from causing overflow */
+  h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Aggressive padding reduction across all components */
+  .stage__header {
+    margin-bottom: 0.5em !important;
+    gap: 0.5em !important;
+  }
+
+  .stage__header h2 {
+    font-size: 1.5em !important;
+  }
+
+  .priority-matrix {
+    padding: 0.5em !important;
+  }
+
+  .priority-matrix__grid {
+    gap: 0.5em !important;
+    margin-top: 0.5em !important;
+  }
+
+  .priority-matrix__row {
+    padding: 0.4em !important;
+    gap: 0.4em !important;
+  }
+
+  .lineage-powers-panel {
+    margin-top: 0.5em !important;
+    padding: 0.4em !important;
+  }
+
+  .lineage-powers-panel header h3 {
+    font-size: 1.25em !important;
+  }
+
+  .lineage-power-card {
+    padding: 0.4em !important;
+  }
+
+  .lineage-power-tier,
+  .lineage-power-grade,
+  .power-list__item {
+    padding: 0.4em !important;
+  }
+
+  .resource-card,
+  .skills-discipline {
+    padding: 0.4em !important;
+    gap: 0.4em !important;
+  }
+
+  .skills-grid {
+    gap: 0.4em !important;
+    margin: 0.5em 0 !important;
+  }
+
+  .field {
+    gap: 0.3em !important;
+  }
+
+  /* Compact all buttons - use em for proportional sizing */
+  button,
+  .power-toggle {
+    padding: 0.4em 0.6em !important;
+    font-size: 0.85em !important;
+  }
+
+  /* Maintain touch targets but with less padding */
+  button,
+  a,
+  summary {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Fix any table or wide content */
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Zero out margins on common elements to save space */
+  p, ul, ol, dl {
+    margin-top: 0.25em !important;
+    margin-bottom: 0.25em !important;
+  }
+
+  details {
+    margin: 0.25em 0 !important;
+  }
+}
+
+/* Smooth scrolling for better mobile UX */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent momentum scrolling issues on iOS */
+body {
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fix iOS Safari viewport height issues */
+@supports (-webkit-touch-callout: none) {
+  .app-shell {
+    min-height: -webkit-fill-available;
+  }
+}

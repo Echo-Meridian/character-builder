@@ -1,0 +1,78 @@
+/* Art Deco Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid rgba(212, 175, 55, 0.6);
+  background: rgba(15, 13, 10, 0.95);
+  color: #d4af37;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 40;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.back-to-top--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  border-color: #d4af37;
+  background: rgba(212, 175, 55, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(212, 175, 55, 0.2);
+}
+
+.back-to-top:active {
+  transform: translateY(0);
+}
+
+.back-to-top svg {
+  transition: transform 0.2s ease;
+}
+
+.back-to-top:hover svg {
+  transform: translateY(-2px);
+}
+
+/* Mobile optimizations */
+@media (max-width: 767px) {
+  .back-to-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Position below any bottom nav or footer elements */
+  .back-to-top--visible {
+    opacity: 0.9;
+  }
+}
+
+/* Ensure it works with touch */
+@media (hover: none) {
+  .back-to-top:hover {
+    border-color: rgba(212, 175, 55, 0.6);
+    background: rgba(15, 13, 10, 0.95);
+    transform: translateY(0);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .back-to-top:active {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}

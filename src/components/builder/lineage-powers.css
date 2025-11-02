@@ -33,22 +33,17 @@
   @apply text-sidonia-text/70 font-body text-sm;
 }
 
-/* Power Summary Stats Bar */
+/* Power Summary Stats Bar - Sticky on all screen sizes */
 .lineage-power-summary {
   @apply flex flex-wrap items-center;
   @apply gap-3 p-deco-sm rounded-lg;
   @apply bg-sidonia-black/60 border-2 border-sidonia-gold/20;
   @apply backdrop-blur-sm;
-}
-
-/* Sticky on mobile */
-@media (max-width: 767px) {
-  .lineage-power-summary {
-    @apply sticky top-0 z-10;
-    @apply bg-sidonia-black/95 backdrop-blur-md;
-    @apply shadow-lg shadow-black/40;
-    margin-bottom: 1rem;
-  }
+  /* Sticky on all screens so you can see power budget while scrolling */
+  @apply sticky top-0 z-10;
+  @apply bg-sidonia-black/95 backdrop-blur-md;
+  @apply shadow-lg shadow-black/40;
+  margin-bottom: 1rem;
 }
 
 .lineage-power-summary > div {

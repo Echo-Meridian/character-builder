@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import '../../styles/layout.css';
 import { AnalyticsBanner } from '../experience/AnalyticsBanner';
 import { LegalFooter } from './LegalFooter';
+import { BackToTop } from '../common/BackToTop';
 
 interface AppShellProps {
   children: ReactNode;
@@ -34,6 +35,7 @@ export function AppShell({ children }: AppShellProps) {
       <main className="app-shell__main">{children}</main>
       <LegalFooter />
       <AnalyticsBanner />
+      <BackToTop />
     </div>
   );
 }

@@ -1,0 +1,344 @@
+{
+  "type": "move",
+  "id": "empath-living-lie-detector",
+  "name": "Living Lie Detector",
+  "lineage": "esper",
+  "archetype": "empath",
+  "path": "empath.targeted.receiver",
+  "evolutionStage": 0,
+  "moveType": "move",
+  "isMentalist": true,
+  "category": "Mentalist Powers",
+  "tags": ["esper", "mentalist", "empath", "targeted", "receiver", "detection", "truth"],
+  "metadata": {
+    "source": "mentalist-powers.txt",
+    "version": "1.0"
+  },
+  "description": {
+    "short": "Read the emotional weight behind words to detect deception.",
+    "player": "You can sense the emotional resonance behind someone's words, detecting not just lies but the type - white lies, self-deception, or malicious intent. Prolonged use creates an empathic tether where you begin feeling their guilt and shame."
+  },
+  "mentalistPolarity": "receiver",
+  "mentalistScope": "targeted",
+  "grantedBy": "targeted_receiver",
+  "rollStat": "Intuition",
+  "range": "sight",
+  "duration": "concentration",
+  "effects": [],
+  "flaws": []
+}
+{
+  "type": "move",
+  "id": "empath-at-first-sight",
+  "name": "At First Sight",
+  "lineage": "esper",
+  "archetype": "empath",
+  "path": "empath.targeted.influencer",
+  "evolutionStage": 0,
+  "moveType": "move",
+  "isMentalist": true,
+  "category": "Mentalist Powers",
+  "tags": ["esper", "mentalist", "empath", "targeted", "influencer", "bond", "manipulation"],
+  "metadata": {
+    "source": "mentalist-powers.txt",
+    "version": "1.0"
+  },
+  "description": {
+    "short": "Create instant powerful emotional bonds or antipathy.",
+    "player": "You can make someone feel like they've known you forever, creating trust, hatred, or any strong emotional connection. The further you push from their natural state, the more severe the potential rebound when the effect fades - mild shifts cause irritation, extreme changes can trigger obsession or violent rejection."
+  },
+  "mentalistPolarity": "influencer",
+  "mentalistScope": "targeted",
+  "grantedBy": "targeted_influencer",
+  "rollStat": "Willpower",
+  "range": "sight",
+  "duration": "scene",
+  "effects": [],
+  "flaws": []
+}
+{
+  "type": "move",
+  "id": "empath-ear-for-echoes",
+  "name": "Ear for Echoes",
+  "lineage": "esper",
+  "archetype": "empath",
+  "path": "empath.aural.receiver",
+  "evolutionStage": 0,
+  "moveType": "move",
+  "isMentalist": true,
+  "category": "Mentalist Powers",
+  "tags": ["esper", "mentalist", "empath", "aural", "receiver", "emotional-imprint", "area"],
+  "metadata": {
+    "source": "mentalist-powers.txt",
+    "version": "1.0"
+  },
+  "description": {
+    "short": "Read the emotional imprint left on locations.",
+    "player": "You can sense the emotional residue in an area even without people present. Murder scenes scream with violence, hospitals whisper with grief and hope. Stronger emotions leave deeper imprints - trauma can linger for weeks while everyday frustration fades in hours. Risk of emotional haunting if unprepared."
+  },
+  "mentalistPolarity": "receiver",
+  "mentalistScope": "aural",
+  "grantedBy": "aural_receiver",
+  "rollStat": "Intuition",
+  "range": "area",
+  "duration": "instant",
+  "effects": [],
+  "flaws": []
+}
+{
+  "type": "move",
+  "id": "empath-aetheric-tuner",
+  "name": "Aetheric Tuner",
+  "lineage": "esper",
+  "archetype": "empath",
+  "path": "empath.aural.influencer",
+  "evolutionStage": 0,
+  "moveType": "move",
+  "isMentalist": true,
+  "category": "Mentalist Powers",
+  "tags": ["esper", "mentalist", "empath", "aural", "influencer", "cleansing", "restoration"],
+  "metadata": {
+    "source": "mentalist-powers.txt",
+    "version": "1.0"
+  },
+  "description": {
+    "short": "Cleanse and calm emotionally disturbed areas.",
+    "player": "You can soothe the emotional wounds of a location, calming riots, dispelling the lingering terror of violence, or restoring peace to traumatized spaces. Works best on areas that are emotionally 'wounded' rather than naturally tense - you can calm a riot zone but not make a battlefield peaceful."
+  },
+  "mentalistPolarity": "influencer",
+  "mentalistScope": "aural",
+  "grantedBy": "aural_influencer",
+  "rollStat": "Willpower",
+  "range": "area",
+  "duration": "lasting",
+  "effects": [],
+  "flaws": []
+}
+{
+  "type": "move",
+  "id": "mesmer-association-game",
+  "name": "Association Game",
+  "lineage": "esper",
+  "archetype": "mesmer",
+  "path": "mesmer.targeted.receiver",
+  "evolutionStage": 0,
+  "moveType": "move",
+  "isMentalist": true,
+  "category": "Mentalist Powers",
+  "tags": ["esper", "mentalist", "mesmer", "targeted", "receiver", "interrogation", "associations"],
+  "metadata": {
+    "source": "mentalist-powers.txt",
+    "version": "1.0"
+  },
+  "description": {
+    "short": "Trigger mental associations to reveal hidden information.",
+    "player": "Like playing flash cards in someone's mind - speak a word and catch the association that fires. Say 'uncle' and a name or face might surface. Ask about a crime scene and guilt blazes bright. Not admissible in court, but invaluable for investigation. Stronger emotional associations come through clearer."
+  },
+  "mentalistPolarity": "receiver",
+  "mentalistScope": "targeted",
+  "grantedBy": "targeted_receiver",
+  "rollStat": "Reasoning",
+  "range": "sight",
+  "duration": "instant",
+  "effects": [],
+  "flaws": []
+}
+{
+  "type": "move",
+  "id": "mesmer-hallucination",
+  "name": "Hallucination",
+  "lineage": "esper",
+  "archetype": "mesmer",
+  "path": "mesmer.targeted.influencer",
+  "evolutionStage": 0,
+  "moveType": "move",
+  "isMentalist": true,
+  "category": "Mentalist Powers",
+  "tags": ["esper", "mentalist", "mesmer", "targeted", "influencer", "illusion", "deception"],
+  "metadata": {
+    "source": "mentalist-powers.txt",
+    "version": "1.0"
+  },
+  "description": {
+    "short": "Create targeted sensory illusions in one person's mind.",
+    "player": "You can make someone perceive something that isn't there. The closer to reality, the easier - a missing door, a different number on a bill. Self-preservation acts as a circuit breaker - convincing someone the roof extends further than it does will likely fail, but making a $20 look like $100 is simple. Non-persistent; they'll be angry when it fades."
+  },
+  "mentalistPolarity": "influencer",
+  "mentalistScope": "targeted",
+  "grantedBy": "targeted_influencer",
+  "rollStat": "Intellect",
+  "range": "sight",
+  "duration": "concentration",
+  "effects": [],
+  "flaws": []
+}
+{
+  "type": "move",
+  "id": "mesmer-attention-economy",
+  "name": "Attention Economy",
+  "lineage": "esper",
+  "archetype": "mesmer",
+  "path": "mesmer.aural.receiver",
+  "evolutionStage": 0,
+  "moveType": "move",
+  "isMentalist": true,
+  "category": "Mentalist Powers",
+  "tags": ["esper", "mentalist", "mesmer", "aural", "receiver", "patterns", "coordination"],
+  "metadata": {
+    "source": "mentalist-powers.txt",
+    "version": "1.0"
+  },
+  "description": {
+    "short": "Read the invisible structure of group attention and coordination.",
+    "player": "You perceive the patterns of attention and thought coordination in crowds. Identify hidden gangs by their synchronized awareness, find the real leader by tracking glances, spot the outsider with no attention connections. You're reading the structure of thought, not content - seeing the invisible social threads."
+  },
+  "mentalistPolarity": "receiver",
+  "mentalistScope": "aural",
+  "grantedBy": "aural_receiver",
+  "rollStat": "Reasoning",
+  "range": "area",
+  "duration": "concentration",
+  "effects": [],
+  "flaws": []
+}
+{
+  "type": "move",
+  "id": "mesmer-mental-static",
+  "name": "Mental Static",
+  "lineage": "esper",
+  "archetype": "mesmer",
+  "path": "mesmer.aural.influencer",
+  "evolutionStage": 0,
+  "moveType": "move",
+  "isMentalist": true,
+  "category": "Mentalist Powers",
+  "tags": ["esper", "mentalist", "mesmer", "aural", "influencer", "disruption", "confusion"],
+  "metadata": {
+    "source": "mentalist-powers.txt",
+    "version": "1.0"
+  },
+  "description": {
+    "short": "Broadcast cognitive white noise that impairs thinking.",
+    "player": "You flood the area with confusing non-thoughts - not specific ideas, just mental static. Logic becomes harder, attention scattered, irritation mounts. Excellent at disrupting Linker networks and coordinated groups. Prolonged exposure causes headaches, driving people to naturally flee the area."
+  },
+  "mentalistPolarity": "influencer",
+  "mentalistScope": "aural",
+  "grantedBy": "aural_influencer",
+  "rollStat": "Intellect",
+  "range": "area",
+  "duration": "concentration",
+  "effects": [],
+  "flaws": []
+}
+{
+  "type": "augment",
+  "id": "dreamer-one-of-us",
+  "name": "One of Us",
+  "lineage": "esper",
+  "archetype": "dreamer",
+  "path": "dreamer.receiver",
+  "evolutionStage": 0,
+  "moveType": "augment",
+  "isMentalist": true,
+  "category": "Mentalist Powers",
+  "tags": ["esper", "mentalist", "dreamer", "receiver", "mimicry", "subconscious"],
+  "metadata": {
+    "source": "mentalist-powers.txt",
+    "version": "1.0"
+  },
+  "description": {
+    "short": "Subconsciously absorb and mirror group identity.",
+    "player": "You naturally align with the collective unconscious of groups, absorbing their mannerisms, body language, slang, and vocal patterns without conscious control. The stronger the group identity (military units, cults), the more pronounced the effect. Many find this constant loss of self maddening - always becoming whoever you're with."
+  },
+  "mentalistPolarity": "receiver",
+  "corruptionCost": 1,
+  "effects": [],
+  "flaws": []
+}
+{
+  "type": "move",
+  "id": "siren-vocal-mimicry",
+  "name": "Vocal Mimicry",
+  "lineage": "esper",
+  "archetype": "siren",
+  "path": "siren.targeted.receiver",
+  "evolutionStage": 0,
+  "moveType": "move",
+  "isMentalist": true,
+  "category": "Mentalist Powers",
+  "tags": ["esper", "mentalist", "siren", "targeted", "receiver", "mimicry", "voice"],
+  "metadata": {
+    "source": "mentalist-powers.txt",
+    "version": "1.0"
+  },
+  "description": {
+    "short": "Perfect vocal replication carrying emotional resonance.",
+    "player": "You can perfectly replicate any voice you've heard by reading the nervous system patterns of vocal production. The mimicry carries the emotional state from when you learned it - a voice learned in terror always trembles, one learned in joy carries warmth. Strategic collection of emotional variants required for versatile impersonation."
+  },
+  "mentalistPolarity": "receiver",
+  "mentalistScope": "targeted",
+  "grantedBy": "targeted_receiver",
+  "rollStat": "Intuition",
+  "range": "hearing",
+  "duration": "permanent",
+  "effects": [],
+  "flaws": []
+}
+{
+  "type": "move",
+  "id": "siren-vocal-mimicry",
+  "name": "Vocal Mimicry",
+  "lineage": "esper",
+  "archetype": "siren",
+  "path": "siren.targeted.receiver",
+  "evolutionStage": 0,
+  "moveType": "move",
+  "isMentalist": true,
+  "category": "Mentalist Powers",
+  "tags": ["esper", "mentalist", "siren", "targeted", "receiver", "mimicry", "voice"],
+  "metadata": {
+    "source": "mentalist-powers.txt",
+    "version": "1.0"
+  },
+  "description": {
+    "short": "Perfect vocal replication carrying emotional resonance.",
+    "player": "You can perfectly replicate any voice you've heard by reading the nervous system patterns of vocal production. The mimicry carries the emotional state from when you learned it - a voice learned in terror always trembles, one learned in joy carries warmth. Strategic collection of emotional variants required for versatile impersonation."
+  },
+  "mentalistPolarity": "receiver",
+  "mentalistScope": "targeted",
+  "grantedBy": "targeted_receiver",
+  "rollStat": "Intuition",
+  "range": "hearing",
+  "duration": "permanent",
+  "effects": [],
+  "flaws": []
+}
+{
+  "type": "move",
+  "id": "siren-sympathetic-resonance",
+  "name": "Sympathetic Resonance",
+  "lineage": "esper",
+  "archetype": "siren",
+  "path": "siren.aural.receiver",
+  "evolutionStage": 0,
+  "moveType": "move",
+  "isMentalist": true,
+  "category": "Mentalist Powers",
+  "tags": ["esper", "mentalist", "siren", "aural", "receiver", "bio-sensing", "crowd-reading"],
+  "metadata": {
+    "source": "mentalist-powers.txt",
+    "version": "1.0"
+  },
+  "description": {
+    "short": "Read the collective biological state and disturbances in crowds.",
+    "player": "You sense the aggregate nervous system of crowds - heartbeats, breathing, stress hormones as a biological symphony. Detect when crowds are about to panic, sense ambushes through elevated heart rates, track targets by the ripples they create in the crowd's biology. In high-stress areas, the cacophony can be overwhelming, potentially triggering sympathetic responses in your own body."
+  },
+  "mentalistPolarity": "receiver",
+  "mentalistScope": "aural",
+  "grantedBy": "aural_receiver",
+  "rollStat": "Intuition",
+  "range": "area",
+  "duration": "concentration",
+  "effects": [],
+  "flaws": []
+}

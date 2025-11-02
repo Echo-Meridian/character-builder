@@ -1,10 +1,14 @@
-/* Art Deco Resource Summary Panel */
+/* Art Deco Resource Summary Panel - Sticky on all screen sizes */
 .stage--resources .resource-summary {
   @apply flex flex-col gap-3 p-deco-md rounded-lg;
   @apply border-2 border-sidonia-gold/40 bg-sidonia-dark/95;
   @apply backdrop-blur-md shadow-lg shadow-sidonia-gold/10;
   min-width: 240px;
-  position: relative;
+  /* Sticky so you can see resource budget while scrolling */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin-bottom: 1rem;
 }
 
 /* Corner decoration for summary */
