@@ -568,7 +568,7 @@ export function LineagePowersPanel({
                           <div className="lineage-power-tier__meta">
                             <span className="badge badge--tier">{augmentTierLabel}</span>
                             <span className="badge badge--icon">
-                              <img src="/icons/Augment.webp" alt="" />
+                              <img src="/icons/Augment.png" alt="" />
                               <span className="badge__text">Augment</span>
                             </span>
                           </div>
@@ -1094,7 +1094,7 @@ export function LineagePowersPanel({
                         <span className="badge">Stage {power.evolutionStage}</span>
                         {power.moveType && (
                           <span className="badge badge--icon">
-                            <img src="/icons/Move.webp" alt="" />
+                            <img src="/icons/Move.png" alt="" />
                             <span className="badge__text">{power.moveType}</span>
                           </span>
                         )}
