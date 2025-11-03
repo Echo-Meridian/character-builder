@@ -108,7 +108,7 @@
 
 .resource-section__header button {
   @apply px-deco-sm py-1.5 rounded-full;
-  @apply font-display text-xs uppercase tracking-wider;
+  @apply font-body text-sm uppercase tracking-wider;
   @apply border-2 border-sidonia-gold/40 bg-sidonia-gold/10 text-sidonia-gold;
   @apply cursor-pointer transition-all duration-300;
 }
@@ -220,7 +220,7 @@
 .badge {
   @apply inline-flex items-center justify-center;
   @apply px-3 py-1.5 rounded-full;
-  @apply font-display text-xs tracking-wider uppercase;
+  @apply font-body text-sm tracking-wide uppercase;
   @apply bg-sidonia-gold/20 border-2 border-sidonia-gold/40 text-sidonia-gold;
   @apply cursor-pointer transition-all duration-300;
 }
@@ -336,18 +336,180 @@
   @apply font-display text-xs font-semibold text-sidonia-gold;
 }
 
+/* Number Input with Increment/Decrement Controls */
+.number-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.number-input-wrapper input[type="number"] {
+  flex: 1;
+  min-width: 0;
+}
+
+.number-input-controls {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  margin-left: 6px;
+}
+
+.number-input-btn {
+  @apply rounded px-2 py-0.5;
+  @apply border border-sidonia-gold/30 bg-sidonia-gold/10 text-sidonia-gold;
+  @apply cursor-pointer transition-all duration-200;
+  @apply font-body text-xs font-bold leading-none;
+}
+
+.number-input-btn:active {
+  @apply bg-sidonia-gold/30 border-sidonia-gold;
+}
+
+/* Show increment/decrement buttons on mobile */
+@media (max-width: 768px) {
+  .number-input-controls {
+    display: flex;
+  }
+}
+
 /* Responsive Adjustments */
 @media (max-width: 720px) {
+  /* Fix "Add Contact/Retainer" button overflow */
+  .resource-section__header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .resource-section__header button {
+    width: 100%;
+    text-align: center;
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  /* Fix increment/decrement button sizing */
+  .number-input-controls {
+    min-width: 32px;
+    gap: 4px;
+  }
+
+  .number-input-btn {
+    width: 32px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 0.75rem;
+  }
+
+  /* Fix card overflow */
+  .resource-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
   .resource-card__header {
     @apply flex-col items-start gap-2;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .resource-card__title {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .resource-card__field {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .resource-card__field textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .resource-card__grid {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    grid-template-columns: 1fr;
+  }
+
+  .resource-card__grid label {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .resource-card__grid input,
+  .resource-card__grid select {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .resource-card__footer {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .resource-card__footer > div {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .badge {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .resource-section {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   .resource-liquid {
     @apply flex-col;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .resource-liquid input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .resource-grid {
     grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .resource-section::before {

@@ -55,14 +55,77 @@ const parseCapValue = (value: number | string | undefined): number => {
 
 const sanitizeNumber = (value: number): number => (Number.isFinite(value) ? value : 0);
 
-const contactCost = (entry: ContactResourceEntry): number => sanitizeNumber(entry.reach) + sanitizeNumber(entry.influence);
+const contactCost = (entry: ContactResourceEntry): number => {
+  const baseCost = sanitizeNumber(entry.reach) + sanitizeNumber(entry.influence);
+  return (entry.backgroundSynergy ?? false) ? baseCost * 0.5 : baseCost;
+};
 
-const retainerCost = (entry: RetainerResourceEntry): number => sanitizeNumber(entry.loyalty) + sanitizeNumber(entry.competence);
+const retainerCost = (entry: RetainerResourceEntry): number => {
+  const baseCost = sanitizeNumber(entry.loyalty) + sanitizeNumber(entry.competence);
+  return (entry.backgroundSynergy ?? false) ? baseCost * 0.5 : baseCost;
+};
 
-const goodsCost = (entry: GoodsResourceEntry): number => sanitizeNumber(entry.quality);
+const goodsCost = (entry: GoodsResourceEntry): number => {
+  const baseCost = sanitizeNumber(entry.quality);
+  return (entry.backgroundSynergy ?? false) ? baseCost * 0.5 : baseCost;
+};
 
 const getCombinedCap = (maxCombined: number, fallback: number): number =>
   Number.isFinite(maxCombined) ? maxCombined : fallback;
+
+// Number input with mobile increment/decrement buttons
+interface NumberInputProps {
+  value: number;
+  onChange: (value: number) => void;
+  min?: number;
+  max?: number;
+}
+
+function NumberInput({ value, onChange, min = 0, max }: NumberInputProps) {
+  const handleIncrement = () => {
+    const newValue = value + 1;
+    if (max === undefined || newValue <= max) {
+      onChange(newValue);
+    }
+  };
+
+  const handleDecrement = () => {
+    const newValue = value - 1;
+    if (newValue >= min) {
+      onChange(newValue);
+    }
+  };
+
+  return (
+    <div className="number-input-wrapper">
+      <input
+        type="number"
+        min={min}
+        max={max}
+        value={value}
+        onChange={(e) => onChange(Number(e.target.value) || 0)}
+      />
+      <div className="number-input-controls">
+        <button
+          type="button"
+          className="number-input-btn"
+          onClick={handleIncrement}
+          disabled={max !== undefined && value >= max}
+        >
+          ▲
+        </button>
+        <button
+          type="button"
+          className="number-input-btn"
+          onClick={handleDecrement}
+          disabled={value <= min}
+        >
+          ▼
+        </button>
+      </div>
+    </div>
+  );
+}
 
 const getTenureRating = (
   tenure: string,
@@ -202,7 +265,8 @@ export function ResourcesStage({
   const propertySummaries = propertyList.map((entry) => {
     const tenureRating = getTenureRating(entry.tenure, system, costs, combinedFallback);
     const zoningRating = getZoningRating(entry.zoning, system, costs, combinedFallback);
-    const cost = tenureRating.value + zoningRating.value;
+    const baseCost = tenureRating.value + zoningRating.value;
+    const cost = (entry.backgroundSynergy ?? false) ? baseCost * 0.5 : baseCost;
     const issues: string[] = [];
 
     if (tenureRating.requiresApproval || zoningRating.requiresApproval) {
@@ -359,26 +423,20 @@ export function ResourcesStage({
                   <div className="resource-card__grid">
                     <label>
                       <span>Reach</span>
-                      <input
-                        type="number"
+                      <NumberInput
+                        value={entry.reach}
+                        onChange={(value) => onUpdateContact(entry.id, { reach: value })}
                         min={0}
                         max={Number.isFinite(maxQuality) ? maxQuality : undefined}
-                        value={entry.reach}
-                        onChange={(event) =>
-                          onUpdateContact(entry.id, { reach: Number(event.target.value) || 0 })
-                        }
                       />
                     </label>
                     <label>
                       <span>Influence</span>
-                      <input
-                        type="number"
+                      <NumberInput
+                        value={entry.influence}
+                        onChange={(value) => onUpdateContact(entry.id, { influence: value })}
                         min={0}
                         max={Number.isFinite(maxQuality) ? maxQuality : undefined}
-                        value={entry.influence}
-                        onChange={(event) =>
-                          onUpdateContact(entry.id, { influence: Number(event.target.value) || 0 })
-                        }
                       />
                     </label>
                     <label>
@@ -411,13 +469,28 @@ export function ResourcesStage({
                     <button type="button" onClick={() => onRemoveContact(entry.id)} className="link">
                       Remove Contact
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => onUpdateContact(entry.id, { gmApproved: !entry.gmApproved })}
-                      className={clsx('badge', { 'badge--attention': requiresApproval })}
-                    >
-                      {entry.gmApproved ? 'GM Approved' : 'GM Approval Required'}
-                    </button>
+                    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const newSynergy = !(entry.backgroundSynergy ?? false);
+                          onUpdateContact(entry.id, {
+                            backgroundSynergy: newSynergy,
+                            gmApproved: newSynergy ? false : entry.gmApproved
+                          });
+                        }}
+                        className={clsx('badge', { 'badge--attention': entry.backgroundSynergy ?? false })}
+                      >
+                        {(entry.backgroundSynergy ?? false) ? 'Background Synergy (0.5x)' : 'Mark Background Synergy'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onUpdateContact(entry.id, { gmApproved: !entry.gmApproved })}
+                        className={clsx('badge', { 'badge--attention': requiresApproval })}
+                      >
+                        {entry.gmApproved ? 'GM Approved' : 'GM Approval Required'}
+                      </button>
+                    </div>
                   </footer>
                 </article>
               );
@@ -459,26 +532,20 @@ export function ResourcesStage({
                   <div className="resource-card__grid">
                     <label>
                       <span>Competence</span>
-                      <input
-                        type="number"
+                      <NumberInput
+                        value={entry.competence}
+                        onChange={(value) => onUpdateRetainer(entry.id, { competence: value })}
                         min={0}
                         max={Number.isFinite(maxQuality) ? maxQuality : undefined}
-                        value={entry.competence}
-                        onChange={(event) =>
-                          onUpdateRetainer(entry.id, { competence: Number(event.target.value) || 0 })
-                        }
                       />
                     </label>
                     <label>
                       <span>Loyalty</span>
-                      <input
-                        type="number"
+                      <NumberInput
+                        value={entry.loyalty}
+                        onChange={(value) => onUpdateRetainer(entry.id, { loyalty: value })}
                         min={0}
                         max={Number.isFinite(maxQuality) ? maxQuality : undefined}
-                        value={entry.loyalty}
-                        onChange={(event) =>
-                          onUpdateRetainer(entry.id, { loyalty: Number(event.target.value) || 0 })
-                        }
                       />
                     </label>
                     <label>
@@ -511,13 +578,28 @@ export function ResourcesStage({
                     <button type="button" onClick={() => onRemoveRetainer(entry.id)} className="link">
                       Remove Retainer
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => onUpdateRetainer(entry.id, { gmApproved: !entry.gmApproved })}
-                      className={clsx('badge', { 'badge--attention': requiresApproval })}
-                    >
-                      {entry.gmApproved ? 'GM Approved' : 'GM Approval Required'}
-                    </button>
+                    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const newSynergy = !(entry.backgroundSynergy ?? false);
+                          onUpdateRetainer(entry.id, {
+                            backgroundSynergy: newSynergy,
+                            gmApproved: newSynergy ? false : entry.gmApproved
+                          });
+                        }}
+                        className={clsx('badge', { 'badge--attention': entry.backgroundSynergy ?? false })}
+                      >
+                        {(entry.backgroundSynergy ?? false) ? 'Background Synergy (0.5x)' : 'Mark Background Synergy'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onUpdateRetainer(entry.id, { gmApproved: !entry.gmApproved })}
+                        className={clsx('badge', { 'badge--attention': requiresApproval })}
+                      >
+                        {entry.gmApproved ? 'GM Approved' : 'GM Approval Required'}
+                      </button>
+                    </div>
                   </footer>
                 </article>
               );
@@ -625,13 +707,28 @@ export function ResourcesStage({
                     <button type="button" onClick={() => onRemoveProperty(entry.id)} className="link">
                       Remove Property
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => onUpdateProperty(entry.id, { gmApproved: !entry.gmApproved })}
-                      className={clsx('badge', { 'badge--attention': requiresApproval })}
-                    >
-                      {entry.gmApproved ? 'GM Approved' : 'GM Approval Required'}
-                    </button>
+                    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const newSynergy = !(entry.backgroundSynergy ?? false);
+                          onUpdateProperty(entry.id, {
+                            backgroundSynergy: newSynergy,
+                            gmApproved: newSynergy ? false : entry.gmApproved
+                          });
+                        }}
+                        className={clsx('badge', { 'badge--attention': entry.backgroundSynergy ?? false })}
+                      >
+                        {(entry.backgroundSynergy ?? false) ? 'Background Synergy (0.5x)' : 'Mark Background Synergy'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onUpdateProperty(entry.id, { gmApproved: !entry.gmApproved })}
+                        className={clsx('badge', { 'badge--attention': requiresApproval })}
+                      >
+                        {entry.gmApproved ? 'GM Approved' : 'GM Approval Required'}
+                      </button>
+                    </div>
                   </footer>
                 </article>
               );
@@ -673,14 +770,11 @@ export function ResourcesStage({
                   <div className="resource-card__grid">
                     <label>
                       <span>Quality</span>
-                      <input
-                        type="number"
+                      <NumberInput
+                        value={entry.quality}
+                        onChange={(value) => onUpdateGoods(entry.id, { quality: value })}
                         min={0}
                         max={Number.isFinite(maxQuality) ? maxQuality : undefined}
-                        value={entry.quality}
-                        onChange={(event) =>
-                          onUpdateGoods(entry.id, { quality: Number(event.target.value) || 0 })
-                        }
                       />
                     </label>
                     <label>
@@ -713,13 +807,28 @@ export function ResourcesStage({
                     <button type="button" onClick={() => onRemoveGoods(entry.id)} className="link">
                       Remove Goods
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => onUpdateGoods(entry.id, { gmApproved: !entry.gmApproved })}
-                      className={clsx('badge', { 'badge--attention': requiresApproval })}
-                    >
-                      {entry.gmApproved ? 'GM Approved' : 'GM Approval Required'}
-                    </button>
+                    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const newSynergy = !(entry.backgroundSynergy ?? false);
+                          onUpdateGoods(entry.id, {
+                            backgroundSynergy: newSynergy,
+                            gmApproved: newSynergy ? false : entry.gmApproved
+                          });
+                        }}
+                        className={clsx('badge', { 'badge--attention': entry.backgroundSynergy ?? false })}
+                      >
+                        {(entry.backgroundSynergy ?? false) ? 'Background Synergy (0.5x)' : 'Mark Background Synergy'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onUpdateGoods(entry.id, { gmApproved: !entry.gmApproved })}
+                        className={clsx('badge', { 'badge--attention': requiresApproval })}
+                      >
+                        {entry.gmApproved ? 'GM Approved' : 'GM Approval Required'}
+                      </button>
+                    </div>
                   </footer>
                 </article>
               );
@@ -731,11 +840,10 @@ export function ResourcesStage({
       <section className="resource-liquid">
         <label>
           <span>Liquid Assets</span>
-          <input
-            type="number"
-            min={0}
+          <NumberInput
             value={liquid}
-            onChange={(event) => onUpdateLiquid(Number(event.target.value) || 0)}
+            onChange={onUpdateLiquid}
+            min={0}
           />
         </label>
         <p>Reserve unassigned points for cash, favors, or future acquisitions.</p>

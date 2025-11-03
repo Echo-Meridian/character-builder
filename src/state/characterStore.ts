@@ -87,6 +87,7 @@ interface BaseResourceEntry {
   name: string;
   description: string;
   gmApproved: boolean;
+  backgroundSynergy: boolean;
 }
 
 export interface ContactResourceEntry extends BaseResourceEntry {
@@ -769,6 +770,7 @@ export const useCharacterStore = create<CharacterStore>()(
           name: payload.name ?? '',
           description: payload.description ?? '',
           gmApproved: payload.gmApproved ?? false,
+          backgroundSynergy: payload.backgroundSynergy ?? false,
           specialization: payload.specialization ?? null,
           reach: Math.min(Math.max(payload.reach ?? 0, 0), 10),
           influence: Math.min(Math.max(payload.influence ?? 0, 0), 10)
@@ -816,6 +818,7 @@ export const useCharacterStore = create<CharacterStore>()(
           name: payload.name ?? '',
           description: payload.description ?? '',
           gmApproved: payload.gmApproved ?? false,
+          backgroundSynergy: payload.backgroundSynergy ?? false,
           specialization: payload.specialization ?? null,
           loyalty: Math.min(Math.max(payload.loyalty ?? 0, 0), 10),
           competence: Math.min(Math.max(payload.competence ?? 0, 0), 10)
@@ -865,6 +868,7 @@ export const useCharacterStore = create<CharacterStore>()(
           name: payload.name ?? '',
           description: payload.description ?? '',
           gmApproved: payload.gmApproved ?? false,
+          backgroundSynergy: payload.backgroundSynergy ?? false,
           tenure: payload.tenure ?? '',
           zoning: payload.zoning ?? '',
           ward: payload.ward ?? '',
@@ -910,6 +914,7 @@ export const useCharacterStore = create<CharacterStore>()(
           name: payload.name ?? '',
           description: payload.description ?? '',
           gmApproved: payload.gmApproved ?? false,
+          backgroundSynergy: payload.backgroundSynergy ?? false,
           specialization: payload.specialization ?? null,
           quality: Math.min(Math.max(payload.quality ?? 0, 0), 10)
         };
@@ -1375,6 +1380,7 @@ export const useCharacterStore = create<CharacterStore>()(
             name: entry.name ?? '',
             description: entry.description ?? entry.notes ?? '',
             gmApproved: entry.gmApproved ?? false,
+            backgroundSynergy: entry.backgroundSynergy ?? false,
             specialization: entry.specialization ?? null,
             reach: typeof entry.reach === 'number' ? entry.reach : 0,
             influence: typeof entry.influence === 'number' ? entry.influence : 0
@@ -1388,6 +1394,7 @@ export const useCharacterStore = create<CharacterStore>()(
             name: entry.name ?? '',
             description: entry.description ?? entry.notes ?? '',
             gmApproved: entry.gmApproved ?? false,
+            backgroundSynergy: entry.backgroundSynergy ?? false,
             specialization: entry.specialization ?? null,
             loyalty: typeof entry.loyalty === 'number' ? entry.loyalty : 0,
             competence: typeof entry.competence === 'number' ? entry.competence : 0
@@ -1401,6 +1408,7 @@ export const useCharacterStore = create<CharacterStore>()(
             name: entry.name ?? '',
             description: entry.description ?? entry.notes ?? '',
             gmApproved: entry.gmApproved ?? false,
+            backgroundSynergy: entry.backgroundSynergy ?? false,
             tenure: entry.tenure ?? '',
             zoning: entry.zoning ?? '',
             ward: entry.ward ?? '',
@@ -1415,6 +1423,7 @@ export const useCharacterStore = create<CharacterStore>()(
             name: entry.name ?? '',
             description: entry.description ?? entry.notes ?? '',
             gmApproved: entry.gmApproved ?? false,
+            backgroundSynergy: entry.backgroundSynergy ?? false,
             specialization: entry.specialization ?? null,
             quality: typeof entry.quality === 'number' ? entry.quality : 0
           });
