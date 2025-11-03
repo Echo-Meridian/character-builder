@@ -1,0 +1,80 @@
+Step 5 Background System: Your Place in the Story
+
+Your background is more than just a job title; it's your history, your network, and your place in the food chain of Sidonia. It defines the skills you learned, the resources you understand, and the kind of trouble you're likely to find. The following mechanics apply to all backgrounds.
+
+1.	Background Specializations
+
+Every history teaches you something. Your background grants you specializations in relevant skills based on your Priority level. This represents the practical, on-the-job training you received long before your story began.
+
+·	These specializations are bonuses and do not count against the specialization limit determined by your Skills Priority.
+·	The number of specializations you receive depends on your Background Priority:
+
+| Priority | Specializations |
+|--------------|---------------------|
+| A | 3 specializations |
+| B | 2 specializations |
+| C | 2 specializations |
+| D | 1 specializations |
+| E | 1 specialization |
+
+Each background lists specific specialization options to choose from, plus the option to select "Other with GM approval" for a specialization that fits your character concept.
+
+2.	Background Points
+
+Your expertise matters when it counts. Each background grants you Background Points based on your Priority level. These points represent your professional competence and ability to leverage your experience when facing challenges within your area of expertise.
+
+| Priority | Background Points per Session |
+|--------------|-----------------------------------|
+| A | 5 points |
+| B | 4 points |
+| C | 3 points |
+| D | 2 points |
+| E | 1 point |
+
+Using Background Points:
+
+You can spend a Background Point to:
+·	Reroll a failed check when acting within your background's area of expertise
+·	Gain advantage on a roll (roll an extra die, take the best 2 of 3) when your background is directly relevant
+·	Negate disadvantage on a roll when your professional knowledge helps overcome obstacles
+
+These points refresh at the start of each session or case (depending on your campaign's pacing).
+
+Example: A Private Detective with Background Priority C (3 points per session) can reroll three failed investigation checks, gain advantage on three crucial rolls, or use any combination of these benefits throughout a case. This represents their professional reliability - they're less likely to fail at what they do best.
+3.	Resource Synergies
+
+Your past defines what tools you know how to use best. When you purchase resources that align with your background, you receive 1.5x value for your Resource Points spent. This represents your innate, expert understanding of these specific tools of the trade.
+
+How Resource Synergy Works:
+
+When buying a resource that falls within your background's synergy list, every 2 Resource Points you spend provides 3 RP worth of value. This lets you afford better quality versions of background-appropriate resources, or simply stretch your points further.
+
+Example of Resource Synergy: The Private Detective
+
+If you have the Private Detective background and invest in Resources, your assets are a cut above the rest:
+
+·	Example (Contact): You spend 2 RP on a police contact, but receive 3 RP worth of value. Instead of a cynical beat cop who trades tips for cash, your contact is a Homicide Detective who owes you their career. They don't just feed you case files; they actively steer you away from danger, warn you when you're flying too close to the sun, and grant you access to crime scenes.
+
+·	Example (Property): You spend 4 RP on office space, but receive 6 RP worth of value. Instead of a simple rented room, your "Office Space" is a soundproofed, hard-to-find haven with a hidden exit, a built-in darkroom for developing compromising photos, and a secret compartment for hiding sensitive evidence, all inherited from your mentor.
+
+·	Example (Item): You spend 2 RP on a detective license, but receive 3 RP worth of value. With synergy, your Private Investigator's License is a hard-earned credential that carries weight. Its reputation gets you past police tape, makes reluctant witnesses talk, and tells the city's power players that you're a serious professional.
+
+4.	Tiered Backgrounds
+
+Some roles in Sidonia are not so rigidly defined. These classic archetypes can be entered from different walks of life and at different stages of a career. Most backgrounds are "Tiered," offering multiple entry points at different Priority levels (A through E). Choosing a higher Priority tier doesn't just mean you're "better"—it means the scale of your story, your influence, and your problems are fundamentally different.
+
+The Five Tiers:
+
+·	Priority A - Master/Legend: The one-in-a-million expert. City-wide reputation, incredible resources, problems at the highest levels.
+·	Priority B - Elite: Top 1% of your field. Highly sought after, well-compensated, dealing with serious players.
+·	Priority C - Professional: Competent, established, reliable. You make a living at this and people trust your work.
+·	Priority D - Journeyman: Trained and credentialed, still building your reputation. You're past amateur but not yet established.
+·	Priority E - Novice/Amateur: Interested and dabbling, but no formal standing or recognition. Learning on the fly.
+
+Example: The Private Detective
+
+·	Priority A (Master Sleuth): City-wide legend handling impossible cases for astronomical fees. 3 specializations, 5 Background Points per session.
+·	Priority C (Private Investigator): Classic gumshoe with a dusty office, taking street-level cases. 2 specializations, 3 Background Points per session.
+·	Priority E (Inquirer): Wannabe detective with no credentials, working from diners for chump change. 1 specialization, 1 Background Point per session.
+
+Each tier provides a complete character concept at different power and influence levels, ensuring that no matter what Priority you assign to Background, you can still play the archetype you want.

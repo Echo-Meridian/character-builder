@@ -52,7 +52,8 @@ export function BuilderPage() {
   const toggleSkillSpecialization = useCharacterStore((state) => state.toggleSkillSpecialization);
   const removeSkillSpecialization = useCharacterStore((state) => state.removeSkillSpecialization);
   const addCustomSkillSpecialization = useCharacterStore((state) => state.addCustomSkillSpecialization);
-  const setBackgroundSkillSpecialization = useCharacterStore((state) => state.setBackgroundSkillSpecialization);
+  const setBackgroundSkillSpecializations = useCharacterStore((state) => state.setBackgroundSkillSpecializations);
+  const setBackgroundCustomSpecializations = useCharacterStore((state) => state.setBackgroundCustomSpecializations);
   const updateSkillNotes = useCharacterStore((state) => state.updateSkillNotes);
   const setAttributeScore = useCharacterStore((state) => state.setAttributeScore);
   const updateAttributeNotes = useCharacterStore((state) => state.updateAttributeNotes);
@@ -153,7 +154,10 @@ export function BuilderPage() {
         <BackgroundStage
           priority={build.priorities.background}
           background={build.background}
+          skills={build.skills}
           onUpdate={updateBackground}
+          onUpdateSpecializations={setBackgroundSkillSpecializations}
+          onUpdateCustomSpecializations={setBackgroundCustomSpecializations}
           data={data.backgrounds}
         />
       );
@@ -169,9 +173,11 @@ export function BuilderPage() {
           onToggleSpecialization={toggleSkillSpecialization}
           onRemoveSpecialization={removeSkillSpecialization}
           onAddCustomSpecialization={addCustomSkillSpecialization}
-          backgroundSpecialization={build.skills.backgroundSpecialization}
+          backgroundSpecializations={build.skills.backgroundSpecializations}
+          backgroundCustomSpecializations={build.skills.backgroundCustomSpecializations}
           backgroundOptions={backgroundSkillOptions}
-          onSetBackgroundSpecialization={setBackgroundSkillSpecialization}
+          onSetBackgroundSpecializations={setBackgroundSkillSpecializations}
+          onSetBackgroundCustomSpecializations={setBackgroundCustomSpecializations}
           notes={build.skills.notes}
           onUpdateNotes={updateSkillNotes}
         />

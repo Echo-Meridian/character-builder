@@ -189,8 +189,14 @@ function renderTextSheet(build: CharacterBuild): string {
       lines.push(`  - ${entry.label}${status}`);
     });
   }
-  if (build.skills.backgroundSpecialization) {
-    lines.push(`Background Specialization: ${build.skills.backgroundSpecialization}`);
+  if (build.skills.backgroundSpecializations.length > 0 || build.skills.backgroundCustomSpecializations.length > 0) {
+    lines.push('Background Specializations:');
+    build.skills.backgroundSpecializations.forEach((spec) => {
+      lines.push(`  - ${spec}`);
+    });
+    build.skills.backgroundCustomSpecializations.forEach((spec) => {
+      lines.push(`  - ${spec} (Custom)`);
+    });
   }
   lines.push(`Skill Notes: ${build.skills.notes}`);
   lines.push('');

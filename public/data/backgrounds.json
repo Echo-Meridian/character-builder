@@ -1,4 +1,127 @@
 {
+  "The Craftsman": {
+    "description": "Your hands make the impossible real. In a city where nothing's mass-produced, skill like yours is currency. Whether you're forging runes, modifying Neosapiens, or brewing alchemical compounds, you're one of the people who keeps Sidonia running.",
+    "skillSpecializationOptions": [
+      "Engineering: [Craft Type]",
+      "Science: [Related Field]",
+      "Craft: [Specific Discipline]"
+    ],
+    "resourceSynergyExamples": [
+      "Property: Workshop Space",
+      "Equipment: Tools and Equipment",
+      "Contact: Material Suppliers",
+      "Contact: Guild Memberships"
+    ],
+    "professions": [
+      {
+        "priority": "A",
+        "title": "Master Artisan",
+        "description": "Your name is synonymous with quality. You might be the city's premier runesmith, the only person trusted to modify Neosapiens, or the alchemist who supplies the Ministry's laboratories. Your work commands astronomical prices, your apprentices are sought after, and Ward Bosses compete for your services. You don't just make things - you set standards that others try to reach."
+      },
+      {
+        "priority": "B",
+        "title": "Guild Master",
+        "description": "You run a successful workshop with multiple journeymen and apprentices. Your reputation extends beyond your Ward, and you handle commissions for wealthy clients and important institutions. You're a pillar of your craft's community, someone other artisans come to for advice or difficult problems. You make a very comfortable living from your skill."
+      },
+      {
+        "priority": "C",
+        "title": "Journeyman Craftsman",
+        "description": "You've completed your apprenticeship and established your own practice. You have steady clients, a small workspace, and the credentials to work independently. You're competent and reliable - people know your name in your Ward and trust your work. You're not famous, but you're making a living doing what you're good at."
+      },
+      {
+        "priority": "D",
+        "title": "Apprentice",
+        "description": "You're learning the trade under a master. You handle the simpler work, maintain tools, and slowly build skill through repetition and observation. You're not fully licensed yet, but you're developing real expertise. Your master's reputation protects you, but also means any mistakes reflect on them."
+      },
+      {
+        "priority": "E",
+        "title": "Hobbyist / Tinkerer",
+        "description": "You've picked up basic skills - maybe from a family member, maybe self-taught from salvaged manuals. You can do simple repairs, make crude versions of common items, or jury-rig solutions to everyday problems. You're not a real craftsman in anyone's eyes, but in a city where nothing's mass-produced, even your rough work has value."
+      }
+    ]
+  },
+  "The Academic / Scholar": {
+    "description": "Knowledge is power in Sidonia, and you're one of the people who controls it. Whether you're shaping policy from a university chair or teaching restless students, you understand that information and legitimacy are the real currencies of power.",
+    "skillSpecializationOptions": [
+      "Academics: [Field of Study]",
+      "Science: [Related Field]",
+      "Bureaucracy: Research"
+    ],
+    "resourceSynergyExamples": [
+      "Contact: University Contacts",
+      "Property: Library Access",
+      "Income: Research Grants",
+      "License: Academic Credentials"
+    ],
+    "professions": [
+      {
+        "priority": "A",
+        "title": "Researcher",
+        "description": "You're at the cutting edge. Maybe you run a department at Central District University, lead a privately funded institute, or head the Ministry of Information's research division. Your papers shape policy, your theories become doctrine, and your endorsement can make or break careers. You have access to archives most people don't know exist and funding that lets you chase questions that make other academics nervous."
+      },
+      {
+        "priority": "B",
+        "title": "Professor",
+        "description": "You have tenure at a respected institution. You teach advanced courses, publish regularly, and your expertise is recognized city-wide. When the Ministry needs an expert opinion or a Ward Boss wants something legitimized with academic authority, your name comes up. You're not shaping the field, but you're a respected voice within it."
+      },
+      {
+        "priority": "C",
+        "title": "Faculty Administrator",
+        "description": "You keep the academic machine running. Maybe you're a department head, a research coordinator, or manage a university library. You know where all the bodies are buried (sometimes literally, given Sidonian history), you control access to resources, and you understand how to navigate institutional politics. You're not famous, but you're essential."
+      },
+      {
+        "priority": "D",
+        "title": "Teacher",
+        "description": "You teach the basics to students who mostly don't care. Maybe you're an adjunct professor, a secondary school instructor, or a private tutor for wealthy families. You know your subject well enough to explain it to others, and you're building toward something better - if you can survive the politics and the terrible pay."
+      },
+      {
+        "priority": "E",
+        "title": "Graduate Student / Research Assistant",
+        "description": "You're still learning, but you've committed to the path. You assist with real research, teach undergraduate sections, and spend long nights in archives or laboratories. You're not paid enough, you're overworked, but you're building the foundation of expertise that might someday matter."
+      }
+    ]
+  },
+  "The Red Sentinel": {
+    "description": "You wear the red. You're one of the psychic bulwarks that stands between order and chaos when the crowds turn into something worse. The helmet protects you from the ether's worst effects, but nothing protects you from what you see people become.",
+    "skillSpecializationOptions": [
+      "Hand-to-Hand: Subdual",
+      "Melee: Baton",
+      "Athletics: Endurance"
+    ],
+    "resourceSynergyExamples": [
+      "Contact: Military Contacts",
+      "Equipment: Riot Gear",
+      "License: Red Sentinel Credentials",
+      "Equipment: Specialized Equipment"
+    ],
+    "professions": [
+      {
+        "priority": "A",
+        "title": "Command",
+        "description": "You're a senior officer, possibly running operations for an entire district or commanding a specialized unit. You've seen dozens of riots, supernatural incursions, and situations that would break most people. You have the authority to deploy Sentinels across Wards, coordinate with Ward Bosses, and make calls that determine who lives and dies when things go sideways. Your helmet is a mark of authority - scarred, customized, earned through years of holding the line."
+      },
+      {
+        "priority": "B",
+        "title": "Officer",
+        "description": "You lead squads into the chaos. When a riot breaks out or something supernatural needs containing, you're the one giving orders while standing in the thick of it. You've earned your rank through competence and survival, and your troops trust you to get them through alive. You coordinate with Command but you're still boots-on-ground when it matters."
+      },
+      {
+        "priority": "C",
+        "title": "Enlisted",
+        "description": "You're a full Sentinel. You've been through multiple riots, faced down angry mobs and worse, and you've proven you can handle the psychic weight of it all. You know your squad, trust your helmet to keep the worst of the ether at bay, and you've earned the respect that comes with the uniform. This is your career, and you're good at it."
+      },
+      {
+        "priority": "D",
+        "title": "One and Done",
+        "description": "You completed the training. You wore the helmet. You went into your first riot... and you took the out. Maybe the psychic pressure was too much, maybe seeing what a crowd can become broke something in you, or maybe you just realized you weren't built for it. It's not dishonorable - they give you the option for a reason - but you'll never be one of them. You can't call on the Sentinels for favors, and if you claim the title around real Sentinels, expect dismissive snorts at best."
+      },
+      {
+        "priority": "E",
+        "title": "Red Band",
+        "description": "You're a civilian volunteer. When the Sentinels deploy, you wear the red armband so you don't catch a baton to the head. You help with logistics, crowd control at the edges, maybe first aid. You're useful, but you're not one of them. You've never worn the helmet, never felt the full weight of a riot's psychic pressure. In Central, wearing the band when Sentinels aren't around is just embarrassing. In the outer districts, it's a good way to get beaten bloody."
+      }
+    ]
+  },
   "The Criminal Element": {
     "description": "Maybe you looked at all that and said, 'to hell with it.' Smart move. There's more honesty on the wrong side of the law anyway. But don't think for a second it's any less complicated.",
     "skillSpecializationOptions": [
@@ -7,15 +130,16 @@
       "Larceny: Stealth"
     ],
     "resourceSynergyExamples": [
-      "Contacts: Fence",
+      "Contact: Fence",
       "Property: Stash House",
-      "Secrets: Ward Boss's Kid has a favorite dealer, and you know who it is."
+      "Contact: Underworld Contacts",
+      "Equipment: Black Market Gear"
     ],
     "professions": [
       {
         "priority": "A",
-        "title": "The Banu",
-        "description": "A Banu is a king of a very small, very violent castle. They run a Ward or a neighborhood, and their power is tied to their territory. This ain't just about collecting protection money; it's a social contract. Your pipes burst? The cops shaking you down too hard? A rival crew moving in on your block? You go to your Banu. They're the unofficial mayor, judge, and jury. In return for your loyalty—and your cut—they keep the peace. Most take that obligation seriously; it's what separates them from common thugs. But pray you never get caught in a pissing match between your Banu and your Ward Boss. Because when two powers like that have a problem, the easiest way to solve it is to get rid of the person caught in the middle. And that'll be you, kid."
+        "title": "The Banu / Syndicate Boss",
+        "description": "You're at the top. Either you control a ward's criminal operations through territory and loyalty (Banu), or you manage a Syndicate's network, controlling supply lines and resource distribution across multiple territories. You don't answer to anyone except maybe the very top of the food chain."
       },
       {
         "priority": "B",
@@ -28,9 +152,14 @@
         "description": "A Fixer is an independent contractor in the business of making problems go away. They're the middlemen, the brokers, the ones who know everybody. Their power is their neutrality... or at least, the illusion of it. Everyone knows they have their favorite patrons, but they're useful enough that most people are willing to pretend they don't."
       },
       {
+        "priority": "D",
+        "title": "The Bully Boy",
+        "description": "You're freelance muscle trying to make your name. Maybe you were a standout in your old gang, maybe you're just ambitious and skilled. You take contract work from whoever's paying - protection, collections, intimidation. You're building a reputation so you can move up to something more permanent. You're not tied to one crew, and that makes you both valuable and vulnerable."
+      },
+      {
         "priority": "E",
-        "title": "The Street-Level",
-        "description": "This is where everyone starts. You're a Gaki, a street kid who knows how to survive. Or you're a Corner Boy in a local gang, holding down a piece of turf. You want to move up? You become a Bully Boy, the hired muscle who hangs out at the right bars, hoping a Syndicate Enforcer notices you're good at violence and decides to give you a shot. It's a ladder, kid. A bloody, rickety ladder, but a ladder all the same."
+        "title": "The Street Soldier",
+        "description": "You're a member of a neighborhood gang, maybe a former gaki who aged up. You handle collections, watch corners, and back up your crew in fights. You know your few blocks like the back of your hand, and you've got brothers who'll bleed with you - but you're still taking orders from above."
       }
     ]
   },
@@ -39,12 +168,13 @@
     "skillSpecializationOptions": [
       "Social: Persuasion",
       "Alertness: Detect Lie",
-      "Social Performance (Or choose one related to chosen artistic expression)"
+      "Social: Performance"
     ],
     "resourceSynergyExamples": [
       "Contact: Talent Agent",
-      "Property: Furnished Artist Studio",
-      "Equipment: Licensed Performer"
+      "Property: Performance Venue",
+      "License: Artistic License",
+      "Equipment: Promotional Materials"
     ],
     "professions": [
       {
@@ -59,32 +189,33 @@
       },
       {
         "priority": "C",
-        "title": "Performer",
-        "description": "You work the Wards. You're a singer whose voice can make a jaded Sentinel weep, a stage actor in a rundown theater, a musician playing in smoky back-alley clubs. You're not famous, you're known. People in your Ward know your name, buy you drinks, and feel a connection to you. Your power is intimate, a real bond with a community that sees you as one of their own."
+        "title": "Ward Performer",
+        "description": "You work the Wards. You're the singer whose voice makes jaded Sentinels weep, the stage actor in the rundown theater, the musician in smoky clubs. You're not famous - you're known. People in your Ward know your name, buy you drinks, and feel connected to you."
       },
       {
         "priority": "D",
-        "title": "Arena Champion / Local Artist",
-        "description": "Your stage is the neighborhood. Maybe you're the undefeated champion of a brutal fighting pit, a master artist who designs the clothes everyone wants to wear, or the genius who brews the best damn moonshine in five blocks. Your fame is hyperlocal, built on raw talent and reputation. You're a big fish in a very small, very murky pond."
+        "title": "Neighborhood Talent",
+        "description": "Your stage is hyperlocal. Maybe you're the undefeated pit fighter, the artist who designs clothes everyone wants, or the genius who brews the best moonshine in five blocks. You're a big fish in a very small, murky pond."
       },
       {
         "priority": "E",
-        "title": "Writer",
-        "description": "You're at the bottom of the food chain, kid. You're a poet, a novelist, a pamphleteer. You bleed your soul onto the page for a handful of people who get it. Your power isn't influence; it's impact. You're not changing the city, but you might just change the life of the one person who reads your work in a dimly lit room and feels a little less alone. It won't pay the rent, but sometimes, that's enough."
+        "title": "Struggling Artist",
+        "description": "You're at the bottom. A poet, novelist, pamphleteer bleeding your soul onto pages for a handful of people who get it. Your power isn't influence - it's impact. You might change one person's life who reads your work in a dimly lit room and feels less alone. It won't pay rent, but sometimes that's enough."
       }
     ]
   },
   "The Legal System": {
-    "description": "You think the Law is about justice? Kid, that's adorable. In Sidonia, the law is about contracts, and contracts are about loopholes. Justice is just a commodity, and these are the merchants who sell it by the hour. If you want to play in this sandbox, you better know the players.",
+    "description": "You think the Law is about justice? Kid, that's adorable. In Sidonia, the law is about contracts, and contracts are about loopholes. Justice is just a commodity, and these are the merchants who sell it by the hour.",
     "skillSpecializationOptions": [
       "Academics: Criminal Law",
       "Social: Debate",
       "Bureaucracy: Contract Law"
     ],
     "resourceSynergyExamples": [
-      "Contacts: District Judge",
-      "Equipment: Law License",
-      "Employee: Investigator."
+      "Contact: Judicial Contacts",
+      "License: Law License",
+      "Property: Legal Library Access",
+      "License: Court Credentials"
     ],
     "professions": [
       {
@@ -122,9 +253,11 @@
       "Academics: Criminal Law"
     ],
     "resourceSynergyExamples": [
-      "Contacts: Police Captain",
-      "Equipment: Detective License",
-      "Property: Detective Office"
+      "Contact: Police Captain",
+      "Contact: Informants",
+      "License: Detective License",
+      "Property: Detective Office",
+      "Equipment: Investigation Equipment"
     ],
     "professions": [
       {
@@ -133,9 +266,19 @@
         "description": "You're not just a PI; you're a legend. You work the high-stakes cases that the White Wardens can't touch and the cops won't. When a Syndicate boss's daughter goes missing or a Sorcerer's ritual goes wrong, they don't call the authorities. They call you. Your fee is astronomical, and your enemies are city-wide."
       },
       {
+        "priority": "B",
+        "title": "Established Detective",
+        "description": "You've built a solid reputation over years of successful cases. The well-off and powerful know your name, and you can command premium fees. You have reliable contacts, a proper office, and the kind of track record that makes clients trust you with sensitive work. You're not the legend they call for the impossible - but you're the proven professional they call when they need results and can afford quality."
+      },
+      {
         "priority": "C",
         "title": "Private Investigator",
         "description": "This is the classic gumshoe. You work out of a dusty office in a forgotten ward, taking cases the cops have already closed. Cheating spouses, missing persons, blackmail. You know the alleys, you know the informants, and you know how to take a punch. It's a thankless job, but it's a living. Barely."
+      },
+      {
+        "priority": "D",
+        "title": "Licensed Investigator",
+        "description": "You just got your credentials. Maybe you worked as a police consultant or apprenticed under an established PI. You've got the license and the training, but you're still building your client base and reputation. You're competent enough that people trust you with small cases, but you're not the first call when something serious goes down."
       },
       {
         "priority": "E",
@@ -152,9 +295,10 @@
       "Academics: Appraisal"
     ],
     "resourceSynergyExamples": [
-      "Contacts: Syndicate Enforcer",
-      "Equipment: Palm Pistol",
-      "Property: Second Identity."
+      "Contact: High-Society Contacts",
+      "Property: False Identities",
+      "Property: Fashionable Properties",
+      "Equipment: Concealed Weapons"
     ],
     "professions": [
       {
@@ -163,9 +307,19 @@
         "description": "You move in the highest circles of power, a welcome guest at every gala and every backroom deal. You don't just manipulate individuals; you play corporations, political factions, and entire districts against each other for your own gain. You are consistently underestimated, and that's how you win."
       },
       {
+        "priority": "B",
+        "title": "The Courtesan",
+        "description": "You operate independently at the upper levels of Sidonian society. Corporate executives, Ward Bosses, and old money families know your name. You're invited to the right parties, trusted with sensitive negotiations, and paid handsomely to be the charming face that smooths over ugly deals. You're not pulling the strings yet - but you're in the room when they're being pulled."
+      },
+      {
         "priority": "C",
         "title": "The Honey-Pot",
         "description": "You're a professional operator. You work for a spy ring, a corporation, or a powerful Banu, using your charm and wit as a weapon. Your job is to get close, to learn secrets, and to exploit weaknesses. You're a ghost in the social scene, a beautiful face with a dangerous agenda."
+      },
+      {
+        "priority": "D",
+        "title": "The Social Climber",
+        "description": "You've caught the attention of someone with power - maybe a Banu's lieutenant, a corporate handler, or a Ward Boss's fixer. You're being groomed, tested, given small jobs to prove yourself. You're no longer just surviving; you're learning the game from the inside. You've got potential, and dangerous people are starting to notice."
       },
       {
         "priority": "E",
@@ -182,9 +336,10 @@
       "Bureaucracy: Graft"
     ],
     "resourceSynergyExamples": [
-      "Contacts: Family Fixer",
-      "Income: Trust",
-      "Property: Central Residence."
+      "Contact: Family Connections",
+      "Income: Trust Funds",
+      "Property: Central Ward Properties",
+      "License: Prestigious Licenses"
     ],
     "professions": [
       {
@@ -193,9 +348,19 @@
         "description": "Your last name is a skeleton key that opens doors no one else even knows exist. It gets your calls returned by Judges and your invitations accepted by Icons. You may not control the family fortune directly, but you are the living legacy of its power, and the city never lets you forget it."
       },
       {
+        "priority": "B",
+        "title": "The Scion",
+        "description": "You're a recognized member of the family with real standing. Not the heir, but close enough that you handle important family business. When you speak, people assume you speak with family authority. You attend the important meetings, you're trusted with sensitive negotiations, and your success or failure reflects on the whole bloodline. You're not at the top yet, but you're being groomed for it."
+      },
+      {
         "priority": "C",
         "title": "The Black Sheep",
         "description": "You have the name, but not the favor. Maybe you're a disappointment, a rebel, or from a lesser branch of the family. The name still opens doors, but it also comes with heavy expectations and the constant scrutiny of your relatives. You have access to power, but you are not trusted with it."
+      },
+      {
+        "priority": "D",
+        "title": "The Cousin",
+        "description": "You're legitimate family, but distant enough that nobody expects much. Maybe you're from a cadet branch, or the child of a spare heir. You're invited to family functions, you can drop the name to get meetings, and people treat you with cautious respect - but everyone knows you're not in line for real power. You're learning the family business from the edges, hoping to prove yourself useful enough to matter."
       },
       {
         "priority": "E",
@@ -212,9 +377,10 @@
       "Alertness: Perception"
     ],
     "resourceSynergyExamples": [
-      "Contacts: All?",
-      "Employee: Bodyguard",
-      "Equipment: Travel Visa"
+      "Contact: Diverse Contacts",
+      "Equipment: Surveillance Equipment",
+      "Property: Secure Meeting Spaces",
+      "Equipment: Encrypted Communications"
     ],
     "professions": [
       {
@@ -223,9 +389,19 @@
         "description": "You don't just sell secrets; you control their flow. You run a major network like the Crimson Exchange, with agents in every corner of the city. The information you trade can start wars, topple corporations, or change the political landscape overnight. You are one of the true, hidden powers of Sidonia."
       },
       {
+        "priority": "B",
+        "title": "The Intelligence Merchant",
+        "description": "You run a professional operation. Multiple agents feed you information, you maintain networks across several Wards or sectors, and you broker deals between major players. Corporations, Ward Bosses, and Syndicate leaders know your name. The secrets you trade can shift power balances and end careers. You're not the shadow master yet, but you're one of the people they come to when they need to know something important."
+      },
+      {
         "priority": "C",
         "title": "The Broker",
         "description": "You're a significant player in a specific market. Maybe you handle all the corporate espionage in the Central Ward, or you're the trusted source for the Under-Kin's smuggling operations. You have a reputation, a network of reliable sources, and a long list of dangerous clients who both need and fear you."
+      },
+      {
+        "priority": "D",
+        "title": "The Stringer",
+        "description": "You're a working information dealer with steady business. You've got a handful of reliable sources, a reputation for accuracy in your niche, and regular clients who come back. Maybe you specialize in corporate gossip, Ward politics, or underworld movements. You're not playing at the big tables yet, but you're making a living and building the network that'll get you there."
       },
       {
         "priority": "E",
@@ -243,51 +419,83 @@
     ],
     "resourceSynergyExamples": [
       "Equipment: Vehicle",
-      "Equipment: Travel Visa",
-      "Property: Garage"
+      "License: Travel Permits",
+      "Property: Garage Space",
+      "Equipment: Mechanical Tools"
     ],
     "professions": [
+      {
+        "priority": "A",
+        "title": "The Wheelman",
+        "description": "You're a legend. When someone needs to move something or someone through impossible situations, your name comes up first. You've driven through gang wars, outrun White Wardens, and navigated routes that shouldn't exist. Your vehicle is custom-built to your specifications, your reflexes are superhuman, and your fee reflects the fact that if you take the job, it will get done. You're not just a driver - you're an artist, and the city's streets are your canvas."
+      },
       {
         "priority": "B",
         "title": "The Transporter",
         "description": "You don't just drive; you deliver. You offer secure, high-speed transportation for high-value cargo, be it a person, a package, or something less legal. You're a driver, a bodyguard, and a mechanic rolled into one. Your vehicle is a fortress, your routes are secrets, and your reputation for success is flawless."
       },
       {
+        "priority": "C",
+        "title": "The Owner-Operator",
+        "description": "You own your vehicle outright and run your own business. Maybe it's a legitimate taxi service with regular routes and steady clients, or maybe you're the go-to driver for mid-level criminals who need discretion. You've got your garage, your license, and a reputation for reliability. You're not legendary, but you're independent and professional."
+      },
+      {
         "priority": "D",
         "title": "The Driver",
         "description": "You're the talent behind the wheel. You might be the trusted chauffeur for a corporate exec, the getaway driver for a local Banu's crew, or you run a private taxi for clients who need discretion. You know the city's streets better than anyone, but the car isn't yours, and you don't get paid to ask questions. Your job is to drive, nothing more."
+      },
+      {
+        "priority": "E",
+        "title": "The Courier",
+        "description": "You're just starting out. Maybe you run messages on foot or bicycle, or you borrow someone's car for occasional jobs. You know how to navigate the city and you're fast, but you don't have your own wheels yet and you're still proving you can be trusted with the important runs. You're building your reputation one delivery at a time."
       }
     ]
   },
   "The Cop": {
     "description": "You are the law—or at least, you wear the badge. Whether you're a jaded detective or a beat cop trying to keep the peace, you walk a fine line between order and the abyss.",
     "skillSpecializationOptions": [
-      "Operator: Drive Auto",
+      "Melee: Baton",
       "Bureaucracy: Law",
       "Alertness: Investigation"
     ],
     "resourceSynergyExamples": [
-      "Equipment: Revolver",
-      "Contact: Snitch",
-      "License: Badge"
+      "Contact: Police Contacts",
+      "Equipment: Official Weapons",
+      "License: Badge and Credentials",
+      "Equipment: Patrol Vehicle"
     ],
     "professions": [
       {
+        "priority": "A",
+        "title": "Police Captain",
+        "description": "You run a precinct or major division. You don't patrol streets anymore - you command those who do. You have a desk, political connections, and the weight to make problems disappear or create them. When a case gets too hot, too weird, or too politically sensitive, it lands on your desk and you decide who handles it and how. You answer to the Ward Boss and the Ministry, which means you're always walking a tightrope."
+      },
+      {
         "priority": "B",
         "title": "Detective",
-        "description": "You're a plainclothes investigator for the White Wardens. You work major cases, have a desk, and a long-suffering partner. You have more autonomy than a beat cop, but also more pressure. When a case gets political or strange, it lands on your desk, and you're expected to close it, no matter what it takes."
+        "description": "You're plainclothes, working major cases. You have more autonomy than beat cops but also more pressure. When violence goes supernatural or politically complicated, you're expected to close it quietly. You've got a partner, a desk, and access to resources that street cops don't - but you're also the one who gets blamed when things go wrong."
+      },
+      {
+        "priority": "C",
+        "title": "Sergeant",
+        "description": "You're the bridge between command and the street. You lead a squad of beat cops, handle the day-to-day operations in your sector, and make the calls when situations escalate. The rookies look to you for guidance, the brass expects you to keep things running smooth, and you're the one who takes the heat when your Ward goes sideways."
       },
       {
         "priority": "D",
         "title": "Beat Cop",
-        "description": "You're the face of the law in your assigned Ward. You walk a beat, know the locals, and respond to the daily chaos of the city. You're the first on the scene and the last to be respected by the higher-ups. You have a badge and a gun, but your most valuable tool is knowing who to trust and whose knuckles to rap."
+        "description": "You walk a beat, know the locals, and respond to the daily chaos. You're the first on scene and the face of law in your Ward. It's thankless work - the criminals hate you, the citizens don't trust you, and your superiors barely acknowledge you exist unless you screw up."
+      },
+      {
+        "priority": "E",
+        "title": "Liaison",
+        "description": "You're the bottom rung. Maybe you're a clerk who processes paperwork, a records officer who files reports, or a community liaison who attends Ward meetings. You wear the uniform but you're not a real cop in anyone's eyes - especially your own. You see the cases, you hear the stories, but you're kept safely away from the actual danger."
       }
     ]
   },
   "The Syndicate Member": {
     "description": "You're part of a family—the kind that settles disputes with violence and funds itself through illicit enterprise. You have a place, you have a purpose, and you are protected, so long as you remain loyal.",
     "skillSpecializationOptions": [
-      "Hand to Hand: Brawler",
+      "Hand-to-Hand: Brawler",
       "Social: Intimidation",
       "Larceny: Security"
     ],
@@ -317,20 +525,36 @@
       "Alertness: Assessment"
     ],
     "resourceSynergyExamples": [
-      "Equipment: Vehicle",
-      "License: Medical",
-      "Equipment: Trauma Kit"
+      "Equipment: Medical Equipment",
+      "Property: Clinic Space",
+      "Contact: Pharmaceutical Contacts",
+      "License: Medical License"
     ],
     "professions": [
+      {
+        "priority": "A",
+        "title": "Chief of Surgery",
+        "description": "You run a medical department at a major hospital or head a prestigious private practice. Your skills are legendary, your patient list includes Ward Bosses and corporate executives, and you have access to the best equipment and facilities in Sidonia. When someone important is dying, you're the one they call. Your recommendations can make or break medical careers."
+      },
       {
         "priority": "B",
         "title": "Licensed Surgeon",
         "description": "You're a professional, working out of a legitimate clinic or corporate hospital. You have access to clean rooms, advanced medical technology, and a license that protects you. You serve the city's elite, patching up the wealthy and well-connected. The pay is good, but you're often complicit in the secrets your patients carry."
       },
       {
+        "priority": "C",
+        "title": "General Practitioner",
+        "description": "You run a small legitimate practice in a Mid or Upper Ward. You handle everyday medicine - setting bones, treating infections, delivering babies. You're licensed, respected in your community, and you make an honest living keeping ordinary people alive. The work is steady, the hours are brutal, and the pay is modest."
+      },
+      {
         "priority": "D",
         "title": "Street Doc",
         "description": "You're an unlicensed practitioner working in the shadows. Your clinic is a back room, your tools are second-hand, and your patients are gangers, smugglers, and others who can't risk a hospital visit. You're a master of improvisation, and your work is always in demand. You save lives, no questions asked, for a price."
+      },
+      {
+        "priority": "E",
+        "title": "Field Medic / Apprentice",
+        "description": "You've got basic training - maybe as a Red Sentinel medic, maybe from apprenticing with a street doc, maybe just from patching up enough people to learn what works. You can handle trauma, stop bleeding, and keep someone alive long enough to reach real help. You're not a doctor, but in the Downside, you're close enough."
       }
     ]
   },
@@ -342,9 +566,10 @@
       "Languages: Old Tongue"
     ],
     "resourceSynergyExamples": [
-      "Equipment: Occultist Journal",
-      "License: Central University Degree in Occult Studies",
-      "Contact: Mysterious Patron"
+      "Equipment: Esoteric Texts",
+      "Equipment: Occult Artifacts",
+      "Contact: Secret Society Contacts",
+      "Property: Ritual Spaces"
     ],
     "professions": [
       {
@@ -353,9 +578,19 @@
         "description": "You are an initiate of a genuine esoteric order. You don't just read the books; you practice the rites. You understand the true, deep patterns of the universe and can manipulate them. This gives you access to a frightening power, but it also makes you a player in a very old, very dangerous game."
       },
       {
+        "priority": "B",
+        "title": "Independent Practitioner",
+        "description": "You've moved beyond theory into practice, but you work alone or with a small circle of fellow practitioners. You know the rituals, you've performed them successfully, and you understand the risks. You're not part of an established order, which means less support but also less obligation. The spirits and entities you deal with recognize you as legitimate, which is both useful and dangerous."
+      },
+      {
         "priority": "C",
         "title": "Scholar",
         "description": "You're a serious, dedicated researcher of the forbidden and the arcane. You have a vast library of esoteric texts and a deep theoretical understanding of the occult. You know the rituals, the histories, and the names of power, but you lack the direct initiation of an Adept. You're a master of the theory, but a novice in the practice."
+      },
+      {
+        "priority": "D",
+        "title": "Collector",
+        "description": "You've assembled a respectable collection of occult knowledge and artifacts. You know enough to identify genuine articles from fakes, understand the significance of symbols, and recognize when something supernatural is happening. You've attempted a few minor workings with mixed results. You're past amateur hour, but you're not ready for the deep end."
       },
       {
         "priority": "E",
@@ -372,20 +607,36 @@
       "Bureaucracy: Graft"
     ],
     "resourceSynergyExamples": [
-      "Equipment: Vehicle",
-      "Equipment: Travel Visa",
-      "Contact: Central Records Clerk"
+      "License: Press Credentials",
+      "Contact: Information Contacts",
+      "Equipment: Communication Equipment",
+      "License: Travel Permits"
     ],
     "professions": [
+      {
+        "priority": "A",
+        "title": "Editor-in-Chief",
+        "description": "You run a major news outlet. You decide what stories get told and how they're told. Your editorial decisions can topple Ward Bosses, shift public opinion, and set the city's agenda. You have resources, reach, and political protection - but you're also a target for everyone whose secrets you threaten to expose."
+      },
       {
         "priority": "B",
         "title": "Star Reporter",
         "description": "You work for one of the city's major news outlets, like the Sidonia Chronicle or Channel 8 News. Your name is on the front page. You have a press pass that gets you past police lines and a network of high-level sources. When you expose a scandal, the city listens. This makes you a powerful friend and a terrifying enemy."
       },
       {
+        "priority": "C",
+        "title": "Beat Reporter",
+        "description": "You work for a legitimate newspaper or radio station, covering a specific Ward or beat. You know your territory, you have regular sources, and your byline appears consistently. You're not famous, but you're a working journalist with institutional backing and a steady paycheck. The stories you break might not shake the city, but they matter to the people in your Ward."
+      },
+      {
         "priority": "D",
         "title": "Freelance Stringer",
         "description": "You're an independent operator, a hustler with a camera and a notepad. You chase down stories the big outlets won't touch, then sell your findings to the highest bidder. You work on your own terms, but you have no institutional protection. You live and die by the quality of your leads and the strength of your nerve."
+      },
+      {
+        "priority": "E",
+        "title": "Pamphleteer / Blogger",
+        "description": "You're not a real journalist in anyone's eyes - you're someone with opinions and access to a printing press or a radio transmitter. You write underground newsletters, distribute pamphlets, or run a pirate radio show. Your reach is tiny, your resources are nonexistent, but you're telling stories nobody else will. The authorities dismiss you as a nuisance, which is the only reason you're still alive."
       }
     ]
   }

@@ -12,9 +12,11 @@ interface SkillsStageProps {
   onToggleSpecialization: (selection: SkillSpecializationSelection) => void;
   onRemoveSpecialization: (id: string) => void;
   onAddCustomSpecialization: (label: string) => void;
-  backgroundSpecialization: string | null;
+  backgroundSpecializations: string[];
+  backgroundCustomSpecializations: string[];
   backgroundOptions: string[];
-  onSetBackgroundSpecialization: (option: string | null) => void;
+  onSetBackgroundSpecializations: (specializations: string[]) => void;
+  onSetBackgroundCustomSpecializations: (customSpecs: string[]) => void;
   notes: string;
   onUpdateNotes: (notes: string) => void;
 }
@@ -38,13 +40,19 @@ export function SkillsStage({
   onToggleSpecialization,
   onRemoveSpecialization,
   onAddCustomSpecialization,
-  backgroundSpecialization,
+  backgroundSpecializations,
+  backgroundCustomSpecializations,
   backgroundOptions,
-  onSetBackgroundSpecialization,
+  onSetBackgroundSpecializations,
+  onSetBackgroundCustomSpecializations,
   notes,
   onUpdateNotes
 }: SkillsStageProps) {
   const [customLabel, setCustomLabel] = useState('');
+
+  // Ensure backward compatibility with default values
+  const safeBackgroundSpecializations = backgroundSpecializations || [];
+  const safeBackgroundCustomSpecializations = backgroundCustomSpecializations || [];
 
   const rule = priority ? SKILL_PRIORITY_RULES[priority] : null;
   const totalPoints = useMemo(
@@ -197,33 +205,30 @@ export function SkillsStage({
         ))}
       </section>
 
-      {backgroundOptionsAvailable.length > 0 && (
+      {(safeBackgroundSpecializations.length > 0 || safeBackgroundCustomSpecializations.length > 0) && (
         <section className="skills-background">
-          <h3>Background Specialization</h3>
-          <p>Select one of the options granted by your background.</p>
-          <div className="skills-background__options">
-            {backgroundOptionsAvailable.map((option) => (
-              <label key={option} className="skills-background__option">
-                <input
-                  type="radio"
-                  name="background-specialization"
-                  value={option}
-                  checked={backgroundSpecialization === option}
-                  onChange={() => onSetBackgroundSpecialization(option)}
-                />
-                <span>{option}</span>
-              </label>
+          <h3>Background Specializations</h3>
+          <p>These specializations were granted by your background (selected in the Background stage).</p>
+          <ul className="skills-background__list">
+            {safeBackgroundSpecializations.map((spec) => (
+              <li key={spec}>
+                <strong>{spec}</strong>
+                <span className="gm-tag gm-tag--background">Background</span>
+              </li>
             ))}
-            <button type="button" className="skills-background__clear" onClick={() => onSetBackgroundSpecialization(null)}>
-              Clear Background Choice
-            </button>
-          </div>
+            {safeBackgroundCustomSpecializations.map((spec) => (
+              <li key={spec}>
+                <strong>{spec}</strong>
+                <span className="gm-tag gm-tag--background">Background (Custom)</span>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 
       <section className="skills-selected">
         <h3>Selected Specializations</h3>
-        {specializations.length === 0 && !backgroundSpecialization ? (
+        {specializations.length === 0 ? (
           <p>No specializations chosen yet.</p>
         ) : (
           <ul>
@@ -238,17 +243,6 @@ export function SkillsStage({
                 </button>
               </li>
             ))}
-            {backgroundSpecialization && (
-              <li>
-                <div>
-                  <strong>{backgroundSpecialization}</strong>
-                  <span className="gm-tag gm-tag--background">Background</span>
-                </div>
-                <button type="button" onClick={() => onSetBackgroundSpecialization(null)} aria-label="Clear background specialization">
-                  Remove
-                </button>
-              </li>
-            )}
           </ul>
         )}
       </section>

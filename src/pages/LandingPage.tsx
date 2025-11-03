@@ -8,7 +8,7 @@ export function LandingPage() {
       <div className="max-w-4xl w-full space-y-deco-lg">
         {/* Hero Section */}
         <header className="text-center space-y-deco-md mb-deco-xl">
-          <h1 className="text-display-lg text-shadow-gold">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-display-lg text-shadow-gold px-4">
             Character Creation as Descent
           </h1>
           <div className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-sidonia-gold to-transparent" />

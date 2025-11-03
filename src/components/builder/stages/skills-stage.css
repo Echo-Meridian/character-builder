@@ -300,6 +300,28 @@
   font-size: 0.75rem;
 }
 
+.skills-background__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.skills-background__list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(240, 200, 120, 0.3);
+  background: rgba(240, 200, 120, 0.08);
+}
+
+.skills-background__list li strong {
+  color: rgba(240, 200, 120, 0.95);
+}
+
 .skills-custom {
   margin-top: 1rem;
   display: grid;

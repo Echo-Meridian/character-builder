@@ -166,7 +166,8 @@ export interface CharacterBuild {
   skills: {
     ratings: Record<string, number>;
     specializations: SkillSpecializationSelection[];
-    backgroundSpecialization: string | null;
+    backgroundSpecializations: string[];
+    backgroundCustomSpecializations: string[];
     notes: string;
   };
   attributes: {
@@ -233,7 +234,8 @@ export interface CharacterStore {
   removeSkillSpecialization: (id: string) => void;
   addCustomSkillSpecialization: (label: string) => void;
   markSkillSpecializationApproved: (id: string, gmApproved: boolean) => void;
-  setBackgroundSkillSpecialization: (option: string | null) => void;
+  setBackgroundSkillSpecializations: (specializations: string[]) => void;
+  setBackgroundCustomSpecializations: (customSpecs: string[]) => void;
   updateSkillNotes: (notes: string) => void;
   setAttributeScore: (attribute: AttributeKey, value: number) => void;
   updateAttributeNotes: (notes: string) => void;
@@ -346,7 +348,8 @@ const makeBuild = (label?: string): CharacterBuild => {
     skills: {
       ratings: {},
       specializations: [],
-      backgroundSpecialization: null,
+      backgroundSpecializations: [],
+      backgroundCustomSpecializations: [],
       notes: ''
     },
     attributes: {
@@ -970,7 +973,7 @@ export const useCharacterStore = create<CharacterStore>()(
             ...build,
             background: updatedBackground,
             skills: backgroundChanged
-              ? { ...build.skills, backgroundSpecialization: null }
+              ? { ...build.skills, backgroundSpecializations: [], backgroundCustomSpecializations: [] }
               : build.skills
           };
         });
@@ -1042,12 +1045,19 @@ export const useCharacterStore = create<CharacterStore>()(
           }
         }));
       },
-      setBackgroundSkillSpecialization: (option) => {
+      setBackgroundSkillSpecializations: (specializations: string[]) => {
         withActive(set, (build) => ({
           ...build,
-          skills: { ...build.skills, backgroundSpecialization: option }
+          skills: { ...build.skills, backgroundSpecializations: specializations }
         }));
-        analytics.track('skills.background_specialization', { option });
+        analytics.track('skills.background_specializations', { count: specializations.length });
+      },
+      setBackgroundCustomSpecializations: (customSpecs: string[]) => {
+        withActive(set, (build) => ({
+          ...build,
+          skills: { ...build.skills, backgroundCustomSpecializations: customSpecs }
+        }));
+        analytics.track('skills.background_custom_specializations', { count: customSpecs.length });
       },
       updateSkillNotes: (notes) => {
         withActive(set, (build) => ({
@@ -1300,12 +1310,29 @@ export const useCharacterStore = create<CharacterStore>()(
         const upgradeSkills = (skills: unknown): CharacterBuild['skills'] => {
           const legacy = (skills ?? {}) as Partial<CharacterBuild['skills']> & {
             focus?: unknown;
+            backgroundSpecialization?: string | null;
+            backgroundCustomSpecialization?: string;
           };
-          if (legacy.ratings && legacy.specializations && legacy.backgroundSpecialization !== undefined) {
+          if (legacy.ratings && legacy.specializations) {
+            // Migrate old backgroundSpecialization to new array format
+            const migratedSpecializations =
+              legacy.backgroundSpecialization && typeof legacy.backgroundSpecialization === 'string'
+                ? [legacy.backgroundSpecialization]
+                : (legacy as any).backgroundSpecializations ?? [];
+
+            // Migrate old single backgroundCustomSpecialization to array
+            const migratedCustomSpecs = [];
+            if (legacy.backgroundCustomSpecialization && typeof legacy.backgroundCustomSpecialization === 'string') {
+              migratedCustomSpecs.push(legacy.backgroundCustomSpecialization);
+            } else if (Array.isArray((legacy as any).backgroundCustomSpecializations)) {
+              migratedCustomSpecs.push(...(legacy as any).backgroundCustomSpecializations);
+            }
+
             return {
               ratings: legacy.ratings,
               specializations: Array.isArray(legacy.specializations) ? legacy.specializations : [],
-              backgroundSpecialization: legacy.backgroundSpecialization ?? null,
+              backgroundSpecializations: Array.isArray(migratedSpecializations) ? migratedSpecializations : [],
+              backgroundCustomSpecializations: migratedCustomSpecs,
               notes: typeof legacy.notes === 'string' ? legacy.notes : ''
             } satisfies CharacterBuild['skills'];
           }
@@ -1319,7 +1346,8 @@ export const useCharacterStore = create<CharacterStore>()(
           return {
             ratings,
             specializations: [],
-            backgroundSpecialization: null,
+            backgroundSpecializations: [],
+            backgroundCustomSpecializations: [],
             notes: typeof legacy.notes === 'string' ? legacy.notes : ''
           } satisfies CharacterBuild['skills'];
         };

@@ -1,0 +1,228 @@
+
+
+1.	The Craftsman 
+A - Master Artisan: Your name is synonymous with quality. You might be the city's premier runesmith, the only person trusted to modify Neosapiens, or the alchemist who supplies the Ministry's laboratories. Your work commands astronomical prices, your apprentices are sought after, and Ward Bosses compete for your services. You don't just make things - you set standards that others try to reach.
+B - Guild Master: You run a successful workshop with multiple journeymen and apprentices. Your reputation extends beyond your Ward, and you handle commissions for wealthy clients and important institutions. You're a pillar of your craft's community, someone other artisans come to for advice or difficult problems. You make a very comfortable living from your skill.
+C - Journeyman Craftsman: You've completed your apprenticeship and established your own practice. You have steady clients, a small workspace, and the credentials to work independently. You're competent and reliable - people know your name in your Ward and trust your work. You're not famous, but you're making a living doing what you're good at.
+D - Apprentice: You're learning the trade under a master. You handle the simpler work, maintain tools, and slowly build skill through repetition and observation. You're not fully licensed yet, but you're developing real expertise. Your master's reputation protects you, but also means any mistakes reflect on them.
+E - Hobbyist / Tinkerer: You've picked up basic skills - maybe from a family member, maybe self-taught from salvaged manuals. You can do simple repairs, make crude versions of common items, or jury-rig solutions to everyday problems. You're not a real craftsman in anyone's eyes, but in a city where nothing's mass-produced, even your rough work has value.
+Specialization Choices: Engineering: [Craft Type], Science: [Related Field], Craft: [Specific Discipline], [Other with GM approval]
+Examples: Engineering: Mechanics, Engineering: Bio Mods, Craft: Runesmithing, Craft: Alchemy, Craft: Textiles, Craft: Blacksmithing, Science: Chemistry, etc.
+·	E: 1 specialization, 1 Background Point
+·	D: 1 specializations, 2 Background Points
+·	C: 2 specializations, 3 Background Points
+·	B: 2 specializations, 4 Background Points
+·	A: 3 specializations, 5 Background Points
+Resource Synergy: Craft-related purchases (workshop space, tools and equipment, material suppliers, guild memberships) give 1.5x value.
+
+2.	The Academic / Scholar 
+A - Researcher: You're at the cutting edge. Maybe you run a department at Central District University, lead a privately funded institute, or head the Ministry of Information's research division. Your papers shape policy, your theories become doctrine, and your endorsement can make or break careers. You have access to archives most people don't know exist and funding that lets you chase questions that make other academics nervous.
+B - Professor: You have tenure at a respected institution. You teach advanced courses, publish regularly, and your expertise is recognized city-wide. When the Ministry needs an expert opinion or a Ward Boss wants something legitimized with academic authority, your name comes up. You're not shaping the field, but you're a respected voice within it.
+C - Faculty Administrator: You keep the academic machine running. Maybe you're a department head, a research coordinator, or manage a university library. You know where all the bodies are buried (sometimes literally, given Sidonian history), you control access to resources, and you understand how to navigate institutional politics. You're not famous, but you're essential.
+D - Teacher: You teach the basics to students who mostly don't care. Maybe you're an adjunct professor, a secondary school instructor, or a private tutor for wealthy families. You know your subject well enough to explain it to others, and you're building toward something better - if you can survive the politics and the terrible pay.
+E - Graduate Student / Research Assistant: You're still learning, but you've committed to the path. You assist with real research, teach undergraduate sections, and spend long nights in archives or laboratories. You're not paid enough, you're overworked, but you're building the foundation of expertise that might someday matter.
+Specialization Choices: Academics: [Field of Study], Science: [Related Field], Bureaucracy: Research, [Other with GM approval]
+·	E: 1 specializations, 1 Background Point
+·	D: 1 specializations, 2 Background Points
+·	C: 2 specializations, 3 Background Points
+·	B: 2 specializations, 4 Background Points
+·	A: 3 specializations, 5 Background Points
+Resource Synergy: Academic purchases (university contacts, library access, research grants, academic credentials) give 1.5x value.
+
+
+3.	The Red Sentinel
+A - Command: You're a senior officer, possibly running operations for an entire district or commanding a specialized unit. You've seen dozens of riots, supernatural incursions, and situations that would break most people. You have the authority to deploy Sentinels across Wards, coordinate with Ward Bosses, and make calls that determine who lives and dies when things go sideways. Your helmet is a mark of authority - scarred, customized, earned through years of holding the line.
+B - Officer: You lead squads into the chaos. When a riot breaks out or something supernatural needs containing, you're the one giving orders while standing in the thick of it. You've earned your rank through competence and survival, and your troops trust you to get them through alive. You coordinate with Command but you're still boots-on-ground when it matters.
+C - Enlisted: You're a full Sentinel. You've been through multiple riots, faced down angry mobs and worse, and you've proven you can handle the psychic weight of it all. You know your squad, trust your helmet to keep the worst of the ether at bay, and you've earned the respect that comes with the uniform. This is your career, and you're good at it.
+D - One and Done: You completed the training. You wore the helmet. You went into your first riot... and you took the out. Maybe the psychic pressure was too much, maybe seeing what a crowd can become broke something in you, or maybe you just realized you weren't built for it. It's not dishonorable - they give you the option for a reason - but you'll never be one of them. You can't call on the Sentinels for favors, and if you claim the title around real Sentinels, expect dismissive snorts at best.
+E - Red Band: You're a civilian volunteer. When the Sentinels deploy, you wear the red armband so you don't catch a baton to the head. You help with logistics, crowd control at the edges, maybe first aid. You're useful, but you're not one of them. You've never worn the helmet, never felt the full weight of a riot's psychic pressure. In Central, wearing the band when Sentinels aren't around is just embarrassing. In the outer districts, it's a good way to get beaten bloody.
+Specialization Choices: Hand-to-Hand: Subdual, Melee: Baton, Athletics: Endurance, [Other with GM approval]
+·	E: 1 specializations, 1 Background Point
+·	D: 1 specializations, 2 Background Points
+·	C: 2 specializations, 3 Background Points
+·	B: 2 specializations, 4 Background Points
+·	A: 3 specializations, 5 Background Points
+Resource Synergy: Sentinel-related purchases (military contacts, riot gear, Red Sentinel credentials, specialized equipment) give 1.5x value.
+
+
+4.	The Cop 
+A - Police Captain: You run a precinct or major division. You don't patrol streets anymore - you command those who do. You have a desk, political connections, and the weight to make problems disappear or create them. When a case gets too hot, too weird, or too politically sensitive, it lands on your desk and you decide who handles it and how. You answer to the Ward Boss and the Ministry, which means you're always walking a tightrope.
+B - Detective: You're plainclothes, working major cases. You have more autonomy than beat cops but also more pressure. When violence goes supernatural or politically complicated, you're expected to close it quietly. You've got a partner, a desk, and access to resources that street cops don't - but you're also the one who gets blamed when things go wrong.
+C - Sergeant: You're the bridge between command and the street. You lead a squad of beat cops, handle the day-to-day operations in your sector, and make the calls when situations escalate. The rookies look to you for guidance, the brass expects you to keep things running smooth, and you're the one who takes the heat when your Ward goes sideways.
+D - Beat Cop: You walk a beat, know the locals, and respond to the daily chaos. You're the first on scene and the face of law in your Ward. It's thankless work - the criminals hate you, the citizens don't trust you, and your superiors barely acknowledge you exist unless you screw up.
+E - Liaison: You're the bottom rung. Maybe you're a clerk who processes paperwork, a records officer who files reports, or a community liaison who attends Ward meetings. You wear the uniform but you're not a real cop in anyone's eyes - especially your own. You see the cases, you hear the stories, but you're kept safely away from the actual danger.
+Specialization Choices: Melee: Baton, Bureaucracy: Law, Alertness: Investigation, [Other with GM approval]
+·	E: 1 specialization, 1 Background Point
+·	D: 1 specializations, 2 Background Points
+·	C: 2 specializations, 3 Background Points
+·	B: 2 specializations, 4 Background Points
+·	A: 3 specializations, 5 Background Points
+Resource Synergy: Law enforcement purchases (police contacts, official weapons, badges and credentials, patrol vehicles) give 1.5x value.
+
+5.	The Entertainer 
+A - Icon / Movie Star: You're a legend thanks to the film reels. Your face is known city-wide, from Southern slums to Northern spires. You're propaganda that the Ministry of Information tolerates because you're too valuable. You're not just an entertainer - you're a shared dream in a nightmare city.
+B - District Legend: In your district, you're a household name. Maybe you're a charismatic leader of a rebel faction in the West, a celebrated artist in the North, or a feared fighter in the South. Your power is immense within your borders, but step outside and you're just another face.
+C - Ward Performer: You work the Wards. You're the singer whose voice makes jaded Sentinels weep, the stage actor in the rundown theater, the musician in smoky clubs. You're not famous - you're known. People in your Ward know your name, buy you drinks, and feel connected to you.
+D - Neighborhood Talent: Your stage is hyperlocal. Maybe you're the undefeated pit fighter, the artist who designs clothes everyone wants, or the genius who brews the best moonshine in five blocks. You're a big fish in a very small, murky pond.
+E - Struggling Artist: You're at the bottom. A poet, novelist, pamphleteer bleeding your soul onto pages for a handful of people who get it. Your power isn't influence - it's impact. You might change one person's life who reads your work in a dimly lit room and feels less alone. It won't pay rent, but sometimes that's enough.
+Specialization Choices: Social: Persuasion, Alertness: Detect Lie, Social: Performance, [Or choose one related to your artistic expression with GM approval]
+·	E: 1 specialization, 1 Background Point
+·	D: 1 specializations, 2 Background Points
+·	C: 2 specializations, 3 Background Points
+·	B: 2 specializations, 4 Background Points
+·	A: 3 specializations, 5 Background Points
+Resource Synergy: Entertainment-focused purchases (talent agents, performance venues, artistic licenses, promotional materials) give 1.5x value.
+
+6.	The Driver & The Transporter 
+A - The Wheelman: You're a legend. When someone needs to move something or someone through impossible situations, your name comes up first. You've driven through gang wars, outrun White Wardens, and navigated routes that shouldn't exist. Your vehicle is custom-built to your specifications, your reflexes are superhuman, and your fee reflects the fact that if you take the job, it will get done. You're not just a driver - you're an artist, and the city's streets are your canvas.
+B The Transporter "You don't just drive; you deliver. You offer secure, high-speed transportation for high-value cargo, be it a person, a package, or something less legal. You're a driver, a bodyguard, and a mechanic rolled into one. Your vehicle is a fortress, your routes are secrets, and your reputation for success is flawless."
+C - The Owner-Operator: You own your vehicle outright and run your own business. Maybe it's a legitimate taxi service with regular routes and steady clients, or maybe you're the go-to driver for mid-level criminals who need discretion. You've got your garage, your license, and a reputation for reliability. You're not legendary, but you're independent and professional.
+D The Driver "You're the talent behind the wheel. You might be the trusted chauffeur for a corporate exec, the getaway driver for a local Banu's crew, or you run a private taxi for clients who need discretion. You know the city's streets better than anyone, but the car isn't yours, and you don't get paid to ask questions. Your job is to drive, nothing more."
+E - The Courier: You're just starting out. Maybe you run messages on foot or bicycle, or you borrow someone's car for occasional jobs. You know how to navigate the city and you're fast, but you don't have your own wheels yet and you're still proving you can be trusted with the important runs. You're building your reputation one delivery at a time.
+Specialization Choices: Operator: Drive Auto, Ranged: Handguns, Engineering: Mechanics, [Other with GM approval]
+·	E: 1 specialization, 1 Background Point
+·	D: 1 specializations, 2 Background Points
+·	C: 2 specializations, 3 Background Points
+·	B: 2 specializations, 4 Background Points
+·	A: 3 specializations, 5 Background Points
+Resource Synergy: Transportation-focused purchases (vehicles, travel permits, garage space, mechanical tools) give 1.5x value.
+
+7.	The Info Broker 
+A Spymaster "You don't just sell secrets; you control their flow. You run a major network like the Crimson Exchange, with agents in every corner of the city. The information you trade can start wars, topple corporations, or change the political landscape overnight. You are one of the true, hidden powers of Sidonia."
+B - The Intelligence Merchant: You run a professional operation. Multiple agents feed you information, you maintain networks across several Wards or sectors, and you broker deals between major players. Corporations, Ward Bosses, and Syndicate leaders know your name. The secrets you trade can shift power balances and end careers. You're not the shadow master yet, but you're one of the people they come to when they need to know something important.
+C The Broker "You're a significant player in a specific market. Maybe you handle all the corporate espionage in the Central Ward, or you're the trusted source for the Under-Kin's smuggling operations. You have a reputation, a network of reliable sources, and a long list of dangerous clients who both need and fear you."
+D - The Stringer: You're a working information dealer with steady business. You've got a handful of reliable sources, a reputation for accuracy in your niche, and regular clients who come back. Maybe you specialize in corporate gossip, Ward politics, or underworld movements. You're not playing at the big tables yet, but you're making a living and building the network that'll get you there.
+E The Rumormonger "You're a street-level hub of information. You don't have a network of agents; you have a barstool and a good ear. You trade in gossip, whispers, and the kind of low-level dirt that can be surprisingly valuable to the right person. You're the first person people ask when they want to know what's really going on in the neighborhood."
+
+Specialization Choices: Social: Barter, Academics: Appraisal, Alertness: Perception, [Other with GM approval]
+·	E: 1 specialization, 1 Background Point
+·	D: 1 specializations, 2 Background Points
+·	C: 2 specializations, 3 Background Points
+·	B: 2 specializations, 4 Background Points
+·	A: 3 specializations, 5 Background Points
+Resource Synergy: Information network purchases (diverse contacts, surveillance equipment, secure meeting spaces, encrypted communications) give 1.5x value.
+
+8.	Old Blood 
+A The Inheritor "Your last name is a skeleton key that opens doors no one else even knows exist. It gets your calls returned by Judges and your invitations accepted by Icons. You may not control the family fortune directly, but you are the living legacy of its power, and the city never lets you forget it."
+B - The Scion: You're a recognized member of the family with real standing. Not the heir, but close enough that you handle important family business. When you speak, people assume you speak with family authority. You attend the important meetings, you're trusted with sensitive negotiations, and your success or failure reflects on the whole bloodline. You're not at the top yet, but you're being groomed for it.
+C The Black Sheep "You have the name, but not the favor. Maybe you're a disappointment, a rebel, or from a lesser branch of the family. The name still opens doors, but it also comes with heavy expectations and the constant scrutiny of your relatives. You have access to power, but you are not trusted with it."
+D - The Cousin: You're legitimate family, but distant enough that nobody expects much. Maybe you're from a cadet branch, or the child of a spare heir. You're invited to family functions, you can drop the name to get meetings, and people treat you with cautious respect - but everyone knows you're not in line for real power. You're learning the family business from the edges, hoping to prove yourself useful enough to matter.
+E The Outcast "Your parents were cast out, disowned. You grew up on stories of a power and prestige you've never known. Your name means nothing to those in the know, but to the uninformed, it can still work a little magic, opening a minor door here or there. But it's a dangerous game—if your bluff is called, the consequences will be severe. Still, you inherited some of the family's know-how, a whisper of the way things 'really work'."
+
+Specialization Choices: Academics: History, Social: Etiquette, Bureaucracy: Graft, [Other with GM approval]
+·	E: 1 specialization, 1 Background Point
+·	D: 1 specializations, 2 Background Points
+·	C: 2 specializations, 3 Background Points
+·	B: 2 specializations, 4 Background Points
+·	A: 3 specializations, 5 Background Points
+Resource Synergy: Old money purchases (family connections, trust funds, Central Ward properties, prestigious licenses) give 1.5x value.
+
+9.	The Criminal Element 
+A - The Banu / Syndicate Boss: You're at the top. Either you control a ward's criminal operations through territory and loyalty (Banu), or you manage a Syndicate's network, controlling supply lines and resource distribution across multiple territories. You don't answer to anyone except maybe the very top of the food chain.
+B - The Syndicate Enforcer: You're a professional operating within a Syndicate's structure. You don't care about turf; you manage product, information, and problems. You're everywhere and nowhere, a ghost who makes the network function.
+C - The Fixer: Independent contractor. You're the middleman who makes problems disappear. Your power is your neutrality and your network. You're trusted by multiple factions because you don't play favorites - or at least, they think you don't.
+D - The Bully Boy: You're freelance muscle trying to make your name. Maybe you were a standout in your old gang, maybe you're just ambitious and skilled. You take contract work from whoever's paying - protection, collections, intimidation. You're building a reputation so you can move up to something more permanent. You're not tied to one crew, and that makes you both valuable and vulnerable.
+E - The Street Soldier: You're a member of a neighborhood gang, maybe a former gaki who aged up. You handle collections, watch corners, and back up your crew in fights. You know your few blocks like the back of your hand, and you've got brothers who'll bleed with you - but you're still taking orders from above.
+Specialization Choices: Social: Intimidation, Melee: Knives, Larceny: Stealth, [Other with GM approval]
+·	E: 1 specialization, 1 Background Point
+·	D: 1 specializations, 2 Background Points
+·	C: 2 specializations, 3 Background Points
+·	B: 2 specializations, 4 Background Points
+·	A: 3 specializations, 5 Background Points
+Resource Synergy: Criminal-focused purchases (fences, stash houses, underworld contacts, black market gear) give 1.5x value.
+
+10.	The Femme Fatale 
+A The Mastermind "You move in the highest circles of power, a welcome guest at every gala and every backroom deal. You don't just manipulate individuals; you play corporations, political factions, and entire districts against each other for your own gain. You are consistently underestimated, and that's how you win."
+B - The Courtesan: You operate independently at the upper levels of Sidonian society. Corporate executives, Ward Bosses, and old money families know your name. You're invited to the right parties, trusted with sensitive negotiations, and paid handsomely to be the charming face that smooths over ugly deals. You're not pulling the strings yet - but you're in the room when they're being pulled.
+C The Honey-Pot "You're a professional operator. You work for a spy ring, a corporation, or a powerful Banu, using your charm and wit as a weapon. Your job is to get close, to learn secrets, and to exploit weaknesses. You're a ghost in the social scene, a beautiful face with a dangerous agenda."
+D - The Social Climber: You've caught the attention of someone with power - maybe a Banu's lieutenant, a corporate handler, or a Ward Boss's fixer. You're being groomed, tested, given small jobs to prove yourself. You're no longer just surviving; you're learning the game from the inside. You've got potential, and dangerous people are starting to notice.
+E The Survivor "You're no one's pawn. You've learned from the ground up that your appearance is a shield. On the streets, people either dismiss you, desire you, or ignore you—and you've learned to use every one of those reactions to survive. You play the part people expect, long enough to get what you need and disappear before they know what hit them."
+Specialization Choices: Social: Persuasion, Social: Deception, Academics: Appraisal, [Other with GM approval]
+·	E: 1 specialization, 1 Background Point
+·	D: 1 specializations, 2 Background Points
+·	C: 2 specializations, 3 Background Points
+·	B: 2 specializations, 4 Background Points
+·	A: 3 specializations, 5 Background Points
+Resource Synergy: Social-focused purchases (high-society contacts, false identities, fashionable properties, concealed weapons) give 1.5x value.
+
+11.	The Private Detective
+You're a professional searcher in a city that hates the light. Your power isn't a badge; it's the stubborn refusal to let a secret stay buried.
+A Master Sleuth "You're not just a PI; you're a legend. You work the high-stakes cases that the White Wardens can't touch and the cops won't. When a Syndicate boss's daughter goes missing or a Sorcerer's ritual goes wrong, they don't call the authorities. They call you. Your fee is astronomical, and your enemies are city-wide."
+B - Established Detective: You've built a solid reputation over years of successful cases. The well-off and powerful know your name, and you can command premium fees. You have reliable contacts, a proper office, and the kind of track record that makes clients trust you with sensitive work. You're not the legend they call for the impossible - but you're the proven professional they call when they need results and can afford quality.
+C Private Investigator "This is the classic gumshoe. You work out of a dusty office in a forgotten ward, taking cases the cops have already closed. Cheating spouses, missing persons, blackmail. You know the alleys, you know the informants, and you know how to take a punch. It's a thankless job, but it's a living. Barely."
+D - Licensed Investigator: You just got your credentials. Maybe you worked as a police consultant or apprenticed under an established PI. You've got the license and the training, but you're still building your client base and reputation. You're competent enough that people trust you with small cases, but you're not the first call when something serious goes down.
+E Inquirer "You're just starting out. Maybe you're a washed-up cop, a disgraced journalist, or just someone with a knack for asking the wrong questions. You have no office, no reputation, and no fancy clients. You work out of diners and back booths, chasing small-time mysteries for chump change, hoping to catch the one case that will make your name."
+Choose from: Alertness: Investigation, Social: Interrogation, Academics: Criminal Law, [Other with GM approval]
+·	E: 1 specialization, 1 Background Point
+·	D: 1 specializations, 2 Background Points
+·	C: 2 specializations, 3 Background Points
+·	B: 2 specializations, 4 Background Points
+·	A: 3 specializations, 5 Background Points
+Resource Synergy: Detective-relevant purchases (contacts like cops/informants, detective license, office space, investigation equipment) give 1.5x value.
+
+12.	The Medic 
+In a city this sick, someone has to patch up the wounded. You're a healer, though your methods and clientele may vary wildly.
+A - Chief of Surgery: You run a medical department at a major hospital or head a prestigious private practice. Your skills are legendary, your patient list includes Ward Bosses and corporate executives, and you have access to the best equipment and facilities in Sidonia. When someone important is dying, you're the one they call. Your recommendations can make or break medical careers.
+B - Licensed Surgeon: You're a professional, working out of a legitimate clinic or corporate hospital. You have access to clean rooms, advanced medical technology, and a license that protects you. You serve the city's elite, patching up the wealthy and well-connected. The pay is good, but you're often complicit in the secrets your patients carry.
+C - General Practitioner: You run a small legitimate practice in a Mid or Upper Ward. You handle everyday medicine - setting bones, treating infections, delivering babies. You're licensed, respected in your community, and you make an honest living keeping ordinary people alive. The work is steady, the hours are brutal, and the pay is modest.
+D - Street Doc: You're an unlicensed practitioner working in the shadows. Your clinic is a back room, your tools are second-hand, and your patients are gangers, smugglers, and others who can't risk a hospital visit. You're a master of improvisation, and your work is always in demand. You save lives, no questions asked, for a price.
+E - Field Medic / Apprentice: You've got basic training - maybe as a Red Sentinel medic, maybe from apprenticing with a street doc, maybe just from patching up enough people to learn what works. You can handle trauma, stop bleeding, and keep someone alive long enough to reach real help. You're not a doctor, but in the Downside, you're close enough.
+Specialization Choices: Medicine: Triage, Social: Empathy, Alertness: Assessment, [Other with GM approval]
+·	E: 1 specialization, 1 Background Point
+·	D: 1 specializations, 2 Background Points
+·	C: 2 specializations, 3 Background Points
+·	B: 2 specializations, 4 Background Points
+·	A: 3 specializations, 5 Background Points
+Resource Synergy: Medical purchases (medical equipment, clinic space, pharmaceutical contacts, medical licenses) give 1.5x value.
+
+13.	The Occultist 
+You've peered behind the curtain of reality and seen the things that lurk there. This knowledge has marked you, granting you insight and drawing you into a world of secrets, symbols, and sacrifice.
+A - Adept: You are an initiate of a genuine esoteric order. You don't just read the books; you practice the rites. You understand the true, deep patterns of the universe and can manipulate them. This gives you access to a frightening power, but it also makes you a player in a very old, very dangerous game.
+B - Independent Practitioner: You've moved beyond theory into practice, but you work alone or with a small circle of fellow practitioners. You know the rituals, you've performed them successfully, and you understand the risks. You're not part of an established order, which means less support but also less obligation. The spirits and entities you deal with recognize you as legitimate, which is both useful and dangerous.
+C - Scholar: You're a serious, dedicated researcher of the forbidden and the arcane. You have a vast library of esoteric texts and a deep theoretical understanding of the occult. You know the rituals, the histories, and the names of power, but you lack the direct initiation of an Adept. You're a master of the theory, but a novice in the practice.
+D - Collector: You've assembled a respectable collection of occult knowledge and artifacts. You know enough to identify genuine articles from fakes, understand the significance of symbols, and recognize when something supernatural is happening. You've attempted a few minor workings with mixed results. You're past amateur hour, but you're not ready for the deep end.
+E - Dabbler: You found a strange book, you started asking questions, and you got in over your head. You've learned just enough to be dangerous, mostly to yourself. You know a few minor rituals and a handful of secrets, but your curiosity far outstrips your wisdom. The unseen world sees you as a noisy child, which can be amusing for them and fatal for you.
+Specialization Choices: Academics: Occult, Alertness: Investigation, Languages: Old Tongue, [Other with GM approval]
+·	E: 1 specialization, 1 Background Point
+·	D: 1 specializations, 2 Background Points
+·	C: 2 specializations, 3 Background Points
+·	B: 2 specializations, 4 Background Points
+·	A: 3 specializations, 5 Background Points
+Resource Synergy: Occult purchases (esoteric texts, occult artifacts, secret society contacts, ritual spaces) give 1.5x value.
+
+14.	The Journalist
+Everyone has a story, and you're here to tell it. You're a truth-seeker, a muckraker, and a storyteller, chasing down leads in a city built on lies.
+A - Editor-in-Chief: You run a major news outlet. You decide what stories get told and how they're told. Your editorial decisions can topple Ward Bosses, shift public opinion, and set the city's agenda. You have resources, reach, and political protection - but you're also a target for everyone whose secrets you threaten to expose.
+B - Star Reporter: You work for one of the city's major news outlets, like the Sidonia Chronicle or Channel 8 News. Your name is on the front page. You have a press pass that gets you past police lines and a network of high-level sources. When you expose a scandal, the city listens. This makes you a powerful friend and a terrifying enemy.
+C - Beat Reporter: You work for a legitimate newspaper or radio station, covering a specific Ward or beat. You know your territory, you have regular sources, and your byline appears consistently. You're not famous, but you're a working journalist with institutional backing and a steady paycheck. The stories you break might not shake the city, but they matter to the people in your Ward.
+D - Freelance Stringer: You're an independent operator, a hustler with a camera and a notepad. You chase down stories the big outlets won't touch, then sell your findings to the highest bidder. You work on your own terms, but you have no institutional protection. You live and die by the quality of your leads and the strength of your nerve.
+E - Pamphleteer / Blogger: You're not a real journalist in anyone's eyes - you're someone with opinions and access to a printing press or a radio transmitter. You write underground newsletters, distribute pamphlets, or run a pirate radio show. Your reach is tiny, your resources are nonexistent, but you're telling stories nobody else will. The authorities dismiss you as a nuisance, which is the only reason you're still alive.
+Specialization Choices: Social: Interrogation, Academics: Research, Bureaucracy: Graft, [Other with GM approval]
+·	E: 1 specialization, 1 Background Point
+·	D: 1 specializations, 2 Background Points
+·	C: 2 specializations, 3 Background Points
+·	B: 2 specializations, 4 Background Points
+·	A: 3 specializations, 5 Background Points
+Resource Synergy: Journalism purchases (press credentials, information contacts, communication equipment, travel permits) give 1.5x value.
+
+15.	The Legal System 
+You think the Law is about justice? Kid, that's adorable. In Sidonia, the law is about contracts, and contracts are about loopholes. Justice is just a commodity, and these are the merchants who sell it by the hour.
+A - Judge: At the top of the food chain, you've got the city Judges. They're politically appointed, which is a nice way of saying they were bought and paid for long before they ever put on the robes. Their job isn't to find the truth; it's to sign off on whatever deal was already made in a back room somewhere. They don't wield power; they're a symbol of someone else's.
+B - Arbitrator: When talking fails, you go to an Arbitrator. This is where the decisions get real. They're a private judge, a hired gun with a gavel. They listen to both sides, and then they lay down the law. Their decision is binding. More often than not, they're just deciding which powerful patron they're more afraid of upsetting.
+C - Mediator: This is the first stop for most disputes. A Mediator is a professional peacemaker, a neutral third party who tries to get two people to stop arguing long enough to sign a piece of paper so they can avoid the real courts. It's a noble idea, which is why it so rarely works.
+D - Assessor: When a crime happens, the first question isn't "who did it?" It's "how much is it worth?" That's where these ghouls come in. The Damage Assessors are accountants with a morbid streak, putting a price tag on everything from a broken window to a broken life. The Arcane Assessors? They're the weird ones who have to figure out the property value of a curse or how much a rogue fire spell costs in damages. They're the city's official bean counters for human misery.
+E - Contract Lawyer: This is where it all begins. Every deal, every promise, every threat in this city is written down on paper somewhere, and these are the guys who write it. They're masters of the fine print, the little clauses that can make you a king or leave you with nothing. They're the architects of the chains that bind this city together.
+Specialization Choices: Academics: Criminal Law, Social: Debate, Bureaucracy: Contract Law, [Other with GM approval]
+·	E: 1 specialization, 1 Background Point
+·	D: 1 specializations, 2 Background Points
+·	C: 2 specializations, 3 Background Points
+·	B: 2 specializations, 4 Background Points
+·	A: 3 specializations, 5 Background Points
+Resource Synergy: Legal system purchases (judicial contacts, law licenses, legal library access, court credentials) give 1.5x value.
+
+
+
+
+
+
+
