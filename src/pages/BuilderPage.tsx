@@ -200,6 +200,8 @@ export function BuilderPage() {
     case 'narrative':
       stageContent = (
         <NarrativeStage
+          profile={build.profile}
+          onUpdateProfile={updateProfile}
           corruption={build.corruption}
           onAdjustCorruption={adjustCorruption}
           onSetCorruption={setCorruption}

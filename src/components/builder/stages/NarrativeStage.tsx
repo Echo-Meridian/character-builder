@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import type { CharacterBuild, BodyLocationKey } from '../../../state/characterStore';
+import type { CharacterBuild, CharacterProfile, BodyLocationKey } from '../../../state/characterStore';
 import { BODY_LOCATIONS } from '../../../state/characterStore';
 import './narrative-stage.css';
 
 interface NarrativeStageProps {
+  profile: CharacterProfile;
+  onUpdateProfile: (changes: Partial<CharacterProfile>) => void;
   corruption: CharacterBuild['corruption'];
   onAdjustCorruption: (delta: number) => void;
   onSetCorruption: (value: number) => void;
@@ -24,6 +26,8 @@ interface NarrativeStageProps {
 }
 
 export function NarrativeStage({
+  profile,
+  onUpdateProfile,
   corruption,
   onAdjustCorruption,
   onSetCorruption,
@@ -54,13 +58,126 @@ export function NarrativeStage({
     <div className="stage stage--narrative">
       <header className="stage__header">
         <div>
-          <h2>Narrative, Corruption & Wounds</h2>
+          <h2>Narrative & Character Dossier</h2>
           <p>
-            Record the scars the city has already carved. Corruption is front-and-center for players, while hidden notes
-            can foreshadow GM complications.
+            Now that you know who your character is mechanically, bring them to life with narrative details, relationships, and the scars they carry.
           </p>
         </div>
       </header>
+
+      {/* Character Dossier Section */}
+      <section className="dossier-panel">
+        <h3>Character Dossier</h3>
+        <p className="section-description">Complete the narrative picture of your character.</p>
+
+        <div className="dossier-grid">
+          {/* Portrait Sidebar */}
+          <aside className="dossier-portrait">
+            <div className="portrait-frame">
+              {profile.portraitUrl ? (
+                <img
+                  src={profile.portraitUrl}
+                  alt={`${profile.name || 'Character'} portrait`}
+                  className="portrait-image"
+                />
+              ) : (
+                <div className="portrait-placeholder">
+                  Portrait Pending
+                </div>
+              )}
+            </div>
+            <label className="field">
+              <span>Portrait URL (optional)</span>
+              <input
+                type="text"
+                value={profile.portraitUrl}
+                placeholder="Link to artwork or leave blank"
+                onChange={(e) => onUpdateProfile({ portraitUrl: e.target.value })}
+              />
+            </label>
+          </aside>
+
+          {/* Dossier Fields */}
+          <div className="dossier-fields">
+            <div className="field-row">
+              <label className="field">
+                <span>Alias</span>
+                <input
+                  type="text"
+                  value={profile.alias}
+                  placeholder="Street name, nickname, or title"
+                  onChange={(e) => onUpdateProfile({ alias: e.target.value })}
+                />
+              </label>
+              <label className="field">
+                <span>Current Profession</span>
+                <input
+                  type="text"
+                  value={profile.currentProfession}
+                  placeholder="How they make ends meet"
+                  onChange={(e) => onUpdateProfile({ currentProfession: e.target.value })}
+                />
+              </label>
+            </div>
+
+            <label className="field">
+              <span>Ward of Residence</span>
+              <input
+                type="text"
+                value={profile.wardOfResidence}
+                placeholder="Which ward do they call home?"
+                onChange={(e) => onUpdateProfile({ wardOfResidence: e.target.value })}
+              />
+            </label>
+
+            <label className="field">
+              <span>Backstory</span>
+              <textarea
+                value={profile.backstory}
+                placeholder="High-level summary you can hand to a new player or GM."
+                onChange={(e) => onUpdateProfile({ backstory: e.target.value })}
+              />
+            </label>
+
+            <label className="field">
+              <span>Physical Description</span>
+              <textarea
+                value={profile.physicalDescription}
+                placeholder="How do they carry themselves? Distinguishing features?"
+                onChange={(e) => onUpdateProfile({ physicalDescription: e.target.value })}
+              />
+            </label>
+
+            <label className="field">
+              <span>Code</span>
+              <textarea
+                value={profile.code}
+                placeholder="What guiding principle can they not compromise?"
+                onChange={(e) => onUpdateProfile({ code: e.target.value })}
+              />
+            </label>
+
+            <div className="field-row">
+              <label className="field">
+                <span>Line They Will Not Cross</span>
+                <textarea
+                  value={profile.lineNotCrossed}
+                  placeholder="The red line that defines them."
+                  onChange={(e) => onUpdateProfile({ lineNotCrossed: e.target.value })}
+                />
+              </label>
+              <label className="field">
+                <span>Temptation</span>
+                <textarea
+                  value={profile.temptation}
+                  placeholder="The lure that could make them fall."
+                  onChange={(e) => onUpdateProfile({ temptation: e.target.value })}
+                />
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="advancement-panel">
         <div className="experience-meter">

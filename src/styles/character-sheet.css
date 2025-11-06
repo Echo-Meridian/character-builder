@@ -1,0 +1,466 @@
+/* Character Sheet Styling - Dossier Aesthetic */
+
+.character-sheet {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(10, 9, 8, 0.95), rgba(18, 18, 24, 0.95));
+  color: rgba(220, 220, 235, 0.95);
+}
+
+.sheet-header {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.sheet-back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: rgba(212, 175, 55, 0.85);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.sheet-back-link:hover {
+  color: rgba(212, 175, 55, 1);
+}
+
+.sheet-title {
+  font-family: 'Limelight', cursive;
+  font-size: 3rem;
+  margin: 0 0 0.5rem 0;
+  color: rgba(212, 175, 55, 0.95);
+  text-shadow: 0 2px 12px rgba(212, 175, 55, 0.3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sheet-concept {
+  font-size: 1.1rem;
+  color: rgba(220, 220, 235, 0.7);
+  font-style: italic;
+  margin: 0;
+}
+
+.sheet-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sheet-section {
+  background: rgba(18, 18, 24, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.sheet-section h2 {
+  margin: 0 0 1.25rem 0;
+  font-size: 1.75rem;
+  letter-spacing: 0.05em;
+  color: rgba(212, 175, 55, 0.95);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+.sheet-section h3 {
+  margin: 1rem 0 0.75rem 0;
+  font-size: 1.2rem;
+  color: rgba(235, 215, 170, 0.9);
+  letter-spacing: 0.04em;
+}
+
+/* Identity Section */
+.sheet-identity-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.sheet-portrait {
+  width: 200px;
+  height: 300px;
+  border-radius: 12px;
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  overflow: hidden;
+  background: rgba(10, 9, 8, 0.5);
+}
+
+.sheet-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sheet-identity-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  align-content: start;
+}
+
+.sheet-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sheet-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(235, 215, 170, 0.8);
+}
+
+.sheet-value {
+  font-size: 1rem;
+  color: rgba(220, 220, 235, 0.95);
+}
+
+.sheet-field-block {
+  margin-top: 1rem;
+}
+
+.sheet-text {
+  margin: 0.5rem 0 0 0;
+  line-height: 1.6;
+  color: rgba(220, 220, 235, 0.85);
+}
+
+/* Attributes Section */
+.sheet-attributes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.sheet-attribute {
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sheet-attribute-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.sheet-attribute-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(235, 215, 170, 0.95);
+  text-transform: capitalize;
+}
+
+.sheet-attribute-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(212, 175, 55, 0.95);
+}
+
+.sheet-attribute-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.sheet-spec-tag {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: rgba(235, 215, 170, 0.9);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+/* Skills Section */
+.sheet-skills-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.sheet-skill {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sheet-skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.sheet-skill-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(220, 220, 235, 0.95);
+}
+
+.sheet-skill-rating {
+  font-size: 1.1rem;
+  color: rgba(212, 175, 55, 0.85);
+  letter-spacing: 0.1em;
+}
+
+.sheet-skill-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.sheet-spec-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+/* Powers Section */
+.sheet-powers-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.sheet-power {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: rgba(120, 200, 255, 0.05);
+  border: 1px solid rgba(120, 200, 255, 0.15);
+}
+
+.sheet-power-name {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(220, 220, 235, 0.95);
+  margin-bottom: 0.4rem;
+}
+
+.sheet-power-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.sheet-power-tier {
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  background: rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  font-size: 0.75rem;
+  color: rgba(235, 215, 170, 0.95);
+}
+
+.sheet-power-detail {
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.75rem;
+  color: rgba(220, 220, 235, 0.8);
+}
+
+/* Resources Section */
+.sheet-resource-group {
+  margin-bottom: 1.5rem;
+}
+
+.sheet-resource-group:last-child {
+  margin-bottom: 0;
+}
+
+.sheet-resource-item {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sheet-resource-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.sheet-resource-name {
+  font-weight: 600;
+  color: rgba(220, 220, 235, 0.95);
+}
+
+.sheet-resource-spec {
+  color: rgba(212, 175, 55, 0.85);
+  font-size: 0.9rem;
+}
+
+.sheet-resource-stats {
+  font-size: 0.9rem;
+  color: rgba(220, 220, 235, 0.7);
+  margin-bottom: 0.4rem;
+}
+
+.sheet-pending {
+  color: rgba(255, 200, 100, 0.9);
+  font-style: italic;
+}
+
+.sheet-resource-desc {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+  color: rgba(220, 220, 235, 0.75);
+  line-height: 1.5;
+}
+
+/* Health Section */
+.sheet-health-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.sheet-health-location {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sheet-health-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.sheet-health-name {
+  font-weight: 600;
+  color: rgba(220, 220, 235, 0.95);
+  text-transform: capitalize;
+}
+
+.sheet-health-value {
+  font-size: 1.1rem;
+  color: rgba(212, 175, 55, 0.85);
+}
+
+.sheet-health-scar {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+  color: rgba(220, 220, 235, 0.7);
+  line-height: 1.4;
+}
+
+/* Corruption & Stats */
+.sheet-stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sheet-stat {
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sheet-stat .sheet-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgba(212, 175, 55, 0.95);
+}
+
+/* Narrative Section */
+.sheet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+}
+
+.sheet-list li {
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid rgba(212, 175, 55, 0.4);
+  color: rgba(220, 220, 235, 0.85);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .character-sheet {
+    padding: 1rem;
+  }
+
+  .sheet-title {
+    font-size: 2rem;
+  }
+
+  .sheet-identity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sheet-portrait {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  .sheet-attributes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sheet-health-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .character-sheet {
+    background: white;
+    color: black;
+    padding: 0;
+  }
+
+  .sheet-back-link {
+    display: none;
+  }
+
+  .sheet-section {
+    page-break-inside: avoid;
+    border: 1px solid #ccc;
+    background: white;
+  }
+
+  .sheet-title {
+    color: #333;
+    text-shadow: none;
+  }
+
+  .sheet-section h2 {
+    color: #333;
+    border-bottom-color: #999;
+  }
+}

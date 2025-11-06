@@ -4,6 +4,7 @@ import { AppShell } from './components/layout/AppShell';
 import { LandingPage } from './pages/LandingPage';
 import { BuilderPage } from './pages/BuilderPage';
 import { ManagementPage } from './pages/ManagementPage';
+import { CharacterSheetPage } from './pages/CharacterSheetPage';
 import { GmPortalPage } from './pages/GmPortalPage';
 import { LoadingSpinner } from './components/common/LoadingSpinner';
 import { useCharacterData } from './data/DataContext';
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/builder" element={<BuilderPage />} />
         <Route path="/management" element={<ManagementPage />} />
+        <Route path="/sheet/:buildId" element={<CharacterSheetPage />} />
         <Route path="/gm" element={<GmPortalPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

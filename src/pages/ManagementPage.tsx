@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { clsx } from 'clsx';
 import { useCharacterStore } from '../state/characterStore';
 import { useCharacterData } from '../data/DataContext';
@@ -135,12 +136,20 @@ export function ManagementPage() {
                 </dl>
 
                 {/* Actions */}
-                <footer className="grid grid-cols-2 gap-2">
+                <footer className="flex flex-wrap gap-2">
+                  <Link
+                    to={`/sheet/${build.id}`}
+                    className="px-3 py-1.5 rounded-lg border-2 border-sidonia-gold/60 bg-transparent
+                             text-sidonia-text hover:border-sidonia-gold hover:bg-sidonia-gold/5
+                             text-xs font-body tracking-wide transition-all duration-300 flex-1 text-center"
+                  >
+                    View Sheet
+                  </Link>
                   <DecoButton
                     variant="ghost"
                     size="sm"
                     onClick={() => duplicateBuild(build.id)}
-                    className="text-xs"
+                    className="text-xs flex-1"
                   >
                     Duplicate
                   </DecoButton>
@@ -148,7 +157,7 @@ export function ManagementPage() {
                     variant="ghost"
                     size="sm"
                     onClick={() => downloadCharacterJson(build, data)}
-                    className="text-xs"
+                    className="text-xs flex-1"
                   >
                     Export JSON
                   </DecoButton>
@@ -156,7 +165,7 @@ export function ManagementPage() {
                     variant="ghost"
                     size="sm"
                     onClick={() => downloadCharacterSheet(build)}
-                    className="text-xs"
+                    className="text-xs flex-1"
                   >
                     Printable
                   </DecoButton>
@@ -164,7 +173,7 @@ export function ManagementPage() {
                     variant="danger"
                     size="sm"
                     onClick={() => confirmDelete(build.id, build.label, archiveBuild)}
-                    className="text-xs"
+                    className="text-xs flex-1"
                   >
                     Delete
                   </DecoButton>

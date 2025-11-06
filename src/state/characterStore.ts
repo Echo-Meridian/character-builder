@@ -126,6 +126,7 @@ export const BODY_LOCATIONS: Record<BodyLocationKey, string> = {
 
 export interface CharacterProfile {
   name: string;
+  concept: string;
   alias: string;
   currentProfession: string;
   wardOfResidence: string;
@@ -298,6 +299,7 @@ const getEsperDepthLimit = (priority: PriorityRank | null): number => (priority 
 
 const createEmptyProfile = (): CharacterProfile => ({
   name: '',
+  concept: '',
   alias: '',
   currentProfession: '',
   wardOfResidence: '',
@@ -1289,6 +1291,7 @@ export const useCharacterStore = create<CharacterStore>()(
           const legacy = (profile ?? {}) as Partial<CharacterProfile> & Record<string, unknown>;
           return {
             name: typeof legacy.name === 'string' ? legacy.name : '',
+            concept: '', // New field for character vision (not migrated from old data)
             alias: typeof legacy.alias === 'string' ? legacy.alias : '',
             // Migrate old "pronouns" field to "currentProfession"
             currentProfession: typeof legacy.currentProfession === 'string'
