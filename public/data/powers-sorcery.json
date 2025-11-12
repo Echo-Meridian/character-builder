@@ -8,7 +8,6 @@
       "lineage": "sorcerer",
       "sphere": "Creation",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Reason",
       "category": "Primary Spheres",
       "tags": [
@@ -39,7 +38,6 @@
       "lineage": "sorcerer",
       "sphere": "Creation",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Reason",
       "category": "Primary Spheres",
       "tags": [
@@ -70,7 +68,6 @@
       "lineage": "sorcerer",
       "sphere": "Creation",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Reason",
       "category": "Primary Spheres",
       "tags": [
@@ -102,7 +99,6 @@
       "lineage": "sorcerer",
       "sphere": "Creation",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Reason",
       "category": "Primary Spheres",
       "tags": [
@@ -135,7 +131,6 @@
       "lineage": "sorcerer",
       "sphere": "Manipulation",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Wits",
       "category": "Primary Spheres",
       "tags": [
@@ -166,7 +161,6 @@
       "lineage": "sorcerer",
       "sphere": "Manipulation",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Wits",
       "category": "Primary Spheres",
       "tags": [
@@ -197,7 +191,6 @@
       "lineage": "sorcerer",
       "sphere": "Manipulation",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Wits",
       "category": "Primary Spheres",
       "tags": [
@@ -228,7 +221,6 @@
       "lineage": "sorcerer",
       "sphere": "Transmutation",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Reason",
       "category": "Primary Spheres",
       "tags": [
@@ -259,7 +251,6 @@
       "lineage": "sorcerer",
       "sphere": "Transmutation",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Reason",
       "category": "Primary Spheres",
       "tags": [
@@ -290,7 +281,6 @@
       "lineage": "sorcerer",
       "sphere": "Transmutation",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Reason",
       "category": "Primary Spheres",
       "tags": [
@@ -321,7 +311,6 @@
       "lineage": "sorcerer",
       "sphere": "Transmutation",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Reason",
       "category": "Primary Spheres",
       "tags": [
@@ -352,7 +341,6 @@
       "lineage": "sorcerer",
       "sphere": "Divination",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Intuition",
       "category": "Primary Spheres",
       "tags": [
@@ -384,7 +372,6 @@
       "lineage": "sorcerer",
       "sphere": "Divination",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Intuition",
       "category": "Primary Spheres",
       "tags": [
@@ -416,7 +403,6 @@
       "lineage": "sorcerer",
       "sphere": "Divination",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Intuition",
       "category": "Primary Spheres",
       "tags": [
@@ -447,7 +433,6 @@
       "lineage": "sorcerer",
       "sphere": "Connection",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Intuition",
       "category": "Primary Spheres",
       "tags": [
@@ -478,7 +463,6 @@
       "lineage": "sorcerer",
       "sphere": "Connection",
       "sphereTier": "primary",
-      "moveType": "move",
       "rollStat": "Intuition",
       "category": "Primary Spheres",
       "tags": [
@@ -503,13 +487,12 @@
       "flaws": []
     },
     {
-      "type": "ritual",
+      "type": "move",
       "id": "forge-bond",
       "name": "Forge Bond",
       "lineage": "sorcerer",
       "sphere": "Connection",
       "sphereTier": "primary",
-      "moveType": "ritual",
       "rollStat": "Intuition",
       "castingTime": "hours",
       "category": "Primary Spheres",
@@ -542,7 +525,6 @@
       "lineage": "sorcerer",
       "sphere": "Healing",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Intuition",
       "category": "Secondary Spheres",
       "tags": [
@@ -573,7 +555,6 @@
       "lineage": "sorcerer",
       "sphere": "Healing",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Intuition",
       "category": "Secondary Spheres",
       "tags": [
@@ -599,13 +580,12 @@
       "flaws": []
     },
     {
-      "type": "ritual",
+      "type": "move",
       "id": "flesh-crafting",
       "name": "Flesh Crafting",
       "lineage": "sorcerer",
       "sphere": "Healing",
       "sphereTier": "secondary",
-      "moveType": "ritual",
       "rollStat": "Intuition",
       "castingTime": "hours",
       "category": "Secondary Spheres",
@@ -638,7 +618,6 @@
       "lineage": "sorcerer",
       "sphere": "Necromancy",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Willpower",
       "category": "Secondary Spheres",
       "tags": [
@@ -670,7 +649,6 @@
       "lineage": "sorcerer",
       "sphere": "Necromancy",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Willpower",
       "category": "Secondary Spheres",
       "tags": [
@@ -702,7 +680,6 @@
       "lineage": "sorcerer",
       "sphere": "Necromancy",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Willpower",
       "category": "Secondary Spheres",
       "tags": [
@@ -734,7 +711,6 @@
       "lineage": "sorcerer",
       "sphere": "Protection",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Willpower",
       "category": "Secondary Spheres",
       "tags": [
@@ -766,7 +742,6 @@
       "lineage": "sorcerer",
       "sphere": "Protection",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Willpower",
       "category": "Secondary Spheres",
       "tags": [
@@ -798,7 +773,6 @@
       "lineage": "sorcerer",
       "sphere": "Protection",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Willpower",
       "category": "Secondary Spheres",
       "tags": [
@@ -830,7 +804,6 @@
       "lineage": "sorcerer",
       "sphere": "Spirit",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Presence",
       "category": "Secondary Spheres",
       "tags": [
@@ -861,7 +834,6 @@
       "lineage": "sorcerer",
       "sphere": "Spirit",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Presence",
       "category": "Secondary Spheres",
       "tags": [
@@ -887,13 +859,12 @@
       "flaws": []
     },
     {
-      "type": "ritual",
+      "type": "move",
       "id": "forge-spirit-pact",
       "name": "Forge Spirit Pact",
       "lineage": "sorcerer",
       "sphere": "Spirit",
       "sphereTier": "secondary",
-      "moveType": "ritual",
       "rollStat": "Presence",
       "castingTime": "hours",
       "category": "Secondary Spheres",
@@ -926,7 +897,6 @@
       "lineage": "sorcerer",
       "sphere": "Time",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Wits",
       "category": "Secondary Spheres",
       "tags": [
@@ -957,7 +927,6 @@
       "lineage": "sorcerer",
       "sphere": "Time",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Wits",
       "category": "Secondary Spheres",
       "tags": [
@@ -989,7 +958,6 @@
       "lineage": "sorcerer",
       "sphere": "Dimensional",
       "sphereTier": "secondary",
-      "moveType": "feature",
       "permanentCorruption": 2,
       "category": "Secondary Spheres",
       "tags": [
@@ -1016,13 +984,12 @@
       "flaws": []
     },
     {
-      "type": "ritual",
+      "type": "move",
       "id": "recall",
       "name": "Recall",
       "lineage": "sorcerer",
       "sphere": "Dimensional",
       "sphereTier": "secondary",
-      "moveType": "ritual",
       "rollStat": "Intuition",
       "castingTime": "hours",
       "category": "Secondary Spheres",
@@ -1055,7 +1022,6 @@
       "lineage": "sorcerer",
       "sphere": "Dimensional",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Intuition",
       "category": "Secondary Spheres",
       "tags": [
@@ -1087,7 +1053,6 @@
       "lineage": "sorcerer",
       "sphere": "Void",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Willpower",
       "category": "Secondary Spheres",
       "tags": [
@@ -1118,7 +1083,6 @@
       "lineage": "sorcerer",
       "sphere": "Void",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Willpower",
       "category": "Secondary Spheres",
       "tags": [
@@ -1149,7 +1113,6 @@
       "lineage": "sorcerer",
       "sphere": "Void",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Willpower",
       "category": "Secondary Spheres",
       "tags": [
@@ -1180,7 +1143,6 @@
       "lineage": "sorcerer",
       "sphere": "Mind",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Willpower",
       "category": "Secondary Spheres",
       "tags": [
@@ -1206,13 +1168,12 @@
       "flaws": []
     },
     {
-      "type": "ritual",
+      "type": "move",
       "id": "cast-mind-out",
       "name": "Cast Mind Out",
       "lineage": "sorcerer",
       "sphere": "Mind",
       "sphereTier": "secondary",
-      "moveType": "ritual",
       "rollStat": "Willpower",
       "castingTime": "minutes",
       "category": "Secondary Spheres",
@@ -1245,7 +1206,6 @@
       "lineage": "sorcerer",
       "sphere": "Mind",
       "sphereTier": "secondary",
-      "moveType": "move",
       "rollStat": "Willpower",
       "category": "Secondary Spheres",
       "tags": [

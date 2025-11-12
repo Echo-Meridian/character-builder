@@ -33,7 +33,8 @@
           "description": "Perform two purely mental tasks simultaneously without penalty"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 0
     },
     {
       "type": "move",
@@ -43,7 +44,6 @@
       "chassis": "overseer",
       "branch": "administrator",
       "augmentLevel": "general",
-      "moveType": "move",
       "rollStat": "Lore",
       "category": "Overseer Chassis",
       "tags": [
@@ -66,7 +66,8 @@
         "7-9": "You get a partial reading or the info has a glitch."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 0
     },
     {
       "type": "augment",
@@ -100,7 +101,8 @@
           "description": "Transmit small information packets (image, sentence, coordinates) to linked individuals in line of sight"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 1
     },
     {
       "type": "augment",
@@ -135,7 +137,8 @@
           "description": "Deploy drone to locate and retrieve records from Central Archive"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 1
     },
     {
       "type": "augment",
@@ -178,7 +181,8 @@
           "description": "Establish telepathic network with up to 5 willing individuals; upgrades Data Relay to unlimited range within network"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "move",
@@ -188,7 +192,6 @@
       "chassis": "overseer",
       "branch": "administrator",
       "augmentLevel": "advanced",
-      "moveType": "move",
       "category": "Overseer Chassis",
       "tags": [
         "overseer",
@@ -214,7 +217,8 @@
           "description": "Each networked ally may re-roll one die on their next action (requires full action)"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "augment",
@@ -253,7 +257,8 @@
       "flaws": [],
       "prerequisiteAugments": [
         "overseer-administrator-advanced-network-hub"
-      ]
+      ],
+      "tier": 3
     },
     {
       "type": "move",
@@ -263,7 +268,6 @@
       "chassis": "overseer",
       "branch": "administrator",
       "augmentLevel": "imperial",
-      "moveType": "move",
       "imperialOnly": true,
       "category": "Overseer Chassis",
       "tags": [
@@ -306,7 +310,8 @@
           "duration": "instant",
           "description": "Any damage crashes network, inflicting 2 Stun on all members"
         }
-      ]
+      ],
+      "tier": 3
     },
     {
       "type": "move",
@@ -316,7 +321,6 @@
       "chassis": "overseer",
       "branch": "administrator",
       "augmentLevel": "imperial",
-      "moveType": "move",
       "rollStat": "Presence",
       "imperialOnly": true,
       "category": "Overseer Chassis",
@@ -341,7 +345,8 @@
         "7-9": "Partial compliance or the command is misinterpreted."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 3
     },
     {
       "type": "augment",
@@ -375,7 +380,8 @@
           "description": "Perfect recall of all sensory details from the last scene"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 0
     },
     {
       "type": "augment",
@@ -408,7 +414,8 @@
           "description": "Understand any writing (cryptic, illegible, or encoded) given time and context"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 0
     },
     {
       "type": "augment",
@@ -442,7 +449,8 @@
           "description": "Advantage on Bureaucracy/Lore rolls for research, archives, or finding loopholes"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 1
     },
     {
       "type": "move",
@@ -452,7 +460,6 @@
       "chassis": "overseer",
       "branch": "scribe",
       "augmentLevel": "basic",
-      "moveType": "move",
       "rollStat": "Lore",
       "category": "Overseer Chassis",
       "tags": [
@@ -475,7 +482,8 @@
         "7-9": "You get a strong suspicion but cannot be certain."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 1
     },
     {
       "type": "augment",
@@ -515,7 +523,8 @@
           "description": "May use Lore instead of Wits for Initiative rolls"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "move",
@@ -525,7 +534,6 @@
       "chassis": "overseer",
       "branch": "scribe",
       "augmentLevel": "advanced",
-      "moveType": "move",
       "rollStat": "Lore",
       "category": "Overseer Chassis",
       "tags": [
@@ -549,7 +557,8 @@
         "7-9": "Image is degraded, delayed, or incomplete."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "move",
@@ -559,7 +568,6 @@
       "chassis": "overseer",
       "branch": "scribe",
       "augmentLevel": "advanced",
-      "moveType": "move",
       "rollStat": "Lore",
       "category": "Overseer Chassis",
       "tags": [
@@ -585,7 +593,8 @@
           "description": "Ask GM one question about causality; receive truthful non-obvious answer"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "augment",
@@ -621,7 +630,8 @@
           "description": "Continuous backup to Imperial Archive; restoration possible after destruction"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 3
     },
     {
       "type": "augment",
@@ -656,7 +666,8 @@
           "description": "Death or unauthorized access triggers psi-crystal overload, destroying body"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 3
     },
     {
       "type": "move",
@@ -666,7 +677,6 @@
       "chassis": "overseer",
       "branch": "scribe",
       "augmentLevel": "imperial",
-      "moveType": "move",
       "rollStat": "Lore",
       "imperialOnly": true,
       "category": "Overseer Chassis",
@@ -692,7 +702,8 @@
         "7-9": "The answer is cryptic, incomplete, or comes with a dangerous revelation."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 3
     },
     {
       "type": "move",
@@ -702,7 +713,6 @@
       "chassis": "overseer",
       "branch": "advocate",
       "augmentLevel": "general",
-      "moveType": "move",
       "rollStat": "Lore",
       "category": "Overseer Chassis",
       "tags": [
@@ -725,7 +735,8 @@
         "7-9": "You get a partial reading."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 0
     },
     {
       "type": "augment",
@@ -762,7 +773,8 @@
           "description": "+1 to non-hostile one-on-one Social rolls (persuade, comfort, ease)"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 0
     },
     {
       "type": "augment",
@@ -795,7 +807,8 @@
           "description": "Advantage on Social rolls requiring specific, nuanced emotional expression"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 1
     },
     {
       "type": "augment",
@@ -829,7 +842,8 @@
           "description": "During Downtime, alter appearance enough to appear as different person to casual observers"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "augment",
@@ -862,7 +876,8 @@
           "description": "Detection attempts require contested roll when passing as human"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "move",
@@ -872,7 +887,6 @@
       "chassis": "overseer",
       "branch": "advocate",
       "augmentLevel": "advanced",
-      "moveType": "move",
       "rollStat": "Lore",
       "category": "Overseer Chassis",
       "tags": [
@@ -895,7 +909,8 @@
         "7-9": "The treatment is messy and clears only one stun box."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "augment",
@@ -931,7 +946,8 @@
           "description": "Immune to social penalties for being Automaton; indistinguishable from human"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 3
     },
     {
       "type": "augment",
@@ -967,7 +983,8 @@
           "description": "Choose art form; performances create powerful widespread emotional effects (inspire/unnerve)"
         }
       ],
-      "flaws": []
+      "flaws": [],
+      "tier": 3
     },
     {
       "type": "augment",
@@ -992,7 +1009,8 @@
         "player": "Your chassis is built with reinforced plating and impact-absorbing substructures. You gain +1 natural armor against both Blunt and Wound damage."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 0
     },
     {
       "type": "augment",
@@ -1018,7 +1036,8 @@
       },
       "effects": [],
       "flaws": [],
-      "cost": 1
+      "cost": 1,
+      "tier": 0
     },
     {
       "type": "augment",
@@ -1043,7 +1062,8 @@
         "player": "You have an advantage on all rolls to resist the effects of sonic-based attacks or deafening sounds."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 1
     },
     {
       "type": "augment",
@@ -1068,7 +1088,8 @@
         "player": "Repairs made to you during Downtime cost half the normal amount of time and resources."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 1
     },
     {
       "type": "augment",
@@ -1096,7 +1117,8 @@
         "player": "When you deal Wound damage with a melee attack, the target also suffers 1 Stun damage."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "move",
@@ -1106,7 +1128,6 @@
       "chassis": "soldier",
       "branch": "grunt",
       "augmentLevel": "advanced",
-      "moveType": "move",
       "category": "Soldier Chassis",
       "tags": [
         "soldier",
@@ -1125,7 +1146,8 @@
         "player": "As an action, lock down your chassis. You cannot move, but your natural armor increases to 3."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "augment",
@@ -1153,7 +1175,8 @@
         "player": "Your base running speed is increased by 50%."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "move",
@@ -1163,7 +1186,6 @@
       "chassis": "soldier",
       "branch": "grunt",
       "augmentLevel": "advanced",
-      "moveType": "move",
       "category": "Soldier Chassis",
       "tags": [
         "soldier",
@@ -1182,7 +1204,8 @@
         "player": "Spend a full turn building momentum. Your first melee attack on your next turn automatically hits and deals +2 damage."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "move",
@@ -1192,7 +1215,6 @@
       "chassis": "soldier",
       "branch": "grunt",
       "augmentLevel": "advanced",
-      "moveType": "move",
       "category": "Soldier Chassis",
       "tags": [
         "soldier",
@@ -1211,7 +1233,8 @@
         "player": "Once per scene, deploy a swarm of drones. On a 10+, choose one effect: Recon Network (+1 Alertness), Jamming Field (enemy tech penalty), or Ablative Shield (2 shield boxes)."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "augment",
@@ -1238,7 +1261,8 @@
       "effects": [],
       "flaws": [],
       "cost": 3,
-      "imperialOnly": true
+      "imperialOnly": true,
+      "tier": 3
     },
     {
       "type": "move",
@@ -1248,7 +1272,6 @@
       "chassis": "soldier",
       "branch": "grunt",
       "augmentLevel": "imperial",
-      "moveType": "move",
       "category": "Soldier Chassis",
       "tags": [
         "soldier",
@@ -1266,7 +1289,8 @@
       "effects": [],
       "flaws": [],
       "rollStat": "Lore",
-      "imperialOnly": true
+      "imperialOnly": true,
+      "tier": 3
     },
     {
       "type": "move",
@@ -1276,7 +1300,6 @@
       "chassis": "soldier",
       "branch": "grunt",
       "augmentLevel": "imperial",
-      "moveType": "move",
       "category": "Soldier Chassis",
       "tags": [
         "soldier",
@@ -1294,7 +1317,8 @@
       "effects": [],
       "flaws": [],
       "rollStat": "Lore",
-      "imperialOnly": true
+      "imperialOnly": true,
+      "tier": 3
     },
     {
       "type": "move",
@@ -1320,12 +1344,12 @@
       },
       "effects": [],
       "flaws": [],
-      "moveType": "move",
       "rollStat": "Lore",
       "outcomes": {
         "10+": "it arrives instantly and intact.",
         "7-9": "it's delayed or corrupted."
-      }
+      },
+      "tier": 0
     },
     {
       "type": "augment",
@@ -1350,7 +1374,8 @@
         "player": "You have an advantage on all Alertness rolls."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 0
     },
     {
       "type": "augment",
@@ -1375,7 +1400,8 @@
         "player": "Your chassis is coated in a non-reflective, sound-dampening material. You gain a +1 bonus to all Larceny (Stealth) rolls."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 1
     },
     {
       "type": "augment",
@@ -1401,7 +1427,8 @@
       },
       "effects": [],
       "flaws": [],
-      "cost": 2
+      "cost": 2,
+      "tier": 2
     },
     {
       "type": "augment",
@@ -1426,7 +1453,8 @@
         "player": "You gain a significant advantage (+2 bonus) on all rolls made to resist the effects of the Blight."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "augment",
@@ -1452,7 +1480,8 @@
       },
       "effects": [],
       "flaws": [],
-      "cost": 2
+      "cost": 2,
+      "tier": 2
     },
     {
       "type": "move",
@@ -1462,7 +1491,6 @@
       "chassis": "soldier",
       "branch": "scout",
       "augmentLevel": "imperial",
-      "moveType": "move",
       "category": "Soldier Chassis",
       "tags": [
         "soldier",
@@ -1480,7 +1508,8 @@
       "effects": [],
       "flaws": [],
       "rollStat": "Lore",
-      "imperialOnly": true
+      "imperialOnly": true,
+      "tier": 3
     },
     {
       "type": "move",
@@ -1490,7 +1519,6 @@
       "chassis": "soldier",
       "branch": "scout",
       "augmentLevel": "imperial",
-      "moveType": "move",
       "category": "Soldier Chassis",
       "tags": [
         "soldier",
@@ -1508,7 +1536,8 @@
       "effects": [],
       "flaws": [],
       "rollStat": "Lore",
-      "imperialOnly": true
+      "imperialOnly": true,
+      "tier": 3
     },
     {
       "type": "move",
@@ -1534,12 +1563,12 @@
       },
       "effects": [],
       "flaws": [],
-      "moveType": "move",
       "rollStat": "Alertness",
       "outcomes": [
         "Scan for hostile intent. ",
         "you clearly detect the presence, number, and direction of any sentient being intending immediate violence."
-      ]
+      ],
+      "tier": 0
     },
     {
       "type": "augment",
@@ -1564,7 +1593,8 @@
         "player": "After a full minute of scanning, you can 'register' an individual. At any point thereafter, you can use an action to unerringly know if they are on your registry."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 0
     },
     {
       "type": "augment",
@@ -1590,7 +1620,8 @@
       },
       "effects": [],
       "flaws": [],
-      "cost": 1
+      "cost": 1,
+      "tier": 1
     },
     {
       "type": "move",
@@ -1600,7 +1631,6 @@
       "chassis": "soldier",
       "branch": "guardian",
       "augmentLevel": "basic",
-      "moveType": "move",
       "category": "Soldier Chassis",
       "tags": [
         "soldier",
@@ -1617,7 +1647,8 @@
       },
       "effects": [],
       "flaws": [],
-      "rollStat": "Lore"
+      "rollStat": "Lore",
+      "tier": 1
     },
     {
       "type": "augment",
@@ -1643,7 +1674,8 @@
       },
       "effects": [],
       "flaws": [],
-      "cost": 2
+      "cost": 2,
+      "tier": 2
     },
     {
       "type": "move",
@@ -1653,7 +1685,6 @@
       "chassis": "soldier",
       "branch": "guardian",
       "augmentLevel": "advanced",
-      "moveType": "move",
       "category": "Soldier Chassis",
       "tags": [
         "soldier",
@@ -1670,7 +1701,8 @@
       },
       "effects": [],
       "flaws": [],
-      "rollStat": "Lore"
+      "rollStat": "Lore",
+      "tier": 2
     },
     {
       "type": "move",
@@ -1680,7 +1712,6 @@
       "chassis": "soldier",
       "branch": "guardian",
       "augmentLevel": "imperial",
-      "moveType": "move",
       "category": "Soldier Chassis",
       "tags": [
         "soldier",
@@ -1698,7 +1729,8 @@
       "effects": [],
       "flaws": [],
       "rollStat": "Lore",
-      "imperialOnly": true
+      "imperialOnly": true,
+      "tier": 3
     },
     {
       "type": "move",
@@ -1708,7 +1740,6 @@
       "chassis": "soldier",
       "branch": "guardian",
       "augmentLevel": "imperial",
-      "moveType": "move",
       "category": "Soldier Chassis",
       "tags": [
         "soldier",
@@ -1726,7 +1757,8 @@
       "effects": [],
       "flaws": [],
       "rollStat": "Lore",
-      "imperialOnly": true
+      "imperialOnly": true,
+      "tier": 3
     },
     {
       "type": "augment",
@@ -1751,7 +1783,8 @@
         "player": "Your chassis is designed to withstand incredible punishment. You gain two additional Health Boxes on your Torso location."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 0
     },
     {
       "type": "augment",
@@ -1776,7 +1809,8 @@
         "player": "Your parts are large and standardized. Repairs made to you during Downtime are faster and require less specialized materials."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 1
     },
     {
       "type": "augment",
@@ -1802,7 +1836,8 @@
       },
       "effects": [],
       "flaws": [],
-      "cost": 2
+      "cost": 2,
+      "tier": 1
     },
     {
       "type": "augment",
@@ -1827,7 +1862,8 @@
         "player": "Your systems are hermetically sealed. You gain a significant advantage (+2 bonus) on all rolls made to resist the effects of the Blight."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "augment",
@@ -1852,7 +1888,8 @@
         "player": "You are built to withstand unexpected attacks. You gain +1 natural armor against both Blunt and Wound damage."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "move",
@@ -1862,7 +1899,6 @@
       "chassis": "worker",
       "branch": "laborer",
       "augmentLevel": "advanced",
-      "moveType": "move",
       "category": "Worker Chassis",
       "tags": [
         "worker",
@@ -1879,7 +1915,8 @@
       },
       "effects": [],
       "flaws": [],
-      "rollStat": "Lore"
+      "rollStat": "Lore",
+      "tier": 2
     },
     {
       "type": "move",
@@ -1905,8 +1942,8 @@
       },
       "effects": [],
       "flaws": [],
-      "moveType": "move",
-      "rollStat": "Lore"
+      "rollStat": "Lore",
+      "tier": 0
     },
     {
       "type": "augment",
@@ -1931,7 +1968,8 @@
         "player": "Your chassis contains a comprehensive set of masterwork tools for mechanical and electrical repair, granting you a +1 bonus on such rolls when the tool is a factor."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 0
     },
     {
       "type": "augment",
@@ -1956,7 +1994,8 @@
         "player": "You are designed to operate in the worst possible conditions. You are immune to damage and penalties from conventional environmental hazards like toxic gas or extreme temperatures."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 1
     },
     {
       "type": "move",
@@ -1966,7 +2005,6 @@
       "chassis": "worker",
       "branch": "maintenance",
       "augmentLevel": "basic",
-      "moveType": "move",
       "category": "Worker Chassis",
       "tags": [
         "worker",
@@ -1983,7 +2021,8 @@
       },
       "effects": [],
       "flaws": [],
-      "rollStat": "Lore"
+      "rollStat": "Lore",
+      "tier": 1
     },
     {
       "type": "augment",
@@ -2008,7 +2047,8 @@
         "player": "Your processing core is a marvel of logical and intuitive engineering. You gain a permanent +1 bonus to all Engineering and Science rolls."
       },
       "effects": [],
-      "flaws": []
+      "flaws": [],
+      "tier": 2
     },
     {
       "type": "augment",
@@ -2034,7 +2074,8 @@
       },
       "effects": [],
       "flaws": [],
-      "cost": 3
+      "cost": 3,
+      "tier": 2
     }
   ]
 }
