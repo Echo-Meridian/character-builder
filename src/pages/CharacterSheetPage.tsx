@@ -4,6 +4,8 @@ import { useCharacterData } from '../data/DataContext';
 import { getLineageDefinition } from '../data/lineages';
 import '../styles/character-sheet.css';
 
+import { ExportMenu } from '../components/common/ExportMenu';
+
 export function CharacterSheetPage() {
   const { buildId } = useParams<{ buildId: string }>();
   const { data } = useCharacterData();
@@ -25,7 +27,10 @@ export function CharacterSheetPage() {
   return (
     <div className="character-sheet">
       <div className="sheet-header">
-        <Link to="/management" className="sheet-back-link">← Back to Management</Link>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+          <Link to="/management" className="sheet-back-link">← Back to Management</Link>
+          <ExportMenu build={build} />
+        </div>
         <h1 className="sheet-title">{build.profile.name || build.label}</h1>
         {build.profile.concept && <p className="sheet-concept">{build.profile.concept}</p>}
       </div>

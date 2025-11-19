@@ -25,7 +25,7 @@ export const useSessionStore = create<SessionState>()(
       analyticsConsent: 'unknown',
       analyticsNotified: false,
       authenticateGm: (code) => {
-        if (code.trim().toUpperCase() === GM_PASSPHRASE) {
+        if (code.trim() === GM_PASSPHRASE) {
           set({ gmUnlocked: true, gmUnlockedAt: new Date().toISOString() });
           analytics.track('gm.unlocked', {});
           return true;
