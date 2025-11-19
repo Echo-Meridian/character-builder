@@ -65,7 +65,7 @@
   }
 
   body {
-    @apply m-0 min-h-screen bg-sidonia-black text-sidonia-text;
+    @apply m-0 min-h-screen bg-sidonia-black text-sidonia-text overflow-x-hidden;
     /* Subtle Art Deco pattern background - can be enhanced with actual pattern later */
     background: radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.05), transparent 60%),
       radial-gradient(circle at 80% 0%, rgba(147, 112, 219, 0.03), transparent 55%),
@@ -130,6 +130,7 @@
 
 /* Respect user motion preferences */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -137,4 +138,26 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Logo Animation */
+@keyframes spin-once {
+  0% {
+    transform: rotate(-180deg) scale(0.5);
+    opacity: 0;
+  }
+
+  60% {
+    transform: rotate(20deg) scale(1.1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.logo-spin-enter {
+  animation: spin-once 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }

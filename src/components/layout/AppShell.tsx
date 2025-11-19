@@ -29,8 +29,12 @@ const Header = () => (
   <header className="border-b border-sidonia-gold/30 bg-sidonia-dark/95 backdrop-blur-sm py-4 sticky top-0 z-50 shadow-lg shadow-black/50">
     <nav className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
       <div className="flex items-center gap-3">
-        <div className="h-8 w-8 border border-sidonia-gold/50 rotate-45 flex items-center justify-center bg-sidonia-dark">
-          <div className="h-4 w-4 border border-sidonia-gold/30 bg-sidonia-gold/10" />
+        <div className="h-10 w-10 flex items-center justify-center">
+          <img
+            src="/icons/logo-1.png"
+            alt="Sidonia Logo"
+            className="h-full w-full object-contain logo-spin-enter"
+          />
         </div>
         <span className="text-xl md:text-2xl font-display text-sidonia-gold tracking-wider text-shadow-sm">
           Sidonia

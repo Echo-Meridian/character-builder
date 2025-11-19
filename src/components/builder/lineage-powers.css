@@ -933,3 +933,16 @@ details summary::-webkit-details-marker {
     font-size: 0.75rem;
   }
 }
+
+/* Tier Icon */
+.tier-icon {
+  height: 28px;
+  width: auto;
+  vertical-align: middle;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Fix grid item overflow */
+.lineage-power-card {
+  min-width: 0;
+}

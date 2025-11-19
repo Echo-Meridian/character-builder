@@ -531,74 +531,74 @@ export function LineagePowersPanel({
                   </div>
                 </summary>
                 <div className="lineage-power-card__body">
-                {Object.entries(power.tiers ?? {}).map(([tierKey, tier]) => {
-                  const tierId = tier.id ?? `${rootId}-${slugify(tierKey)}`;
-                  const tierNum = tier.tier ?? 1;
-                  // NeoSapien costs: Slots = tier, Corruption = tier (1,2,3 pattern for both)
-                  const selection: LineagePowerSelection = {
-                    id: tierId,
-                    lineage: 'neosapien',
-                    label: `${power.name} — Tier ${tierNum}`,
-                    kind: 'neosapien-augment',
-                    meta: {
-                      root: rootId,
-                      parent: rootId,
-                      path: [rootId, tierKey],
-                      depth: 1,
-                      slots: tierNum,
-                      permanentCorruption: tierNum,
-                      category: power.category,
-                      tierLabel: `Tier ${tierNum}`
-                    }
-                  };
-                  const isSelected = selectedIds.has(selection.id);
+                  {Object.entries(power.tiers ?? {}).map(([tierKey, tier]) => {
+                    const tierId = tier.id ?? `${rootId}-${slugify(tierKey)}`;
+                    const tierNum = tier.tier ?? 1;
+                    // NeoSapien costs: Slots = tier, Corruption = tier (1,2,3 pattern for both)
+                    const selection: LineagePowerSelection = {
+                      id: tierId,
+                      lineage: 'neosapien',
+                      label: `${power.name} — Tier ${tierNum}`,
+                      kind: 'neosapien-augment',
+                      meta: {
+                        root: rootId,
+                        parent: rootId,
+                        path: [rootId, tierKey],
+                        depth: 1,
+                        slots: tierNum,
+                        permanentCorruption: tierNum,
+                        category: power.category,
+                        tierLabel: `Tier ${tierNum}`
+                      }
+                    };
+                    const isSelected = selectedIds.has(selection.id);
 
-                  // Check if selecting this tier would exceed slot limit
-                  const wouldExceedLimit = !isSelected && slotLimit > 0 && (slotsUsed + tierNum > slotLimit);
-                  const isDisabled = wouldExceedLimit;
+                    // Check if selecting this tier would exceed slot limit
+                    const wouldExceedLimit = !isSelected && slotLimit > 0 && (slotsUsed + tierNum > slotLimit);
+                    const isDisabled = wouldExceedLimit;
 
-                  const tierClass = `lineage-power-tier${isSelected ? ' lineage-power-tier--selected' : ''}${isDisabled ? ' lineage-power-tier--disabled' : ''}`;
-                  const buttonClass = `power-toggle power-toggle--radio${isSelected ? ' power-toggle--active' : ''}`;
+                    const tierClass = `lineage-power-tier${isSelected ? ' lineage-power-tier--selected' : ''}${isDisabled ? ' lineage-power-tier--disabled' : ''}`;
+                    const buttonClass = `power-toggle power-toggle--radio${isSelected ? ' power-toggle--active' : ''}`;
 
-                  // Get augment tier label with context
-                  const augmentTierLabel = tier.augmentTier
-                    ? `${tier.augmentTier} level bio mod`
-                    : `Tier ${tierNum}`;
+                    // Get augment tier label with context
+                    const augmentTierLabel = tier.augmentTier
+                      ? `${tier.augmentTier} level bio mod`
+                      : `Tier ${tierNum}`;
 
-                  return (
-                    <div key={tierId} className={tierClass}>
-                      <div className="lineage-power-tier__header">
-                        <div className="lineage-power-tier__info">
-                          <h5 className="lineage-power-tier__name">{tier.name ?? `Tier ${tierNum}`}</h5>
-                          <div className="lineage-power-tier__meta">
-                            <span className="badge badge--icon">
-                              <img src="/icons/Augment.png" alt="" />
-                              <span className="badge__text">Augment</span>
-                            </span>
-                            <span className="lineage-power-tier__label">{augmentTierLabel}</span>
+                    return (
+                      <div key={tierId} className={tierClass}>
+                        <div className="lineage-power-tier__header">
+                          <div className="lineage-power-tier__info">
+                            <h5 className="lineage-power-tier__name">{tier.name ?? `Tier ${tierNum}`}</h5>
+                            <div className="lineage-power-tier__meta">
+                              <span className="badge badge--icon">
+                                <img src="/icons/Augment.png" alt="" />
+                                <span className="badge__text">Augment</span>
+                              </span>
+                              <span className="lineage-power-tier__label">{augmentTierLabel}</span>
+                            </div>
+                          </div>
+                        </div>
+                        {renderDescription(tier.description, gmEnabled)}
+                        <div className="lineage-power-tier__footer">
+                          <button
+                            type="button"
+                            className={buttonClass}
+                            onClick={() => handleNeoSapienTierSelection(selection)}
+                            disabled={isDisabled}
+                            title={isDisabled ? `Would exceed slot limit (${slotsUsed + tierNum}/${slotLimit})` : undefined}
+                            aria-label={isSelected ? `Deselect ${tier.name ?? `Tier ${tierNum}`}` : `Select ${tier.name ?? `Tier ${tierNum}`}`}
+                          >
+                            {isSelected ? 'Selected' : isDisabled ? 'Exceeds Limit' : 'Select'}
+                          </button>
+                          <div className="lineage-power-tier__cost">
+                            <span>{tierNum} Slot{tierNum === 1 ? '' : 's'}</span>
+                            <span>{tierNum} Corruption</span>
                           </div>
                         </div>
                       </div>
-                      {renderDescription(tier.description, gmEnabled)}
-                      <div className="lineage-power-tier__footer">
-                        <button
-                          type="button"
-                          className={buttonClass}
-                          onClick={() => handleNeoSapienTierSelection(selection)}
-                          disabled={isDisabled}
-                          title={isDisabled ? `Would exceed slot limit (${slotsUsed + tierNum}/${slotLimit})` : undefined}
-                          aria-label={isSelected ? `Deselect ${tier.name ?? `Tier ${tierNum}`}` : `Select ${tier.name ?? `Tier ${tierNum}`}`}
-                        >
-                          {isSelected ? 'Selected' : isDisabled ? 'Exceeds Limit' : 'Select'}
-                        </button>
-                        <div className="lineage-power-tier__cost">
-                          <span>{tierNum} Slot{tierNum === 1 ? '' : 's'}</span>
-                          <span>{tierNum} Corruption</span>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
                 </div>
               </details>
             );
@@ -670,8 +670,8 @@ export function LineagePowersPanel({
             <div className="lineage-core-mutations-list">
               {coreMutations.map((power) => {
                 const shortDesc = power.tiers?.tier1?.description?.short ??
-                                 Object.values(power.tiers ?? {})[0]?.description?.short ??
-                                 'Core mutation';
+                  Object.values(power.tiers ?? {})[0]?.description?.short ??
+                  'Core mutation';
                 return (
                   <details key={power.id ?? power.name} className="core-mutation-card">
                     <summary>
@@ -700,74 +700,79 @@ export function LineagePowersPanel({
                   </div>
                 </summary>
                 <div className="lineage-power-card__body">
-                {Object.entries(power.tiers ?? {}).map(([tierKey, tier]) => {
-                  const tierId = tier.id ?? `${rootId}-${slugify(tierKey)}`;
-                  const tierNum = tier.tier ?? 1;
-                  // Chimera costs: MP = tier, Corruption = tier (1,2,3 pattern for both)
-                  const selection: LineagePowerSelection = {
-                    id: tierId,
-                    lineage: 'chimera',
-                    label: `${power.name} — Tier ${tierNum}`,
-                    kind: 'chimera-mutation',
-                    meta: {
-                      root: rootId,
-                      parent: rootId,
-                      path: [rootId, tierKey],
-                      depth: 1,
-                      mutationPoints: tierNum,
-                      permanentCorruption: tierNum,
-                      category: power.category,
-                      tierLabel: `Tier ${tierNum}`
-                    }
-                  };
-                  const isSelected = selectedIds.has(selection.id);
+                  {Object.entries(power.tiers ?? {}).map(([tierKey, tier]) => {
+                    const tierId = tier.id ?? `${rootId}-${slugify(tierKey)}`;
+                    const tierNum = tier.tier ?? 1;
+                    // Chimera costs: MP = tier, Corruption = tier (1,2,3 pattern for both)
+                    const selection: LineagePowerSelection = {
+                      id: tierId,
+                      lineage: 'chimera',
+                      label: `${power.name} — Tier ${tierNum}`,
+                      kind: 'chimera-mutation',
+                      meta: {
+                        root: rootId,
+                        parent: rootId,
+                        path: [rootId, tierKey],
+                        depth: 1,
+                        mutationPoints: tierNum,
+                        permanentCorruption: tierNum,
+                        category: power.category,
+                        tierLabel: `Tier ${tierNum}`
+                      }
+                    };
+                    const isSelected = selectedIds.has(selection.id);
 
-                  // Check if selecting this tier would exceed mutation point limit
-                  const wouldExceedLimit = !isSelected && mutationLimit > 0 && (mutationUsed + tierNum > mutationLimit);
-                  const isDisabled = wouldExceedLimit;
+                    // Check if selecting this tier would exceed mutation point limit
+                    const wouldExceedLimit = !isSelected && mutationLimit > 0 && (mutationUsed + tierNum > mutationLimit);
+                    const isDisabled = wouldExceedLimit;
 
-                  const tierClass = `lineage-power-tier${isSelected ? ' lineage-power-tier--selected' : ''}${isDisabled ? ' lineage-power-tier--disabled' : ''}`;
-                  const buttonClass = `power-toggle power-toggle--radio${isSelected ? ' power-toggle--active' : ''}`;
+                    const tierClass = `lineage-power-tier${isSelected ? ' lineage-power-tier--selected' : ''}${isDisabled ? ' lineage-power-tier--disabled' : ''}`;
+                    const buttonClass = `power-toggle power-toggle--radio${isSelected ? ' power-toggle--active' : ''}`;
 
-                  // Get augment tier label with context
-                  const augmentTierLabel = tier.augmentTier
-                    ? `${tier.augmentTier} level mutation`
-                    : `Tier ${tierNum}`;
+                    // Get augment tier label with context
+                    const augmentTierLabel = tier.augmentTier
+                      ? `${tier.augmentTier} level mutation`
+                      : `Tier ${tierNum}`;
 
-                  return (
-                    <div key={tierId} className={tierClass}>
-                      <div className="lineage-power-tier__header">
-                        <div className="lineage-power-tier__info">
-                          <h5 className="lineage-power-tier__name">{tier.name ?? `Tier ${tierNum}`}</h5>
-                          <div className="lineage-power-tier__meta">
-                            <span className="badge badge--icon">
-                              <img src="/icons/Augment.png" alt="" />
-                              <span className="badge__text">Mutation</span>
-                            </span>
-                            <span className="badge badge--tier">{augmentTierLabel}</span>
+                    return (
+                      <div key={tierId} className={tierClass}>
+                        <div className="lineage-power-tier__header">
+                          <div className="lineage-power-tier__info">
+                            <h5 className="lineage-power-tier__name">{tier.name ?? `Tier ${tierNum}`}</h5>
+                            <div className="lineage-power-tier__meta">
+                              <span className="badge badge--icon">
+                                <img src="/icons/Augment.png" alt="" />
+                                <span className="badge__text">Mutation</span>
+                              </span>
+                              <img
+                                src={`/icons/Tier-${tierNum}.png`}
+                                alt={`Tier ${tierNum}`}
+                                className="tier-icon"
+                                title={augmentTierLabel}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        {renderDescription(tier.description, gmEnabled)}
+                        <div className="lineage-power-tier__footer">
+                          <button
+                            type="button"
+                            className={buttonClass}
+                            onClick={() => handleChimeraTierSelection(selection)}
+                            disabled={isDisabled}
+                            title={isDisabled ? `Would exceed mutation point limit (${mutationUsed + tierNum}/${mutationLimit})` : undefined}
+                            aria-label={isSelected ? `Deselect ${tier.name ?? `Tier ${tierNum}`}` : `Select ${tier.name ?? `Tier ${tierNum}`}`}
+                          >
+                            {isSelected ? 'Selected' : isDisabled ? 'Exceeds Limit' : 'Select'}
+                          </button>
+                          <div className="lineage-power-tier__cost">
+                            <span>{tierNum} Mutation Point{tierNum === 1 ? '' : 's'}</span>
+                            <span>{tierNum} Corruption</span>
                           </div>
                         </div>
                       </div>
-                      {renderDescription(tier.description, gmEnabled)}
-                      <div className="lineage-power-tier__footer">
-                        <button
-                          type="button"
-                          className={buttonClass}
-                          onClick={() => handleChimeraTierSelection(selection)}
-                          disabled={isDisabled}
-                          title={isDisabled ? `Would exceed mutation point limit (${mutationUsed + tierNum}/${mutationLimit})` : undefined}
-                          aria-label={isSelected ? `Deselect ${tier.name ?? `Tier ${tierNum}`}` : `Select ${tier.name ?? `Tier ${tierNum}`}`}
-                        >
-                          {isSelected ? 'Selected' : isDisabled ? 'Exceeds Limit' : 'Select'}
-                        </button>
-                        <div className="lineage-power-tier__cost">
-                          <span>{tierNum} Mutation Point{tierNum === 1 ? '' : 's'}</span>
-                          <span>{tierNum} Corruption</span>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
                 </div>
               </details>
             );
@@ -1332,8 +1337,8 @@ export function LineagePowersPanel({
           const comboPowers = archetypePowers.filter(p => {
             const power = p as any;
             return power.mentalistPolarity === polarityType &&
-                   power.mentalistScope === scopeType &&
-                   !p.path?.includes('_all');
+              power.mentalistScope === scopeType &&
+              !p.path?.includes('_all');
           });
 
           // If only one power matches, grant it automatically
@@ -1494,8 +1499,8 @@ export function LineagePowersPanel({
               const comboPowers = archetypePowers.filter(p => {
                 const power = p as any;
                 return power.mentalistPolarity === polarityType &&
-                       power.mentalistScope === scopeType &&
-                       !p.path?.includes('_all');
+                  power.mentalistScope === scopeType &&
+                  !p.path?.includes('_all');
               });
 
               if (comboPowers.length > 1) {
@@ -1722,80 +1727,80 @@ export function LineagePowersPanel({
                 <div key={chassis} className="automata-chassis-section">
                   <h4>{chassis.charAt(0).toUpperCase() + chassis.slice(1)} Chassis</h4>
                   <div className="automata-packages-grid">
-                  {Array.from(branches).map((branch) => {
-                    return availableLevels.map((quality) => {
-                      const comboId = `${chassis}-${branch}-${quality}`;
-                      const powers = getPowersForCombo(chassis, branch, quality);
-                      const selection: LineagePowerSelection = {
-                        id: comboId,
-                        lineage: 'automata',
-                        label: `${quality.toUpperCase()} ${branch} (${chassis})`,
-                        kind: 'automata-package',
-                        meta: {
-                          chassis,
-                          branch,
-                          category: quality
-                        }
-                      };
+                    {Array.from(branches).map((branch) => {
+                      return availableLevels.map((quality) => {
+                        const comboId = `${chassis}-${branch}-${quality}`;
+                        const powers = getPowersForCombo(chassis, branch, quality);
+                        const selection: LineagePowerSelection = {
+                          id: comboId,
+                          lineage: 'automata',
+                          label: `${quality.toUpperCase()} ${branch} (${chassis})`,
+                          kind: 'automata-package',
+                          meta: {
+                            chassis,
+                            branch,
+                            category: quality
+                          }
+                        };
 
-                      return (
-                        <details key={comboId} className="automata-package-card">
-                          <summary>
-                            <div className="automata-package-summary">
-                              <div>
-                                <h5>{quality.toUpperCase()} {branch.charAt(0).toUpperCase() + branch.slice(1)}</h5>
-                                <p className="automata-package-count">{powers.length} powers included</p>
+                        return (
+                          <details key={comboId} className="automata-package-card">
+                            <summary>
+                              <div className="automata-package-summary">
+                                <div>
+                                  <h5>{quality.toUpperCase()} {branch.charAt(0).toUpperCase() + branch.slice(1)}</h5>
+                                  <p className="automata-package-count">{powers.length} powers included</p>
+                                </div>
+                                <button
+                                  type="button"
+                                  className="power-toggle"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    onToggleSelection(selection);
+                                  }}
+                                >
+                                  Select This Configuration
+                                </button>
                               </div>
-                              <button
-                                type="button"
-                                className="power-toggle"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  onToggleSelection(selection);
-                                }}
-                              >
-                                Select This Configuration
-                              </button>
-                            </div>
-                          </summary>
-                          <div className="automata-package-details">
-                            <p className="automata-package-note">Selecting this configuration grants you ALL of these powers automatically:</p>
-                            <ul className="power-list">
-                              {powers.map((power) => (
-                                <li key={power.id} className="power-list__item">
-                                  <div>
-                                    <strong>{power.name}</strong>
-                                    {power.augmentLevel && (
-                                      <span className="badge badge--icon">
-                                        <img src="/icons/Augment.png" alt="" />
-                                        <span className="badge__text">{power.augmentLevel}</span>
-                                      </span>
-                                    )}
-                                    {power.moveType && (
-                                      <span className="badge badge--icon">
-                                        <img src="/icons/Move.png" alt="" />
-                                        <span className="badge__text">{power.moveType}</span>
-                                      </span>
-                                    )}
-                                  </div>
-                                  {renderDescription(power.description, gmEnabled)}
-                                  {power.outcomes && Object.keys(power.outcomes).length > 0 && (
-                                    <div className="power-outcomes">
-                                      {Object.entries(power.outcomes).map(([roll, outcome]) => (
-                                        <div key={roll}>
-                                          <strong>{roll}:</strong> {outcome}
-                                        </div>
-                                      ))}
+                            </summary>
+                            <div className="automata-package-details">
+                              <p className="automata-package-note">Selecting this configuration grants you ALL of these powers automatically:</p>
+                              <ul className="power-list">
+                                {powers.map((power) => (
+                                  <li key={power.id} className="power-list__item">
+                                    <div>
+                                      <strong>{power.name}</strong>
+                                      {power.augmentLevel && (
+                                        <span className="badge badge--icon">
+                                          <img src="/icons/Augment.png" alt="" />
+                                          <span className="badge__text">{power.augmentLevel}</span>
+                                        </span>
+                                      )}
+                                      {power.moveType && (
+                                        <span className="badge badge--icon">
+                                          <img src="/icons/Move.png" alt="" />
+                                          <span className="badge__text">{power.moveType}</span>
+                                        </span>
+                                      )}
                                     </div>
-                                  )}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </details>
-                      );
-                    });
-                  })}
+                                    {renderDescription(power.description, gmEnabled)}
+                                    {power.outcomes && Object.keys(power.outcomes).length > 0 && (
+                                      <div className="power-outcomes">
+                                        {Object.entries(power.outcomes).map(([roll, outcome]) => (
+                                          <div key={roll}>
+                                            <strong>{roll}:</strong> {outcome}
+                                          </div>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </details>
+                        );
+                      });
+                    })}
                   </div>
                 </div>
               );
