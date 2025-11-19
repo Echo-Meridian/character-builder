@@ -237,7 +237,7 @@ function AnalyticsLog() {
             className="grid grid-cols-[auto_auto_1fr] gap-2 bg-sidonia-black/40 p-deco-sm rounded
                      border border-sidonia-gold/20 items-center"
           >
-            <strong className="text-sidonia-gold font-display text-xs uppercase tracking-wide">
+            <strong className="text-sidonia-gold font-accent text-xs uppercase tracking-wide">
               {entry.event}
             </strong>
             <span className="text-sidonia-muted font-mono text-xs">

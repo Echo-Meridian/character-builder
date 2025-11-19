@@ -79,7 +79,7 @@ export function LineagePowerToggle({
       onClick={onClick}
       disabled={disabled}
       className={clsx(
-        'px-deco-sm py-1.5 rounded-full font-display text-xs uppercase tracking-wider',
+        'px-deco-sm py-1.5 rounded-full font-accent text-xs uppercase tracking-wider',
         'border-2 transition-all duration-300',
         'disabled:opacity-40 disabled:cursor-not-allowed',
         variant === 'clear' && 'bg-corruption-dark/20 border-corruption-red text-corruption-red hover:bg-corruption-red/20',

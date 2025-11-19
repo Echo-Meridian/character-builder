@@ -36,7 +36,7 @@
 }
 
 .resource-summary dt {
-  @apply font-display text-xs tracking-wider uppercase text-sidonia-brass/70;
+  @apply font-accent text-xs tracking-wider uppercase text-sidonia-brass/70;
 }
 
 .resource-summary dd {
@@ -168,7 +168,7 @@
 }
 
 .resource-card__field label {
-  @apply font-display text-xs tracking-wider uppercase text-sidonia-brass/80;
+  @apply font-accent text-xs tracking-wider uppercase text-sidonia-brass/80;
 }
 
 .resource-card__field textarea {
@@ -191,7 +191,7 @@
 
 .resource-card__grid label {
   @apply flex flex-col gap-2;
-  @apply font-display text-xs tracking-wider uppercase text-sidonia-brass/80;
+  @apply font-accent text-xs tracking-wider uppercase text-sidonia-brass/80;
 }
 
 .resource-card__grid input,
@@ -263,7 +263,7 @@
 
 .resource-liquid label {
   @apply flex flex-col gap-2;
-  @apply font-display text-xs tracking-wider uppercase text-sidonia-brass/80;
+  @apply font-accent text-xs tracking-wider uppercase text-sidonia-brass/80;
 }
 
 .resource-liquid input {
@@ -333,7 +333,7 @@
   @apply inline-flex items-center justify-center;
   @apply w-7 h-7 rounded-full mr-2;
   @apply border-2 border-sidonia-gold/30 bg-sidonia-gold/10;
-  @apply font-display text-xs font-semibold text-sidonia-gold;
+  @apply font-accent text-xs font-semibold text-sidonia-gold;
 }
 
 /* Number Input with Increment/Decrement Controls */
@@ -376,6 +376,7 @@
 
 /* Responsive Adjustments */
 @media (max-width: 720px) {
+
   /* Fix "Add Contact/Retainer" button overflow */
   .resource-section__header {
     flex-direction: column;
@@ -469,7 +470,7 @@
     align-items: stretch;
   }
 
-  .resource-card__footer > div {
+  .resource-card__footer>div {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;

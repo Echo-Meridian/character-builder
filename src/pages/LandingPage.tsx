@@ -1,8 +1,23 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { DecoButton } from '../components/ui/DecoButton';
 import { DecoCard } from '../components/ui/DecoCard';
+import { useCharacterStore } from '../state/characterStore';
 
 export function LandingPage() {
+  const navigate = useNavigate();
+  const createBuild = useCharacterStore((state) => state.createBuild);
+  const ensureActiveBuild = useCharacterStore((state) => state.ensureActiveBuild);
+
+  const handleNewCharacter = () => {
+    createBuild();
+    navigate('/builder');
+  };
+
+  const handleContinueCharacter = () => {
+    ensureActiveBuild();
+    navigate('/builder');
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center px-deco-md py-deco-xl">
       <div className="max-w-4xl w-full space-y-deco-lg">
@@ -34,15 +49,20 @@ export function LandingPage() {
           </div>
 
           {/* Action Buttons */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-deco-sm pt-deco-md border-t border-sidonia-gold/60">
-            <Link to="/builder" className="block">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-deco-sm pt-deco-md border-t border-sidonia-gold/60">
+            <button onClick={handleNewCharacter} className="block w-full text-left">
               <DecoButton variant="primary" size="lg" className="w-full">
                 New Character
               </DecoButton>
-            </Link>
-            <Link to="/management" className="block">
+            </button>
+            <button onClick={handleContinueCharacter} className="block w-full text-left">
               <DecoButton variant="secondary" size="lg" className="w-full">
-                Manage Characters
+                Continue Character
+              </DecoButton>
+            </button>
+            <Link to="/management" className="block">
+              <DecoButton variant="ghost" size="lg" className="w-full">
+                Load Character
               </DecoButton>
             </Link>
             <Link to="/gm" className="block">

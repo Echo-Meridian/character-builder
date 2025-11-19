@@ -20,7 +20,7 @@ export const DecoButton: React.FC<DecoButtonProps> = ({
 }) => {
   const baseClasses = clsx(
     // Base button styling
-    'relative font-display tracking-wider uppercase',
+    'relative font-accent tracking-wider uppercase',
     'transition-all duration-300',
     'border-2',
     'hover:shadow-lg active:scale-95',

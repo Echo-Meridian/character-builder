@@ -26,17 +26,44 @@ const navItems = [
 // but doesn't provide its import. To make the code syntactically correct,
 // I will define a simple placeholder Header component.
 const Header = () => (
-  <header className="border-b border-slate-800 bg-slate-950/50 backdrop-blur-sm py-4">
-    <nav className="container mx-auto px-4 flex justify-between items-center">
-      <span className="text-xl font-bold text-cyan-400">Sidonia: The Long Night</span>
-      <div className="flex space-x-4">
+  <header className="border-b border-sidonia-gold/30 bg-sidonia-dark/95 backdrop-blur-sm py-4 sticky top-0 z-50 shadow-lg shadow-black/50">
+    <nav className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div className="flex items-center gap-3">
+        <div className="h-8 w-8 border border-sidonia-gold/50 rotate-45 flex items-center justify-center bg-sidonia-dark">
+          <div className="h-4 w-4 border border-sidonia-gold/30 bg-sidonia-gold/10" />
+        </div>
+        <span className="text-xl md:text-2xl font-display text-sidonia-gold tracking-wider text-shadow-sm">
+          Sidonia
+        </span>
+      </div>
+
+      <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
         {navItems.map((item) => (
-          <NavLink key={item.to} to={item.to} className={({ isActive }) => (isActive ? 'text-cyan-400 font-semibold' : 'text-slate-300 hover:text-cyan-300 transition-colors')} end>
-            {item.label}
+          <NavLink
+            key={item.to}
+            to={item.to}
+            className={({ isActive }) => `
+              text-sm uppercase tracking-widest transition-all duration-300 relative group
+              ${isActive ? 'text-sidonia-gold font-bold' : 'text-sidonia-text/70 hover:text-sidonia-gold'}
+            `}
+            end
+          >
+            {({ isActive }) => (
+              <>
+                <span className="relative z-10">{item.label}</span>
+                {isActive && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-gradient-to-r from-transparent via-sidonia-gold to-transparent" />
+                )}
+                <span className="absolute inset-0 bg-sidonia-gold/5 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-sm -z-0" />
+              </>
+            )}
           </NavLink>
         ))}
       </div>
-      <span className="text-sm text-slate-500 hidden md:block">Every choice demands a sacrifice</span>
+
+      <span className="text-xs text-sidonia-text/50 hidden lg:block font-serif italic border-l border-sidonia-gold/20 pl-4">
+        Every choice demands a sacrifice
+      </span>
     </nav>
   </header>
 );

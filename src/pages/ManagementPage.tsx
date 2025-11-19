@@ -90,7 +90,7 @@ export function ManagementPage() {
                 {/* Active Badge */}
                 {isActive && (
                   <div className="absolute top-2 right-2 px-2 py-1 rounded-full bg-sidonia-gold/20 border border-sidonia-gold">
-                    <span className="text-xs font-display uppercase tracking-wider text-sidonia-gold">Active</span>
+                    <span className="text-xs font-accent uppercase tracking-wider text-sidonia-gold">Active</span>
                   </div>
                 )}
 
