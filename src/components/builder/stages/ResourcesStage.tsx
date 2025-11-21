@@ -32,6 +32,7 @@ interface ResourcesStageProps {
   onUpdateLiquid: (value: number) => void;
   notes: string;
   onUpdateNotes: (notes: string) => void;
+  onReset: () => void;
 }
 
 interface PropertyRatingResult {
@@ -148,8 +149,8 @@ const getTenureRating = (
     typeof costEntry?.multiplier === 'number'
       ? costEntry.multiplier
       : typeof systemEntry?.costMultiplier === 'number'
-      ? systemEntry.costMultiplier
-      : null;
+        ? systemEntry.costMultiplier
+        : null;
 
   if (typeof rawMultiplier === 'number' && Number.isFinite(rawMultiplier) && rawMultiplier > 0) {
     return {
@@ -178,8 +179,8 @@ const getZoningRating = (
     typeof costEntry?.baseCost === 'number'
       ? costEntry.baseCost
       : typeof systemEntry?.baseCost === 'number'
-      ? systemEntry.baseCost
-      : null;
+        ? systemEntry.baseCost
+        : null;
 
   if (typeof rawBase === 'number' && Number.isFinite(rawBase) && rawBase > 0) {
     return { value: rawBase, requiresApproval: false };
@@ -189,8 +190,8 @@ const getZoningRating = (
     typeof costEntry?.baseCost === 'string'
       ? costEntry.baseCost
       : typeof systemEntry?.baseCost === 'string'
-      ? systemEntry.baseCost
-      : null;
+        ? systemEntry.baseCost
+        : null;
 
   return { value: fallbackCap, requiresApproval: true, note };
 };
@@ -218,7 +219,8 @@ export function ResourcesStage({
   onRemoveGoods,
   onUpdateLiquid,
   notes,
-  onUpdateNotes
+  onUpdateNotes,
+  onReset
 }: ResourcesStageProps) {
   const priorityDetails = priority ? system.resourcePoints[priority] : null;
   const available = priorityDetails?.points ?? 0;
@@ -744,7 +746,7 @@ export function ResourcesStage({
             </button>
           </header>
           {goodsSummaries.length === 0 ? (
-            <p className="resource-section__empty">No caches documented. Set aside kit or contraband.</p>
+            <p className="resource-section__empty">No stockpiles or gear. Add equipment.</p>
           ) : (
             goodsSummaries.map(({ entry, cost, issues }) => {
               const requiresApproval = !entry.gmApproved;
@@ -755,16 +757,16 @@ export function ResourcesStage({
                       className="resource-card__title"
                       value={entry.name}
                       onChange={(event) => onUpdateGoods(entry.id, { name: event.target.value })}
-                      placeholder="Goods cache"
+                      placeholder="Item name"
                     />
                     <span className="resource-card__cost">Cost {cost}</span>
                   </header>
                   <label className="resource-card__field">
-                    <span>Contents</span>
+                    <span>Description</span>
                     <textarea
                       value={entry.description}
                       onChange={(event) => onUpdateGoods(entry.id, { description: event.target.value })}
-                      placeholder="Describe the stash, weaponry, or leverage."
+                      placeholder="What is it and what does it do?"
                     />
                   </label>
                   <div className="resource-card__grid">
@@ -805,7 +807,7 @@ export function ResourcesStage({
                   )}
                   <footer className="resource-card__footer">
                     <button type="button" onClick={() => onRemoveGoods(entry.id)} className="link">
-                      Remove Goods
+                      Remove Item
                     </button>
                     <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                       <button
@@ -858,6 +860,11 @@ export function ResourcesStage({
             placeholder="Record fronts, debts, leverage, and the strings attached to each asset."
           />
         </label>
+        <div className="stage__actions">
+          <button type="button" onClick={onReset} className="button button--secondary">
+            Reset Resources
+          </button>
+        </div>
       </section>
 
       <section className="resource-reference">

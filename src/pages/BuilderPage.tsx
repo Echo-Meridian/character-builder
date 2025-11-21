@@ -58,6 +58,9 @@ export function BuilderPage() {
   const setAttributeScore = useCharacterStore((state) => state.setAttributeScore);
   const updateAttributeNotes = useCharacterStore((state) => state.updateAttributeNotes);
   const toggleAttributeSpecialization = useCharacterStore((state) => state.toggleAttributeSpecialization);
+  const resetAttributes = useCharacterStore((state) => state.resetAttributes);
+  const resetSkills = useCharacterStore((state) => state.resetSkills);
+  const resetResources = useCharacterStore((state) => state.resetResources);
   const resetActiveBuild = useCharacterStore((state) => state.resetActiveBuild);
   const adjustExperience = useCharacterStore((state) => state.adjustExperience);
   const setExperience = useCharacterStore((state) => state.setExperience);
@@ -146,6 +149,7 @@ export function BuilderPage() {
           onUpdateLiquid={setResourceLiquid}
           notes={build.resources.notes}
           onUpdateNotes={updateResourceNotes}
+          onReset={resetResources}
         />
       );
       break;
@@ -180,6 +184,7 @@ export function BuilderPage() {
           onSetBackgroundCustomSpecializations={setBackgroundCustomSpecializations}
           notes={build.skills.notes}
           onUpdateNotes={updateSkillNotes}
+          onReset={resetSkills}
         />
       );
       break;
@@ -194,6 +199,7 @@ export function BuilderPage() {
           data={data.attributes}
           selectedSpecializations={build.attributes.specializations}
           onToggleSpecialization={toggleAttributeSpecialization}
+          onReset={resetAttributes}
         />
       );
       break;
@@ -228,9 +234,9 @@ export function BuilderPage() {
 
   const builderStyle: React.CSSProperties | undefined = lineageDefinition
     ? {
-        '--lineage-accent': lineageDefinition.aesthetic.accent,
-        '--lineage-glow': lineageDefinition.aesthetic.glow
-      } as React.CSSProperties
+      '--lineage-accent': lineageDefinition.aesthetic.accent,
+      '--lineage-glow': lineageDefinition.aesthetic.glow
+    } as React.CSSProperties
     : undefined;
 
   return (

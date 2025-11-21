@@ -13,6 +13,7 @@ export interface SkillsSlice {
     setBackgroundSkillSpecializations: (specializations: string[]) => void;
     setBackgroundCustomSpecializations: (customSpecs: string[]) => void;
     updateSkillNotes: (notes: string) => void;
+    resetSkills: () => void;
 }
 
 export const createSkillsSlice: StateCreator<CharacterStore, [], [], SkillsSlice> = (set, get) => ({
@@ -172,6 +173,27 @@ export const createSkillsSlice: StateCreator<CharacterStore, [], [], SkillsSlice
                 ...build,
                 updatedAt: new Date().toISOString(),
                 skills: { ...build.skills, notes }
+            };
+            return { ...state, builds: { ...state.builds, [activeBuildId]: updatedBuild } };
+        });
+    },
+
+    resetSkills: () => {
+        const { activeBuildId, builds } = get();
+        if (!activeBuildId || !builds[activeBuildId]) return;
+
+        set((state) => {
+            const build = state.builds[activeBuildId];
+            const updatedBuild = {
+                ...build,
+                updatedAt: new Date().toISOString(),
+                skills: {
+                    ratings: {},
+                    specializations: [],
+                    backgroundSpecializations: [],
+                    backgroundCustomSpecializations: [],
+                    notes: ''
+                }
             };
             return { ...state, builds: { ...state.builds, [activeBuildId]: updatedBuild } };
         });

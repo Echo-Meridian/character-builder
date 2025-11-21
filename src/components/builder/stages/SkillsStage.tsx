@@ -19,6 +19,7 @@ interface SkillsStageProps {
   onSetBackgroundCustomSpecializations: (customSpecs: string[]) => void;
   notes: string;
   onUpdateNotes: (notes: string) => void;
+  onReset: () => void;
 }
 
 const SKILL_PRIORITY_RULES: Record<PriorityRank, { maxRank: number; points: number; specializations: number }> = {
@@ -46,7 +47,8 @@ export function SkillsStage({
   onSetBackgroundSpecializations,
   onSetBackgroundCustomSpecializations,
   notes,
-  onUpdateNotes
+  onUpdateNotes,
+  onReset
 }: SkillsStageProps) {
   const [customLabel, setCustomLabel] = useState('');
 
@@ -182,80 +184,80 @@ export function SkillsStage({
       <section className="skills-grid">
         {Object.entries(data.skills).flatMap(([discipline, skills]) =>
           skills.map((skill) => {
-                const skillId = `${discipline}:${skill.id}`;
-                const current = ratings[skillId] ?? 0;
-                const maxRank = rule?.maxRank ?? 0;
-                const isMaxed = current >= maxRank;
-                const canIncrease = remainingPoints > 0 && !isMaxed;
+            const skillId = `${discipline}:${skill.id}`;
+            const current = ratings[skillId] ?? 0;
+            const maxRank = rule?.maxRank ?? 0;
+            const isMaxed = current >= maxRank;
+            const canIncrease = remainingPoints > 0 && !isMaxed;
 
-                // Check if any specializations are from background
-                const backgroundSpecIds = skill.specializations
-                  .map(s => `pre:${skillId}:${s.id ?? s.name}`)
-                  .filter(id => {
-                    const spec = specializationMap.get(id);
-                    return spec?.type === 'background';
-                  });
+            // Check if any specializations are from background
+            const backgroundSpecIds = skill.specializations
+              .map(s => `pre:${skillId}:${s.id ?? s.name}`)
+              .filter(id => {
+                const spec = specializationMap.get(id);
+                return spec?.type === 'background';
+              });
 
-                return (
-                  <article key={skillId} className={`skills-card ${isMaxed ? 'skills-card--maxed' : ''}`}>
-                    <div className="skills-item__info">
-                      <h4>{skill.name}</h4>
-                      <p>{skill.description}</p>
-                      {isMaxed && <span className="skills-maxed-badge">Max Rank</span>}
-                    </div>
-                    <label className={`skills-rating ${isMaxed ? 'skills-rating--maxed' : ''}`}>
-                      <span>Rating</span>
-                      <input
-                        type="range"
-                        min={0}
-                        max={maxRank}
-                        step={1}
-                        value={current}
-                        disabled={!rule}
-                        onChange={handleRatingChange(skillId, current)}
-                        className={!canIncrease && current < maxRank ? 'skills-rating__input--limited' : ''}
-                      />
-                      <span className="skills-rating__value">{current}</span>
-                    </label>
-                    {skill.specializations.length > 0 && (
-                      <div className="skills-item__specializations">
-                        <details>
-                          <summary>Specializations ({skill.specializations.length} available)</summary>
-                          <ul className="skills-specializations">
-                            {skill.specializations.map((specialization) => {
-                              const selectionId = `pre:${skillId}:${specialization.id ?? specialization.name}`;
-                              const isSelected = specializationMap.has(selectionId);
-                              const spec = specializationMap.get(selectionId);
-                              const isBackground = spec?.type === 'background';
-                              const limitReached =
-                                !rule ||
-                                (rule.specializations === 0 && !isSelected) ||
-                                (rule.specializations > 0 && remainingPrioritySpecializations === 0 && !isSelected);
-                              return (
-                                <li key={selectionId}>
-                                  <label className={`skills-specialization__checkbox ${isSelected ? 'selected' : ''} ${isBackground ? 'background' : ''}`}>
-                                    <input
-                                      type="checkbox"
-                                      checked={isSelected}
-                                      disabled={limitReached || isBackground}
-                                      onChange={() => handlePredefinedToggle(skillId, skill.name, specialization.id, specialization.name)}
-                                    />
-                                    <div className="skills-specialization__content">
-                                      <strong>{specialization.name}</strong>
-                                      <span>{specialization.description}</span>
-                                      {isBackground && <span className="gm-tag gm-tag--background">Background</span>}
-                                    </div>
-                                  </label>
-                                </li>
-                              );
-                            })}
-                          </ul>
-                        </details>
-                      </div>
-                    )}
-                  </article>
-                );
-              })
+            return (
+              <article key={skillId} className={`skills-card ${isMaxed ? 'skills-card--maxed' : ''}`}>
+                <div className="skills-item__info">
+                  <h4>{skill.name}</h4>
+                  <p>{skill.description}</p>
+                  {isMaxed && <span className="skills-maxed-badge">Max Rank</span>}
+                </div>
+                <label className={`skills-rating ${isMaxed ? 'skills-rating--maxed' : ''}`}>
+                  <span>Rating</span>
+                  <input
+                    type="range"
+                    min={0}
+                    max={maxRank}
+                    step={1}
+                    value={current}
+                    disabled={!rule}
+                    onChange={handleRatingChange(skillId, current)}
+                    className={!canIncrease && current < maxRank ? 'skills-rating__input--limited' : ''}
+                  />
+                  <span className="skills-rating__value">{current}</span>
+                </label>
+                {skill.specializations.length > 0 && (
+                  <div className="skills-item__specializations">
+                    <details>
+                      <summary>Specializations ({skill.specializations.length} available)</summary>
+                      <ul className="skills-specializations">
+                        {skill.specializations.map((specialization) => {
+                          const selectionId = `pre:${skillId}:${specialization.id ?? specialization.name}`;
+                          const isSelected = specializationMap.has(selectionId);
+                          const spec = specializationMap.get(selectionId);
+                          const isBackground = spec?.type === 'background';
+                          const limitReached =
+                            !rule ||
+                            (rule.specializations === 0 && !isSelected) ||
+                            (rule.specializations > 0 && remainingPrioritySpecializations === 0 && !isSelected);
+                          return (
+                            <li key={selectionId}>
+                              <label className={`skills-specialization__checkbox ${isSelected ? 'selected' : ''} ${isBackground ? 'background' : ''}`}>
+                                <input
+                                  type="checkbox"
+                                  checked={isSelected}
+                                  disabled={limitReached || isBackground}
+                                  onChange={() => handlePredefinedToggle(skillId, skill.name, specialization.id, specialization.name)}
+                                />
+                                <div className="skills-specialization__content">
+                                  <strong>{specialization.name}</strong>
+                                  <span>{specialization.description}</span>
+                                  {isBackground && <span className="gm-tag gm-tag--background">Background</span>}
+                                </div>
+                              </label>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </details>
+                  </div>
+                )}
+              </article>
+            );
+          })
         )}
       </section>
 
@@ -333,6 +335,11 @@ export function SkillsStage({
             placeholder="Record signature moves, training montages, and promised stunts."
           />
         </label>
+        <div className="stage__actions">
+          <button type="button" onClick={onReset} className="button button--secondary">
+            Reset Skills
+          </button>
+        </div>
       </section>
     </div>
   );

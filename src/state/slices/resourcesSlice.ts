@@ -19,6 +19,7 @@ export interface ResourcesSlice {
     removeGoodsResource: (id: string) => void;
     setResourceLiquid: (value: number) => void;
     updateResourceNotes: (notes: string) => void;
+    resetResources: () => void;
 }
 
 export const createResourcesSlice: StateCreator<CharacterStore, [], [], ResourcesSlice> = (set, get) => ({
@@ -339,6 +340,28 @@ export const createResourcesSlice: StateCreator<CharacterStore, [], [], Resource
                 ...build,
                 updatedAt: new Date().toISOString(),
                 resources: { ...build.resources, notes }
+            };
+            return { ...state, builds: { ...state.builds, [activeBuildId]: updatedBuild } };
+        });
+    },
+
+    resetResources: () => {
+        const { activeBuildId, builds } = get();
+        if (!activeBuildId || !builds[activeBuildId]) return;
+
+        set((state) => {
+            const build = state.builds[activeBuildId];
+            const updatedBuild = {
+                ...build,
+                updatedAt: new Date().toISOString(),
+                resources: {
+                    contacts: [],
+                    retainers: [],
+                    properties: [],
+                    goods: [],
+                    liquid: 0,
+                    notes: ''
+                }
             };
             return { ...state, builds: { ...state.builds, [activeBuildId]: updatedBuild } };
         });

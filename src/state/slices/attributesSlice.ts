@@ -6,6 +6,7 @@ export interface AttributesSlice {
     setAttributeScore: (attribute: AttributeKey, value: number) => void;
     updateAttributeNotes: (notes: string) => void;
     toggleAttributeSpecialization: (attribute: AttributeKey, specialization: string) => void;
+    resetAttributes: () => void;
 }
 
 export const createAttributesSlice: StateCreator<CharacterStore, [], [], AttributesSlice> = (set, get) => ({
@@ -60,6 +61,25 @@ export const createAttributesSlice: StateCreator<CharacterStore, [], [], Attribu
                 attributes: {
                     ...build.attributes,
                     specializations: { ...build.attributes.specializations, [attribute]: newSpecs }
+                }
+            };
+            return { ...state, builds: { ...state.builds, [activeBuildId]: updatedBuild } };
+        });
+    },
+
+    resetAttributes: () => {
+        const { activeBuildId, builds } = get();
+        if (!activeBuildId || !builds[activeBuildId]) return;
+
+        set((state) => {
+            const build = state.builds[activeBuildId];
+            const updatedBuild = {
+                ...build,
+                updatedAt: new Date().toISOString(),
+                attributes: {
+                    scores: { physique: 0, intellect: 0, presence: 0 },
+                    specializations: { physique: [], intellect: [], presence: [] },
+                    notes: ''
                 }
             };
             return { ...state, builds: { ...state.builds, [activeBuildId]: updatedBuild } };

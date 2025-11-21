@@ -13,6 +13,7 @@ interface AttributesStageProps {
   data: AttributesData;
   selectedSpecializations: Record<AttributeKey, string[]>;
   onToggleSpecialization: (attribute: AttributeKey, specialization: string) => void;
+  onReset: () => void;
 }
 
 const ATTRIBUTE_NAME_TO_KEY: Record<string, AttributeKey> = {
@@ -36,7 +37,8 @@ export function AttributesStage({
   onUpdateNotes,
   data,
   selectedSpecializations,
-  onToggleSpecialization
+  onToggleSpecialization,
+  onReset
 }: AttributesStageProps) {
   if (!data || !Array.isArray(data.pointBuy) || !data.definitions) {
     return (
@@ -85,7 +87,7 @@ export function AttributesStage({
     () =>
       Object.values(selectedSpecializations).reduce((sum, list) =>
         sum + (Array.isArray(list) ? list.length : 0),
-      0),
+        0),
     [selectedSpecializations]
   );
   const remainingSpecializations = Math.max(specializationAllowance - totalSelectedSpecializations, 0);
@@ -124,6 +126,9 @@ export function AttributesStage({
           const otherSpent = spent - cappedScores[attribute.key];
           const poolHeadroom = Math.max(pool - otherSpent, 0);
           const attributeMax = Math.min(ATTRIBUTE_SCORE_MAX, poolHeadroom);
+          const isMaxed = currentValue >= ATTRIBUTE_SCORE_MAX;
+          const canIncrease = remaining > 0 && !isMaxed;
+
           return (
             <article key={attribute.key}>
               <header>
@@ -141,9 +146,10 @@ export function AttributesStage({
                     const nextValue = Math.min(attributeMax, Math.max(0, requested));
                     onUpdateScore(attribute.key, nextValue);
                   }}
-              />
-              <span className="attribute-value">{currentValue}</span>
-            </div>
+                  className={!canIncrease && currentValue < ATTRIBUTE_SCORE_MAX ? 'attribute-input--limited' : ''}
+                />
+                <span className="attribute-value">{currentValue}</span>
+              </div>
               {attribute.specializations?.length > 0 && (
                 <div className="attribute-specializations">
                   <h4>Specializations</h4>
@@ -190,7 +196,7 @@ export function AttributesStage({
         </section>
       )}
 
-      <section>
+      <section className="stage__footer">
         <label className="field">
           <span>Attribute Notes</span>
           <textarea
@@ -199,6 +205,11 @@ export function AttributesStage({
             placeholder="What scars or tells explain these strengths and weaknesses?"
           />
         </label>
+        <div className="stage__actions">
+          <button type="button" onClick={onReset} className="button button--secondary">
+            Reset Attributes
+          </button>
+        </div>
       </section>
     </div>
   );
