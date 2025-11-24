@@ -152,4 +152,50 @@ export interface CharacterBuilderData {
   designDocs: DesignDocument[];
 }
 
+export interface BasePower {
+  id: string;
+  name: string;
+  type: string;
+  lineage: string;
+  archetype?: string;
+  path?: string;
+  tags: string[];
+  description: {
+    short: string;
+    player: string;
+  };
+  metadata?: {
+    source: string;
+    version: string;
+  };
+}
+
+export interface StandardEsperPower extends BasePower {
+  tier: number;
+  effects: string;
+  flaws?: string;
+}
+
+export interface MentalistPower extends BasePower {
+  isMentalist: true;
+  evolutionStage?: number;
+  tier?: number;
+  mentalistPolarity?: string;
+  mentalistScope?: string;
+  grantedBy?: string;
+  rollStat?: string;
+  range?: string;
+  duration?: string;
+  effects: string | any[];
+  flaws?: string | any[];
+}
+
+export type EsperPower = StandardEsperPower | MentalistPower;
+
+export interface EsperPowerData {
+  lineage: 'esper';
+  note?: string;
+  powers: EsperPower[];
+}
+
 export type RawLineagePowerData = Record<string, unknown>;

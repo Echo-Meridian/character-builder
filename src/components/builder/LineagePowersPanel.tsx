@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import type { LineageKey, PriorityRank, RawLineagePowerData } from '../../data/types';
 import type { LineagePowerSelection } from '../../state/characterStore';
 import './lineage-powers.css';
@@ -154,6 +154,7 @@ interface UnifiedPower {
   branch?: string;
   augmentLevel?: string;
   cost?: number;
+  tier?: number;
 }
 
 interface SorceryData extends RawLineagePowerData {
@@ -165,6 +166,7 @@ interface ArchetypeDefinition {
   name: string;
   path: string;
   description: string;
+  quote?: string;
 }
 
 interface EsperData extends RawLineagePowerData {
@@ -432,6 +434,109 @@ function mapConsequenceEntries(raw: unknown, baseId: string): ConsequenceEntry[]
     });
 }
 
+const PowerCard = ({ power, archetypeName, gmEnabled }: { power: UnifiedPower; archetypeName: string; gmEnabled: boolean }) => {
+  const [expanded, setExpanded] = useState(false);
+  const [activeTab, setActiveTab] = useState<'description' | 'effect'>('description');
+
+  const tier = power.evolutionStage ?? power.tier ?? 0;
+  // Determine type based on moveType or other properties.
+  // Assuming 'Move' string in moveType or 'move' in type.
+  const isMove = power.moveType === 'Move' || power.type === 'move';
+  const isAugment = power.moveType === 'Augment' || power.type === 'augment';
+
+  const typeIcon = isMove ? '/icons/Move.png' : (isAugment ? '/icons/Augment.png' : null);
+
+  return (
+    <li
+      className={`power-list__item power-card ${expanded ? 'expanded' : ''}`}
+      onClick={() => !expanded && setExpanded(true)}
+      style={{
+        position: 'relative',
+        cursor: expanded ? 'default' : 'pointer',
+        padding: '1rem',
+        marginBottom: '1rem',
+        background: 'var(--color-surface-raised)',
+        border: '1px solid var(--color-border)',
+        borderRadius: '8px',
+        transition: 'all 0.2s ease'
+      }}
+    >
+      {/* Type Icon (Top Right) */}
+      {typeIcon && (
+        <img
+          src={typeIcon}
+          className="power-card__type-icon"
+          alt={isMove ? 'Move' : 'Augment'}
+          style={{
+            position: 'absolute',
+            top: '-10px',
+            right: '-10px',
+            width: '32px',
+            height: '32px',
+            zIndex: 2
+          }}
+        />
+      )}
+
+      <div className="power-card__header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="power-card__title-group">
+          <strong className="power-card__title" style={{ fontSize: '1.1rem', display: 'block' }}>{power.name}</strong>
+          {archetypeName && <span className="power-card__archetype" style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>{archetypeName}</span>}
+        </div>
+        {/* Tier Icon */}
+        <img
+          src={`/icons/Tier-${tier}.png`}
+          className="power-card__tier-icon"
+          alt={`Tier ${tier}`}
+          style={{ height: '24px' }}
+          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+        />
+      </div>
+
+      {expanded && (
+        <div className="power-card__content" onClick={(e) => e.stopPropagation()} style={{ marginTop: '1rem', borderTop: '1px solid var(--color-border)', paddingTop: '1rem' }}>
+          <div className="power-card__tabs" style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+            <button
+              className={`power-toggle ${activeTab === 'description' ? 'power-toggle--active' : ''}`}
+              onClick={() => setActiveTab('description')}
+              style={{ flex: 1, padding: '0.5rem', background: activeTab === 'description' ? 'var(--color-accent)' : 'transparent', border: '1px solid var(--color-accent)', color: activeTab === 'description' ? 'white' : 'var(--color-accent)' }}
+            >
+              Description
+            </button>
+            <button
+              className={`power-toggle ${activeTab === 'effect' ? 'power-toggle--active' : ''}`}
+              onClick={() => setActiveTab('effect')}
+              style={{ flex: 1, padding: '0.5rem', background: activeTab === 'effect' ? 'var(--color-accent)' : 'transparent', border: '1px solid var(--color-accent)', color: activeTab === 'effect' ? 'white' : 'var(--color-accent)' }}
+            >
+              Game Effect
+            </button>
+            <button
+              className="power-toggle"
+              onClick={() => setExpanded(false)}
+              style={{ padding: '0.5rem', background: 'transparent', border: '1px solid var(--color-text-muted)', color: 'var(--color-text-muted)' }}
+            >
+              Close
+            </button>
+          </div>
+
+          <div className="power-card__body">
+            {activeTab === 'description' && (
+              <div className="power-card__description">
+                <p style={{ fontStyle: 'italic', lineHeight: '1.6' }}>{power.description?.player || "No player description available."}</p>
+              </div>
+            )}
+            {activeTab === 'effect' && (
+              <div className="power-card__effect">
+                {renderDescription(power.description, gmEnabled)}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </li>
+  );
+};
+
 export function LineagePowersPanel({
   lineage,
   powerData,
@@ -441,6 +546,14 @@ export function LineagePowersPanel({
   onToggleSelection,
   onClearSelections
 }: LineagePowersPanelProps) {
+  const [expandedArchetypes, setExpandedArchetypes] = useState<Record<string, boolean>>({});
+
+  const toggleArchetypeInfo = (archetype: string) => {
+    setExpandedArchetypes(prev => ({
+      ...prev,
+      [archetype]: !prev[archetype]
+    }));
+  };
   if (!lineage) {
     return (
       <section className="lineage-powers-panel">
@@ -1049,7 +1162,7 @@ export function LineagePowersPanel({
         const powerPath = power.path ?? '';
         // Include if power's path is a prefix of or equal to the selected path
         return powerPath === archetype || pathString.startsWith(powerPath + '.') || powerPath === pathString;
-      }).sort((a, b) => (a.evolutionStage ?? 0) - (b.evolutionStage ?? 0));
+      }).sort((a, b) => (a.evolutionStage ?? a.tier ?? 0) - (b.evolutionStage ?? b.tier ?? 0));
     };
 
     // Check if a path is currently selected
@@ -1112,9 +1225,33 @@ export function LineagePowersPanel({
       if (selectedEsperPath) {
         const powersForPath = getPowersForPath(selectedEsperPath);
         const currentStage = selectedEsperPath.split('.').length - 1;
+        const selectedArchetype = selectedEsperPath.split('.')[0];
+        const archetypeDefinitions = (powerData as EsperData).archetypes ?? {};
+        const archetypeInfo = archetypeDefinitions[selectedArchetype];
 
         return (
           <div className="esper-evolution-section">
+            {/* Persistent Archetype Header */}
+            <div className="lineage-power-card lineage-power-card--selected-archetype">
+              <div className="power-card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <h5 style={{ margin: 0 }}>{archetypeInfo?.name ?? selectedArchetype.charAt(0).toUpperCase() + selectedArchetype.slice(1)}</h5>
+                <button
+                  type="button"
+                  className="power-toggle power-toggle--text"
+                  onClick={() => toggleArchetypeInfo(selectedArchetype)}
+                  style={{ background: 'none', border: 'none', color: 'var(--color-accent)', cursor: 'pointer', textDecoration: 'underline' }}
+                >
+                  {expandedArchetypes[selectedArchetype] ? 'Hide Info' : 'Learn More'}
+                </button>
+              </div>
+              {expandedArchetypes[selectedArchetype] && (
+                <div className="archetype-description-expanded" style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(0,0,0,0.2)', borderRadius: '4px' }}>
+                  {archetypeInfo?.description && <p>{archetypeInfo.description}</p>}
+                  {archetypeInfo?.quote && <p className="archetype-quote" style={{ fontStyle: 'italic', marginTop: '0.5rem' }}><em>"{archetypeInfo.quote}"</em></p>}
+                </div>
+              )}
+            </div>
+
             <h4>Esper Evolution Path</h4>
             <p className="section-description">
               Selected: {selectedEsperPath.split('.').map(p => p.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())).join(' → ')}
@@ -1124,36 +1261,58 @@ export function LineagePowersPanel({
             </button>
 
             <div className="lineage-power-card">
-              <h5>All Powers for This Path ({powersForPath.length} total)</h5>
-              <ul className="power-list">
-                {powersForPath.map(power => {
-                  const powerId = power.id ?? slugify(power.name ?? 'power');
-                  // Extract archetype name from path (e.g., "sentinel" from "sentinel.juggernaut")
-                  const pathParts = (power.path ?? '').split('.');
-                  const archetypeName = pathParts[0] ? pathParts[0].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : '';
+              {(() => {
+                const powersByStage = powersForPath.reduce((acc, power) => {
+                  const stage = power.evolutionStage ?? power.tier ?? 0;
+                  if (!acc[stage]) acc[stage] = [];
+                  acc[stage].push(power);
+                  return acc;
+                }, {} as Record<number, UnifiedPower[]>);
+
+                const pathSegments = selectedEsperPath.split('.');
+
+                return pathSegments.map((segment, index) => {
+                  const stagePowers = powersByStage[index] || [];
+                  if (stagePowers.length === 0) return null;
+
+                  const segmentInfo = archetypeDefinitions[segment];
+                  const isBase = index === 0;
 
                   return (
-                    <li key={powerId} className="power-list__item power-list__item--granted">
-                      <div className="power-list__header">
-                        <div>
-                          <strong className="power-list__title">{power.name}</strong>
-                          {archetypeName && <div className="power-list__subtitle">{archetypeName}</div>}
+                    <div key={segment} className="evolution-stage-group" style={{ marginBottom: '2rem' }}>
+                      {!isBase && (
+                        <div className="stage-header" style={{ margin: '1.5rem 0 1rem', padding: '1rem', background: 'var(--color-surface-raised)', borderRadius: '8px', borderLeft: '4px solid var(--color-accent)' }}>
+                          <h5 style={{ margin: '0 0 0.5rem 0', fontSize: '1.2rem', color: 'var(--color-accent)' }}>
+                            {segmentInfo?.name ?? segment.charAt(0).toUpperCase() + segment.slice(1)}
+                          </h5>
+                          {segmentInfo?.description && (
+                            <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.5' }}>{segmentInfo.description}</p>
+                          )}
                         </div>
-                      </div>
-                      <div className="power-list__meta">
-                        <span className="badge">Stage {power.evolutionStage}</span>
-                        {power.moveType && (
-                          <span className="badge badge--icon">
-                            <img src="/icons/Move.png" alt="" />
-                            <span className="badge__text">{power.moveType}</span>
-                          </span>
-                        )}
-                      </div>
-                      {renderDescription(power.description, gmEnabled)}
-                    </li>
+                      )}
+
+                      {isBase && <h5 style={{ marginBottom: '1rem' }}>Base Powers</h5>}
+
+                      <ul className="power-list">
+                        {stagePowers.map(power => {
+                          const powerId = power.id ?? slugify(power.name ?? 'power');
+                          const pathParts = (power.path ?? '').split('.');
+                          const archetypeName = pathParts[0] ? pathParts[0].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : '';
+
+                          return (
+                            <PowerCard
+                              key={powerId}
+                              power={power}
+                              archetypeName={archetypeName}
+                              gmEnabled={gmEnabled}
+                            />
+                          );
+                        })}
+                      </ul>
+                    </div>
                   );
-                })}
-              </ul>
+                });
+              })()}
 
               {/* Show available next evolution if not at depth limit */}
               {currentStage < depthLimit && (
@@ -1164,7 +1323,7 @@ export function LineagePowersPanel({
                       esperPowers
                         .filter(p => {
                           const pPath = p.path ?? '';
-                          const pStage = p.evolutionStage ?? 0;
+                          const pStage = p.evolutionStage ?? p.tier ?? 0;
                           return pStage === currentStage + 1 && pPath.startsWith(selectedEsperPath + '.');
                         })
                         .map(p => p.path ?? '')
@@ -1209,19 +1368,32 @@ export function LineagePowersPanel({
           <p className="section-description">Select a starting archetype. You can evolve further based on your priority.</p>
           <div className="lineage-powers-grid">
             {Object.entries(powersByArchetype).map(([archetype, powers]) => {
-              const baseArchetypePowers = powers.filter(p => p.evolutionStage === 0);
+              const baseArchetypePowers = powers.filter(p => (p.evolutionStage ?? p.tier ?? 0) === 0);
               const basePowerCount = baseArchetypePowers.length;
               const archetypeInfo = archetypeDefinitions[archetype];
 
               return (
                 <div key={archetype} className="lineage-power-card">
-                  <h5>{archetypeInfo?.name ?? archetype.charAt(0).toUpperCase() + archetype.slice(1)}</h5>
+                  <div className="power-card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                    <h5 style={{ margin: 0 }}>{archetypeInfo?.name ?? archetype.charAt(0).toUpperCase() + archetype.slice(1)}</h5>
+                    <button
+                      type="button"
+                      className="power-toggle power-toggle--text"
+                      onClick={() => toggleArchetypeInfo(archetype)}
+                      style={{ background: 'none', border: 'none', color: 'var(--color-accent)', cursor: 'pointer', textDecoration: 'underline' }}
+                    >
+                      {expandedArchetypes[archetype] ? 'Hide Info' : 'Learn More'}
+                    </button>
+                  </div>
 
-                  {archetypeInfo?.description && (
-                    <p className="archetype-description">{archetypeInfo.description}</p>
+                  {expandedArchetypes[archetype] && (
+                    <div className="archetype-description-expanded" style={{ marginBottom: '1rem', padding: '1rem', background: 'rgba(0,0,0,0.2)', borderRadius: '4px' }}>
+                      {archetypeInfo?.description && <p>{archetypeInfo.description}</p>}
+                      {archetypeInfo?.quote && <p className="archetype-quote" style={{ fontStyle: 'italic', marginTop: '0.5rem' }}><em>"{archetypeInfo.quote}"</em></p>}
+                    </div>
                   )}
 
-                  {!archetypeInfo?.description && (
+                  {!expandedArchetypes[archetype] && (
                     <p className="archetype-description">
                       {basePowerCount} base {basePowerCount === 1 ? 'power' : 'powers'}
                     </p>

@@ -6,6 +6,7 @@ import { BuilderPage } from './pages/BuilderPage';
 import { ManagementPage } from './pages/ManagementPage';
 import { CharacterSheetPage } from './pages/CharacterSheetPage';
 import { GmPortalPage } from './pages/GmPortalPage';
+import { LocalAIPage } from './pages/LocalAIPage';
 import { LoadingSpinner } from './components/common/LoadingSpinner';
 import { useCharacterData } from './data/DataContext';
 
@@ -34,6 +35,7 @@ export default function App() {
         <Route path="/management" element={<ManagementPage />} />
         <Route path="/sheet/:buildId" element={<CharacterSheetPage />} />
         <Route path="/gm" element={<GmPortalPage />} />
+        <Route path="/ai" element={<LocalAIPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     );
