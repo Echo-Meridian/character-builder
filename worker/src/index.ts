@@ -12,7 +12,7 @@ const app = new Hono<{ Bindings: Bindings }>();
 app.use('/*', cors());
 
 // Helper to chunk text
-function chunkText(text: string, chunkSize: number = 500): string[] {
+function chunkText(text: string, chunkSize: number = 1000): string[] {
     const chunks: string[] = [];
     let currentChunk = '';
 
