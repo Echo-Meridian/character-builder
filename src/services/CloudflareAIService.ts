@@ -5,11 +5,12 @@ export interface ChatMessage {
 
 export class CloudflareAIService {
     private static instance: CloudflareAIService;
-    // In development, the worker runs on a different port (usually 8787)
-    // In production, it might be the same domain or a specific worker URL
-    private baseUrl = 'http://localhost:8787/api';
+    private baseUrl: string;
 
-    private constructor() { }
+    private constructor() {
+        // Use environment variable for worker URL, fallback to localhost for dev
+        this.baseUrl = import.meta.env.VITE_WORKER_URL || 'http://localhost:8787/api';
+    }
 
     static getInstance(): CloudflareAIService {
         if (!CloudflareAIService.instance) {

@@ -2,6 +2,13 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { Ai } from '@cloudflare/ai';
 
+// Embedding model - change this and re-ingest if switching models
+const EMBEDDING_MODEL = '@cf/baai/bge-base-en-v1.5';
+// Alternative: '@cf/qwen/qwen3-embedding-text-0.6b' (requires re-ingestion)
+
+// Minimum similarity score threshold (0-1 scale, higher = more similar)
+const SIMILARITY_THRESHOLD = 0.65;
+
 type Bindings = {
     AI: any;
     VECTORIZE: VectorizeIndex;
@@ -10,6 +17,17 @@ type Bindings = {
 const app = new Hono<{ Bindings: Bindings }>();
 
 app.use('/*', cors());
+
+// Health/status endpoint - shows current configuration
+app.get('/api/status', async (c) => {
+    return c.json({
+        status: 'ok',
+        embeddingModel: EMBEDDING_MODEL,
+        llmModel: '@cf/qwen/qwen3-30b-a3b-fp8',
+        vectorIndex: 'sidonia-lore-index',
+        similarityThreshold: SIMILARITY_THRESHOLD
+    });
+});
 
 // Helper to chunk text
 function chunkText(text: string, chunkSize: number = 1000): string[] {
@@ -44,7 +62,7 @@ app.post('/api/ingest', async (c) => {
 
     for (let i = 0; i < chunks.length; i++) {
         const chunk = chunks[i];
-        const { data } = await ai.run('@cf/baai/bge-base-en-v1.5', { text: [chunk] });
+        const { data } = await ai.run(EMBEDDING_MODEL as any, { text: [chunk] });
         const values = data[0]; // Embedding vector
 
         vectors.push({
@@ -63,9 +81,6 @@ app.post('/api/ingest', async (c) => {
     return c.json({ success: true, chunks: chunks.length });
 });
 
-// Minimum similarity score threshold (0-1 scale, higher = more similar)
-const SIMILARITY_THRESHOLD = 0.65;
-
 app.post('/api/chat', async (c) => {
     const { messages, characterContext } = await c.req.json();
     const lastMessage = messages[messages.length - 1];
@@ -73,8 +88,8 @@ app.post('/api/chat', async (c) => {
 
     const ai = new Ai(c.env.AI);
 
-    // 1. Embed query
-    const { data } = await ai.run('@cf/baai/bge-base-en-v1.5', { text: [query] });
+    // 1. Embed query using same model as ingestion
+    const { data } = await ai.run(EMBEDDING_MODEL as any, { text: [query] });
     const queryVector = data[0];
 
     // 2. Search Vectorize with more results, then filter by quality
