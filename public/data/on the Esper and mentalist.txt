@@ -1,0 +1,47 @@
+
+on the Esper and mentalist power sections.
+the cards should first present the archetype
+underneath expandable should be a Learn More button in which you could then open to read about it.
+That would be the descriptive field or the philosophy,
+then there should be a ability to expand to see the base powers as there currently is, but it needs to be a little bit bigger and a little more clickable. Right now the font is just this tiny little line that sits right above the Selected button next when the button is pressed for selecting,
+the initial choice disappears as far as information goes. The fact that what the Sentinel is, its description should stay at the top, and then the three powers listed below. It should then have the detailed descriptions. The short description of the three text elements per power, short player and effect short is only meant for a quick look at the power of the button when they open the field. That's when the player Description field should appear. And then there would be a tab for if they want to know the actual game effect,
+the stage button can go away. That could be replaced by the icon art I did. I did one for 0,1,2, and three.
+but under it, it shouldn't just say Sentinel, or it shouldn't just say the archetype. It should say unless it is just the archetype, but if it's Sentinel and they choose Dragoon in their next evolution, the next three powers should list Dragoon,
+they'll know which one, because their Sentinel will be the first, the name of the be unwritten on the card of the first three powers, and then Dragoon would be on like the next, and Then Lancer, maybe would be on the next three. So second. If a power is a move or an Augment, it should have the M or the O, I'm sorry, the A icon. There's a move icon and an Augment icon that I made as well. These should be in the corners of the box. They're just there for quick like visual reference.
+The Short Description shouldn't appear except on the except the initial and the choice that they make should have a description in the box. I just like the summoner had for the front page, for the front card, there is one for every choice they make, and those should appear between the three powers, so
+that they can visually, just kind of look up and see what they chose, read about it. I.
+
+
+
+
+docker run -d --name llama-main \
+  --gpus all \
+  -p 8080:8080 \
+  -v $HOME/models:/models \
+ghcr.io/ggml-org/llama.cpp:server-cuda \
+  -m /home/echo/models/Qwen3-4B-Thinking-2507-Q4_K_M.gguf \
+  --host 0.0.0.0 --port 8080 \
+  -c 8192 \
+  -np 4 -cb
+  
+  
+  
+  
+  docker build 
+  -t local/llama.cpp:full-cuda 
+  --target full 
+  -f .devops/cuda.Dockerfile .
+  
+  
+  docker run 
+  --gpus all 
+  -v /path/to/models:/models 
+  local/llama.cpp:full-cuda 
+  --run 
+  -m /home/echo/models/Qwen3-4B-Thinking-2507-Q4_K_M.gguf
+  -p "Building a website can be done in 10 simple steps:" 
+  -n 512 
+  --n-gpu-layers 1
+  
+  
+

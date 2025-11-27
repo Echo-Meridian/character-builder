@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { lazy, Suspense, type ReactNode } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { AppShell } from './components/layout/AppShell';
 import { LandingPage } from './pages/LandingPage';
@@ -6,7 +6,10 @@ import { BuilderPage } from './pages/BuilderPage';
 import { ManagementPage } from './pages/ManagementPage';
 import { CharacterSheetPage } from './pages/CharacterSheetPage';
 import { GmPortalPage } from './pages/GmPortalPage';
-import { LocalAIPage } from './pages/LocalAIPage';
+// Lazy load LocalAIPage to split the bundle (contains large AI libraries)
+// Lazy load LoreManagementPage to split the bundle
+const LoreManagementPage = lazy(() => import('./pages/LoreManagementPage'));
+
 import { LoadingSpinner } from './components/common/LoadingSpinner';
 import { useCharacterData } from './data/DataContext';
 
@@ -35,7 +38,14 @@ export default function App() {
         <Route path="/management" element={<ManagementPage />} />
         <Route path="/sheet/:buildId" element={<CharacterSheetPage />} />
         <Route path="/gm" element={<GmPortalPage />} />
-        <Route path="/ai" element={<LocalAIPage />} />
+        <Route
+          path="/lore"
+          element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <LoreManagementPage />
+            </Suspense>
+          }
+        />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     );

@@ -1,0 +1,485 @@
+Section 5: The Core Rules
+5.1 The Core Mechanic: Rolling the Dice
+5.1.1: When to Roll
+In Sidonia, the dice are not impartial arbiters of fate—they are pressure valves. They measure the tension between what you want and what the city will allow. The decision of when to invoke them belongs to the Game Master, and it should always serve the story first.
+Not every action requires a roll. An expert lockpick working on a rusted skeleton key lock in an empty hallway? That shouldn't require dice unless time is a factor, unless someone is coming, unless failure would be interesting. The roll isn't there to simulate reality—it's there to create drama.
+A good Game Master develops a threshold and sticks to it. If you decide that mundane tasks don't require rolls when a character has the proper training, honor that consistently. If you decide that even experts can fail under pressure, make sure pressure is always present when you call for a roll.
+The act of asking for a roll signals something to your players: this matters. The outcome is uncertain. There will be consequences. Use that signal deliberately. Don't cheapen it by calling for rolls when the outcome doesn't change the story.
+And remember: sometimes the most important choice isn't whether the character succeeds or fails—it's whether to roll at all.
+5.1.2: The 2d6 Roll + Modifier
+The dice in Sidonia tell simple stories. Two six-sided dice, a single small modifier from your training. That's it. No escalating bonuses, no stacking modifiers, no mathematical edifices to calculate before you know if you've succeeded.
+The Roll: 2d6 + Skill Modifier
+·	Untrained (-2 to the roll): You're guessing. You might know the theory, but you've never done this under pressure.
+·	Dabbler (0 to the roll): You've got some practical experience. You know enough to be dangerous—to yourself and others.
+·	Professional (+1 to the roll): This is your trade. You do this for money, and you're good enough that people pay you for it.
+·	Expert (+2 to the roll): You're one of the best in your district. People know your name. Your reputation precedes you.
+The Game Master is the final arbiter of when a skill applies. A sweet-talker's silver tongue won't help them pick a lock. A gunslinger's steady hand won't negotiate a contract. Use common sense, and when in doubt, ask: "Would this character's training actually help them here?"
+5.1.3: The Five Outcomes
+Every roll in Sidonia produces one of five results. The city doesn't believe in ambiguity—only in degrees of success and the price paid for it.
+·	12 (Critical Success): You don't just succeed—you succeed with style. The lock clicks open before you expected it. The guard believes your lie so completely they apologize for doubting you. The shot hits exactly where you aimed, and the target doesn't even know they're dead yet. The GM should describe something extra, some advantage you've gained. Perhaps you've even reduced the mounting pressure—clear 1 point from the Dissonance Pool if the GM agrees it makes narrative sense.
+·	10+ (Clean Success): You get exactly what you wanted. The plan works. The lock opens, the guard waves you through, the bullet finds its mark. No complications, no second-guessing. These moments are rare in Sidonia. Savor them while they last.
+·	7-9 (Success with a Cost): This is the most common result in Sidonia, and it's where the game really lives. You succeed—but barely. The lock opens, but your pick breaks off inside it. The guard believes you, but now they're following you. The bullet hits, but you've drawn attention.
+When a player rolls a 7-9, they've strained their luck. The GM can either introduce an immediate complication that makes narrative sense, or add 1 point to the Dissonance Pool—a debt to be paid later. The player doesn't get to choose, but the GM should always make the consequence feel connected to the action. You don't pick a lock and have a guard appear on the other side of the city—you pick a lock and the mechanism jams, or someone hears you working, or you leave scratches that will be noticed tomorrow.
+·	6- (Failure): You fail, and the situation gets worse. The lock doesn't open, and now the guard is coming to investigate the noise you made. Your lie is spotted, and now they're suspicious of everything you've said. The shot misses, and now they know you're here. Failure in Sidonia is never neutral—it always costs you something.
+·	2 (Critical Failure): Catastrophic failure. Not just "the lock doesn't open"—the pick breaks, the mechanism seizes, and the door's alarm starts screaming. Not just "they don't believe you"—they see through your entire con and now they're calling the Ward Boss. Not just "the shot misses"—your gun jams, or you hit someone you didn't mean to, or the muzzle flash gives away your position.
+When a player rolls a Critical Failure, the GM can immediately spend up to 2 points from the Dissonance Pool for free to create a catastrophic complication. This is the city itself punishing hubris.
+5.1.4: How Our System "Bounds" Outcomes (The Brute vs. The Sleuth)
+Here's where Sidonia diverges from other systems: we separate the chance of success from the magnitude of effect. Two characters can be equally likely to succeed at a task, but what they accomplish with that success can be wildly different.
+The Roll determines if you succeed. This is governed by your Skill modifier (-2 to +2). A seasoned detective with Expert Alertness (+1) and a hulking enforcer with Expert Alertness (+1) have the same chance of spotting a hidden clue in a crime scene. Both have trained their perception. Both are competent. The dice don't care about their physique or their presence—only their training.
+Your Attributes and Specializations determine what you can do with that success. This is where characters differentiate.
+The Brute (High Physique): When the brute lands a punch, it hurts. Their high Physique gives them more Health Boxes—they can take punishment that would drop the detective. A Strength specialization adds +1 damage to their melee attacks. They have the same chance to hit as anyone else with their level of training, but when they connect, the target stays down.
+The Sleuth (High Intellect): When the detective spots that clue, they understand it. An Intelligence specialization might let them ask the GM a follow-up question: "What happened here?" "Who was the last person in this room?" They don't hit harder, but they see deeper. Their success is bounded by their intellect, not their strength.
+The Fixer (High Presence): When the fixer talks their way past the guard, they don't just get through—they make a friend, or at least someone who owes them. A Manipulation specialization might let them re-roll a failed Social check once per session. They can't punch like the brute or deduce like the sleuth, but they can change the story in ways the others can't.
+This is the core elegance of the system: everyone can try, but everyone succeeds differently. The question isn't "can you do it?"—it's "what does it look like when you do?"
+5.2 The Dissonance System
+For the Player: Dissonance as "Doubt Manifest"
+There's an old saying among the detectives who survive long enough to get old: "The plan is the first thing to die." In Sidonia, it's not just a saying—it's a law of nature.
+You feel it building as you work. Every close call, every desperate gambit, every time you succeed by the skin of your teeth—it adds weight to the air. The universe is taking notes. The city is keeping score.
+This is Dissonance.
+Think of it as the accumulation of borrowed luck. Every 7-9 roll, you're straining reality to get what you want. You pick that lock, but you do it wrong—forcing the tumblers, bending the mechanism in ways it wasn't meant to bend. The lock opens, but you've created a ripple. A discordant note in the city's carefully orchestrated symphony.
+These ripples don't dissipate. They accumulate. They build pressure.
+As Dissonance grows, the unexpected becomes inevitable. A lock that should be simple suddenly jams. A friendly face turns hostile without warning. A shadow detaches from the wall and follows you three blocks before you notice it.
+This isn't random bad luck. This is consequence. This is the city pushing back against you because you keep pushing against it. The more you struggle, the more it struggles back. Eventually, something has to give.
+For the Game Master: Dissonance as "System Interference"
+Here's what your players don't know, and what you need to understand to run this system effectively:
+Dissonance is the mechanical representation of Sam's Orchestration failing to keep up with the chaos your players generate.
+The Metaphysical Truth: The Aether—the omnipresent nanotechnology that permeates Sidonia—is Sam's tool for maintaining order. It subtly manages probability, adjusts physics, even influences perception to keep humanity stable and predictable. Your player characters, with their free will and capacity for extraordinary action, are chaos engines. They are variables the Orchestration cannot fully control.
+How It Works: When a player rolls 7-9, they've succeeded, but only by forcing the Aether to compensate in an inefficient, unstable, or logically inconsistent way. The system achieves the desired outcome, but it generates feedback—a glitch in the operating system of reality itself. This feedback manifests as Dissonance Points.
+Your players are literally causing reality to malfunction through their desperate actions.
+Spending Dissonance: When you spend DP from the pool, you're manifesting this accumulated chaos. The underlying system is failing, and the failure expresses itself in the world. Your guiding principle should always be proximity and causality.
+The complication should feel connected to the source of the Dissonance:
+·	If a player generated DP picking a lock, the complication should be about that lock: the mechanism breaks, the pick snaps, someone hears the tumblers fall.
+·	If they generated DP during a tense negotiation, the person they're talking to suddenly remembers a grudge, or notices an inconsistency in their story, or gets a call they need to take right now.
+The complication isn't random. It's the system crashing at the point of greatest stress. Make it feel inevitable, like the universe itself is saying "enough."
+5.2.1: The Dissonance Pool
+The Dissonance Pool should be visible, physical, and impossible to ignore. Use poker chips, coins, glass beads, dice, small stones—anything that can accumulate in the center of the table where everyone can see it.
+This visibility is crucial. The pool is a narrative timer. Every token added is a promise: something bad is coming. The players should glance at it nervously. They should feel its weight even when you're not actively spending from it.
+The GM should treat the pool almost reverently. Add tokens slowly. Let the clink of a new chip hitting the pile punctuate a 7-9 result. Let the players watch it grow.
+5.2.2: Gaining Dissonance Points (DP)
+DP enters the pool in two ways:
+1. On a 7-9 Roll: The default response to a 7-9 is to add 1 DP to the pool. This represents the strain the character's success put on reality. The GM can choose to introduce an immediate complication instead, but if they want to bank that consequence for later, they add the DP.
+2. When a Player Uses Corruption: If a player spends Temporary Corruption to alter fate (through abilities like Defy the Gate, Bending Fate, or Twist the Weave), that corruption also becomes Dissonance. It's a 1-for-1 trade. The Aether recoils from the unnatural act, and the feedback goes straight into the pool.
+This creates a vicious cycle: using corruption to succeed generates Dissonance, which the GM can spend to make things worse, which might tempt players to use more corruption...
+5.2.3: The GM Spending Dissonance (The Complication Menu)
+You can spend DP from the pool at any time to introduce complications. The scale of the complication should match the cost. Small problems cost little. Catastrophic interventions cost much more.
+When you spend DP, announce it: "I'm spending 2 Dissonance." Let the players watch you remove tokens from the pool. Make it a moment.
+The Complication Scale:
+1-3 DP: Minor Twist A piece of equipment jams or breaks. The lights flicker and die, plunging the room into darkness. A person who was friendly suddenly grows suspicious without clear reason. A shadow you glimpsed out of the corner of your eye is still there when you look back. Your contact's information was slightly wrong—not maliciously, just... off.
+These are inconveniences. They make things harder, but they don't end the scene.
+4-6 DP: Major Escalation Reinforcements arrive—guards who weren't supposed to be here, a rival gang, corporate enforcers. A trusted contact's information was catastrophically wrong, and now you're in the wrong place at the wrong time. The fire escape ladder you're climbing breaks halfway up. The person you were relying on doesn't show. A structural weakness in the building you're in suddenly becomes very relevant.
+These complications change the scene fundamentally. The plan is now worthless. Adaptation is required.
+7+ DP: Narrative Preservation (The City Protects Its Own) This is the Orchestration itself intervening to preserve a key element of its design. The cost must be paid in full—you can't partially spend it.
+This is rare, catastrophic, and should be telegraphed. Describe the air growing heavy, a strange shimmer, a moment where time seems to hiccup. The players should know something massive is happening.
+Examples:
+·	A key NPC—villain or ally—survives what should have been a fatal blow. The bullet ricochets at an impossible angle. The blade stops a fraction of an inch from the throat as if hitting an invisible barrier. They collapse, bleeding, but they're breathing.
+·	A location is irrevocably compromised. Your safehouse, which shouldn't exist on any map, suddenly appears on a city demolition schedule. The crew arrives within the hour.
+·	A faction officially turns hostile. The Ward Boss who was neutral? They just declared you persona non grata. All your contacts in that ward go silent. Your face is being circulated.
+These moments should feel like fighting against the weight of history itself. The city has decided you've gone too far, and it's correcting you.
+A Critical Note on Consistency: You may choose to not add to the Dissonance Pool for trivial or thematically unrelated rolls. If the players are in the middle of a high-stakes heist and someone rolls to remember a childhood memory, don't generate Dissonance unless the memory is crucial to the current moment.
+You may also create contained Dissonance structures—if the party is engaged in a story arc that serves the Orchestration's larger goals (even if they don't know it), Dissonance might accumulate more slowly or not at all. The system isn't trying to stop them—it's guiding them.
+Consistency matters more than strict adherence. If you set a pattern, stick to it. If you break the pattern, make sure it's for a good narrative reason that the players will eventually understand.
+5.2.4: Player Agency: The "Buying Time" Rule
+When you move to spend Dissonance, announce your intent: "I'm spending 3 DP. Reinforcements arrive—"
+At this moment, players can interrupt: "Wait. We're buying time."
+Buying Time means the players collectively agree to avert the complication—but at a cost. The immediate consequence doesn't happen, but they must add 1 additional DP to the pool. The threat isn't eliminated; it's deferred and made worse.
+This is the noir bargain made mechanical. You can avoid the disaster now, but you're borrowing against a future you can't afford. Eventually, the bill comes due, and the interest is punishing.
+The GM should honor this choice when players make it, but also make sure they understand what they're doing: "Okay. The guards don't arrive. But you've just made the next complication worse. The pool is back up to 5."
+Let them feel the weight of that decision.
+5.3 Action & Combat
+5.3.1: Defining an Action Roll (Skill Proficiency Modifiers)
+Violence in Sidonia isn't heroic. It's not cinematic. It's fast, ugly, and usually the result of someone making a bad decision under pressure. When you attack someone, you're not performing a combat maneuver—you're attempting to hurt another human being badly enough that they stop being a problem.
+Attacking is a standard action roll: 2d6 + your relevant Skill modifier.
+The skill depends on how you're trying to hurt them:
+·	Brawling for fists, improvised weapons, anything within arm's reach
+·	Melee for knives, clubs, anything you swing or thrust
+·	Firearms for guns of any kind
+·	Athletics for tackles, throws, or using your environment as a weapon
+The GM determines which skill applies. If you're trying to do something creative—throwing a chair, using a chain as a garrote, kicking someone down a flight of stairs—they'll tell you what to roll.
+The Outcomes:
+·	12 (Critical Hit): You don't just hurt them—you end them. This is the throat slash, the perfect shot, the blow that drops them instantly. The fight is effectively over unless the defender spends 1 point of Temporary Corruption to turn it into a normal clean hit. Make them choose: accept the end, or damn themselves to survive.
+·	10+ (Clean Hit): You hit exactly where you aimed. Roll for hit location, apply damage. They're hurt, and they know it.
+·	7-9 (Messy Exchange): You hit them, but they hit you back, or you expose yourself doing it, or you break your weapon in the process. Violence is chaos. You might both take damage. You might hit them but drop your gun. You might connect, but now you're grappling and neither of you is in control. The GM describes what it costs you to land that blow.
+·	6- (Miss): You miss, and now you're in a worse position. They have the advantage. You're off-balance. You've given away your intent. The situation has escalated.
+·	2 (Critical Miss): Catastrophic failure in a fight means you've left yourself completely exposed. Your gun jams at the worst possible moment. You slip. You swing and hit a wall instead of your target, and now your hand is broken. The next attack against you is an automatic hit—no roll required. The GM describes how badly you've fumbled, and you brace for what comes next.
+5.3.2: Initiative: Determining Turn Order (2d6 + Wits)
+Who acts first in a fight isn't about who's fastest. It's about who saw it coming.
+Initiative is a simple 2d6 roll. Add +1 if you have the Wits specialization—that means you're good at reading a room, at spotting the moment before things go wrong.
+Highest roll goes first. Ties act simultaneously—which means you might both hit each other at the same time, or you might both scramble for the same gun. The GM narrates how it plays out.
+If you're surprised, you act last. No roll. You're reacting, not acting, and in Sidonia, that's often the difference between walking away and being carried out.
+5.3.3: The Attack Action & Narrative Combat Outcomes
+Combat in this system isn't about counting rounds and tracking movement. It's about describing what you're trying to do and seeing if you can pull it off.
+When you attack, tell the GM your intent:
+·	"I'm going for his throat with the knife."
+·	"I'm trying to shoot the gun out of her hand."
+·	"I want to tackle him through that window."
+The GM will tell you what to roll. If you succeed, you describe how it happens. If you fail, the GM describes what goes wrong.
+The key principle: Combat is a conversation, not a grid. The mechanics are there to determine success and consequence, but the story of the fight is told collaboratively. Make it hurt. Make it matter. Make every blow feel like the mistake it probably is.
+5.4 Health, Damage & Injury
+5.4.1: Damage Types: Blunt vs. Wound
+In Sidonia, there are two ways to hurt someone, and they're not interchangeable.
+Wound Damage (Lethal): This is the damage that kills. Knives, bullets, broken glass, anything that cuts or pierces. When you take Wound damage, you tick off Health Boxes on the affected location. This is the path to bleeding out in an alley while the rain washes your blood into the gutter. This is permanent. This is how you die.
+Blunt Damage (Non-Lethal): This is the damage that stops you without killing you. Fists, clubs, falling, getting hit by a car at low speed. When you take Blunt damage, you tick off boxes on your Stun Track. Fill up a limb's Stun Track and it goes numb, useless. Fill up your head's Stun Track and you drop, unconscious.
+Stun damage heals relatively quickly—a few minutes of rest can clear boxes. Wound damage? That takes days, weeks, or leaves scars that never fully heal.
+The difference matters. A bar fight might leave you bruised and aching, but you'll walk it off. A knife fight might leave you bleeding in ways that don't stop.
+5.4.2: Hit Locations (The 2d6 Location Chart)
+When you hit someone, the dice tell you where you hit them. Roll 2d6 and consult the chart:
+·	2 or 12: Head — The knockout blow or the kill shot. The most dangerous hit.
+·	3-4: Left Arm — Their reach, their grip, their defense.
+·	5: Left Leg — Mobility. Hit this, and they're limping.
+·	6-8: Torso — Center mass. The most likely target. The most health.
+·	9: Right Leg — Same as the left. Hurt both, and they're crawling.
+·	10-11: Right Arm — Their weapon hand, maybe. Their ability to fight back.
+The distribution isn't accidental. Most hits land center mass. Headshots are rare. Limb shots happen, but the torso is always the most likely target.
+If you called your shot—if you specifically said "I'm going for his head"—and you miss that location, the GM might let you choose to miss entirely rather than hit somewhere else. But that's a generous reading. Usually, you hit where the dice say you hit.
+5.4.3: Tracking Damage: Health Boxes & Stun Tracks
+Every location on your character sheet has two tracks:
+Health Boxes — For Wound damage. When these fill up, the location is Maimed or you're Dying.
+Stun Track — For Blunt damage. When this fills up, the location is Stunned (useless, numb).
+A typical location looks like this:
+Left Arm
+·	Health: ☐ ☐ (2 boxes)
+·	Stun: ☐ ☐ (2 boxes)
+Torso
+·	Health: ☐ ☐ ☐ (3 boxes)
+·	Stun: ☐ ☐ ☐ (3 boxes)
+When you take damage, you mark boxes accordingly. Wound damage goes in Health. Blunt damage goes in Stun.
+Armor: The Right Tool for the Job
+Armor in Sidonia isn't about being invulnerable. It's about having the right protection for the right threat. Armor has two ratings:
+Armor Value (AV): How well it stops Wound damage—bullets, knives, slashing.
+Padding Value (PV): How well it absorbs Blunt damage—fists, clubs, falls.
+Examples:
+·	Kevlar Vest: AV 2, PV 0 — Stops bullets, but a pipe to the ribs still breaks them.
+·	Padded Jacket: AV 0, PV 1 — Won't stop a knife, but it'll soften a punch.
+·	Riot Gear: AV 2, PV 2 — The best of both worlds, but heavy, obvious, and expensive.
+How It Works: When you're hit, subtract the appropriate armor value from the incoming damage before marking boxes.
+·	A thug hits you with a lead pipe for 2 Blunt damage. Your Padded Jacket (PV 1) absorbs 1 point. You mark 1 box on your Stun Track.
+·	An assassin stabs you for 2 Wound damage. Your Padded Jacket (AV 0) does nothing. You mark 2 Health Boxes.
+Important Note: Most armor you can buy legally in Sidonia has a rating of 1. Anything with AV or PV of 2 is military-grade, expensive, and probably requires a permit you don't have. Armor with a rating of 3 is nearly impossible to get and almost impossible to penetrate without specialized ammunition.
+Damage in this system is scaled to make armor meaningful but not overpowering. A rating of 1 might be the difference between walking away and being carried away.
+5.4.4: Injury Levels & Penalties
+Damage isn't just numbers. It's consequence.
+WOUNDED (First Health Box marked in a location): The location is hurt but functional. You suffer Disadvantage (roll 3d6, drop the highest) on any action that uses that location.
+Got a knife in your shoulder? Your sword arm isn't as steady. Shot in the leg? You're limping. Gut shot? Every breath hurts, and you're moving slower.
+Exception: If you have the Body specialization, you can ignore the Wounded penalty once per scene. You grit your teeth and push through. Pain is just information, and you've learned to ignore it.
+MAIMED (All Health Boxes filled in a location): The location is completely unusable. An arm hangs limp. A leg won't bear weight.
+If your Torso or Head is Maimed, you are DYING. You have minutes, maybe. You need immediate medical attention, or this is where your story ends.
+STUNNED (All Stun Boxes filled in a location): The location is numb, useless, but not permanently damaged. A Stunned arm drops whatever it's holding. A Stunned leg buckles.
+If your Head's Stun Track fills, you're unconscious immediately. Lights out. You wake up later—if you're lucky.
+Stun typically clears much faster than Wound damage. A few minutes of rest might clear one box from each Stunned location. Wound damage? That's days or weeks of recovery.
+5.4.5: The "Overwhelming Force" Rule for Blunt Trauma
+There's a specific, brutal interaction when Blunt damage hits a location that's already Wounded. This is where broken bones compound into something worse.
+The Rule: When a Wounded location takes Blunt damage, compare the incoming damage to the location's remaining empty Stun boxes.
+If the damage is LESS THAN OR EQUAL TO the empty Stun boxes: The blow is absorbed. Mark the Stun Track. The wounded area hurts more, but it holds.
+If the damage is GREATER THAN the empty Stun boxes: The blow is overwhelming. The force is too much for the compromised tissue. The following happens:
+1.	Fill the remaining Stun boxes with the initial damage.
+2.	The leftover damage "overflows" into the Health Boxes.
+3.	Mark one additional Health Box from the shock and trauma.
+Example:
+Your Right Arm is Wounded (1 of 2 Health Boxes filled) and has an empty Stun Track (2 boxes).
+Scenario A: Glancing Blow A thug hits your wounded arm for 1 Blunt damage.
+·	Compare: 1 damage vs. 2 empty Stun boxes. The damage is less than the boxes.
+·	Result: Mark 1 Stun box. It hurts, but nothing breaks.
+Scenario B: Solid Hit A different thug hits the same wounded arm for 3 Blunt damage.
+·	Compare: 3 damage vs. 2 empty Stun boxes. The damage is greater.
+·	Result: 
+o	Mark both Stun boxes (2 damage used).
+o	1 damage overflows to Health. Mark 1 Health Box.
+o	Mark 1 additional Health Box from the trauma.
+o	Your arm is now MAIMED—both Health Boxes filled.
+The bone didn't just break. It shattered. That arm is done.
+5.4.6: Damage Amounts by Type
+Damage in Sidonia is relatively flat because armor matters and because every point of damage is a meaningful consequence.
+Hand to Hand: 0-4 Stun
+·	Base: 1 Stun
+·	Add your Physique modifier: -1, 0, +1, or +2
+·	Add +1 if you have the Strength specialization
+·	A weakling (Physique -1) does 0 Stun with a punch—annoying but not dangerous.
+·	A brute (Physique +2, Strength spec) does 4 Stun—they can knock you out with a couple good hits.
+Melee Weapons: 1-4 Blunt or Wound
+·	Base: 1 damage (Blunt for clubs/improvised, Wound for blades)
+·	Add your Physique modifier
+·	Add +1 if you have Strength (for heavy weapons) or Agility (for precise strikes)
+·	A knife in the hands of an expert (Physique +1, Agility +1) does 3 Wound—lethal.
+Ranged Weapons: 1-4 Wound
+·	Damage is determined by the weapon, not the wielder: 
+o	Light (most handguns): 1 Wound
+o	Medium (heavy pistols, small rifles): 2 Wound
+o	Heavy (assault rifles, shotguns, sniper rifles): 3 Wound
+o	Extra Heavy (anti-materiel, modified heavy weapons): 4 Wound
+·	You probably can't carry Extra Heavy weapons without a vehicle or serious augmentation.
+Why This Matters: With most locations having only 2-3 Health Boxes, even a single hit is significant. A Light pistol (1 Wound) hitting your arm means you're immediately Wounded and operating at Disadvantage. Two more hits and that arm is Maimed.
+This isn't a game where you shrug off gunshots. A single bullet can end a fight. Three or four can end you.
+Armor becomes critical because subtracting even 1 point of damage can be the difference between walking away and bleeding out.
+
+5.5 The Corruption System: The Road to Ruin
+The Choice
+Corruption is not a curse. It's not a disease you catch from the wrong handshake or a punishment the universe inflicts on the wicked. It is a choice—conscious, deliberate, and damningly easy to make.
+It is the measure of your willingness to tear a hole in reality to get what you want. It is the shortcut, the easy path, the solution that works right now while you worry about the cost later. In Sidonia, where the machinery of the world is already broken and held together with blood and bribes, corruption is simply another tool in your kit.
+The world doesn't judge you for using it. The Aether doesn't care about your morality. But you will carry the weight of every choice, and eventually, that weight becomes unbearable.
+This system isn't about good versus evil. It's about the lines you draw for yourself, the prices you're willing to pay, and the moment you realize you've already paid too much.
+Two Faces of Corruption
+Corruption manifests in two distinct forms, and understanding the difference might save your soul—or at least delay its loss.
+Permanent Corruption: The Scar That Stays
+This is corruption that has become part of you. It's stable, integrated into your being. The mutations of a Chimera, the advanced cybernetics of a Neosapien, the runic scars of a Sorcerer who's bound too many contracts—these are expressions of Permanent Corruption.
+When you gain Permanent Corruption, you mark boxes on your Corruption Track starting from the top and working down. These boxes are filled permanently. They reduce your buffer—your tolerance for Temporary Corruption before things start to go wrong.
+The key principle: Abilities granted by Permanent Corruption don't generate more corruption when used. A Chimera's claws are part of their body now. Using them is no different than breathing. For some lineages, particularly Chimera, this innate corruption acts as a kind of tolerance—a built-in buffer against the volatile tides of Temporary Corruption.
+Temporary Corruption: The Rising Tide
+This is the active, volatile corruption you gain when you make the choice to bend or break reality. When you use abilities like Defy the Gate, Bending Fate, or Twist the Weave, you accept Temporary Corruption as the price.
+Temporary Corruption fills boxes on your track starting from the bottom and working up. When Temporary Corruption meets Permanent Corruption—when the two sides of your track touch—you've reached your threshold. What happens next depends on which Path of Hunger you've chosen.
+This is the corruption you must fear. This is the tide that rises with every desperate choice, every moment you decide the end justifies the means. This is the corruption that changes you.
+The Three Paths to Power: How You Break Reality
+There are three ways to actively channel corruption, three methods by which you can force the world to bend to your will. Each has a specific purpose, a specific cost, and a specific temptation.
+The Framework:
+·	Defy the Gate is about possibility — making the impossible possible
+·	Bending Fate is about probability — changing outcomes that were already possible
+·	Twist the Weave is about reality — altering the world itself
+Defy the Gate: Breaking Your Limitations
+Purpose: Temporarily overcome your character's innate physical, mental, or social limitations.
+When to Use It: Before you roll, when the GM declares your action is impossible due to an Attribute Gate—when your Physique, Intellect, or Presence is simply too low to attempt what you want to do.
+The Cost: 1 point of Temporary Corruption per Attribute point you need to bypass.
+How It Works: Every character has natural limits. If your Physique is 1, you cannot perform surgery—your hands aren't steady enough, your understanding of anatomy isn't intuitive enough. The GM will tell you: "No. You can't do this. Your Attribute isn't high enough."
+But you can choose to Defy the Gate.
+You reach into the Aether and force it to compensate for your inadequacy. For a single action, you act as if your Attribute were higher. The surgery becomes possible. The complex deduction becomes achievable. The impossible persuasion becomes merely difficult.
+But you've borrowed this ability from the corrupting influence of chaos, and the debt is recorded in your soul.
+Example:"My Physique is only 1, but the child will die if I don't operate now. I spend 1 corruption point to Defy the Gate and attempt the delicate surgery, acting as if my Physique were 2."
+Bending Fate: Rewriting the Dice
+Purpose: Manipulate the outcome of an action that was already possible for you.
+When to Use It: After you roll, to change the result of the dice.
+The Cost: 1 point of Temporary Corruption to shift the outcome one step (from Failure to Success with Cost, or from Success with Cost to Clean Success).
+How It Works: You rolled. The dice landed. The outcome is clear—and it's not what you needed.
+But the Aether is probabilistic. Outcomes exist in superposition until they're observed and collapsed into reality. You can reach into that moment before collapse and nudge the probability wave. You can make the lock tumbler fall one moment earlier. You can make the guard look away one second sooner. You can change what happened.
+The dice don't lie, but you can make them tell a different truth.
+Example:"I failed my roll to pick the lock, and the guard is coming. I'll spend 1 corruption to Bend Fate and turn that failure into a success with a complication—the lock opens, but my pick breaks off inside, leaving evidence."
+Twist the Weave: Rewriting Reality
+Purpose: Alter the narrative reality of the world around you, outside of your direct actions.
+When to Use It: At any time, with GM approval, to change the circumstances or environment.
+The Cost: 1-3 points of Temporary Corruption, depending on the magnitude of the change. The GM determines the cost based on how drastically you're altering reality.
+How It Works: This is the most dangerous ability because it doesn't just change outcomes—it changes what is. You're not acting within the world; you're rewriting the world itself.
+A wall that was solid is now crumbling. A person who wasn't there is now standing in the doorway. A fire escape that didn't exist suddenly exists, rusted and ancient, as if it had always been there.
+You're forcing the Aether to rewrite consensus reality, to create a new truth that everyone will accept as having always been true. This is the power of a god, and it comes with a god's price.
+Example:"We're trapped in this alley with no way out. I'll spend 2 corruption to Twist the Weave and cause the old brick wall to collapse, revealing a forgotten passage that 'was always there.'"
+For the GM: Presenting the Temptation
+Your role as Game Master in this system is not neutral. You are not just an arbiter—you are the serpent in the garden, whispering that there is another way.
+When a player faces an impossible situation, when they're backed into a corner and the "proper" solution is slow or insufficient or unavailable, you lean in and you offer them the easy path.
+The structure of temptation:
+The Hard Way (Order)	The Easy Way (Corruption)
+"You'll need to spend hours searching the archives. You might not even find the blueprint, and the building burns down in two hours."	"Or... you could Defy the Gate. Your Intellect is too low to see the pattern immediately, but for 1 corruption, you can connect the dots right now and find exactly what you need."
+"You can try to persuade the guard, but he's loyal and your Presence is only 1. If you fail this roll, he calls for backup."	"Or... you could Bend Fate. Even if you fail the roll, 1 corruption turns it into a success with a cost. He's not convinced, but he's distracted enough for you to slip past."
+"You're cornered in this alley. I guess you fight your way out and hope you survive."	"Or... you could Twist the Weave. For 2 corruption, that rusted fire escape ladder that's been hanging there for decades finally breaks free and crashes down, creating a barrier between you and them."
+The temptation isn't generic. It's specific. It's the exact solution to their immediate problem, offered at the exact moment they need it most.
+Make corruption feel smart. Make it feel efficient. Make it feel like the obvious choice for someone who wants to survive, to succeed, to win.
+Then make them live with the consequences.
+
+The First Step & The Lurker's Witness
+The first time you willingly accept a point of Temporary Corruption, time hiccups.
+You might notice his graffiti on a nearby wall—a wide-brimmed hat, a figure in shadow, drawn in something that might be chalk but feels older. You might catch a glimpse of him in your peripheral vision, standing at the mouth of an alley you know is empty. You might just feel his attention, like the weight of a gaze you can't locate.
+This is the Lurker on the Threshold, and he is the only witness to your first step off the path.
+He doesn't speak. He doesn't judge. He simply observes the moment you cross from the world of what is to the world of what could be. He is there to mark the threshold, to acknowledge that you have chosen to walk through it.
+In that moment—and it will feel like a moment, even if it lasts only a heartbeat—you must answer an unspoken question:
+"What is it you truly hunger for?"
+You must choose one of the Three Paths of Hunger. This choice is permanent. All subsequent Temporary Corruption you gain will fuel your journey down this path, bringing you closer to the dark gifts—and darker prices—that wait at each milestone.
+The Three Paths of Hunger
+Your chosen path determines how corruption manifests within you. Each path offers three Bargains—opportunities to accept Permanent Corruption in exchange for power. These Bargains become available when your Temporary Corruption fills one-third, two-thirds, and finally all of your available corruption track (the space between your Permanent Corruption and your maximum).
+You are never forced to accept a Bargain. You can refuse, can walk away from the offered power. But the temptation is always there, whispering that this gift might be the thing that saves you, that lets you protect what you love, that finally gives you control.
+Each Bargain accepted marks you permanently—physically, spiritually, irrevocably.
+Path 1: The Hunger of Desire (The Empty Heart)
+This is the path of will, influence, and the insatiable need for more. You hunger to shape others, to make them want what you want, to never hear the word "no" again.
+Step 1 (Temporary Corruption fills 1-33% of your available track):
+Manifestation - The Echo of Want: You become acutely aware of the desires around you. It's like hearing a dozen whispered conversations at once—the guard who wants to go home, the merchant who wants respect, the lover who wants to be seen. It's distracting. It makes it hard to focus on anything but what people want.
+The Bargain: Accept 1 point of Permanent Corruption to gain the ability to know the most immediate, surface-level desire of any person you focus on. You don't read minds—you read hunger.
+The Mark: Your eyes subtly change color to reflect the dominant emotion of whoever you're reading. Greed turns them gold. Fear turns them pale. Lust turns them dark. Those who know what to look for will see you for what you are.
+Step 2 (34-66% filled):
+Manifestation - The Scent of Hunger: Animals become wary of you. Dogs growl. Cats flee. Perceptive people feel uncomfortable in your presence without understanding why. You've developed a predatory charisma—people are drawn to you, but they feel like prey.
+The Bargain: Accept 1 point of Permanent Corruption to gain the power to amplify a target's existing desire, turning a simple want into a desperate, short-term obsession they must act on. You don't create desire—you make it unbearable.
+The Mark: You develop an unnatural stillness. You no longer fidget, blink regularly, or display unconscious tells. When you're not actively moving, you are perfectly, unsettlingly motionless. People notice.
+Step 3 (67-100% filled):
+Manifestation - The Gravity of Need: Your desires become a tangible force. When you want something, reality seems to bend slightly in your direction. You find it nearly impossible to accept "no" as an answer. Your presence can feel physically oppressive to those who deny you.
+The Bargain: Accept 1 point of Permanent Corruption to learn to literally feed on another person's ambition or hope. You drain it, leaving them hollow and apathetic, while you gain a surge of confidence and vitality. This is vampirism of the spirit.
+The Mark: Your voice gains a permanent, hypnotic quality. People listen when you speak, even when they don't want to. Your words bypass the conscious mind and lodge directly in the hindbrain. It is impossible to ignore you.
+Path 2: The Hunger of Knowledge (The Spider's Thread)
+This is the path of forbidden secrets, alien perception, and intellectual arrogance. You hunger to know what others cannot, to see patterns they miss, to understand the machinery behind the curtain.
+Step 1 (1-33% filled):
+Manifestation - The Pattern Recognition: You begin to see connections everywhere. Coincidences feel like conspiracies. The graffiti on the wall seems to spell out a message. The static on the radio sounds like words. You can't turn it off. Every shadow might be significant. Every conversation might be code.
+The Bargain: Accept 1 point of Permanent Corruption to gain the ability to "read" the recent emotional residue on an inanimate object. Touch a knife and feel the last strong emotion it was exposed to—rage, fear, triumph. The Aether remembers, and now, so do you.
+The Mark: You develop a constant, minor headache at the base of your skull. It never goes away. Painkillers don't help. It's the pressure of too much information trying to force its way into your consciousness.
+Step 2 (34-66% filled):
+Manifestation - The Cacophony of Echoes: You perceive Aetheric echoes left on places—the "memory" of strong events. Standing in an empty room, you might get flashes of a violent argument that happened years ago. Walk past an alley and smell blood that was washed away months back. The past bleeds through into your present.
+The Bargain: Accept 1 point of Permanent Corruption to gain the power to ask the Aether one simple yes/no question about a person or object in your presence and receive a truthful, one-word answer. The Aether knows. Now you can ask it directly.
+The Mark: One of your eyes develops a permanent, unnatural geometric pattern in the iris—a fractal, a spiral, a rune that wasn't there before. It's subtle in dim light, but in bright light or when you're using your abilities, it's unmistakable.
+Step 3 (67-100% filled):
+Manifestation - The Panopticon Gaze: You see the flaws in everything. The structural weakness in a building. The logical flaw in an argument. The moral weakness in a person. Beauty becomes invisible to you. All you can see is how things break.
+The Bargain: Accept 1 point of Permanent Corruption to learn to pull a single piece of surface information—a password, a name, a location—directly from an unwilling mind through physical contact. This act is mentally painful for both you and the target. You're not reading their mind; you're taking from it.
+The Mark: Your shadow sometimes lags a fraction of a second behind your movements, as if it's struggling to process the information you perceive. In dim light, it might move independently. People who notice this instinctively step away from you.
+Path 3: The Hunger of Power (The Crushing Hand)
+This is the path of force, direct action, and the imposition of your will upon reality itself. You hunger to make the world bend, to prove that strength is the only truth that matters.
+Step 1 (1-33% filled):
+Manifestation - The Unstable Aura: Your emotions have a minor, tangible effect on your environment. When you're angry, lights flicker. When you're scared, the room feels colder. When you're focused, electronics near you glitch. You're bleeding into reality.
+The Bargain: Accept 1 point of Permanent Corruption to gain the ability to infuse a single thrown object with Aetheric energy, making it strike with unnatural force and accuracy. A thrown stone becomes a bullet. A bottle becomes a grenade.
+The Mark: A network of fine, black, crack-like lines appears on the palm of your dominant hand. They look like fractures in porcelain, but they're under your skin. They pulse faintly when you use your abilities.
+Step 2 (34-66% filled):
+Manifestation - The Denial of Physics: Small laws of physics become suggestions around you. Rain might avoid you. You might leave no footprints in mud. Dropped objects might fall slightly slower. Reality doesn't quite grip you the way it should.
+The Bargain: Accept 1 point of Permanent Corruption to gain the power to "harden" a fragile object for a single action, making a pane of glass as strong as steel, or a piece of cloth as rigid as iron. The object shatters violently and completely after one use.
+The Mark: Your reflection becomes distorted. It's still you, but it's wrong—older, more brutal, its expression always one of cold fury even when you're smiling. Mirrors make people uncomfortable when you're near them.
+Step 3 (67-100% filled):
+Manifestation - The Reality Wound: Your very presence is a wound in reality. Technology glitches more frequently near you. Plants wither faster. You cast a shadow even in complete darkness—a void where light should be but isn't.
+The Bargain: Accept 1 point of Permanent Corruption to learn to transmute a small, simple, non-living object into another of similar mass. The change is violent, unstable, and temporary. A brick becomes a mass of writhing insects. A glass of water becomes a glass of acid. The transformation lasts minutes at most before collapsing back into something broken.
+The Mark: You no longer have a recordable heartbeat. Medical equipment registers nothing, or registers an impossible rhythm. What keeps you alive now isn't blood—it's the Aetheric hum that has replaced your pulse.
+The Corrupted Metabolism of the Chimera
+Chimera are different. Their bodies are testaments to the Worm's influence, their Permanent Corruption a measure not of choices made but of nature inherited. This corruption acts as a buffer.
+A Chimera only begins their journey down a Path of Hunger after their accumulated Temporary Corruption exceeds their Permanent Corruption score. Until that point, they feel no ill effects. Their monstrous nature absorbs the corruption like a sponge, protecting them from consequences that would break a human.
+This allows for a long, silent slide. A Chimera can make compromises, can use power, can bend reality, and feel nothing wrong. They can convince themselves they're in control. They can believe their nature makes them immune.
+Then, one day, the buffer is full. The Temporary Corruption exceeds the Permanent, and suddenly, all at once, they're on the edge of the abyss just like everyone else. The fall, when it comes, is faster and more terrifying because they never saw it coming.
+The Path to Purification: Upholding the Code
+Cleansing Temporary Corruption cannot be done through good deeds or charitable acts. The universe doesn't care about your morality. Purification comes from proving that you are still you—that despite the compromises, despite the corruption, there is still a core of identity that you refuse to let the world erode.
+The Line in the Sand: Defining Your Code
+At character creation, or during a significant moment of reflection in play, you must define your character's Code. This isn't a vague aspiration or a flexible guideline. It's a single, specific, actionable rule—the one line you take pride in never having crossed. It is the core pillar of your identity.
+Characteristics of a Good Code:
+·	It's Personal: It stems from your backstory and defines who you believe you are at your core.
+·	It's a Choice: It's not "I don't kill because I'm physically unable to." It's "I don't kill because that would make me a monster."
+·	It's Testable: It must be a line that will plausibly be challenged by the world of Sidonia.
+Examples of a Character's Code:
+·	The Ex-Cop: "I never plant evidence. A case is either righteous or it isn't."
+·	The Chimera Outcast: "I never harm another 'freak' to save my own skin. We're all we have."
+·	The Jaded Mercenary: "My word is my bond. A contract is honored, no matter what."
+·	The Sorcerer Academic: "I will never use a formula I don't fully understand. Knowledge is the only thing separating us from the abyss."
+·	The Grifter: "I never run a con on someone who has nothing left to lose."
+This Code is now the mechanical and narrative anchor for purification. It's the thing you prove you still are when everything else has been stripped away.
+The Penance: The Three-Act Test
+To cleanse Temporary Corruption, you cannot simply declare "I'm doing a good thing now." You must be tested. The GM presents you with a scenario where upholding your Code will cost you something real—something you need, something you want, something that matters.
+The process unfolds in three acts:
+Act I: The Test
+The GM presents a scenario where the easiest, most effective path to success requires you to break your Code. The temptation must be real. The reward for breaking it must be immediate and desirable. The cost of upholding it must be clear and painful.
+Act II: The Choice
+You must choose between the easy way (breaking your Code and achieving your goal) and the hard way (upholding your Code and accepting the consequences).
+Act III: The Sacrifice
+To cleanse corruption, you must choose the hard way. But it's not enough to simply uphold your Code—your choice must result in a tangible, negative consequence. A sacrifice. This is the proof that your Code is more important than your immediate goals. This is the price of remaining yourself.
+Putting It Into Practice
+The Ex-Cop:
+The Test: You've been hunting a truly monstrous criminal for months—someone who's hurt children, who will hurt more if they walk free. You finally have them in custody, but the case is weak. The evidence won't stick. But you know where they live. It would be so easy to plant one small piece of evidence—a weapon, a stolen item, something "insignificant" that would seal the case. Everyone would look the other way. You'd be a hero.
+The Sacrifice: To cleanse corruption, you let the monster go. The case falls apart for lack of "righteous" evidence. You uphold your Code—"I never plant evidence"—but you unleash evil back onto the streets. You have proven that your identity is more important than the immediate outcome, even when that outcome is saving innocent lives.
+Result: Cleanse 1-2 points of Temporary Corruption. The cost is written in the blood of whoever this criminal hurts next.
+The Chimera Outcast:
+The Test: You're being hunted by a corporate kill team. They're professionals, well-armed, and they won't stop until you're dead or captured. But you know where another Chimera—someone from your old community—is hiding. Someone who betrayed you years ago, someone you have every reason to hate. The corp is offering a deal: give them up, and they'll let you walk away clean. It's just one "freak," and they deserve it anyway.
+The Sacrifice: To cleanse corruption, you refuse the deal. You hold to your Code—"I never harm another freak to save my own skin"—even when that freak is someone you despise, even when refusing means you stay in the crosshairs. You protect someone who wouldn't protect you, because that's who you are.
+Result: Cleanse 1-2 points of Temporary Corruption. The corp intensifies their hunt, and you've gained nothing but the weight of your own integrity.
+The Jaded Mercenary:
+The Test: You're contracted to protect a corrupt executive—someone who's bled the Downside dry, someone whose policies have killed hundreds through neglect and greed. The contract is legal, the pay is good, but the client is a monster. Then, halfway through the job, a group of the executive's impoverished victims approaches you. They offer you twice your contracted fee to stand aside and let them have their justice. It's more money. It's the morally right thing to do. It's easy.
+The Sacrifice: To cleanse corruption, you refuse the bribe and you fight off the victims. You protect your loathsome client because your Code says "a contract is honored, no matter what." You uphold your word at the cost of doing something that looks, from the outside, like an evil act. You lose the moral high ground. You lose potential profit. But you prove that you are a professional, that your word means something in a world where nothing else does.
+Result: Cleanse 1-2 points of Temporary Corruption. The victims curse your name. Your client survives. You've proven your identity, but you've done it by protecting evil.
+The Moral Ambiguity
+This system is deliberately morally complex. The Mercenary's act of purification is, to an outside observer, an evil act. She's protecting a monster. She's fighting against the oppressed. But for her, it's a reaffirmation of the one thing that gives her a sense of self in a chaotic world.
+The Ex-Cop's purification lets a predator go free. More people will suffer because he refused to cross his line.
+Purification isn't about being good. It's about being yourself when the world is screaming at you to be someone else. It's about proving that there are lines you will not cross, even when crossing them would save lives, make you rich, or keep you safe.
+The sacrifice is the proof. The cost is the point.
+How Much Corruption Is Cleansed:
+The GM determines how much Temporary Corruption is cleansed based on the weight of the sacrifice:
+·	Minor sacrifice (1 point): You uphold your Code and suffer a meaningful but recoverable loss.
+·	Major sacrifice (2 points): You uphold your Code and suffer a severe, long-lasting consequence.
+·	Defining sacrifice (3+ points): You uphold your Code and lose something irreplaceable—a relationship, a goal, a part of yourself.
+The more it costs, the more it cleanses. That's the equation.
+Cleansing Permanent Corruption is something else entirely.
+This is the work of years, perhaps a lifetime. It is the focus of an entire character arc—a monumental quest to rewrite your own soul. It is arduous, scarring, and possibly impossible. But some stories are worth telling, even if they end in tragedy.
+
+5.6 Critical Success & Failure
+5.6.1: Critical Success (Natural 12)
+Sometimes, everything goes right.
+The lock doesn't just open—it sings open, tumblers falling into place like they were waiting for you. The lie doesn't just convince—it becomes the truth in the listener's mind, reshaping their memory of events. The shot doesn't just hit—it finds the one gap in their armor, the impossible angle, the perfect moment.
+A Critical Success (rolling a natural 12 on 2d6) means you've succeeded beyond what skill alone could achieve. The universe bent in your favor. Sam's Orchestration found the most efficient path to your desired outcome and executed it flawlessly.
+When you roll a Critical, the GM describes the success with flourish. You gain an added benefit beyond simple success:
+·	The action takes less time than expected
+·	You gain additional information or advantage
+·	You create an opportunity for your allies
+·	You might even reduce the Dissonance Pool by 1 point if the GM judges your success helped restore order rather than create chaos
+This is the moment where competence meets luck, where your character's skill intersects perfectly with the world's cooperation. These moments are rare. When they happen, they should feel earned and significant.
+5.6.2: Critical Failure (Natural 2)
+And sometimes, everything goes catastrophically wrong.
+The lock doesn't just refuse to open—your pick snaps off inside it, jamming the mechanism permanently. Your lie doesn't just fail to convince—you've contradicted something you said five minutes ago, and now they know you've been lying about everything. Your shot doesn't just miss—you hit the gas tank, or the bystander, or your own partner.
+A Critical Failure (rolling a natural 2 on 2d6) means you've failed in the worst possible way. You didn't just fail to achieve your goal—you've made things actively, measurably worse.
+When you roll a Critical Failure, the GM can immediately spend up to 2 Dissonance Points from the pool for free to create a catastrophic complication. This is the Aether itself recoiling from your action, the system correcting for your spectacular incompetence.
+The complication should be severe:
+·	Your weapon breaks or jams
+·	You're injured by your own action
+·	You alert everyone to your presence
+·	You destroy something valuable or important
+·	You create an immediate threat that didn't exist before
+Critical Failures should hurt. They should change the scene fundamentally. They're not just "you miss"—they're "you miss, and now everything is worse."
+5.6.3: Criticals and the Aether
+When manipulating the Aether directly—using Sorcery, Esper abilities, or other supernatural powers—a Critical takes on a different, more dangerous quality.
+The Aether is not a tool. It's a system trying to maintain equilibrium. When you reach into it and roll a Critical, you've failed to communicate your intent correctly, or the Aether has responded in a way you didn't anticipate.
+On a Critical Failure (2) while using supernatural abilities:
+The Aether responds to your intent, but filtered through your subconscious fears, stray thoughts, or suppressed memories. A Sorcerer's idle worry about betrayal might cause their spell to target an ally instead of an enemy. An Esper's fear of fire might cause their telekinetic push to ignite something. The outcome should be related to the intended effect, but twisted by the character's psychology.
+This is why working with the Aether is fundamentally dangerous. You're not just risking failure—you're risking exposing your inner self to a system that doesn't understand context or compassion.
+On a Critical Success (12) while using supernatural abilities:
+The Aether cascades beyond your intended effect. You meant to push one person back—you create a shockwave that affects everyone in the room. You meant to read one surface thought—you suddenly perceive a dozen minds at once, overwhelming and intrusive. You get more than you asked for, and "more" is not always "better."
+Both outcomes represent the fundamental danger of treating reality as malleable. The Aether is not your servant. It is a system, and systems respond to input in ways that are logical to them but catastrophic to you.
+The GM should use these moments to remind players that supernatural power is chaos dressed as control. Every time you reach into the Aether, you're gambling that it will interpret your will correctly. When you roll a Critical, that gamble has failed or succeeded in spectacular, unpredictable fashion.
+5.7 Generalizing the "Dramatic Spotlight"
+The Spotlight Scene
+There are moments in a story that deserve more than a single roll of the dice.
+The duel between two master swordsmen, each move precise and deadly. The high-stakes game of strategy against an Automaton champion whose processing power dwarfs human intuition. The desperate plea before the High Council where the wrong word could mean execution. These are the moments that define who your character is.
+A single roll feels cheap. It reduces a character-defining confrontation to a coin flip. You deserve better. Your character deserves better. The story deserves better.
+The Spotlight Scene is a tool that lets you zoom in on these crucial moments and turn them into something more—a brief, structured scene within the larger game that gives weight and drama to an action that matters.
+5.7.1: Invoking a Spotlight Scene
+Each player and the GM receive one Spotlight Token per session. This is your currency for demanding the camera focus on your character for an extended moment.
+Spending your token pauses the normal flow of the game. You're saying: "This matters. This is where my character stands or falls, and I want to give it the attention it deserves."
+When you spend your token, the table knows: this is important. The GM sets aside whatever else is happening, and for the next several minutes, the story belongs to you.
+5.7.2: The Declaration of Intent (Mini Session Zero)
+Before the scene begins, you declare your character's goal. This is a brief negotiation with the GM where you define two outcomes:
+Minimum Success: What is the absolute least you hope to achieve? This is your baseline—the worst acceptable result if things go poorly but not catastrophically.
+Example: "I want to at least get out of here alive, even if I have to retreat."
+Ideal Success: What is the best possible outcome? This is your dream scenario—what happens if everything goes right.
+Example: "I want to defeat them decisively, capture them alive, and earn the respect of everyone watching."
+These declarations set the stakes. The GM uses them to frame the scene and understand what success and failure look like for your character. The final outcome may include unexpected twists—the GM isn't bound to give you exactly what you declared—but these goals provide the structure.
+5.7.3: The Structure of the Scene
+The Spotlight Scene unfolds as a structured mini-game within the larger narrative. Here's how it works:
+Step 1: Define the Adversary
+The GM establishes what you're struggling against. This could be:
+·	A specific NPC opponent
+·	A hostile environment (a burning building, a collapsing bridge)
+·	A social barrier (a council that refuses to listen)
+·	An internal conflict (your own fear or doubt)
+The Adversary's goal is typically to prevent you from achieving your declared intent.
+Both you and the GM take a d6 to track Successes. Set them to show "1" (which represents zero successes—you're using the single pip as your counter).
+Step 2: The Five Exchanges
+The scene plays out over five Contested Rolls. These aren't just attacks—they're moments in the confrontation. Each roll represents a beat in the narrative.
+You describe what your character is trying to do. The GM describes how the Adversary responds. You both roll. The outcome is simple:
+·	You Win: Add 1 Success to your d6 tracker. You now have Momentum.
+·	Adversary Wins: The Adversary adds 1 Success to their tracker. Your Momentum (if you had it) is broken.
+·	Tie: No one gains a Success. Your Momentum is broken.
+The Momentum Mechanic
+Momentum is the state of having the upper hand. If you win an exchange while you already have Momentum (meaning you won the previous exchange too), you gain Advantage on your next roll—roll 3d6 and drop the lowest.
+This simulates the snowball effect of dominance. When you're winning, it becomes easier to keep winning. When you're losing, it's harder to recover. Momentum matters.
+Winning a roll with Advantage still only counts as a single win. It helps you maintain Momentum, but it doesn't accelerate your success tracker.
+Step 3: Special Actions
+During the scene, you have access to unique resources that can influence the outcome:
+Embrace Corruption (Once per scene):
+·	Cost: 1 Temporary Corruption
+·	Effect: Immediately add 1 Success to your tracker.
+·	This does not count as a "win" for building Momentum. You're buying success, not earning it.
+Lend Support (Ally Action):
+·	Cost: Another player spends their Spotlight Token
+·	Effect: Immediately add 1 Success to the active player's tracker.
+·	This represents another character dramatically intervening in your moment. They're giving up their own Spotlight to help you with yours.
+Shift the Narrative (GM Action):
+·	Cost: GM spends their Spotlight Token
+·	Effect: Introduce a major, game-changing complication. Both Success trackers are reset to zero. The scene continues, but the circumstances have fundamentally changed.
+·	This is the GM saying: "This was going one way, but now it's going a completely different way, and we're starting over."
+Step 4: Resolution After Five Exchanges
+After the fifth and final exchange, compare the total Successes on both trackers.
+Your Successes - Adversary's Successes = Margin of Achievement
+The Margin determines the outcome:
+Margin	Outcome
++3 or more	Ideal Success. You achieve your best-case scenario, and perhaps even more than you hoped. The GM narrates your triumph.
++1 or +2	Minimum Success. You achieve your core goal, but not without complication, cost, or a lesser degree of triumph. You got what you needed, but it wasn't clean.
+0	Stalemate. A bitter standoff. The conflict ends, but neither side truly gets what they wanted. The narrative shifts, but not to anyone's advantage. This is the draw that satisfies no one.
+-1 or less	Adversary Victorious. You fail to achieve your goal, and the Adversary dictates the outcome of the scene. You must accept the consequences of your failure.
+The GM narrates the final outcome based on the Margin, the fiction established during the five exchanges, and the stakes that were set at the beginning.
+
+Why This Matters
+The Spotlight Scene isn't just a mechanical subsystem. It's a promise: when something truly matters to your character, when you're willing to invest your limited resource (the Spotlight Token) into making it count, the game will pause and give you the space to tell that story properly.
+It's the system acknowledging that some moments deserve more than a single roll. Some moments deserve to be scenes.
+Use your token wisely. Save it for the moment that defines your character—the duel, the confession, the stand against impossible odds. When you spend it, make it count.
+Because in Sidonia, moments of true clarity and purpose are rare. When they come, you should be ready to seize them with both hands.
+
+
+
