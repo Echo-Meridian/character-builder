@@ -18,12 +18,12 @@ export class CloudflareAIService {
         return CloudflareAIService.instance;
     }
 
-    async chat(messages: ChatMessage[]): Promise<string> {
+    async chat(messages: ChatMessage[], characterContext?: string): Promise<string> {
         try {
             const response = await fetch(`${this.baseUrl}/chat`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ messages })
+                body: JSON.stringify({ messages, characterContext })
             });
 
             if (!response.ok) {

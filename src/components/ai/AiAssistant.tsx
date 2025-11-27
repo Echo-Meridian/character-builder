@@ -66,10 +66,13 @@ export const AiAssistant: React.FC = () => {
         setIsGenerating(true);
 
         try {
-            const response = await aiService.chat([
-                ...messages.map(m => ({ role: m.role, content: m.content })),
-                userMsg
-            ]);
+            const response = await aiService.chat(
+                [
+                    ...messages.map(m => ({ role: m.role, content: m.content })),
+                    userMsg
+                ],
+                context.systemPrompt
+            );
 
             setMessages((prev) => [...prev, { role: 'assistant', content: response }]);
         } catch (error) {

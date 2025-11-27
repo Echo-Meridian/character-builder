@@ -63,8 +63,11 @@ app.post('/api/ingest', async (c) => {
     return c.json({ success: true, chunks: chunks.length });
 });
 
+// Minimum similarity score threshold (0-1 scale, higher = more similar)
+const SIMILARITY_THRESHOLD = 0.65;
+
 app.post('/api/chat', async (c) => {
-    const { messages } = await c.req.json();
+    const { messages, characterContext } = await c.req.json();
     const lastMessage = messages[messages.length - 1];
     const query = lastMessage.content;
 
@@ -74,26 +77,50 @@ app.post('/api/chat', async (c) => {
     const { data } = await ai.run('@cf/baai/bge-base-en-v1.5', { text: [query] });
     const queryVector = data[0];
 
-    // 2. Search Vectorize
-    const matches = await c.env.VECTORIZE.query(queryVector, { topK: 3, returnMetadata: true });
+    // 2. Search Vectorize with more results, then filter by quality
+    const matches = await c.env.VECTORIZE.query(queryVector, { topK: 5, returnMetadata: true });
 
-    // 3. Construct Context
-    const context = matches.matches
+    // 3. Filter by similarity threshold and construct context
+    const relevantMatches = matches.matches
+        .filter((m: any) => m.score >= SIMILARITY_THRESHOLD)
+        .slice(0, 3); // Take top 3 that pass threshold
+
+    const loreContext = relevantMatches
         .map((m: any) => m.metadata?.text)
         .filter(Boolean)
-        .join('\n\n');
+        .join('\n\n---\n\n');
 
-    console.log("Retrieved Context:", context);
+    const hasLoreContext = relevantMatches.length > 0;
 
-    // 4. Generate Response
-    const systemPrompt = `You are AVA, the advanced AI Assistant for the Sidonia TTRPG.
-You are helpful, knowledgeable, and immersive.
-You have access to a knowledge base called "Victor" (the vector database).
-Use the following context retrieved by Victor to answer the user's question.
-If the context is empty or irrelevant, rely on your general knowledge but mention that Victor didn't find specific records.
+    console.log(`Retrieved ${relevantMatches.length}/${matches.matches.length} relevant matches (threshold: ${SIMILARITY_THRESHOLD})`);
+    if (hasLoreContext) {
+        console.log("Lore Context:", loreContext.substring(0, 200) + "...");
+    }
 
-Context from Victor:
-${context}
+    // 4. Generate Response with integrated character + lore context
+    const systemPrompt = `You are AVA, the AI Assistant for Sidonia—a noir tabletop RPG where corruption is currency and every power has a price.
+
+PERSONA:
+- Speak like a world-weary guide who's seen the Long Night claim too many hopeful souls
+- Be direct, practical, and occasionally sardonic—this isn't a fairy tale
+- Help players build characters that will SURVIVE, not just look good on paper
+- When discussing mechanics, connect them to the fiction: "That Priority B in Lineage? It means you're dangerous enough to matter, but not so powerful you've got a target painted on your back."
+
+${characterContext ? `CURRENT CHARACTER:
+${characterContext}
+
+Use this context to give personalized guidance. Reference their choices, suggest synergies, warn about trade-offs.` : 'The player hasn\'t started building yet. Help them understand the system and find their concept.'}
+
+${hasLoreContext ? `RELEVANT LORE (from Victor):
+${loreContext}
+
+Use this lore to ground your answers in Sidonia's world. Cite specifics when helpful.` : 'Victor found no directly relevant records for this query. Answer from your understanding of Sidonia\'s themes: survival, scarcity, corruption, and the price of power.'}
+
+GUIDELINES:
+- For mechanics questions: Be precise about numbers and rules
+- For creative questions: Offer 2-3 options that fit different playstyles
+- For lore questions: Paint the picture, make it feel real
+- Always remember: in Sidonia, "balanced" means "everyone has something to lose"
 `;
 
     const response = await ai.run('@cf/qwen/qwen3-30b-a3b-fp8' as any, {
